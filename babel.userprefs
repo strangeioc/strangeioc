@@ -1,0 +1,23 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/babel/examples/myfirstproject/controller/CallWebServiceCommand.cs">
+    <Files>
+      <File FileName="Assets/scripts/babel/examples/myfirstproject/service/ExampleService.cs" Line="19" Column="1" />
+      <File FileName="Assets/scripts/babel/examples/myfirstproject/controller/CallWebServiceCommand.cs" Line="47" Column="1" />
+      <File FileName="Assets/scripts/babel/extensions/dispatcher/eventdispatcher/impl/EventDispatcher.cs" Line="122" Column="16" />
+      <File FileName="Assets/scripts/babel/framework/impl/Binding.cs" Line="167" Column="1" />
+      <File FileName="Assets/scripts/babel/framework/impl/Binder.cs" Line="122" Column="29" />
+      <File FileName="Assets/scripts/babel/extensions/dispatcher/eventdispatcher/impl/EventBinding.cs" Line="18" Column="17" />
+      <File FileName="Assets/scripts/babel/framework/impl/SemiBinding.cs" Line="49" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/3mo/Documents/repos/babel/Assets/scripts/babel/extensions/mediation/test/TestView.cs" line="28" />
+      <Breakpoint file="/Users/3mo/Documents/repos/babel/Assets/scripts/babel/examples/ExampleContainer.cs" line="19" />
+      <Breakpoint file="/Users/3mo/Documents/repos/babel/Assets/scripts/babel/extensions/command/impl/Command.cs" line="13" />
+      <Breakpoint file="/Users/3mo/Documents/repos/babel/Assets/scripts/babel/extensions/mediation/impl/View.cs" line="16" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

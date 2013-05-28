@@ -1,0 +1,87 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp-vs" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="scripts" expanded="True">
+                <Node name="babel" expanded="True">
+                  <Node name="examples" expanded="True">
+                    <Node name="myfirstproject" expanded="True">
+                      <Node name="controller" expanded="True" />
+                      <Node name="view" expanded="True">
+                        <Node name="ExampleView.cs" selected="True" />
+                      </Node>
+                    </Node>
+                  </Node>
+                  <Node name="extensions" expanded="True">
+                    <Node name="command" expanded="True">
+                      <Node name="api" expanded="True" />
+                      <Node name="impl" expanded="True" />
+                    </Node>
+                    <Node name="dispatcher" expanded="True">
+                      <Node name="eventdispatcher" expanded="True">
+                        <Node name="impl" expanded="True" />
+                      </Node>
+                    </Node>
+                    <Node name="injector" expanded="True">
+                      <Node name="api" expanded="True" />
+                      <Node name="impl" expanded="True" />
+                    </Node>
+                    <Node name="mediation" expanded="True">
+                      <Node name="impl" expanded="True" />
+                    </Node>
+                  </Node>
+                  <Node name="framework" expanded="True">
+                    <Node name="api" expanded="True" />
+                    <Node name="impl" expanded="True" />
+                  </Node>
+                  <Node name="tests" expanded="True">
+                    <Node name="extensions" expanded="True">
+                      <Node name="command" expanded="True" />
+                      <Node name="injector" expanded="True" />
+                    </Node>
+                    <Node name="framework" expanded="True" />
+                    <Node name="testPayloads" expanded="True" />
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="ConnectionManagerPad">
+        <State selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp-vs" expanded="True">
+            <Node name="babel" expanded="True">
+              <Node name="unittests" expanded="True">
+                <Node name="TestBinder" expanded="True" />
+                <Node name="TestCommandBinder" expanded="True">
+                  <Node name="TestOnce" selected="True" />
+                </Node>
+                <Node name="TestinjectionBinder" expanded="True" />
+                <Node name="TestInjector" expanded="True" />
+                <Node name="TestSemiBinding" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
