@@ -10,10 +10,6 @@ namespace babel.framework.impl
 		protected Dictionary <object, Dictionary<object, IBinding>> bindings;
 		public delegate void BindingResolver(IBinding binding);
 
-		//These will be used to allow the binder to limit bindings to one-to-one, one-to-many, or many-to-many relationships
-		private BindingConstraintType keyConstraint;
-		private BindingConstraintType valueConstraint;
-
 		public Binder ()
 		{
 			bindings = new Dictionary <object, Dictionary<object, IBinding>> ();
@@ -26,10 +22,11 @@ namespace babel.framework.impl
 		}
 		
 		//Bind a value
-		virtual public IBinding Bind(object value)
+		virtual public IBinding Bind(object key)
 		{
-			IBinding binding = GetRawBinding ();
-			binding.Key(value);
+			IBinding binding;
+			binding = GetRawBinding ();
+			binding.Key(key);
 			return binding;
 		}
 

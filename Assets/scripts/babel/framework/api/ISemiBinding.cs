@@ -25,6 +25,7 @@ namespace babel.framework.api
 		ISemiBinding Add(object o);
 		ISemiBinding Remove(object o);
 		object value{ get; }
+		bool uniqueValues{get;set;}
 	}
 }
 

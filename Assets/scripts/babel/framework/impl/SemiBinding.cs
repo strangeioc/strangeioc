@@ -8,10 +8,12 @@ namespace babel.framework.impl
 		private object[] objectValue;
 
 		public Enum constraint{ get; set;}
+		public bool uniqueValues{ get; set;}
 
 		public SemiBinding ()
 		{
 			constraint = BindingConstraintType.ONE;
+			uniqueValues = true;
 		}
 
 		public ISemiBinding Add(object o)
@@ -22,6 +24,19 @@ namespace babel.framework.impl
 			}
 			else
 			{
+				if (uniqueValues)
+				{
+					int aa = objectValue.Length;
+					for (int a = 0; a < aa; a++)
+					{
+						object val = objectValue[a];
+						if (val.Equals(o))
+						{
+							return this;
+						}
+					}
+				}
+				
 				object[] tempList = objectValue;
 				int len = tempList.Length;
 				objectValue = new object[len + 1];
