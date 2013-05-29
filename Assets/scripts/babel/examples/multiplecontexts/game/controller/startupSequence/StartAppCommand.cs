@@ -24,6 +24,11 @@ namespace babel.examples.multiplecontexts.game
 			IGameTimer timer = contextView.GetComponent<GameLoop>();
 			//...then bind it for injection
 			injectionBinder.Bind<IGameTimer>().AsValue(timer);
+			
+			GameObject go = new GameObject();
+			go.name = "Scoreboard";
+			go.AddComponent<ScoreboardView>();
+			go.transform.parent = contextView.transform;
 		}
 	}
 }

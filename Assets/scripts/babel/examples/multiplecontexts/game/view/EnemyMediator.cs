@@ -12,13 +12,13 @@ using babel.extensions.mediation.impl;
 
 namespace babel.examples.multiplecontexts.game
 {
-	public class ShipMediator : MediatorWithDispatcher
+	public class EnemyMediator : MediatorWithDispatcher
 	{
-		private ShipView view;
+		private EnemyView view;
 		
 		public override void onRegister()
 		{
-			view = abstractView as ShipView;
+			view = abstractView as EnemyView;
 			updateListeners(true);
 			view.init ();
 		}
@@ -30,7 +30,7 @@ namespace babel.examples.multiplecontexts.game
 		
 		private void updateListeners(bool value)
 		{
-			view.dispatcher.updateListener(value, ShipView.CLICK_EVENT, onViewClicked);
+			view.dispatcher.updateListener(value, EnemyView.CLICK_EVENT, onViewClicked);
 			dispatcher.updateListener( value, GameEvent.GAME_UPDATE, onGameUpdate);
 			dispatcher.updateListener( value, GameEvent.GAME_OVER, onGameOver);
 			
@@ -39,7 +39,7 @@ namespace babel.examples.multiplecontexts.game
 		
 		private void onViewClicked()
 		{
-			dispatcher.Dispatch(GameEvent.SHIP_DESTROYED);
+			dispatcher.Dispatch(GameEvent.ADD_TO_SCORE, 10);
 		}
 		
 		private void onGameUpdate(object data)

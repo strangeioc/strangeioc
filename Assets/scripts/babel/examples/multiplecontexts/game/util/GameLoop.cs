@@ -29,7 +29,7 @@ namespace babel.examples.multiplecontexts.game
 		void Update()
 		{
 			if (sendUpdates && dispatcher != null)
-				dispatcher.Dispatch(ExampleEvent.GAME_UPDATE);
+				dispatcher.Dispatch(GameEvent.GAME_UPDATE);
 		}
 	}
 }

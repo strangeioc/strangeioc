@@ -6,7 +6,7 @@ using babel.extensions.mediation.impl;
 
 namespace babel.examples.multiplecontexts.game
 {
-	public class ShipView : ViewWithDispatcher
+	public class EnemyView : ViewWithDispatcher
 	{
 		internal const string CLICK_EVENT = "CLICK_EVENT";
 		
@@ -14,7 +14,7 @@ namespace babel.examples.multiplecontexts.game
 		private Vector3 basePosition;
 		
 		//Publicly settable from Unity3D
-		public float edx_WobbleSize = .1f;
+		public float edx_WobbleForce = .4f;
 		public float edx_WobbleIncrement = .1f;
 		
 		internal void init()
@@ -37,7 +37,7 @@ namespace babel.examples.multiplecontexts.game
 		void wobble()
 		{
 			theta += edx_WobbleIncrement;
-			gameObject.transform.Rotate(Vector3.up, edx_WobbleSize * Mathf.Sin(theta));
+			gameObject.transform.RotateAround(Vector3.forward, edx_WobbleForce * Mathf.Sin(theta));
 		}
 	}
 }
