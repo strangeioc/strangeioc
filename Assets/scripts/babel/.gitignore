@@ -5,3 +5,4 @@ desktop.ini
 *.svn
 
 tests/*
+Library/*
