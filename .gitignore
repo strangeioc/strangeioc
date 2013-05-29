@@ -5,4 +5,6 @@ desktop.ini
 *.svn
 
 Thumbs.db
+test-results/*
+Temp/*
 
