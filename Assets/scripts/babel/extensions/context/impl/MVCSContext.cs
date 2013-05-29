@@ -78,6 +78,12 @@ namespace babel.extensions.context.impl
 			(dispatcher as ITriggerProvider).AddTriggerable(sequencer as ITriggerable);
 		}
 		
+		protected override void postBindings()
+		{
+			//It's possible for views to fire their Awake before bindings. This catches any early risers and attaches their Mediators.
+			MediationBeacon.MediateCache();
+		}
+		
 		public override void Launch()
 		{
 			dispatcher.Dispatch(ContextEvent.START);

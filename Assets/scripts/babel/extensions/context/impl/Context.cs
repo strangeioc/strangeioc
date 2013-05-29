@@ -42,6 +42,7 @@ namespace babel.extensions.context.impl
 		{
 			instantiateCoreComponents();
 			mapBindings();
+			postBindings();
 			if (autoStartup)
 				Launch();
 			return this;
@@ -53,6 +54,11 @@ namespace babel.extensions.context.impl
 		
 		//Override to map all your bindings
 		virtual protected void mapBindings()
+		{
+		}
+		
+		//Allows overriders to do things after binding but before app launch
+		virtual protected void postBindings()
 		{
 		}
 		

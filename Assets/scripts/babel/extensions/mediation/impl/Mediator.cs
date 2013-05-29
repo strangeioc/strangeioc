@@ -14,9 +14,6 @@ namespace babel.extensions.mediation.impl
 
 		[Inject(ContextKeys.CONTEXT_VIEW)]
 		public GameObject contextView{get;set;}
-		
-		[Inject(ContextKeys.CONTEXT_DISPATCHER)]
-		public IEventDispatcher globalDispatcher{get;set;}
 
 		public Mediator ()
 		{
