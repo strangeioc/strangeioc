@@ -25,13 +25,15 @@ namespace babel.extensions.mediation.impl
 
 		public void Trigger(MediationEvent evt, MonoBehaviour view)
 		{
-			injectionBinder.injector.Inject (view);
-			
+			//All views have potential to be injected, regardless of whether they are mediated
+			if (evt == MediationEvent.AWAKE)
+			{
+				injectionBinder.injector.Inject (view);
+			}
 			Type viewType = view.GetType();
 			IMediationBinding binding = GetBinding (viewType) as IMediationBinding;
 			if (binding != null)
 			{
-
 				switch(evt)
 				{
 					case MediationEvent.AWAKE:

@@ -68,6 +68,7 @@ namespace babel.extensions.mediation.impl
 			{
 				_binder.Trigger(MediationEvent.AWAKE, values[a] as MonoBehaviour);
 			}
+			viewCache = new SemiBinding();
 		}
 		
 		private static void cacheView(MonoBehaviour view)
