@@ -1,221 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.20506</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0AAD9E9E-5F27-99E5-6229-1E85B6746939}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{0AAD9E9E-5F27-99E5-6229-1E85B6746939}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_OSX;ENABLE_MICROPHONE;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PHYSICS;ENABLE_TERRAIN;ENABLE_CACHING;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_CLOTH;ENABLE_GAMECENTER;ENABLE_MOVIES;ENABLE_AUDIO;ENABLE_WWW;ENABLE_SHADOWS;ENABLE_DUCK_TYPING;UNITY_4_1_2;UNITY_4_1;ENABLE_PROFILER;UNITY_EDITOR</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>0169</NoWarn>
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_OSX;ENABLE_MICROPHONE;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PHYSICS;ENABLE_TERRAIN;ENABLE_CACHING;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_CLOTH;ENABLE_GAMECENTER;ENABLE_MOVIES;ENABLE_AUDIO;ENABLE_WWW;ENABLE_SHADOWS;ENABLE_DUCK_TYPING;UNITY_4_1_2;UNITY_4_1;ENABLE_PROFILER;UNITY_EDITOR</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>Temp\bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>0169</NoWarn>
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor">
-      <HintPath>..\..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml" />
-    <Reference Include="nunit.core, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="nunit.core.interfaces, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <Private>False</Private>
-    </Reference>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="UnityEngine">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
+	</Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\GameContext.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\GameRoot.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\controller\ExampleEvent.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\controller\LoadSceneCommand.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\controller\SetDestinationCommand.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\controller\StartCommand.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\model\ExampleModel.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\model\IExampleModel.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\service\ExampleService.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\service\IExampleService.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\util\GameLoop.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\util\IGameTimer.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\view\ClickDetector.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\view\GamefieldMediator.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\view\GamefieldView.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\view\ShipMediator.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\view\ShipView.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\MainContext.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\MainRoot.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\controller\ExampleEvent.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\controller\LoadSceneCommand.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\controller\StartCommand.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\model\ExampleModel.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\model\IExampleModel.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\service\ExampleService.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\service\IExampleService.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\view\ClickDetector.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\view\ExampleMediator.cs" />
-    <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\view\ExampleView.cs" />
-    <Compile Include="Assets\scripts\babel\examples\myfirstproject\ExampleContext.cs" />
-    <Compile Include="Assets\scripts\babel\examples\myfirstproject\MyFirstProjectRoot.cs" />
-    <Compile Include="Assets\scripts\babel\examples\myfirstproject\controller\CallWebServiceCommand.cs" />
-    <Compile Include="Assets\scripts\babel\examples\myfirstproject\controller\ExampleEvent.cs" />
-    <Compile Include="Assets\scripts\babel\examples\myfirstproject\controller\StartCommand.cs" />
-    <Compile Include="Assets\scripts\babel\examples\myfirstproject\model\ExampleModel.cs" />
-    <Compile Include="Assets\scripts\babel\examples\myfirstproject\model\IExampleModel.cs" />
-    <Compile Include="Assets\scripts\babel\examples\myfirstproject\service\ExampleService.cs" />
-    <Compile Include="Assets\scripts\babel\examples\myfirstproject\service\IExampleService.cs" />
-    <Compile Include="Assets\scripts\babel\examples\myfirstproject\view\ClickDetector.cs" />
-    <Compile Include="Assets\scripts\babel\examples\myfirstproject\view\ExampleMediator.cs" />
-    <Compile Include="Assets\scripts\babel\examples\myfirstproject\view\ExampleView.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\command\api\CommandExceptionType.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\command\api\ICommand.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\command\api\ICommandBinder.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\command\api\ICommandBinding.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\command\impl\Command.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\command\impl\CommandBinder.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\command\impl\CommandBinderWithEvents.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\command\impl\CommandBinding.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\command\impl\CommandException.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\context\api\ContextEvent.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\context\api\ContextExceptionType.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\context\api\ContextKeys.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\context\api\IContext.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\context\impl\Context.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\context\impl\ContextException.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\context\impl\MVCSContext.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\dispatcher\api\DispatcherExceptionType.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\dispatcher\api\IDispatcher.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\dispatcher\api\ITriggerProvider.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\dispatcher\api\ITriggerable.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\dispatcher\eventdispatcher\api\EventCallbackType.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\dispatcher\eventdispatcher\api\EventDispatcherExceptionType.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\dispatcher\eventdispatcher\api\IEventBinding.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\dispatcher\eventdispatcher\api\IEventDispatcher.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\dispatcher\eventdispatcher\impl\EventBinding.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\dispatcher\eventdispatcher\impl\EventCommand.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\dispatcher\eventdispatcher\impl\EventDispatcher.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\dispatcher\eventdispatcher\impl\EventDispatcherException.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\dispatcher\eventdispatcher\impl\TmEvent.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\dispatcher\impl\DispatcherException.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\injector\InjectAttribute.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\injector\api\IInjectionBinder.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\injector\api\IInjectionBinding.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\injector\api\IInjector.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\injector\api\IInjectorFactory.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\injector\api\InjectionBindingType.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\injector\api\InjectionExceptionType.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\injector\impl\InjectionBinder.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\injector\impl\InjectionBinding.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\injector\impl\InjectionException.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\injector\impl\Injector.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\injector\impl\InjectorFactory.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\mediation\api\IMediationBeacon.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\mediation\api\IMediationBinder.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\mediation\api\IMediationBinding.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\mediation\api\IMediator.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\mediation\api\MediationEvent.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\mediation\impl\MediationBeacon.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\mediation\impl\MediationBinder.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\mediation\impl\MediationBinding.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\mediation\impl\Mediator.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\mediation\impl\MediatorWithDispatcher.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\mediation\impl\View.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\mediation\impl\ViewWithDispatcher.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\mediation\test\RuntimeTester.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\mediation\test\TestView.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\sequencer\api\ISequenceBinding.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\sequencer\api\ISequenceCommand.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\sequencer\api\ISequencer.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\sequencer\api\SequencerExceptionType.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\sequencer\impl\SequenceBinding.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\sequencer\impl\SequenceCommand.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\sequencer\impl\Sequencer.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\sequencer\impl\SequencerException.cs" />
-    <Compile Include="Assets\scripts\babel\extensions\sequencer\impl\SequencerWithEvents.cs" />
-    <Compile Include="Assets\scripts\babel\framework\api\BindingConst.cs" />
-    <Compile Include="Assets\scripts\babel\framework\api\BindingConstraintType.cs" />
-    <Compile Include="Assets\scripts\babel\framework\api\IBinder.cs" />
-    <Compile Include="Assets\scripts\babel\framework\api\IBinding.cs" />
-    <Compile Include="Assets\scripts\babel\framework\api\IFactory.cs" />
-    <Compile Include="Assets\scripts\babel\framework\api\ISemiBinding.cs" />
-    <Compile Include="Assets\scripts\babel\framework\impl\Binder.cs" />
-    <Compile Include="Assets\scripts\babel\framework\impl\Binding.cs" />
-    <Compile Include="Assets\scripts\babel\framework\impl\SemiBinding.cs" />
-    <None Include="Assets\scripts\babel\examples\multiplecontexts\ReadMe.txt" />
-    <None Include="Assets\scripts\babel\examples\myfirstproject\ReadMe.txt" />
-    <None Include="Assets\scripts\babel\extensions\mediation\test\ReadMe.txt" />
-    <None Include="Assets\scripts\babel\extensions\ReadMe.txt" />
-    <None Include="Assets\scripts\babel\tests\.DS_Store" />
-    <None Include="Assets\scripts\babel\tests\extensions\.DS_Store" />
-    <Compile Include="Assets\scripts\babel\tests\extensions\command\TestCommand.cs" />
-    <Compile Include="Assets\scripts\babel\tests\extensions\command\TestCommandBinder.cs" />
-    <Compile Include="Assets\scripts\babel\tests\extensions\command\TestCommandBinding.cs" />
-    <Compile Include="Assets\scripts\babel\tests\extensions\eventdispatcher\TestEventBinding.cs" />
-    <Compile Include="Assets\scripts\babel\tests\extensions\eventdispatcher\TestEventCommand.cs" />
-    <Compile Include="Assets\scripts\babel\tests\extensions\eventdispatcher\TestEventDispatcher.cs" />
-    <Compile Include="Assets\scripts\babel\tests\extensions\injector\TestInjectionBinder.cs" />
-    <Compile Include="Assets\scripts\babel\tests\extensions\injector\TestInjectionBinding.cs" />
-    <Compile Include="Assets\scripts\babel\tests\extensions\injector\TestInjector.cs" />
-    <Compile Include="Assets\scripts\babel\tests\extensions\injector\TestInjectorFactory.cs" />
-    <Compile Include="Assets\scripts\babel\tests\extensions\mediation\TestMediatorBinding.cs" />
-    <Compile Include="Assets\scripts\babel\tests\extensions\mediation\TestView.cs" />
-    <Compile Include="Assets\scripts\babel\tests\extensions\sequencer\TestSequenceCommand.cs" />
-    <Compile Include="Assets\scripts\babel\tests\extensions\sequencer\TestSequencer.cs" />
-    <Compile Include="Assets\scripts\babel\tests\framework\TestBinder.cs" />
-    <Compile Include="Assets\scripts\babel\tests\framework\TestBinding.cs" />
-    <Compile Include="Assets\scripts\babel\tests\framework\TestSemiBinding.cs" />
-    <None Include="Assets\scripts\babel\tests\testPayloads\.DS_Store" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\CircularDependencyOne.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\CircularDependencyTwo.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\ClassToBeInjected.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\ClassWithConstructorParameters.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\ClassWithConstructorParametersOnlyOneConstructor.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\GuaranteedUniqueInstances.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\HasNamedInjections.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\IAnotherSimpleInterface.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\ISimpleInterface.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\InjectableDerivedClass.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\InjectableSuperClass.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\MarkerClass.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\PolymorphicClass.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\PostConstructClass.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\SimpleInterfaceImplementer.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\SomeEnum.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\TestException.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\Commands\AsynchCommand.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\Commands\CommandWithExecute.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\Commands\CommandWithInjection.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\Commands\CommandWithoutExecute.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\SequenceCommands\SequenceCommandWithExecute.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\SequenceCommands\SequenceCommandWithInjection.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\SequenceCommands\SequenceCommandWithoutExecute.cs" />
-    <Compile Include="Assets\scripts\babel\tests\testPayloads\SequenceCommands\SequenceInterruptingCommand.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\GameContext.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\GameRoot.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\controller\GameEvent.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\controller\GameOverCommand.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\controller\ReplayGameCommand.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\controller\ShipDestroyedCommand.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\controller\UpdateScoreCommand.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\controller\startupSequence\StartAppCommand.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\controller\startupSequence\StartGameCommand.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\model\IScore.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\model\ScoreModel.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\util\GameLoop.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\util\IGameTimer.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\view\ClickDetector.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\view\EnemyMediator.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\view\EnemyView.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\view\ScoreboardMediator.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\view\ScoreboardView.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\view\ShipMediator.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\view\ShipView.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\MainContext.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\MainRoot.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\controller\LoadSceneCommand.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\controller\MainEvent.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\controller\StartCommand.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\model\ExampleModel.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\model\IExampleModel.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\service\ExampleService.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\service\IExampleService.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\view\ClickDetector.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\view\ExampleMediator.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\view\ExampleView.cs" />
+     <Compile Include="Assets\scripts\babel\examples\myfirstproject\ExampleContext.cs" />
+     <Compile Include="Assets\scripts\babel\examples\myfirstproject\MyFirstProjectRoot.cs" />
+     <Compile Include="Assets\scripts\babel\examples\myfirstproject\controller\CallWebServiceCommand.cs" />
+     <Compile Include="Assets\scripts\babel\examples\myfirstproject\controller\ExampleEvent.cs" />
+     <Compile Include="Assets\scripts\babel\examples\myfirstproject\controller\StartCommand.cs" />
+     <Compile Include="Assets\scripts\babel\examples\myfirstproject\model\ExampleModel.cs" />
+     <Compile Include="Assets\scripts\babel\examples\myfirstproject\model\IExampleModel.cs" />
+     <Compile Include="Assets\scripts\babel\examples\myfirstproject\service\ExampleService.cs" />
+     <Compile Include="Assets\scripts\babel\examples\myfirstproject\service\IExampleService.cs" />
+     <Compile Include="Assets\scripts\babel\examples\myfirstproject\view\ClickDetector.cs" />
+     <Compile Include="Assets\scripts\babel\examples\myfirstproject\view\ExampleMediator.cs" />
+     <Compile Include="Assets\scripts\babel\examples\myfirstproject\view\ExampleView.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\command\api\CommandExceptionType.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\command\api\ICommand.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\command\api\ICommandBinder.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\command\api\ICommandBinding.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\command\impl\Command.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\command\impl\CommandBinder.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\command\impl\CommandBinderWithEvents.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\command\impl\CommandBinding.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\command\impl\CommandException.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\context\api\ContextEvent.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\context\api\ContextExceptionType.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\context\api\ContextKeys.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\context\api\IContext.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\context\impl\Context.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\context\impl\ContextException.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\context\impl\MVCSContext.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\dispatcher\api\DispatcherExceptionType.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\dispatcher\api\IDispatcher.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\dispatcher\api\ITriggerProvider.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\dispatcher\api\ITriggerable.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\dispatcher\eventdispatcher\api\EventCallbackType.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\dispatcher\eventdispatcher\api\EventDispatcherExceptionType.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\dispatcher\eventdispatcher\api\IEventBinding.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\dispatcher\eventdispatcher\api\IEventDispatcher.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\dispatcher\eventdispatcher\impl\EventBinding.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\dispatcher\eventdispatcher\impl\EventCommand.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\dispatcher\eventdispatcher\impl\EventDispatcher.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\dispatcher\eventdispatcher\impl\EventDispatcherException.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\dispatcher\eventdispatcher\impl\TmEvent.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\dispatcher\impl\DispatcherException.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\injector\InjectAttribute.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\injector\api\IInjectionBinder.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\injector\api\IInjectionBinding.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\injector\api\IInjector.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\injector\api\IInjectorFactory.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\injector\api\InjectionBindingType.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\injector\api\InjectionExceptionType.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\injector\impl\InjectionBinder.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\injector\impl\InjectionBinding.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\injector\impl\InjectionException.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\injector\impl\Injector.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\injector\impl\InjectorFactory.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\mediation\api\IMediationBeacon.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\mediation\api\IMediationBinder.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\mediation\api\IMediationBinding.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\mediation\api\IMediator.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\mediation\api\MediationEvent.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\mediation\impl\MediationBeacon.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\mediation\impl\MediationBinder.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\mediation\impl\MediationBinding.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\mediation\impl\Mediator.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\mediation\impl\MediatorWithDispatcher.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\mediation\impl\View.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\mediation\impl\ViewWithDispatcher.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\mediation\test\RuntimeTester.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\mediation\test\TestView.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\sequencer\api\ISequenceBinding.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\sequencer\api\ISequenceCommand.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\sequencer\api\ISequencer.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\sequencer\api\SequencerExceptionType.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\sequencer\impl\SequenceBinding.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\sequencer\impl\SequenceCommand.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\sequencer\impl\Sequencer.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\sequencer\impl\SequencerException.cs" />
+     <Compile Include="Assets\scripts\babel\extensions\sequencer\impl\SequencerWithEvents.cs" />
+     <Compile Include="Assets\scripts\babel\framework\api\BindingConst.cs" />
+     <Compile Include="Assets\scripts\babel\framework\api\BindingConstraintType.cs" />
+     <Compile Include="Assets\scripts\babel\framework\api\IBinder.cs" />
+     <Compile Include="Assets\scripts\babel\framework\api\IBinding.cs" />
+     <Compile Include="Assets\scripts\babel\framework\api\IFactory.cs" />
+     <Compile Include="Assets\scripts\babel\framework\api\ISemiBinding.cs" />
+     <Compile Include="Assets\scripts\babel\framework\impl\Binder.cs" />
+     <Compile Include="Assets\scripts\babel\framework\impl\Binding.cs" />
+     <Compile Include="Assets\scripts\babel\framework\impl\SemiBinding.cs" />
+     <None Include="Assets\scripts\babel\examples\multiplecontexts\ReadMe.txt" />
+     <None Include="Assets\scripts\babel\examples\myfirstproject\ReadMe.txt" />
+     <None Include="Assets\scripts\babel\extensions\mediation\test\ReadMe.txt" />
+     <None Include="Assets\scripts\babel\extensions\ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -225,7 +175,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <Folder Include="Assets\scripts\babel\tests\" />
-  </ItemGroup>
+  
 </Project>

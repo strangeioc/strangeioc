@@ -5,10 +5,29 @@
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp-vs" expanded="True">
-            <Node name="References" selected="True" />
             <Node name="Assets" expanded="True">
               <Node name="scripts" expanded="True">
-                <Node name="babel" expanded="True" />
+                <Node name="babel" expanded="True">
+                  <Node name="extensions" expanded="True">
+                    <Node name="dispatcher" expanded="True">
+                      <Node name="eventdispatcher" expanded="True">
+                        <Node name="api" expanded="True" />
+                        <Node name="impl" expanded="True">
+                          <Node name="EventDispatcher.cs" selected="True" />
+                        </Node>
+                      </Node>
+                    </Node>
+                  </Node>
+                  <Node name="framework" expanded="True">
+                    <Node name="impl" expanded="True" />
+                  </Node>
+                  <Node name="tests" expanded="True">
+                    <Node name="extensions" expanded="True">
+                      <Node name="eventdispatcher" expanded="True" />
+                    </Node>
+                    <Node name="framework" expanded="True" />
+                  </Node>
+                </Node>
               </Node>
             </Node>
           </Node>
@@ -24,7 +43,18 @@
         <State selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
+        <State expanded="True">
+          <Node name="Assembly-CSharp-vs" expanded="True">
+            <Node name="babel" expanded="True">
+              <Node name="unittests" expanded="True">
+                <Node name="TestBinder" expanded="True" />
+                <Node name="TestEventDispatcher" expanded="True">
+                  <Node name="TestMultipleListeners" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

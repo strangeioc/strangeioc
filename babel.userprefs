@@ -1,19 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/babel/examples/multiplecontexts/game/view/ShipView.cs">
-    <Files>
-      <File FileName="Assets/scripts/babel/examples/multiplecontexts/game/controller/StartCommand.cs" Line="15" Column="3" />
-      <File FileName="Assets/scripts/babel/examples/multiplecontexts/game/controller/SetDestinationCommand.cs" Line="18" Column="4" />
-      <File FileName="Assets/scripts/babel/examples/multiplecontexts/game/view/ShipView.cs" Line="45" Column="45" />
-      <File FileName="Assets/scripts/babel/examples/multiplecontexts/game/view/ShipMediator.cs" Line="49" Column="28" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/3mo/Documents/repos/babel/Assets/scripts/babel/extensions/mediation/test/TestView.cs" line="28" />
       <Breakpoint file="/Users/3mo/Documents/repos/babel/Assets/scripts/babel/examples/ExampleContainer.cs" line="19" />
-      <Breakpoint file="/Users/3mo/Documents/repos/babel/Assets/scripts/babel/extensions/command/impl/Command.cs" line="13" />
-      <Breakpoint file="/Users/3mo/Documents/repos/babel/Assets/scripts/babel/extensions/mediation/impl/View.cs" line="16" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
