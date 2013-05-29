@@ -109,7 +109,15 @@ namespace babel.extensions.dispatcher.eventdispatcher.impl
 
 		public void addListener(object evt, EventCallback callback)
 		{
-			Bind (evt).To (callback);
+			IBinding binding = GetBinding (evt);
+			if (binding == null)
+			{
+				Bind (evt).To (callback);
+			}
+			else
+			{
+				binding.To (callback);
+			}
 		}
 
 		public void addListener(object evt, EmptyCallback callback)

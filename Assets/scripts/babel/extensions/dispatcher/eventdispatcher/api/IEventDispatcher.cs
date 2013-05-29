@@ -7,7 +7,6 @@ namespace babel.extensions.dispatcher.eventdispatcher.api
 	{
 		IEventBinding Bind(object key);
 
-		//Syntactic sugar to provide a more familiar interface
 		void addListener(object evt, EventCallback callback);
 		void addListener(object evt, EmptyCallback callback);
 

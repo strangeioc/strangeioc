@@ -13,13 +13,14 @@ namespace babel.extensions.dispatcher.eventdispatcher.impl
 	{
 		private Dictionary<Delegate, EventCallbackType> callbackTypes;
 
-		public EventBinding () : base()
+		public EventBinding () : this(null)
 		{
-			callbackTypes = new Dictionary<Delegate, EventCallbackType> ();
 		}
 
 		public EventBinding (babel.framework.impl.Binder.BindingResolver resolver) : base(resolver)
 		{
+			keyConstraint = BindingConstraintType.ONE;
+			valueConstraint = BindingConstraintType.MANY;
 			callbackTypes = new Dictionary<Delegate, EventCallbackType> ();
 		}
 

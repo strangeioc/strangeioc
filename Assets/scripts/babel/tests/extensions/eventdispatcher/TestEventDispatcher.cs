@@ -87,17 +87,6 @@ namespace babel.unittests
 			Assert.AreEqual (INIT_VALUE + PAYLOAD, confirmationValue);
 		}
 
-		[Test]
-		public void TestMultipleListeners()
-		{
-			confirmationValue = INIT_VALUE;
-			dispatcher.addListener (SomeEnum.ONE, noArgumentsMethod);
-			dispatcher.addListener (SomeEnum.ONE, oneArgumentMethod);
-			dispatcher.Dispatch (SomeEnum.ONE, PAYLOAD);
-
-			Assert.AreEqual(INIT_VALUE + PAYLOAD + INCREMENT, confirmationValue);
-		}
-
 		private void noArgumentsMethod()
 		{
 			confirmationValue += INCREMENT;
