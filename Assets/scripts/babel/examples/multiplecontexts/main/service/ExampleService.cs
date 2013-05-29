@@ -7,10 +7,8 @@ using System.Collections;
 using UnityEngine;
 using babel.extensions.context.api;
 using babel.extensions.dispatcher.eventdispatcher.api;
-using babel.examples.multiplecontexts.main;
-using babel.examples.multiplecontexts.main.controller;
 
-namespace babel.examples.multiplecontexts.main.service
+namespace babel.examples.multiplecontexts.main
 {
 	public class ExampleService : IExampleService
 	{
@@ -40,7 +38,7 @@ namespace babel.examples.multiplecontexts.main.service
 			yield return new WaitForSeconds(1f);
 			
 			//...then pass back some fake data
-			dispatcher.Dispatch(ExampleEvent.FULFILL_SERVICE_REQUEST, url);
+			dispatcher.Dispatch(MainEvent.FULFILL_SERVICE_REQUEST, url);
 		}
 	}
 }

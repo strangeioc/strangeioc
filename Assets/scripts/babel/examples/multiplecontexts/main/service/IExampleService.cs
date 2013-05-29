@@ -1,7 +1,7 @@
 using System;
 using babel.extensions.dispatcher.eventdispatcher.api;
 
-namespace babel.examples.multiplecontexts.main.service
+namespace babel.examples.multiplecontexts.main
 {
 	public interface IExampleService
 	{

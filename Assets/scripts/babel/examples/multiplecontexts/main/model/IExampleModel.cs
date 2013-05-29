@@ -1,6 +1,6 @@
 using System;
 
-namespace babel.examples.multiplecontexts.main.model
+namespace babel.examples.multiplecontexts.main
 {
 	public interface IExampleModel
 	{

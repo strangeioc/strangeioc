@@ -13,7 +13,6 @@ using UnityEngine;
 using babel.extensions.context.api;
 using babel.extensions.command.impl;
 using babel.extensions.dispatcher.eventdispatcher.impl;
-using babel.examples.multiplecontexts.main.view;
 
 namespace babel.examples.multiplecontexts.main
 {

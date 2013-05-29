@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using babel.extensions.mediation.impl;
 
-namespace babel.examples.multiplecontexts.main.view
+namespace babel.examples.multiplecontexts.main
 {
 	public class ClickDetector : ViewWithDispatcher
 	{

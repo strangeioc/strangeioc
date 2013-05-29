@@ -9,9 +9,8 @@ using System;
 using UnityEngine;
 using babel.extensions.dispatcher.eventdispatcher.impl;
 using babel.extensions.mediation.impl;
-using babel.examples.multiplecontexts.main.controller;
 
-namespace babel.examples.multiplecontexts.main.view
+namespace babel.examples.multiplecontexts.main
 {
 	public class ExampleMediator : MediatorWithDispatcher
 	{
@@ -30,7 +29,7 @@ namespace babel.examples.multiplecontexts.main.view
 			view.dispatcher.addListener(ExampleView.CLICK_EVENT, onViewClicked);
 			
 			//Listen to the global event bus for events
-			dispatcher.addListener(ExampleEvent.SCORE_CHANGE, onScoreChange);
+			//dispatcher.addListener(MainEvent.SCORE_CHANGE, onScoreChange);
 			
 			view.init ();
 		}
@@ -39,14 +38,14 @@ namespace babel.examples.multiplecontexts.main.view
 		{
 			//Clean up listeners when the view is about to be destroyed
 			view.dispatcher.removeListener(ExampleView.CLICK_EVENT, onViewClicked);
-			dispatcher.removeListener(ExampleEvent.SCORE_CHANGE, onScoreChange);
+			//dispatcher.removeListener(MainEvent.SCORE_CHANGE, onScoreChange);
 			Debug.Log("Mediator onRemove");
 		}
 		
 		private void onViewClicked()
 		{
 			Debug.Log("View click detected");
-			dispatcher.Dispatch(ExampleEvent.REQUEST_WEB_SERVICE);
+			dispatcher.Dispatch(MainEvent.REQUEST_WEB_SERVICE);
 		}
 		
 		private void onScoreChange(object data)

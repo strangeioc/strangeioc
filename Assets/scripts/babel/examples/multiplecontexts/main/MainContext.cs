@@ -10,9 +10,6 @@ using babel.extensions.context.impl;
 using babel.extensions.dispatcher.eventdispatcher.api;
 using babel.extensions.dispatcher.eventdispatcher.impl;
 
-using babel.examples.multiplecontexts.main.view;
-using babel.examples.multiplecontexts.main.controller;
-
 namespace babel.examples.multiplecontexts.main
 {
 	public class MainContext : MVCSContext
@@ -38,7 +35,7 @@ namespace babel.examples.multiplecontexts.main
 			mediationBinder.Bind<ExampleView>().To<ExampleMediator>();
 			
 			commandBinder.Bind(ContextEvent.START).To<StartCommand>().Once();
-			commandBinder.Bind(ExampleEvent.LOAD_SCENE).To<LoadSceneCommand>();
+			commandBinder.Bind(MainEvent.LOAD_SCENE).To<LoadSceneCommand>();
 		}
 	}
 }

@@ -6,7 +6,7 @@ using babel.extensions.context.api;
 using babel.extensions.command.impl;
 using babel.extensions.dispatcher.eventdispatcher.impl;
 
-namespace babel.examples.multiplecontexts.main.controller
+namespace babel.examples.multiplecontexts.main
 {
 	public class LoadSceneCommand : EventCommand
 	{
