@@ -4,7 +4,7 @@
 
 using System;
 
-namespace babel.examples.multiplecontexts.game.model
+namespace babel.examples.multiplecontexts.game
 {
 	public class ExampleModel : IExampleModel
 	{

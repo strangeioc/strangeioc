@@ -7,10 +7,8 @@ using System.Collections;
 using UnityEngine;
 using babel.extensions.context.api;
 using babel.extensions.dispatcher.eventdispatcher.api;
-using babel.examples.multiplecontexts.game;
-using babel.examples.multiplecontexts.game.controller;
 
-namespace babel.examples.multiplecontexts.game.service
+namespace babel.examples.multiplecontexts.game
 {
 	public class ExampleService : IExampleService
 	{

@@ -2,9 +2,8 @@ using System;
 using UnityEngine;
 using babel.extensions.context.api;
 using babel.extensions.dispatcher.eventdispatcher.api;
-using babel.examples.multiplecontexts.game.controller;
 
-namespace babel.examples.multiplecontexts.game.util
+namespace babel.examples.multiplecontexts.game
 {
 	public class GameLoop : MonoBehaviour, IGameTimer
 	{

@@ -10,10 +10,6 @@ using babel.extensions.context.impl;
 using babel.extensions.dispatcher.eventdispatcher.api;
 using babel.extensions.dispatcher.eventdispatcher.impl;
 
-using babel.examples.multiplecontexts.game.util;
-using babel.examples.multiplecontexts.game.view;
-using babel.examples.multiplecontexts.game.controller;
-
 namespace babel.examples.multiplecontexts.game
 {
 	public class GameContext : MVCSContext
@@ -34,7 +30,7 @@ namespace babel.examples.multiplecontexts.game
 			mediationBinder.Bind<ShipView>().To<ShipMediator>();
 			mediationBinder.Bind<GamefieldView>().To<GamefieldMediator>();
 			
-			commandBinder.Bind(ContextEvent.START).To<StartCommand>().Once();
+			sequencer.Bind(ContextEvent.START).To<StartAppCommand>().To<StartGameCommand>().Once();
 		}
 	}
 }

@@ -1,6 +1,6 @@
 using System;
 
-namespace babel.examples.multiplecontexts.game.util
+namespace babel.examples.multiplecontexts.game
 {
 	public interface IGameTimer
 	{

@@ -1,6 +1,6 @@
 using System;
 
-namespace babel.examples.multiplecontexts.game.controller
+namespace babel.examples.multiplecontexts.game
 {
 	public class ExampleEvent
 	{
