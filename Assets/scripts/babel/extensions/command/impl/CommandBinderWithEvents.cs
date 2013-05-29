@@ -15,7 +15,7 @@ namespace babel.extensions.command.impl
 			injectionBinder.Bind<ICommand> ().To (cmd);
 			if (data is TmEvent)
 			{
-				injectionBinder.Bind<TmEvent>().AsValue(data);
+				injectionBinder.Bind<TmEvent>().AsValue(data).ToInject(false);
 			}
 			ICommand command = injectionBinder.GetInstance<ICommand> () as ICommand;
 			command.data = data;
