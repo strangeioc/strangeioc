@@ -12,7 +12,7 @@ using babel.extensions.mediation.impl;
 
 namespace babel.examples.myfirstproject
 {
-	public class ExampleMediator : Mediator
+	public class ExampleMediator : MediatorWithDispatcher
 	{
 		private ExampleView view;
 		
@@ -29,7 +29,7 @@ namespace babel.examples.myfirstproject
 			view.dispatcher.addListener(ExampleView.CLICK_EVENT, onViewClicked);
 			
 			//Listen to the global event bus for events
-			globalDispatcher.addListener(ExampleEvent.SCORE_CHANGE, onScoreChange);
+			dispatcher.addListener(ExampleEvent.SCORE_CHANGE, onScoreChange);
 			
 			view.init ();
 		}
@@ -38,14 +38,14 @@ namespace babel.examples.myfirstproject
 		{
 			//Clean up listeners when the view is about to be destroyed
 			view.dispatcher.removeListener(ExampleView.CLICK_EVENT, onViewClicked);
-			globalDispatcher.removeListener(ExampleEvent.SCORE_CHANGE, onScoreChange);
+			dispatcher.removeListener(ExampleEvent.SCORE_CHANGE, onScoreChange);
 			Debug.Log("Mediator onRemove");
 		}
 		
 		private void onViewClicked()
 		{
 			Debug.Log("View click detected");
-			globalDispatcher.Dispatch(ExampleEvent.REQUEST_WEB_SERVICE);
+			dispatcher.Dispatch(ExampleEvent.REQUEST_WEB_SERVICE);
 		}
 		
 		private void onScoreChange(object data)

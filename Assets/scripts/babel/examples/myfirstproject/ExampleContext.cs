@@ -1,6 +1,6 @@
 /// The Context is where all the magic really happens.
 /// ===========
-/// Other copying the constructors, all you really need to do when you create
+/// Other than copying the constructors, all you really need to do when you create
 /// your context is override Context or one of its subclasses, then set up
 /// your list of mappings.
 /// 
@@ -60,9 +60,10 @@ namespace babel.examples.myfirstproject
 			mediationBinder.Bind<ExampleView>().To<ExampleMediator>();
 			
 			//Event/Command binding
-			//The START event is fired as soon as mappings are complete
-			commandBinder.Bind(ContextEvent.START).To<StartCommand>();
 			commandBinder.Bind(ExampleEvent.REQUEST_WEB_SERVICE).To<CallWebServiceCommand>();
+			//The START event is fired as soon as mappings are complete.
+			//Note how we've bound it "Once". This means that the mapping goes away as soon as the command fires.
+			commandBinder.Bind(ContextEvent.START).To<StartCommand>().Once ();
 
 		}
 	}
