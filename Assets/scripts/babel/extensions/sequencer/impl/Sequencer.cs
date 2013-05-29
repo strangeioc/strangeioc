@@ -152,6 +152,16 @@ namespace babel.extensions.sequencer.impl
 		{
 			ReactTo(key, data);
 		}
+
+		new public ISequenceBinding Bind<T> ()
+		{
+			return base.Bind<T> () as ISequenceBinding;
+		}
+
+		new public ISequenceBinding Bind (object value)
+		{
+			return base.Bind (value) as ISequenceBinding;
+		}
 	}
 }
 

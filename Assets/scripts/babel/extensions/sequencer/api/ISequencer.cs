@@ -23,6 +23,12 @@ namespace babel.extensions.sequencer.api
 		void Stop(object key);
 
 		void BreakSequence (ISequenceCommand command);
+		
+		//Bind a Type
+		new ISequenceBinding Bind<T>();
+
+		//Bind a value
+		new ISequenceBinding Bind(object value);
 	}
 }
 
