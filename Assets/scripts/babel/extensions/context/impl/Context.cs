@@ -9,6 +9,8 @@ namespace babel.extensions.context.impl
 	{
 		public object contextView{get;set;}
 		
+		public static IContext firstContext;
+		
 		public bool autoStartup;
 		
 		public Context ()
@@ -17,6 +19,14 @@ namespace babel.extensions.context.impl
 		
 		public Context (object view, bool autoStartup)
 		{
+			if (firstContext == null)
+			{
+				firstContext = this;
+			}
+			else
+			{
+				firstContext.AddContext(this);
+			}
 			this.autoStartup = autoStartup;
 			SetContextView(view);
 			addCoreComponents();
@@ -62,12 +72,12 @@ namespace babel.extensions.context.impl
 		{
 		}
 		
-		public IContext AddChild(IContext child)
+		virtual public IContext AddContext(IContext context)
 		{
 			return this;
 		}
 
-		public IContext RemoveChild(IContext child)
+		virtual public IContext RemoveContext(IContext context)
 		{
 			return this;
 		}

@@ -54,10 +54,17 @@ namespace babel.extensions.context.impl
 			injectionBinder = new InjectionBinder();
 			injectionBinder.Bind<IInjectionBinder>().AsValue(injectionBinder);
 			injectionBinder.Bind<ICommandBinder>().To<CommandBinderWithEvents>().AsSingleton();
+			//This binding is for local dispatchers
+			injectionBinder.Bind<IEventDispatcher>().To<EventDispatcher>();
+			//This binding is for the common system bus
 			injectionBinder.Bind<IEventDispatcher>().To<EventDispatcher>().AsSingleton().ToName(ContextKeys.CONTEXT_DISPATCHER);
 			injectionBinder.Bind<IMediationBinder>().To<MediationBinder>().AsSingleton();
 			injectionBinder.Bind<IMediationBeacon>().To<MediationBeacon>().AsSingleton();
 			injectionBinder.Bind<ISequencer>().To<SequencerWithEvents>().AsSingleton();
+			if (firstContext == this)
+			{
+				injectionBinder.Bind<IEventDispatcher>().To<EventDispatcher>().AsSingleton().ToName(ContextKeys.CROSS_CONTEXT_DISPATCHER);
+			}
 		}
 		
 		protected override void instantiateCoreComponents()
@@ -87,6 +94,16 @@ namespace babel.extensions.context.impl
 		public override void Launch()
 		{
 			dispatcher.Dispatch(ContextEvent.START);
+		}
+		
+		override public IContext AddContext(IContext context)
+		{
+			return this;
+		}
+
+		override public IContext RemoveContext(IContext context)
+		{
+			return this;
 		}
 	}
 }

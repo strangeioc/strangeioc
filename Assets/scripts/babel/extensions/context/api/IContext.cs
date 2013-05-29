@@ -11,8 +11,8 @@ namespace babel.extensions.context.api
 {
 	public interface IContext : IBinder
 	{
-		IContext AddChild(IContext child);
-		IContext RemoveChild(IContext child);
+		IContext AddContext(IContext context);
+		IContext RemoveContext(IContext context);
 		IContext Start();
 	}
 }
