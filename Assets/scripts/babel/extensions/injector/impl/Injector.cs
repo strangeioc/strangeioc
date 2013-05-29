@@ -11,6 +11,8 @@
  * Use this metatag on the specific Constructor you wish to inject into when using Constructor injection
  * - [PostConstruct]
  * Use this metatag on any method(s) you wish to fire directly after dependencies are supplied
+ * 
+ * TODO: Reflection is innately inefficient. Can improve performace by caching class mappings
  */
 
 using System;
@@ -79,7 +81,7 @@ namespace babel.extensions.injector.impl
 				}
 				retv = Inject (retv, false);
 			}
-			else if (binding.type != InjectionBindingType.VALUE)
+			else //could be more efficient. There are cases (VALUE) where we're re-injecting
 			{
 				retv = Inject (retv, true);
 			}
