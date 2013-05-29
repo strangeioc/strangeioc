@@ -8,8 +8,11 @@ namespace babel.extensions.injector.api
 		IInjectionBinding AsSingleton();
 
 		IInjectionBinding AsValue (object o);
+		
+		IInjectionBinding ToInject(bool value);
 
 		InjectionBindingType type{get; set;}
+		bool toInject{get;}
 
 		//Syntactic sugar. Bind is the same as Key, but allows the syntax: Bind<T>().Bind<T>()
 		IInjectionBinding Bind<T>();

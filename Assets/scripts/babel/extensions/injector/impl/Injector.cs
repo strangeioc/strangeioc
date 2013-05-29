@@ -81,9 +81,14 @@ namespace babel.extensions.injector.impl
 				}
 				retv = Inject (retv, false);
 			}
-			else //could be more efficient. There are cases (VALUE) where we're re-injecting
+			else if (binding.toInject)
 			{
 				retv = Inject (retv, true);
+				if (binding.type == InjectionBindingType.SINGLETON || binding.type == InjectionBindingType.VALUE)
+				{
+					//prevent double-injection
+					binding.ToInject(false);
+				}
 			}
 			infinityLock = null;
 

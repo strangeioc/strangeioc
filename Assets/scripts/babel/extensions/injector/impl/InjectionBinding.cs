@@ -8,6 +8,7 @@ namespace babel.extensions.injector.impl
 	public class InjectionBinding : Binding, IInjectionBinding
 	{
 		private InjectionBindingType _type = InjectionBindingType.DEFAULT;
+		private bool _toInject = true;
 
 		public InjectionBinding (Binder.BindingResolver resolver)
 		{
@@ -25,6 +26,14 @@ namespace babel.extensions.injector.impl
 			set
 			{
 				_type = value;
+			}
+		}
+		
+		public bool toInject
+		{
+			get
+			{
+				return _toInject;
 			}
 		}
 
@@ -56,6 +65,12 @@ namespace babel.extensions.injector.impl
 			type = InjectionBindingType.VALUE;
 			if (resolver != null)
 				resolver (this);
+			return this;
+		}
+		
+		public IInjectionBinding ToInject(bool value)
+		{
+			_toInject = value;
 			return this;
 		}
 
