@@ -44,6 +44,35 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\GameContext.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\GameRoot.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\controller\ExampleEvent.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\controller\LoadSceneCommand.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\controller\SetDestinationCommand.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\controller\StartCommand.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\model\ExampleModel.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\model\IExampleModel.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\service\ExampleService.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\service\IExampleService.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\util\GameLoop.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\util\IGameTimer.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\view\ClickDetector.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\view\GamefieldMediator.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\view\GamefieldView.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\view\ShipMediator.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\game\view\ShipView.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\MainContext.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\MainRoot.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\controller\ExampleEvent.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\controller\LoadSceneCommand.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\controller\StartCommand.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\model\ExampleModel.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\model\IExampleModel.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\service\ExampleService.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\service\IExampleService.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\view\ClickDetector.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\view\ExampleMediator.cs" />
+     <Compile Include="Assets\scripts\babel\examples\multiplecontexts\main\view\ExampleView.cs" />
      <Compile Include="Assets\scripts\babel\examples\myfirstproject\ExampleContext.cs" />
      <Compile Include="Assets\scripts\babel\examples\myfirstproject\MyFirstProjectRoot.cs" />
      <Compile Include="Assets\scripts\babel\examples\myfirstproject\controller\CallWebServiceCommand.cs" />
@@ -130,6 +159,7 @@
      <Compile Include="Assets\scripts\babel\framework\impl\Binder.cs" />
      <Compile Include="Assets\scripts\babel\framework\impl\Binding.cs" />
      <Compile Include="Assets\scripts\babel\framework\impl\SemiBinding.cs" />
+     <None Include="Assets\scripts\babel\examples\multiplecontexts\ReadMe.txt" />
      <None Include="Assets\scripts\babel\examples\myfirstproject\ReadMe.txt" />
      <None Include="Assets\scripts\babel\extensions\mediation\test\ReadMe.txt" />
      <None Include="Assets\scripts\babel\extensions\ReadMe.txt" />
