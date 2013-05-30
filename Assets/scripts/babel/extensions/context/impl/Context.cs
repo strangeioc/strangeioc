@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using babel.extensions.context.api;
+using babel.extensions.dispatcher.api;
 using babel.framework.impl;
 
 namespace babel.extensions.context.impl
@@ -10,6 +11,7 @@ namespace babel.extensions.context.impl
 		public object contextView{get;set;}
 		
 		public static IContext firstContext;
+		virtual public IDispatcher crossContextDispatcher{get;set;}
 		
 		public bool autoStartup;
 		
@@ -80,6 +82,26 @@ namespace babel.extensions.context.impl
 		virtual public IContext RemoveContext(IContext context)
 		{
 			return this;
+		}
+		
+		virtual public object GetComponent<T>()
+		{
+			return null;
+		}
+		
+		virtual public object GetComponent<T>(object name)
+		{
+			return null;
+		}
+		
+		virtual public void AddView(object view)
+		{
+			//Override in subclasses
+		}
+		
+		virtual public void RemoveView(object view)
+		{
+			//Override in subclasses
 		}
 	}
 }

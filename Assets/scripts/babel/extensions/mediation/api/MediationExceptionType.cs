@@ -1,10 +1,10 @@
 using System;
-using UnityEngine;
 
 namespace babel.extensions.mediation.api
 {
-	public interface IMediationBeacon
+	public enum MediationExceptionType
 	{
+		NO_CONTEXT
 	}
 }
 
