@@ -16,7 +16,7 @@ using babel.extensions.dispatcher.eventdispatcher.impl;
 
 namespace babel.examples.multiplecontexts.main
 {
-	public class StartCommand : EventCommand
+	public class GameCompleteCommand : EventCommand
 	{
 		
 		[Inject(ContextKeys.CONTEXT_VIEW)]
@@ -24,7 +24,7 @@ namespace babel.examples.multiplecontexts.main
 		
 		public override void Execute()
 		{
-			dispatcher.Dispatch(MainEvent.LOAD_SCENE, "game");
+			Debug.Log ("MAIN SCENE KNOWS THAT GAME IS OVER");
 		}
 	}
 }

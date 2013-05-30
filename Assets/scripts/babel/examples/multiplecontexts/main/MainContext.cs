@@ -15,7 +15,6 @@ namespace babel.examples.multiplecontexts.main
 	public class MainContext : MVCSContext
 	{
 		
-		
 		public MainContext () : base()
 		{
 		}
@@ -26,16 +25,10 @@ namespace babel.examples.multiplecontexts.main
 		
 		protected override void mapBindings()
 		{
-			
-			
-			
-			
-			
-			
-			mediationBinder.Bind<ExampleView>().To<ExampleMediator>();
-			
 			commandBinder.Bind(ContextEvent.START).To<StartCommand>().Once();
 			commandBinder.Bind(MainEvent.LOAD_SCENE).To<LoadSceneCommand>();
+			
+			commandBinder.Bind (MainEvent.GAME_COMPLETE).To<GameCompleteCommand>();
 		}
 	}
 }

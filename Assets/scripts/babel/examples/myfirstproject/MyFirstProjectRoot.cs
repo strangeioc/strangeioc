@@ -20,9 +20,8 @@ using babel.extensions.context.impl;
 
 namespace babel.examples.myfirstproject
 {
-	public class MyFirstProjectRoot : MonoBehaviour
+	public class MyFirstProjectRoot : ContextView
 	{
-		protected IContext context;
 	
 		void Awake()
 		{
@@ -30,7 +29,7 @@ namespace babel.examples.myfirstproject
 			//You might pass 'false' if you needed to await some kind of asynchronous bootstrapping
 			//before launching the app. In that case, you would have to call Context's Launch()
 			//method manually.
-			context = new ExampleContext(this, true);
+			context = new MyFirstContext(this, true);
 			context.Start ();
 		}
 	}

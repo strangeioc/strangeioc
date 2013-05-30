@@ -1,5 +1,3 @@
-
-
 using System;
 using UnityEngine;
 using babel.extensions.context.api;
@@ -22,7 +20,7 @@ namespace babel.examples.multiplecontexts.main
 				throw new Exception("Can't load a module with a null or empty filepath.");
 			}
 			
-			Application.LoadLevel(filepath);
+			Application.LoadLevelAdditive(filepath);
 		}
 	}
 }

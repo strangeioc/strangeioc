@@ -42,7 +42,6 @@ namespace babel.examples.myfirstproject
 		internal void init()
 		{
 			GameObject go = Instantiate(Resources.Load("Textfield")) as GameObject;
-			go.AddComponent<ClickDetector>();
 			
 			TextMesh textMesh = go.GetComponent<TextMesh>();
 			textMesh.text = "http://www.thirdmotion.com";
@@ -62,6 +61,7 @@ namespace babel.examples.myfirstproject
 			
 			go.transform.parent = gameObject.transform;
 			
+			go.AddComponent<ClickDetector>();
 			ClickDetector clicker = go.GetComponent<ClickDetector>() as ClickDetector;
 			clicker.dispatcher.addListener(ClickDetector.CLICK, onClick);
 		}

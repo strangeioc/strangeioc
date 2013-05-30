@@ -12,9 +12,8 @@ using babel.extensions.context.impl;
 
 namespace babel.examples.multiplecontexts.game
 {
-	public class GameRoot : MonoBehaviour
+	public class GameRoot : ContextView
 	{
-		protected IContext context;
 	
 		void Awake()
 		{
