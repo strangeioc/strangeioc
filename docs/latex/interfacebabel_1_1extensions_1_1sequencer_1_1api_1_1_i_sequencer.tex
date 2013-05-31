@@ -1,0 +1,81 @@
+\hypertarget{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer}{\section{babel.\-extensions.\-sequencer.\-api.\-I\-Sequencer Interface Reference}
+\label{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer}\index{babel.\-extensions.\-sequencer.\-api.\-I\-Sequencer@{babel.\-extensions.\-sequencer.\-api.\-I\-Sequencer}}
+}
+Inheritance diagram for babel.\-extensions.\-sequencer.\-api.\-I\-Sequencer\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_ad8f614bd0e256b4e343c625160594dc6}{React\-To} (object trigger)
+\begin{DoxyCompactList}\small\item\em Instantiate and execute one or more Commands based on the input. \end{DoxyCompactList}\item 
+\hypertarget{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_a4a8a1095c68cc16cf0a90f54ff8a0f2b}{void {\bfseries React\-To} (object trigger, object data)}\label{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_a4a8a1095c68cc16cf0a90f54ff8a0f2b}
+
+\item 
+void \hyperlink{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_ae526452e96a17561bb513aff2f3afe36}{Release\-Command} (\hyperlink{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequence_command}{I\-Sequence\-Command} command)
+\begin{DoxyCompactList}\small\item\em Release a previously retained Command. \end{DoxyCompactList}\item 
+\hypertarget{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_ad15bf8aab592911089c988cb1f62d264}{void {\bfseries Stop} (object key)}\label{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_ad15bf8aab592911089c988cb1f62d264}
+
+\item 
+\hypertarget{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_ade28c55683d1e969c68b303571c0b8df}{void {\bfseries Break\-Sequence} (\hyperlink{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequence_command}{I\-Sequence\-Command} command)}\label{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_ade28c55683d1e969c68b303571c0b8df}
+
+\item 
+\hypertarget{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_a0018ea5636002426f16518623425ec78}{new \hyperlink{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequence_binding}{I\-Sequence\-Binding} {\bfseries Bind$<$ T $>$} ()}\label{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_a0018ea5636002426f16518623425ec78}
+
+\item 
+\hypertarget{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_acc3d8801441ad0319b1d9215443f67fb}{new \hyperlink{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequence_binding}{I\-Sequence\-Binding} {\bfseries Bind} (object value)}\label{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_acc3d8801441ad0319b1d9215443f67fb}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_ad8f614bd0e256b4e343c625160594dc6}{\index{babel\-::extensions\-::sequencer\-::api\-::\-I\-Sequencer@{babel\-::extensions\-::sequencer\-::api\-::\-I\-Sequencer}!React\-To@{React\-To}}
+\index{React\-To@{React\-To}!babel::extensions::sequencer::api::ISequencer@{babel\-::extensions\-::sequencer\-::api\-::\-I\-Sequencer}}
+\subsubsection[{React\-To}]{\setlength{\rightskip}{0pt plus 5cm}void babel.\-extensions.\-sequencer.\-api.\-I\-Sequencer.\-React\-To (
+\begin{DoxyParamCaption}
+\item[{object}]{trigger}
+\end{DoxyParamCaption}
+)}}\label{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_ad8f614bd0e256b4e343c625160594dc6}
+
+
+Instantiate and execute one or more Commands based on the input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em trigger} & The key that unlocks the Command(s) \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classbabel_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer_ae500097b6bd29ca92f41db53aa7130e5}{babel.\-extensions.\-sequencer.\-impl.\-Sequencer}.
+
+\hypertarget{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_ae526452e96a17561bb513aff2f3afe36}{\index{babel\-::extensions\-::sequencer\-::api\-::\-I\-Sequencer@{babel\-::extensions\-::sequencer\-::api\-::\-I\-Sequencer}!Release\-Command@{Release\-Command}}
+\index{Release\-Command@{Release\-Command}!babel::extensions::sequencer::api::ISequencer@{babel\-::extensions\-::sequencer\-::api\-::\-I\-Sequencer}}
+\subsubsection[{Release\-Command}]{\setlength{\rightskip}{0pt plus 5cm}void babel.\-extensions.\-sequencer.\-api.\-I\-Sequencer.\-Release\-Command (
+\begin{DoxyParamCaption}
+\item[{{\bf I\-Sequence\-Command}}]{command}
+\end{DoxyParamCaption}
+)}}\label{interfacebabel_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_ae526452e96a17561bb513aff2f3afe36}
+
+
+Release a previously retained Command. 
+
+By default, a Command is garbage collected at the end of its Execute method. But the Command can be retained for asynchronous calls.
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & Command to release \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classbabel_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer_a0302109e4c69305f4387e35a18c35da3}{babel.\-extensions.\-sequencer.\-impl.\-Sequencer}.
+
+
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/babel/extensions/sequencer/api/I\-Sequencer.\-cs\end{DoxyCompactItemize}

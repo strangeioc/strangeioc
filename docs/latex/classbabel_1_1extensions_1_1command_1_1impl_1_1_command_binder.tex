@@ -1,0 +1,105 @@
+\hypertarget{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder}{\section{babel.\-extensions.\-command.\-impl.\-Command\-Binder Class Reference}
+\label{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder}\index{babel.\-extensions.\-command.\-impl.\-Command\-Binder@{babel.\-extensions.\-command.\-impl.\-Command\-Binder}}
+}
+Inheritance diagram for babel.\-extensions.\-command.\-impl.\-Command\-Binder\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.103286cm]{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a979753b42f167f16ae39f178296ee909}{override \hyperlink{interfacebabel_1_1framework_1_1api_1_1_i_binding}{I\-Binding} {\bfseries Get\-Raw\-Binding} ()}\label{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a979753b42f167f16ae39f178296ee909}
+
+\item 
+void \hyperlink{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a9d286dbf28eb4b1ebf7e2c45b8a74d21}{React\-To} (object trigger)
+\begin{DoxyCompactList}\small\item\em Instantiate and execute one or more Commands based on the input. \end{DoxyCompactList}\item 
+\hypertarget{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_adf768bc0eafab66e8bd87a75b8b44804}{void {\bfseries React\-To} (object trigger, object data)}\label{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_adf768bc0eafab66e8bd87a75b8b44804}
+
+\item 
+void \hyperlink{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a5f254fbeda04e19eabdd104458210087}{Release\-Command} (\hyperlink{interfacebabel_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} command)
+\begin{DoxyCompactList}\small\item\em Release a previously retained \hyperlink{classbabel_1_1extensions_1_1command_1_1impl_1_1_command}{Command}. \end{DoxyCompactList}\item 
+\hypertarget{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a28178b4899ba1f1e874cd2e87b9c5362}{void {\bfseries Trigger$<$ T $>$} (object data)}\label{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a28178b4899ba1f1e874cd2e87b9c5362}
+
+\item 
+\hypertarget{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a0f5f258056155eaf04c16b8dfb00bcdb}{void {\bfseries Trigger} (object key, object data)}\label{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a0f5f258056155eaf04c16b8dfb00bcdb}
+
+\item 
+\hypertarget{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a0b332603307578e797d407434be99c1e}{new \hyperlink{interfacebabel_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} {\bfseries Bind$<$ T $>$} ()}\label{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a0b332603307578e797d407434be99c1e}
+
+\item 
+\hypertarget{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a2663eb8285249630cf16d835a9cc6720}{new \hyperlink{interfacebabel_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} {\bfseries Bind} (object value)}\label{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a2663eb8285249630cf16d835a9cc6720}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a000a53453bcd9e119e3d24a73f60383f}{virtual void {\bfseries invoke\-Command} (Type cmd, \hyperlink{interfacebabel_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} binding, object data, int depth)}\label{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a000a53453bcd9e119e3d24a73f60383f}
+
+\item 
+\hypertarget{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a7776192269f851a72ef26a4ffee2c03b}{virtual \hyperlink{interfacebabel_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} {\bfseries create\-Command} (object cmd, object data)}\label{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a7776192269f851a72ef26a4ffee2c03b}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_af97f8495f075cb96ff71c0a6db7dfb27}{Dictionary$<$ \hyperlink{interfacebabel_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command}, \hyperlink{interfacebabel_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} $>$ {\bfseries active\-Commands} = new Dictionary$<$\hyperlink{interfacebabel_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command}, \hyperlink{interfacebabel_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command}$>$()}\label{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_af97f8495f075cb96ff71c0a6db7dfb27}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a83fce533afb137bf0e3a0e6e3d946e19}{\hyperlink{interfacebabel_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder}{I\-Injection\-Binder} {\bfseries injection\-Binder}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a83fce533afb137bf0e3a0e6e3d946e19}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a9d286dbf28eb4b1ebf7e2c45b8a74d21}{\index{babel\-::extensions\-::command\-::impl\-::\-Command\-Binder@{babel\-::extensions\-::command\-::impl\-::\-Command\-Binder}!React\-To@{React\-To}}
+\index{React\-To@{React\-To}!babel::extensions::command::impl::CommandBinder@{babel\-::extensions\-::command\-::impl\-::\-Command\-Binder}}
+\subsubsection[{React\-To}]{\setlength{\rightskip}{0pt plus 5cm}void babel.\-extensions.\-command.\-impl.\-Command\-Binder.\-React\-To (
+\begin{DoxyParamCaption}
+\item[{object}]{trigger}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a9d286dbf28eb4b1ebf7e2c45b8a74d21}
+
+
+Instantiate and execute one or more Commands based on the input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em trigger} & The key that unlocks the Command(s) \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacebabel_1_1extensions_1_1command_1_1api_1_1_i_command_binder_a50e05144d88aa86e46b8d78125667e43}{babel.\-extensions.\-command.\-api.\-I\-Command\-Binder}.
+
+\hypertarget{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a5f254fbeda04e19eabdd104458210087}{\index{babel\-::extensions\-::command\-::impl\-::\-Command\-Binder@{babel\-::extensions\-::command\-::impl\-::\-Command\-Binder}!Release\-Command@{Release\-Command}}
+\index{Release\-Command@{Release\-Command}!babel::extensions::command::impl::CommandBinder@{babel\-::extensions\-::command\-::impl\-::\-Command\-Binder}}
+\subsubsection[{Release\-Command}]{\setlength{\rightskip}{0pt plus 5cm}void babel.\-extensions.\-command.\-impl.\-Command\-Binder.\-Release\-Command (
+\begin{DoxyParamCaption}
+\item[{{\bf I\-Command}}]{command}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classbabel_1_1extensions_1_1command_1_1impl_1_1_command_binder_a5f254fbeda04e19eabdd104458210087}
+
+
+Release a previously retained \hyperlink{classbabel_1_1extensions_1_1command_1_1impl_1_1_command}{Command}. 
+
+By default, a \hyperlink{classbabel_1_1extensions_1_1command_1_1impl_1_1_command}{Command} is garbage collected at the end of its Execute method. But the \hyperlink{classbabel_1_1extensions_1_1command_1_1impl_1_1_command}{Command} can be retained for asynchronous calls.
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & \hyperlink{classbabel_1_1extensions_1_1command_1_1impl_1_1_command}{Command} to release \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacebabel_1_1extensions_1_1command_1_1api_1_1_i_command_binder_a03df21f7c6b2c9628dc00afc34d08a2e}{babel.\-extensions.\-command.\-api.\-I\-Command\-Binder}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/babel/extensions/command/impl/Command\-Binder.\-cs\end{DoxyCompactItemize}
