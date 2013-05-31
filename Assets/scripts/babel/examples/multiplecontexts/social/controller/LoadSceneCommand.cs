@@ -8,7 +8,7 @@ using babel.extensions.context.api;
 using babel.extensions.command.impl;
 using babel.extensions.dispatcher.eventdispatcher.impl;
 
-namespace babel.examples.multiplecontexts.main
+namespace babel.examples.multiplecontexts.social
 {
 	public class LoadSceneCommand : EventCommand
 	{

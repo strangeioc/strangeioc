@@ -25,6 +25,7 @@ namespace babel.examples.multiplecontexts.main
 		public override void Execute()
 		{
 			dispatcher.Dispatch(MainEvent.LOAD_SCENE, "game");
+			dispatcher.Dispatch(MainEvent.LOAD_SCENE, "social");
 		}
 	}
 }

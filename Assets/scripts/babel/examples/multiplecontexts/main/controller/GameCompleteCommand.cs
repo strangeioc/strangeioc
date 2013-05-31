@@ -1,12 +1,6 @@
-/// An example Command
+/// GameCompleteCommand
 /// ============================
-/// This Command puts a new ExampleView into the scene.
-/// Note how the ContextView (i.e., the GameObject our Root was attached to)
-/// is injected for use.
-/// 
-/// All Commands must override the Execute method. The Command is automatically
-/// cleaned up when Execute has completed, unless Retain is called (more on that
-/// in the OpenWebPageCommand).
+/// This Command demonstrates that the main context has received the GameComplete event
 
 using System;
 using UnityEngine;
@@ -24,7 +18,9 @@ namespace babel.examples.multiplecontexts.main
 		
 		public override void Execute()
 		{
-			Debug.Log ("MAIN SCENE KNOWS THAT GAME IS OVER");
+			int score = (int)evt.data;
+			
+			Debug.Log ("MAIN SCENE KNOWS THAT GAME IS OVER. Your score is: " + score);
 		}
 	}
 }
