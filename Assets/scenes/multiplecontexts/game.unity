@@ -92,7 +92,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &165076699
 AudioListener:
   m_ObjectHideFlags: 0
@@ -148,11 +148,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 165076698}
-  m_LocalRotation: {x: .0220753681, y: -.707907796, z: .0550358035, w: .703811347}
-  m_LocalPosition: {x: 3.60382199, y: .87757957, z: -.115990818}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -3.5}
   m_LocalScale: {x: .571341157, y: 2.08876801, z: 1.01197839}
-  m_Children:
-  - {fileID: 1259966994}
+  m_Children: []
   m_Father: {fileID: 1086878294}
 --- !u!1 &446396208
 GameObject:
@@ -180,7 +179,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 446396208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalPosition: {x: -2, y: 0, z: 0}
   m_LocalScale: {x: 1.42720807, y: .423171639, z: 1.42720807}
   m_Children:
   - {fileID: 973486105}
@@ -232,6 +231,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 769adfdfc5aaf44268e886976be9e868, type: 3}
   m_Name: 
+  requiresContext: 1
   edx_WobbleForce: .400000006
   edx_WobbleIncrement: .100000001
 --- !u!1 &973486101
@@ -376,7 +376,7 @@ GameObject:
   - 4: {fileID: 1086878294}
   - 114: {fileID: 1086878295}
   m_Layer: 0
-  m_Name: ContextView
+  m_Name: GameContextView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -392,6 +392,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1259966994}
   - {fileID: 446396209}
   - {fileID: 165076703}
   - {fileID: 1677938910}
@@ -530,10 +531,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1259966992}
   m_LocalRotation: {x: -.186476812, y: -.319389105, z: -.701620102, w: .609053671}
-  m_LocalPosition: {x: 3.88590193, y: .921717346, z: .860592067}
-  m_LocalScale: {x: .739664674, y: 1.70931506, z: .768201828}
+  m_LocalPosition: {x: 2.22017574, y: 1.92525375, z: -2.62909937}
+  m_LocalScale: {x: 1.16782784, y: 1.02098703, z: 1.1491673}
   m_Children: []
-  m_Father: {fileID: 165076703}
+  m_Father: {fileID: 1086878294}
 --- !u!1 &1484336421
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +627,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1677938909}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 2.56788492, y: 1, z: 1}
   m_Children:
   - {fileID: 1098101124}
@@ -680,5 +681,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86c8585e58e714dabb5f1643c5e6d93f, type: 3}
   m_Name: 
+  requiresContext: 1
   edx_WobbleSize: 1
   edx_WobbleIncrement: .0199999996
