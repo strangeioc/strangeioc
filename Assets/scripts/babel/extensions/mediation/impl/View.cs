@@ -39,7 +39,6 @@ namespace babel.extensions.mediation.impl
 			{
 				loopLimiter ++;
 				trans = trans.parent;
-				Debug.Log(trans.gameObject.name);
 				
 				if (trans.gameObject.GetComponent<ContextView>() != null)
 				{

@@ -7,7 +7,7 @@ using babel.extensions.dispatcher.eventdispatcher.api;
 
 namespace babel.extensions.dispatcher.eventdispatcher.impl
 {
-	public class EventDispatcher : Binder, IEventDispatcher, ITriggerProvider
+	public class EventDispatcher : Binder, IEventDispatcher, ITriggerProvider, ITriggerable
 	{
 		
 		protected ITriggerable[] triggerClients;
@@ -216,6 +216,16 @@ namespace babel.extensions.dispatcher.eventdispatcher.impl
 					break;
 				}
 			}
+		}
+
+		public void Trigger<T>(object data)
+		{
+			Trigger (typeof(T), data);
+		}
+
+		public void Trigger(object key, object data)
+		{
+			Dispatch(key, data);
 		}
 	}
 }

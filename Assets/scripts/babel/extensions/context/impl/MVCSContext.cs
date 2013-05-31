@@ -89,8 +89,7 @@ namespace babel.extensions.context.impl
 			(dispatcher as ITriggerProvider).AddTriggerable(sequencer as ITriggerable);
 
 			crossContextDispatcher = injectionBinder.GetInstance<IEventDispatcher>(ContextKeys.CROSS_CONTEXT_DISPATCHER) as IEventDispatcher;
-			(crossContextDispatcher as ITriggerProvider).AddTriggerable(commandBinder as ITriggerable);
-			(crossContextDispatcher as ITriggerProvider).AddTriggerable(sequencer as ITriggerable);
+			(crossContextDispatcher as ITriggerProvider).AddTriggerable(dispatcher as ITriggerable);
 		}
 		
 		protected override void postBindings()
