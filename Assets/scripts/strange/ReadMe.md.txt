@@ -1,4 +1,4 @@
-/*! \mainpage My Personal Index Page
+/*! \mainpage StrangeIoC
  *
  * \section intro_sec Introduction
  *
