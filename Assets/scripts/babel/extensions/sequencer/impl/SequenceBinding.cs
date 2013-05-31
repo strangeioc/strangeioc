@@ -57,7 +57,7 @@ namespace babel.extensions.sequencer.impl
 
 			if (sType.IsAssignableFrom(oType) == false)
 			{
-				throw new SequencerException ("Attempt to bind a non SequenceCommand to a Sequence. Perhaps your command needs to extend SequenceCommand or implement ISequenCommand?", SequencerExceptionType.COMMAND_USED_IN_SEQUENCE);
+				throw new SequencerException ("Attempt to bind a non SequenceCommand to a Sequence. Perhaps your command needs to extend SequenceCommand or implement ISequenCommand?\n\tType: " + oType.ToString(), SequencerExceptionType.COMMAND_USED_IN_SEQUENCE);
 			}
 			
 			return base.To (o) as ISequenceBinding;
