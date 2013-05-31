@@ -116,7 +116,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 296388313}
-  m_Text: multiplecontexts will teach you to create modular apps with Babel
+  m_Text: multiplecontexts will teach you to create modular apps with strange
   m_OffsetZ: 0
   m_CharacterSize: .5
   m_LineSpacing: 1
@@ -180,7 +180,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 902030968}
-  m_Text: find code in babel/examples/multiplecontexts/
+  m_Text: find code in strange/examples/multiplecontexts/
   m_OffsetZ: 0
   m_CharacterSize: .5
   m_LineSpacing: 1

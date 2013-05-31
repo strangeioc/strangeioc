@@ -166,7 +166,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 356192433}
-  m_Text: myfirstproject is a great place to start learning babel
+  m_Text: myfirstproject is a great place to start learning strange
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
