@@ -1,6 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/babel/examples/multiplecontexts/social/view/UserTileMediator.cs">
+    <Files>
+      <File FileName="Assets/scripts/babel/examples/multiplecontexts/social/SocialContext.cs" Line="33" Column="61" />
+      <File FileName="Assets/scripts/babel/examples/multiplecontexts/social/service/ISocialService.cs" Line="9" Column="29" />
+      <File FileName="Assets/scripts/babel/examples/multiplecontexts/social/service/FacebookService.cs" Line="30" Column="25" />
+      <File FileName="Assets/scripts/babel/examples/multiplecontexts/social/service/GoogleService.cs" Line="22" Column="22" />
+      <File FileName="Assets/scripts/babel/examples/multiplecontexts/social/controller/StartCommand.cs" Line="22" Column="4" />
+      <File FileName="Assets/scripts/babel/examples/multiplecontexts/social/view/UserTileView.cs" Line="13" Column="27" />
+      <File FileName="Assets/scripts/babel/examples/multiplecontexts/social/view/UserTileMediator.cs" Line="1" Column="28" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
@@ -8,24 +17,14 @@
             <Node name="Assets" expanded="True">
               <Node name="scripts" expanded="True">
                 <Node name="babel" expanded="True">
-                  <Node name="extensions" expanded="True">
-                    <Node name="dispatcher" expanded="True">
-                      <Node name="eventdispatcher" expanded="True">
-                        <Node name="api" expanded="True" />
-                        <Node name="impl" expanded="True">
-                          <Node name="EventDispatcher.cs" selected="True" />
+                  <Node name="examples" expanded="True">
+                    <Node name="multiplecontexts" expanded="True">
+                      <Node name="social" expanded="True">
+                        <Node name="view" expanded="True">
+                          <Node name="UserTileMediator.cs" selected="True" />
                         </Node>
                       </Node>
                     </Node>
-                  </Node>
-                  <Node name="framework" expanded="True">
-                    <Node name="impl" expanded="True" />
-                  </Node>
-                  <Node name="tests" expanded="True">
-                    <Node name="extensions" expanded="True">
-                      <Node name="eventdispatcher" expanded="True" />
-                    </Node>
-                    <Node name="framework" expanded="True" />
                   </Node>
                 </Node>
               </Node>
@@ -41,20 +40,6 @@
       </Pad>
       <Pad Id="ConnectionManagerPad">
         <State selected="True" />
-      </Pad>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True">
-          <Node name="Assembly-CSharp-vs" expanded="True">
-            <Node name="babel" expanded="True">
-              <Node name="unittests" expanded="True">
-                <Node name="TestBinder" expanded="True" />
-                <Node name="TestEventDispatcher" expanded="True">
-                  <Node name="TestMultipleListeners" selected="True" />
-                </Node>
-              </Node>
-            </Node>
-          </Node>
-        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
