@@ -40,7 +40,7 @@ namespace strange.unittests
 		[Test]
 		public void TestObject ()
 		{
-			ClassWithConstructorParameters o = new ClassWithConstructorParameters (42);
+			ClassWithConstructorParameters o = new ClassWithConstructorParameters (42, "abc");
 			semibinding.Add (o);
 			Assert.AreEqual (o, semibinding.value);
 			Assert.AreEqual (42, o.intValue);
@@ -49,11 +49,11 @@ namespace strange.unittests
 		[Test]
 		public void TestOverwriteSingleSemibinding ()
 		{
-			ClassWithConstructorParameters o = new ClassWithConstructorParameters (42);
+			ClassWithConstructorParameters o = new ClassWithConstructorParameters (42, "abc");
 			semibinding.Add (o);
-			ClassWithConstructorParameters o1 = new ClassWithConstructorParameters (43);
+			ClassWithConstructorParameters o1 = new ClassWithConstructorParameters (43, "def");
 			semibinding.Add (o1);
-			ClassWithConstructorParameters o2 = new ClassWithConstructorParameters (44);
+			ClassWithConstructorParameters o2 = new ClassWithConstructorParameters (44, "ghi");
 			semibinding.Add (o2);
 			Assert.AreNotEqual (o, semibinding.value);
 			Assert.AreEqual (o2, semibinding.value);
@@ -65,7 +65,7 @@ namespace strange.unittests
 		{
 			semibinding.constraint = BindingConstraintType.ONE;
 
-			ClassWithConstructorParameters o = new ClassWithConstructorParameters (42);
+			ClassWithConstructorParameters o = new ClassWithConstructorParameters (42, "abc");
 			semibinding.Add (o);
 
 			ClassWithConstructorParameters value = semibinding.value as ClassWithConstructorParameters;
@@ -83,11 +83,11 @@ namespace strange.unittests
 		{
 			semibinding.constraint = BindingConstraintType.MANY;
 
-			ClassWithConstructorParameters o = new ClassWithConstructorParameters (42);
+			ClassWithConstructorParameters o = new ClassWithConstructorParameters (42, "abc");
 			semibinding.Add (o);
-			ClassWithConstructorParameters o1 = new ClassWithConstructorParameters (43);
+			ClassWithConstructorParameters o1 = new ClassWithConstructorParameters (43, "def");
 			semibinding.Add (o1);
-			ClassWithConstructorParameters o2 = new ClassWithConstructorParameters (44);
+			ClassWithConstructorParameters o2 = new ClassWithConstructorParameters (44, "ghi");
 			semibinding.Add (o2);
 
 			object[] values = semibinding.value as object[];
@@ -102,11 +102,11 @@ namespace strange.unittests
 		{
 			semibinding.constraint = BindingConstraintType.MANY;
 
-			ClassWithConstructorParameters o = new ClassWithConstructorParameters (42);
+			ClassWithConstructorParameters o = new ClassWithConstructorParameters (42, "abc");
 			semibinding.Add (o);
-			ClassWithConstructorParameters o1 = new ClassWithConstructorParameters (43);
+			ClassWithConstructorParameters o1 = new ClassWithConstructorParameters (43, "def");
 			semibinding.Add (o1);
-			ClassWithConstructorParameters o2 = new ClassWithConstructorParameters (44);
+			ClassWithConstructorParameters o2 = new ClassWithConstructorParameters (44, "ghi");
 			semibinding.Add (o2);
 
 			object[] before = semibinding.value as object[];

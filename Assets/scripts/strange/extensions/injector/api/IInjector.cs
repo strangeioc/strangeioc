@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
+using strange.extensions.reflector.api;
 using strange.framework.api;
 
 namespace strange.extensions.injector.api
@@ -10,6 +10,7 @@ namespace strange.extensions.injector.api
 		object Instantiate (IInjectionBinding binding);
 		object Inject(object target);
 		IInjectionBinder binder{ get; set;}
+		IReflectionBinder reflector{ get; set;}
 	}
 }
 

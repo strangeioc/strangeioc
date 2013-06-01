@@ -2,6 +2,8 @@ using System;
 using strange.framework.api;
 using strange.extensions.injector.api;
 using strange.extensions.injector.impl;
+using strange.extensions.reflector.api;
+using strange.extensions.reflector.impl;
 using strange.framework.impl;
 
 namespace strange.extensions.injector.impl
@@ -14,6 +16,7 @@ namespace strange.extensions.injector.impl
 		{
 			injector = new Injector ();
 			injector.binder = this;
+			injector.reflector = new ReflectionBinder ();
 		}
 
 		public object GetInstance(Type key)
@@ -24,6 +27,10 @@ namespace strange.extensions.injector.impl
 		public object GetInstance(Type key, object name)
 		{
 			IInjectionBinding binding = GetBinding (key, name) as IInjectionBinding;
+			if (binding == null)
+			{
+				throw new InjectionException ("InjectionBinder has no binding for:\n\tkey: " + key + "\nname: " + name, InjectionExceptionType.NULL_BINDING);
+			}
 			object instance = injector.Instantiate (binding);
 			return instance;
 		}

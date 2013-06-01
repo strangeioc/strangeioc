@@ -5,6 +5,7 @@ namespace strange.unittests
 	public class ClassWithConstructorParameters : ISimpleInterface
 	{
 		private int _intValue;
+		private string _stringValue;
 
 		//Two constructors. One is tagged to be the constructor used during injection
 		public ClassWithConstructorParameters ()
@@ -12,9 +13,10 @@ namespace strange.unittests
 		}
 
 		[Construct]
-		public ClassWithConstructorParameters (int intValue)
+		public ClassWithConstructorParameters (int intValue, string stringValue)
 		{
 			this._intValue = intValue;
+			this._stringValue = stringValue;
 		}
 
 		[DeConstruct]
@@ -32,6 +34,18 @@ namespace strange.unittests
 			set
 			{
 				_intValue = value;
+			}
+		}
+
+		public string stringValue
+		{
+			get
+			{
+				return _stringValue;
+			}
+			set
+			{
+				_stringValue = value;
 			}
 		}
 	}

@@ -23,10 +23,12 @@ namespace strange.unittests
 		{
 			binder.Bind<ClassWithConstructorParameters> ().To<ClassWithConstructorParameters> ();
 			binder.Bind<int> ().AsValue (42);
+			binder.Bind<string> ().AsValue ("Liberator");
 			ClassWithConstructorParameters instance = 
 				binder.GetInstance<ClassWithConstructorParameters> () as ClassWithConstructorParameters;
 			Assert.IsNotNull (instance);
-			Assert.That (instance.intValue == 42);
+			Assert.AreEqual (42, instance.intValue);
+			Assert.AreEqual ("Liberator", instance.stringValue);
 		}
 
 		[Test]
@@ -51,13 +53,23 @@ namespace strange.unittests
 		}
 
 		[Test]
+		public void TestMultiplePostConstructs ()
+		{
+			binder.Bind<PostConstructTwo> ().To<PostConstructTwo> ();
+			binder.Bind<float> ().AsValue ((float)Math.PI);
+			PostConstructTwo instance = binder.GetInstance<PostConstructTwo> () as PostConstructTwo;
+			Assert.IsNotNull (instance);
+			Assert.That (instance.floatVal == (float)Math.PI * 4f);
+		}
+
+		[Test]
 		public void TestNamedInjections ()
 		{
 			InjectableSuperClass testValue = new InjectableSuperClass ();
 			float defaultFloatValue = testValue.floatValue;
 			testValue.floatValue = 3.14f;
 
-			binder.Bind<int> ().AsValue (0);
+			binder.Bind<int> ().AsValue (20);
 			binder.Bind<InjectableSuperClass> ().To<InjectableSuperClass> ().ToName (SomeEnum.ONE);
 			binder.Bind<InjectableSuperClass> ().ToName<MarkerClass> ().AsValue(testValue);
 			binder.Bind<HasNamedInjections> ().To<HasNamedInjections> ();
@@ -65,6 +77,8 @@ namespace strange.unittests
 			Assert.IsNotNull (instance);
 			Assert.IsNotNull (instance.injectionOne);
 			Assert.IsNotNull (instance.injectionTwo);
+			Assert.AreEqual (20, instance.injectionOne.intValue);
+			Assert.AreEqual (20, instance.injectionTwo.intValue);
 			Assert.That (instance.injectionOne.floatValue == defaultFloatValue);
 			Assert.That (instance.injectionTwo.floatValue == 3.14f);
 		}

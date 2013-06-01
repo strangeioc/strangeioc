@@ -94,9 +94,9 @@ namespace strange.unittests
 		[Test]
 		public void TestKeyToWithMultipleChainedValues()
 		{
-			ClassWithConstructorParameters test1 = new ClassWithConstructorParameters (1);
-			ClassWithConstructorParameters test2 = new ClassWithConstructorParameters (2);
-			ClassWithConstructorParameters test3 = new ClassWithConstructorParameters (3);
+			ClassWithConstructorParameters test1 = new ClassWithConstructorParameters (1, "abc");
+			ClassWithConstructorParameters test2 = new ClassWithConstructorParameters (2, "def");
+			ClassWithConstructorParameters test3 = new ClassWithConstructorParameters (3, "ghi");
 
 			binding.Key<ISimpleInterface> ().To (test1).To (test2).To (test3);
 			Assert.That (binding.key == typeof(ISimpleInterface));
@@ -115,9 +115,9 @@ namespace strange.unittests
 		[Test]
 		public void TestOneToOneConstrainedBinding()
 		{
-			ClassWithConstructorParameters test1 = new ClassWithConstructorParameters (1);
-			ClassWithConstructorParameters test2 = new ClassWithConstructorParameters (2);
-			ClassWithConstructorParameters test3 = new ClassWithConstructorParameters (3);
+			ClassWithConstructorParameters test1 = new ClassWithConstructorParameters (1, "abc");
+			ClassWithConstructorParameters test2 = new ClassWithConstructorParameters (2, "def");
+			ClassWithConstructorParameters test3 = new ClassWithConstructorParameters (3, "ghi");
 
 			binding.valueConstraint = BindingConstraintType.ONE;
 			binding.Key<ISimpleInterface> ().To (test1).To (test2).To (test3);
