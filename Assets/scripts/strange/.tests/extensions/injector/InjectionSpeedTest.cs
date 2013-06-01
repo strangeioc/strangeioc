@@ -1,6 +1,8 @@
 /**
  * Technically this is not a unit test. Rather, it's a
  * development tool to rate the value of the Reflector extension.
+ *
+ * This scenario measured 64ms with the ReflectionBinder, 302ms without.
  */
 
 using System;
@@ -33,7 +35,8 @@ namespace strange.unittests
 
 			stopwatch.Stop ();
 
-			throw new InjectionException ("The test took " + stopwatch.ElapsedMilliseconds + " ms.", InjectionExceptionType.NO_REFLECTOR);
+			//Uncomment this if you want to runt he speed test.
+			//throw new InjectionException ("The test took " + stopwatch.ElapsedMilliseconds + " ms.", InjectionExceptionType.NO_REFLECTOR);
 		}
 	}
 }
