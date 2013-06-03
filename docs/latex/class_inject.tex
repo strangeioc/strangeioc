@@ -1,6 +1,11 @@
 \hypertarget{class_inject}{\section{Inject Class Reference}
 \label{class_inject}\index{Inject@{Inject}}
 }
+
+
+The {\ttfamily \mbox{[}\hyperlink{class_inject}{Inject}\mbox{]}} attribute marks a setter Injection point.  
+
+
 Inheritance diagram for Inject\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,6 +26,20 @@ Inheritance diagram for Inject\-:\begin{figure}[H]
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+The {\ttfamily \mbox{[}\hyperlink{class_inject}{Inject}\mbox{]}} attribute marks a setter Injection point. 
+
+Example\-: \begin{DoxyVerb}[Inject]
+public IMyInterface myInstance{get;set;}
+\end{DoxyVerb}
+
+
+\hyperlink{class_inject}{Inject} tags can also specify a name\-:
+
+\begin{DoxyVerb}[Inject(SomeEnum.VALUE)]
+public IMyInterface myInstance{get;set;}\end{DoxyVerb}
+ 
+
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-Assets/scripts/babel/extensions/injector/Inject\-Attribute.\-cs\end{DoxyCompactItemize}
+Assets/scripts/strange/extensions/injector/Inject\-Attribute.\-cs\end{DoxyCompactItemize}

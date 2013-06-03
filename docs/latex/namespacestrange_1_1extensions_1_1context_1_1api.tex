@@ -1,0 +1,67 @@
+\hypertarget{namespacestrange_1_1extensions_1_1context_1_1api}{\section{Package strange.\-extensions.\-context.\-api}
+\label{namespacestrange_1_1extensions_1_1context_1_1api}\index{strange.\-extensions.\-context.\-api@{strange.\-extensions.\-context.\-api}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context}{I\-Context}
+\begin{DoxyCompactList}\small\item\em A Context is the entry point to the binding framework. \end{DoxyCompactList}\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context_view}{I\-Context\-View}
+\begin{DoxyCompactList}\small\item\em The Context\-View is the entry point to the application. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespacestrange_1_1extensions_1_1context_1_1api_a92a831a11b0bd5ee051b35745b33791a}{Context\-Event} \{ \hyperlink{namespacestrange_1_1extensions_1_1context_1_1api_a92a831a11b0bd5ee051b35745b33791aab078ffd28db767c502ac367053f6e0ac}{Context\-Event.\-S\-T\-A\-R\-T}
+ \}
+\item 
+enum \hyperlink{namespacestrange_1_1extensions_1_1context_1_1api_a60b937d6295cc72fe4b26e4f9d671283}{Context\-Exception\-Type} \{ \hyperlink{namespacestrange_1_1extensions_1_1context_1_1api_a60b937d6295cc72fe4b26e4f9d671283ac6443b3577afe97292f19a0f2b0b4d89}{Context\-Exception\-Type.\-N\-O\-\_\-\-C\-O\-N\-T\-E\-X\-T\-\_\-\-V\-I\-E\-W}, 
+\hyperlink{namespacestrange_1_1extensions_1_1context_1_1api_a60b937d6295cc72fe4b26e4f9d671283a0e2fd9683c004efce35e8c0113667bba}{Context\-Exception\-Type.\-N\-O\-\_\-\-M\-E\-D\-I\-A\-T\-I\-O\-N\-\_\-\-B\-I\-N\-D\-E\-R}
+ \}
+\item 
+enum \hyperlink{namespacestrange_1_1extensions_1_1context_1_1api_a64d630fc6451680225841051a568f4d6}{Context\-Keys} \{ \hyperlink{namespacestrange_1_1extensions_1_1context_1_1api_a64d630fc6451680225841051a568f4d6a03dcdeb793b893c48eda7952aac3c03c}{Context\-Keys.\-C\-O\-N\-T\-E\-X\-T}, 
+\hyperlink{namespacestrange_1_1extensions_1_1context_1_1api_a64d630fc6451680225841051a568f4d6a160006392e2747e6b3e5f663a9e1b953}{Context\-Keys.\-C\-O\-N\-T\-E\-X\-T\-\_\-\-V\-I\-E\-W}, 
+\hyperlink{namespacestrange_1_1extensions_1_1context_1_1api_a64d630fc6451680225841051a568f4d6aee8b94342ad445619c9959a6745bd3c1}{Context\-Keys.\-C\-O\-N\-T\-E\-X\-T\-\_\-\-D\-I\-S\-P\-A\-T\-C\-H\-E\-R}, 
+\hyperlink{namespacestrange_1_1extensions_1_1context_1_1api_a64d630fc6451680225841051a568f4d6a500faa82c964b0f9d1fd9b236b7e8901}{Context\-Keys.\-C\-R\-O\-S\-S\-\_\-\-C\-O\-N\-T\-E\-X\-T\-\_\-\-D\-I\-S\-P\-A\-T\-C\-H\-E\-R}
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{namespacestrange_1_1extensions_1_1context_1_1api_a92a831a11b0bd5ee051b35745b33791a}{\index{strange\-::extensions\-::context\-::api@{strange\-::extensions\-::context\-::api}!Context\-Event@{Context\-Event}}
+\index{Context\-Event@{Context\-Event}!strange::extensions::context::api@{strange\-::extensions\-::context\-::api}}
+\subsubsection[{Context\-Event}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf strange.\-extensions.\-context.\-api.\-Context\-Event}}}\label{namespacestrange_1_1extensions_1_1context_1_1api_a92a831a11b0bd5ee051b35745b33791a}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{S\-T\-A\-R\-T@{S\-T\-A\-R\-T}!strange\-::extensions\-::context\-::api@{strange\-::extensions\-::context\-::api}}\index{strange\-::extensions\-::context\-::api@{strange\-::extensions\-::context\-::api}!S\-T\-A\-R\-T@{S\-T\-A\-R\-T}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1context_1_1api_a92a831a11b0bd5ee051b35745b33791aab078ffd28db767c502ac367053f6e0ac}{S\-T\-A\-R\-T}\label{namespacestrange_1_1extensions_1_1context_1_1api_a92a831a11b0bd5ee051b35745b33791aab078ffd28db767c502ac367053f6e0ac}
+}]Fires immediately on conclusion of Context bootstrapping. Map this to your first Command. \end{description}
+\end{Desc}
+\hypertarget{namespacestrange_1_1extensions_1_1context_1_1api_a60b937d6295cc72fe4b26e4f9d671283}{\index{strange\-::extensions\-::context\-::api@{strange\-::extensions\-::context\-::api}!Context\-Exception\-Type@{Context\-Exception\-Type}}
+\index{Context\-Exception\-Type@{Context\-Exception\-Type}!strange::extensions::context::api@{strange\-::extensions\-::context\-::api}}
+\subsubsection[{Context\-Exception\-Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf strange.\-extensions.\-context.\-api.\-Context\-Exception\-Type}}}\label{namespacestrange_1_1extensions_1_1context_1_1api_a60b937d6295cc72fe4b26e4f9d671283}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{N\-O\-\_\-\-C\-O\-N\-T\-E\-X\-T\-\_\-\-V\-I\-E\-W@{N\-O\-\_\-\-C\-O\-N\-T\-E\-X\-T\-\_\-\-V\-I\-E\-W}!strange\-::extensions\-::context\-::api@{strange\-::extensions\-::context\-::api}}\index{strange\-::extensions\-::context\-::api@{strange\-::extensions\-::context\-::api}!N\-O\-\_\-\-C\-O\-N\-T\-E\-X\-T\-\_\-\-V\-I\-E\-W@{N\-O\-\_\-\-C\-O\-N\-T\-E\-X\-T\-\_\-\-V\-I\-E\-W}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1context_1_1api_a60b937d6295cc72fe4b26e4f9d671283ac6443b3577afe97292f19a0f2b0b4d89}{N\-O\-\_\-\-C\-O\-N\-T\-E\-X\-T\-\_\-\-V\-I\-E\-W}\label{namespacestrange_1_1extensions_1_1context_1_1api_a60b937d6295cc72fe4b26e4f9d671283ac6443b3577afe97292f19a0f2b0b4d89}
+}]M\-V\-C\-S\-Context requires a root Context\-View. \index{N\-O\-\_\-\-M\-E\-D\-I\-A\-T\-I\-O\-N\-\_\-\-B\-I\-N\-D\-E\-R@{N\-O\-\_\-\-M\-E\-D\-I\-A\-T\-I\-O\-N\-\_\-\-B\-I\-N\-D\-E\-R}!strange\-::extensions\-::context\-::api@{strange\-::extensions\-::context\-::api}}\index{strange\-::extensions\-::context\-::api@{strange\-::extensions\-::context\-::api}!N\-O\-\_\-\-M\-E\-D\-I\-A\-T\-I\-O\-N\-\_\-\-B\-I\-N\-D\-E\-R@{N\-O\-\_\-\-M\-E\-D\-I\-A\-T\-I\-O\-N\-\_\-\-B\-I\-N\-D\-E\-R}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1context_1_1api_a60b937d6295cc72fe4b26e4f9d671283a0e2fd9683c004efce35e8c0113667bba}{N\-O\-\_\-\-M\-E\-D\-I\-A\-T\-I\-O\-N\-\_\-\-B\-I\-N\-D\-E\-R}\label{namespacestrange_1_1extensions_1_1context_1_1api_a60b937d6295cc72fe4b26e4f9d671283a0e2fd9683c004efce35e8c0113667bba}
+}]M\-V\-C\-S\-Context requires a mediation\-Binder. \end{description}
+\end{Desc}
+\hypertarget{namespacestrange_1_1extensions_1_1context_1_1api_a64d630fc6451680225841051a568f4d6}{\index{strange\-::extensions\-::context\-::api@{strange\-::extensions\-::context\-::api}!Context\-Keys@{Context\-Keys}}
+\index{Context\-Keys@{Context\-Keys}!strange::extensions::context::api@{strange\-::extensions\-::context\-::api}}
+\subsubsection[{Context\-Keys}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf strange.\-extensions.\-context.\-api.\-Context\-Keys}}}\label{namespacestrange_1_1extensions_1_1context_1_1api_a64d630fc6451680225841051a568f4d6}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{C\-O\-N\-T\-E\-X\-T@{C\-O\-N\-T\-E\-X\-T}!strange\-::extensions\-::context\-::api@{strange\-::extensions\-::context\-::api}}\index{strange\-::extensions\-::context\-::api@{strange\-::extensions\-::context\-::api}!C\-O\-N\-T\-E\-X\-T@{C\-O\-N\-T\-E\-X\-T}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1context_1_1api_a64d630fc6451680225841051a568f4d6a03dcdeb793b893c48eda7952aac3c03c}{C\-O\-N\-T\-E\-X\-T}\label{namespacestrange_1_1extensions_1_1context_1_1api_a64d630fc6451680225841051a568f4d6a03dcdeb793b893c48eda7952aac3c03c}
+}]Marker for the named Injection of the Context. \index{C\-O\-N\-T\-E\-X\-T\-\_\-\-V\-I\-E\-W@{C\-O\-N\-T\-E\-X\-T\-\_\-\-V\-I\-E\-W}!strange\-::extensions\-::context\-::api@{strange\-::extensions\-::context\-::api}}\index{strange\-::extensions\-::context\-::api@{strange\-::extensions\-::context\-::api}!C\-O\-N\-T\-E\-X\-T\-\_\-\-V\-I\-E\-W@{C\-O\-N\-T\-E\-X\-T\-\_\-\-V\-I\-E\-W}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1context_1_1api_a64d630fc6451680225841051a568f4d6a160006392e2747e6b3e5f663a9e1b953}{C\-O\-N\-T\-E\-X\-T\-\_\-\-V\-I\-E\-W}\label{namespacestrange_1_1extensions_1_1context_1_1api_a64d630fc6451680225841051a568f4d6a160006392e2747e6b3e5f663a9e1b953}
+}]Marker for the named Injection of the Context\-View. \index{C\-O\-N\-T\-E\-X\-T\-\_\-\-D\-I\-S\-P\-A\-T\-C\-H\-E\-R@{C\-O\-N\-T\-E\-X\-T\-\_\-\-D\-I\-S\-P\-A\-T\-C\-H\-E\-R}!strange\-::extensions\-::context\-::api@{strange\-::extensions\-::context\-::api}}\index{strange\-::extensions\-::context\-::api@{strange\-::extensions\-::context\-::api}!C\-O\-N\-T\-E\-X\-T\-\_\-\-D\-I\-S\-P\-A\-T\-C\-H\-E\-R@{C\-O\-N\-T\-E\-X\-T\-\_\-\-D\-I\-S\-P\-A\-T\-C\-H\-E\-R}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1context_1_1api_a64d630fc6451680225841051a568f4d6aee8b94342ad445619c9959a6745bd3c1}{C\-O\-N\-T\-E\-X\-T\-\_\-\-D\-I\-S\-P\-A\-T\-C\-H\-E\-R}\label{namespacestrange_1_1extensions_1_1context_1_1api_a64d630fc6451680225841051a568f4d6aee8b94342ad445619c9959a6745bd3c1}
+}]Marker for the named Injection of the context\-Dispatcher. \index{C\-R\-O\-S\-S\-\_\-\-C\-O\-N\-T\-E\-X\-T\-\_\-\-D\-I\-S\-P\-A\-T\-C\-H\-E\-R@{C\-R\-O\-S\-S\-\_\-\-C\-O\-N\-T\-E\-X\-T\-\_\-\-D\-I\-S\-P\-A\-T\-C\-H\-E\-R}!strange\-::extensions\-::context\-::api@{strange\-::extensions\-::context\-::api}}\index{strange\-::extensions\-::context\-::api@{strange\-::extensions\-::context\-::api}!C\-R\-O\-S\-S\-\_\-\-C\-O\-N\-T\-E\-X\-T\-\_\-\-D\-I\-S\-P\-A\-T\-C\-H\-E\-R@{C\-R\-O\-S\-S\-\_\-\-C\-O\-N\-T\-E\-X\-T\-\_\-\-D\-I\-S\-P\-A\-T\-C\-H\-E\-R}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1context_1_1api_a64d630fc6451680225841051a568f4d6a500faa82c964b0f9d1fd9b236b7e8901}{C\-R\-O\-S\-S\-\_\-\-C\-O\-N\-T\-E\-X\-T\-\_\-\-D\-I\-S\-P\-A\-T\-C\-H\-E\-R}\label{namespacestrange_1_1extensions_1_1context_1_1api_a64d630fc6451680225841051a568f4d6a500faa82c964b0f9d1fd9b236b7e8901}
+}]Marker for the named Injection of the cross\-Context\-Dispatcher. \end{description}
+\end{Desc}

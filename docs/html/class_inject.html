@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.4"/>
-<title>StangeIoC: Inject Class Reference</title>
+<title>StrangeIoC: Inject Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">StangeIoC
+   <div id="projectname">StrangeIoC
    &#160;<span id="projectnumber">0.1</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,6 +92,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Inject Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <code>[<a class="el" href="class_inject.html" title="The [Inject] attribute marks a setter Injection point. ">Inject</a>]</code> attribute marks a setter Injection point.  
+ <a href="class_inject.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Inject:</div>
 <div class="dyncontent">
@@ -113,13 +116,20 @@ Properties</h2></td></tr>
 object&#160;</td><td class="memItemRight" valign="bottom"><b>name</b><code> [get, set]</code></td></tr>
 <tr class="separator:af269f593cee42918b948497e4dfb3a3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>Assets/scripts/babel/extensions/injector/InjectAttribute.cs</li>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <code>[<a class="el" href="class_inject.html" title="The [Inject] attribute marks a setter Injection point. ">Inject</a>]</code> attribute marks a setter Injection point. </p>
+<p>Example: </p>
+<pre class="fragment">[Inject]
+public IMyInterface myInstance{get;set;}
+</pre><p><a class="el" href="class_inject.html" title="The [Inject] attribute marks a setter Injection point. ">Inject</a> tags can also specify a name:</p>
+<pre class="fragment">[Inject(SomeEnum.VALUE)]
+public IMyInterface myInstance{get;set;}</pre> </div><hr/>The documentation for this class was generated from the following file:<ul>
+<li>Assets/scripts/strange/extensions/injector/InjectAttribute.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 31 2013 14:45:22 for StangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 3 2013 12:44:40 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

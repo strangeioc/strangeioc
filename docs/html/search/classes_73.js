@@ -1,24 +1,9 @@
 var searchData=
 [
-  ['scoreboardmediator',['ScoreboardMediator',['../classbabel_1_1examples_1_1multiplecontexts_1_1game_1_1_scoreboard_mediator.html',1,'babel::examples::multiplecontexts::game']]],
-  ['scoreboardview',['ScoreboardView',['../classbabel_1_1examples_1_1multiplecontexts_1_1game_1_1_scoreboard_view.html',1,'babel::examples::multiplecontexts::game']]],
-  ['scoremodel',['ScoreModel',['../classbabel_1_1examples_1_1multiplecontexts_1_1game_1_1_score_model.html',1,'babel::examples::multiplecontexts::game']]],
-  ['semibinding',['SemiBinding',['../classbabel_1_1framework_1_1impl_1_1_semi_binding.html',1,'babel::framework::impl']]],
-  ['sequencebinding',['SequenceBinding',['../classbabel_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_binding.html',1,'babel::extensions::sequencer::impl']]],
-  ['sequencecommand',['SequenceCommand',['../classbabel_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command.html',1,'babel::extensions::sequencer::impl']]],
-  ['sequencecommandwithevent',['SequenceCommandWithEvent',['../classbabel_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_with_event.html',1,'babel::extensions::sequencer::impl']]],
-  ['sequencer',['Sequencer',['../classbabel_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer.html',1,'babel::extensions::sequencer::impl']]],
-  ['sequencerexception',['SequencerException',['../classbabel_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer_exception.html',1,'babel::extensions::sequencer::impl']]],
-  ['sequencerwithevents',['SequencerWithEvents',['../classbabel_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer_with_events.html',1,'babel::extensions::sequencer::impl']]],
-  ['shipdestroyedcommand',['ShipDestroyedCommand',['../classbabel_1_1examples_1_1multiplecontexts_1_1game_1_1_ship_destroyed_command.html',1,'babel::examples::multiplecontexts::game']]],
-  ['shipmediator',['ShipMediator',['../classbabel_1_1examples_1_1multiplecontexts_1_1game_1_1_ship_mediator.html',1,'babel::examples::multiplecontexts::game']]],
-  ['shipview',['ShipView',['../classbabel_1_1examples_1_1multiplecontexts_1_1game_1_1_ship_view.html',1,'babel::examples::multiplecontexts::game']]],
-  ['socialcontext',['SocialContext',['../classbabel_1_1examples_1_1multiplecontexts_1_1social_1_1_social_context.html',1,'babel::examples::multiplecontexts::social']]],
-  ['socialevent',['SocialEvent',['../classbabel_1_1examples_1_1multiplecontexts_1_1social_1_1_social_event.html',1,'babel::examples::multiplecontexts::social']]],
-  ['socialroot',['SocialRoot',['../classbabel_1_1examples_1_1multiplecontexts_1_1social_1_1_social_root.html',1,'babel::examples::multiplecontexts::social']]],
-  ['startappcommand',['StartAppCommand',['../classbabel_1_1examples_1_1multiplecontexts_1_1game_1_1_start_app_command.html',1,'babel::examples::multiplecontexts::game']]],
-  ['startcommand',['StartCommand',['../classbabel_1_1examples_1_1myfirstproject_1_1_start_command.html',1,'babel::examples::myfirstproject']]],
-  ['startcommand',['StartCommand',['../classbabel_1_1examples_1_1multiplecontexts_1_1main_1_1_start_command.html',1,'babel::examples::multiplecontexts::main']]],
-  ['startcommand',['StartCommand',['../classbabel_1_1examples_1_1multiplecontexts_1_1social_1_1_start_command.html',1,'babel::examples::multiplecontexts::social']]],
-  ['startgamecommand',['StartGameCommand',['../classbabel_1_1examples_1_1multiplecontexts_1_1game_1_1_start_game_command.html',1,'babel::examples::multiplecontexts::game']]]
+  ['semibinding',['SemiBinding',['../classstrange_1_1framework_1_1impl_1_1_semi_binding.html',1,'strange::framework::impl']]],
+  ['sequencebinding',['SequenceBinding',['../classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_binding.html',1,'strange::extensions::sequencer::impl']]],
+  ['sequencecommand',['SequenceCommand',['../classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command.html',1,'strange::extensions::sequencer::impl']]],
+  ['sequencer',['Sequencer',['../classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer.html',1,'strange::extensions::sequencer::impl']]],
+  ['sequencerexception',['SequencerException',['../classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer_exception.html',1,'strange::extensions::sequencer::impl']]],
+  ['sequencerwithevents',['SequencerWithEvents',['../classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer_with_events.html',1,'strange::extensions::sequencer::impl']]]
 ];

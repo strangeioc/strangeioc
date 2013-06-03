@@ -1,0 +1,34 @@
+\hypertarget{namespacestrange_1_1extensions_1_1sequencer_1_1api}{\section{Package strange.\-extensions.\-sequencer.\-api}
+\label{namespacestrange_1_1extensions_1_1sequencer_1_1api}\index{strange.\-extensions.\-sequencer.\-api@{strange.\-extensions.\-sequencer.\-api}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequence_binding}{I\-Sequence\-Binding}
+\begin{DoxyCompactList}\small\item\em Defines the form of a binding for use with the Sequencer. \end{DoxyCompactList}\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequence_command}{I\-Sequence\-Command}
+\begin{DoxyCompactList}\small\item\em Interface for Commands run by the Sequencer. \end{DoxyCompactList}\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer}{I\-Sequencer}
+\begin{DoxyCompactList}\small\item\em Instantiates and executes one or more Sequence\-Commands in a specified order, based on the input key. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespacestrange_1_1extensions_1_1sequencer_1_1api_aeddaacdea22f90d94ab298d24cbce41b}{Sequencer\-Exception\-Type} \{ \hyperlink{namespacestrange_1_1extensions_1_1sequencer_1_1api_aeddaacdea22f90d94ab298d24cbce41ba649c27d7db043238f4e8ee0d1c8c52fc}{Sequencer\-Exception\-Type.\-E\-X\-E\-C\-U\-T\-E\-\_\-\-O\-V\-E\-R\-R\-I\-D\-E}, 
+\hyperlink{namespacestrange_1_1extensions_1_1sequencer_1_1api_aeddaacdea22f90d94ab298d24cbce41ba80650e930022474abe93d5663d7e6744}{Sequencer\-Exception\-Type.\-C\-O\-M\-M\-A\-N\-D\-\_\-\-U\-S\-E\-D\-\_\-\-I\-N\-\_\-\-S\-E\-Q\-U\-E\-N\-C\-E}
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{namespacestrange_1_1extensions_1_1sequencer_1_1api_aeddaacdea22f90d94ab298d24cbce41b}{\index{strange\-::extensions\-::sequencer\-::api@{strange\-::extensions\-::sequencer\-::api}!Sequencer\-Exception\-Type@{Sequencer\-Exception\-Type}}
+\index{Sequencer\-Exception\-Type@{Sequencer\-Exception\-Type}!strange::extensions::sequencer::api@{strange\-::extensions\-::sequencer\-::api}}
+\subsubsection[{Sequencer\-Exception\-Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf strange.\-extensions.\-sequencer.\-api.\-Sequencer\-Exception\-Type}}}\label{namespacestrange_1_1extensions_1_1sequencer_1_1api_aeddaacdea22f90d94ab298d24cbce41b}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{E\-X\-E\-C\-U\-T\-E\-\_\-\-O\-V\-E\-R\-R\-I\-D\-E@{E\-X\-E\-C\-U\-T\-E\-\_\-\-O\-V\-E\-R\-R\-I\-D\-E}!strange\-::extensions\-::sequencer\-::api@{strange\-::extensions\-::sequencer\-::api}}\index{strange\-::extensions\-::sequencer\-::api@{strange\-::extensions\-::sequencer\-::api}!E\-X\-E\-C\-U\-T\-E\-\_\-\-O\-V\-E\-R\-R\-I\-D\-E@{E\-X\-E\-C\-U\-T\-E\-\_\-\-O\-V\-E\-R\-R\-I\-D\-E}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1sequencer_1_1api_aeddaacdea22f90d94ab298d24cbce41ba649c27d7db043238f4e8ee0d1c8c52fc}{E\-X\-E\-C\-U\-T\-E\-\_\-\-O\-V\-E\-R\-R\-I\-D\-E}\label{namespacestrange_1_1extensions_1_1sequencer_1_1api_aeddaacdea22f90d94ab298d24cbce41ba649c27d7db043238f4e8ee0d1c8c52fc}
+}]Sequence\-Commands must always override the Execute() method. \index{C\-O\-M\-M\-A\-N\-D\-\_\-\-U\-S\-E\-D\-\_\-\-I\-N\-\_\-\-S\-E\-Q\-U\-E\-N\-C\-E@{C\-O\-M\-M\-A\-N\-D\-\_\-\-U\-S\-E\-D\-\_\-\-I\-N\-\_\-\-S\-E\-Q\-U\-E\-N\-C\-E}!strange\-::extensions\-::sequencer\-::api@{strange\-::extensions\-::sequencer\-::api}}\index{strange\-::extensions\-::sequencer\-::api@{strange\-::extensions\-::sequencer\-::api}!C\-O\-M\-M\-A\-N\-D\-\_\-\-U\-S\-E\-D\-\_\-\-I\-N\-\_\-\-S\-E\-Q\-U\-E\-N\-C\-E@{C\-O\-M\-M\-A\-N\-D\-\_\-\-U\-S\-E\-D\-\_\-\-I\-N\-\_\-\-S\-E\-Q\-U\-E\-N\-C\-E}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1sequencer_1_1api_aeddaacdea22f90d94ab298d24cbce41ba80650e930022474abe93d5663d7e6744}{C\-O\-M\-M\-A\-N\-D\-\_\-\-U\-S\-E\-D\-\_\-\-I\-N\-\_\-\-S\-E\-Q\-U\-E\-N\-C\-E}\label{namespacestrange_1_1extensions_1_1sequencer_1_1api_aeddaacdea22f90d94ab298d24cbce41ba80650e930022474abe93d5663d7e6744}
+}]This exception is raised if the mapped Command doesn't implement \hyperlink{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequence_command}{I\-Sequence\-Command}. \end{description}
+\end{Desc}

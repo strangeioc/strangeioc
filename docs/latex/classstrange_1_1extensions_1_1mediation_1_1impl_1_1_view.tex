@@ -1,0 +1,105 @@
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}{\section{strange.\-extensions.\-mediation.\-impl.\-View Class Reference}
+\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}\index{strange.\-extensions.\-mediation.\-impl.\-View@{strange.\-extensions.\-mediation.\-impl.\-View}}
+}
+
+
+Parent class for all your Views.  
+
+
+Inheritance diagram for strange.\-extensions.\-mediation.\-impl.\-View\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}
+\end{center}
+\end{figure}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_ad830e5b03b04691f18ea3fe83a6b2a6d}{requires\-Context} = true
+\begin{DoxyCompactList}\small\item\em Leave this value true most of the time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_ac8f8bc798a6729e44cc4f8d6dc3ee838}{Awake} ()
+\begin{DoxyCompactList}\small\item\em A Mono\-Behaviour Awake handler. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_a9a876bf06590c1a1bacb243311489500}{Start} ()
+\begin{DoxyCompactList}\small\item\em A Mono\-Behaviour Start handler If the \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}{View} is not yet registered with the Context, it will attempt to connect again at this moment. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_a373a95c35d2d86746ed5db0512222767}{On\-Destroy} ()
+\begin{DoxyCompactList}\small\item\em A Mono\-Behaviour On\-Destroy handler The \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}{View} will inform the Context that it is about to be destroyed. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_a77b15b992a40cf3bfbf6d17c6f933a9c}{bubble\-To\-Context} (Mono\-Behaviour view, bool to\-Add, bool final\-Try)
+\begin{DoxyCompactList}\small\item\em Recurses through Transform.\-parent to find the Game\-Object to which Context\-View is attached Has a loop limit of 100 levels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_a08f38be9f2708de9af4eaabf6c7dcb4c}{bool {\bfseries registered\-With\-Context} = false}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_a08f38be9f2708de9af4eaabf6c7dcb4c}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Parent class for all your Views. 
+
+Extends Mono\-Behaviour. Bubbles its Awake, Start and On\-Destroy events to the Context\-View, which allows the Context to know when these critical moments occur in the \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}{View} lifecycle. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_ac8f8bc798a6729e44cc4f8d6dc3ee838}{\index{strange\-::extensions\-::mediation\-::impl\-::\-View@{strange\-::extensions\-::mediation\-::impl\-::\-View}!Awake@{Awake}}
+\index{Awake@{Awake}!strange::extensions::mediation::impl::View@{strange\-::extensions\-::mediation\-::impl\-::\-View}}
+\subsubsection[{Awake}]{\setlength{\rightskip}{0pt plus 5cm}virtual void strange.\-extensions.\-mediation.\-impl.\-View.\-Awake (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_ac8f8bc798a6729e44cc4f8d6dc3ee838}
+
+
+A Mono\-Behaviour Awake handler. 
+
+The \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}{View} will attempt to connect to the Context at this moment. \hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_a77b15b992a40cf3bfbf6d17c6f933a9c}{\index{strange\-::extensions\-::mediation\-::impl\-::\-View@{strange\-::extensions\-::mediation\-::impl\-::\-View}!bubble\-To\-Context@{bubble\-To\-Context}}
+\index{bubble\-To\-Context@{bubble\-To\-Context}!strange::extensions::mediation::impl::View@{strange\-::extensions\-::mediation\-::impl\-::\-View}}
+\subsubsection[{bubble\-To\-Context}]{\setlength{\rightskip}{0pt plus 5cm}virtual void strange.\-extensions.\-mediation.\-impl.\-View.\-bubble\-To\-Context (
+\begin{DoxyParamCaption}
+\item[{Mono\-Behaviour}]{view, }
+\item[{bool}]{to\-Add, }
+\item[{bool}]{final\-Try}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_a77b15b992a40cf3bfbf6d17c6f933a9c}
+
+
+Recurses through Transform.\-parent to find the Game\-Object to which Context\-View is attached Has a loop limit of 100 levels. 
+
+By default, raises an Exception if no Context is found. \hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_a373a95c35d2d86746ed5db0512222767}{\index{strange\-::extensions\-::mediation\-::impl\-::\-View@{strange\-::extensions\-::mediation\-::impl\-::\-View}!On\-Destroy@{On\-Destroy}}
+\index{On\-Destroy@{On\-Destroy}!strange::extensions::mediation::impl::View@{strange\-::extensions\-::mediation\-::impl\-::\-View}}
+\subsubsection[{On\-Destroy}]{\setlength{\rightskip}{0pt plus 5cm}virtual void strange.\-extensions.\-mediation.\-impl.\-View.\-On\-Destroy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_a373a95c35d2d86746ed5db0512222767}
+
+
+A Mono\-Behaviour On\-Destroy handler The \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}{View} will inform the Context that it is about to be destroyed. 
+
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_a9a876bf06590c1a1bacb243311489500}{\index{strange\-::extensions\-::mediation\-::impl\-::\-View@{strange\-::extensions\-::mediation\-::impl\-::\-View}!Start@{Start}}
+\index{Start@{Start}!strange::extensions::mediation::impl::View@{strange\-::extensions\-::mediation\-::impl\-::\-View}}
+\subsubsection[{Start}]{\setlength{\rightskip}{0pt plus 5cm}virtual void strange.\-extensions.\-mediation.\-impl.\-View.\-Start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_a9a876bf06590c1a1bacb243311489500}
+
+
+A Mono\-Behaviour Start handler If the \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}{View} is not yet registered with the Context, it will attempt to connect again at this moment. 
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_ad830e5b03b04691f18ea3fe83a6b2a6d}{\index{strange\-::extensions\-::mediation\-::impl\-::\-View@{strange\-::extensions\-::mediation\-::impl\-::\-View}!requires\-Context@{requires\-Context}}
+\index{requires\-Context@{requires\-Context}!strange::extensions::mediation::impl::View@{strange\-::extensions\-::mediation\-::impl\-::\-View}}
+\subsubsection[{requires\-Context}]{\setlength{\rightskip}{0pt plus 5cm}bool strange.\-extensions.\-mediation.\-impl.\-View.\-requires\-Context = true}}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_ad830e5b03b04691f18ea3fe83a6b2a6d}
+
+
+Leave this value true most of the time. 
+
+If for some reason you want a view to exist outside a context you can set it to false. The only difference is whether an error gets generated. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/mediation/impl/View.\-cs\end{DoxyCompactItemize}

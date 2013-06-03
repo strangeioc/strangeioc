@@ -1,0 +1,88 @@
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator}{\section{strange.\-extensions.\-mediation.\-impl.\-Mediator Class Reference}
+\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator}\index{strange.\-extensions.\-mediation.\-impl.\-Mediator@{strange.\-extensions.\-mediation.\-impl.\-Mediator}}
+}
+
+
+Base class for all Mediators.  
+
+
+Inheritance diagram for strange.\-extensions.\-mediation.\-impl.\-Mediator\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.857143cm]{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_aece12daee53614f5cba269a0ebb4d871}{virtual void \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_aece12daee53614f5cba269a0ebb4d871}{set\-View\-Component} (Mono\-Behaviour view)}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_aece12daee53614f5cba269a0ebb4d871}
+
+\begin{DoxyCompactList}\small\item\em Sets the \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}{View}. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_a284db743d4cdf5d75d34fbad151eaf99}{virtual void \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_a284db743d4cdf5d75d34fbad151eaf99}{pre\-Register} ()}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_a284db743d4cdf5d75d34fbad151eaf99}
+
+\begin{DoxyCompactList}\small\item\em Fires directly after creation and before injection. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_a27b0053397aac6c6136b1794b10718de}{on\-Register} ()
+\begin{DoxyCompactList}\small\item\em Fires after all injections satisifed. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_a9c65534ae8c37db9f4db7c84a94cd635}{on\-Remove} ()
+\begin{DoxyCompactList}\small\item\em Fires on removal of view. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_a73f6f51974cc84ff4cddc9890592e035}{Mono\-Behaviour {\bfseries abstract\-View}}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_a73f6f51974cc84ff4cddc9890592e035}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_ab2be755d94213de014077fbcf3cd10a1}{string {\bfseries view\-I\-D}}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_ab2be755d94213de014077fbcf3cd10a1}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_a7a2db38ad551c3a63083f169e998ee12}{Game\-Object {\bfseries context\-View}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_a7a2db38ad551c3a63083f169e998ee12}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class for all Mediators. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder}{strange.\-extensions.\-mediation.\-api.\-I\-Mediation\-Binder} 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_a27b0053397aac6c6136b1794b10718de}{\index{strange\-::extensions\-::mediation\-::impl\-::\-Mediator@{strange\-::extensions\-::mediation\-::impl\-::\-Mediator}!on\-Register@{on\-Register}}
+\index{on\-Register@{on\-Register}!strange::extensions::mediation::impl::Mediator@{strange\-::extensions\-::mediation\-::impl\-::\-Mediator}}
+\subsubsection[{on\-Register}]{\setlength{\rightskip}{0pt plus 5cm}virtual void strange.\-extensions.\-mediation.\-impl.\-Mediator.\-on\-Register (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_a27b0053397aac6c6136b1794b10718de}
+
+
+Fires after all injections satisifed. 
+
+Override and place your initialization code here. 
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator_a84249d82961c687d821631718fc40cda}{strange.\-extensions.\-mediation.\-api.\-I\-Mediator}.
+
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_a9c65534ae8c37db9f4db7c84a94cd635}{\index{strange\-::extensions\-::mediation\-::impl\-::\-Mediator@{strange\-::extensions\-::mediation\-::impl\-::\-Mediator}!on\-Remove@{on\-Remove}}
+\index{on\-Remove@{on\-Remove}!strange::extensions::mediation::impl::Mediator@{strange\-::extensions\-::mediation\-::impl\-::\-Mediator}}
+\subsubsection[{on\-Remove}]{\setlength{\rightskip}{0pt plus 5cm}virtual void strange.\-extensions.\-mediation.\-impl.\-Mediator.\-on\-Remove (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_a9c65534ae8c37db9f4db7c84a94cd635}
+
+
+Fires on removal of view. 
+
+Override and place your cleanup code here 
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator_a7d1c9db89dbe71b80f0fb56fd3012def}{strange.\-extensions.\-mediation.\-api.\-I\-Mediator}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/mediation/impl/Mediator.\-cs\end{DoxyCompactItemize}

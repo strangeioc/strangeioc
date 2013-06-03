@@ -1,0 +1,53 @@
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{\section{strange.\-extensions.\-command.\-impl.\-Command Class Reference}
+\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}\index{strange.\-extensions.\-command.\-impl.\-Command@{strange.\-extensions.\-command.\-impl.\-Command}}
+}
+
+
+Commands are where you place your business logic.  
+
+
+Inheritance diagram for strange.\-extensions.\-command.\-impl.\-Command\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a4a1155270428842c342482c6885b2652}{virtual void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a4a1155270428842c342482c6885b2652}{Execute} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a4a1155270428842c342482c6885b2652}
+
+\begin{DoxyCompactList}\small\item\em Override this! {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a4a1155270428842c342482c6885b2652}{Execute()}} is where you place the logic for your \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command}. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a1525def9650d4b6ed6ed6cef2936d892}{void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a1525def9650d4b6ed6ed6cef2936d892}{Retain} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a1525def9650d4b6ed6ed6cef2936d892}
+
+\begin{DoxyCompactList}\small\item\em Keeps the \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} in memory. Use only in conjunction with {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a783b532e62f1c5c7789ae1a5791c75c7}{Release()}} \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a783b532e62f1c5c7789ae1a5791c75c7}{void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a783b532e62f1c5c7789ae1a5791c75c7}{Release} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a783b532e62f1c5c7789ae1a5791c75c7}
+
+\begin{DoxyCompactList}\small\item\em Allows a previous Retained \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} to be disposed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a97536a752bfdb962d4b6a9fe31888472}{\hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder}{I\-Command\-Binder} \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a97536a752bfdb962d4b6a9fe31888472}{command\-Binder}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a97536a752bfdb962d4b6a9fe31888472}
+
+\begin{DoxyCompactList}\small\item\em Back reference to the \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder}{Command\-Binder} that instantiated this Commmand. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a6cddeeed15d2f3bb2b434ae7f8450fd4}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder}{I\-Injection\-Binder} \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a6cddeeed15d2f3bb2b434ae7f8450fd4}{injection\-Binder}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a6cddeeed15d2f3bb2b434ae7f8450fd4}
+
+\begin{DoxyCompactList}\small\item\em The Injection\-Binder for this Context. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_af313eea4d80d65db2a526d5ce28712e8}{object {\bfseries data}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_af313eea4d80d65db2a526d5ce28712e8}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_adf51b3ae205b21b57e76ba3aad11bc74}{bool {\bfseries retain}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_adf51b3ae205b21b57e76ba3aad11bc74}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Commands are where you place your business logic. 
+
+In the M\-V\-C\-S\-Context setup, commands are mapped to Tm\-Events. The firing of a specific event on the global event bus triggers the instantiation, injection and execution of any Command(s) bound to that event.
+
+By default, commands are cleaned up immediately on completion of the {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a4a1155270428842c342482c6885b2652}{Execute()}} method. For asynchronous Commands (e.\-g., calling a service and awaiting a response), call {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a1525def9650d4b6ed6ed6cef2936d892}{Retain()}} at the top of your {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a4a1155270428842c342482c6885b2652}{Execute()}} method, which will prevent premature cleanup. But remember, having done so it is your responsipility to call {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a783b532e62f1c5c7789ae1a5791c75c7}{Release()}} once the \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} is complete. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/command/impl/Command.\-cs\end{DoxyCompactItemize}

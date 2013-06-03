@@ -1,0 +1,129 @@
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher}{\section{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Event\-Dispatcher Class Reference}
+\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher}\index{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Event\-Dispatcher@{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Event\-Dispatcher}}
+}
+
+
+A Dispatcher that uses \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event}{Tm\-Event} to send messages.  
+
+
+Inheritance diagram for strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Event\-Dispatcher\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.037037cm]{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a45e80262b4266392dfe90b5ef5985002}{override \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a45e80262b4266392dfe90b5ef5985002}{Get\-Raw\-Binding} ()}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a45e80262b4266392dfe90b5ef5985002}
+
+\begin{DoxyCompactList}\small\item\em Generate an unpopulated I\-Binding in whatever concrete form the Binder dictates. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a42c7118c3b362edefc631de15eb133b8}{new \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding}{I\-Event\-Binding} {\bfseries Bind} (object key)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a42c7118c3b362edefc631de15eb133b8}
+
+\item 
+void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a70d8d7740798e10f960c866e03c4639b}{Dispatch} (object event\-Type)
+\begin{DoxyCompactList}\small\item\em Send a notification of type event\-Type. \end{DoxyCompactList}\item 
+void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a14124806e6632e75aa0ff0c02d23483b}{Dispatch} (object event\-Type, object data)
+\begin{DoxyCompactList}\small\item\em Send a notification of type event\-Type and the provided data payload. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_acd95e78dd533c6b0faa7c057c7d04cce}{void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_acd95e78dd533c6b0faa7c057c7d04cce}{add\-Listener} (object evt, Event\-Callback callback)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_acd95e78dd533c6b0faa7c057c7d04cce}
+
+\begin{DoxyCompactList}\small\item\em Add an observer with exactly one argument to this Dispatcher. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a47bf732c8a63525660c639fc0135a0f8}{void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a47bf732c8a63525660c639fc0135a0f8}{add\-Listener} (object evt, Empty\-Callback callback)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a47bf732c8a63525660c639fc0135a0f8}
+
+\begin{DoxyCompactList}\small\item\em Add an observer with exactly no arguments to this Dispatcher. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_ae27f791e5bf48d6cf9ed98a11c0c8534}{void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_ae27f791e5bf48d6cf9ed98a11c0c8534}{remove\-Listener} (object evt, Event\-Callback callback)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_ae27f791e5bf48d6cf9ed98a11c0c8534}
+
+\begin{DoxyCompactList}\small\item\em Remove a previously registered observer with exactly one argument from this Dispatcher. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a0a339c2f88747c2c5240f6d5cfcde9cf}{void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a0a339c2f88747c2c5240f6d5cfcde9cf}{remove\-Listener} (object evt, Empty\-Callback callback)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a0a339c2f88747c2c5240f6d5cfcde9cf}
+
+\begin{DoxyCompactList}\small\item\em Remove a previously registered observer with exactly no arguments from this Dispatcher. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_aaab911eac025732e0085dba0d55d436f}{bool \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_aaab911eac025732e0085dba0d55d436f}{has\-Listener} (object evt, Event\-Callback callback)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_aaab911eac025732e0085dba0d55d436f}
+
+\begin{DoxyCompactList}\small\item\em Returns true if the provided observer is already registered. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a45ba390426a2ae7afe340caecaf3a7d3}{bool \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a45ba390426a2ae7afe340caecaf3a7d3}{has\-Listener} (object evt, Empty\-Callback callback)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a45ba390426a2ae7afe340caecaf3a7d3}
+
+\begin{DoxyCompactList}\small\item\em Returns true if the provided observer is already registered. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a03806f3e9680d771231a89180afc5fe2}{void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a03806f3e9680d771231a89180afc5fe2}{update\-Listener} (bool to\-Add, object evt, Event\-Callback callback)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a03806f3e9680d771231a89180afc5fe2}
+
+\begin{DoxyCompactList}\small\item\em By passing true, an observer with exactly one argument will be added to this Dispatcher. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_ac672efb511b97e0c198252cda026f50f}{void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_ac672efb511b97e0c198252cda026f50f}{update\-Listener} (bool to\-Add, object evt, Empty\-Callback callback)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_ac672efb511b97e0c198252cda026f50f}
+
+\begin{DoxyCompactList}\small\item\em By passing true, an observer with exactly no arguments will be added to this Dispatcher. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a6b451f5aa08a3d9c8c4244adbcba28b2}{void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a6b451f5aa08a3d9c8c4244adbcba28b2}{Add\-Triggerable} (\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{I\-Triggerable} target)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a6b451f5aa08a3d9c8c4244adbcba28b2}
+
+\begin{DoxyCompactList}\small\item\em Register a Triggerable client with this provider. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a805d419bf0bad3be1cba8961575e70d7}{void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a805d419bf0bad3be1cba8961575e70d7}{Remove\-Triggerable} (\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{I\-Triggerable} target)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a805d419bf0bad3be1cba8961575e70d7}
+
+\begin{DoxyCompactList}\small\item\em Remove a previously registered Triggerable client from this provider. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a00aa67359048450f440195fcb6303279}{void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a00aa67359048450f440195fcb6303279}{Trigger$<$ T $>$} (object data)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a00aa67359048450f440195fcb6303279}
+
+\begin{DoxyCompactList}\small\item\em Cause this I\-Triggerable to access any provided Key in its Binder by the provided generic and data. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a0360965a7abcec6aaf0d0d139cdba649}{void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a0360965a7abcec6aaf0d0d139cdba649}{Trigger} (object key, object data)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a0360965a7abcec6aaf0d0d139cdba649}
+
+\begin{DoxyCompactList}\small\item\em Cause this I\-Triggerable to access any provided Key in its Binder by the provided key and data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a04a125caaca5a1e6b2f81924df9480f1}{\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{I\-Triggerable}\mbox{[}$\,$\mbox{]} \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a04a125caaca5a1e6b2f81924df9480f1}{trigger\-Clients}}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a04a125caaca5a1e6b2f81924df9480f1}
+
+\begin{DoxyCompactList}\small\item\em The list of clients that will be triggered as a consequence of an Event firing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A Dispatcher that uses \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event}{Tm\-Event} to send messages. 
+
+Whenever the Dispatcher executes a {\ttfamily \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a70d8d7740798e10f960c866e03c4639b}{Dispatch()}}, observers will be notified of any event (Key) for which they have registered.
+
+\hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher}{Event\-Dispatcher} dispatches Tm\-Events.
+
+The \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher}{Event\-Dispatcher} is the only Dispatcher currently released with Strange (though by separating \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher}{Event\-Dispatcher} from Dispatcher I'm obviously signalling that I don't think it's the only possible one).
+
+\hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher}{Event\-Dispatcher} is both an I\-Trigger\-Provider and an I\-Triggerable.
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event}{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Tm\-Event} 
+
+\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider}{strange.\-extensions.\-dispatcher.\-api.\-I\-Trigger\-Provider} 
+
+\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{strange.\-extensions.\-dispatcher.\-api.\-I\-Triggerable} 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a70d8d7740798e10f960c866e03c4639b}{\index{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Event\-Dispatcher@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Event\-Dispatcher}!Dispatch@{Dispatch}}
+\index{Dispatch@{Dispatch}!strange::extensions::dispatcher::eventdispatcher::impl::EventDispatcher@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Event\-Dispatcher}}
+\subsubsection[{Dispatch}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Event\-Dispatcher.\-Dispatch (
+\begin{DoxyParamCaption}
+\item[{object}]{event\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a70d8d7740798e10f960c866e03c4639b}
+
+
+Send a notification of type event\-Type. 
+
+No data. In M\-V\-C\-S\-Context this dispatches a \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event}{Tm\-Event}. 
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher_afec6755050bf9891321a7bfd4da1f06b}{strange.\-extensions.\-dispatcher.\-api.\-I\-Dispatcher}.
+
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a14124806e6632e75aa0ff0c02d23483b}{\index{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Event\-Dispatcher@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Event\-Dispatcher}!Dispatch@{Dispatch}}
+\index{Dispatch@{Dispatch}!strange::extensions::dispatcher::eventdispatcher::impl::EventDispatcher@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Event\-Dispatcher}}
+\subsubsection[{Dispatch}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Event\-Dispatcher.\-Dispatch (
+\begin{DoxyParamCaption}
+\item[{object}]{event\-Type, }
+\item[{object}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a14124806e6632e75aa0ff0c02d23483b}
+
+
+Send a notification of type event\-Type and the provided data payload. 
+
+In M\-V\-C\-S\-Context this dispatches a \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event}{Tm\-Event}. 
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher_a71f605859b2507f1248190fe37d96eed}{strange.\-extensions.\-dispatcher.\-api.\-I\-Dispatcher}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/dispatcher/eventdispatcher/impl/Event\-Dispatcher.\-cs\end{DoxyCompactItemize}

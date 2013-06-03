@@ -1,14 +1,21 @@
 var searchData=
 [
-  ['enemymediator',['EnemyMediator',['../classbabel_1_1examples_1_1multiplecontexts_1_1game_1_1_enemy_mediator.html',1,'babel::examples::multiplecontexts::game']]],
-  ['enemyview',['EnemyView',['../classbabel_1_1examples_1_1multiplecontexts_1_1game_1_1_enemy_view.html',1,'babel::examples::multiplecontexts::game']]],
-  ['eventbinding',['EventBinding',['../classbabel_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_binding.html',1,'babel::extensions::dispatcher::eventdispatcher::impl']]],
-  ['eventcommand',['EventCommand',['../classbabel_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_command.html',1,'babel::extensions::dispatcher::eventdispatcher::impl']]],
-  ['eventdispatcher',['EventDispatcher',['../classbabel_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html',1,'babel::extensions::dispatcher::eventdispatcher::impl']]],
-  ['eventdispatcherexception',['EventDispatcherException',['../classbabel_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_exception.html',1,'babel::extensions::dispatcher::eventdispatcher::impl']]],
-  ['exampleevent',['ExampleEvent',['../classbabel_1_1examples_1_1myfirstproject_1_1_example_event.html',1,'babel::examples::myfirstproject']]],
-  ['examplemediator',['ExampleMediator',['../classbabel_1_1examples_1_1myfirstproject_1_1_example_mediator.html',1,'babel::examples::myfirstproject']]],
-  ['examplemodel',['ExampleModel',['../classbabel_1_1examples_1_1myfirstproject_1_1_example_model.html',1,'babel::examples::myfirstproject']]],
-  ['exampleservice',['ExampleService',['../classbabel_1_1examples_1_1myfirstproject_1_1_example_service.html',1,'babel::examples::myfirstproject']]],
-  ['exampleview',['ExampleView',['../classbabel_1_1examples_1_1myfirstproject_1_1_example_view.html',1,'babel::examples::myfirstproject']]]
+  ['emptycallback',['EmptyCallback',['../namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a4d68e68b31e6e0f733bd72ddcd6111fa',1,'strange::extensions::dispatcher::eventdispatcher::api']]],
+  ['enabled',['ENABLED',['../namespacestrange_1_1extensions_1_1mediation_1_1api.html#ae5a81bb1edf9fca1d2aca9f4fada72a8ac8cf6eea8f096ed51160b484d97c5bbd',1,'strange::extensions::mediation::api']]],
+  ['event_5ftype_5fmismatch',['EVENT_TYPE_MISMATCH',['../namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#ac82e4192fcc43ba5e64f0469a3c7c06da5ff62c887d3c7f1707f7033db01438fa',1,'strange::extensions::dispatcher::eventdispatcher::api']]],
+  ['eventbinding',['EventBinding',['../classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_binding.html',1,'strange::extensions::dispatcher::eventdispatcher::impl']]],
+  ['eventcallback',['EventCallback',['../namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a5b2a372c9c074884178eb4a32992afd3',1,'strange::extensions::dispatcher::eventdispatcher::api']]],
+  ['eventcallbacktype',['EventCallbackType',['../namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a7135cff6e8e84b74fb1aee88c8f5af4c',1,'strange::extensions::dispatcher::eventdispatcher::api']]],
+  ['eventcommand',['EventCommand',['../classstrange_1_1extensions_1_1command_1_1impl_1_1_event_command.html',1,'strange::extensions::command::impl']]],
+  ['eventcommandbinder',['EventCommandBinder',['../classstrange_1_1extensions_1_1command_1_1impl_1_1_event_command_binder.html',1,'strange::extensions::command::impl']]],
+  ['eventdispatcher',['EventDispatcher',['../classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html',1,'strange::extensions::dispatcher::eventdispatcher::impl']]],
+  ['eventdispatcherexception',['EventDispatcherException',['../classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_exception.html#acfd736337797e059596dfd8d36616ca1',1,'strange::extensions::dispatcher::eventdispatcher::impl::EventDispatcherException']]],
+  ['eventdispatcherexception',['EventDispatcherException',['../classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_exception.html',1,'strange::extensions::dispatcher::eventdispatcher::impl']]],
+  ['eventdispatcherexceptiontype',['EventDispatcherExceptionType',['../namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#ac82e4192fcc43ba5e64f0469a3c7c06d',1,'strange::extensions::dispatcher::eventdispatcher::api']]],
+  ['eventmediator',['EventMediator',['../classstrange_1_1extensions_1_1mediation_1_1impl_1_1_event_mediator.html',1,'strange::extensions::mediation::impl']]],
+  ['eventsequencecommand',['EventSequenceCommand',['../classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequence_command.html',1,'strange::extensions::sequencer::impl']]],
+  ['eventview',['EventView',['../classstrange_1_1extensions_1_1mediation_1_1impl_1_1_event_view.html',1,'strange::extensions::mediation::impl']]],
+  ['evt',['evt',['../classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequence_command.html#af7e2677cffa0910c775ad24805896348',1,'strange::extensions::sequencer::impl::EventSequenceCommand']]],
+  ['execute',['Execute',['../interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#a49ddf3bbaf19624534fa99fa4725feca',1,'strange.extensions.command.api.ICommand.Execute()'],['../classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html#a4a1155270428842c342482c6885b2652',1,'strange.extensions.command.impl.Command.Execute()'],['../classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command.html#a6debd17d38f4d90dce14857a695f7c7f',1,'strange.extensions.sequencer.impl.SequenceCommand.Execute()']]],
+  ['execute_5foverride',['EXECUTE_OVERRIDE',['../namespacestrange_1_1extensions_1_1command_1_1api.html#a27c9226cc8d55624f3294319d48879e3a649c27d7db043238f4e8ee0d1c8c52fc',1,'strange.extensions.command.api.EXECUTE_OVERRIDE()'],['../namespacestrange_1_1extensions_1_1sequencer_1_1api.html#aeddaacdea22f90d94ab298d24cbce41ba649c27d7db043238f4e8ee0d1c8c52fc',1,'strange.extensions.sequencer.api.EXECUTE_OVERRIDE()']]]
 ];

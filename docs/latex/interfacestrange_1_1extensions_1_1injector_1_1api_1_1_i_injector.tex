@@ -1,0 +1,78 @@
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector}{\section{strange.\-extensions.\-injector.\-api.\-I\-Injector Interface Reference}
+\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector}\index{strange.\-extensions.\-injector.\-api.\-I\-Injector@{strange.\-extensions.\-injector.\-api.\-I\-Injector}}
+}
+
+
+Interface for the Injector, which dependencies into provided instances.  
+
+
+Inheritance diagram for strange.\-extensions.\-injector.\-api.\-I\-Injector\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+object \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_ab6c185a183b27708e38c4954195fe591}{Instantiate} (\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} binding)
+\begin{DoxyCompactList}\small\item\em Request an instantiation based on the given binding. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_a3c4b0fc21caebeafe42ad797001181e8}{object \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_a3c4b0fc21caebeafe42ad797001181e8}{Inject} (object target)}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_a3c4b0fc21caebeafe42ad797001181e8}
+
+\begin{DoxyCompactList}\small\item\em Request that the provided target be injected. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_abc1ae4ebd51649ad7c44873d87e76445}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_factory}{I\-Injector\-Factory} \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_abc1ae4ebd51649ad7c44873d87e76445}{factory}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_abc1ae4ebd51649ad7c44873d87e76445}
+
+\begin{DoxyCompactList}\small\item\em Get/set an Injector\-Factory. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_a5c47c5e51f6b75cc8c3e0897d3aae42a}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder}{I\-Injection\-Binder} \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_a5c47c5e51f6b75cc8c3e0897d3aae42a}{binder}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_a5c47c5e51f6b75cc8c3e0897d3aae42a}
+
+\begin{DoxyCompactList}\small\item\em Get/set an Injection\-Binder. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_a6ee8852222538152189f234136a92adf}{\hyperlink{interfacestrange_1_1extensions_1_1reflector_1_1api_1_1_i_reflection_binder}{I\-Reflection\-Binder} \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_a6ee8852222538152189f234136a92adf}{reflector}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_a6ee8852222538152189f234136a92adf}
+
+\begin{DoxyCompactList}\small\item\em Get/set a Reflection\-Binder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface for the Injector, which dependencies into provided instances. 
+
+The Injector requests a Reflected\-Class from the Reflection\-Binder and uses that information to inject an instance. Note that the Injector itself does not instantiate the class. That is the job of the Injector\-Factory. That said, Factory and Reflector are 'hidden' from the average user, since their jobs are pretty deep in the structure. If you wish, you can override either or both.
+
+Classes utilizing the injector must be marked with the following metatags\-: 
+\begin{DoxyItemize}
+\item \mbox{[}\hyperlink{class_inject}{Inject}\mbox{]} -\/ Use this metatag on any setter you wish to have supplied by injection. 
+\item \mbox{[}\hyperlink{class_construct}{Construct}\mbox{]} -\/ Use this metatag on the specific Constructor you wish to inject into when using Constructor injection. If you omit this tag, the Constructor with the shortest list of dependencies will be selected automatically. 
+\item \mbox{[}\hyperlink{class_post_construct}{Post\-Construct}\mbox{]} -\/ Use this metatag on any method(s) you wish to fire directly after dependencies are supplied 
+\end{DoxyItemize}
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{interfacestrange_1_1extensions_1_1reflector_1_1api_1_1_i_reflection_binder}{strange.\-extensions.\-reflector.\-api.\-I\-Reflection\-Binder} 
+
+\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder}{strange.\-extensions.\-injector.\-api.\-I\-Injection\-Binder} 
+
+\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_factory}{strange.\-extensions.\-injector.\-api.\-I\-Injector\-Factory} 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_ab6c185a183b27708e38c4954195fe591}{\index{strange\-::extensions\-::injector\-::api\-::\-I\-Injector@{strange\-::extensions\-::injector\-::api\-::\-I\-Injector}!Instantiate@{Instantiate}}
+\index{Instantiate@{Instantiate}!strange::extensions::injector::api::IInjector@{strange\-::extensions\-::injector\-::api\-::\-I\-Injector}}
+\subsubsection[{Instantiate}]{\setlength{\rightskip}{0pt plus 5cm}object strange.\-extensions.\-injector.\-api.\-I\-Injector.\-Instantiate (
+\begin{DoxyParamCaption}
+\item[{{\bf I\-Injection\-Binding}}]{binding}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_ab6c185a183b27708e38c4954195fe591}
+
+
+Request an instantiation based on the given binding. 
+
+This request is made to the Injector, but it's really the Injector\-Factory that does the instantiation. 
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injector_af2e993fb61630c887d378d36b19bac6f}{strange.\-extensions.\-injector.\-impl.\-Injector}.
+
+
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/injector/api/I\-Injector.\-cs\end{DoxyCompactItemize}

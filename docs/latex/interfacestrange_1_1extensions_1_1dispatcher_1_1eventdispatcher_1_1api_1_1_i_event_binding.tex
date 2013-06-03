@@ -1,0 +1,50 @@
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding}{\section{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-api.\-I\-Event\-Binding Interface Reference}
+\label{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding}\index{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-api.\-I\-Event\-Binding@{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-api.\-I\-Event\-Binding}}
+}
+
+
+Binding interface for Event\-Dispatcher.  
+
+
+Inheritance diagram for strange.\-extensions.\-dispatcher.\-eventdispatcher.\-api.\-I\-Event\-Binding\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding_aea1695dda47672e984598ce802e62ee8}{\hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a7135cff6e8e84b74fb1aee88c8f5af4c}{Event\-Callback\-Type} \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding_aea1695dda47672e984598ce802e62ee8}{type\-For\-Callback} (\hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a5b2a372c9c074884178eb4a32992afd3}{Event\-Callback} callback)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding_aea1695dda47672e984598ce802e62ee8}
+
+\begin{DoxyCompactList}\small\item\em Retrieve the type of the provided callback. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding_a1502733e905d30d9a76c2cb4195c2350}{\hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a7135cff6e8e84b74fb1aee88c8f5af4c}{Event\-Callback\-Type} \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding_a1502733e905d30d9a76c2cb4195c2350}{type\-For\-Callback} (\hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a4d68e68b31e6e0f733bd72ddcd6111fa}{Empty\-Callback} callback)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding_a1502733e905d30d9a76c2cb4195c2350}
+
+\begin{DoxyCompactList}\small\item\em Retrieve the type of the provided callback. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding_a12f1930a32c1fe19f2f266a9996d4935}{new \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding}{I\-Event\-Binding} \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding_a12f1930a32c1fe19f2f266a9996d4935}{Key} (object \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding_acec8686208598f9f4a952ffd05449c4d}{key})}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding_a12f1930a32c1fe19f2f266a9996d4935}
+
+\begin{DoxyCompactList}\small\item\em Tie this binding to a value key, such as a string or class instance. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding_aa3ea162300b1c274476c5f89c3ddbecb}{\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding}{I\-Event\-Binding} {\bfseries To} (\hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a5b2a372c9c074884178eb4a32992afd3}{Event\-Callback} callback)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding_aa3ea162300b1c274476c5f89c3ddbecb}
+
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding_a57463800a377374ccab15f11e0500457}{\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding}{I\-Event\-Binding} {\bfseries To} (\hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a4d68e68b31e6e0f733bd72ddcd6111fa}{Empty\-Callback} callback)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding_a57463800a377374ccab15f11e0500457}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Binding interface for Event\-Dispatcher. 
+
+Event\-Bindings technically allow any Key, but require either an Empty\-Callback (no arguments) or an Event\-Callback (one argument).
+
+The Tm\-Event only accepts strings as keys, so in the standard M\-V\-C\-S\-Context setup, your Event\-Binder keys should also be strings.
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event}{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Tm\-Event} 
+\end{DoxySeeAlso}
+
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/dispatcher/eventdispatcher/api/I\-Event\-Binding.\-cs\end{DoxyCompactItemize}

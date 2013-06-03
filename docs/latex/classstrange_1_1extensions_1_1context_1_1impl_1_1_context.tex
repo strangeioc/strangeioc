@@ -1,0 +1,136 @@
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{\section{strange.\-extensions.\-context.\-impl.\-Context Class Reference}
+\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}\index{strange.\-extensions.\-context.\-impl.\-Context@{strange.\-extensions.\-context.\-impl.\-Context}}
+}
+
+
+A \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context} is the entry point to the binding framework.  
+
+
+Inheritance diagram for strange.\-extensions.\-context.\-impl.\-Context\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a771c415dd8d8ee10fa09d5906318ff9c}{{\bfseries Context} (object view, bool \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a3386ea2967ba720218b89eaefac77d56}{auto\-Startup})}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a771c415dd8d8ee10fa09d5906318ff9c}
+
+\item 
+virtual \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context}{I\-Context} \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a376f83ac4bf2233eedbc760f1aeddccd}{Set\-Context\-View} (object view)
+\begin{DoxyCompactList}\small\item\em Set the object that represents the top of the \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context} hierarchy. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a29da25935b72076b614409b2a3bf5ba0}{virtual \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context}{I\-Context} \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a29da25935b72076b614409b2a3bf5ba0}{Start} ()}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a29da25935b72076b614409b2a3bf5ba0}
+
+\begin{DoxyCompactList}\small\item\em Call this from your Root to set everything in action. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a02c426aaa7b4cdae6bc1be3060b67dce}{Launch} ()
+\begin{DoxyCompactList}\small\item\em The final method to fire after mappings. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_abf74ff8fea03ac9760c7fe18d62d59b8}{virtual \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context}{I\-Context} \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_abf74ff8fea03ac9760c7fe18d62d59b8}{Add\-Context} (\hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context}{I\-Context} context)}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_abf74ff8fea03ac9760c7fe18d62d59b8}
+
+\begin{DoxyCompactList}\small\item\em Add another \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context} to this one. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a4c95d02ca1f4562caa9f53e947701733}{virtual \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context}{I\-Context} \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a4c95d02ca1f4562caa9f53e947701733}{Remove\-Context} (\hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context}{I\-Context} context)}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a4c95d02ca1f4562caa9f53e947701733}
+
+\begin{DoxyCompactList}\small\item\em Remove a context from this one. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a865a54a288d59c43adc3225e5f6a4b5d}{virtual object \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a865a54a288d59c43adc3225e5f6a4b5d}{Get\-Component$<$ T $>$} ()}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a865a54a288d59c43adc3225e5f6a4b5d}
+
+\begin{DoxyCompactList}\small\item\em Retrieve a component from this \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context} by generic type. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_aa9a7d7c49d19ca3fca754431d0f111aa}{virtual object \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_aa9a7d7c49d19ca3fca754431d0f111aa}{Get\-Component$<$ T $>$} (object name)}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_aa9a7d7c49d19ca3fca754431d0f111aa}
+
+\begin{DoxyCompactList}\small\item\em Retrieve a component from this \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context} by generic type and name. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_aec01de93dabe196c1499bce945880d01}{virtual void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_aec01de93dabe196c1499bce945880d01}{Add\-View} (object view)}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_aec01de93dabe196c1499bce945880d01}
+
+\begin{DoxyCompactList}\small\item\em Register a View with this \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context}. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a027f31fe58bb8a179119bed5973a2e30}{virtual void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a027f31fe58bb8a179119bed5973a2e30}{Remove\-View} (object view)}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a027f31fe58bb8a179119bed5973a2e30}
+
+\begin{DoxyCompactList}\small\item\em Remove a View from this \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a3386ea2967ba720218b89eaefac77d56}{bool \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a3386ea2967ba720218b89eaefac77d56}{auto\-Startup}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a3386ea2967ba720218b89eaefac77d56}
+
+\begin{DoxyCompactList}\small\item\em If false, the {\ttfamily \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a02c426aaa7b4cdae6bc1be3060b67dce}{Launch()}} method won't fire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a91925d82f688390fea8c703ab4135c79}{static \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context}{I\-Context} \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a91925d82f688390fea8c703ab4135c79}{first\-Context}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a91925d82f688390fea8c703ab4135c79}
+
+\begin{DoxyCompactList}\small\item\em In a multi-\/\-Context app, this represents the first \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context} to instantiate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a57e5e9aeb378aca525f8f28a426d59cc}{virtual void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a57e5e9aeb378aca525f8f28a426d59cc}{add\-Core\-Components} ()}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a57e5e9aeb378aca525f8f28a426d59cc}
+
+\begin{DoxyCompactList}\small\item\em Override to add componentry. Or just extend \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context}{M\-V\-C\-S\-Context}. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a0287e4a7fd7301dc38ee91f7bc75a899}{virtual void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a0287e4a7fd7301dc38ee91f7bc75a899}{instantiate\-Core\-Components} ()}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a0287e4a7fd7301dc38ee91f7bc75a899}
+
+\begin{DoxyCompactList}\small\item\em Override to instantiate componentry. Or just extend \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context}{M\-V\-C\-S\-Context}. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a69ab00c1a523096ebc8d1a31738296e2}{virtual void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a69ab00c1a523096ebc8d1a31738296e2}{map\-Bindings} ()}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a69ab00c1a523096ebc8d1a31738296e2}
+
+\begin{DoxyCompactList}\small\item\em Override to map project-\/specific bindings. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a780e6a87f077918c7ecf0709277f9b21}{virtual void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a780e6a87f077918c7ecf0709277f9b21}{post\-Bindings} ()}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a780e6a87f077918c7ecf0709277f9b21}
+
+\begin{DoxyCompactList}\small\item\em Override to do things after binding but before app launch. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+object \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a6403b0233cce89fdf38d810c740795c2}{context\-View}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The top of the View hierarchy. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a2358f952cd0785dbba2ba9a8258d300c}{virtual \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher}{I\-Dispatcher} \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a2358f952cd0785dbba2ba9a8258d300c}{cross\-Context\-Dispatcher}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a2358f952cd0785dbba2ba9a8258d300c}
+
+\begin{DoxyCompactList}\small\item\em A Dispatcher instance which communicates across Contexts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context} is the entry point to the binding framework. 
+
+Extend this class to create the binding context suitable for your application.
+
+In a typical Unity3\-D setup, extend \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context}{M\-V\-C\-S\-Context} and instantiate your extension from the \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_view}{Context\-View}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a02c426aaa7b4cdae6bc1be3060b67dce}{\index{strange\-::extensions\-::context\-::impl\-::\-Context@{strange\-::extensions\-::context\-::impl\-::\-Context}!Launch@{Launch}}
+\index{Launch@{Launch}!strange::extensions::context::impl::Context@{strange\-::extensions\-::context\-::impl\-::\-Context}}
+\subsubsection[{Launch}]{\setlength{\rightskip}{0pt plus 5cm}virtual void strange.\-extensions.\-context.\-impl.\-Context.\-Launch (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a02c426aaa7b4cdae6bc1be3060b67dce}
+
+
+The final method to fire after mappings. 
+
+If auto\-Startup is false, you need to call this manually. 
+
+Reimplemented in \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a70e1400cfb5a71447080acdf79ca93f9}{strange.\-extensions.\-context.\-impl.\-M\-V\-C\-S\-Context}.
+
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a376f83ac4bf2233eedbc760f1aeddccd}{\index{strange\-::extensions\-::context\-::impl\-::\-Context@{strange\-::extensions\-::context\-::impl\-::\-Context}!Set\-Context\-View@{Set\-Context\-View}}
+\index{Set\-Context\-View@{Set\-Context\-View}!strange::extensions::context::impl::Context@{strange\-::extensions\-::context\-::impl\-::\-Context}}
+\subsubsection[{Set\-Context\-View}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf I\-Context} strange.\-extensions.\-context.\-impl.\-Context.\-Set\-Context\-View (
+\begin{DoxyParamCaption}
+\item[{object}]{view}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a376f83ac4bf2233eedbc760f1aeddccd}
+
+
+Set the object that represents the top of the \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context} hierarchy. 
+
+In \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context}{M\-V\-C\-S\-Context}, this would be a Game\-Object. 
+
+Reimplemented in \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_aecc258bb5f3d3edd1a3f93ca33a2ce4e}{strange.\-extensions.\-context.\-impl.\-M\-V\-C\-S\-Context}.
+
+
+
+\subsection{Property Documentation}
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a6403b0233cce89fdf38d810c740795c2}{\index{strange\-::extensions\-::context\-::impl\-::\-Context@{strange\-::extensions\-::context\-::impl\-::\-Context}!context\-View@{context\-View}}
+\index{context\-View@{context\-View}!strange::extensions::context::impl::Context@{strange\-::extensions\-::context\-::impl\-::\-Context}}
+\subsubsection[{context\-View}]{\setlength{\rightskip}{0pt plus 5cm}object strange.\-extensions.\-context.\-impl.\-Context.\-context\-View\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a6403b0233cce89fdf38d810c740795c2}
+
+
+The top of the View hierarchy. 
+
+In \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context}{M\-V\-C\-S\-Context}, this is your top-\/level Game\-Object 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/context/impl/Context.\-cs\end{DoxyCompactItemize}

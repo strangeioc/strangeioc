@@ -1,0 +1,81 @@
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder}{\section{strange.\-extensions.\-mediation.\-impl.\-Mediation\-Binder Class Reference}
+\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder}\index{strange.\-extensions.\-mediation.\-impl.\-Mediation\-Binder@{strange.\-extensions.\-mediation.\-impl.\-Mediation\-Binder}}
+}
+
+
+Binds Views to Mediators.  
+
+
+Inheritance diagram for strange.\-extensions.\-mediation.\-impl.\-Mediation\-Binder\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.763158cm]{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder_a8979dac1fe07f85a453ecb0b43cd9c48}{override \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder_a8979dac1fe07f85a453ecb0b43cd9c48}{Get\-Raw\-Binding} ()}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder_a8979dac1fe07f85a453ecb0b43cd9c48}
+
+\begin{DoxyCompactList}\small\item\em Generate an unpopulated I\-Binding in whatever concrete form the Binder dictates. \end{DoxyCompactList}\item 
+void \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder_a79447d8fd991688f087c51b752c002cb}{Trigger} (\hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8}{Mediation\-Event} evt, Mono\-Behaviour view)
+\begin{DoxyCompactList}\small\item\em An event that just happened, and the \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}{View} it happened to. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder_a09f66b1d01dca93a0bad43c83d6c03cb}{override \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder_a09f66b1d01dca93a0bad43c83d6c03cb}{Bind$<$ T $>$} ()}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder_a09f66b1d01dca93a0bad43c83d6c03cb}
+
+\begin{DoxyCompactList}\small\item\em Bind a Binding Key to a class or interface generic. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder_ae9f811869606deca9f750c039ab0d6a0}{map\-View} (Mono\-Behaviour view, \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binding}{I\-Mediation\-Binding} binding)
+\begin{DoxyCompactList}\small\item\em Creates and registers a \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator}{Mediator} for a specific \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}{View} instance. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder_a29bfcbebcbfcb3d457e234fcf86984cc}{virtual void \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder_a29bfcbebcbfcb3d457e234fcf86984cc}{unmap\-View} (Mono\-Behaviour view, \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binding}{I\-Mediation\-Binding} binding)}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder_a29bfcbebcbfcb3d457e234fcf86984cc}
+
+\begin{DoxyCompactList}\small\item\em Removes a mediator when its view is destroyed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder_a7a568a85244a29ac0352ba7655cd9da9}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder}{I\-Injection\-Binder} {\bfseries injection\-Binder}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder_a7a568a85244a29ac0352ba7655cd9da9}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Binds Views to Mediators. 
+
+Please read \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder}{strange.\-extensions.\-mediation.\-api.\-I\-Mediation\-Binder} where I've extensively explained the purpose of \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}{View} mediation 
+
+\subsection{Member Function Documentation}
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder_ae9f811869606deca9f750c039ab0d6a0}{\index{strange\-::extensions\-::mediation\-::impl\-::\-Mediation\-Binder@{strange\-::extensions\-::mediation\-::impl\-::\-Mediation\-Binder}!map\-View@{map\-View}}
+\index{map\-View@{map\-View}!strange::extensions::mediation::impl::MediationBinder@{strange\-::extensions\-::mediation\-::impl\-::\-Mediation\-Binder}}
+\subsubsection[{map\-View}]{\setlength{\rightskip}{0pt plus 5cm}virtual void strange.\-extensions.\-mediation.\-impl.\-Mediation\-Binder.\-map\-View (
+\begin{DoxyParamCaption}
+\item[{Mono\-Behaviour}]{view, }
+\item[{{\bf I\-Mediation\-Binding}}]{binding}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder_ae9f811869606deca9f750c039ab0d6a0}
+
+
+Creates and registers a \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator}{Mediator} for a specific \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}{View} instance. 
+
+Takes a specific \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}{View} instance and a binding and, if a binding is found for that type, creates and registers a \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator}{Mediator}. \hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder_a79447d8fd991688f087c51b752c002cb}{\index{strange\-::extensions\-::mediation\-::impl\-::\-Mediation\-Binder@{strange\-::extensions\-::mediation\-::impl\-::\-Mediation\-Binder}!Trigger@{Trigger}}
+\index{Trigger@{Trigger}!strange::extensions::mediation::impl::MediationBinder@{strange\-::extensions\-::mediation\-::impl\-::\-Mediation\-Binder}}
+\subsubsection[{Trigger}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-mediation.\-impl.\-Mediation\-Binder.\-Trigger (
+\begin{DoxyParamCaption}
+\item[{{\bf Mediation\-Event}}]{evt, }
+\item[{Mono\-Behaviour}]{view}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder_a79447d8fd991688f087c51b752c002cb}
+
+
+An event that just happened, and the \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}{View} it happened to. 
+
+If the event was Awake, it will trigger creation of a mapped \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator}{Mediator}. 
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder_ab1c50a1f20201998387c002c286599bf}{strange.\-extensions.\-mediation.\-api.\-I\-Mediation\-Binder}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/mediation/impl/Mediation\-Binder.\-cs\end{DoxyCompactItemize}

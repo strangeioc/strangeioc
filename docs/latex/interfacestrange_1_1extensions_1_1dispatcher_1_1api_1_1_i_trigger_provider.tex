@@ -1,0 +1,38 @@
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider}{\section{strange.\-extensions.\-dispatcher.\-api.\-I\-Trigger\-Provider Interface Reference}
+\label{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider}\index{strange.\-extensions.\-dispatcher.\-api.\-I\-Trigger\-Provider@{strange.\-extensions.\-dispatcher.\-api.\-I\-Trigger\-Provider}}
+}
+
+
+Interface for declaring a class capable of triggering an \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{I\-Triggerable} class.  
+
+
+Inheritance diagram for strange.\-extensions.\-dispatcher.\-api.\-I\-Trigger\-Provider\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider_aaf6162c2f0f00d6b42076f7b2397828a}{void \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider_aaf6162c2f0f00d6b42076f7b2397828a}{Add\-Triggerable} (\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{I\-Triggerable} target)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider_aaf6162c2f0f00d6b42076f7b2397828a}
+
+\begin{DoxyCompactList}\small\item\em Register a Triggerable client with this provider. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider_ad582237786b479b01b15b42e4751a0de}{void \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider_ad582237786b479b01b15b42e4751a0de}{Remove\-Triggerable} (\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{I\-Triggerable} target)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider_ad582237786b479b01b15b42e4751a0de}
+
+\begin{DoxyCompactList}\small\item\em Remove a previously registered Triggerable client from this provider. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface for declaring a class capable of triggering an \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{I\-Triggerable} class. 
+
+Objects implementing a Trigger\-Provider declare themselves able to provide triggering to any \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{I\-Triggerable}. The contract specifies that Trigger\-Provider will pass events on to the Triggerable class. This allows notifications, such as Tm\-Events, to pass through the event bus and trigger other binders.
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{strange.\-extensions.\-dispatcher.\-api.\-I\-Triggerable} 
+\end{DoxySeeAlso}
+
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/dispatcher/api/I\-Trigger\-Provider.\-cs\end{DoxyCompactItemize}

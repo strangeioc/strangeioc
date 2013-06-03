@@ -1,0 +1,88 @@
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api}{\section{Package strange.\-extensions.\-injector.\-api}
+\label{namespacestrange_1_1extensions_1_1injector_1_1api}\index{strange.\-extensions.\-injector.\-api@{strange.\-extensions.\-injector.\-api}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder}{I\-Injection\-Binder}
+\begin{DoxyCompactList}\small\item\em A Binder that implements Dependency Injection in Strange\-Io\-C. \end{DoxyCompactList}\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding}
+\begin{DoxyCompactList}\small\item\em The Binding form for the Injection system. \end{DoxyCompactList}\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector}{I\-Injector}
+\begin{DoxyCompactList}\small\item\em Interface for the Injector, which dependencies into provided instances. \end{DoxyCompactList}\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_factory}{I\-Injector\-Factory}
+\begin{DoxyCompactList}\small\item\em Interface for the Factory that instantiates all instances. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_aaf5414484d7eccb5c502984bd70549ae}{Injection\-Binding\-Type} \{ \hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_aaf5414484d7eccb5c502984bd70549aea5b39c8b553c821e7cddc6da64b5bd2ee}{Injection\-Binding\-Type.\-D\-E\-F\-A\-U\-L\-T}, 
+\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_aaf5414484d7eccb5c502984bd70549aeaecf2a6aabcb0538532ba2a7d0d281557}{Injection\-Binding\-Type.\-S\-I\-N\-G\-L\-E\-T\-O\-N}, 
+\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_aaf5414484d7eccb5c502984bd70549aeaecc2e9c313faddb07e7da223c1dc5c3f}{Injection\-Binding\-Type.\-V\-A\-L\-U\-E}
+ \}
+\item 
+enum \hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3}{Injection\-Exception\-Type} \{ \\*
+\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a79b274c6abdd5dbdee1fc57599e4199b}{Injection\-Exception\-Type.\-C\-I\-R\-C\-U\-L\-A\-R\-\_\-\-D\-E\-P\-E\-N\-D\-E\-N\-C\-Y}, 
+\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a6b2a4399cd12f799fcb9d3f9bd547a44}{Injection\-Exception\-Type.\-I\-L\-L\-E\-G\-A\-L\-\_\-\-B\-I\-N\-D\-I\-N\-G\-\_\-\-V\-A\-L\-U\-E}, 
+\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3aa2e9be06fffa1381cd8334d9573dbb1f}{Injection\-Exception\-Type.\-N\-O\-\_\-\-B\-I\-N\-D\-E\-R}, 
+\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a3dad242c36c44d758a7e045c2be3b2ad}{Injection\-Exception\-Type.\-N\-O\-\_\-\-R\-E\-F\-L\-E\-C\-T\-O\-R}, 
+\\*
+\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a01db55ee4f3906c693e2699428696a5b}{Injection\-Exception\-Type.\-N\-O\-\_\-\-F\-A\-C\-T\-O\-R\-Y}, 
+\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a35310c46c16e400ec14d3f312e93ec71}{Injection\-Exception\-Type.\-N\-U\-L\-L\-\_\-\-B\-I\-N\-D\-I\-N\-G}, 
+\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3ae56115cda206190a98cdfbc8134f06fb}{Injection\-Exception\-Type.\-N\-U\-L\-L\-\_\-\-C\-O\-N\-S\-T\-R\-U\-C\-T\-O\-R}, 
+\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a89649dd9e221e1c72234ad07e5438f46}{Injection\-Exception\-Type.\-N\-U\-L\-L\-\_\-\-I\-N\-J\-E\-C\-T\-I\-O\-N\-\_\-\-P\-O\-I\-N\-T}, 
+\\*
+\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3addad0bdbc0ef75cea9fd75de89fcadd1}{Injection\-Exception\-Type.\-N\-U\-L\-L\-\_\-\-R\-E\-F\-L\-E\-C\-T\-I\-O\-N}, 
+\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a8a7371180fcfcf8d19f526506f886887}{Injection\-Exception\-Type.\-N\-U\-L\-L\-\_\-\-T\-A\-R\-G\-E\-T}, 
+\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3ab91f1fd5e0526d191cf6d1d871b77685}{Injection\-Exception\-Type.\-N\-U\-L\-L\-\_\-\-V\-A\-L\-U\-E\-\_\-\-I\-N\-J\-E\-C\-T\-I\-O\-N}, 
+\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3aa2bdd50d3a2f2f510f0209f648f0c0b6}{Injection\-Exception\-Type.\-S\-E\-T\-T\-E\-R\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_aaf5414484d7eccb5c502984bd70549ae}{\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!Injection\-Binding\-Type@{Injection\-Binding\-Type}}
+\index{Injection\-Binding\-Type@{Injection\-Binding\-Type}!strange::extensions::injector::api@{strange\-::extensions\-::injector\-::api}}
+\subsubsection[{Injection\-Binding\-Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf strange.\-extensions.\-injector.\-api.\-Injection\-Binding\-Type}}}\label{namespacestrange_1_1extensions_1_1injector_1_1api_aaf5414484d7eccb5c502984bd70549ae}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{D\-E\-F\-A\-U\-L\-T@{D\-E\-F\-A\-U\-L\-T}!strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}}\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!D\-E\-F\-A\-U\-L\-T@{D\-E\-F\-A\-U\-L\-T}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_aaf5414484d7eccb5c502984bd70549aea5b39c8b553c821e7cddc6da64b5bd2ee}{D\-E\-F\-A\-U\-L\-T}\label{namespacestrange_1_1extensions_1_1injector_1_1api_aaf5414484d7eccb5c502984bd70549aea5b39c8b553c821e7cddc6da64b5bd2ee}
+}]The binding provides a new instance every time. \index{S\-I\-N\-G\-L\-E\-T\-O\-N@{S\-I\-N\-G\-L\-E\-T\-O\-N}!strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}}\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!S\-I\-N\-G\-L\-E\-T\-O\-N@{S\-I\-N\-G\-L\-E\-T\-O\-N}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_aaf5414484d7eccb5c502984bd70549aeaecf2a6aabcb0538532ba2a7d0d281557}{S\-I\-N\-G\-L\-E\-T\-O\-N}\label{namespacestrange_1_1extensions_1_1injector_1_1api_aaf5414484d7eccb5c502984bd70549aeaecf2a6aabcb0538532ba2a7d0d281557}
+}]The binding always provides the same instance. \index{V\-A\-L\-U\-E@{V\-A\-L\-U\-E}!strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}}\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!V\-A\-L\-U\-E@{V\-A\-L\-U\-E}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_aaf5414484d7eccb5c502984bd70549aeaecc2e9c313faddb07e7da223c1dc5c3f}{V\-A\-L\-U\-E}\label{namespacestrange_1_1extensions_1_1injector_1_1api_aaf5414484d7eccb5c502984bd70549aeaecc2e9c313faddb07e7da223c1dc5c3f}
+}]The binding always provides the same instance based on a provided value. \end{description}
+\end{Desc}
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3}{\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!Injection\-Exception\-Type@{Injection\-Exception\-Type}}
+\index{Injection\-Exception\-Type@{Injection\-Exception\-Type}!strange::extensions::injector::api@{strange\-::extensions\-::injector\-::api}}
+\subsubsection[{Injection\-Exception\-Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf strange.\-extensions.\-injector.\-api.\-Injection\-Exception\-Type}}}\label{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{C\-I\-R\-C\-U\-L\-A\-R\-\_\-\-D\-E\-P\-E\-N\-D\-E\-N\-C\-Y@{C\-I\-R\-C\-U\-L\-A\-R\-\_\-\-D\-E\-P\-E\-N\-D\-E\-N\-C\-Y}!strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}}\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!C\-I\-R\-C\-U\-L\-A\-R\-\_\-\-D\-E\-P\-E\-N\-D\-E\-N\-C\-Y@{C\-I\-R\-C\-U\-L\-A\-R\-\_\-\-D\-E\-P\-E\-N\-D\-E\-N\-C\-Y}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a79b274c6abdd5dbdee1fc57599e4199b}{C\-I\-R\-C\-U\-L\-A\-R\-\_\-\-D\-E\-P\-E\-N\-D\-E\-N\-C\-Y}\label{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a79b274c6abdd5dbdee1fc57599e4199b}
+}]A circular dependency was found. This Exception was raised to prevent a stack overflow. \index{I\-L\-L\-E\-G\-A\-L\-\_\-\-B\-I\-N\-D\-I\-N\-G\-\_\-\-V\-A\-L\-U\-E@{I\-L\-L\-E\-G\-A\-L\-\_\-\-B\-I\-N\-D\-I\-N\-G\-\_\-\-V\-A\-L\-U\-E}!strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}}\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!I\-L\-L\-E\-G\-A\-L\-\_\-\-B\-I\-N\-D\-I\-N\-G\-\_\-\-V\-A\-L\-U\-E@{I\-L\-L\-E\-G\-A\-L\-\_\-\-B\-I\-N\-D\-I\-N\-G\-\_\-\-V\-A\-L\-U\-E}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a6b2a4399cd12f799fcb9d3f9bd547a44}{I\-L\-L\-E\-G\-A\-L\-\_\-\-B\-I\-N\-D\-I\-N\-G\-\_\-\-V\-A\-L\-U\-E}\label{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a6b2a4399cd12f799fcb9d3f9bd547a44}
+}]The value of a binding does not extend or implement the binding type. \index{N\-O\-\_\-\-B\-I\-N\-D\-E\-R@{N\-O\-\_\-\-B\-I\-N\-D\-E\-R}!strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}}\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!N\-O\-\_\-\-B\-I\-N\-D\-E\-R@{N\-O\-\_\-\-B\-I\-N\-D\-E\-R}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3aa2e9be06fffa1381cd8334d9573dbb1f}{N\-O\-\_\-\-B\-I\-N\-D\-E\-R}\label{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3aa2e9be06fffa1381cd8334d9573dbb1f}
+}]No Injection\-Binder found. \index{N\-O\-\_\-\-R\-E\-F\-L\-E\-C\-T\-O\-R@{N\-O\-\_\-\-R\-E\-F\-L\-E\-C\-T\-O\-R}!strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}}\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!N\-O\-\_\-\-R\-E\-F\-L\-E\-C\-T\-O\-R@{N\-O\-\_\-\-R\-E\-F\-L\-E\-C\-T\-O\-R}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a3dad242c36c44d758a7e045c2be3b2ad}{N\-O\-\_\-\-R\-E\-F\-L\-E\-C\-T\-O\-R}\label{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a3dad242c36c44d758a7e045c2be3b2ad}
+}]No Reflection\-Binder found. \index{N\-O\-\_\-\-F\-A\-C\-T\-O\-R\-Y@{N\-O\-\_\-\-F\-A\-C\-T\-O\-R\-Y}!strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}}\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!N\-O\-\_\-\-F\-A\-C\-T\-O\-R\-Y@{N\-O\-\_\-\-F\-A\-C\-T\-O\-R\-Y}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a01db55ee4f3906c693e2699428696a5b}{N\-O\-\_\-\-F\-A\-C\-T\-O\-R\-Y}\label{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a01db55ee4f3906c693e2699428696a5b}
+}]No Injector\-Factory found. \index{N\-U\-L\-L\-\_\-\-B\-I\-N\-D\-I\-N\-G@{N\-U\-L\-L\-\_\-\-B\-I\-N\-D\-I\-N\-G}!strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}}\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!N\-U\-L\-L\-\_\-\-B\-I\-N\-D\-I\-N\-G@{N\-U\-L\-L\-\_\-\-B\-I\-N\-D\-I\-N\-G}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a35310c46c16e400ec14d3f312e93ec71}{N\-U\-L\-L\-\_\-\-B\-I\-N\-D\-I\-N\-G}\label{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a35310c46c16e400ec14d3f312e93ec71}
+}]The requested Binding was null or couldn't be found. \index{N\-U\-L\-L\-\_\-\-C\-O\-N\-S\-T\-R\-U\-C\-T\-O\-R@{N\-U\-L\-L\-\_\-\-C\-O\-N\-S\-T\-R\-U\-C\-T\-O\-R}!strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}}\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!N\-U\-L\-L\-\_\-\-C\-O\-N\-S\-T\-R\-U\-C\-T\-O\-R@{N\-U\-L\-L\-\_\-\-C\-O\-N\-S\-T\-R\-U\-C\-T\-O\-R}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3ae56115cda206190a98cdfbc8134f06fb}{N\-U\-L\-L\-\_\-\-C\-O\-N\-S\-T\-R\-U\-C\-T\-O\-R}\label{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3ae56115cda206190a98cdfbc8134f06fb}
+}]During an attempt to construct, no constructor was found. \index{N\-U\-L\-L\-\_\-\-I\-N\-J\-E\-C\-T\-I\-O\-N\-\_\-\-P\-O\-I\-N\-T@{N\-U\-L\-L\-\_\-\-I\-N\-J\-E\-C\-T\-I\-O\-N\-\_\-\-P\-O\-I\-N\-T}!strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}}\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!N\-U\-L\-L\-\_\-\-I\-N\-J\-E\-C\-T\-I\-O\-N\-\_\-\-P\-O\-I\-N\-T@{N\-U\-L\-L\-\_\-\-I\-N\-J\-E\-C\-T\-I\-O\-N\-\_\-\-P\-O\-I\-N\-T}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a89649dd9e221e1c72234ad07e5438f46}{N\-U\-L\-L\-\_\-\-I\-N\-J\-E\-C\-T\-I\-O\-N\-\_\-\-P\-O\-I\-N\-T}\label{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a89649dd9e221e1c72234ad07e5438f46}
+}]During setter injection the requested setter resolved to null. \index{N\-U\-L\-L\-\_\-\-R\-E\-F\-L\-E\-C\-T\-I\-O\-N@{N\-U\-L\-L\-\_\-\-R\-E\-F\-L\-E\-C\-T\-I\-O\-N}!strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}}\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!N\-U\-L\-L\-\_\-\-R\-E\-F\-L\-E\-C\-T\-I\-O\-N@{N\-U\-L\-L\-\_\-\-R\-E\-F\-L\-E\-C\-T\-I\-O\-N}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3addad0bdbc0ef75cea9fd75de89fcadd1}{N\-U\-L\-L\-\_\-\-R\-E\-F\-L\-E\-C\-T\-I\-O\-N}\label{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3addad0bdbc0ef75cea9fd75de89fcadd1}
+}]No reflection was provided for the requested class. \index{N\-U\-L\-L\-\_\-\-T\-A\-R\-G\-E\-T@{N\-U\-L\-L\-\_\-\-T\-A\-R\-G\-E\-T}!strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}}\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!N\-U\-L\-L\-\_\-\-T\-A\-R\-G\-E\-T@{N\-U\-L\-L\-\_\-\-T\-A\-R\-G\-E\-T}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a8a7371180fcfcf8d19f526506f886887}{N\-U\-L\-L\-\_\-\-T\-A\-R\-G\-E\-T}\label{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a8a7371180fcfcf8d19f526506f886887}
+}]The instance being injected into resolved to null. \index{N\-U\-L\-L\-\_\-\-V\-A\-L\-U\-E\-\_\-\-I\-N\-J\-E\-C\-T\-I\-O\-N@{N\-U\-L\-L\-\_\-\-V\-A\-L\-U\-E\-\_\-\-I\-N\-J\-E\-C\-T\-I\-O\-N}!strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}}\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!N\-U\-L\-L\-\_\-\-V\-A\-L\-U\-E\-\_\-\-I\-N\-J\-E\-C\-T\-I\-O\-N@{N\-U\-L\-L\-\_\-\-V\-A\-L\-U\-E\-\_\-\-I\-N\-J\-E\-C\-T\-I\-O\-N}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3ab91f1fd5e0526d191cf6d1d871b77685}{N\-U\-L\-L\-\_\-\-V\-A\-L\-U\-E\-\_\-\-I\-N\-J\-E\-C\-T\-I\-O\-N}\label{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3ab91f1fd5e0526d191cf6d1d871b77685}
+}]The value being injected into the target resolved to null. \index{S\-E\-T\-T\-E\-R\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H@{S\-E\-T\-T\-E\-R\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}!strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}}\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!S\-E\-T\-T\-E\-R\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H@{S\-E\-T\-T\-E\-R\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3aa2bdd50d3a2f2f510f0209f648f0c0b6}{S\-E\-T\-T\-E\-R\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}\label{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3aa2bdd50d3a2f2f510f0209f648f0c0b6}
+}]The list of setters and setter names must have exactly the same number of entries. Two lists are required because Unity does not at present support Tuple. Seeing this error likely indicates a problem with the Reflector (it's not you, it's me). \end{description}
+\end{Desc}
