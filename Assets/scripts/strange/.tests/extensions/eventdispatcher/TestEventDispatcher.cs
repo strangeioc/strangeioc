@@ -98,14 +98,38 @@ namespace strange.unittests
 			Assert.AreEqual(INIT_VALUE + PAYLOAD + INCREMENT, confirmationValue);
 		}
 
+		[Test]
+		public void TestBadlyFormedCallback()
+		{
+			confirmationValue = INIT_VALUE;
+			dispatcher.addListener (SomeEnum.ONE, badArgumentMethod);
+
+			TestDelegate testDelegate = delegate() {
+				dispatcher.Dispatch (SomeEnum.ONE, PAYLOAD);
+			};
+
+			EventDispatcherException ex = Assert.Throws<EventDispatcherException> (testDelegate);
+			Assert.That (ex.type == EventDispatcherExceptionType.TARGET_INVOCATION);
+		}
+
 		private void noArgumentsMethod()
 		{
 			confirmationValue += INCREMENT;
 		}
 
-		private void oneArgumentMethod(object value)
+		private void oneArgumentMethod(object payload)
 		{
-			confirmationValue += (int)value;
+			TmEvent evt = payload as TmEvent;
+			int data = (int)evt.data;
+
+			confirmationValue += data;
+		}
+
+		private void badArgumentMethod(object payload)
+		{
+			int data = (int)payload;
+
+			confirmationValue += data;
 		}
 	}
 }
