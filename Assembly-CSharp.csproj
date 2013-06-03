@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{0AAD9E9E-5F27-99E5-6229-1E85B6746939}</ProjectGuid>
+	<ProjectGuid>{EDFB21CB-8A2D-0241-3DBA-DF0E55C41E5A}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -44,6 +44,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\scripts\strange\ReadMe.cs" />
      <Compile Include="Assets\scripts\strange\examples\multiplecontexts\game\GameContext.cs" />
      <Compile Include="Assets\scripts\strange\examples\multiplecontexts\game\GameRoot.cs" />
      <Compile Include="Assets\scripts\strange\examples\multiplecontexts\game\controller\GameEvent.cs" />
@@ -104,9 +105,10 @@
      <Compile Include="Assets\scripts\strange\extensions\command\api\ICommandBinding.cs" />
      <Compile Include="Assets\scripts\strange\extensions\command\impl\Command.cs" />
      <Compile Include="Assets\scripts\strange\extensions\command\impl\CommandBinder.cs" />
-     <Compile Include="Assets\scripts\strange\extensions\command\impl\CommandBinderWithEvents.cs" />
      <Compile Include="Assets\scripts\strange\extensions\command\impl\CommandBinding.cs" />
      <Compile Include="Assets\scripts\strange\extensions\command\impl\CommandException.cs" />
+     <Compile Include="Assets\scripts\strange\extensions\command\impl\EventCommand.cs" />
+     <Compile Include="Assets\scripts\strange\extensions\command\impl\EventCommandBinder.cs" />
      <Compile Include="Assets\scripts\strange\extensions\context\api\ContextEvent.cs" />
      <Compile Include="Assets\scripts\strange\extensions\context\api\ContextExceptionType.cs" />
      <Compile Include="Assets\scripts\strange\extensions\context\api\ContextKeys.cs" />
@@ -125,7 +127,6 @@
      <Compile Include="Assets\scripts\strange\extensions\dispatcher\eventdispatcher\api\IEventBinding.cs" />
      <Compile Include="Assets\scripts\strange\extensions\dispatcher\eventdispatcher\api\IEventDispatcher.cs" />
      <Compile Include="Assets\scripts\strange\extensions\dispatcher\eventdispatcher\impl\EventBinding.cs" />
-     <Compile Include="Assets\scripts\strange\extensions\dispatcher\eventdispatcher\impl\EventCommand.cs" />
      <Compile Include="Assets\scripts\strange\extensions\dispatcher\eventdispatcher\impl\EventDispatcher.cs" />
      <Compile Include="Assets\scripts\strange\extensions\dispatcher\eventdispatcher\impl\EventDispatcherException.cs" />
      <Compile Include="Assets\scripts\strange\extensions\dispatcher\eventdispatcher\impl\TmEvent.cs" />
@@ -147,22 +148,28 @@
      <Compile Include="Assets\scripts\strange\extensions\mediation\api\IMediator.cs" />
      <Compile Include="Assets\scripts\strange\extensions\mediation\api\MediationEvent.cs" />
      <Compile Include="Assets\scripts\strange\extensions\mediation\api\MediationExceptionType.cs" />
+     <Compile Include="Assets\scripts\strange\extensions\mediation\impl\EventMediator.cs" />
+     <Compile Include="Assets\scripts\strange\extensions\mediation\impl\EventView.cs" />
      <Compile Include="Assets\scripts\strange\extensions\mediation\impl\MediationBinder.cs" />
      <Compile Include="Assets\scripts\strange\extensions\mediation\impl\MediationBinding.cs" />
      <Compile Include="Assets\scripts\strange\extensions\mediation\impl\MediationException.cs" />
      <Compile Include="Assets\scripts\strange\extensions\mediation\impl\Mediator.cs" />
-     <Compile Include="Assets\scripts\strange\extensions\mediation\impl\MediatorWithDispatcher.cs" />
      <Compile Include="Assets\scripts\strange\extensions\mediation\impl\View.cs" />
-     <Compile Include="Assets\scripts\strange\extensions\mediation\impl\ViewWithDispatcher.cs" />
      <Compile Include="Assets\scripts\strange\extensions\mediation\test\RuntimeTester.cs" />
      <Compile Include="Assets\scripts\strange\extensions\mediation\test\TestView.cs" />
+     <Compile Include="Assets\scripts\strange\extensions\reflector\api\IReflectedClass.cs" />
+     <Compile Include="Assets\scripts\strange\extensions\reflector\api\IReflectionBinder.cs" />
+     <Compile Include="Assets\scripts\strange\extensions\reflector\api\ReflectionExceptionType.cs" />
+     <Compile Include="Assets\scripts\strange\extensions\reflector\impl\ReflectedClass.cs" />
+     <Compile Include="Assets\scripts\strange\extensions\reflector\impl\ReflectionBinder.cs" />
+     <Compile Include="Assets\scripts\strange\extensions\reflector\impl\ReflectionException.cs" />
      <Compile Include="Assets\scripts\strange\extensions\sequencer\api\ISequenceBinding.cs" />
      <Compile Include="Assets\scripts\strange\extensions\sequencer\api\ISequenceCommand.cs" />
      <Compile Include="Assets\scripts\strange\extensions\sequencer\api\ISequencer.cs" />
      <Compile Include="Assets\scripts\strange\extensions\sequencer\api\SequencerExceptionType.cs" />
+     <Compile Include="Assets\scripts\strange\extensions\sequencer\impl\EventSequenceCommand.cs" />
      <Compile Include="Assets\scripts\strange\extensions\sequencer\impl\SequenceBinding.cs" />
      <Compile Include="Assets\scripts\strange\extensions\sequencer\impl\SequenceCommand.cs" />
-     <Compile Include="Assets\scripts\strange\extensions\sequencer\impl\SequenceCommandWithEvent.cs" />
      <Compile Include="Assets\scripts\strange\extensions\sequencer\impl\Sequencer.cs" />
      <Compile Include="Assets\scripts\strange\extensions\sequencer\impl\SequencerException.cs" />
      <Compile Include="Assets\scripts\strange\extensions\sequencer\impl\SequencerWithEvents.cs" />
@@ -170,12 +177,10 @@
      <Compile Include="Assets\scripts\strange\framework\api\BindingConstraintType.cs" />
      <Compile Include="Assets\scripts\strange\framework\api\IBinder.cs" />
      <Compile Include="Assets\scripts\strange\framework\api\IBinding.cs" />
-     <Compile Include="Assets\scripts\strange\framework\api\IFactory.cs" />
      <Compile Include="Assets\scripts\strange\framework\api\ISemiBinding.cs" />
      <Compile Include="Assets\scripts\strange\framework\impl\Binder.cs" />
      <Compile Include="Assets\scripts\strange\framework\impl\Binding.cs" />
      <Compile Include="Assets\scripts\strange\framework\impl\SemiBinding.cs" />
-     <None Include="Assets\scripts\strange\ReadMe.md.txt" />
      <None Include="Assets\scripts\strange\examples\multiplecontexts\ReadMe.txt" />
      <None Include="Assets\scripts\strange\examples\myfirstproject\ReadMe.txt" />
      <None Include="Assets\scripts\strange\extensions\mediation\test\ReadMe.txt" />
@@ -189,5 +194,6 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  
+  <ProjectExtensions xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><MonoDevelop><Properties><Policies><TextStylePolicy TabsToSpaces="False" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/x-csharp" /><CSharpFormattingPolicy inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" /></Policies></Properties></MonoDevelop></ProjectExtensions>
+
 </Project>
