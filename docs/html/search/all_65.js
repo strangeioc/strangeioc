@@ -2,6 +2,7 @@ var searchData=
 [
   ['emptycallback',['EmptyCallback',['../namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a4d68e68b31e6e0f733bd72ddcd6111fa',1,'strange::extensions::dispatcher::eventdispatcher::api']]],
   ['enabled',['ENABLED',['../namespacestrange_1_1extensions_1_1mediation_1_1api.html#ae5a81bb1edf9fca1d2aca9f4fada72a8ac8cf6eea8f096ed51160b484d97c5bbd',1,'strange::extensions::mediation::api']]],
+  ['event_5fkey_5fnull',['EVENT_KEY_NULL',['../namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#ac82e4192fcc43ba5e64f0469a3c7c06da167e65bbf0cf6aa45533050ccb2511d6',1,'strange::extensions::dispatcher::eventdispatcher::api']]],
   ['event_5ftype_5fmismatch',['EVENT_TYPE_MISMATCH',['../namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#ac82e4192fcc43ba5e64f0469a3c7c06da5ff62c887d3c7f1707f7033db01438fa',1,'strange::extensions::dispatcher::eventdispatcher::api']]],
   ['eventbinding',['EventBinding',['../classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_binding.html',1,'strange::extensions::dispatcher::eventdispatcher::impl']]],
   ['eventcallback',['EventCallback',['../namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a5b2a372c9c074884178eb4a32992afd3',1,'strange::extensions::dispatcher::eventdispatcher::api']]],
