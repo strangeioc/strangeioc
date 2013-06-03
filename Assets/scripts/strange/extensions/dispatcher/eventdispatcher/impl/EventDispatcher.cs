@@ -55,34 +55,30 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 		public void Dispatch (object eventType, object data)
 		{
 			//Scrub the data to make eventType and data conform if possible
-			if (eventType is string)
+			if (eventType == null)
 			{
-				if (data == null)
-				{
-					//Client provided just an event ID. Create an event for injection
-					data = new TmEvent(eventType as String, this, null);
-				}
-				else if (data is TmEvent)
-				{
-					string type = (data as TmEvent).type;
-					if (String.IsNullOrEmpty(type))
-					{
-						(data as TmEvent).type = (string)eventType;
-					}
-					else if ((data as TmEvent).type != (eventType as string))
-					{
-						throw new EventDispatcherException("EventDispatcher won't accept an event where the eventType differs from the payload Event's type. This condition can arise if you relay an event without unpacking it's data.\neventType: " + eventType + "\npayload event type: " + (data as TmEvent).type, EventDispatcherExceptionType.EVENT_TYPE_MISMATCH);
-					}
-				}
-				else
-				{
-					data = new TmEvent(eventType as String, this, data);
-				}
+				throw new EventDispatcherException("Attempt to Dispatch to null.\ndata: " + data, EventDispatcherExceptionType.EVENT_KEY_NULL);
 			}
 			else if (eventType is TmEvent)
 			{
+				//Client provided a full-formed event
 				data = eventType;
 				eventType = (data as TmEvent).type;
+			}
+			else if (data == null)
+			{
+				//Client provided just an event ID. Create an event for injection
+				data = new TmEvent(eventType, this, null);
+			}
+			else if (data is TmEvent)
+			{
+				//Client provided both an evertType and a full-formed TmEvent
+				(data as TmEvent).type = eventType;
+			}
+			else
+			{
+				//Client provided an eventType and some data which is not a TmEvent.
+				data = new TmEvent(eventType, this, data);
 			}
 			
 			if (triggerClients != null)
