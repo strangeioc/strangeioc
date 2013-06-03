@@ -16,7 +16,7 @@ using strange.extensions.dispatcher.eventdispatcher.impl;
 
 namespace strange.examples.myfirstproject
 {
-	public class StartCommand : Command
+	public class StartCommand : EventCommand
 	{
 		
 		[Inject(ContextKeys.CONTEXT_VIEW)]
