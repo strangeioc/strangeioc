@@ -1,5 +1,7 @@
 /**
- * ReflectorBinder
+ * @class strange.extensions.reflector.impl.ReflectionBinder
+ * 
+ * Uses System.Reflection to create `ReflectedClass` instances.
  * 
  * Reflection is a slow process. This binder isolates the calls to System.Reflector 
  * and caches the result, meaning that Reflection is performed only once per class.
@@ -158,11 +160,6 @@ namespace strange.extensions.reflector.impl
 
 					object bindingName = attr.name;
 					names = Add (bindingName, names);
-
-					if (names.Length > 0)
-					{
-						int a = 1;
-					}
 				}
 			}
 			reflected.setters = pairs;

@@ -85,7 +85,7 @@ namespace strange.unittests
 		}
 
 		[Test]
-		public void TestNameAsValue()
+		public void TestNameToValue()
 		{
 			binding.Key<InjectableSuperClass> ().To<InjectableDerivedClass> ().ToName (SomeEnum.FOUR);
 			Assert.That ((SomeEnum)binding.name == SomeEnum.FOUR);

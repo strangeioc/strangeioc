@@ -21,8 +21,8 @@ namespace strange.unittests
 		public void SetUp()
 		{
 			injectionBinder = new InjectionBinder();
-			injectionBinder.Bind<IInjectionBinder> ().AsValue (injectionBinder);
-			injectionBinder.Bind<ICommandBinder> ().To<CommandBinder> ().AsSingleton ();
+			injectionBinder.Bind<IInjectionBinder> ().ToValue (injectionBinder);
+			injectionBinder.Bind<ICommandBinder> ().To<CommandBinder> ().ToSingleton ();
 			commandBinder = injectionBinder.GetInstance<ICommandBinder> () as ICommandBinder;
 		}
 
@@ -30,7 +30,7 @@ namespace strange.unittests
 		public void TestExecuteWithInjection ()
 		{
 			//CommandWithInjection requires an ISimpleInterface
-			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().AsSingleton();
+			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().ToSingleton();
 
 			//Bind the trigger to the command
 			commandBinder.Bind(SomeEnum.ONE).To<CommandWithInjection>();
@@ -45,7 +45,7 @@ namespace strange.unittests
 		public void TestMultipleCommands ()
 		{
 			//CommandWithInjection requires an ISimpleInterface
-			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().AsSingleton();
+			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().ToSingleton();
 
 			//Bind the trigger to the command
 			commandBinder.Bind(SomeEnum.ONE).To<CommandWithInjection>().To<CommandWithExecute>().To<CommandWithoutExecute>();
@@ -68,7 +68,7 @@ namespace strange.unittests
 		public void TestNotOnce()
 		{
 			//CommandWithInjection requires an ISimpleInterface
-			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().AsSingleton();
+			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().ToSingleton();
 
 			//Bind the trigger to the command
 			commandBinder.Bind(SomeEnum.ONE).To<CommandWithInjection>();
@@ -86,7 +86,7 @@ namespace strange.unittests
 		public void TestOnce ()
 		{
 			//CommandWithInjection requires an ISimpleInterface
-			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().AsSingleton();
+			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().ToSingleton();
 
 			//Bind the trigger to the command
 			commandBinder.Bind(SomeEnum.ONE).To<CommandWithInjection>().Once();

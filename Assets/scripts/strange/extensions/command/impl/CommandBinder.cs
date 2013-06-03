@@ -1,3 +1,38 @@
+/**
+ * @class strange.extensions.command.impl.CommandBinder
+ * 
+ * A Binder that triggers the instantiation of Commands.
+ * 
+ * Commands are where the logic of your application belongs.
+ * These Commands typically focus on a single function, such as
+ * adding a View, requesting a service, reading from or saving to a model.
+ * 
+ * The act of binding events to Commands means that code needn't know
+ * anything about an event recipient, or even how the event will be used.
+ * For example, a Mediator might send out an event that two View objects
+ * collided. A Command would then determine that the result of that event
+ * was to Destroy both objects, tell a ScoreKeeper model to change the
+ * score and request a message be sent to the server. Whether that
+ * example means one Command or three is up to your coding preference...
+ * CommandBinder can trigger one Command or multiple Commands off the
+ * same event.
+ * 
+ * Note that Strange also a features a Sequencer. CommandBinder fires all
+ * Commands in parallel, while Sequencer runs them serially, with the
+ * option of suspending the chain at any time.
+ * 
+ * Example bindings:
+
+		Bind("someEvent").To<SomeCommand>(); //Works, but poor form to use strings. Use the next example instead
+
+		Bind(EventMap.SOME_EVENT).To<SomeCommand>(); //Make it a constant
+
+		Bind(ContextEvent.START).To<StartCommand>().Once(); //Destroy the binding immediately after a single use
+
+ * 
+ * See Command for details on asynchronous Commands.
+ */
+
 using System;
 using System.Collections.Generic;
 using strange.extensions.command.api;
@@ -24,12 +59,12 @@ namespace strange.extensions.command.impl
 			return new CommandBinding(resolver);
 		}
 
-		public void ReactTo (object trigger)
+		virtual public void ReactTo (object trigger)
 		{
 			ReactTo (trigger, null);
 		}
 		
-		public void ReactTo(object trigger, object data)
+		virtual public void ReactTo(object trigger, object data)
 		{
 			ICommandBinding binding = GetBinding (trigger) as ICommandBinding;
 			if (binding != null)

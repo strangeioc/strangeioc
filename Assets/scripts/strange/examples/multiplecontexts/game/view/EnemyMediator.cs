@@ -12,7 +12,7 @@ using strange.extensions.mediation.impl;
 
 namespace strange.examples.multiplecontexts.game
 {
-	public class EnemyMediator : MediatorWithDispatcher
+	public class EnemyMediator : EventMediator
 	{
 		private EnemyView view;
 		

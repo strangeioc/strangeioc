@@ -37,7 +37,7 @@ namespace strange.examples.multiplecontexts.social
 			
 			//We're going to Bind this for injection, since we'll need it later when we compare
 			//the user's highscore with his own score and the highscore of others.
-			injectionBinder.Bind<UserVO>().AsValue(vo);
+			injectionBinder.Bind<UserVO>().ToValue(vo);
 			
 			dispatcher.Dispatch(SocialEvent.FULFILL_CURRENT_USER_REQUEST, vo);
 			Release();

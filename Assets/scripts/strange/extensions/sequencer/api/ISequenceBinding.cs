@@ -1,16 +1,24 @@
+/**
+ * @interface strange.extensions.sequencer.api.ISequenceBinding
+ * 
+ * Defines the form of a binding for use with the Sequencer. 
+ */
+
 using System;
+using strange.extensions.command.api;
 using strange.extensions.sequencer.api;
 using strange.framework.api;
 
 namespace strange.extensions.sequencer.api
 {
-	public interface ISequenceBinding : IBinding
+	public interface ISequenceBinding : ICommandBinding
 	{
-		ISequenceBinding Once();
-		bool isOneOff{ get; set;}
-		
-		///////////
-		/// Below this point is facade for IBinding
+		/// Declares that the Binding is a one-off. As soon as it's satisfied, it will be unmapped.
+		new ISequenceBinding Once();
+
+		/// Get/set the property set to `true` by `Once()`
+		new bool isOneOff{ get; set;}
+
 		new ISequenceBinding Key<T>();
 		new ISequenceBinding Key(object key);
 		new ISequenceBinding To<T>();

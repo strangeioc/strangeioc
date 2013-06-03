@@ -1,3 +1,13 @@
+/**
+ * @class strange.extensions.command.impl.CommandBinding
+ * 
+ * The Binding for CommandBinder.
+ * 
+ * The only real distinction between CommandBinding and Binding
+ * is the addition of `Once()`, which signals that the Binding
+ * should be destroyed immediately after a single use.
+ */
+
 using System;
 using strange.extensions.command.api;
 using strange.framework.impl;

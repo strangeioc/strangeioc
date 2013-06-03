@@ -5,7 +5,7 @@ using strange.extensions.mediation.impl;
 
 namespace strange.examples.multiplecontexts.game
 {
-	public class ScoreboardMediator : MediatorWithDispatcher
+	public class ScoreboardMediator : EventMediator
 	{
 		private ScoreboardView view;
 		

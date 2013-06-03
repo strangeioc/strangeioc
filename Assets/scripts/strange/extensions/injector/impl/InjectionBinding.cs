@@ -1,3 +1,11 @@
+/**
+ * @class strange.extensions.injector.impl.InjectionBinding
+ * 
+ * The Binding for Injections.
+ * 
+ * @see strange.extensions.injector.api.IInjectionBinding
+ */
+
 using System;
 using strange.framework.api;
 using strange.framework.impl;
@@ -37,7 +45,7 @@ namespace strange.extensions.injector.impl
 			}
 		}
 
-		public IInjectionBinding AsSingleton()
+		public IInjectionBinding ToSingleton()
 		{
 			type = InjectionBindingType.SINGLETON;
 			if (resolver != null)
@@ -45,7 +53,7 @@ namespace strange.extensions.injector.impl
 			return this;
 		}
 
-		public IInjectionBinding AsValue (object o)
+		public IInjectionBinding ToValue (object o)
 		{
 			Type objType = o.GetType ();
 
@@ -84,7 +92,6 @@ namespace strange.extensions.injector.impl
 			return Key (key);
 		}
 
-		//Everything below this point is simply facade on Binding to ensure fluent interface
 		new public IInjectionBinding Key<T>()
 		{
 			return base.Key<T> () as IInjectionBinding;

@@ -1,19 +1,20 @@
 /**
- * Concrete binding.
+ * @class strange.framework.impl.Binding
  * 
  * A binding maintains at least two — and optionally three — SemiBindings:
- * - key	- The Type or value that a client provides in order to unlock a value.
- * - value	- One or more things tied to and released by the offering of a key
- * - name	- An optional discriminator, allowing a client to differentiate between multiple keys of the same Type
  * 
- * Resolver
- * A resolver method (type Binder.BindingResolver) is a callback passed in to resolve
- * instantiation chains. For example, in injectionBinder, you can declare:
+ * <ul>
+ * <li>key - The Type or value that a client provides in order to unlock a value.</li>
+ * <li>value - One or more things tied to and released by the offering of a key</li>
+ * <li>name - An optional discriminator, allowing a client to differentiate between multiple keys of the same Type</li>
+ * </ul>
  * 
- * Bind<IMyInterface>().To<MyConcreteClass>().AsSingleton();
+ * <p>Resolver</p>
+ * The resolver method (type Binder.BindingResolver) is a callback passed in to resolve
+ * instantiation chains.
  * 
- * The resolver fires at each stage of the daisy chain, allowing the Binder to monitor
- * and register that certain Binding actions have occurred.
+ * @see strange.framework.api.IBinding
+ * @see strange.framework.impl.Binder;
  */
 
 using strange.framework.api;
@@ -101,26 +102,23 @@ namespace strange.framework.impl
 		{
 		}
 
-		//Tie this binding to a Type key
+
 		virtual public IBinding Key<T>()
 		{
 			return Key (typeof(T));
 		}
 
-		//Tie this binding to a value key, such as a string
 		virtual public IBinding Key(object o)
 		{
 			_key.Add (o);
 			return this;
 		}
 
-		//Bind to a Type
 		virtual public IBinding To<T>()
 		{
 			return To (typeof(T));
 		}
 
-		//Bind to a value
 		virtual public IBinding To(object o)
 		{
 			_value.Add (o);
@@ -143,13 +141,11 @@ namespace strange.framework.impl
 			return this;
 		}
 
-		//Qualify a binding using a marker type
 		virtual public IBinding Named<T>()
 		{
 			return Named (typeof(T));
 		}
 
-		//Qualify a binding using a value, such as a string
 		virtual public IBinding Named(object o)
 		{
 			if (_name.value == o)

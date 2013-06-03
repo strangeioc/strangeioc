@@ -1,3 +1,12 @@
+/**
+ * @class strange.extensions.mediation.impl.MediationBinder
+ * 
+ * Binds Views to Mediators.
+ * 
+ * Please read strange.extensions.mediation.api.IMediationBinder
+ * where I've extensively explained the purpose of View mediation
+ */
+
 using System;
 using UnityEngine;
 using strange.extensions.injector.api;
@@ -54,7 +63,9 @@ namespace strange.extensions.mediation.impl
 			return base.Bind<T> ();
 		}
 
-		private void mapView(MonoBehaviour view, IMediationBinding binding)
+		/// Creates and registers a Mediator for a specific View instance.
+		/// Takes a specific View instance and a binding and, if a binding is found for that type, creates and registers a Mediator.
+		virtual protected void mapView(MonoBehaviour view, IMediationBinding binding)
 		{
 			Type viewType = view.GetType();
 
@@ -74,7 +85,8 @@ namespace strange.extensions.mediation.impl
 			}
 		}
 
-		private void unmapView(MonoBehaviour view, IMediationBinding binding)
+		/// Removes a mediator when its view is destroyed
+		virtual protected void unmapView(MonoBehaviour view, IMediationBinding binding)
 		{
 			Type viewType = view.GetType();
 

@@ -6,7 +6,7 @@ using strange.extensions.mediation.impl;
 
 namespace strange.examples.multiplecontexts.game
 {
-	public class ScoreboardView : ViewWithDispatcher
+	public class ScoreboardView : EventView
 	{
 		internal const string REPLAY = "REPLAY";
 		

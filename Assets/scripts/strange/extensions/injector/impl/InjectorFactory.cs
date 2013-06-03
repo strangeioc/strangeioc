@@ -1,3 +1,9 @@
+/**
+ * @class strange.extensions.injector.impl.InjectorFactory
+ * 
+ * The Factory that instantiates all instances.
+ */
+
 using System;
 using System.Collections.Generic;
 using strange.extensions.injector.api;
@@ -42,6 +48,7 @@ namespace strange.extensions.injector.impl
 			return Get (binding, null);
 		}
 
+		/// Generate a Singleton instance
 		protected object singletonOf(IInjectionBinding binding, object[] args)
 		{
 			object name = binding.name;
@@ -53,16 +60,19 @@ namespace strange.extensions.injector.impl
 			return dict[name];
 		}
 
+		/// The binding already has a value. Simply return it.
 		protected object valueOf(IInjectionBinding binding)
 		{
 			return binding.value;
 		}
 
+		/// Generate a new instance
 		protected object instanceOf(IInjectionBinding binding, object[] args)
 		{
 			return createFromValue(binding.value, args);
 		}
 
+		/// Call the Activator to attempt instantiation the given object
 		protected object createFromValue(object o, object[] args)
 		{
 			Type value = (o is Type) ? o as Type : o.GetType ();

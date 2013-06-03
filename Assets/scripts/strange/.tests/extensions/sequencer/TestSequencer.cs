@@ -22,8 +22,8 @@ namespace strange.unittests
 		public void SetUp()
 		{
 			injectionBinder = new InjectionBinder();
-			injectionBinder.Bind<IInjectionBinder> ().AsValue (injectionBinder);
-			injectionBinder.Bind<ISequencer> ().To<Sequencer> ().AsSingleton ();
+			injectionBinder.Bind<IInjectionBinder> ().ToValue (injectionBinder);
+			injectionBinder.Bind<ISequencer> ().To<Sequencer> ().ToSingleton ();
 			sequencer = injectionBinder.GetInstance<ISequencer> () as ISequencer;
 		}
 
@@ -31,7 +31,7 @@ namespace strange.unittests
 		public void TestExecuteWithInjection ()
 		{
 			//SequencerCommandWithInjection requires an ISimpleInterface
-			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().AsSingleton();
+			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().ToSingleton();
 
 			//Bind the trigger to the command
 			sequencer.Bind(SomeEnum.ONE).To<SequenceCommandWithInjection>();
@@ -46,7 +46,7 @@ namespace strange.unittests
 		public void TestSequence ()
 		{
 			//CommandWithInjection requires an ISimpleInterface
-			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().AsSingleton();
+			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().ToSingleton();
 
 			//Bind the trigger to the command
 			sequencer.Bind(SomeEnum.ONE).To<SequenceCommandWithInjection>().To<SequenceCommandWithExecute>().To<SequenceCommandWithoutExecute>();
@@ -69,7 +69,7 @@ namespace strange.unittests
 		public void TestInterruptedSequence ()
 		{
 			//CommandWithInjection requires an ISimpleInterface
-			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().AsSingleton();
+			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().ToSingleton();
 
 			//Bind the trigger to the command
 			sequencer.Bind(SomeEnum.ONE).To<SequenceCommandWithInjection>().To<SequenceInterruptingCommand>().To<SequenceCommandWithoutExecute>();

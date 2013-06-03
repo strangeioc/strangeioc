@@ -1,6 +1,19 @@
 /**
- * @class Binder
- * Binder is the core class of all Strange bindings.
+ * @class strange.framework.impl.Binder
+ * 
+ * Collection class for bindings.
+ * 
+ * Binders are a collection class (akin to ArrayList and Dictionary)
+ * with the specific purpose of connecting lists of things that are
+ * not necessarily related, but need some type of runtime association.
+ * Binders are the core concept of the StrangeIoC framework, allowing
+ * all the other functionality to exist and further functionality to
+ * easily be created.
+ * 
+ * Think of each Binder as a collection of causes and effects, or actions
+ * and reactions. If the Key action happens, it triggers the Value
+ * action. So, for example, an Event may be the Key that triggers
+ * instantiation of a particular class.
  */
 
 using System;
@@ -11,12 +24,10 @@ namespace strange.framework.impl
 {
 	public class Binder : IBinder
 	{
-		//List of all bindings
+		/// List of all bindings
 		protected Dictionary <object, Dictionary<object, IBinding>> bindings;
 
-		/**
-		 * A handler for resolving the nature of a binding during chained commands
-		 */
+		/// A handler for resolving the nature of a binding during chained commands
 		public delegate void BindingResolver(IBinding binding);
 
 		public Binder ()
@@ -24,17 +35,11 @@ namespace strange.framework.impl
 			bindings = new Dictionary <object, Dictionary<object, IBinding>> ();
 		}
 
-		/**
-		 * Bind to a Type. Note that this is the exact equivalent of \code {.cs}Bind (typeof(T))/endcode
-		 */
 		virtual public IBinding Bind<T>()
 		{
 			return Bind (typeof(T));
 		}
-		
-		/**
-		 * Bind to a value
-		 */
+
 		virtual public IBinding Bind(object key)
 		{
 			IBinding binding;
@@ -53,17 +58,11 @@ namespace strange.framework.impl
 			return GetBinding (key, null);
 		}
 
-		/**
-		 * Get a binding based on the provided key Type and object name
-		 */
 		virtual public IBinding GetBinding<T>(object name)
 		{
 			return GetBinding (typeof(T), name);
 		}
 
-		/**
-		 * Get a binding based on the provided object and object key
-		 */
 		virtual public IBinding GetBinding(object key, object name)
 		{
 			if(bindings.ContainsKey (key))
@@ -190,6 +189,7 @@ namespace strange.framework.impl
 			return new Binding (resolver);
 		}
 
+		/// The default handler for resolving bindings during chained commands
 		virtual protected void resolver(IBinding binding)
 		{
 			object key = binding.key;
@@ -207,6 +207,12 @@ namespace strange.framework.impl
 			}
 		}
 
+		/**
+		 * This method places individual Bindings into the bindings Dictionary
+		 * as part of the resolving process. Note that while Bindings
+		 * may store multiple keys, each key takes a unique position in the
+		 * bindings Dictionary.
+		 */
 		virtual protected void resolveBinding(IBinding binding, object key)
 		{
 			Dictionary<object, IBinding> dict;
@@ -226,6 +232,7 @@ namespace strange.framework.impl
 			bindings [key] = dict;
 		}
 
+		/// Remove the item at splicePos from the list objectValue 
 		protected object[] spliceValueAt(int splicePos, object[] objectValue)
 		{
 			object[] newList = new object[objectValue.Length - 1];

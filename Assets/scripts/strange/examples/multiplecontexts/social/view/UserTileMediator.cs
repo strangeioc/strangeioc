@@ -14,7 +14,7 @@ using strange.extensions.mediation.impl;
 
 namespace strange.examples.multiplecontexts.social
 {
-	public class UserTileMediator : MediatorWithDispatcher
+	public class UserTileMediator : EventMediator
 	{
 		private UserTileView view;
 		

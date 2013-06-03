@@ -12,7 +12,7 @@ using strange.extensions.mediation.impl;
 
 namespace strange.examples.myfirstproject
 {
-	public class ExampleMediator : MediatorWithDispatcher
+	public class ExampleMediator : EventMediator
 	{
 		private ExampleView view;
 		

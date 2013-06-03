@@ -19,7 +19,7 @@ namespace strange.unittests
 			this._stringValue = stringValue;
 		}
 
-		[DeConstruct]
+		[Deconstruct]
 		public void DeConstruct ()
 		{
 			this._intValue = 0;

@@ -13,7 +13,7 @@ using  strange.examples.multiplecontexts.game;
 
 namespace strange.examples.multiplecontexts.social
 {
-	public class AwardViewMediator : MediatorWithDispatcher
+	public class AwardViewMediator : EventMediator
 	{
 		private AwardView view;
 		

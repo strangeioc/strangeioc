@@ -1,3 +1,11 @@
+/**
+ * @class strange.framework.impl.SemiBinding
+ * 
+ * A managed list of values.
+ * 
+ * @see strange.framework.api.ISemiBinding
+ */
+
 using System;
 using strange.framework.api;
 
@@ -67,6 +75,7 @@ namespace strange.framework.impl
 			return this;
 		}
 
+		/// Remove the value at index splicePos
 		protected void spliceValueAt(int splicePos)
 		{
 			object[] newList = new object[objectValue.Length - 1];

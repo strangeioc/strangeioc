@@ -3,7 +3,7 @@ using UnityEngine;
 using strange.examples.multiplecontexts.main;
 using strange.extensions.context.api;
 using strange.extensions.dispatcher.eventdispatcher.api;
-using strange.extensions.dispatcher.eventdispatcher.impl;
+using strange.extensions.command.impl;
 
 namespace strange.examples.multiplecontexts.game
 {

@@ -127,7 +127,7 @@ namespace strange.unittests
 		public void TestInjectionProvideIntDependency()
 		{
 			binder.Bind<InjectableSuperClass> ().To<InjectableSuperClass> ();
-			binder.Bind<int> ().AsValue (42);
+			binder.Bind<int> ().ToValue (42);
 			InjectableSuperClass testValue = binder.GetInstance<InjectableSuperClass> () as InjectableSuperClass;
 			Assert.IsNotNull (testValue);
 			Assert.That (testValue.intValue == 42);
@@ -137,7 +137,7 @@ namespace strange.unittests
 		public void TestRemoveDependency()
 		{
 			binder.Bind<InjectableSuperClass> ().To<InjectableSuperClass> ();
-			binder.Bind<int> ().AsValue (42);
+			binder.Bind<int> ().ToValue (42);
 			InjectableSuperClass testValueBeforeUnbinding = binder.GetInstance<InjectableSuperClass> () as InjectableSuperClass;
 			Assert.IsNotNull (testValueBeforeUnbinding);
 			Assert.That (testValueBeforeUnbinding.intValue == 42);
@@ -153,10 +153,10 @@ namespace strange.unittests
 		}
 
 		[Test]
-		public void TestValueAsSingleton()
+		public void TestValueToSingleton()
 		{
 			GuaranteedUniqueInstances uniqueInstance = new GuaranteedUniqueInstances ();
-			binder.Bind<GuaranteedUniqueInstances> ().AsValue (uniqueInstance);
+			binder.Bind<GuaranteedUniqueInstances> ().ToValue (uniqueInstance);
 			GuaranteedUniqueInstances instance1 = binder.GetInstance <GuaranteedUniqueInstances> () as GuaranteedUniqueInstances;
 			GuaranteedUniqueInstances instance2 = binder.GetInstance <GuaranteedUniqueInstances> () as GuaranteedUniqueInstances;
 			Assert.AreEqual (instance1.uid, instance2.uid);

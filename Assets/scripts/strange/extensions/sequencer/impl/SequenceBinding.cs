@@ -1,13 +1,20 @@
+/**
+ * @class strange.extensions.sequencer.impl.SequenceBinding
+ * 
+ * The binding for use with the Sequencer. 
+ */
+
 using System;
+using strange.extensions.command.impl;
 using strange.extensions.sequencer.api;
 using strange.framework.api;
 using strange.framework.impl;
 
 namespace strange.extensions.sequencer.impl
 {
-	public class SequenceBinding : Binding, ISequenceBinding
+	public class SequenceBinding : CommandBinding, ISequenceBinding
 	{
-		public bool isOneOff{ get; set;}
+		new public bool isOneOff{ get; set;}
 
 		public SequenceBinding() : base()
 		{
@@ -17,19 +24,19 @@ namespace strange.extensions.sequencer.impl
 		{
 		}
 
-		public ISequenceBinding Once()
+		new public ISequenceBinding Once()
 		{
 			isOneOff = true;
 			return this;
 		}
 		
 		//Everything below this point is simply facade on Binding to ensure fluent interface
-		public ISequenceBinding Bind<T>()
+		new public ISequenceBinding Bind<T>()
 		{
 			return Key<T> ();
 		}
 
-		public ISequenceBinding Bind(object key)
+		new public ISequenceBinding Bind(object key)
 		{
 			return Key (key);
 		}

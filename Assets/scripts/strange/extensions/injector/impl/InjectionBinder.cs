@@ -1,3 +1,12 @@
+/**
+ * @class strange.extensions.injector.impl.InjectionBinder
+ * 
+ * The Binder for creating Injection mappings.
+ * 
+ * @see strange.extensions.injector.api.IInjectionBinder
+ * @see strange.extensions.injector.api.IInjectionBinding
+ */
+
 using System;
 using strange.framework.api;
 using strange.extensions.injector.api;

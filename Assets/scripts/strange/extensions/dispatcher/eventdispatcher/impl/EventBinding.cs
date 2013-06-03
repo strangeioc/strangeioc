@@ -1,3 +1,17 @@
+/**
+ * @interface strange.extensions.dispatcher.eventdispatcher.impl.EventBinding
+ * 
+ * A Binding for the EventDispatcher.
+ * 
+ * EventBindings technically allow any Key, but require either an 
+ * EmptyCallback (no arguments) or an EventCallback (one argument).
+ * 
+ * The TmEvent only accepts strings as keys, so in the standard MVCSContext
+ * setup, your EventBinder keys should also be strings.
+ *
+ * @see strange.extensions.dispatcher.eventdispatcher.impl.TmEvent
+ */
+
 using System;
 using System.Collections.Generic;
 using System.Reflection;

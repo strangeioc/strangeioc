@@ -1,18 +1,31 @@
+/**
+ * @class strange.extensions.sequencer.impl.Sequencer
+ * 
+ * Runs SequenceCommands in sequential order.
+ * 
+ * A variation on the CommandBinder that runs Commands in sequence
+ * rather than in parallel. Each SequenceCommand in the Sequence
+ * Executes then terminates, and then the next SequenceCommand
+ * continues the process. Any SequenceCommand in the series is
+ * permitted to call `BreakSequence()` to terminate the chain.
+ */
+
 using System;
 using System.Collections.Generic;
 using strange.extensions.dispatcher.api;
 using strange.extensions.injector.api;
 using strange.extensions.sequencer.api;
 using strange.extensions.command.api;
+using strange.extensions.command.impl;
 using strange.framework.api;
 using strange.framework.impl;
 
 namespace strange.extensions.sequencer.impl
 {
-	public class Sequencer : Binder, ISequencer, ITriggerable
+	public class Sequencer : CommandBinder, ISequencer, ITriggerable
 	{
 		[Inject]
-		public IInjectionBinder injectionBinder{ get; set;}
+		new public IInjectionBinder injectionBinder{ get; set;}
 
 		protected Dictionary<ISequenceCommand, ISequenceBinding> activeSequences = new Dictionary<ISequenceCommand, ISequenceBinding> ();
 
@@ -24,13 +37,8 @@ namespace strange.extensions.sequencer.impl
 		{
 			return new SequenceBinding (resolver);
 		}
-
-		public void ReactTo(object key)
-		{
-			ReactTo(key, null);
-		}
 		
-		public void ReactTo(object key, object data)
+		override public void ReactTo(object key, object data)
 		{
 			ISequenceBinding binding = GetBinding (key) as ISequenceBinding;
 			if (binding != null)
@@ -81,7 +89,8 @@ namespace strange.extensions.sequencer.impl
 			ReleaseCommand (command);
 		}
 
-		virtual protected ISequenceCommand createCommand(object cmd, object data)
+		/// Instantiate and Inject the ISequenceCommand.
+		new virtual protected ISequenceCommand createCommand(object cmd, object data)
 		{
 			injectionBinder.Bind<ISequenceCommand> ().To (cmd);
 			ISequenceCommand command = injectionBinder.GetInstance<ISequenceCommand> () as ISequenceCommand;
@@ -141,16 +150,6 @@ namespace strange.extensions.sequencer.impl
 			{
 				throw new SequencerException(message, type);
 			}
-		}
-
-		public void Trigger<T>(object data)
-		{
-			Trigger (typeof(T), data);
-		}
-
-		public void Trigger(object key, object data)
-		{
-			ReactTo(key, data);
 		}
 
 		new public ISequenceBinding Bind<T> ()

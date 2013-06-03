@@ -39,7 +39,7 @@ namespace strange.examples.multiplecontexts.game
 			contextView.AddComponent<GameLoop>();
 			IGameTimer timer = contextView.GetComponent<GameLoop>();
 			//...then bind it for injection
-			injectionBinder.Bind<IGameTimer>().AsValue(timer);
+			injectionBinder.Bind<IGameTimer>().ToValue(timer);
 			
 			GameObject go = new GameObject();
 			go.name = "Scoreboard";

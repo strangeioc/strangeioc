@@ -1,33 +1,32 @@
+/**
+ * @interface strange.extensions.sequencer.api.ISequencer
+ * 
+ * Instantiates and executes one or more SequenceCommands 
+ * in a specified order, based on the input key. Each SequenceCommand
+ * is only instantiated and executed after the prior one in the
+ * sequence has finished.
+ */
+
 using System;
-using strange.framework.api;
+using strange.extensions.command.api;
 
 namespace strange.extensions.sequencer.api
 {
-	public interface ISequencer : IBinder
+	public interface ISequencer : ICommandBinder
 	{
-
-		/// \brief Instantiate and execute one or more Commands based on the input
-		/// 
-		/// \param trigger The key that unlocks the Command(s)
-		void ReactTo (object trigger);
-		void ReactTo (object trigger, object data);
-
-		/// \brief Release a previously retained Command.
-		/// 
-		/// By default, a Command is garbage collected at the end of its Execute method. 
-		/// But the Command can be retained for asynchronous calls.
-		/// 
-		/// \param The Command to release
-		void ReleaseCommand(ISequenceCommand command);
-
+		/// Called to break the Sequence by providing a Key
 		void Stop(object key);
 
+		/// Called by a SequenceCommand to indicate that it wants to terminate a sequence to which it belongs
 		void BreakSequence (ISequenceCommand command);
-		
-		//Bind a Type
+
+		/// Release a previously retained SequenceCommand.
+		/// By default, a Command is garbage collected at the end of its `Execute()` method. 
+		/// But the Command can be retained for asynchronous calls.
+		void ReleaseCommand(ISequenceCommand command);
+
 		new ISequenceBinding Bind<T>();
 
-		//Bind a value
 		new ISequenceBinding Bind(object value);
 	}
 }

@@ -1,3 +1,24 @@
+/**
+ * @class strange.extensions.dispatcher.eventdispatcher.impl.EventDispatcher
+ * 
+ * A Dispatcher that uses TmEvent to send messages.
+ * 
+ * Whenever the Dispatcher executes a `Dispatch()`, observers will be 
+ * notified of any event (Key) for which they have registered.
+ * 
+ * EventDispatcher dispatches TmEvents.
+ * 
+ * The EventDispatcher is the only Dispatcher currently released with Strange
+ * (though by separating EventDispatcher from Dispatcher I'm obviously
+ * signalling that I don't think it's the only possible one).
+ * 
+ * EventDispatcher is both an ITriggerProvider and an ITriggerable.
+ * 
+ * @see strange.extensions.dispatcher.eventdispatcher.impl.TmEvent
+ * @see strange.extensions.dispatcher.api.ITriggerProvider
+ * @see strange.extensions.dispatcher.api.ITriggerable
+ */
+
 using System;
 using System.Collections.Generic;
 using strange.framework.api;
@@ -9,7 +30,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 {
 	public class EventDispatcher : Binder, IEventDispatcher, ITriggerProvider, ITriggerable
 	{
-		
+		/// The list of clients that will be triggered as a consequence of an Event firing.
 		protected ITriggerable[] triggerClients;
 
 		public EventDispatcher ()

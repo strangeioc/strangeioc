@@ -1,18 +1,24 @@
 /**
- * Extension which uses System.Reflection to satisfy injection dependencies.
+ * @class strange.extensions.injector.impl.Injector
+ * 
+ * Supplies injection for all mapped dependencies. 
+ * 
+ * Extension satisfies injection dependencies. Works in conjuntion with 
+ * (and therefore relies on) the Reflector.
  * 
  * Dependencies may be Constructor injections (all parameters will be satisfied),
  * or setter injections.
  * 
  * Classes utilizing this injector must be marked with the following metatags:
- * - [Inject]
- * Use this metatag on any setter you wish to have supplied by injection
- * - [Construct]
- * Use this metatag on the specific Constructor you wish to inject into when using Constructor injection
- * - [PostConstruct]
- * Use this metatag on any method(s) you wish to fire directly after dependencies are supplied
+ * <ul>
+ *  <li>[Inject] - Use this metatag on any setter you wish to have supplied by injection.</li>
+ *  <li>[Construct] - Use this metatag on the specific Constructor you wish to inject into when using Constructor injection. If you omit this tag, the Constructor with the shortest list of dependencies will be selected automatically.</li>
+ *  <li>[PostConstruct] - Use this metatag on any method(s) you wish to fire directly after dependencies are supplied</li>
+ * </ul>
  * 
- * TODO: Reflection is innately inefficient. Can improve performace by caching class mappings
+ * The Injection system is quite loud and specific where dependencies are unmapped,
+ * throwing Exceptions to warn you. This is exceptionally useful in ensuring that
+ * your app is well structured.
  */
 
 using System;

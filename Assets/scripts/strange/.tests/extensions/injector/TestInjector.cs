@@ -22,8 +22,8 @@ namespace strange.unittests
 		public void TestTaggedConstructor ()
 		{
 			binder.Bind<ClassWithConstructorParameters> ().To<ClassWithConstructorParameters> ();
-			binder.Bind<int> ().AsValue (42);
-			binder.Bind<string> ().AsValue ("Liberator");
+			binder.Bind<int> ().ToValue (42);
+			binder.Bind<string> ().ToValue ("Liberator");
 			ClassWithConstructorParameters instance = 
 				binder.GetInstance<ClassWithConstructorParameters> () as ClassWithConstructorParameters;
 			Assert.IsNotNull (instance);
@@ -35,7 +35,7 @@ namespace strange.unittests
 		public void TestForcedParameterConstruction ()
 		{
 			binder.Bind<ClassWithConstructorParametersOnlyOneConstructor> ().To<ClassWithConstructorParametersOnlyOneConstructor> ();
-			binder.Bind<string> ().AsValue ("Zaphod");
+			binder.Bind<string> ().ToValue ("Zaphod");
 			ClassWithConstructorParametersOnlyOneConstructor instance = 
 				binder.GetInstance<ClassWithConstructorParametersOnlyOneConstructor> () as ClassWithConstructorParametersOnlyOneConstructor;
 			Assert.IsNotNull (instance);
@@ -46,7 +46,7 @@ namespace strange.unittests
 		public void TestPostConstruct ()
 		{
 			binder.Bind<PostConstructClass> ().To<PostConstructClass> ();
-			binder.Bind<float> ().AsValue ((float)Math.PI);
+			binder.Bind<float> ().ToValue ((float)Math.PI);
 			PostConstructClass instance = binder.GetInstance<PostConstructClass> () as PostConstructClass;
 			Assert.IsNotNull (instance);
 			Assert.That (instance.floatVal == (float)Math.PI * 2f);
@@ -56,7 +56,7 @@ namespace strange.unittests
 		public void TestMultiplePostConstructs ()
 		{
 			binder.Bind<PostConstructTwo> ().To<PostConstructTwo> ();
-			binder.Bind<float> ().AsValue ((float)Math.PI);
+			binder.Bind<float> ().ToValue ((float)Math.PI);
 			PostConstructTwo instance = binder.GetInstance<PostConstructTwo> () as PostConstructTwo;
 			Assert.IsNotNull (instance);
 			Assert.That (instance.floatVal == (float)Math.PI * 4f);
@@ -69,9 +69,9 @@ namespace strange.unittests
 			float defaultFloatValue = testValue.floatValue;
 			testValue.floatValue = 3.14f;
 
-			binder.Bind<int> ().AsValue (20);
+			binder.Bind<int> ().ToValue (20);
 			binder.Bind<InjectableSuperClass> ().To<InjectableSuperClass> ().ToName (SomeEnum.ONE);
-			binder.Bind<InjectableSuperClass> ().ToName<MarkerClass> ().AsValue(testValue);
+			binder.Bind<InjectableSuperClass> ().ToName<MarkerClass> ().ToValue(testValue);
 			binder.Bind<HasNamedInjections> ().To<HasNamedInjections> ();
 			HasNamedInjections instance = binder.GetInstance<HasNamedInjections> () as HasNamedInjections;
 			Assert.IsNotNull (instance);

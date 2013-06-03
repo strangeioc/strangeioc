@@ -1,3 +1,46 @@
+/**
+ * @interface strange.extensions.injector.api.IInjectionBinder
+ * 
+ * A Binder that implements Dependency Injection in StrangeIoC.
+ * 
+ * Keys in this Binder are always Types, that is, they represent
+ * either Classes or Interfaces, not values. Values may be either Types
+ * or values, depending on the situation.
+ * 
+ * The nature of the instance returned by `GetInstance()` depends on how
+ * that Key was mapped.
+ * 
+ * examples:
+ * 
+ * //Returns a new instance of SimpleInterfaceImplementer.
+ * 
+ * `Bind<ISimpleInterface>().To<SimpleInterfaceImplementer>();`
+ * 
+ * //Returns a Singleton instance of SimpleInterfaceImplementer.
+ * 
+ * `Bind<ISimpleInterface>().To<SimpleInterfaceImplementer>().ToSingleton();`
+ * 
+ * //Returns a Singleton instance of SimpleInterfaceImplementer.
+ * 
+ * `Bind<ISimpleInterface>().ToValue(new SimpleInterfaceImplementer());`
+ * 
+ * //Returns the value 42.
+ * 
+ * `Bind<int>().ToValue(42);`
+ * 
+ * //Returns a named instance of SimpleInterfaceImplementer for those whose
+ * //injections specify this name. Note that once requested, this 
+ * //same instance will be returned on any future request for that named instance.
+ * 
+ * `Bind<ISimpleInterface>().To<SimpleInterfaceImplementer>().ToName(SomeEnum.MY_ENUM);`
+ * 
+ * //Raises an Exception. string does not Implement ISimpleInterface.
+ * 
+ * `Bind<ISimpleInterface>().To<string>();`
+ * 
+ * @see strange.extensions.injector.api.IInjectionBinding
+ */
+
 using System;
 using strange.framework.api;
 
@@ -5,13 +48,25 @@ namespace strange.extensions.injector.api
 {
 	public interface IInjectionBinder
 	{
+		/// Get or set an Injector to use. By default, Injector instantiates it's own, but that can be overridden.
 		IInjector injector{ get; set;}
+
+		/// Retrieve an Instance based on the key.
+		/// ex. `injectionBinder.Get(typeof(ISomeInterface));`
 		object GetInstance(Type key);
+
+		/// Retrieve an Instance based on a key/name combo.
+		/// ex. `injectionBinder.Get(typeof(ISomeInterface), SomeEnum.MY_ENUM);`
 		object GetInstance(Type key, object name);
+
+		/// Retrieve an Instance based on the key.
+		/// ex. `injectionBinder.Get<cISomeInterface>();`
 		object GetInstance<T>();
+
+		/// Retrieve an Instance based on a key/name combo.
+		/// ex. `injectionBinder.Get<cISomeInterface>(SomeEnum.MY_ENUM);`
 		object GetInstance<T>(object name);
 
-		/// Facade for IBinder
 		IInjectionBinding Bind<T>();
 		IInjectionBinding Bind(Type key);
 		IInjectionBinding GetBinding<T>();

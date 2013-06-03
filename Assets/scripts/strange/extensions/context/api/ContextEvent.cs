@@ -2,9 +2,10 @@ using System;
 
 namespace strange.extensions.context.api
 {
-	public class ContextEvent
+	public enum ContextEvent
 	{
-		public const string START = "CONTEXT_EVENT_START";
+		/// Fires immediately on conclusion of Context bootstrapping. Map this to your first Command.
+		START
 	}
 }
 

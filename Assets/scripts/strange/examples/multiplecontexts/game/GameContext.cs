@@ -26,7 +26,7 @@ namespace strange.examples.multiplecontexts.game
 		
 		protected override void mapBindings()
 		{
-			injectionBinder.Bind<IScore>().To<ScoreModel>().AsSingleton();
+			injectionBinder.Bind<IScore>().To<ScoreModel>().ToSingleton();
 			
 			mediationBinder.Bind<ShipView>().To<ShipMediator>();
 			mediationBinder.Bind<EnemyView>().To<EnemyMediator>();

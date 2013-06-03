@@ -1,3 +1,12 @@
+/**
+ * @class strange.extensions.mediation.impl.View
+ * 
+ * Parent class for all your Views. Extends MonoBehaviour.
+ * Bubbles its Awake, Start and OnDestroy events to the
+ * ContextView, which allows the Context to know when these
+ * critical moments occur in the View lifecycle.
+ */
+
 using UnityEngine;
 using strange.extensions.context.api;
 using strange.extensions.context.impl;
@@ -7,29 +16,40 @@ namespace strange.extensions.mediation.impl
 {
 	public class View : MonoBehaviour
 	{
-		//Leave this value true most of the time. If for some reason you want
-		//a view to exist outside a context you can set it to false. The only
-		//difference is whether an error gets generated.
+		/// Leave this value true most of the time. If for some reason you want
+		/// a view to exist outside a context you can set it to false. The only
+		/// difference is whether an error gets generated.
 		public bool requiresContext = true;
 		
 		protected bool registeredWithContext = false;
 
+		/// A MonoBehaviour Awake handler.
+		/// The View will attempt to connect to the Context at this moment.
 		protected virtual void Awake ()
 		{
 			bubbleToContext(this, true, false);
 		}
 
+		/// A MonoBehaviour Start handler
+		/// If the View is not yet registered with the Context, it will 
+		/// attempt to connect again at this moment.
 		protected virtual void Start ()
 		{
 			if (!registeredWithContext)
 				bubbleToContext(this, true, true);
 		}
 
+		/// A MonoBehaviour OnDestroy handler
+		/// The View will inform the Context that it is about to be
+		/// destroyed.
 		protected virtual void OnDestroy ()
 		{
 			bubbleToContext(this, false, false);
 		}
-		
+
+		/// Recurses through Transform.parent to find the GameObject to which ContextView is attached
+		/// Has a loop limit of 100 levels.
+		/// By default, raises an Exception if no Context is found.
 		virtual protected void bubbleToContext(MonoBehaviour view, bool toAdd, bool finalTry)
 		{
 			const int LOOP_MAX = 100;

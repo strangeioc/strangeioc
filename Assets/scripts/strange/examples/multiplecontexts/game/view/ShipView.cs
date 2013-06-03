@@ -6,7 +6,7 @@ using strange.extensions.mediation.impl;
 
 namespace strange.examples.multiplecontexts.game
 {
-	public class ShipView : ViewWithDispatcher
+	public class ShipView : EventView
 	{
 		internal const string CLICK_EVENT = "CLICK_EVENT";
 		

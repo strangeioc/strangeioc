@@ -49,8 +49,8 @@ namespace strange.examples.myfirstproject
 			//between that View and ExampleMediator.
 			injectionBinder.Bind<IEventDispatcher>().To<EventDispatcher>();
 			//Map a mock model and a mock service, both as Singletons
-			injectionBinder.Bind<IExampleModel>().To<ExampleModel>().AsSingleton();
-			injectionBinder.Bind<IExampleService>().To<ExampleService>().AsSingleton();
+			injectionBinder.Bind<IExampleModel>().To<ExampleModel>().ToSingleton();
+			injectionBinder.Bind<IExampleService>().To<ExampleService>().ToSingleton();
 
 			//View/Mediator binding
 			//This Binding instantiates a new ExampleMediator whenever as ExampleView

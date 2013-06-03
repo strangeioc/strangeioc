@@ -6,7 +6,7 @@ using strange.extensions.mediation.impl;
 
 namespace strange.examples.multiplecontexts.game
 {
-	public class ClickDetector : ViewWithDispatcher
+	public class ClickDetector : EventView
 	{
 		public const string CLICK = "CLICK";
 		

@@ -35,8 +35,8 @@ namespace strange.examples.multiplecontexts.social
 			
 			//So today we're posting to Facebook. Maybe tomorrow we'll want to use
 			//GooglePlus, or Twitter, or Pinterest...
-			injectionBinder.Bind<ISocialService> ().To<FacebookService> ().AsSingleton ();
-			//injectionBinder.Bind<ISocialService> ().To<GoogleService> ().AsSingleton ();
+			injectionBinder.Bind<ISocialService> ().To<FacebookService> ().ToSingleton ();
+			//injectionBinder.Bind<ISocialService> ().To<GoogleService> ().ToSingleton ();
 			
 			mediationBinder.Bind<UserTileView>().To<UserTileMediator>();
 			mediationBinder.Bind<AwardView>().To<AwardViewMediator>();

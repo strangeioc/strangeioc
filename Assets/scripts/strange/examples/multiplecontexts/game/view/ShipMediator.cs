@@ -12,7 +12,7 @@ using strange.extensions.mediation.impl;
 
 namespace strange.examples.multiplecontexts.game
 {
-	public class ShipMediator : MediatorWithDispatcher
+	public class ShipMediator : EventMediator
 	{
 		private ShipView view;
 		

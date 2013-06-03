@@ -1,3 +1,11 @@
+/**
+ * @class strange.extensions.mediation.impl.Mediator
+ * 
+ * Base class for all Mediators.
+ * 
+ * @see strange.extensions.mediation.api.IMediationBinder
+ */
+
 using System;
 using UnityEngine;
 using strange.extensions.context.api;

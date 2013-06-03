@@ -1,3 +1,9 @@
+/**
+ * @class strange.extensions.dispatcher.eventdispatcher.impl.EventDispatcherException
+ * 
+ * An exception thrown by the EventDispatcher system.
+ */
+
 using System;
 using strange.extensions.dispatcher.eventdispatcher.api;
 
@@ -11,6 +17,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 		{
 		}
 
+		/// Constructs an EventDispatcherException with a message and EventDispatcherExceptionType
 		public EventDispatcherException(string message, EventDispatcherExceptionType exceptionType) : base(message)
 		{
 			type = exceptionType;

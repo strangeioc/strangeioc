@@ -45,7 +45,7 @@ namespace strange.unittests
 		[Test]
 		public void TestInstantiateSingleton ()
 		{
-			IInjectionBinding defaultBinding = new InjectionBinding (resolver).Key<InjectableSuperClass> ().To <InjectableDerivedClass> ().AsSingleton();
+			IInjectionBinding defaultBinding = new InjectionBinding (resolver).Key<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToSingleton();
 			InjectableDerivedClass testResult = factory.Get (defaultBinding) as InjectableDerivedClass;
 			Assert.IsNotNull (testResult);
 			//Set a value
@@ -80,8 +80,8 @@ namespace strange.unittests
 		public void TestNamedSingletons ()
 		{
 			//Create two named singletons
-			IInjectionBinding defaultBinding = new InjectionBinding (resolver).Key<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToName (SomeEnum.ONE).AsSingleton();
-			IInjectionBinding defaultBinding2 = new InjectionBinding (resolver).Key<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToName (SomeEnum.TWO).AsSingleton();
+			IInjectionBinding defaultBinding = new InjectionBinding (resolver).Key<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToName (SomeEnum.ONE).ToSingleton();
+			IInjectionBinding defaultBinding2 = new InjectionBinding (resolver).Key<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToName (SomeEnum.TWO).ToSingleton();
 
 			InjectableDerivedClass testResult = factory.Get (defaultBinding) as InjectableDerivedClass;
 			int defaultValue = testResult.intValue;
@@ -100,7 +100,7 @@ namespace strange.unittests
 		{
 			InjectableDerivedClass testvalue = new InjectableDerivedClass ();
 			testvalue.intValue = 42;
-			IInjectionBinding binding = new InjectionBinding (resolver).Key<InjectableSuperClass> ().To <InjectableDerivedClass> ().AsValue (testvalue);
+			IInjectionBinding binding = new InjectionBinding (resolver).Key<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToValue (testvalue);
 			InjectableDerivedClass testResult = factory.Get (binding) as InjectableDerivedClass;
 			Assert.IsNotNull (testResult);
 			Assert.That (testResult.intValue == testvalue.intValue);

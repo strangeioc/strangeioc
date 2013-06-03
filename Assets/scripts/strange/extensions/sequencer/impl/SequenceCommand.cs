@@ -1,3 +1,15 @@
+/**
+ * @class strange.extensions.sequencer.impl.SequenceCommand
+ * 
+ * A subclass of Command that runs in the Sequencer
+ * 
+ * A SequenceCommand is simply a Command that runs in a series
+ * and can optionally call `BreakSequence()` to stop the implementation
+ * of that series.
+ * 
+ * @see strange.extensions.command.api.ICommand
+ */ 
+
 using System;
 using strange.extensions.command.impl;
 using strange.extensions.injector.api;
@@ -47,10 +59,6 @@ namespace strange.extensions.sequencer.impl
 			{
 				sequencer.ReleaseCommand (this);
 			}
-		}
-
-		virtual public void Dispose ()
-		{
 		}
 
 		public void Cancel ()

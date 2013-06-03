@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using strange.extensions.dispatcher.eventdispatcher.impl;
+using strange.extensions.command.impl;
 
 namespace strange.examples.multiplecontexts.game
 {
