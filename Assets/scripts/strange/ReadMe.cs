@@ -23,4 +23,6 @@
  * An executive overview of the benefits of IoC in general and StrangeIoC in particular is available here: <a href="">TODO</a>
  * <br />
  * Some fun documentation and tutorials are available here: <a href="">TODO</a>.
+ * <br />
+ * Already know RobotLegs? Good news, we've written <a href="">this page</a> just for you! 
  */
