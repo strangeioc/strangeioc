@@ -82,12 +82,19 @@ namespace strange.extensions.mediation.impl
 			}
 			if (requiresContext && finalTry)
 			{
+				//last ditch. If there's a Context anywhere, we'll use it!
+				if (Context.firstContext != null)
+				{
+					Context.firstContext.AddView (view);
+					registeredWithContext = true;
+					return;
+				}
+
+				
 				string msg = (loopLimiter == LOOP_MAX) ?
 					msg = "A view couldn't find a context. Loop limit reached." :
-					msg = "A view was added with no context. Views must be added into the hierarchy of their ContextView lest all hell break loose.";
+						msg = "A view was added with no context. Views must be added into the hierarchy of their ContextView lest all hell break loose.";
 				msg += "\nView: " + view.ToString();
-				
-				
 				throw new MediationException(msg,
 					MediationExceptionType.NO_CONTEXT);
 			}
