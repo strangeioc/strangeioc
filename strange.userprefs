@@ -1,9 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/strange/extensions/injector/impl/Injector.cs">
-    <Files>
-      <File FileName="Assets/scripts/strange/extensions/injector/impl/Injector.cs" Line="206" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
@@ -12,9 +9,9 @@
               <Node name="scripts" expanded="True">
                 <Node name="strange" expanded="True">
                   <Node name="extensions" expanded="True">
-                    <Node name="injector" expanded="True">
+                    <Node name="sequencer" expanded="True">
                       <Node name="impl" expanded="True">
-                        <Node name="Injector.cs" selected="True" />
+                        <Node name="EventSequencer.cs" selected="True" />
                       </Node>
                     </Node>
                   </Node>

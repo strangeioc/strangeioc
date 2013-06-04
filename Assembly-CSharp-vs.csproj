@@ -124,6 +124,7 @@
      <Compile Include="Assets\scripts\strange\extensions\dispatcher\api\ITriggerable.cs" />
      <Compile Include="Assets\scripts\strange\extensions\dispatcher\eventdispatcher\api\EventCallbackType.cs" />
      <Compile Include="Assets\scripts\strange\extensions\dispatcher\eventdispatcher\api\EventDispatcherExceptionType.cs" />
+     <Compile Include="Assets\scripts\strange\extensions\dispatcher\eventdispatcher\api\IEvent.cs" />
      <Compile Include="Assets\scripts\strange\extensions\dispatcher\eventdispatcher\api\IEventBinding.cs" />
      <Compile Include="Assets\scripts\strange\extensions\dispatcher\eventdispatcher\api\IEventDispatcher.cs" />
      <Compile Include="Assets\scripts\strange\extensions\dispatcher\eventdispatcher\impl\EventBinding.cs" />
@@ -168,11 +169,11 @@
      <Compile Include="Assets\scripts\strange\extensions\sequencer\api\ISequencer.cs" />
      <Compile Include="Assets\scripts\strange\extensions\sequencer\api\SequencerExceptionType.cs" />
      <Compile Include="Assets\scripts\strange\extensions\sequencer\impl\EventSequenceCommand.cs" />
+     <Compile Include="Assets\scripts\strange\extensions\sequencer\impl\EventSequencer.cs" />
      <Compile Include="Assets\scripts\strange\extensions\sequencer\impl\SequenceBinding.cs" />
      <Compile Include="Assets\scripts\strange\extensions\sequencer\impl\SequenceCommand.cs" />
      <Compile Include="Assets\scripts\strange\extensions\sequencer\impl\Sequencer.cs" />
      <Compile Include="Assets\scripts\strange\extensions\sequencer\impl\SequencerException.cs" />
-     <Compile Include="Assets\scripts\strange\extensions\sequencer\impl\SequencerWithEvents.cs" />
      <Compile Include="Assets\scripts\strange\framework\api\BindingConst.cs" />
      <Compile Include="Assets\scripts\strange\framework\api\BindingConstraintType.cs" />
      <Compile Include="Assets\scripts\strange\framework\api\IBinder.cs" />
