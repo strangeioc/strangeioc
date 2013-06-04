@@ -7,7 +7,7 @@
 
 using System;
 using UnityEngine;
-using strange.extensions.dispatcher.eventdispatcher.impl;
+using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.mediation.impl;
 
 namespace strange.examples.myfirstproject
@@ -48,9 +48,8 @@ namespace strange.examples.myfirstproject
 			dispatcher.Dispatch(ExampleEvent.REQUEST_WEB_SERVICE);
 		}
 		
-		private void onScoreChange(object data)
+		private void onScoreChange(IEvent evt)
 		{
-			TmEvent evt = data as TmEvent;
 			//float score = (float)evt.data;
 			string score = (string)evt.data;
 			view.updateScore(score);

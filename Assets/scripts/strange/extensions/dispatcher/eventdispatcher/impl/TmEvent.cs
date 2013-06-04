@@ -15,11 +15,11 @@ using strange.extensions.dispatcher.eventdispatcher.api;
 
 namespace strange.extensions.dispatcher.eventdispatcher.impl
 {
-	public class TmEvent
+	public class TmEvent : IEvent
 	{
-		public object type;
-		public IEventDispatcher target;
-		public object data;
+		public object type{ get; set;}
+		public IEventDispatcher target{ get; set;}
+		public object data{ get; set;}
 
 		/// Construct a TmEvent
 		public TmEvent(object type, IEventDispatcher target, object data)

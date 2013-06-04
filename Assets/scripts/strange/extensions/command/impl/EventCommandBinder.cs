@@ -6,7 +6,7 @@
 
 using System;
 using strange.extensions.command.api;
-using strange.extensions.dispatcher.eventdispatcher.impl;
+using strange.extensions.dispatcher.eventdispatcher.api;
 
 namespace strange.extensions.command.impl
 {
@@ -20,15 +20,15 @@ namespace strange.extensions.command.impl
 		override protected ICommand createCommand(object cmd, object data)
 		{
 			injectionBinder.Bind<ICommand> ().To (cmd);
-			if (data is TmEvent)
+			if (data is IEvent)
 			{
-				injectionBinder.Bind<TmEvent>().ToValue(data).ToInject(false);
+				injectionBinder.Bind<IEvent>().ToValue(data).ToInject(false);
 			}
 			ICommand command = injectionBinder.GetInstance<ICommand> () as ICommand;
 			command.data = data;
-			if (data is TmEvent)
+			if (data is IEvent)
 			{
-				injectionBinder.Unbind<TmEvent>();
+				injectionBinder.Unbind<IEvent>();
 			}
 			injectionBinder.Unbind<ICommand> ();
 			return command;

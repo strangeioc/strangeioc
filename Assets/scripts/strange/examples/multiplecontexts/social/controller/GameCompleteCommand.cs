@@ -8,11 +8,11 @@ using UnityEngine;
 using strange.extensions.context.api;
 using strange.extensions.sequencer.api;
 using strange.extensions.sequencer.impl;
-using strange.extensions.dispatcher.eventdispatcher.impl;
+using strange.extensions.dispatcher.eventdispatcher.api;
 
 namespace strange.examples.multiplecontexts.social
 {
-	public class GameCompleteCommand : SequenceCommand
+	public class GameCompleteCommand : EventSequenceCommand
 	{
 		
 		[Inject(ContextKeys.CONTEXT_VIEW)]
@@ -28,7 +28,6 @@ namespace strange.examples.multiplecontexts.social
 		public override void Execute()
 		{
 			Retain ();
-			TmEvent evt = data as TmEvent;
 			int score = (int)evt.data;
 			
 			//Set the current score
@@ -39,10 +38,9 @@ namespace strange.examples.multiplecontexts.social
 			social.FetchScoresForFriends();
 		}
 		
-		private void onResponse(object payload)
+		private void onResponse(IEvent evt)
 		{
 			social.dispatcher.removeListener(SocialEvent.FULFILL_FRIENDS_REQUEST, onResponse);
-			TmEvent evt = payload as TmEvent;
 			ArrayList list = evt.data as ArrayList;
 			
 			//Save the list as the data for the next item in the sequence

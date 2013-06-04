@@ -117,9 +117,8 @@ namespace strange.unittests
 			confirmationValue += INCREMENT;
 		}
 
-		private void oneArgumentMethod(object payload)
+		private void oneArgumentMethod(IEvent evt)
 		{
-			TmEvent evt = payload as TmEvent;
 			int data = (int)evt.data;
 
 			confirmationValue += data;

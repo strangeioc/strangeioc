@@ -1,7 +1,7 @@
 /// User Value Object
 /// =================
 /// A Value Object (VO) is a simple class that contains properties and can be passed around.
-/// These make great payloads to attach to the data property of TmEvent.
+/// These make great payloads to attach to the data property of an IEvent.
 /// 
 /// This UserVO carries some relevant data about the user as gleaned from a social service
 

@@ -7,13 +7,13 @@
  * Dispatcher executes a `Dispatch()`, observers will be notified of any event
  * (Key) for which they have registered.
  * 
- * EventDispatcher dispatches TmEvents.
+ * EventDispatcher dispatches IEvents.
  * 
  * The EventDispatcher is the only Dispatcher currently released with Strange
  * (though by separating EventDispatcher from Dispatcher I'm obviously
  * signalling that I don't think it's the only possible one).
  * 
- * @see strange.extensions.dispatcher.eventdispatcher.impl.TmEvent
+ * @see strange.extensions.dispatcher.eventdispatcher.api.IEvent
  */
 
 using System;

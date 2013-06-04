@@ -7,7 +7,7 @@
 
 using System;
 using UnityEngine;
-using strange.extensions.dispatcher.eventdispatcher.impl;
+using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.mediation.impl;
 using  strange.examples.multiplecontexts.game;
 
@@ -40,9 +40,8 @@ namespace strange.examples.multiplecontexts.social
 			GameObject.Destroy(gameObject);
 		}
 		
-		private void onReward(object payload)
+		private void onReward(IEvent evt)
 		{
-			TmEvent evt = payload as TmEvent;
 			view.setTest(evt.data as string);
 		}
 	}

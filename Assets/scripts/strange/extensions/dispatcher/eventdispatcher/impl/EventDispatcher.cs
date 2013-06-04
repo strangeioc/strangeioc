@@ -1,12 +1,12 @@
 /**
  * @class strange.extensions.dispatcher.eventdispatcher.impl.EventDispatcher
  * 
- * A Dispatcher that uses TmEvent to send messages.
+ * A Dispatcher that uses IEvent to send messages.
  * 
  * Whenever the Dispatcher executes a `Dispatch()`, observers will be 
  * notified of any event (Key) for which they have registered.
  * 
- * EventDispatcher dispatches TmEvents.
+ * EventDispatcher dispatches TmEvent : IEvent.
  * 
  * The EventDispatcher is the only Dispatcher currently released with Strange
  * (though by separating EventDispatcher from Dispatcher I'm obviously
@@ -14,7 +14,7 @@
  * 
  * EventDispatcher is both an ITriggerProvider and an ITriggerable.
  * 
- * @see strange.extensions.dispatcher.eventdispatcher.impl.TmEvent
+ * @see strange.extensions.dispatcher.eventdispatcher.api.IEvent
  * @see strange.extensions.dispatcher.api.ITriggerProvider
  * @see strange.extensions.dispatcher.api.ITriggerable
  */
@@ -59,25 +59,25 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			{
 				throw new EventDispatcherException("Attempt to Dispatch to null.\ndata: " + data, EventDispatcherExceptionType.EVENT_KEY_NULL);
 			}
-			else if (eventType is TmEvent)
+			else if (eventType is IEvent)
 			{
 				//Client provided a full-formed event
 				data = eventType;
-				eventType = (data as TmEvent).type;
+				eventType = (data as IEvent).type;
 			}
 			else if (data == null)
 			{
 				//Client provided just an event ID. Create an event for injection
 				data = new TmEvent(eventType, this, null);
 			}
-			else if (data is TmEvent)
+			else if (data is IEvent)
 			{
-				//Client provided both an evertType and a full-formed TmEvent
-				(data as TmEvent).type = eventType;
+				//Client provided both an evertType and a full-formed IEvent
+				(data as IEvent).type = eventType;
 			}
 			else
 			{
-				//Client provided an eventType and some data which is not a TmEvent.
+				//Client provided an eventType and some data which is not a IEvent.
 				data = new TmEvent(eventType, this, data);
 			}
 			
@@ -120,7 +120,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 					}
 					catch
 					{
-						throw new EventDispatcherException ("The target callback is attempting an illegal cast. EventDispatcher expects callbacks to cast the payload as TmEvent.\nTarget class:" + evtCb.Target, EventDispatcherExceptionType.TARGET_INVOCATION);
+						throw new EventDispatcherException ("The target callback is attempting an illegal cast. EventDispatcher expects callbacks to cast the payload as IEvent.\nTarget class:" + evtCb.Target, EventDispatcherExceptionType.TARGET_INVOCATION);
 					}
 				}
 				else if (callback is EmptyCallback)

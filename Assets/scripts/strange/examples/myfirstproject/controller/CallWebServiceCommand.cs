@@ -9,7 +9,7 @@ using System.Collections;
 using UnityEngine;
 using strange.extensions.context.api;
 using strange.extensions.command.impl;
-using strange.extensions.dispatcher.eventdispatcher.impl;
+using strange.extensions.dispatcher.eventdispatcher.api;
 
 namespace strange.examples.myfirstproject
 {
@@ -41,13 +41,12 @@ namespace strange.examples.myfirstproject
 			service.Request("http://www.thirdmotion.com/ ::: " + counter.ToString());
 		}
 		
-		private void onComplete(object payload)
+		//The payload is in the form of a IEvent
+		private void onComplete(IEvent evt)
 		{
 			//Remember to clean up. Remove the listener.
 			service.dispatcher.removeListener(ExampleEvent.FULFILL_SERVICE_REQUEST, onComplete);
 			
-			//The payload is in the form of a TmEvent
-			TmEvent evt = payload as TmEvent;
 			model.data = evt.data as string;
 			dispatcher.Dispatch(ExampleEvent.SCORE_CHANGE, evt.data);
 			

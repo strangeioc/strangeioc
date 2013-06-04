@@ -6,7 +6,7 @@
  * Objects implementing a TriggerProvider declare themselves able to
  * provide triggering to any ITriggerable. The contract specifies that 
  * TriggerProvider will pass events on to the Triggerable class.
- * This allows notifications, such as TmEvents, to pass through 
+ * This allows notifications, such as IEvents, to pass through 
  * the event bus and trigger other binders.
  * 
  * @see strange.extensions.dispatcher.api.ITriggerable

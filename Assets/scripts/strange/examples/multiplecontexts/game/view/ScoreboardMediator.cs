@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using strange.extensions.dispatcher.eventdispatcher.impl;
+using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.mediation.impl;
 
 namespace strange.examples.multiplecontexts.game
@@ -36,16 +36,14 @@ namespace strange.examples.multiplecontexts.game
 			dispatcher.addListener(GameEvent.RESTART_GAME, onRestart);
 		}
 		
-		private void onScoreChange(object data)
+		private void onScoreChange(IEvent evt)
 		{
-			TmEvent evt = data as TmEvent;
 			string score = SCORE_STRING + (int)evt.data;
 			view.updateScore(score);
 		}
 		
-		private void onLivesChange(object data)
+		private void onLivesChange(IEvent evt)
 		{
-			TmEvent evt = data as TmEvent;
 			string lives = LIVES_STRING + (int)evt.data;
 			view.updateLives(lives);
 		}

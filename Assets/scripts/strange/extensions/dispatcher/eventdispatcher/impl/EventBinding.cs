@@ -5,11 +5,8 @@
  * 
  * EventBindings technically allow any Key, but require either an 
  * EmptyCallback (no arguments) or an EventCallback (one argument).
- * 
- * The TmEvent only accepts strings as keys, so in the standard MVCSContext
- * setup, your EventBinder keys should also be strings.
  *
- * @see strange.extensions.dispatcher.eventdispatcher.impl.TmEvent
+ * @see strange.extensions.dispatcher.eventdispatcher.api.IEvent
  */
 
 using System;

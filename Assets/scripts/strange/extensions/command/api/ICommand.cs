@@ -3,7 +3,7 @@
  * 
  * Interface for Commands, which is where you place your business logic.
  * 
- * In the default StrangeIoC setup, commands are mapped to TmEvents. 
+ * In the default StrangeIoC setup, commands are mapped to IEvents. 
  * The firing of a specific event on the global event bus triggers 
  * the instantiation, injection and execution of any Command(s) bound to that event.
  * 
@@ -32,7 +32,7 @@ namespace strange.extensions.command.api
 		/// The property set by `Retain` and `Release` to indicate whether the Command should be cleaned up on completion of the `Execute()` method. 
 		bool retain{ get; }
 
-		/// A payload injected into the Command. Most commonly, this a TmEvent.
+		/// A payload injected into the Command. Most commonly, this an IEvent.
 		object data{ get; set;}
 	}
 }

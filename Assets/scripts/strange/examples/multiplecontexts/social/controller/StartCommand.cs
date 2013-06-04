@@ -6,7 +6,7 @@ using System;
 using UnityEngine;
 using strange.extensions.context.api;
 using strange.extensions.command.impl;
-using strange.extensions.dispatcher.eventdispatcher.impl;
+using strange.extensions.dispatcher.eventdispatcher.api;
 
 namespace strange.examples.multiplecontexts.social
 {
@@ -29,10 +29,9 @@ namespace strange.examples.multiplecontexts.social
 			social.FetchCurrentUser();
 		}
 		
-		private void onResponse(object payload)
+		private void onResponse(IEvent evt)
 		{
 			social.dispatcher.removeListener(SocialEvent.FULFILL_CURRENT_USER_REQUEST, onResponse);
-			TmEvent evt = payload as TmEvent;
 			UserVO vo = evt.data as UserVO;
 			
 			//We're going to Bind this for injection, since we'll need it later when we compare

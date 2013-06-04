@@ -3,7 +3,7 @@
  * 
  * Commands are where you place your business logic.
  * 
- * In the MVCSContext setup, commands are mapped to TmEvents. 
+ * In the MVCSContext setup, commands are mapped to IEvents. 
  * The firing of a specific event on the global event bus triggers 
  * the instantiation, injection and execution of any Command(s) bound to that event.
  * 

@@ -224,7 +224,7 @@ namespace strange.extensions.context.impl
 			//This binding is for the common system bus
 			injectionBinder.Bind<IEventDispatcher>().To<EventDispatcher>().ToSingleton().ToName(ContextKeys.CONTEXT_DISPATCHER);
 			injectionBinder.Bind<IMediationBinder>().To<MediationBinder>().ToSingleton();
-			injectionBinder.Bind<ISequencer>().To<SequencerWithEvents>().ToSingleton();
+			injectionBinder.Bind<ISequencer>().To<EventSequencer>().ToSingleton();
 			if (firstContext == this)
 			{
 				injectionBinder.Bind<IEventDispatcher>().To<EventDispatcher>().ToSingleton().ToName(ContextKeys.CROSS_CONTEXT_DISPATCHER);

@@ -1,18 +1,17 @@
 /**
  * @class strange.extensions.sequencer.impl.EventSequenceCommand
  * 
- * A subclass of SequenceCommand which injects a TmEvent and a Dispatcher.
+ * A subclass of SequenceCommand which injects an IEvent and a Dispatcher.
  * 
  * EventSequenceCommand extends SequenceCommand to provide access 
  * to EventDispatcher as the common system bus. SequenceCommands
  * which extend EventSequenceCommand will automatically inject 
- * the source TMEvent.
+ * the source IEvent.
  */
 
 using System;
 using strange.extensions.context.api;
 using strange.extensions.dispatcher.eventdispatcher.api;
-using strange.extensions.dispatcher.eventdispatcher.impl;
 using strange.extensions.sequencer.impl;
 
 namespace strange.extensions.sequencer.impl
@@ -23,9 +22,9 @@ namespace strange.extensions.sequencer.impl
 		[Inject(ContextKeys.CONTEXT_DISPATCHER)]
 		public IEventDispatcher dispatcher{ get; set;}
 
-		/// The injected TmEvent
+		/// The injected IEvent
 		[Inject]
-		public TmEvent evt{ get; set;}
+		public IEvent evt{ get; set;}
 	}
 }
 

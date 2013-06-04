@@ -6,7 +6,10 @@
  * EventBindings technically allow any Key, but require either an 
  * EmptyCallback (no arguments) or an EventCallback (one argument).
  * 
- * @see strange.extensions.dispatcher.eventdispatcher.impl.TmEvent
+ * The IEvent only accepts strings as keys, so in the standard MVCSContext
+ * setup, your EventBinder keys should also be strings.
+ * 
+ * @see strange.extensions.dispatcher.eventdispatcher.api.IEvent
  */
 
 using System;
@@ -15,7 +18,7 @@ using strange.framework.api;
 namespace strange.extensions.dispatcher.eventdispatcher.api
 {
 	/// Delegate for adding a listener with a single argument
-	public delegate void EventCallback(object payload);
+	public delegate void EventCallback(IEvent payload);
 
 	/// Delegate for adding a listener with a no arguments
 	public delegate void EmptyCallback();
