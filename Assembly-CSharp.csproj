@@ -11,6 +11,7 @@
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <RootNamespace>AssemblyCSharp</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -155,6 +156,7 @@
     <Compile Include="Assets\scripts\strange\extensions\mediation\api\IMediationBinder.cs" />
     <Compile Include="Assets\scripts\strange\extensions\mediation\api\IMediationBinding.cs" />
     <Compile Include="Assets\scripts\strange\extensions\mediation\api\IMediator.cs" />
+    <Compile Include="Assets\scripts\strange\extensions\mediation\api\IView.cs" />
     <Compile Include="Assets\scripts\strange\extensions\mediation\api\MediationEvent.cs" />
     <Compile Include="Assets\scripts\strange\extensions\mediation\api\MediationExceptionType.cs" />
     <Compile Include="Assets\scripts\strange\extensions\mediation\impl\EventMediator.cs" />
@@ -164,8 +166,6 @@
     <Compile Include="Assets\scripts\strange\extensions\mediation\impl\MediationException.cs" />
     <Compile Include="Assets\scripts\strange\extensions\mediation\impl\Mediator.cs" />
     <Compile Include="Assets\scripts\strange\extensions\mediation\impl\View.cs" />
-    <Compile Include="Assets\scripts\strange\extensions\mediation\test\RuntimeTester.cs" />
-    <Compile Include="Assets\scripts\strange\extensions\mediation\test\TestView.cs" />
     <Compile Include="Assets\scripts\strange\extensions\reflector\api\IReflectedClass.cs" />
     <Compile Include="Assets\scripts\strange\extensions\reflector\api\IReflectionBinder.cs" />
     <Compile Include="Assets\scripts\strange\extensions\reflector\api\ReflectionExceptionType.cs" />
@@ -192,112 +192,7 @@
     <Compile Include="Assets\scripts\strange\framework\impl\SemiBinding.cs" />
     <None Include="Assets\scripts\strange\examples\multiplecontexts\ReadMe.txt" />
     <None Include="Assets\scripts\strange\examples\myfirstproject\ReadMe.txt" />
-    <None Include="Assets\scripts\strange\extensions\mediation\test\ReadMe.txt" />
     <None Include="Assets\scripts\strange\extensions\ReadMe.txt" />
-    <None Include="Assets\scripts\strange\tests\.DS_Store" />
-    <None Include="Assets\scripts\strange\tests\extensions.meta" />
-    <None Include="Assets\scripts\strange\tests\framework.meta" />
-    <None Include="Assets\scripts\strange\tests\testPayloads.meta" />
-    <None Include="Assets\scripts\strange\tests\extensions\.DS_Store" />
-    <None Include="Assets\scripts\strange\tests\extensions\command.meta" />
-    <None Include="Assets\scripts\strange\tests\extensions\eventdispatcher.meta" />
-    <None Include="Assets\scripts\strange\tests\extensions\injector.meta" />
-    <None Include="Assets\scripts\strange\tests\extensions\reflector.meta" />
-    <None Include="Assets\scripts\strange\tests\extensions\sequencer.meta" />
-    <Compile Include="Assets\scripts\strange\tests\extensions\command\TestCommand.cs" />
-    <None Include="Assets\scripts\strange\tests\extensions\command\TestCommand.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\extensions\command\TestCommandBinder.cs" />
-    <None Include="Assets\scripts\strange\tests\extensions\command\TestCommandBinder.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\extensions\command\TestCommandBinding.cs" />
-    <None Include="Assets\scripts\strange\tests\extensions\command\TestCommandBinding.cs.meta" />
-    <None Include="Assets\scripts\strange\tests\extensions\command\impl.meta" />
-    <Compile Include="Assets\scripts\strange\tests\extensions\eventdispatcher\TestEventBinding.cs" />
-    <None Include="Assets\scripts\strange\tests\extensions\eventdispatcher\TestEventBinding.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\extensions\eventdispatcher\TestEventCommand.cs" />
-    <None Include="Assets\scripts\strange\tests\extensions\eventdispatcher\TestEventCommand.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\extensions\eventdispatcher\TestEventDispatcher.cs" />
-    <None Include="Assets\scripts\strange\tests\extensions\eventdispatcher\TestEventDispatcher.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\extensions\injector\InjectionSpeedTest.cs" />
-    <None Include="Assets\scripts\strange\tests\extensions\injector\InjectionSpeedTest.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\extensions\injector\TestInjectionBinder.cs" />
-    <None Include="Assets\scripts\strange\tests\extensions\injector\TestInjectionBinder.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\extensions\injector\TestInjectionBinding.cs" />
-    <None Include="Assets\scripts\strange\tests\extensions\injector\TestInjectionBinding.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\extensions\injector\TestInjector.cs" />
-    <None Include="Assets\scripts\strange\tests\extensions\injector\TestInjector.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\extensions\injector\TestInjectorFactory.cs" />
-    <None Include="Assets\scripts\strange\tests\extensions\injector\TestInjectorFactory.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\extensions\reflector\TestReflectionBinder.cs" />
-    <None Include="Assets\scripts\strange\tests\extensions\reflector\TestReflectionBinder.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\extensions\sequencer\TestSequenceCommand.cs" />
-    <None Include="Assets\scripts\strange\tests\extensions\sequencer\TestSequenceCommand.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\extensions\sequencer\TestSequencer.cs" />
-    <None Include="Assets\scripts\strange\tests\extensions\sequencer\TestSequencer.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\framework\TestBinder.cs" />
-    <None Include="Assets\scripts\strange\tests\framework\TestBinder.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\framework\TestBinding.cs" />
-    <None Include="Assets\scripts\strange\tests\framework\TestBinding.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\framework\TestSemiBinding.cs" />
-    <None Include="Assets\scripts\strange\tests\framework\TestSemiBinding.cs.meta" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\.DS_Store" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\CircularDependencyOne.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\CircularDependencyOne.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\CircularDependencyTwo.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\CircularDependencyTwo.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\ClassToBeInjected.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\ClassToBeInjected.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\ClassWithConstructorParameters.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\ClassWithConstructorParameters.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\ClassWithConstructorParametersOnlyOneConstructor.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\ClassWithConstructorParametersOnlyOneConstructor.cs.meta" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\Commands.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\GuaranteedUniqueInstances.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\GuaranteedUniqueInstances.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\HasNamedInjections.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\HasNamedInjections.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\HasTwoInjections.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\HasTwoInjections.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\IAnotherSimpleInterface.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\IAnotherSimpleInterface.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\ISimpleInterface.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\ISimpleInterface.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\InjectableDerivedClass.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\InjectableDerivedClass.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\InjectableSuperClass.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\InjectableSuperClass.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\MarkerClass.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\MarkerClass.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\MultipleConstructorsUntagged.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\MultipleConstructorsUntagged.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\PolymorphicClass.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\PolymorphicClass.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\PostConstructClass.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\PostConstructClass.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\PostConstructTwo.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\PostConstructTwo.cs.meta" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\SequenceCommands.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\SimpleInterfaceImplementer.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\SimpleInterfaceImplementer.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\SomeEnum.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\SomeEnum.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\TestException.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\TestException.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\Commands\AsynchCommand.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\Commands\AsynchCommand.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\Commands\CommandWithExecute.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\Commands\CommandWithExecute.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\Commands\CommandWithInjection.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\Commands\CommandWithInjection.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\Commands\CommandWithoutExecute.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\Commands\CommandWithoutExecute.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\SequenceCommands\SequenceCommandWithExecute.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\SequenceCommands\SequenceCommandWithExecute.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\SequenceCommands\SequenceCommandWithInjection.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\SequenceCommands\SequenceCommandWithInjection.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\SequenceCommands\SequenceCommandWithoutExecute.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\SequenceCommands\SequenceCommandWithoutExecute.cs.meta" />
-    <Compile Include="Assets\scripts\strange\tests\testPayloads\SequenceCommands\SequenceInterruptingCommand.cs" />
-    <None Include="Assets\scripts\strange\tests\testPayloads\SequenceCommands\SequenceInterruptingCommand.cs.meta" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -311,13 +206,10 @@
     <MonoDevelop>
       <Properties>
         <Policies>
-          <TextStylePolicy TabsToSpaces="False" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/x-csharp" />
+          <TextStylePolicy TabWidth="4" inheritsSet="Mono" inheritsScope="text/plain" scope="text/x-csharp" />
           <CSharpFormattingPolicy inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" />
         </Policies>
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
-  <ItemGroup>
-    <Folder Include="Assets\scripts\strange\tests\" />
-  </ItemGroup>
 </Project>

@@ -1,6 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/strange/extensions/mediation/impl/MediationBinder.cs">
+    <Files>
+      <File FileName="Assets/scripts/strange/extensions/mediation/impl/MediationBinder.cs" Line="99" Column="20" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
@@ -8,10 +11,25 @@
             <Node name="Assets" expanded="True">
               <Node name="scripts" expanded="True">
                 <Node name="strange" expanded="True">
+                  <Node name="examples" expanded="True">
+                    <Node name="multiplecontexts" expanded="True">
+                      <Node name="game" expanded="True">
+                        <Node name="view" expanded="True" />
+                      </Node>
+                    </Node>
+                  </Node>
                   <Node name="extensions" expanded="True">
-                    <Node name="sequencer" expanded="True">
+                    <Node name="dispatcher" expanded="True">
+                      <Node name="eventdispatcher" expanded="True">
+                        <Node name="impl" expanded="True" />
+                      </Node>
+                    </Node>
+                    <Node name="injector" expanded="True">
+                      <Node name="impl" expanded="True" />
+                    </Node>
+                    <Node name="mediation" expanded="True">
                       <Node name="impl" expanded="True">
-                        <Node name="EventSequencer.cs" selected="True" />
+                        <Node name="MediationBinder.cs" selected="True" />
                       </Node>
                     </Node>
                   </Node>

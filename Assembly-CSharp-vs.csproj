@@ -147,6 +147,7 @@
      <Compile Include="Assets\scripts\strange\extensions\mediation\api\IMediationBinder.cs" />
      <Compile Include="Assets\scripts\strange\extensions\mediation\api\IMediationBinding.cs" />
      <Compile Include="Assets\scripts\strange\extensions\mediation\api\IMediator.cs" />
+     <Compile Include="Assets\scripts\strange\extensions\mediation\api\IView.cs" />
      <Compile Include="Assets\scripts\strange\extensions\mediation\api\MediationEvent.cs" />
      <Compile Include="Assets\scripts\strange\extensions\mediation\api\MediationExceptionType.cs" />
      <Compile Include="Assets\scripts\strange\extensions\mediation\impl\EventMediator.cs" />
