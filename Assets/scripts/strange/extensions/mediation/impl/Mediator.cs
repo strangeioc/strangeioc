@@ -16,20 +16,12 @@ namespace strange.extensions.mediation.impl
 {
 	public class Mediator : MonoBehaviour, IMediator
 	{
-		protected MonoBehaviour abstractView;
-
-		protected string viewID;
 
 		[Inject(ContextKeys.CONTEXT_VIEW)]
 		public GameObject contextView{get;set;}
 
 		public Mediator ()
 		{
-		}
-
-		virtual public void setViewComponent(MonoBehaviour view)
-		{
-			abstractView = view;
 		}
 
 		/**

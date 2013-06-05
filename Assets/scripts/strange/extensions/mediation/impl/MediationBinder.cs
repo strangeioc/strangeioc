@@ -35,11 +35,6 @@ namespace strange.extensions.mediation.impl
 
 		public void Trigger(MediationEvent evt, IView view)
 		{
-			//All views have potential to be injected, regardless of whether they are mediated
-			if (evt == MediationEvent.AWAKE)
-			{
-				initChildren(view);
-			}
 			Type viewType = view.GetType();
 			IMediationBinding binding = GetBinding (viewType) as IMediationBinding;
 			if (binding != null)
@@ -47,6 +42,7 @@ namespace strange.extensions.mediation.impl
 				switch(evt)
 				{
 					case MediationEvent.AWAKE:
+						injectViewAndChildren(view);
 						mapView (view, binding);
 						break;
 					case MediationEvent.DESTROYED:
@@ -56,10 +52,15 @@ namespace strange.extensions.mediation.impl
 						break;
 				}
 			}
+			else if (evt == MediationEvent.AWAKE)
+			{
+				//Even if not mapped, Views (and their children) have potential to be injected
+				injectViewAndChildren(view);
+			}
 		}
 		
 		/// Initialize all IViews within this view
-		virtual protected void initChildren(IView view)
+		virtual protected void injectViewAndChildren(IView view)
 		{
 			MonoBehaviour mono = view as MonoBehaviour;
 			Component[] views = mono.GetComponentsInChildren(typeof(IView), true) as Component[];
@@ -67,14 +68,21 @@ namespace strange.extensions.mediation.impl
 			int aa = views.Length;
 			for (int a = 0; a < aa; a++)
 			{
-				(view as IView).registeredWithContext = true;
+				IView iView = views[a] as IView;
+				if (iView != null)
+				{
+					if (iView.registeredWithContext)
+					{
+						continue;
+					}
+					iView.registeredWithContext = true;
+				}
 				injectionBinder.injector.Inject (views[a], false);
 			}
 		}
 
 		public override IBinding Bind<T> ()
 		{
-			injectionBinder.Bind<T> ().To<T>();
 			return base.Bind<T> ();
 		}
 
@@ -93,9 +101,10 @@ namespace strange.extensions.mediation.impl
 					MonoBehaviour mono = view as MonoBehaviour;
 					Type mediatorType = values [a] as Type;
 					IMediator mediator = mono.gameObject.AddComponent(mediatorType) as IMediator;
-					mediator.setViewComponent (mono);
 					mediator.preRegister ();
+					injectionBinder.Bind (viewType).ToValue (view).ToInject(false);
 					injectionBinder.injector.Inject (mediator);
+					injectionBinder.Unbind(viewType);
 					mediator.onRegister ();
 				}
 			}
