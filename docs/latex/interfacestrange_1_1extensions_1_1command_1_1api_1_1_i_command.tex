@@ -32,13 +32,13 @@ Inheritance diagram for strange.\-extensions.\-command.\-api.\-I\-Command\-:\beg
 \begin{DoxyCompactList}\small\item\em The property set by {\ttfamily Retain} and {\ttfamily Release} to indicate whether the Command should be cleaned up on completion of the {\ttfamily \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a49ddf3bbaf19624534fa99fa4725feca}{Execute()}} method. \end{DoxyCompactList}\item 
 \hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_afa2693fc9c9747093acde1dcab858570}{object \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_afa2693fc9c9747093acde1dcab858570}{data}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_afa2693fc9c9747093acde1dcab858570}
 
-\begin{DoxyCompactList}\small\item\em A payload injected into the Command. Most commonly, this a Tm\-Event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A payload injected into the Command. Most commonly, this an I\-Event. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Interface for Commands, which is where you place your business logic. 
 
-In the default Strange\-Io\-C setup, commands are mapped to Tm\-Events. The firing of a specific event on the global event bus triggers the instantiation, injection and execution of any Command(s) bound to that event.
+In the default Strange\-Io\-C setup, commands are mapped to I\-Events. The firing of a specific event on the global event bus triggers the instantiation, injection and execution of any Command(s) bound to that event.
 
 By default, commands are cleaned up immediately on completion of the {\ttfamily \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a49ddf3bbaf19624534fa99fa4725feca}{Execute()}} method. For asynchronous Commands (e.\-g., calling a service and awaiting a response), call {\ttfamily \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_ae24532aa617e2bee62a3798b59b78458}{Retain()}} at the top of your {\ttfamily \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a49ddf3bbaf19624534fa99fa4725feca}{Execute()}} method, which will prevent premature cleanup. But remember, having done so it is your responsipility to call {\ttfamily \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a462054fd8e17e6139f9739e32d4d6ced}{Release()}} once the Command is complete. 
 

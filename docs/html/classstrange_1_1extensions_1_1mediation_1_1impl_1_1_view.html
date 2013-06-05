@@ -89,9 +89,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#properties">Properties</a> &#124;
 <a href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">strange.extensions.mediation.impl.View Class Reference</div>  </div>
@@ -106,16 +105,11 @@ Inheritance diagram for strange.extensions.mediation.impl.View:</div>
  <div class="center">
   <img src="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.png" usemap="#strange.extensions.mediation.impl.View_map" alt=""/>
   <map id="strange.extensions.mediation.impl.View_map" name="strange.extensions.mediation.impl.View_map">
-<area href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_event_view.html" title="Injects a local event bus into this View. " alt="strange.extensions.mediation.impl.EventView" shape="rect" coords="0,112,264,136"/>
+<area href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html" title="Monobehaviours must implement this interface in order to be injectable. " alt="strange.extensions.mediation.api.IView" shape="rect" coords="274,0,538,24"/>
+<area href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_event_view.html" title="Injects a local event bus into this View. " alt="strange.extensions.mediation.impl.EventView" shape="rect" coords="137,112,401,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:ad830e5b03b04691f18ea3fe83a6b2a6d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html#ad830e5b03b04691f18ea3fe83a6b2a6d">requiresContext</a> = true</td></tr>
-<tr class="memdesc:ad830e5b03b04691f18ea3fe83a6b2a6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Leave this value true most of the time.  <a href="#ad830e5b03b04691f18ea3fe83a6b2a6d">More...</a><br/></td></tr>
-<tr class="separator:ad830e5b03b04691f18ea3fe83a6b2a6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:ac8f8bc798a6729e44cc4f8d6dc3ee838"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html#ac8f8bc798a6729e44cc4f8d6dc3ee838">Awake</a> ()</td></tr>
@@ -131,11 +125,22 @@ Protected Member Functions</h2></td></tr>
 <tr class="memdesc:a77b15b992a40cf3bfbf6d17c6f933a9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recurses through Transform.parent to find the GameObject to which ContextView is attached Has a loop limit of 100 levels.  <a href="#a77b15b992a40cf3bfbf6d17c6f933a9c">More...</a><br/></td></tr>
 <tr class="separator:a77b15b992a40cf3bfbf6d17c6f933a9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:ad830e5b03b04691f18ea3fe83a6b2a6d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad830e5b03b04691f18ea3fe83a6b2a6d"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>requiresContext</b><code> [get, set]</code></td></tr>
+<tr class="separator:ad830e5b03b04691f18ea3fe83a6b2a6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08f38be9f2708de9af4eaabf6c7dcb4c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a08f38be9f2708de9af4eaabf6c7dcb4c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>registeredWithContext</b> = false</td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>registeredWithContext</b><code> [get, set]</code></td></tr>
 <tr class="separator:a08f38be9f2708de9af4eaabf6c7dcb4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td colspan="2" onclick="javascript:toggleInherit('properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html">strange.extensions.mediation.api.IView</a></td></tr>
+<tr class="memitem:a0d9c314f274cd64133a8c97116ba9332 inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html#a0d9c314f274cd64133a8c97116ba9332">requiresContext</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a0d9c314f274cd64133a8c97116ba9332 inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the View can work absent a context.  <a href="#a0d9c314f274cd64133a8c97116ba9332">More...</a><br/></td></tr>
+<tr class="separator:a0d9c314f274cd64133a8c97116ba9332 inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6eca04af420be4cb7ad637df4c8ff9c inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac6eca04af420be4cb7ad637df4c8ff9c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html#ac6eca04af420be4cb7ad637df4c8ff9c">registeredWithContext</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ac6eca04af420be4cb7ad637df4c8ff9c inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether this View has been registered with a Context. <br/></td></tr>
+<tr class="separator:ac6eca04af420be4cb7ad637df4c8ff9c inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Parent class for all your Views. </p>
@@ -260,29 +265,13 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>registeredWithContext
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="ad830e5b03b04691f18ea3fe83a6b2a6d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool strange.extensions.mediation.impl.View.requiresContext = true</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Leave this value true most of the time. </p>
-<p>If for some reason you want a view to exist outside a context you can set it to false. The only difference is whether an error gets generated. </p>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>Assets/scripts/strange/extensions/mediation/impl/View.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 13:47:51 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 5 2013 11:39:03 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

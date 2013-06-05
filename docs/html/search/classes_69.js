@@ -8,6 +8,7 @@ var searchData=
   ['icontext',['IContext',['../interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html',1,'strange::extensions::context::api']]],
   ['icontextview',['IContextView',['../interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context_view.html',1,'strange::extensions::context::api']]],
   ['idispatcher',['IDispatcher',['../interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher.html',1,'strange::extensions::dispatcher::api']]],
+  ['ievent',['IEvent',['../interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event.html',1,'strange::extensions::dispatcher::eventdispatcher::api']]],
   ['ieventbinding',['IEventBinding',['../interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding.html',1,'strange::extensions::dispatcher::eventdispatcher::api']]],
   ['ieventdispatcher',['IEventDispatcher',['../interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher.html',1,'strange::extensions::dispatcher::eventdispatcher::api']]],
   ['iinjectionbinder',['IInjectionBinder',['../interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder.html',1,'strange::extensions::injector::api']]],
@@ -30,5 +31,6 @@ var searchData=
   ['isequencecommand',['ISequenceCommand',['../interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequence_command.html',1,'strange::extensions::sequencer::api']]],
   ['isequencer',['ISequencer',['../interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer.html',1,'strange::extensions::sequencer::api']]],
   ['itriggerable',['ITriggerable',['../interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable.html',1,'strange::extensions::dispatcher::api']]],
-  ['itriggerprovider',['ITriggerProvider',['../interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider.html',1,'strange::extensions::dispatcher::api']]]
+  ['itriggerprovider',['ITriggerProvider',['../interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider.html',1,'strange::extensions::dispatcher::api']]],
+  ['iview',['IView',['../interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html',1,'strange::extensions::mediation::api']]]
 ];

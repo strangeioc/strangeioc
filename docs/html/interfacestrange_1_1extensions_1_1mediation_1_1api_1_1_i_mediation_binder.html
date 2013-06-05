@@ -111,9 +111,9 @@ Inheritance diagram for strange.extensions.mediation.api.IMediationBinder:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab1c50a1f20201998387c002c286599bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder.html#ab1c50a1f20201998387c002c286599bf">Trigger</a> (<a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#ae5a81bb1edf9fca1d2aca9f4fada72a8">MediationEvent</a> evt, MonoBehaviour view)</td></tr>
-<tr class="memdesc:ab1c50a1f20201998387c002c286599bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">An event that just happened, and the View it happened to.  <a href="#ab1c50a1f20201998387c002c286599bf">More...</a><br/></td></tr>
-<tr class="separator:ab1c50a1f20201998387c002c286599bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e394e1dbd3279239425740221f727c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder.html#a7e394e1dbd3279239425740221f727c7">Trigger</a> (<a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#ae5a81bb1edf9fca1d2aca9f4fada72a8">MediationEvent</a> evt, <a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html">IView</a> view)</td></tr>
+<tr class="memdesc:a7e394e1dbd3279239425740221f727c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">An event that just happened, and the View it happened to.  <a href="#a7e394e1dbd3279239425740221f727c7">More...</a><br/></td></tr>
+<tr class="separator:a7e394e1dbd3279239425740221f727c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html">strange.framework.api.IBinder</a></td></tr>
 <tr class="memitem:a45eafa9336e6a40117f6c3259f75e72c inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45eafa9336e6a40117f6c3259f75e72c"></a>
 <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html#a45eafa9336e6a40117f6c3259f75e72c">Bind&lt; T &gt;</a> ()</td></tr>
@@ -184,7 +184,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 <p>Finally, two words of warning. First: Views may be injected. This allows you to provide a local Dispatcher, a Configuration file, or other items that might come in handy. I recommend very strongly that you do not inject the context-wide Dispatcher, nor any other class involving the world beyond the View's immediate area of interest. To do so risks negating the whole point of mediation.</p>
 <p>Second: experience tells me that understanding what belongs in Mediator and what in View is the trickiest part of this system. I recommend the 'thin' class approach, i.e., nothing goes in the Mediator but what it needs to mediate. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="ab1c50a1f20201998387c002c286599bf"></a>
+<a class="anchor" id="a7e394e1dbd3279239425740221f727c7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -197,7 +197,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">MonoBehaviour&#160;</td>
+          <td class="paramtype"><a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html">IView</a>&#160;</td>
           <td class="paramname"><em>view</em>&#160;</td>
         </tr>
         <tr>
@@ -211,7 +211,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 <p>An event that just happened, and the View it happened to. </p>
 <p>If the event was Awake, it will trigger creation of a mapped Mediator. </p>
 
-<p>Implemented in <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder.html#a79447d8fd991688f087c51b752c002cb">strange.extensions.mediation.impl.MediationBinder</a>.</p>
+<p>Implemented in <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder.html#a239e22ae10b9abac39d32533771457f8">strange.extensions.mediation.impl.MediationBinder</a>.</p>
 
 </div>
 </div>
@@ -221,7 +221,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 13:47:51 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 5 2013 11:39:02 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

@@ -12,11 +12,6 @@ Inheritance diagram for strange.\-extensions.\-mediation.\-impl.\-View\-:\begin{
 \includegraphics[height=3.000000cm]{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}
 \end{center}
 \end{figure}
-\subsection*{Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-bool \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_ad830e5b03b04691f18ea3fe83a6b2a6d}{requires\-Context} = true
-\begin{DoxyCompactList}\small\item\em Leave this value true most of the time. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -28,10 +23,13 @@ virtual void \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view
 \begin{DoxyCompactList}\small\item\em A Mono\-Behaviour On\-Destroy handler The \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}{View} will inform the Context that it is about to be destroyed. \end{DoxyCompactList}\item 
 virtual void \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_a77b15b992a40cf3bfbf6d17c6f933a9c}{bubble\-To\-Context} (Mono\-Behaviour view, bool to\-Add, bool final\-Try)
 \begin{DoxyCompactList}\small\item\em Recurses through Transform.\-parent to find the Game\-Object to which Context\-View is attached Has a loop limit of 100 levels. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Protected Attributes}
+\subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_a08f38be9f2708de9af4eaabf6c7dcb4c}{bool {\bfseries registered\-With\-Context} = false}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_a08f38be9f2708de9af4eaabf6c7dcb4c}
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_ad830e5b03b04691f18ea3fe83a6b2a6d}{bool {\bfseries requires\-Context}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_ad830e5b03b04691f18ea3fe83a6b2a6d}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_a08f38be9f2708de9af4eaabf6c7dcb4c}{bool {\bfseries registered\-With\-Context}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_a08f38be9f2708de9af4eaabf6c7dcb4c}
 
 \end{DoxyCompactItemize}
 
@@ -89,16 +87,6 @@ A Mono\-Behaviour On\-Destroy handler The \hyperlink{classstrange_1_1extensions_
 A Mono\-Behaviour Start handler If the \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view}{View} is not yet registered with the Context, it will attempt to connect again at this moment. 
 
 
-
-\subsection{Member Data Documentation}
-\hypertarget{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_ad830e5b03b04691f18ea3fe83a6b2a6d}{\index{strange\-::extensions\-::mediation\-::impl\-::\-View@{strange\-::extensions\-::mediation\-::impl\-::\-View}!requires\-Context@{requires\-Context}}
-\index{requires\-Context@{requires\-Context}!strange::extensions::mediation::impl::View@{strange\-::extensions\-::mediation\-::impl\-::\-View}}
-\subsubsection[{requires\-Context}]{\setlength{\rightskip}{0pt plus 5cm}bool strange.\-extensions.\-mediation.\-impl.\-View.\-requires\-Context = true}}\label{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view_ad830e5b03b04691f18ea3fe83a6b2a6d}
-
-
-Leave this value true most of the time. 
-
-If for some reason you want a view to exist outside a context you can set it to false. The only difference is whether an error gets generated. 
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 

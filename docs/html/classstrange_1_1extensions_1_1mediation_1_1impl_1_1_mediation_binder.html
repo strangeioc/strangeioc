@@ -119,9 +119,9 @@ Public Member Functions</h2></td></tr>
 override <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder.html#a8979dac1fe07f85a453ecb0b43cd9c48">GetRawBinding</a> ()</td></tr>
 <tr class="memdesc:a8979dac1fe07f85a453ecb0b43cd9c48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an unpopulated IBinding in whatever concrete form the Binder dictates. <br/></td></tr>
 <tr class="separator:a8979dac1fe07f85a453ecb0b43cd9c48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79447d8fd991688f087c51b752c002cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder.html#a79447d8fd991688f087c51b752c002cb">Trigger</a> (<a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#ae5a81bb1edf9fca1d2aca9f4fada72a8">MediationEvent</a> evt, MonoBehaviour view)</td></tr>
-<tr class="memdesc:a79447d8fd991688f087c51b752c002cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">An event that just happened, and the <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html" title="Parent class for all your Views. ">View</a> it happened to.  <a href="#a79447d8fd991688f087c51b752c002cb">More...</a><br/></td></tr>
-<tr class="separator:a79447d8fd991688f087c51b752c002cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a239e22ae10b9abac39d32533771457f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder.html#a239e22ae10b9abac39d32533771457f8">Trigger</a> (<a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#ae5a81bb1edf9fca1d2aca9f4fada72a8">MediationEvent</a> evt, <a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html">IView</a> view)</td></tr>
+<tr class="memdesc:a239e22ae10b9abac39d32533771457f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">An event that just happened, and the <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html" title="Parent class for all your Views. ">View</a> it happened to.  <a href="#a239e22ae10b9abac39d32533771457f8">More...</a><br/></td></tr>
+<tr class="separator:a239e22ae10b9abac39d32533771457f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09f66b1d01dca93a0bad43c83d6c03cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a09f66b1d01dca93a0bad43c83d6c03cb"></a>
 override <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder.html#a09f66b1d01dca93a0bad43c83d6c03cb">Bind&lt; T &gt;</a> ()</td></tr>
 <tr class="memdesc:a09f66b1d01dca93a0bad43c83d6c03cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind a Binding Key to a class or interface generic. <br/></td></tr>
@@ -186,13 +186,17 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:ae9f811869606deca9f750c039ab0d6a0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder.html#ae9f811869606deca9f750c039ab0d6a0">mapView</a> (MonoBehaviour view, <a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binding.html">IMediationBinding</a> binding)</td></tr>
-<tr class="memdesc:ae9f811869606deca9f750c039ab0d6a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and registers a <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator.html" title="Base class for all Mediators. ">Mediator</a> for a specific <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html" title="Parent class for all your Views. ">View</a> instance.  <a href="#ae9f811869606deca9f750c039ab0d6a0">More...</a><br/></td></tr>
-<tr class="separator:ae9f811869606deca9f750c039ab0d6a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29bfcbebcbfcb3d457e234fcf86984cc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29bfcbebcbfcb3d457e234fcf86984cc"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder.html#a29bfcbebcbfcb3d457e234fcf86984cc">unmapView</a> (MonoBehaviour view, <a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binding.html">IMediationBinding</a> binding)</td></tr>
-<tr class="memdesc:a29bfcbebcbfcb3d457e234fcf86984cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a mediator when its view is destroyed. <br/></td></tr>
-<tr class="separator:a29bfcbebcbfcb3d457e234fcf86984cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01f172fc7a3cd0a45a44568a65e62a4f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01f172fc7a3cd0a45a44568a65e62a4f"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder.html#a01f172fc7a3cd0a45a44568a65e62a4f">injectViewAndChildren</a> (<a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html">IView</a> view)</td></tr>
+<tr class="memdesc:a01f172fc7a3cd0a45a44568a65e62a4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize all IViews within this view. <br/></td></tr>
+<tr class="separator:a01f172fc7a3cd0a45a44568a65e62a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f43c7f8bf7b41f12f7b453bcbfc5fcd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder.html#a8f43c7f8bf7b41f12f7b453bcbfc5fcd">mapView</a> (<a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html">IView</a> view, <a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binding.html">IMediationBinding</a> binding)</td></tr>
+<tr class="memdesc:a8f43c7f8bf7b41f12f7b453bcbfc5fcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and registers a <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator.html" title="Base class for all Mediators. ">Mediator</a> for a specific <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html" title="Parent class for all your Views. ">View</a> instance.  <a href="#a8f43c7f8bf7b41f12f7b453bcbfc5fcd">More...</a><br/></td></tr>
+<tr class="separator:a8f43c7f8bf7b41f12f7b453bcbfc5fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac920c35b85c82588c9d847e494159a18"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac920c35b85c82588c9d847e494159a18"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder.html#ac920c35b85c82588c9d847e494159a18">unmapView</a> (<a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html">IView</a> view, <a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binding.html">IMediationBinding</a> binding)</td></tr>
+<tr class="memdesc:ac920c35b85c82588c9d847e494159a18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a mediator when its view is destroyed. <br/></td></tr>
+<tr class="separator:ac920c35b85c82588c9d847e494159a18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classstrange_1_1framework_1_1impl_1_1_binder')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html">strange.framework.impl.Binder</a></td></tr>
 <tr class="memitem:a8f463a4edc3e3bbdaac51a8aaa5d240f inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f463a4edc3e3bbdaac51a8aaa5d240f"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a8f463a4edc3e3bbdaac51a8aaa5d240f">resolver</a> (<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding)</td></tr>
@@ -225,7 +229,7 @@ Dictionary&lt; object, Dictionary<br class="typebreak"/>
 <div class="textblock"><p>Binds Views to Mediators. </p>
 <p>Please read <a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder.html" title="Interface for the Binder which maps Views to Mediators. ">strange.extensions.mediation.api.IMediationBinder</a> where I've extensively explained the purpose of <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html" title="Parent class for all your Views. ">View</a> mediation </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="ae9f811869606deca9f750c039ab0d6a0"></a>
+<a class="anchor" id="a8f43c7f8bf7b41f12f7b453bcbfc5fcd"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -235,7 +239,7 @@ Dictionary&lt; object, Dictionary<br class="typebreak"/>
         <tr>
           <td class="memname">virtual void strange.extensions.mediation.impl.MediationBinder.mapView </td>
           <td>(</td>
-          <td class="paramtype">MonoBehaviour&#160;</td>
+          <td class="paramtype"><a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html">IView</a>&#160;</td>
           <td class="paramname"><em>view</em>, </td>
         </tr>
         <tr>
@@ -262,7 +266,7 @@ Dictionary&lt; object, Dictionary<br class="typebreak"/>
 
 </div>
 </div>
-<a class="anchor" id="a79447d8fd991688f087c51b752c002cb"></a>
+<a class="anchor" id="a239e22ae10b9abac39d32533771457f8"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -278,7 +282,7 @@ Dictionary&lt; object, Dictionary<br class="typebreak"/>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">MonoBehaviour&#160;</td>
+          <td class="paramtype"><a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html">IView</a>&#160;</td>
           <td class="paramname"><em>view</em>&#160;</td>
         </tr>
         <tr>
@@ -297,7 +301,7 @@ Dictionary&lt; object, Dictionary<br class="typebreak"/>
 <p>An event that just happened, and the <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html" title="Parent class for all your Views. ">View</a> it happened to. </p>
 <p>If the event was Awake, it will trigger creation of a mapped <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator.html" title="Base class for all Mediators. ">Mediator</a>. </p>
 
-<p>Implements <a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder.html#ab1c50a1f20201998387c002c286599bf">strange.extensions.mediation.api.IMediationBinder</a>.</p>
+<p>Implements <a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder.html#a7e394e1dbd3279239425740221f727c7">strange.extensions.mediation.api.IMediationBinder</a>.</p>
 
 </div>
 </div>
@@ -307,7 +311,7 @@ Dictionary&lt; object, Dictionary<br class="typebreak"/>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 13:47:51 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 5 2013 11:39:02 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

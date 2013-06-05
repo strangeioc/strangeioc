@@ -112,7 +112,7 @@ Inheritance diagram for strange.extensions.dispatcher.eventdispatcher.api.IEvent
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aea1695dda47672e984598ce802e62ee8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aea1695dda47672e984598ce802e62ee8"></a>
-<a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a7135cff6e8e84b74fb1aee88c8f5af4c">EventCallbackType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding.html#aea1695dda47672e984598ce802e62ee8">typeForCallback</a> (<a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a5b2a372c9c074884178eb4a32992afd3">EventCallback</a> callback)</td></tr>
+<a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a7135cff6e8e84b74fb1aee88c8f5af4c">EventCallbackType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding.html#aea1695dda47672e984598ce802e62ee8">typeForCallback</a> (<a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a936e11bc9a4f26a96ede9941cc730e72">EventCallback</a> callback)</td></tr>
 <tr class="memdesc:aea1695dda47672e984598ce802e62ee8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the type of the provided callback. <br/></td></tr>
 <tr class="separator:aea1695dda47672e984598ce802e62ee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1502733e905d30d9a76c2cb4195c2350"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1502733e905d30d9a76c2cb4195c2350"></a>
@@ -124,7 +124,7 @@ new <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdis
 <tr class="memdesc:a12f1930a32c1fe19f2f266a9996d4935"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tie this binding to a value key, such as a string or class instance. <br/></td></tr>
 <tr class="separator:a12f1930a32c1fe19f2f266a9996d4935"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3ea162300b1c274476c5f89c3ddbecb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa3ea162300b1c274476c5f89c3ddbecb"></a>
-<a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding.html">IEventBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>To</b> (<a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a5b2a372c9c074884178eb4a32992afd3">EventCallback</a> callback)</td></tr>
+<a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding.html">IEventBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>To</b> (<a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a936e11bc9a4f26a96ede9941cc730e72">EventCallback</a> callback)</td></tr>
 <tr class="separator:aa3ea162300b1c274476c5f89c3ddbecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57463800a377374ccab15f11e0500457"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57463800a377374ccab15f11e0500457"></a>
 <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding.html">IEventBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>To</b> (<a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a4d68e68b31e6e0f733bd72ddcd6111fa">EmptyCallback</a> callback)</td></tr>
@@ -198,14 +198,15 @@ Enum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Binding interface for EventDispatcher. </p>
 <p>EventBindings technically allow any Key, but require either an EmptyCallback (no arguments) or an EventCallback (one argument).</p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event.html" title="The standard Event object for IEventDispatcher. ">strange.extensions.dispatcher.eventdispatcher.impl.TmEvent</a> </dd></dl>
+<p>The <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event.html" title="The interface for an event sent by the EventDispatcher. ">IEvent</a> only accepts strings as keys, so in the standard MVCSContext setup, your EventBinder keys should also be strings.</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event.html" title="The interface for an event sent by the EventDispatcher. ">strange.extensions.dispatcher.eventdispatcher.api.IEvent</a> </dd></dl>
 </div><hr/>The documentation for this interface was generated from the following file:<ul>
 <li>Assets/scripts/strange/extensions/dispatcher/eventdispatcher/api/IEventBinding.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 13:47:51 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 5 2013 11:39:02 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

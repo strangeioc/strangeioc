@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['data',['data',['../interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#afa2693fc9c9747093acde1dcab858570',1,'strange::extensions::command::api::ICommand']]],
+  ['data',['data',['../interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#afa2693fc9c9747093acde1dcab858570',1,'strange.extensions.command.api.ICommand.data()'],['../interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event.html#a69c2909a491579676e4a3ec0a9fe9764',1,'strange.extensions.dispatcher.eventdispatcher.api.IEvent.data()']]],
   ['deconstruct',['Deconstruct',['../class_deconstruct.html',1,'']]],
   ['default',['DEFAULT',['../namespacestrange_1_1extensions_1_1injector_1_1api.html#aaf5414484d7eccb5c502984bd70549aea5b39c8b553c821e7cddc6da64b5bd2ee',1,'strange::extensions::injector::api']]],
   ['destroyed',['DESTROYED',['../namespacestrange_1_1extensions_1_1mediation_1_1api.html#ae5a81bb1edf9fca1d2aca9f4fada72a8a5d7e41d3ac0abca5974598807df874ea',1,'strange::extensions::mediation::api']]],

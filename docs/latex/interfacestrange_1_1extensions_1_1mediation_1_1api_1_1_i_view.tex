@@ -1,0 +1,42 @@
+\hypertarget{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view}{\section{strange.\-extensions.\-mediation.\-api.\-I\-View Class Reference}
+\label{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view}\index{strange.\-extensions.\-mediation.\-api.\-I\-View@{strange.\-extensions.\-mediation.\-api.\-I\-View}}
+}
+
+
+Monobehaviours must implement this interface in order to be injectable.  
+
+
+Inheritance diagram for strange.\-extensions.\-mediation.\-api.\-I\-View\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view}
+\end{center}
+\end{figure}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view_a0d9c314f274cd64133a8c97116ba9332}{requires\-Context}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Indicates whether the View can work absent a context. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view_ac6eca04af420be4cb7ad637df4c8ff9c}{bool \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view_ac6eca04af420be4cb7ad637df4c8ff9c}{registered\-With\-Context}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view_ac6eca04af420be4cb7ad637df4c8ff9c}
+
+\begin{DoxyCompactList}\small\item\em Indicates whether this View has been registered with a Context. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Monobehaviours must implement this interface in order to be injectable. 
+
+To contact the Context, the View must be able to find it. View handles this with bubbling. 
+
+\subsection{Property Documentation}
+\hypertarget{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view_a0d9c314f274cd64133a8c97116ba9332}{\index{strange\-::extensions\-::mediation\-::api\-::\-I\-View@{strange\-::extensions\-::mediation\-::api\-::\-I\-View}!requires\-Context@{requires\-Context}}
+\index{requires\-Context@{requires\-Context}!strange::extensions::mediation::api::IView@{strange\-::extensions\-::mediation\-::api\-::\-I\-View}}
+\subsubsection[{requires\-Context}]{\setlength{\rightskip}{0pt plus 5cm}bool strange.\-extensions.\-mediation.\-api.\-I\-View.\-requires\-Context\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view_a0d9c314f274cd64133a8c97116ba9332}
+
+
+Indicates whether the View can work absent a context. 
+
+Leave this value true most of the time. If for some reason you want a view to exist outside a context you can set it to false. The only difference is whether an error gets generated. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/mediation/api/I\-View.\-cs\end{DoxyCompactItemize}

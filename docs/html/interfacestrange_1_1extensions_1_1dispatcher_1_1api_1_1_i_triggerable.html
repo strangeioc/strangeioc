@@ -105,12 +105,12 @@ Inheritance diagram for strange.extensions.dispatcher.api.ITriggerable:</div>
   <img src="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable.png" usemap="#strange.extensions.dispatcher.api.ITriggerable_map" alt=""/>
   <map id="strange.extensions.dispatcher.api.ITriggerable_map" name="strange.extensions.dispatcher.api.ITriggerable_map">
 <area href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html" title="A Binder that triggers the instantiation of Commands. " alt="strange.extensions.command.impl.CommandBinder" shape="rect" coords="203,56,600,80"/>
-<area href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html" title="A Dispatcher that uses TmEvent to send messages. " alt="strange.extensions.dispatcher.eventdispatcher.impl.EventDispatcher" shape="rect" coords="610,56,1007,80"/>
+<area href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html" title="A Dispatcher that uses IEvent to send messages. " alt="strange.extensions.dispatcher.eventdispatcher.impl.EventDispatcher" shape="rect" coords="610,56,1007,80"/>
 <area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer.html" title="Runs SequenceCommands in sequential order. " alt="strange.extensions.sequencer.impl.Sequencer" shape="rect" coords="1017,56,1414,80"/>
 <area href="classstrange_1_1extensions_1_1command_1_1impl_1_1_event_command_binder.html" title="A subclass of CommandBinder which relies on an IEventDispatcher as the common system bus..." alt="strange.extensions.command.impl.EventCommandBinder" shape="rect" coords="0,112,397,136"/>
 <area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer.html" title="Runs SequenceCommands in sequential order. " alt="strange.extensions.sequencer.impl.Sequencer" shape="rect" coords="407,112,804,136"/>
-<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer_with_events.html" title="This variation on Sequencer injects TmEvents. " alt="strange.extensions.sequencer.impl.SequencerWithEvents" shape="rect" coords="1017,112,1414,136"/>
-<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer_with_events.html" title="This variation on Sequencer injects TmEvents. " alt="strange.extensions.sequencer.impl.SequencerWithEvents" shape="rect" coords="407,168,804,192"/>
+<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequencer.html" title="This variation on Sequencer injects IEvents. " alt="strange.extensions.sequencer.impl.EventSequencer" shape="rect" coords="1017,112,1414,136"/>
+<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequencer.html" title="This variation on Sequencer injects IEvents. " alt="strange.extensions.sequencer.impl.EventSequencer" shape="rect" coords="407,168,804,192"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -127,7 +127,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface for declaring a class capable of being triggered by a provided key and/or name. </p>
-<p>Objects implementing <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable.html" title="Interface for declaring a class capable of being triggered by a provided key and/or name...">ITriggerable</a> can register with objects implementing <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider.html" title="Interface for declaring a class capable of triggering an ITriggerable class. ">ITriggerProvider</a>. The contract specifies that TriggerProvider will pass events on to the Triggerable class. This allows notifications, such as TmEvents to pass through the event bus and trigger other binders.</p>
+<p>Objects implementing <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable.html" title="Interface for declaring a class capable of being triggered by a provided key and/or name...">ITriggerable</a> can register with objects implementing <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider.html" title="Interface for declaring a class capable of triggering an ITriggerable class. ">ITriggerProvider</a>. The contract specifies that TriggerProvider will pass events on to the Triggerable class. This allows notifications, such as IEvents to pass through the event bus and trigger other binders.</p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider.html" title="Interface for declaring a class capable of triggering an ITriggerable class. ">strange.extensions.dispatcher.api.ITriggerProvider</a> </dd></dl>
 </div><hr/>The documentation for this interface was generated from the following file:<ul>
 <li>Assets/scripts/strange/extensions/dispatcher/api/ITriggerable.cs</li>
@@ -135,7 +135,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 13:47:51 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 5 2013 11:39:02 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

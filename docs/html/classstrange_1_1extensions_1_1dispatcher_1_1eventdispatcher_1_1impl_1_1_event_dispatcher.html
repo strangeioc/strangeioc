@@ -97,7 +97,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>A Dispatcher that uses <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event.html" title="The standard Event object for IEventDispatcher. ">TmEvent</a> to send messages.  
+<p>A Dispatcher that uses IEvent to send messages.  
  <a href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for strange.extensions.dispatcher.eventdispatcher.impl.EventDispatcher:</div>
@@ -264,12 +264,12 @@ object[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 <tr class="separator:a349b12bdc879e7f465a7cf7dfeb3b5b4 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A Dispatcher that uses <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event.html" title="The standard Event object for IEventDispatcher. ">TmEvent</a> to send messages. </p>
+<div class="textblock"><p>A Dispatcher that uses IEvent to send messages. </p>
 <p>Whenever the Dispatcher executes a <code><a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html#a70d8d7740798e10f960c866e03c4639b" title="Send a notification of type eventType. ">Dispatch()</a></code>, observers will be notified of any event (Key) for which they have registered.</p>
-<p><a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html" title="A Dispatcher that uses TmEvent to send messages. ">EventDispatcher</a> dispatches TmEvents.</p>
-<p>The <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html" title="A Dispatcher that uses TmEvent to send messages. ">EventDispatcher</a> is the only Dispatcher currently released with Strange (though by separating <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html" title="A Dispatcher that uses TmEvent to send messages. ">EventDispatcher</a> from Dispatcher I'm obviously signalling that I don't think it's the only possible one).</p>
-<p><a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html" title="A Dispatcher that uses TmEvent to send messages. ">EventDispatcher</a> is both an ITriggerProvider and an ITriggerable.</p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event.html" title="The standard Event object for IEventDispatcher. ">strange.extensions.dispatcher.eventdispatcher.impl.TmEvent</a> </dd>
+<p><a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html" title="A Dispatcher that uses IEvent to send messages. ">EventDispatcher</a> dispatches <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event.html" title="The standard Event object for IEventDispatcher. ">TmEvent</a> : IEvent.</p>
+<p>The <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html" title="A Dispatcher that uses IEvent to send messages. ">EventDispatcher</a> is the only Dispatcher currently released with Strange (though by separating <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html" title="A Dispatcher that uses IEvent to send messages. ">EventDispatcher</a> from Dispatcher I'm obviously signalling that I don't think it's the only possible one).</p>
+<p><a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html" title="A Dispatcher that uses IEvent to send messages. ">EventDispatcher</a> is both an ITriggerProvider and an ITriggerable.</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event.html" title="The interface for an event sent by the EventDispatcher. ">strange.extensions.dispatcher.eventdispatcher.api.IEvent</a> </dd>
 <dd>
 <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider.html" title="Interface for declaring a class capable of triggering an ITriggerable class. ">strange.extensions.dispatcher.api.ITriggerProvider</a> </dd>
 <dd>
@@ -298,7 +298,7 @@ object[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 </div><div class="memdoc">
 
 <p>Send a notification of type eventType. </p>
-<p>No data. In MVCSContext this dispatches a <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event.html" title="The standard Event object for IEventDispatcher. ">TmEvent</a>. </p>
+<p>No data. In MVCSContext this dispatches an IEvent. </p>
 
 <p>Implements <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher.html#afec6755050bf9891321a7bfd4da1f06b">strange.extensions.dispatcher.api.IDispatcher</a>.</p>
 
@@ -337,7 +337,7 @@ object[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 </div><div class="memdoc">
 
 <p>Send a notification of type eventType and the provided data payload. </p>
-<p>In MVCSContext this dispatches a <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event.html" title="The standard Event object for IEventDispatcher. ">TmEvent</a>. </p>
+<p>In MVCSContext this dispatches an IEvent. </p>
 
 <p>Implements <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher.html#a71f605859b2507f1248190fe37d96eed">strange.extensions.dispatcher.api.IDispatcher</a>.</p>
 
@@ -349,7 +349,7 @@ object[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 13:47:51 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 5 2013 11:39:02 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

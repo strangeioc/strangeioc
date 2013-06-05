@@ -114,9 +114,9 @@ Properties</h2></td></tr>
 <tr class="memitem:a7636e8b4c3c01ed4f32818fd22d2bd76"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7636e8b4c3c01ed4f32818fd22d2bd76"></a>
 <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher.html">IEventDispatcher</a>&#160;</td><td class="memItemRight" valign="bottom"><b>dispatcher</b><code> [get, set]</code></td></tr>
 <tr class="separator:a7636e8b4c3c01ed4f32818fd22d2bd76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6167b210449ff7400a6b63afd9ff4d14"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6167b210449ff7400a6b63afd9ff4d14"></a>
-<a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event.html">TmEvent</a>&#160;</td><td class="memItemRight" valign="bottom"><b>evt</b><code> [get, set]</code></td></tr>
-<tr class="separator:a6167b210449ff7400a6b63afd9ff4d14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a2d078ac2c9053cb164bd6eb4e522e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1a2d078ac2c9053cb164bd6eb4e522e8"></a>
+<a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event.html">IEvent</a>&#160;</td><td class="memItemRight" valign="bottom"><b>evt</b><code> [get, set]</code></td></tr>
+<tr class="separator:a1a2d078ac2c9053cb164bd6eb4e522e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_classstrange_1_1extensions_1_1command_1_1impl_1_1_command"><td colspan="2" onclick="javascript:toggleInherit('properties_classstrange_1_1extensions_1_1command_1_1impl_1_1_command')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html">strange.extensions.command.impl.Command</a></td></tr>
 <tr class="memitem:a97536a752bfdb962d4b6a9fe31888472 inherit properties_classstrange_1_1extensions_1_1command_1_1impl_1_1_command"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a97536a752bfdb962d4b6a9fe31888472"></a>
 <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder.html">ICommandBinder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html#a97536a752bfdb962d4b6a9fe31888472">commandBinder</a><code> [get, set]</code></td></tr>
@@ -139,7 +139,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 <tr class="separator:ac69e1fd7542d521e9e04c24bc47791bb inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa2693fc9c9747093acde1dcab858570 inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afa2693fc9c9747093acde1dcab858570"></a>
 object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#afa2693fc9c9747093acde1dcab858570">data</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:afa2693fc9c9747093acde1dcab858570 inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="mdescLeft">&#160;</td><td class="mdescRight">A payload injected into the Command. Most commonly, this a TmEvent. <br/></td></tr>
+<tr class="memdesc:afa2693fc9c9747093acde1dcab858570 inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="mdescLeft">&#160;</td><td class="mdescRight">A payload injected into the Command. Most commonly, this an IEvent. <br/></td></tr>
 <tr class="separator:afa2693fc9c9747093acde1dcab858570 inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -160,14 +160,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Subclass of <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a> with injections for dispatcher and events. </p>
-<p><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_event_command.html" title="Subclass of Command with injections for dispatcher and events. ">EventCommand</a> extends <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a> to provide access to EventDispatcher as the common system bus. Commands which extend Event <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a> will automatically inject the source TMEvent. </p>
+<p><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_event_command.html" title="Subclass of Command with injections for dispatcher and events. ">EventCommand</a> extends <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a> to provide access to EventDispatcher as the common system bus. Commands which extend Event <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a> will automatically inject the source IEvent. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Assets/scripts/strange/extensions/command/impl/EventCommand.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 13:47:51 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 5 2013 11:39:02 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

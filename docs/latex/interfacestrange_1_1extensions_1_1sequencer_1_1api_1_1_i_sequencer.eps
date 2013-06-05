@@ -5,7 +5,7 @@
 %%For: 
 %Magnification: 1.00
 %%Orientation: Portrait
-%%BoundingBox: 0 0 500 293.255132
+%%BoundingBox: 0 0 500 321.543408
 %%Pages: 0
 %%BeginSetup
 %%EndSetup
@@ -19,7 +19,7 @@
 /marginwidth 10 def
 /distx 20 def
 /disty 40 def
-/boundaspect 1.705000 def  % aspect ratio of the BoundingBox (width/height)
+/boundaspect 1.555000 def  % aspect ratio of the BoundingBox (width/height)
 /boundx 500 def
 /boundy boundx boundaspect div def
 /xspacing 0 def
@@ -177,7 +177,7 @@ boxfont setfont
 (strange.extensions.command.api.ICommandBinder) cw
 (strange.framework.api.IBinder) cw
 (strange.extensions.sequencer.impl.Sequencer) cw
-(strange.extensions.sequencer.impl.SequencerWithEvents) cw
+(strange.extensions.sequencer.impl.EventSequencer) cw
 /boxwidth boxwidth marginwidth 2 mul add def
 /xspacing boxwidth distx add def
 /yspacing boxheight disty add def
@@ -193,7 +193,7 @@ boundx scalefactor div boundy scalefactor div scale
  (strange.extensions.command.api.ICommandBinder) 0.000000 3.000000 box
  (strange.framework.api.IBinder) 0.000000 4.000000 box
  (strange.extensions.sequencer.impl.Sequencer) 0.000000 1.000000 box
- (strange.extensions.sequencer.impl.SequencerWithEvents) 0.000000 0.000000 box
+ (strange.extensions.sequencer.impl.EventSequencer) 0.000000 0.000000 box
 
 % ----- relations -----
 

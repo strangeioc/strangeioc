@@ -3,7 +3,7 @@
 }
 
 
-A Dispatcher that uses \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event}{Tm\-Event} to send messages.  
+A Dispatcher that uses I\-Event to send messages.  
 
 
 Inheritance diagram for strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Event\-Dispatcher\-:\begin{figure}[H]
@@ -71,18 +71,18 @@ void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1i
 
 
 \subsection{Detailed Description}
-A Dispatcher that uses \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event}{Tm\-Event} to send messages. 
+A Dispatcher that uses I\-Event to send messages. 
 
 Whenever the Dispatcher executes a {\ttfamily \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a70d8d7740798e10f960c866e03c4639b}{Dispatch()}}, observers will be notified of any event (Key) for which they have registered.
 
-\hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher}{Event\-Dispatcher} dispatches Tm\-Events.
+\hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher}{Event\-Dispatcher} dispatches \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event}{Tm\-Event} \-: I\-Event.
 
 The \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher}{Event\-Dispatcher} is the only Dispatcher currently released with Strange (though by separating \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher}{Event\-Dispatcher} from Dispatcher I'm obviously signalling that I don't think it's the only possible one).
 
 \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher}{Event\-Dispatcher} is both an I\-Trigger\-Provider and an I\-Triggerable.
 
 \begin{DoxySeeAlso}{See Also}
-\hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event}{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Tm\-Event} 
+\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event}{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-api.\-I\-Event} 
 
 \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider}{strange.\-extensions.\-dispatcher.\-api.\-I\-Trigger\-Provider} 
 
@@ -102,7 +102,7 @@ The \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1im
 
 Send a notification of type event\-Type. 
 
-No data. In M\-V\-C\-S\-Context this dispatches a \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event}{Tm\-Event}. 
+No data. In M\-V\-C\-S\-Context this dispatches an I\-Event. 
 
 Implements \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher_afec6755050bf9891321a7bfd4da1f06b}{strange.\-extensions.\-dispatcher.\-api.\-I\-Dispatcher}.
 
@@ -118,7 +118,7 @@ Implements \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_
 
 Send a notification of type event\-Type and the provided data payload. 
 
-In M\-V\-C\-S\-Context this dispatches a \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event}{Tm\-Event}. 
+In M\-V\-C\-S\-Context this dispatches an I\-Event. 
 
 Implements \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher_a71f605859b2507f1248190fe37d96eed}{strange.\-extensions.\-dispatcher.\-api.\-I\-Dispatcher}.
 

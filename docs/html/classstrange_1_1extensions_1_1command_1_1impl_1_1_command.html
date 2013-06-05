@@ -148,12 +148,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 <tr class="separator:ac69e1fd7542d521e9e04c24bc47791bb inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa2693fc9c9747093acde1dcab858570 inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afa2693fc9c9747093acde1dcab858570"></a>
 object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#afa2693fc9c9747093acde1dcab858570">data</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:afa2693fc9c9747093acde1dcab858570 inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="mdescLeft">&#160;</td><td class="mdescRight">A payload injected into the Command. Most commonly, this a TmEvent. <br/></td></tr>
+<tr class="memdesc:afa2693fc9c9747093acde1dcab858570 inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="mdescLeft">&#160;</td><td class="mdescRight">A payload injected into the Command. Most commonly, this an IEvent. <br/></td></tr>
 <tr class="separator:afa2693fc9c9747093acde1dcab858570 inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Commands are where you place your business logic. </p>
-<p>In the MVCSContext setup, commands are mapped to TmEvents. The firing of a specific event on the global event bus triggers the instantiation, injection and execution of any Command(s) bound to that event.</p>
+<p>In the MVCSContext setup, commands are mapped to IEvents. The firing of a specific event on the global event bus triggers the instantiation, injection and execution of any Command(s) bound to that event.</p>
 <p>By default, commands are cleaned up immediately on completion of the <code><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html#a4a1155270428842c342482c6885b2652" title="Override this! Execute() is where you place the logic for your Command. ">Execute()</a></code> method. For asynchronous Commands (e.g., calling a service and awaiting a response), call <code><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html#a1525def9650d4b6ed6ed6cef2936d892" title="Keeps the Command in memory. Use only in conjunction with Release() ">Retain()</a></code> at the top of your <code><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html#a4a1155270428842c342482c6885b2652" title="Override this! Execute() is where you place the logic for your Command. ">Execute()</a></code> method, which will prevent premature cleanup. But remember, having done so it is your responsipility to call <code><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html#a783b532e62f1c5c7789ae1a5791c75c7" title="Allows a previous Retained Command to be disposed. ">Release()</a></code> once the <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a> is complete. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Assets/scripts/strange/extensions/command/impl/Command.cs</li>
@@ -161,7 +161,7 @@ object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="in
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 13:47:51 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 5 2013 11:39:02 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

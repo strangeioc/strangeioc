@@ -105,7 +105,7 @@ Inheritance diagram for strange.extensions.dispatcher.api.IDispatcher:</div>
   <img src="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher.png" usemap="#strange.extensions.dispatcher.api.IDispatcher_map" alt=""/>
   <map id="strange.extensions.dispatcher.api.IDispatcher_map" name="strange.extensions.dispatcher.api.IDispatcher_map">
 <area href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher.html" title="Interface for allowing a client to register as an observer. " alt="strange.extensions.dispatcher.eventdispatcher.api.IEventDispatcher" shape="rect" coords="0,56,397,80"/>
-<area href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html" title="A Dispatcher that uses TmEvent to send messages. " alt="strange.extensions.dispatcher.eventdispatcher.impl.EventDispatcher" shape="rect" coords="0,112,397,136"/>
+<area href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html" title="A Dispatcher that uses IEvent to send messages. " alt="strange.extensions.dispatcher.eventdispatcher.impl.EventDispatcher" shape="rect" coords="0,112,397,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -121,7 +121,7 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A Dispatcher sends notifiations to any registered listener. </p>
 <p>It represents the subject in a standard Observer pattern.</p>
-<p>In MVCSContext the dispatched notification is a TmEvent. </p>
+<p>In MVCSContext the dispatched notification is an IEvent. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="afec6755050bf9891321a7bfd4da1f06b"></a>
 <div class="memitem">
@@ -138,7 +138,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Send a notification of type eventType. </p>
-<p>No data. In MVCSContext this dispatches a TmEvent. </p>
+<p>No data. In MVCSContext this dispatches an IEvent. </p>
 
 <p>Implemented in <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html#a70d8d7740798e10f960c866e03c4639b">strange.extensions.dispatcher.eventdispatcher.impl.EventDispatcher</a>.</p>
 
@@ -169,7 +169,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Send a notification of type eventType and the provided data payload. </p>
-<p>In MVCSContext this dispatches a TmEvent. </p>
+<p>In MVCSContext this dispatches an IEvent. </p>
 
 <p>Implemented in <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html#a14124806e6632e75aa0ff0c02d23483b">strange.extensions.dispatcher.eventdispatcher.impl.EventDispatcher</a>.</p>
 
@@ -181,7 +181,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 13:47:51 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 5 2013 11:39:02 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

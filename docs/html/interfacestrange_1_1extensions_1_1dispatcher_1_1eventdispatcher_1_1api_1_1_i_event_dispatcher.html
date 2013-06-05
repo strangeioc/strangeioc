@@ -105,7 +105,7 @@ Inheritance diagram for strange.extensions.dispatcher.eventdispatcher.api.IEvent
   <img src="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher.png" usemap="#strange.extensions.dispatcher.eventdispatcher.api.IEventDispatcher_map" alt=""/>
   <map id="strange.extensions.dispatcher.eventdispatcher.api.IEventDispatcher_map" name="strange.extensions.dispatcher.eventdispatcher.api.IEventDispatcher_map">
 <area href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher.html" title="A Dispatcher sends notifiations to any registered listener. " alt="strange.extensions.dispatcher.api.IDispatcher" shape="rect" coords="0,0,397,24"/>
-<area href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html" title="A Dispatcher that uses TmEvent to send messages. " alt="strange.extensions.dispatcher.eventdispatcher.impl.EventDispatcher" shape="rect" coords="0,112,397,136"/>
+<area href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html" title="A Dispatcher that uses IEvent to send messages. " alt="strange.extensions.dispatcher.eventdispatcher.impl.EventDispatcher" shape="rect" coords="0,112,397,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -115,7 +115,7 @@ Public Member Functions</h2></td></tr>
 <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding.html">IEventBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Bind</b> (object key)</td></tr>
 <tr class="separator:add77f1d49e0a99dbf3e8c890738470ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3dffbddcbf3f6094a22cd46bce3abb53"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3dffbddcbf3f6094a22cd46bce3abb53"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher.html#a3dffbddcbf3f6094a22cd46bce3abb53">addListener</a> (object evt, <a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a5b2a372c9c074884178eb4a32992afd3">EventCallback</a> callback)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher.html#a3dffbddcbf3f6094a22cd46bce3abb53">addListener</a> (object evt, <a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a936e11bc9a4f26a96ede9941cc730e72">EventCallback</a> callback)</td></tr>
 <tr class="memdesc:a3dffbddcbf3f6094a22cd46bce3abb53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an observer with exactly one argument to this Dispatcher. <br/></td></tr>
 <tr class="separator:a3dffbddcbf3f6094a22cd46bce3abb53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a583df84221cd8ee50acc0b9021fa992a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a583df84221cd8ee50acc0b9021fa992a"></a>
@@ -123,7 +123,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 <tr class="memdesc:a583df84221cd8ee50acc0b9021fa992a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an observer with exactly no arguments to this Dispatcher. <br/></td></tr>
 <tr class="separator:a583df84221cd8ee50acc0b9021fa992a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1252abd7035937656edaeca959496d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af1252abd7035937656edaeca959496d8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher.html#af1252abd7035937656edaeca959496d8">removeListener</a> (object evt, <a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a5b2a372c9c074884178eb4a32992afd3">EventCallback</a> callback)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher.html#af1252abd7035937656edaeca959496d8">removeListener</a> (object evt, <a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a936e11bc9a4f26a96ede9941cc730e72">EventCallback</a> callback)</td></tr>
 <tr class="memdesc:af1252abd7035937656edaeca959496d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a previously registered observer with exactly one argument from this Dispatcher. <br/></td></tr>
 <tr class="separator:af1252abd7035937656edaeca959496d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1dcf55e705f63f164fecc55dad2514c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af1dcf55e705f63f164fecc55dad2514c"></a>
@@ -131,7 +131,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 <tr class="memdesc:af1dcf55e705f63f164fecc55dad2514c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a previously registered observer with exactly no arguments from this Dispatcher. <br/></td></tr>
 <tr class="separator:af1dcf55e705f63f164fecc55dad2514c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5e19c47a98bd0264524780162b6f2da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5e19c47a98bd0264524780162b6f2da"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher.html#ac5e19c47a98bd0264524780162b6f2da">hasListener</a> (object evt, <a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a5b2a372c9c074884178eb4a32992afd3">EventCallback</a> callback)</td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher.html#ac5e19c47a98bd0264524780162b6f2da">hasListener</a> (object evt, <a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a936e11bc9a4f26a96ede9941cc730e72">EventCallback</a> callback)</td></tr>
 <tr class="memdesc:ac5e19c47a98bd0264524780162b6f2da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the provided observer is already registered. <br/></td></tr>
 <tr class="separator:ac5e19c47a98bd0264524780162b6f2da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9609460293fbd29d211a2c95fc892c3b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9609460293fbd29d211a2c95fc892c3b"></a>
@@ -139,7 +139,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 <tr class="memdesc:a9609460293fbd29d211a2c95fc892c3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the provided observer is already registered. <br/></td></tr>
 <tr class="separator:a9609460293fbd29d211a2c95fc892c3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6be925810292c7176d811fe699849e0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa6be925810292c7176d811fe699849e0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher.html#aa6be925810292c7176d811fe699849e0">updateListener</a> (bool toAdd, object evt, <a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a5b2a372c9c074884178eb4a32992afd3">EventCallback</a> callback)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher.html#aa6be925810292c7176d811fe699849e0">updateListener</a> (bool toAdd, object evt, <a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a936e11bc9a4f26a96ede9941cc730e72">EventCallback</a> callback)</td></tr>
 <tr class="memdesc:aa6be925810292c7176d811fe699849e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">By passing true, an observer with exactly one argument will be added to this Dispatcher. <br/></td></tr>
 <tr class="separator:aa6be925810292c7176d811fe699849e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a473a2c08f3eeb0e308f0210e76963f96"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a473a2c08f3eeb0e308f0210e76963f96"></a>
@@ -157,16 +157,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface for allowing a client to register as an observer. </p>
 <p>EventDispatcher allows a client to register as an observer. Whenever the Dispatcher executes a <code><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher.html#afec6755050bf9891321a7bfd4da1f06b" title="Send a notification of type eventType. ">Dispatch()</a></code>, observers will be notified of any event (Key) for which they have registered.</p>
-<p>EventDispatcher dispatches TmEvents.</p>
+<p>EventDispatcher dispatches IEvents.</p>
 <p>The EventDispatcher is the only Dispatcher currently released with Strange (though by separating EventDispatcher from Dispatcher I'm obviously signalling that I don't think it's the only possible one).</p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event.html" title="The standard Event object for IEventDispatcher. ">strange.extensions.dispatcher.eventdispatcher.impl.TmEvent</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event.html" title="The interface for an event sent by the EventDispatcher. ">strange.extensions.dispatcher.eventdispatcher.api.IEvent</a> </dd></dl>
 </div><hr/>The documentation for this interface was generated from the following file:<ul>
 <li>Assets/scripts/strange/extensions/dispatcher/eventdispatcher/api/IEventDispatcher.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 13:47:51 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 5 2013 11:39:02 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

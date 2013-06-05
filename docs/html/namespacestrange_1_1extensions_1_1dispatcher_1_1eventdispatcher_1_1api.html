@@ -97,6 +97,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event.html">IEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The interface for an event sent by the EventDispatcher.  <a href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding.html">IEventBinding</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binding interface for EventDispatcher.  <a href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,16 +115,17 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="separator:a7135cff6e8e84b74fb1aee88c8f5af4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac82e4192fcc43ba5e64f0469a3c7c06d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#ac82e4192fcc43ba5e64f0469a3c7c06d">EventDispatcherExceptionType</a> { <a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#ac82e4192fcc43ba5e64f0469a3c7c06da167e65bbf0cf6aa45533050ccb2511d6">EventDispatcherExceptionType.EVENT_KEY_NULL</a>, 
-<a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#ac82e4192fcc43ba5e64f0469a3c7c06da5ff62c887d3c7f1707f7033db01438fa">EventDispatcherExceptionType.EVENT_TYPE_MISMATCH</a>
+<a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#ac82e4192fcc43ba5e64f0469a3c7c06da5ff62c887d3c7f1707f7033db01438fa">EventDispatcherExceptionType.EVENT_TYPE_MISMATCH</a>, 
+<a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#ac82e4192fcc43ba5e64f0469a3c7c06da830201fce8c6a7f553432649727cd2e1">EventDispatcherExceptionType.TARGET_INVOCATION</a>
  }</td></tr>
 <tr class="separator:ac82e4192fcc43ba5e64f0469a3c7c06d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5b2a372c9c074884178eb4a32992afd3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b2a372c9c074884178eb4a32992afd3"></a>
-delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a5b2a372c9c074884178eb4a32992afd3">EventCallback</a> (object payload)</td></tr>
-<tr class="memdesc:a5b2a372c9c074884178eb4a32992afd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for adding a listener with a single argument. <br/></td></tr>
-<tr class="separator:a5b2a372c9c074884178eb4a32992afd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a936e11bc9a4f26a96ede9941cc730e72"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a936e11bc9a4f26a96ede9941cc730e72"></a>
+delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a936e11bc9a4f26a96ede9941cc730e72">EventCallback</a> (<a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event.html">IEvent</a> payload)</td></tr>
+<tr class="memdesc:a936e11bc9a4f26a96ede9941cc730e72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for adding a listener with a single argument. <br/></td></tr>
+<tr class="separator:a936e11bc9a4f26a96ede9941cc730e72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d68e68b31e6e0f733bd72ddcd6111fa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d68e68b31e6e0f733bd72ddcd6111fa"></a>
 delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api.html#a4d68e68b31e6e0f733bd72ddcd6111fa">EmptyCallback</a> ()</td></tr>
 <tr class="memdesc:a4d68e68b31e6e0f733bd72ddcd6111fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for adding a listener with a no arguments. <br/></td></tr>
@@ -167,6 +171,9 @@ delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 <tr><td class="fieldname"><em><a class="anchor" id="ac82e4192fcc43ba5e64f0469a3c7c06da5ff62c887d3c7f1707f7033db01438fa"></a>EVENT_TYPE_MISMATCH</em>&nbsp;</td><td class="fielddoc">
 <p>Indicates that the type of Event in the call and the type of Event in the payload don't match. </p>
 </td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ac82e4192fcc43ba5e64f0469a3c7c06da830201fce8c6a7f553432649727cd2e1"></a>TARGET_INVOCATION</em>&nbsp;</td><td class="fielddoc">
+<p>When attempting to fire a callback, the callback was discovered to be casting illegally. </p>
+</td></tr>
 </table>
 
 </div>
@@ -174,7 +181,7 @@ delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 13:47:51 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 5 2013 11:39:02 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

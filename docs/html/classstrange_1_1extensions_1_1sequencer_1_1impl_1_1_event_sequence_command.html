@@ -96,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>A subclass of <a class="el" href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command.html" title="A subclass of Command that runs in the Sequencer. ">SequenceCommand</a> which injects a TmEvent and a Dispatcher.  
+<p>A subclass of <a class="el" href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command.html" title="A subclass of Command that runs in the Sequencer. ">SequenceCommand</a> which injects an IEvent and a Dispatcher.  
  <a href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequence_command.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for strange.extensions.sequencer.impl.EventSequenceCommand:</div>
@@ -116,10 +116,10 @@ Properties</h2></td></tr>
 <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher.html">IEventDispatcher</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequence_command.html#a3b0bd45295ae480feb228090153e4aa4">dispatcher</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a3b0bd45295ae480feb228090153e4aa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The context-wide Event bus. <br/></td></tr>
 <tr class="separator:a3b0bd45295ae480feb228090153e4aa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7e2677cffa0910c775ad24805896348"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7e2677cffa0910c775ad24805896348"></a>
-<a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event.html">TmEvent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequence_command.html#af7e2677cffa0910c775ad24805896348">evt</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:af7e2677cffa0910c775ad24805896348"><td class="mdescLeft">&#160;</td><td class="mdescRight">The injected TmEvent. <br/></td></tr>
-<tr class="separator:af7e2677cffa0910c775ad24805896348"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9299b7ee26623269418a2f54b4158101"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9299b7ee26623269418a2f54b4158101"></a>
+<a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event.html">IEvent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequence_command.html#a9299b7ee26623269418a2f54b4158101">evt</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a9299b7ee26623269418a2f54b4158101"><td class="mdescLeft">&#160;</td><td class="mdescRight">The injected IEvent. <br/></td></tr>
+<tr class="separator:a9299b7ee26623269418a2f54b4158101"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command"><td colspan="2" onclick="javascript:toggleInherit('properties_classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command.html">strange.extensions.sequencer.impl.SequenceCommand</a></td></tr>
 <tr class="memitem:a5d1248ae0b796af73a45eefa66bced14 inherit properties_classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5d1248ae0b796af73a45eefa66bced14"></a>
 <a class="el" href="interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer.html">ISequencer</a>&#160;</td><td class="memItemRight" valign="bottom"><b>sequencer</b><code> [get, set]</code></td></tr>
@@ -153,7 +153,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 <tr class="separator:ac69e1fd7542d521e9e04c24bc47791bb inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa2693fc9c9747093acde1dcab858570 inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afa2693fc9c9747093acde1dcab858570"></a>
 object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#afa2693fc9c9747093acde1dcab858570">data</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:afa2693fc9c9747093acde1dcab858570 inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="mdescLeft">&#160;</td><td class="mdescRight">A payload injected into the Command. Most commonly, this a TmEvent. <br/></td></tr>
+<tr class="memdesc:afa2693fc9c9747093acde1dcab858570 inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="mdescLeft">&#160;</td><td class="mdescRight">A payload injected into the Command. Most commonly, this an IEvent. <br/></td></tr>
 <tr class="separator:afa2693fc9c9747093acde1dcab858570 inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -180,15 +180,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Cancel</b> ()</td></t
 <tr class="separator:a26fca3bcb6c780a7713375b09fbdec81 inherit pub_methods_classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A subclass of <a class="el" href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command.html" title="A subclass of Command that runs in the Sequencer. ">SequenceCommand</a> which injects a TmEvent and a Dispatcher. </p>
-<p><a class="el" href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequence_command.html" title="A subclass of SequenceCommand which injects a TmEvent and a Dispatcher. ">EventSequenceCommand</a> extends <a class="el" href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command.html" title="A subclass of Command that runs in the Sequencer. ">SequenceCommand</a> to provide access to EventDispatcher as the common system bus. SequenceCommands which extend <a class="el" href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequence_command.html" title="A subclass of SequenceCommand which injects a TmEvent and a Dispatcher. ">EventSequenceCommand</a> will automatically inject the source TMEvent. </p>
+<div class="textblock"><p>A subclass of <a class="el" href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command.html" title="A subclass of Command that runs in the Sequencer. ">SequenceCommand</a> which injects an IEvent and a Dispatcher. </p>
+<p><a class="el" href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequence_command.html" title="A subclass of SequenceCommand which injects an IEvent and a Dispatcher. ">EventSequenceCommand</a> extends <a class="el" href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command.html" title="A subclass of Command that runs in the Sequencer. ">SequenceCommand</a> to provide access to EventDispatcher as the common system bus. SequenceCommands which extend <a class="el" href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequence_command.html" title="A subclass of SequenceCommand which injects an IEvent and a Dispatcher. ">EventSequenceCommand</a> will automatically inject the source IEvent. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Assets/scripts/strange/extensions/sequencer/impl/EventSequenceCommand.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 13:47:51 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 5 2013 11:39:03 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
