@@ -8,6 +8,7 @@
  */
 
 using System;
+using System.Collections;
 using UnityEngine;
 using strange.extensions.injector.api;
 using strange.extensions.mediation.api;
@@ -32,12 +33,12 @@ namespace strange.extensions.mediation.impl
 			return new MediationBinding (resolver) as IBinding;
 		}
 
-		public void Trigger(MediationEvent evt, MonoBehaviour view)
+		public void Trigger(MediationEvent evt, IView view)
 		{
 			//All views have potential to be injected, regardless of whether they are mediated
 			if (evt == MediationEvent.AWAKE)
 			{
-				injectionBinder.injector.Inject (view);
+				initChildren(view);
 			}
 			Type viewType = view.GetType();
 			IMediationBinding binding = GetBinding (viewType) as IMediationBinding;
@@ -56,6 +57,20 @@ namespace strange.extensions.mediation.impl
 				}
 			}
 		}
+		
+		/// Initialize all IViews within this view
+		virtual protected void initChildren(IView view)
+		{
+			MonoBehaviour mono = view as MonoBehaviour;
+			Component[] views = mono.GetComponentsInChildren(typeof(IView), true) as Component[];
+			
+			int aa = views.Length;
+			for (int a = 0; a < aa; a++)
+			{
+				(view as IView).registeredWithContext = true;
+				injectionBinder.injector.Inject (views[a], false);
+			}
+		}
 
 		public override IBinding Bind<T> ()
 		{
@@ -65,7 +80,7 @@ namespace strange.extensions.mediation.impl
 
 		/// Creates and registers a Mediator for a specific View instance.
 		/// Takes a specific View instance and a binding and, if a binding is found for that type, creates and registers a Mediator.
-		virtual protected void mapView(MonoBehaviour view, IMediationBinding binding)
+		virtual protected void mapView(IView view, IMediationBinding binding)
 		{
 			Type viewType = view.GetType();
 
@@ -75,9 +90,10 @@ namespace strange.extensions.mediation.impl
 				int aa = values.Length;
 				for (int a = 0; a < aa; a++)
 				{
+					MonoBehaviour mono = view as MonoBehaviour;
 					Type mediatorType = values [a] as Type;
-					IMediator mediator = view.gameObject.AddComponent(mediatorType) as IMediator;
-					mediator.setViewComponent (view);
+					IMediator mediator = mono.gameObject.AddComponent(mediatorType) as IMediator;
+					mediator.setViewComponent (mono);
 					mediator.preRegister ();
 					injectionBinder.injector.Inject (mediator);
 					mediator.onRegister ();
@@ -86,7 +102,7 @@ namespace strange.extensions.mediation.impl
 		}
 
 		/// Removes a mediator when its view is destroyed
-		virtual protected void unmapView(MonoBehaviour view, IMediationBinding binding)
+		virtual protected void unmapView(IView view, IMediationBinding binding)
 		{
 			Type viewType = view.GetType();
 
@@ -97,7 +113,8 @@ namespace strange.extensions.mediation.impl
 				for (int a = 0; a < aa; a++)
 				{
 					Type mediatorType = values[a] as Type;
-					IMediator mediator = view.GetComponent(mediatorType) as IMediator;
+					MonoBehaviour mono = view as MonoBehaviour;
+					IMediator mediator = mono.GetComponent(mediatorType) as IMediator;
 					if (mediator != null)
 					{
 						mediator.onRemove();
@@ -106,11 +123,11 @@ namespace strange.extensions.mediation.impl
 			}
 		}
 
-		private void enableView(MonoBehaviour view)
+		private void enableView(IView view)
 		{
 		}
 
-		private void disableView(MonoBehaviour view)
+		private void disableView(IView view)
 		{
 		}
 	}

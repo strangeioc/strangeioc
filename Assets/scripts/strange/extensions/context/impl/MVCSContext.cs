@@ -320,7 +320,7 @@ namespace strange.extensions.context.impl
 		{
 			if (mediationBinder != null)
 			{
-				mediationBinder.Trigger(MediationEvent.AWAKE, view as MonoBehaviour);
+				mediationBinder.Trigger(MediationEvent.AWAKE, view as IView);
 			}
 			else
 			{
@@ -330,7 +330,7 @@ namespace strange.extensions.context.impl
 		
 		override public void RemoveView(object view)
 		{
-			mediationBinder.Trigger(MediationEvent.DESTROYED, view as MonoBehaviour);
+			mediationBinder.Trigger(MediationEvent.DESTROYED, view as IView);
 		}
 
 		/// Caches early-riser Views.
@@ -362,7 +362,7 @@ namespace strange.extensions.context.impl
 			int aa = values.Length;
 			for (int a = 0; a < aa; a++)
 			{
-				mediationBinder.Trigger(MediationEvent.AWAKE, values[a] as MonoBehaviour);
+				mediationBinder.Trigger(MediationEvent.AWAKE, values[a] as IView);
 			}
 			viewCache = new SemiBinding();
 		}

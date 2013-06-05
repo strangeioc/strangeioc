@@ -14,20 +14,32 @@ using strange.extensions.mediation.api;
 
 namespace strange.extensions.mediation.impl
 {
-	public class View : MonoBehaviour
+	public class View : MonoBehaviour, IView
 	{
 		/// Leave this value true most of the time. If for some reason you want
 		/// a view to exist outside a context you can set it to false. The only
 		/// difference is whether an error gets generated.
-		public bool requiresContext = true;
+		private bool _requiresContext = true;
+		public bool requiresContext
+		{
+			get
+			{
+				return _requiresContext;
+			}
+			set
+			{
+				requiresContext = value;
+			}
+		}
 		
-		protected bool registeredWithContext = false;
+		public bool registeredWithContext{get; set;}
 
 		/// A MonoBehaviour Awake handler.
 		/// The View will attempt to connect to the Context at this moment.
 		protected virtual void Awake ()
 		{
-			bubbleToContext(this, true, false);
+			if (!registeredWithContext)
+				bubbleToContext(this, true, false);
 		}
 
 		/// A MonoBehaviour Start handler
