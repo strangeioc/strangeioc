@@ -42,5 +42,5 @@
  * <br />
  * Some fun documentation and tutorials are available here: <a href="">TODO</a>.
  * <br />
- * Already know RobotLegs? Good news, we've written <a href="">this page</a> just for you! 
+ * Already know RobotLegs? Good news, we've written <a href="https://github.com/rocketninja/strange/wiki">this page</a> just for you! 
  */
