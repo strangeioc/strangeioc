@@ -38,6 +38,9 @@ namespace strange.extensions.injector.api
 		/// Request that the provided target be injected.
 		object Inject(object target);
 
+		/// Request that the provided target be injected.
+		object Inject(object target, bool attemptConstructorInjection);
+
 		/// Get/set an InjectorFactory.
 		IInjectorFactory factory{ get; set;}
 

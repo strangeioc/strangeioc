@@ -64,7 +64,7 @@ namespace strange.extensions.injector.impl
 				object[] args = new object [aa];
 				for (int a = 0; a < aa; a++)
 				{
-					args [a] = getValueInjection (parameters[a] as Type, null);
+					args [a] = getValueInjection (parameters[a] as Type, null, retv);
 				}
 				retv = factory.Get (binding, args);
 				if (retv == null)
@@ -92,7 +92,7 @@ namespace strange.extensions.injector.impl
 			return Inject (target, true);
 		}
 
-		protected object Inject(object target, bool attemptConstructorInjection)
+		public object Inject(object target, bool attemptConstructorInjection)
 		{
 			failIf(binder == null, "Attempt to inject into Injector without a Binder", InjectionExceptionType.NO_BINDER);
 			failIf(reflector == null, "Attempt to inject without a reflector", InjectionExceptionType.NO_REFLECTOR);
@@ -129,7 +129,7 @@ namespace strange.extensions.injector.impl
 			int i = 0;
 			foreach (Type type in constructorParameters)
 			{
-				values[i] = getValueInjection(type, null);
+				values[i] = getValueInjection(type, null, target);
 				i++;
 			}
 			if (values.Length == 0)
@@ -151,15 +151,15 @@ namespace strange.extensions.injector.impl
 			for(int a = 0; a < aa; a++)
 			{
 				KeyValuePair<Type, PropertyInfo> pair = reflection.setters [a];
-				object value = getValueInjection(pair.Key, reflection.setterNames[a]);
+				object value = getValueInjection(pair.Key, reflection.setterNames[a], target);
 				injectValueIntoPoint (value, target, pair.Value);
 			}
 		}
 
-		private object getValueInjection(Type t, object name)
+		private object getValueInjection(Type t, object name, object target)
 		{
 			IInjectionBinding binding = binder.GetBinding (t, name);
-			failIf(binding == null, "Attempt to Instantiate a null binding.", InjectionExceptionType.NULL_BINDING, t, name);
+			failIf(binding == null, "Attempt to Instantiate a null binding.", InjectionExceptionType.NULL_BINDING, t, name, target);
 			return Instantiate (binding);
 		}
 
@@ -191,16 +191,19 @@ namespace strange.extensions.injector.impl
 
 		private void failIf(bool condition, string message, InjectionExceptionType type)
 		{
-			if (condition)
-			{
-				throw new InjectionException(message, type);
-			}
+			failIf (condition, message, type, null, null, null);
 		}
 
 		private void failIf(bool condition, string message, InjectionExceptionType type, Type t, object name)
 		{
+			failIf(condition, message, type, t, name, null);
+		}
+
+		private void failIf(bool condition, string message, InjectionExceptionType type, Type t, object name, object target)
+		{
 			if (condition)
 			{
+				message += "\n\t\ttarget: " + target;
 				message += "\n\t\ttype: " + t;
 				message += "\n\t\tname: " + name;
 				throw new InjectionException(message, type);
