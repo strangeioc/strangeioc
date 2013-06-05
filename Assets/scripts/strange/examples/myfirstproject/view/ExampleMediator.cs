@@ -14,16 +14,12 @@ namespace strange.examples.myfirstproject
 {
 	public class ExampleMediator : EventMediator
 	{
-		private ExampleView view;
+		//This is how your Mediator knows about your View.
+		[Inject]
+		public ExampleView view{ get; set;}
 		
 		public override void onRegister()
 		{
-			//It is recommended (though not required) to typecast the
-			//injected view to the concrete Type you're using.
-			//Remember that the Mediator is tightly coupled to the
-			//View (the reverse is not true), so casting it to a
-			//concrete Type is entirely acceptable
-			view = abstractView as ExampleView;
 			
 			//Listen to the view for an event
 			view.dispatcher.addListener(ExampleView.CLICK_EVENT, onViewClicked);
