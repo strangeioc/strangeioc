@@ -116,18 +116,19 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 
 					try
 					{
-						evtCb.DynamicInvoke (parameters);
+						evtCb (parameters [0] as IEvent);
 					}
 					catch
 					{
-						throw new EventDispatcherException ("The target callback is attempting an illegal cast. EventDispatcher expects callbacks to cast the payload as IEvent.\nTarget class:" + evtCb.Target, EventDispatcherExceptionType.TARGET_INVOCATION);
+						string methodName = (callback as Delegate).Method.Name;
+						throw new EventDispatcherException ("The target EventCallback is attempting an illegal cast. EventDispatcher expects callbacks to cast the payload as IEvent.\nTarget class:" + evtCb.Target + " method: " + methodName, EventDispatcherExceptionType.TARGET_INVOCATION);
 					}
 				}
 				else if (callback is EmptyCallback)
 				{
 					parameters = new object[0];
 					EmptyCallback emptyCb = callback as EmptyCallback;
-					emptyCb.DynamicInvoke (parameters);
+					emptyCb ();
 				}
 			}
 		}
