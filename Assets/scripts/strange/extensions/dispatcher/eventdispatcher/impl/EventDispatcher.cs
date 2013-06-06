@@ -136,8 +136,10 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 					}
 					catch
 					{
+						object tgt = evtCb.Target;
 						string methodName = (callback as Delegate).Method.Name;
-						throw new EventDispatcherException ("The target EventCallback is attempting an illegal cast. EventDispatcher expects callbacks to cast the payload as IEvent.\nTarget class:" + evtCb.Target + " method: " + methodName, EventDispatcherExceptionType.TARGET_INVOCATION);
+						string message = "An EventCallback is attempting an illegal cast. One possible reason is not typing the payload to IEvent in your callback. Another is illegal casting of the data.\nTarget class: "  + tgt + " method: " + methodName;
+						throw new EventDispatcherException (message, EventDispatcherExceptionType.TARGET_INVOCATION);
 					}
 				}
 				else if (callback is EmptyCallback)
