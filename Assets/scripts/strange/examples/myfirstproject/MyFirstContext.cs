@@ -39,15 +39,6 @@ namespace strange.examples.myfirstproject
 		protected override void mapBindings()
 		{
 			//Injection binding.
-			//Note that we ALREADY have an injection of IEventDispatcher in MVCSContext,
-			//which provides us with a global event bus.
-			//
-			//So how can strange tell the difference?
-			//The global injection uses a 'named singleton' binding to mark that injection out
-			//as different from this one. This binding will generate a new instance of EventDispatcher
-			//Whenever we want one. It's being used in ExampleView to facilitate local communication
-			//between that View and ExampleMediator.
-			injectionBinder.Bind<IEventDispatcher>().To<EventDispatcher>();
 			//Map a mock model and a mock service, both as Singletons
 			injectionBinder.Bind<IExampleModel>().To<ExampleModel>().ToSingleton();
 			injectionBinder.Bind<IExampleService>().To<ExampleService>().ToSingleton();
