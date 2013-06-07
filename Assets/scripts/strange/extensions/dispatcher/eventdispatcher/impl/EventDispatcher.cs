@@ -134,7 +134,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 					{
 						evtCb (parameters [0] as IEvent);
 					}
-					catch
+					catch(InvalidCastException)
 					{
 						object tgt = evtCb.Target;
 						string methodName = (callback as Delegate).Method.Name;
