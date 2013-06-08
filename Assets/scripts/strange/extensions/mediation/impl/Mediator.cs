@@ -43,7 +43,7 @@ namespace strange.extensions.mediation.impl
 		/**
 		 * Fires directly after creation and before injection
 		 */
-		virtual public void preRegister()
+		virtual public void PreRegister()
 		{
 		}
 
@@ -52,7 +52,7 @@ namespace strange.extensions.mediation.impl
 		 *
 		 * Override and place your initialization code here.
 		 */
-		virtual public void onRegister()
+		virtual public void OnRegister()
 		{
 		}
 
@@ -61,7 +61,7 @@ namespace strange.extensions.mediation.impl
 		 *
 		 * Override and place your cleanup code here
 		 */
-		virtual public void onRemove()
+		virtual public void OnRemove()
 		{
 		}
 	}

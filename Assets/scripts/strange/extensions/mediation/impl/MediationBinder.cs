@@ -117,11 +117,11 @@ namespace strange.extensions.mediation.impl
 					MonoBehaviour mono = view as MonoBehaviour;
 					Type mediatorType = values [a] as Type;
 					IMediator mediator = mono.gameObject.AddComponent(mediatorType) as IMediator;
-					mediator.preRegister ();
+					mediator.PreRegister ();
 					injectionBinder.Bind (viewType).ToValue (view).ToInject(false);
 					injectionBinder.injector.Inject (mediator);
 					injectionBinder.Unbind(viewType);
-					mediator.onRegister ();
+					mediator.OnRegister ();
 				}
 			}
 		}
@@ -142,7 +142,7 @@ namespace strange.extensions.mediation.impl
 					IMediator mediator = mono.GetComponent(mediatorType) as IMediator;
 					if (mediator != null)
 					{
-						mediator.onRemove();
+						mediator.OnRemove();
 					}
 				}
 			}

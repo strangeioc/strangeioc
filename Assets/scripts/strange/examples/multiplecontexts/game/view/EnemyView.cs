@@ -37,7 +37,7 @@ namespace strange.examples.multiplecontexts.game
 		{
 			gameObject.AddComponent<ClickDetector>();
 			ClickDetector clicker = gameObject.GetComponent<ClickDetector>();
-			clicker.dispatcher.addListener(ClickDetector.CLICK, onClick);
+			clicker.dispatcher.AddListener(ClickDetector.CLICK, onClick);
 		}
 		
 		internal void updatePosition()

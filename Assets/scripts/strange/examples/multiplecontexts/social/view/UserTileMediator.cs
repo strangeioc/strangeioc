@@ -38,17 +38,17 @@ namespace strange.examples.multiplecontexts.social
 		[Inject]
 		public UserVO userVO{get;set;}
 		
-		public override void onRegister()
+		public override void OnRegister()
 		{
-			dispatcher.addListener(GameEvent.RESTART_GAME, onGameRestart);
+			dispatcher.AddListener(GameEvent.RESTART_GAME, onGameRestart);
 			
 			view.init ();
 		}
 		
-		public override void onRemove()
+		public override void OnRemove()
 		{
 			//Clean up listeners when the view is about to be destroyed
-			dispatcher.removeListener(GameEvent.RESTART_GAME, onGameRestart);
+			dispatcher.RemoveListener(GameEvent.RESTART_GAME, onGameRestart);
 		}
 		
 		private void onGameRestart()

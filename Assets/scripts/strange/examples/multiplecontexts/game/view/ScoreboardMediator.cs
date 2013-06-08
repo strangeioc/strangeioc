@@ -29,27 +29,27 @@ namespace strange.examples.multiplecontexts.game
 		private const string SCORE_STRING = "score: ";
 		private const string LIVES_STRING = "lives remaining: ";
 		
-		public override void onRegister()
+		public override void OnRegister()
 		{
-			updateListeners(true);
+			UpdateListeners(true);
 			//I'm cheating a little here for the sake of simplicity.
 			//The number 3 should be supplied from an injected config.
 			view.init (SCORE_STRING + "0", LIVES_STRING + "3");
 		}
 		
-		public override void onRemove()
+		public override void OnRemove()
 		{
-			updateListeners(false);
+			UpdateListeners(false);
 		}
 		
-		private void updateListeners(bool value)
+		private void UpdateListeners(bool value)
 		{
-			dispatcher.updateListener(value, GameEvent.SCORE_CHANGE, onScoreChange);
-			dispatcher.updateListener(value, GameEvent.LIVES_CHANGE, onLivesChange);
-			dispatcher.updateListener(value, GameEvent.GAME_OVER, onGameOver);
+			dispatcher.UpdateListener(value, GameEvent.SCORE_CHANGE, onScoreChange);
+			dispatcher.UpdateListener(value, GameEvent.LIVES_CHANGE, onLivesChange);
+			dispatcher.UpdateListener(value, GameEvent.GAME_OVER, onGameOver);
 			
-			view.dispatcher.addListener(ScoreboardView.REPLAY, onReplay);
-			dispatcher.addListener(GameEvent.RESTART_GAME, onRestart);
+			view.dispatcher.AddListener(ScoreboardView.REPLAY, onReplay);
+			dispatcher.AddListener(GameEvent.RESTART_GAME, onRestart);
 		}
 		
 		private void onScoreChange(IEvent evt)
@@ -66,7 +66,7 @@ namespace strange.examples.multiplecontexts.game
 		
 		private void onGameOver()
 		{
-			updateListeners(false);
+			UpdateListeners(false);
 			view.gameOver();
 		}
 		
@@ -77,7 +77,7 @@ namespace strange.examples.multiplecontexts.game
 		
 		private void onRestart()
 		{
-			onRegister();
+			OnRegister();
 		}
 	}
 }

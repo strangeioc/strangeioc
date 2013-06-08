@@ -33,24 +33,24 @@ namespace strange.examples.multiplecontexts.game
 		[Inject]
 		public EnemyView view{ get; set;}
 		
-		public override void onRegister()
+		public override void OnRegister()
 		{
-			updateListeners(true);
+			UpdateListeners(true);
 			view.init ();
 		}
 		
-		public override void onRemove()
+		public override void OnRemove()
 		{
-			updateListeners(false);
+			UpdateListeners(false);
 		}
 		
-		private void updateListeners(bool value)
+		private void UpdateListeners(bool value)
 		{
-			view.dispatcher.updateListener(value, EnemyView.CLICK_EVENT, onViewClicked);
-			dispatcher.updateListener( value, GameEvent.GAME_UPDATE, onGameUpdate);
-			dispatcher.updateListener( value, GameEvent.GAME_OVER, onGameOver);
+			view.dispatcher.UpdateListener(value, EnemyView.CLICK_EVENT, onViewClicked);
+			dispatcher.UpdateListener( value, GameEvent.GAME_UPDATE, onGameUpdate);
+			dispatcher.UpdateListener( value, GameEvent.GAME_OVER, onGameOver);
 			
-			dispatcher.addListener(GameEvent.RESTART_GAME, onRestart);
+			dispatcher.AddListener(GameEvent.RESTART_GAME, onRestart);
 		}
 		
 		private void onViewClicked()
@@ -65,12 +65,12 @@ namespace strange.examples.multiplecontexts.game
 		
 		private void onGameOver()
 		{
-			updateListeners(false);
+			UpdateListeners(false);
 		}
 		
 		private void onRestart()
 		{
-			onRegister();
+			OnRegister();
 		}
 	}
 }

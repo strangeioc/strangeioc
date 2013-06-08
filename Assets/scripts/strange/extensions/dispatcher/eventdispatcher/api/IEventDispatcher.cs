@@ -42,28 +42,28 @@ namespace strange.extensions.dispatcher.eventdispatcher.api
 		IEventBinding Bind(object key);
 
 		/// Add an observer with exactly one argument to this Dispatcher
-		void addListener(object evt, EventCallback callback);
+		void AddListener(object evt, EventCallback callback);
 
 		/// Add an observer with exactly no arguments to this Dispatcher
-		void addListener(object evt, EmptyCallback callback);
+		void AddListener(object evt, EmptyCallback callback);
 
 		/// Remove a previously registered observer with exactly one argument from this Dispatcher
-		void removeListener(object evt, EventCallback callback);
+		void RemoveListener(object evt, EventCallback callback);
 
 		/// Remove a previously registered observer with exactly no arguments from this Dispatcher
-		void removeListener(object evt, EmptyCallback callback);
+		void RemoveListener(object evt, EmptyCallback callback);
 
 		/// Returns true if the provided observer is already registered
-		bool hasListener(object evt, EventCallback callback);
+		bool HasListener(object evt, EventCallback callback);
 
 		/// Returns true if the provided observer is already registered
-		bool hasListener(object evt, EmptyCallback callback);
+		bool HasListener(object evt, EmptyCallback callback);
 
 		/// By passing true, an observer with exactly one argument will be added to this Dispatcher
-		void updateListener(bool toAdd, object evt, EventCallback callback);
+		void UpdateListener(bool toAdd, object evt, EventCallback callback);
 
 		/// By passing true, an observer with exactly no arguments will be added to this Dispatcher
-		void updateListener(bool toAdd, object evt, EmptyCallback callback);
+		void UpdateListener(bool toAdd, object evt, EmptyCallback callback);
 	}
 }
 

@@ -34,20 +34,20 @@ namespace strange.examples.multiplecontexts.social
 		[Inject]
 		public AwardView view{ get; set;}
 		
-		public override void onRegister()
+		public override void OnRegister()
 		{
 			//Listen to the global event bus for events
-			dispatcher.addListener(GameEvent.RESTART_GAME, onGameRestart);
-			dispatcher.addListener(SocialEvent.REWARD_TEXT, onReward);
+			dispatcher.AddListener(GameEvent.RESTART_GAME, onGameRestart);
+			dispatcher.AddListener(SocialEvent.REWARD_TEXT, onReward);
 			
 			view.init ();
 		}
 		
-		public override void onRemove()
+		public override void OnRemove()
 		{
 			//Clean up listeners when the view is about to be destroyed
-			dispatcher.removeListener(GameEvent.RESTART_GAME, onGameRestart);
-			dispatcher.removeListener(SocialEvent.REWARD_TEXT, onReward);
+			dispatcher.RemoveListener(GameEvent.RESTART_GAME, onGameRestart);
+			dispatcher.RemoveListener(SocialEvent.REWARD_TEXT, onReward);
 		}
 		
 		private void onGameRestart()

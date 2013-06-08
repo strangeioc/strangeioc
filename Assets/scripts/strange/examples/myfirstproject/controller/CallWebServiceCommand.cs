@@ -37,7 +37,7 @@ namespace strange.examples.myfirstproject
 			Retain ();
 			
 			//Call the service. Listen for a response
-			service.dispatcher.addListener(ExampleEvent.FULFILL_SERVICE_REQUEST, onComplete);
+			service.dispatcher.AddListener(ExampleEvent.FULFILL_SERVICE_REQUEST, onComplete);
 			service.Request("http://www.thirdmotion.com/ ::: " + counter.ToString());
 		}
 		
@@ -45,7 +45,7 @@ namespace strange.examples.myfirstproject
 		private void onComplete(IEvent evt)
 		{
 			//Remember to clean up. Remove the listener.
-			service.dispatcher.removeListener(ExampleEvent.FULFILL_SERVICE_REQUEST, onComplete);
+			service.dispatcher.RemoveListener(ExampleEvent.FULFILL_SERVICE_REQUEST, onComplete);
 			
 			model.data = evt.data as string;
 			dispatcher.Dispatch(ExampleEvent.SCORE_CHANGE, evt.data);

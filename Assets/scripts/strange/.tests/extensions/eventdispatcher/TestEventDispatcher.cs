@@ -24,56 +24,56 @@ namespace strange.unittests
 		[Test]
 		public void TestAddListenerNoArgs ()
 		{
-			dispatcher.addListener (SomeEnum.ONE, noArgumentsMethod);
-			Assert.IsTrue (dispatcher.hasListener(SomeEnum.ONE, noArgumentsMethod));
+			dispatcher.AddListener (SomeEnum.ONE, noArgumentsMethod);
+			Assert.IsTrue (dispatcher.HasListener(SomeEnum.ONE, noArgumentsMethod));
 		}
 
 		[Test]
 		public void TestAddListenerOneArg ()
 		{
-			dispatcher.addListener (SomeEnum.ONE, oneArgumentMethod);
-			Assert.IsTrue (dispatcher.hasListener(SomeEnum.ONE, oneArgumentMethod));
+			dispatcher.AddListener (SomeEnum.ONE, oneArgumentMethod);
+			Assert.IsTrue (dispatcher.HasListener(SomeEnum.ONE, oneArgumentMethod));
 		}
 
 		[Test]
 		public void TestRemoveListenerNoArgs()
 		{
-			dispatcher.addListener (SomeEnum.ONE, noArgumentsMethod);
-			dispatcher.removeListener (SomeEnum.ONE, noArgumentsMethod);
-			Assert.IsFalse (dispatcher.hasListener(SomeEnum.ONE, noArgumentsMethod));
+			dispatcher.AddListener (SomeEnum.ONE, noArgumentsMethod);
+			dispatcher.RemoveListener (SomeEnum.ONE, noArgumentsMethod);
+			Assert.IsFalse (dispatcher.HasListener(SomeEnum.ONE, noArgumentsMethod));
 		}
 
 		[Test]
 		public void TestRemoveListenerOneArg()
 		{
-			dispatcher.addListener (SomeEnum.ONE, oneArgumentMethod);
-			dispatcher.removeListener (SomeEnum.ONE, oneArgumentMethod);
-			Assert.IsFalse (dispatcher.hasListener(SomeEnum.ONE, oneArgumentMethod));
+			dispatcher.AddListener (SomeEnum.ONE, oneArgumentMethod);
+			dispatcher.RemoveListener (SomeEnum.ONE, oneArgumentMethod);
+			Assert.IsFalse (dispatcher.HasListener(SomeEnum.ONE, oneArgumentMethod));
 		}
 
 		[Test]
 		public void TestUpdateListenerNoArgs()
 		{
-			dispatcher.updateListener (true, SomeEnum.ONE, noArgumentsMethod);
-			Assert.IsTrue (dispatcher.hasListener(SomeEnum.ONE, noArgumentsMethod));
-			dispatcher.updateListener (false, SomeEnum.ONE, noArgumentsMethod);
-			Assert.IsFalse (dispatcher.hasListener(SomeEnum.ONE, noArgumentsMethod));
+			dispatcher.UpdateListener (true, SomeEnum.ONE, noArgumentsMethod);
+			Assert.IsTrue (dispatcher.HasListener(SomeEnum.ONE, noArgumentsMethod));
+			dispatcher.UpdateListener (false, SomeEnum.ONE, noArgumentsMethod);
+			Assert.IsFalse (dispatcher.HasListener(SomeEnum.ONE, noArgumentsMethod));
 		}
 
 		[Test]
 		public void TestUpdateListenerOneArg()
 		{
-			dispatcher.updateListener (true, SomeEnum.ONE, oneArgumentMethod);
-			Assert.IsTrue (dispatcher.hasListener(SomeEnum.ONE, oneArgumentMethod));
-			dispatcher.updateListener (false, SomeEnum.ONE, oneArgumentMethod);
-			Assert.IsFalse (dispatcher.hasListener(SomeEnum.ONE, oneArgumentMethod));
+			dispatcher.UpdateListener (true, SomeEnum.ONE, oneArgumentMethod);
+			Assert.IsTrue (dispatcher.HasListener(SomeEnum.ONE, oneArgumentMethod));
+			dispatcher.UpdateListener (false, SomeEnum.ONE, oneArgumentMethod);
+			Assert.IsFalse (dispatcher.HasListener(SomeEnum.ONE, oneArgumentMethod));
 		}
 
 		[Test]
 		public void TestDispatchNoArgs()
 		{
 			confirmationValue = INIT_VALUE;
-			dispatcher.updateListener (true, SomeEnum.ONE, noArgumentsMethod);
+			dispatcher.UpdateListener (true, SomeEnum.ONE, noArgumentsMethod);
 			dispatcher.Dispatch (SomeEnum.ONE);
 			Assert.AreEqual (INIT_VALUE + INCREMENT, confirmationValue);
 		}
@@ -82,7 +82,7 @@ namespace strange.unittests
 		public void TestDispatchOneArg()
 		{
 			confirmationValue = INIT_VALUE;
-			dispatcher.updateListener (true, SomeEnum.ONE, oneArgumentMethod);
+			dispatcher.UpdateListener (true, SomeEnum.ONE, oneArgumentMethod);
 			dispatcher.Dispatch (SomeEnum.ONE, PAYLOAD);
 			Assert.AreEqual (INIT_VALUE + PAYLOAD, confirmationValue);
 		}
@@ -91,8 +91,8 @@ namespace strange.unittests
 		public void TestMultipleListeners()
 		{
 			confirmationValue = INIT_VALUE;
-			dispatcher.addListener (SomeEnum.ONE, noArgumentsMethod);
-			dispatcher.addListener (SomeEnum.ONE, oneArgumentMethod);
+			dispatcher.AddListener (SomeEnum.ONE, noArgumentsMethod);
+			dispatcher.AddListener (SomeEnum.ONE, oneArgumentMethod);
 			dispatcher.Dispatch (SomeEnum.ONE, PAYLOAD);
 
 			Assert.AreEqual(INIT_VALUE + PAYLOAD + INCREMENT, confirmationValue);
@@ -102,7 +102,7 @@ namespace strange.unittests
 		public void TestBadlyFormedCallback()
 		{
 			confirmationValue = INIT_VALUE;
-			dispatcher.addListener (SomeEnum.ONE, badArgumentMethod);
+			dispatcher.AddListener (SomeEnum.ONE, badArgumentMethod);
 
 			TestDelegate testDelegate = delegate() {
 				dispatcher.Dispatch (SomeEnum.ONE, PAYLOAD);

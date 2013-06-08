@@ -63,7 +63,7 @@ namespace strange.examples.myfirstproject
 			
 			go.AddComponent<ClickDetector>();
 			ClickDetector clicker = go.GetComponent<ClickDetector>() as ClickDetector;
-			clicker.dispatcher.addListener(ClickDetector.CLICK, onClick);
+			clicker.dispatcher.AddListener(ClickDetector.CLICK, onClick);
 		}
 		
 		internal void updateScore(string score)

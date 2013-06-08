@@ -151,7 +151,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			}
 		}
 
-		public void addListener(object evt, EventCallback callback)
+		public void AddListener(object evt, EventCallback callback)
 		{
 			IBinding binding = GetBinding (evt);
 			if (binding == null)
@@ -164,7 +164,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			}
 		}
 
-		public void addListener(object evt, EmptyCallback callback)
+		public void AddListener(object evt, EmptyCallback callback)
 		{
 			IBinding binding = GetBinding (evt);
 			if (binding == null)
@@ -177,19 +177,19 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			}
 		}
 
-		public void removeListener(object evt, EventCallback callback)
+		public void RemoveListener(object evt, EventCallback callback)
 		{
 			IBinding binding = GetBinding (evt);
 			RemoveValue (binding, callback);
 		}
 
-		public void removeListener(object evt, EmptyCallback callback)
+		public void RemoveListener(object evt, EmptyCallback callback)
 		{
 			IBinding binding = GetBinding (evt);
 			RemoveValue (binding, callback);
 		}
 
-		public bool hasListener(object evt, EventCallback callback)
+		public bool HasListener(object evt, EventCallback callback)
 		{
 			IEventBinding binding = GetBinding (evt) as IEventBinding;
 			if (binding == null)
@@ -199,7 +199,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			return binding.typeForCallback (callback) != EventCallbackType.NOT_FOUND;
 		}
 
-		public bool hasListener(object evt, EmptyCallback callback)
+		public bool HasListener(object evt, EmptyCallback callback)
 		{
 			IEventBinding binding = GetBinding (evt) as IEventBinding;
 			if (binding == null)
@@ -209,27 +209,27 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			return binding.typeForCallback (callback) != EventCallbackType.NOT_FOUND;
 		}
 
-		public void updateListener(bool toAdd, object evt, EventCallback callback)
+		public void UpdateListener(bool toAdd, object evt, EventCallback callback)
 		{
 			if (toAdd)
 			{
-				addListener (evt, callback);
+				AddListener (evt, callback);
 			}
 			else
 			{
-				removeListener (evt, callback);
+				RemoveListener (evt, callback);
 			}
 		}
 
-		public void updateListener(bool toAdd, object evt, EmptyCallback callback)
+		public void UpdateListener(bool toAdd, object evt, EmptyCallback callback)
 		{
 			if (toAdd)
 			{
-				addListener (evt, callback);
+				AddListener (evt, callback);
 			}
 			else
 			{
-				removeListener (evt, callback);
+				RemoveListener (evt, callback);
 			}
 		}
 

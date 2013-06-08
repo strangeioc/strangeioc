@@ -41,13 +41,13 @@ namespace strange.examples.multiplecontexts.social
 			//Note how we're using the same event for convenience here
 			//and below. But the local event bus and the global one are separate, so there's
 			//no systemic confusion.
-			social.dispatcher.addListener(SocialEvent.FULFILL_CURRENT_USER_REQUEST, onResponse);
+			social.dispatcher.AddListener(SocialEvent.FULFILL_CURRENT_USER_REQUEST, onResponse);
 			social.FetchCurrentUser();
 		}
 		
 		private void onResponse(IEvent evt)
 		{
-			social.dispatcher.removeListener(SocialEvent.FULFILL_CURRENT_USER_REQUEST, onResponse);
+			social.dispatcher.RemoveListener(SocialEvent.FULFILL_CURRENT_USER_REQUEST, onResponse);
 			UserVO vo = evt.data as UserVO;
 			
 			//We're going to Bind this for injection, since we'll need it later when we compare

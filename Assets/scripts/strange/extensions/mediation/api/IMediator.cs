@@ -35,15 +35,15 @@ namespace strange.extensions.mediation.api
 
 		/// This method fires immediately after instantiation, but before injection.
 		/// Override to handle anything that needs to happen prior to injection.
-		void preRegister();
+		void PreRegister();
 
 		/// This method fires immediately after injection.
 		/// Override to perform the actions you might normally perform in a constructor.
-		void onRegister();
+		void OnRegister();
 
 		/// This method fires just before a GameObject will be destroyed.
 		/// Override to clean up any listeners, or anything else that might keep the View/Mediator pair from being garbage collected.
-		void onRemove();
+		void OnRemove();
 	}
 }
 

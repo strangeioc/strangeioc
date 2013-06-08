@@ -18,24 +18,24 @@ namespace strange.examples.myfirstproject
 		[Inject]
 		public ExampleView view{ get; set;}
 		
-		public override void onRegister()
+		public override void OnRegister()
 		{
 			
 			//Listen to the view for an event
-			view.dispatcher.addListener(ExampleView.CLICK_EVENT, onViewClicked);
+			view.dispatcher.AddListener(ExampleView.CLICK_EVENT, onViewClicked);
 			
 			//Listen to the global event bus for events
-			dispatcher.addListener(ExampleEvent.SCORE_CHANGE, onScoreChange);
+			dispatcher.AddListener(ExampleEvent.SCORE_CHANGE, onScoreChange);
 			
 			view.init ();
 		}
 		
-		public override void onRemove()
+		public override void OnRemove()
 		{
 			//Clean up listeners when the view is about to be destroyed
-			view.dispatcher.removeListener(ExampleView.CLICK_EVENT, onViewClicked);
-			dispatcher.removeListener(ExampleEvent.SCORE_CHANGE, onScoreChange);
-			Debug.Log("Mediator onRemove");
+			view.dispatcher.RemoveListener(ExampleView.CLICK_EVENT, onViewClicked);
+			dispatcher.RemoveListener(ExampleEvent.SCORE_CHANGE, onScoreChange);
+			Debug.Log("Mediator OnRemove");
 		}
 		
 		private void onViewClicked()

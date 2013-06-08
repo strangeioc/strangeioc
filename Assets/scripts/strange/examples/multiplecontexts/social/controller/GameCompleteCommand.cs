@@ -50,13 +50,13 @@ namespace strange.examples.multiplecontexts.social
 			userVO.currentScore = score;
 			
 			Debug.Log ("Social SCENE KNOWS THAT GAME IS OVER. Your score is: " + score);
-			social.dispatcher.addListener(SocialEvent.FULFILL_FRIENDS_REQUEST, onResponse);
+			social.dispatcher.AddListener(SocialEvent.FULFILL_FRIENDS_REQUEST, onResponse);
 			social.FetchScoresForFriends();
 		}
 		
 		private void onResponse(IEvent evt)
 		{
-			social.dispatcher.removeListener(SocialEvent.FULFILL_FRIENDS_REQUEST, onResponse);
+			social.dispatcher.RemoveListener(SocialEvent.FULFILL_FRIENDS_REQUEST, onResponse);
 			ArrayList list = evt.data as ArrayList;
 			
 			//Save the list as the data for the next item in the sequence
