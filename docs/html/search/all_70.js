@@ -4,5 +4,5 @@ var searchData=
   ['postconstruct',['PostConstruct',['../class_post_construct.html',1,'']]],
   ['postconstructors',['postConstructors',['../interfacestrange_1_1extensions_1_1reflector_1_1api_1_1_i_reflected_class.html#a23705414bd05de366f28b60df085e0b3',1,'strange::extensions::reflector::api::IReflectedClass']]],
   ['pregenerated',['preGenerated',['../interfacestrange_1_1extensions_1_1reflector_1_1api_1_1_i_reflected_class.html#a902b6a963d4f1c3ec30a91d726d79020',1,'strange::extensions::reflector::api::IReflectedClass']]],
-  ['preregister',['preRegister',['../interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator.html#a9965bc773cde6f889ec7528ade52267e',1,'strange.extensions.mediation.api.IMediator.preRegister()'],['../classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator.html#a284db743d4cdf5d75d34fbad151eaf99',1,'strange.extensions.mediation.impl.Mediator.preRegister()']]]
+  ['preregister',['PreRegister',['../interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator.html#a8e28ff6f8485dbc01aa8c826a45a2797',1,'strange.extensions.mediation.api.IMediator.PreRegister()'],['../classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator.html#a014246a5f07c3685e5d567700dd94d7a',1,'strange.extensions.mediation.impl.Mediator.PreRegister()']]]
 ];
