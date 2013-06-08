@@ -686,7 +686,7 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                = ./Assets/scripts/strange/examples ./Assets/scripts/strange/tests
+EXCLUDE                = ./Assets/scripts/strange/examples ./Assets/scripts/strange/tests ./Assets/scripts/strange/.tests
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
@@ -926,7 +926,7 @@ HTML_EXTRA_STYLESHEET  =
 # files. In the HTML_STYLESHEET file, use the file name only. Also note that
 # the files will be copied as-is; there are no commands or markers available.
 
-HTML_EXTRA_FILES       = ./doxy_custom_assets/tab_b.png
+HTML_EXTRA_FILES       = ./doxy_custom_assets/doxygen.css ./doxy_custom_assets/tabs.css
 
 # The HTML_COLORSTYLE_HUE tag controls the color of the HTML output.
 # Doxygen will adjust the colors in the style sheet and background images

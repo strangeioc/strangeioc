@@ -1,26 +1,27 @@
 * Modified CSS for doxygen for StrangeIoC */
 
 body, table, div, p, dl {
-        font-family: Futura, Arial, Verdana, Geneva, sans-serif;
-        font-size: 12px;
+	font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color:#333;
+	font-weight:300;
 }
 
 /* @group Heading Levels */
 
+h1, h2, h3 {
+  line-height:1.1;
+}
+
 h1 {
-        text-align: center;
-        font-size: 130%;
-        color: black;
+  font-size:21px;
 }
 
 h2 {
-        font-size: 120%;
-        color: rgb(15, 18, 100);
+  color:#393939;
 }
 
-h3 {
-        font-size: 100%;
-        color: #666666;
+h3, h4, h5, h6 {
+  color:#494949;
 }
 
 p {
@@ -37,8 +38,8 @@ dt {
 
 div.headertitle {
 	font-weight: bold;	
-	font-size: 150%;
-	text-align: center;
+	font-size: 175%;
+	text-align: left;
 }
 
 div#projectname {
@@ -199,10 +200,11 @@ div.groupText {
 
 body {
         background: white;
-        color: rgb(24, 12, 63);
         margin-right: 20px;
         margin-left: 20px;
-        font-family: Futura, Arial, Verdana, Geneva, sans-serif;
+        font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+		color:#333;
+		font-weight:300;
 }
 
 td.indexkey {
