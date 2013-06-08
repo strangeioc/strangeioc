@@ -1,6 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/strange/extensions/dispatcher/eventdispatcher/impl/EventDispatcher.cs">
+    <Files>
+      <File FileName="Assets/scripts/strange/extensions/dispatcher/eventdispatcher/impl/EventDispatcher.cs" Line="137" Column="19" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
@@ -10,6 +13,14 @@
                 <Node name="strange" expanded="True">
                   <Node name="examples" expanded="True" />
                   <Node name="extensions" expanded="True">
+                    <Node name="dispatcher" expanded="True">
+                      <Node name="eventdispatcher" expanded="True">
+                        <Node name="api" expanded="True" />
+                        <Node name="impl" expanded="True">
+                          <Node name="EventDispatcher.cs" selected="True" />
+                        </Node>
+                      </Node>
+                    </Node>
                     <Node name="mediation" expanded="True">
                       <Node name="impl" expanded="True" />
                     </Node>
