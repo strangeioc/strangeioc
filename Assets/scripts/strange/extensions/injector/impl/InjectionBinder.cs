@@ -24,6 +24,7 @@
  */
 
 using System;
+using System.Collections.Generic;
 using strange.framework.api;
 using strange.extensions.injector.api;
 using strange.extensions.injector.impl;
@@ -121,6 +122,36 @@ namespace strange.extensions.injector.impl
 		new public IInjectionBinding GetBinding(object key, object name)
 		{
 			return base.GetBinding (key, name) as IInjectionBinding;
+		}
+
+		public int ReflectAll()
+		{
+			List<Type> list = new List<Type> ();
+			foreach (KeyValuePair<object, Dictionary<object, IBinding>> pair in bindings)
+			{
+				Dictionary<object, IBinding> dict = pair.Value;
+				foreach(KeyValuePair<object, IBinding> bPair in dict)
+				{
+					IBinding binding = bPair.Value as IBinding;
+					Type t = (Type)binding.value;
+					if (list.IndexOf(t) == -1)
+					{
+						list.Add (t);
+					}
+				}
+			}
+			return Reflect (list);
+		}
+
+		public int Reflect(List<Type> list)
+		{
+			int count = 0;
+			foreach(Type t in list)
+			{
+				count ++;
+				injector.reflector.Get (t);
+			}
+			return count;
 		}
 	}
 }

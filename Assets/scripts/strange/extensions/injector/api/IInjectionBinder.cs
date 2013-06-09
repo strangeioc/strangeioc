@@ -58,6 +58,7 @@
  */
 
 using System;
+using System.Collections.Generic;
 using strange.framework.api;
 
 namespace strange.extensions.injector.api
@@ -82,6 +83,15 @@ namespace strange.extensions.injector.api
 		/// Retrieve an Instance based on a key/name combo.
 		/// ex. `injectionBinder.Get<cISomeInterface>(SomeEnum.MY_ENUM);`
 		object GetInstance<T>(object name);
+
+		/// Reflect all the types in the list
+		/// Return the number of types in the list, which should be equal to the list length
+		int Reflect(List<Type> list);
+
+		/// Reflect all the types currently registered with InjectionBinder
+		/// Return the number of types reflected, which should be equal to the number
+		/// of concrete classes you've mapped.
+		int ReflectAll();
 
 		IInjectionBinding Bind<T>();
 		IInjectionBinding Bind(Type key);
