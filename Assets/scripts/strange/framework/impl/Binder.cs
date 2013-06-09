@@ -40,8 +40,13 @@ namespace strange.framework.impl
 {
 	public class Binder : IBinder
 	{
-		/// List of all bindings
+		/// Dictionary of all bindings
+		/// Two-layer keys. First key to individual Binding keys,
+		/// then to Binding names. (This wouldn't be required if
+		/// Unity supported Tuple or HashSet.)
 		protected Dictionary <object, Dictionary<object, IBinding>> bindings;
+
+		protected Dictionary <object, Dictionary<IBinding, object>> conflicts;
 
 		/// A handler for resolving the nature of a binding during chained commands
 		public delegate void BindingResolver(IBinding binding);
@@ -49,6 +54,7 @@ namespace strange.framework.impl
 		public Binder ()
 		{
 			bindings = new Dictionary <object, Dictionary<object, IBinding>> ();
+			conflicts = new Dictionary <object, Dictionary<IBinding, object>> ();
 		}
 
 		virtual public IBinding Bind<T>()
@@ -81,6 +87,11 @@ namespace strange.framework.impl
 
 		virtual public IBinding GetBinding(object key, object name)
 		{
+			if (conflicts.Count > 0)
+			{
+				throw new BinderException ("Binder cannot fetch Bindings when the binder is in a conflicted state.\nConflict count: " + conflicts.Count, BinderExceptionType.CONFLICT_IN_BINDER);
+			}
+
 			if(bindings.ContainsKey (key))
 			{
 				Dictionary<object, IBinding> dict = bindings [key];
@@ -225,27 +236,119 @@ namespace strange.framework.impl
 
 		/**
 		 * This method places individual Bindings into the bindings Dictionary
-		 * as part of the resolving process. Note that while Bindings
+		 * as part of the resolving process. Note that while some Bindings
 		 * may store multiple keys, each key takes a unique position in the
 		 * bindings Dictionary.
+		 * 
+		 * Conflicts in the course of fluent binding are expected, but GetBinding
+		 * will throw an error if there are any unresolved conflicts.
 		 */
 		virtual protected void resolveBinding(IBinding binding, object key)
 		{
+			if (conflicts.ContainsKey(key))	//does the current key have any conflicts?
+			{
+				Dictionary<IBinding, object> inConflict = conflicts [key];
+				if (inConflict.ContainsKey(binding)) //Am I on the conflict list?
+				{
+					object conflictName = inConflict[binding];
+					if (isConflictCleared(inConflict, binding)) //Am I now out of conflict?
+					{
+						clearConflict (key, conflictName, inConflict); //remove all from conflict list.
+					}
+					else
+					{
+						return;	//still in conflict
+					}
+				}		
+			}
+
+			object bindingName = (binding.name == null) ? BindingConst.NULLOID : binding.name;
 			Dictionary<object, IBinding> dict;
 			if ((bindings.ContainsKey(key)))
 			{
 				dict = bindings [key];
+				//Will my registration create a new conflict?
+				if (dict.ContainsKey(bindingName))
+				{
+					if (dict[bindingName] != binding)
+					{
+						//register both conflictees
+						registerNameConflict (key, binding, dict[bindingName]);
+						return;
+					}
+				}	
 			}
 			else
 			{
 				dict = new Dictionary<object, IBinding>();
+				bindings [key] = dict;
 			}
-			object bindingName = (binding.name == null) ? BindingConst.NULLOID : binding.name;
-			if (dict.ContainsKey(bindingName) == false)
+
+			if (dict.ContainsKey(BindingConst.NULLOID) && dict[BindingConst.NULLOID] == binding)
+			{
+				dict.Remove (BindingConst.NULLOID);
+			}
+
+			if (!dict.ContainsKey(bindingName))
 			{
 				dict.Add (bindingName, binding);
 			}
-			bindings [key] = dict;
+
+		}
+
+		/// Take note of bindings that are in conflict.
+		/// This occurs routinely during fluent binding, but will spark an error if
+		/// GetBinding is called while this Binder still has conflicts.
+		protected void registerNameConflict(object key, IBinding newBinding, IBinding existingBinding)
+		{
+			Dictionary<IBinding, object> dict;
+			if (conflicts.ContainsKey(key) == false)
+			{
+				dict = new Dictionary<IBinding, object> ();
+				conflicts [key] = dict;
+			}
+			else
+			{
+				dict = conflicts [key];
+			}
+			dict [newBinding] = newBinding.name;
+			dict [existingBinding] = newBinding.name;
+		}
+
+		/// Returns true if the provided binding and the binding in the dict are no longer conflicting
+		protected bool isConflictCleared(Dictionary<IBinding, object> dict, IBinding binding)
+		{
+			foreach (KeyValuePair<IBinding, object> kv in dict)
+			{
+				if (kv.Key != binding && kv.Key.name == binding.name)
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+
+		protected void clearConflict(object key, object name, Dictionary<IBinding, object> dict)
+		{
+			List<IBinding> removalList = new List<IBinding>();
+
+			foreach(KeyValuePair<IBinding, object> kv in dict)
+			{
+				object v = kv.Value;
+				if (v.Equals(name))
+				{
+					removalList.Add (kv.Key);
+				}
+			}
+			int aa = removalList.Count;
+			for (int a = 0; a < aa; a++)
+			{
+				dict.Remove(removalList[a]);
+			}
+			if (dict.Count == 0)
+			{
+				conflicts.Remove (key);
+			}
 		}
 
 		/// Remove the item at splicePos from the list objectValue 
