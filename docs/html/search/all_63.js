@@ -11,6 +11,7 @@ var searchData=
   ['commandexception',['CommandException',['../classstrange_1_1extensions_1_1command_1_1impl_1_1_command_exception.html',1,'strange::extensions::command::impl']]],
   ['commandexception',['CommandException',['../classstrange_1_1extensions_1_1command_1_1impl_1_1_command_exception.html#a4f1fa88eecb0e5217c3852570492ddb5',1,'strange::extensions::command::impl::CommandException']]],
   ['commandexceptiontype',['CommandExceptionType',['../namespacestrange_1_1extensions_1_1command_1_1api.html#a27c9226cc8d55624f3294319d48879e3',1,'strange::extensions::command::api']]],
+  ['conflict_5fin_5fbinder',['CONFLICT_IN_BINDER',['../namespacestrange_1_1framework_1_1api.html#ae9308e863579d2ca38f2729e1104dac9a2972874028843b51bde733339d5cf74a',1,'strange::framework::api']]],
   ['constraint',['constraint',['../interfacestrange_1_1framework_1_1api_1_1_i_semi_binding.html#a66062d19019961c4db4449d4b986cbd2',1,'strange::framework::api::ISemiBinding']]],
   ['construct',['Construct',['../class_construct.html',1,'']]],
   ['constructor',['constructor',['../interfacestrange_1_1extensions_1_1reflector_1_1api_1_1_i_reflected_class.html#a0de808e619b042cf6c1670915210edf3',1,'strange::extensions::reflector::api::IReflectedClass']]],

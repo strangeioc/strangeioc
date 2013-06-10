@@ -71,16 +71,27 @@ Inheritance diagram for strange.\-framework.\-impl.\-Binder\-:\begin{figure}[H]
 \begin{DoxyCompactList}\small\item\em The default handler for resolving bindings during chained commands. \end{DoxyCompactList}\item 
 virtual void \hyperlink{classstrange_1_1framework_1_1impl_1_1_binder_a376bc9c4030c38eeb12818cc92fdcd5f}{resolve\-Binding} (\hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} binding, object key)
 \begin{DoxyCompactList}\small\item\em This method places individual Bindings into the bindings Dictionary as part of the resolving process. \end{DoxyCompactList}\item 
+void \hyperlink{classstrange_1_1framework_1_1impl_1_1_binder_a6150d8762ded854628d21c5e35489adc}{register\-Name\-Conflict} (object key, \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} new\-Binding, \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} existing\-Binding)
+\begin{DoxyCompactList}\small\item\em Take note of bindings that are in conflict. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binder_a541607fe739b65b5f28b4152bec49a46}{bool \hyperlink{classstrange_1_1framework_1_1impl_1_1_binder_a541607fe739b65b5f28b4152bec49a46}{is\-Conflict\-Cleared} (Dictionary$<$ \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding}, object $>$ dict, \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} binding)}\label{classstrange_1_1framework_1_1impl_1_1_binder_a541607fe739b65b5f28b4152bec49a46}
+
+\begin{DoxyCompactList}\small\item\em Returns true if the provided binding and the binding in the dict are no longer conflicting. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binder_a1a426d227eeaa00823a744472c219698}{void {\bfseries clear\-Conflict} (object key, object name, Dictionary$<$ \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding}, object $>$ dict)}\label{classstrange_1_1framework_1_1impl_1_1_binder_a1a426d227eeaa00823a744472c219698}
+
+\item 
 \hypertarget{classstrange_1_1framework_1_1impl_1_1_binder_a349b12bdc879e7f465a7cf7dfeb3b5b4}{object\mbox{[}$\,$\mbox{]} \hyperlink{classstrange_1_1framework_1_1impl_1_1_binder_a349b12bdc879e7f465a7cf7dfeb3b5b4}{splice\-Value\-At} (int splice\-Pos, object\mbox{[}$\,$\mbox{]} object\-Value)}\label{classstrange_1_1framework_1_1impl_1_1_binder_a349b12bdc879e7f465a7cf7dfeb3b5b4}
 
 \begin{DoxyCompactList}\small\item\em Remove the item at splice\-Pos from the list object\-Value. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classstrange_1_1framework_1_1impl_1_1_binder_a3b76e3cb4822c1f8732fd45fbd4d1802}{Dictionary$<$ object, Dictionary\\*
-$<$ object, \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} $>$ $>$ \hyperlink{classstrange_1_1framework_1_1impl_1_1_binder_a3b76e3cb4822c1f8732fd45fbd4d1802}{bindings}}\label{classstrange_1_1framework_1_1impl_1_1_binder_a3b76e3cb4822c1f8732fd45fbd4d1802}
+Dictionary$<$ object, Dictionary\\*
+$<$ object, \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} $>$ $>$ \hyperlink{classstrange_1_1framework_1_1impl_1_1_binder_a3b76e3cb4822c1f8732fd45fbd4d1802}{bindings}
+\begin{DoxyCompactList}\small\item\em Dictionary of all bindings Two-\/layer keys. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binder_a83af5663ac69ba271f18c03fdd9e21d2}{Dictionary$<$ object, Dictionary\\*
+$<$ \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding}, object $>$ $>$ {\bfseries conflicts}}\label{classstrange_1_1framework_1_1impl_1_1_binder_a83af5663ac69ba271f18c03fdd9e21d2}
 
-\begin{DoxyCompactList}\small\item\em List of all bindings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -91,7 +102,20 @@ Binders are a collection class (akin to Array\-List and Dictionary) with the spe
 Think of each \hyperlink{classstrange_1_1framework_1_1impl_1_1_binder}{Binder} as a collection of causes and effects, or actions and reactions. If the Key action happens, it triggers the Value action. So, for example, an Event may be the Key that triggers instantiation of a particular class. 
 
 \subsection{Member Function Documentation}
-\hypertarget{classstrange_1_1framework_1_1impl_1_1_binder_a376bc9c4030c38eeb12818cc92fdcd5f}{\index{strange\-::framework\-::impl\-::\-Binder@{strange\-::framework\-::impl\-::\-Binder}!resolve\-Binding@{resolve\-Binding}}
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binder_a6150d8762ded854628d21c5e35489adc}{\index{strange\-::framework\-::impl\-::\-Binder@{strange\-::framework\-::impl\-::\-Binder}!register\-Name\-Conflict@{register\-Name\-Conflict}}
+\index{register\-Name\-Conflict@{register\-Name\-Conflict}!strange::framework::impl::Binder@{strange\-::framework\-::impl\-::\-Binder}}
+\subsubsection[{register\-Name\-Conflict}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-framework.\-impl.\-Binder.\-register\-Name\-Conflict (
+\begin{DoxyParamCaption}
+\item[{object}]{key, }
+\item[{{\bf I\-Binding}}]{new\-Binding, }
+\item[{{\bf I\-Binding}}]{existing\-Binding}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classstrange_1_1framework_1_1impl_1_1_binder_a6150d8762ded854628d21c5e35489adc}
+
+
+Take note of bindings that are in conflict. 
+
+This occurs routinely during fluent binding, but will spark an error if Get\-Binding is called while this \hyperlink{classstrange_1_1framework_1_1impl_1_1_binder}{Binder} still has conflicts. \hypertarget{classstrange_1_1framework_1_1impl_1_1_binder_a376bc9c4030c38eeb12818cc92fdcd5f}{\index{strange\-::framework\-::impl\-::\-Binder@{strange\-::framework\-::impl\-::\-Binder}!resolve\-Binding@{resolve\-Binding}}
 \index{resolve\-Binding@{resolve\-Binding}!strange::framework::impl::Binder@{strange\-::framework\-::impl\-::\-Binder}}
 \subsubsection[{resolve\-Binding}]{\setlength{\rightskip}{0pt plus 5cm}virtual void strange.\-framework.\-impl.\-Binder.\-resolve\-Binding (
 \begin{DoxyParamCaption}
@@ -103,7 +127,19 @@ Think of each \hyperlink{classstrange_1_1framework_1_1impl_1_1_binder}{Binder} a
 
 This method places individual Bindings into the bindings Dictionary as part of the resolving process. 
 
-Note that while Bindings may store multiple keys, each key takes a unique position in the bindings Dictionary. 
+Note that while some Bindings may store multiple keys, each key takes a unique position in the bindings Dictionary.
+
+Conflicts in the course of fluent binding are expected, but Get\-Binding will throw an error if there are any unresolved conflicts. 
+
+\subsection{Member Data Documentation}
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binder_a3b76e3cb4822c1f8732fd45fbd4d1802}{\index{strange\-::framework\-::impl\-::\-Binder@{strange\-::framework\-::impl\-::\-Binder}!bindings@{bindings}}
+\index{bindings@{bindings}!strange::framework::impl::Binder@{strange\-::framework\-::impl\-::\-Binder}}
+\subsubsection[{bindings}]{\setlength{\rightskip}{0pt plus 5cm}Dictionary$<$object, Dictionary$<$object, {\bf I\-Binding}$>$ $>$ strange.\-framework.\-impl.\-Binder.\-bindings\hspace{0.3cm}{\ttfamily [protected]}}}\label{classstrange_1_1framework_1_1impl_1_1_binder_a3b76e3cb4822c1f8732fd45fbd4d1802}
+
+
+Dictionary of all bindings Two-\/layer keys. 
+
+First key to individual \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding}{Binding} keys, then to \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding}{Binding} names. (This wouldn't be required if Unity supported Tuple or Hash\-Set.) 
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 

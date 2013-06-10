@@ -23,6 +23,11 @@ object \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_inject
 \begin{DoxyCompactList}\small\item\em Retrieve an Instance based on the key. \end{DoxyCompactList}\item 
 object \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a26f141d072f219bb70513f5e21af6bbf}{Get\-Instance$<$ T $>$} (object name)
 \begin{DoxyCompactList}\small\item\em Retrieve an Instance based on a key/name combo. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_ac9376845ce4eefd9e2795a6899f48c25}{int \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_ac9376845ce4eefd9e2795a6899f48c25}{Reflect} (List$<$ Type $>$ list)}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_ac9376845ce4eefd9e2795a6899f48c25}
+
+\begin{DoxyCompactList}\small\item\em Reflect all the types in the list Return the number of types in the list, which should be equal to the list length. \end{DoxyCompactList}\item 
+int \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a4f5f1efc3286ca4358d6ca9443c0f1d2}{Reflect\-All} ()
+\begin{DoxyCompactList}\small\item\em Reflect all the types currently registered with Injection\-Binder Return the number of types reflected, which should be equal to the number of concrete classes you've mapped. \end{DoxyCompactList}\item 
 \hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a7faee07278ae6f408125b2f5bfe3e380}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries Bind$<$ T $>$} ()}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a7faee07278ae6f408125b2f5bfe3e380}
 
 \item 
@@ -163,6 +168,21 @@ Retrieve an Instance based on a key/name combo.
 ex. {\ttfamily injection\-Binder.\-Get$<$c\-I\-Some\-Interface$>$(Some\-Enum.\-M\-Y\-\_\-\-E\-N\-U\-M);} 
 
 Implemented in \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a1cd9b99f05837f13f0dbc2e47e603faa}{strange.\-extensions.\-injector.\-impl.\-Injection\-Binder}.
+
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a4f5f1efc3286ca4358d6ca9443c0f1d2}{\index{strange\-::extensions\-::injector\-::api\-::\-I\-Injection\-Binder@{strange\-::extensions\-::injector\-::api\-::\-I\-Injection\-Binder}!Reflect\-All@{Reflect\-All}}
+\index{Reflect\-All@{Reflect\-All}!strange::extensions::injector::api::IInjectionBinder@{strange\-::extensions\-::injector\-::api\-::\-I\-Injection\-Binder}}
+\subsubsection[{Reflect\-All}]{\setlength{\rightskip}{0pt plus 5cm}int strange.\-extensions.\-injector.\-api.\-I\-Injection\-Binder.\-Reflect\-All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a4f5f1efc3286ca4358d6ca9443c0f1d2}
+
+
+Reflect all the types currently registered with Injection\-Binder Return the number of types reflected, which should be equal to the number of concrete classes you've mapped. 
+
+
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a5a03e345237a56af33953e215852526b}{strange.\-extensions.\-injector.\-impl.\-Injection\-Binder}.
 
 
 

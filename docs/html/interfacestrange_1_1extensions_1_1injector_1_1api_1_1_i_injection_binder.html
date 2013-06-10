@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.5</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -123,6 +123,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a26f141d072f219bb70513f5e21af6bbf"><td class="memItemLeft" align="right" valign="top">object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder.html#a26f141d072f219bb70513f5e21af6bbf">GetInstance&lt; T &gt;</a> (object name)</td></tr>
 <tr class="memdesc:a26f141d072f219bb70513f5e21af6bbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve an Instance based on a key/name combo.  <a href="#a26f141d072f219bb70513f5e21af6bbf">More...</a><br/></td></tr>
 <tr class="separator:a26f141d072f219bb70513f5e21af6bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9376845ce4eefd9e2795a6899f48c25"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9376845ce4eefd9e2795a6899f48c25"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder.html#ac9376845ce4eefd9e2795a6899f48c25">Reflect</a> (List&lt; Type &gt; list)</td></tr>
+<tr class="memdesc:ac9376845ce4eefd9e2795a6899f48c25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reflect all the types in the list Return the number of types in the list, which should be equal to the list length. <br/></td></tr>
+<tr class="separator:ac9376845ce4eefd9e2795a6899f48c25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f5f1efc3286ca4358d6ca9443c0f1d2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder.html#a4f5f1efc3286ca4358d6ca9443c0f1d2">ReflectAll</a> ()</td></tr>
+<tr class="memdesc:a4f5f1efc3286ca4358d6ca9443c0f1d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reflect all the types currently registered with InjectionBinder Return the number of types reflected, which should be equal to the number of concrete classes you've mapped.  <a href="#a4f5f1efc3286ca4358d6ca9443c0f1d2">More...</a><br/></td></tr>
+<tr class="separator:a4f5f1efc3286ca4358d6ca9443c0f1d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7faee07278ae6f408125b2f5bfe3e380"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7faee07278ae6f408125b2f5bfe3e380"></a>
 <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Bind&lt; T &gt;</b> ()</td></tr>
 <tr class="separator:a7faee07278ae6f408125b2f5bfe3e380"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -276,13 +283,32 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a4f5f1efc3286ca4358d6ca9443c0f1d2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int strange.extensions.injector.api.IInjectionBinder.ReflectAll </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reflect all the types currently registered with InjectionBinder Return the number of types reflected, which should be equal to the number of concrete classes you've mapped. </p>
+
+<p>Implemented in <a class="el" href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder.html#a5a03e345237a56af33953e215852526b">strange.extensions.injector.impl.InjectionBinder</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this interface was generated from the following file:<ul>
 <li>Assets/scripts/strange/extensions/injector/api/IInjectionBinder.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 8 2013 15:15:24 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 10 2013 10:14:34 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

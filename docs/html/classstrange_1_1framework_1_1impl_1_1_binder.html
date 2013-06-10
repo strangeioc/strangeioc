@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.5</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -196,6 +196,16 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memitem:a376bc9c4030c38eeb12818cc92fdcd5f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a376bc9c4030c38eeb12818cc92fdcd5f">resolveBinding</a> (<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding, object key)</td></tr>
 <tr class="memdesc:a376bc9c4030c38eeb12818cc92fdcd5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method places individual Bindings into the bindings Dictionary as part of the resolving process.  <a href="#a376bc9c4030c38eeb12818cc92fdcd5f">More...</a><br/></td></tr>
 <tr class="separator:a376bc9c4030c38eeb12818cc92fdcd5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6150d8762ded854628d21c5e35489adc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a6150d8762ded854628d21c5e35489adc">registerNameConflict</a> (object key, <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> newBinding, <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> existingBinding)</td></tr>
+<tr class="memdesc:a6150d8762ded854628d21c5e35489adc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Take note of bindings that are in conflict.  <a href="#a6150d8762ded854628d21c5e35489adc">More...</a><br/></td></tr>
+<tr class="separator:a6150d8762ded854628d21c5e35489adc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a541607fe739b65b5f28b4152bec49a46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a541607fe739b65b5f28b4152bec49a46"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a541607fe739b65b5f28b4152bec49a46">isConflictCleared</a> (Dictionary&lt; <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a>, object &gt; dict, <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding)</td></tr>
+<tr class="memdesc:a541607fe739b65b5f28b4152bec49a46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the provided binding and the binding in the dict are no longer conflicting. <br/></td></tr>
+<tr class="separator:a541607fe739b65b5f28b4152bec49a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a426d227eeaa00823a744472c219698"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1a426d227eeaa00823a744472c219698"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clearConflict</b> (object key, object name, Dictionary&lt; <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a>, object &gt; dict)</td></tr>
+<tr class="separator:a1a426d227eeaa00823a744472c219698"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a349b12bdc879e7f465a7cf7dfeb3b5b4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a349b12bdc879e7f465a7cf7dfeb3b5b4"></a>
 object[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a349b12bdc879e7f465a7cf7dfeb3b5b4">spliceValueAt</a> (int splicePos, object[] objectValue)</td></tr>
 <tr class="memdesc:a349b12bdc879e7f465a7cf7dfeb3b5b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the item at splicePos from the list objectValue. <br/></td></tr>
@@ -203,17 +213,63 @@ object[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a3b76e3cb4822c1f8732fd45fbd4d1802"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b76e3cb4822c1f8732fd45fbd4d1802"></a>
-Dictionary&lt; object, Dictionary<br class="typebreak"/>
+<tr class="memitem:a3b76e3cb4822c1f8732fd45fbd4d1802"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; object, Dictionary<br class="typebreak"/>
 &lt; object, <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a3b76e3cb4822c1f8732fd45fbd4d1802">bindings</a></td></tr>
-<tr class="memdesc:a3b76e3cb4822c1f8732fd45fbd4d1802"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of all bindings. <br/></td></tr>
+<tr class="memdesc:a3b76e3cb4822c1f8732fd45fbd4d1802"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dictionary of all bindings Two-layer keys.  <a href="#a3b76e3cb4822c1f8732fd45fbd4d1802">More...</a><br/></td></tr>
 <tr class="separator:a3b76e3cb4822c1f8732fd45fbd4d1802"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83af5663ac69ba271f18c03fdd9e21d2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83af5663ac69ba271f18c03fdd9e21d2"></a>
+Dictionary&lt; object, Dictionary<br class="typebreak"/>
+&lt; <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a>, object &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>conflicts</b></td></tr>
+<tr class="separator:a83af5663ac69ba271f18c03fdd9e21d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Collection class for bindings. </p>
 <p>Binders are a collection class (akin to ArrayList and Dictionary) with the specific purpose of connecting lists of things that are not necessarily related, but need some type of runtime association. Binders are the core concept of the StrangeIoC framework, allowing all the other functionality to exist and further functionality to easily be created.</p>
 <p>Think of each <a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html" title="Collection class for bindings. ">Binder</a> as a collection of causes and effects, or actions and reactions. If the Key action happens, it triggers the Value action. So, for example, an Event may be the Key that triggers instantiation of a particular class. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a6150d8762ded854628d21c5e35489adc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void strange.framework.impl.Binder.registerNameConflict </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a>&#160;</td>
+          <td class="paramname"><em>newBinding</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a>&#160;</td>
+          <td class="paramname"><em>existingBinding</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Take note of bindings that are in conflict. </p>
+<p>This occurs routinely during fluent binding, but will spark an error if GetBinding is called while this <a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html" title="Collection class for bindings. ">Binder</a> still has conflicts. </p>
+
+</div>
+</div>
 <a class="anchor" id="a376bc9c4030c38eeb12818cc92fdcd5f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -247,7 +303,32 @@ Dictionary&lt; object, Dictionary<br class="typebreak"/>
 </div><div class="memdoc">
 
 <p>This method places individual Bindings into the bindings Dictionary as part of the resolving process. </p>
-<p>Note that while Bindings may store multiple keys, each key takes a unique position in the bindings Dictionary. </p>
+<p>Note that while some Bindings may store multiple keys, each key takes a unique position in the bindings Dictionary.</p>
+<p>Conflicts in the course of fluent binding are expected, but GetBinding will throw an error if there are any unresolved conflicts. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a3b76e3cb4822c1f8732fd45fbd4d1802"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dictionary&lt;object, Dictionary&lt;object, <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a>&gt; &gt; strange.framework.impl.Binder.bindings</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dictionary of all bindings Two-layer keys. </p>
+<p>First key to individual <a class="el" href="classstrange_1_1framework_1_1impl_1_1_binding.html" title="A binding maintains at least two — and optionally three — SemiBindings: ">Binding</a> keys, then to <a class="el" href="classstrange_1_1framework_1_1impl_1_1_binding.html" title="A binding maintains at least two — and optionally three — SemiBindings: ">Binding</a> names. (This wouldn't be required if Unity supported Tuple or HashSet.) </p>
 
 </div>
 </div>
@@ -257,7 +338,7 @@ Dictionary&lt; object, Dictionary<br class="typebreak"/>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 8 2013 15:15:25 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 10 2013 10:14:34 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
