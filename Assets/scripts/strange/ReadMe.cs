@@ -38,9 +38,12 @@
  *  <li>The extensible binder really is amazing (a friend used to tell me “it’s good to like your own cookin’!”). The number of things you can accomplish with the tiny core framework would justify Strange all on its own.</li>
  *  <li>Multiple contexts allow you to “bootstrap” subcomponents so they operate fine either on their own or in-app. This can hugely speed up your development process and allow developers to work in isolation, then integrate in later stages of development.</li>
  * </ul>
- * An executive overview of the benefits of IoC in general and StrangeIoC in particular is available here: <a href="">TODO</a>
+ * An overview of the benefits of IoC in general and StrangeIoC in particular is available <a href="../../exec.html">here.</a>
  * <br />
- * Some fun documentation and tutorials are available here: <a href="">TODO</a>.
+ * User's manual: <a href="../../TheBigStrangeHowTo.html">here</a>.
  * <br />
- * Already know RobotLegs? Good news, we've written <a href="https://github.com/rocketninja/strange/wiki">this page</a> just for you! 
+ * Already know RobotLegs? Good news, we've written <a href="../../rl.html">this page</a> just for you! 
+ * 
+ * StrangeIoC is a project by <a href="http://thirdmotion.com/">ThirdMotion, Inc.</a>
+ * &copy; 2013 ThirdMotion, Inc.
  */
