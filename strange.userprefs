@@ -1,19 +1,20 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/strange/framework/impl/Binder.cs">
-    <Files>
-      <File FileName="Assets/scripts/strange/tests/extensions/injector/TestInjectionBinder.cs" Line="47" Column="1" />
-      <File FileName="Assets/scripts/strange/framework/impl/Binder.cs" Line="92" Column="61" />
-      <File FileName="Assets/scripts/strange/extensions/injector/impl/InjectionBinding.cs" Line="1" Column="1" />
-      <File FileName="Assets/scripts/strange/tests/extensions/injector/TestInjector.cs" Line="75" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="scripts" expanded="True">
-                <Node name="strange" expanded="True" />
+                <Node name="strange" expanded="True">
+                  <Node name="extensions" expanded="True">
+                    <Node name="injector" expanded="True">
+                      <Node name="impl" expanded="True" />
+                    </Node>
+                    <Node name="ReadMe.txt" selected="True" />
+                  </Node>
+                </Node>
               </Node>
             </Node>
           </Node>
@@ -27,19 +28,6 @@
       </Pad>
       <Pad Id="ConnectionManagerPad">
         <State selected="True" />
-      </Pad>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True">
-            <Node name="strange" expanded="True">
-              <Node name="unittests" expanded="True">
-                <Node name="TestInjector" expanded="True">
-                  <Node name="TestNamedInjections" selected="True" />
-                </Node>
-              </Node>
-            </Node>
-          </Node>
-        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
