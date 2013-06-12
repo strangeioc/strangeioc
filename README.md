@@ -2,15 +2,14 @@
 
 > Strange attractors create predictable patterns, often in chaotic systems.
 
-Strange is a super-lightweight and highly extensible Inversion-of-Control (IoC) framework, written specifically for C# and Unity. Weâ€™ve validated Strange on web, standalone, and iOS. We're not currently developing for Android, but we're fairly certain it'll run just fine there, too (er, please let us know!!!).
+Strange is a super-lightweight and highly extensible Inversion-of-Control (IoC) framework, written specifically for C# and Unity. We'€™ve validated Strange on web, standalone, and iOS. We're not currently developing for Android, but we're fairly certain it'll run just fine there, too (er, please let us know!!!).
 
-* [Executive Overview](https://github.com/rocketninja/strange/wiki/Executive-Overview)
-* [StrangeIoC documentation](TODO)
-* [The big, Strange how-to](TODO)
-* [Do you use RobotLegs? You're in luck! This Strange page is for you!](https://github.com/rocketninja/strange/wiki/Intro-to-StrangeIoC-for-RobotLegs-users)
-* [FAQ](https://github.com/rocketninja/strange/wiki/FAQ)
-* [Feature requests](https://github.com/rocketninja/strange/wiki/Feature-Requests)
-* [Known issues and bug reports](https://github.com/rocketninja/strange/wiki/Known-Issues-and-Bugs)
+* [Overview](http://thirdmotion.github.com/strangeioc/exec.html
+* [StrangeIoC documentation](http://thirdmotion.github.com/strangeioc/docs/html/index.html)
+* [The Big, Strange How-To](http://thirdmotion.github.com/strangeioc/TheBigStrangeHowTo.html)
+* [Do you use RobotLegs? You're in luck! This Strange page is for you!](http://thirdmotion.github.com/strangeioc/rl.html)
+* [FAQ](http://thirdmotion.github.com/strangeioc/faq.html)
+* [Feature requests/Bug reports](https://github.com/thirdmotion/strangeioc/issues)
 
 It contains the following features, most of which are optional:
 
@@ -55,3 +54,19 @@ In addition to organizing your project into a sensible structure, Strange offers
 It is hard to adequately credit the creators of the open source Actionscript framework RobotLegs for their influence on the creation of StrangeIoC. While Strange is not a port of RobotLegs, the ensigns of that library are copiously reflected throughout this one. For their great service to my professional development, I offer that team my sincerest thanks. And a donut. Seriously, if youâ€™re ever in town, let me buy you a donut.
 
 I also need to thank and congratulate the folks at [ThirdMotion](http://www.thirdmotion.com) who inexplicably gave me time to build Strange and license to open source it.
+
+/**********************************************/
+  Copyright 2013 ThirdMotion, Inc.
+ 
+ 	Licensed under the Apache License, Version 2.0 (the "License");
+ 	you may not use this file except in compliance with the License.
+ 	You may obtain a copy of the License at
+ 
+ 		http://www.apache.org/licenses/LICENSE-2.0
+ 
+ 		Unless required by applicable law or agreed to in writing, software
+ 		distributed under the License is distributed on an "AS IS" BASIS,
+ 		WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ 		See the License for the specific language governing permissions and
+ 		limitations under the License.
+ 
