@@ -3,6 +3,7 @@
 desktop.ini
 *.cache
 *.svn
+*.meta
 
 Thumbs.db
 test-results/*
