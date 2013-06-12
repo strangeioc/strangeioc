@@ -20,7 +20,7 @@
  *
  * \section intro_sec Introduction
  *
- * Strange is a super-lightweight and highly extensible Inversion-of-Control (IoC) framework, written specifically for C# and Unity. We’ve validated Strange on web and standalone, iOS and Android. It contains the following features, most of which are optional:
+ * StrangeIoC is a super-lightweight and highly extensible Inversion-of-Control (IoC) framework, written specifically for C# and Unity. We’ve validated Strange on web and standalone, iOS and Android. It contains the following features, most of which are optional:
  * <ul>
  *  <li>A core binding framework that pretty much lets you bind one or more of anything to one or more of anything else.</li>
  *  <li>Dependency Injection</li>

@@ -4,20 +4,7 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="scripts" expanded="True">
-                <Node name="strange" expanded="True">
-                  <Node name="extensions" expanded="True">
-                    <Node name="injector" expanded="True">
-                      <Node name="impl" expanded="True" />
-                    </Node>
-                    <Node name="ReadMe.txt" selected="True" />
-                  </Node>
-                </Node>
-              </Node>
-            </Node>
-          </Node>
+          <Node name="Assembly-CSharp" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
