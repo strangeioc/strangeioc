@@ -52,7 +52,7 @@
 		}
 
  * 
- * The contextView is is automatically injected into all Mediators
+ * The contextView is automatically injected into all Mediators
  * and available for injection into commands like so:
 
 		[Inject(ContextKeys.CONTEXT_VIEW)]

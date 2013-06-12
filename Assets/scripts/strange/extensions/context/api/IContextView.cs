@@ -21,7 +21,7 @@
  * 
  * In a standard MVCSContext setup for Unity3D, it is a MonoBehaviour
  * attached to a GameObject at the very top of of your application.
- * It's most important action is to instantiate and call `Start()` on the Context.
+ * It's most important role is to instantiate and call `Start()` on the Context.
  */
 
 using System;

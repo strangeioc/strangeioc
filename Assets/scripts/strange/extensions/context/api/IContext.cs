@@ -21,7 +21,7 @@
  * 
  * Implement this interface to create the binding context suitable for your application.
  * 
- * In a typical Unity3D setup, an MVCSContext should be instantiated from the ContextView.
+ * In a typical Unity3D setup, an extension of MVCSContext should be instantiated from the ContextView.
  */
 
 using System;
