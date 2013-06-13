@@ -1,0 +1,57 @@
+\hypertarget{namespacestrange_1_1extensions_1_1mediation_1_1api}{\section{Package strange.\-extensions.\-mediation.\-api}
+\label{namespacestrange_1_1extensions_1_1mediation_1_1api}\index{strange.\-extensions.\-mediation.\-api@{strange.\-extensions.\-mediation.\-api}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder}{I\-Mediation\-Binder}
+\begin{DoxyCompactList}\small\item\em Interface for the Binder which maps Views to Mediators. \end{DoxyCompactList}\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binding}{I\-Mediation\-Binding}
+\begin{DoxyCompactList}\small\item\em Interface for Mediation\-B\-Indings. \end{DoxyCompactList}\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator}{I\-Mediator}
+\begin{DoxyCompactList}\small\item\em Look at \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder}{strange.\-extensions.\-mediation.\-api.\-I\-Mediation\-Binder}, where I explain the purpose of Mediation in detail. \end{DoxyCompactList}\item 
+class \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view}{I\-View}
+\begin{DoxyCompactList}\small\item\em Monobehaviours must implement this interface in order to be injectable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8}{Mediation\-Event} \{ \hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8afca549f3541c801906abc34b45e8953e}{Mediation\-Event.\-A\-W\-A\-K\-E}, 
+\hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8a5d7e41d3ac0abca5974598807df874ea}{Mediation\-Event.\-D\-E\-S\-T\-R\-O\-Y\-E\-D}, 
+\hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8ac8cf6eea8f096ed51160b484d97c5bbd}{Mediation\-Event.\-E\-N\-A\-B\-L\-E\-D}, 
+\hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8a055c1a591abb0e8cd86dc969727bcc0b}{Mediation\-Event.\-D\-I\-S\-A\-B\-L\-E\-D}
+ \}
+\item 
+enum \hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4a}{Mediation\-Exception\-Type} \{ \hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aac89f949bb64ae5754bb687bf056de559}{Mediation\-Exception\-Type.\-N\-O\-\_\-\-C\-O\-N\-T\-E\-X\-T}
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8}{\index{strange\-::extensions\-::mediation\-::api@{strange\-::extensions\-::mediation\-::api}!Mediation\-Event@{Mediation\-Event}}
+\index{Mediation\-Event@{Mediation\-Event}!strange::extensions::mediation::api@{strange\-::extensions\-::mediation\-::api}}
+\subsubsection[{Mediation\-Event}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf strange.\-extensions.\-mediation.\-api.\-Mediation\-Event}}}\label{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{A\-W\-A\-K\-E@{A\-W\-A\-K\-E}!strange\-::extensions\-::mediation\-::api@{strange\-::extensions\-::mediation\-::api}}\index{strange\-::extensions\-::mediation\-::api@{strange\-::extensions\-::mediation\-::api}!A\-W\-A\-K\-E@{A\-W\-A\-K\-E}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8afca549f3541c801906abc34b45e8953e}{A\-W\-A\-K\-E}\label{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8afca549f3541c801906abc34b45e8953e}
+}]The View is Awake. \index{D\-E\-S\-T\-R\-O\-Y\-E\-D@{D\-E\-S\-T\-R\-O\-Y\-E\-D}!strange\-::extensions\-::mediation\-::api@{strange\-::extensions\-::mediation\-::api}}\index{strange\-::extensions\-::mediation\-::api@{strange\-::extensions\-::mediation\-::api}!D\-E\-S\-T\-R\-O\-Y\-E\-D@{D\-E\-S\-T\-R\-O\-Y\-E\-D}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8a5d7e41d3ac0abca5974598807df874ea}{D\-E\-S\-T\-R\-O\-Y\-E\-D}\label{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8a5d7e41d3ac0abca5974598807df874ea}
+}]The View is about to be Destroyed. \index{E\-N\-A\-B\-L\-E\-D@{E\-N\-A\-B\-L\-E\-D}!strange\-::extensions\-::mediation\-::api@{strange\-::extensions\-::mediation\-::api}}\index{strange\-::extensions\-::mediation\-::api@{strange\-::extensions\-::mediation\-::api}!E\-N\-A\-B\-L\-E\-D@{E\-N\-A\-B\-L\-E\-D}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8ac8cf6eea8f096ed51160b484d97c5bbd}{E\-N\-A\-B\-L\-E\-D}\label{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8ac8cf6eea8f096ed51160b484d97c5bbd}
+}]The View is being Enabled. \index{D\-I\-S\-A\-B\-L\-E\-D@{D\-I\-S\-A\-B\-L\-E\-D}!strange\-::extensions\-::mediation\-::api@{strange\-::extensions\-::mediation\-::api}}\index{strange\-::extensions\-::mediation\-::api@{strange\-::extensions\-::mediation\-::api}!D\-I\-S\-A\-B\-L\-E\-D@{D\-I\-S\-A\-B\-L\-E\-D}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8a055c1a591abb0e8cd86dc969727bcc0b}{D\-I\-S\-A\-B\-L\-E\-D}\label{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8a055c1a591abb0e8cd86dc969727bcc0b}
+}]The View is being Disabled. \end{description}
+\end{Desc}
+\hypertarget{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4a}{\index{strange\-::extensions\-::mediation\-::api@{strange\-::extensions\-::mediation\-::api}!Mediation\-Exception\-Type@{Mediation\-Exception\-Type}}
+\index{Mediation\-Exception\-Type@{Mediation\-Exception\-Type}!strange::extensions::mediation::api@{strange\-::extensions\-::mediation\-::api}}
+\subsubsection[{Mediation\-Exception\-Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf strange.\-extensions.\-mediation.\-api.\-Mediation\-Exception\-Type}}}\label{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4a}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{N\-O\-\_\-\-C\-O\-N\-T\-E\-X\-T@{N\-O\-\_\-\-C\-O\-N\-T\-E\-X\-T}!strange\-::extensions\-::mediation\-::api@{strange\-::extensions\-::mediation\-::api}}\index{strange\-::extensions\-::mediation\-::api@{strange\-::extensions\-::mediation\-::api}!N\-O\-\_\-\-C\-O\-N\-T\-E\-X\-T@{N\-O\-\_\-\-C\-O\-N\-T\-E\-X\-T}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aac89f949bb64ae5754bb687bf056de559}{N\-O\-\_\-\-C\-O\-N\-T\-E\-X\-T}\label{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aac89f949bb64ae5754bb687bf056de559}
+}]Exception raised when a View can't locate a Context. Views contact the Context by \char`\"{}bubbling\char`\"{} their existence up the display chain (recursively using transform.\-parent). If a View reaches the top of that chain without locating a Context, it will raise this Exception to warn you.
+
+Note\-: to avoid infinite looping, there is a bubbling limit of 100 layers. If your View needs to be more than 100 transforms deep, that might signal a design problem. \end{description}
+\end{Desc}

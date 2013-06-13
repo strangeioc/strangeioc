@@ -1,0 +1,90 @@
+\hypertarget{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator}{\section{strange.\-extensions.\-mediation.\-api.\-I\-Mediator Interface Reference}
+\label{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator}\index{strange.\-extensions.\-mediation.\-api.\-I\-Mediator@{strange.\-extensions.\-mediation.\-api.\-I\-Mediator}}
+}
+
+
+Look at \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder}{strange.\-extensions.\-mediation.\-api.\-I\-Mediation\-Binder}, where I explain the purpose of Mediation in detail.  
+
+
+Inheritance diagram for strange.\-extensions.\-mediation.\-api.\-I\-Mediator\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator_a8e28ff6f8485dbc01aa8c826a45a2797}{Pre\-Register} ()
+\begin{DoxyCompactList}\small\item\em This method fires immediately after instantiation, but before injection. \end{DoxyCompactList}\item 
+void \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator_a4b16074a7b4cbb23b497e2057b1a316c}{On\-Register} ()
+\begin{DoxyCompactList}\small\item\em This method fires immediately after injection. \end{DoxyCompactList}\item 
+void \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator_a89be84629dff0c2880605c64dd7fe20d}{On\-Remove} ()
+\begin{DoxyCompactList}\small\item\em This method fires just before a Game\-Object will be destroyed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator_af6a6e0860b9812abea81a430aef57fd0}{Game\-Object \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator_af6a6e0860b9812abea81a430aef57fd0}{context\-View}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator_af6a6e0860b9812abea81a430aef57fd0}
+
+\begin{DoxyCompactList}\small\item\em Get/set the Game\-Object that represents the top-\/most item in this Context. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Look at \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder}{strange.\-extensions.\-mediation.\-api.\-I\-Mediation\-Binder}, where I explain the purpose of Mediation in detail. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder}{strange.\-extensions.\-mediation.\-api.\-I\-Mediation\-Binder} 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator_a4b16074a7b4cbb23b497e2057b1a316c}{\index{strange\-::extensions\-::mediation\-::api\-::\-I\-Mediator@{strange\-::extensions\-::mediation\-::api\-::\-I\-Mediator}!On\-Register@{On\-Register}}
+\index{On\-Register@{On\-Register}!strange::extensions::mediation::api::IMediator@{strange\-::extensions\-::mediation\-::api\-::\-I\-Mediator}}
+\subsubsection[{On\-Register}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-mediation.\-api.\-I\-Mediator.\-On\-Register (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator_a4b16074a7b4cbb23b497e2057b1a316c}
+
+
+This method fires immediately after injection. 
+
+Override to perform the actions you might normally perform in a constructor. 
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_a9ebac485743098c35f48fb9fecc3a8da}{strange.\-extensions.\-mediation.\-impl.\-Mediator}.
+
+\hypertarget{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator_a89be84629dff0c2880605c64dd7fe20d}{\index{strange\-::extensions\-::mediation\-::api\-::\-I\-Mediator@{strange\-::extensions\-::mediation\-::api\-::\-I\-Mediator}!On\-Remove@{On\-Remove}}
+\index{On\-Remove@{On\-Remove}!strange::extensions::mediation::api::IMediator@{strange\-::extensions\-::mediation\-::api\-::\-I\-Mediator}}
+\subsubsection[{On\-Remove}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-mediation.\-api.\-I\-Mediator.\-On\-Remove (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator_a89be84629dff0c2880605c64dd7fe20d}
+
+
+This method fires just before a Game\-Object will be destroyed. 
+
+Override to clean up any listeners, or anything else that might keep the View/\-Mediator pair from being garbage collected. 
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_a09e316a7e7fd37d5d11fe5cff0f9a8d1}{strange.\-extensions.\-mediation.\-impl.\-Mediator}.
+
+\hypertarget{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator_a8e28ff6f8485dbc01aa8c826a45a2797}{\index{strange\-::extensions\-::mediation\-::api\-::\-I\-Mediator@{strange\-::extensions\-::mediation\-::api\-::\-I\-Mediator}!Pre\-Register@{Pre\-Register}}
+\index{Pre\-Register@{Pre\-Register}!strange::extensions::mediation::api::IMediator@{strange\-::extensions\-::mediation\-::api\-::\-I\-Mediator}}
+\subsubsection[{Pre\-Register}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-mediation.\-api.\-I\-Mediator.\-Pre\-Register (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator_a8e28ff6f8485dbc01aa8c826a45a2797}
+
+
+This method fires immediately after instantiation, but before injection. 
+
+Override to handle anything that needs to happen prior to injection. 
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator_a014246a5f07c3685e5d567700dd94d7a}{strange.\-extensions.\-mediation.\-impl.\-Mediator}.
+
+
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/mediation/api/I\-Mediator.\-cs\end{DoxyCompactItemize}

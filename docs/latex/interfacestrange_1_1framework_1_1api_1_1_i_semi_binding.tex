@@ -1,0 +1,58 @@
+\hypertarget{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding}{\section{strange.\-framework.\-api.\-I\-Semi\-Binding Interface Reference}
+\label{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding}\index{strange.\-framework.\-api.\-I\-Semi\-Binding@{strange.\-framework.\-api.\-I\-Semi\-Binding}}
+}
+
+
+A managed list of values.  
+
+
+Inheritance diagram for strange.\-framework.\-api.\-I\-Semi\-Binding\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding_ad953658df90d8a9e0c999a79d2b3f142}{\hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding}{I\-Semi\-Binding} \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding_ad953658df90d8a9e0c999a79d2b3f142}{Add} (object o)}\label{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding_ad953658df90d8a9e0c999a79d2b3f142}
+
+\begin{DoxyCompactList}\small\item\em Add a value to this Semi\-Binding. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding_aca4d09c03a80ba98b407ccd4bfad97f6}{\hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding}{I\-Semi\-Binding} \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding_aca4d09c03a80ba98b407ccd4bfad97f6}{Remove} (object o)}\label{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding_aca4d09c03a80ba98b407ccd4bfad97f6}
+
+\begin{DoxyCompactList}\small\item\em Remove a value from this Semi\-Binding. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding_a66062d19019961c4db4449d4b986cbd2}{Enum \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding_a66062d19019961c4db4449d4b986cbd2}{constraint}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding_a66062d19019961c4db4449d4b986cbd2}
+
+\begin{DoxyCompactList}\small\item\em Set or get the constraint. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding_a12a19a998a1eaa1442cc38bd1f5aad79}{bool \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding_a12a19a998a1eaa1442cc38bd1f5aad79}{unique\-Values}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding_a12a19a998a1eaa1442cc38bd1f5aad79}
+
+\begin{DoxyCompactList}\small\item\em A secondary constraint that ensures that this Semi\-Binding will never multiple values equivalent to each other. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding_ac7677f91dc2812c8bf89a523f58c1a09}{object \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding_ac7677f91dc2812c8bf89a523f58c1a09}{value}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding_ac7677f91dc2812c8bf89a523f58c1a09}
+
+\begin{DoxyCompactList}\small\item\em Retrieve the value of this Semi\-Binding. If the constraint is M\-A\-N\-Y, the value will be an Array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A managed list of values. 
+
+A Semi\-Binding is the smallest atomic part of the strange framework. It represents either the Key or the Value or the Name arm of the binding. \par
+ The Semi\-Binding stores some value...a system Type, a list, a concrete value. \par
+ It also has a constraint defined by the constant O\-N\-E or M\-A\-N\-Y. A constraint of O\-N\-E makes the Semi\-Binding maintain a singular value, rather than a list. \par
+ The default constraints are\-: 
+\begin{DoxyItemize}
+\item Key -\/ O\-N\-E 
+\item Value -\/ M\-A\-N\-Y 
+\item Name -\/ O\-N\-E 
+\end{DoxyItemize}
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{namespacestrange_1_1framework_1_1api_a9819c5ab6d03a2cbce2d3dddf5264e42}{strange.\-framework.\-api.\-Binding\-Constraint\-Type} 
+\end{DoxySeeAlso}
+
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/framework/api/I\-Semi\-Binding.\-cs\end{DoxyCompactItemize}

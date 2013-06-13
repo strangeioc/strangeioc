@@ -1,0 +1,38 @@
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{\section{strange.\-extensions.\-dispatcher.\-api.\-I\-Triggerable Interface Reference}
+\label{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}\index{strange.\-extensions.\-dispatcher.\-api.\-I\-Triggerable@{strange.\-extensions.\-dispatcher.\-api.\-I\-Triggerable}}
+}
+
+
+Interface for declaring a class capable of being triggered by a provided key and/or name.  
+
+
+Inheritance diagram for strange.\-extensions.\-dispatcher.\-api.\-I\-Triggerable\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.382716cm]{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_af2d6a85b1e00a06bab56f21add189549}{void \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_af2d6a85b1e00a06bab56f21add189549}{Trigger$<$ T $>$} (object data)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_af2d6a85b1e00a06bab56f21add189549}
+
+\begin{DoxyCompactList}\small\item\em Cause this \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{I\-Triggerable} to access any provided Key in its Binder by the provided generic and data. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_a361da017a6fcf4462bf05089cbfa6304}{void \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_a361da017a6fcf4462bf05089cbfa6304}{Trigger} (object key, object data)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_a361da017a6fcf4462bf05089cbfa6304}
+
+\begin{DoxyCompactList}\small\item\em Cause this \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{I\-Triggerable} to access any provided Key in its Binder by the provided key and data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface for declaring a class capable of being triggered by a provided key and/or name. 
+
+Objects implementing \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{I\-Triggerable} can register with objects implementing \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider}{I\-Trigger\-Provider}. The contract specifies that Trigger\-Provider will pass events on to the Triggerable class. This allows notifications, such as I\-Events to pass through the event bus and trigger other binders.
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider}{strange.\-extensions.\-dispatcher.\-api.\-I\-Trigger\-Provider} 
+\end{DoxySeeAlso}
+
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/dispatcher/api/I\-Triggerable.\-cs\end{DoxyCompactItemize}

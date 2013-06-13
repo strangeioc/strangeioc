@@ -1,0 +1,47 @@
+\hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{\section{strange.\-extensions.\-command.\-api.\-I\-Command Interface Reference}
+\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}\index{strange.\-extensions.\-command.\-api.\-I\-Command@{strange.\-extensions.\-command.\-api.\-I\-Command}}
+}
+
+
+Interface for Commands, which is where you place your business logic.  
+
+
+Inheritance diagram for strange.\-extensions.\-command.\-api.\-I\-Command\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.102493cm]{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a49ddf3bbaf19624534fa99fa4725feca}{void \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a49ddf3bbaf19624534fa99fa4725feca}{Execute} ()}\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a49ddf3bbaf19624534fa99fa4725feca}
+
+\begin{DoxyCompactList}\small\item\em Override this! {\ttfamily \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a49ddf3bbaf19624534fa99fa4725feca}{Execute()}} is where you place the logic for your Command. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_ae24532aa617e2bee62a3798b59b78458}{void \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_ae24532aa617e2bee62a3798b59b78458}{Retain} ()}\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_ae24532aa617e2bee62a3798b59b78458}
+
+\begin{DoxyCompactList}\small\item\em Keeps the Command in memory. Use only in conjunction with {\ttfamily \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a462054fd8e17e6139f9739e32d4d6ced}{Release()}} \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a462054fd8e17e6139f9739e32d4d6ced}{void \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a462054fd8e17e6139f9739e32d4d6ced}{Release} ()}\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a462054fd8e17e6139f9739e32d4d6ced}
+
+\begin{DoxyCompactList}\small\item\em Allows a previous Retained Command to be disposed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_ac69e1fd7542d521e9e04c24bc47791bb}{bool \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_ac69e1fd7542d521e9e04c24bc47791bb}{retain}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_ac69e1fd7542d521e9e04c24bc47791bb}
+
+\begin{DoxyCompactList}\small\item\em The property set by {\ttfamily Retain} and {\ttfamily Release} to indicate whether the Command should be cleaned up on completion of the {\ttfamily \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a49ddf3bbaf19624534fa99fa4725feca}{Execute()}} method. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_afa2693fc9c9747093acde1dcab858570}{object \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_afa2693fc9c9747093acde1dcab858570}{data}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_afa2693fc9c9747093acde1dcab858570}
+
+\begin{DoxyCompactList}\small\item\em A payload injected into the Command. Most commonly, this an I\-Event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface for Commands, which is where you place your business logic. 
+
+In the default Strange\-Io\-C setup, commands are mapped to I\-Events. The firing of a specific event on the global event bus triggers the instantiation, injection and execution of any Command(s) bound to that event.
+
+By default, commands are cleaned up immediately on completion of the {\ttfamily \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a49ddf3bbaf19624534fa99fa4725feca}{Execute()}} method. For asynchronous Commands (e.\-g., calling a service and awaiting a response), call {\ttfamily \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_ae24532aa617e2bee62a3798b59b78458}{Retain()}} at the top of your {\ttfamily \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a49ddf3bbaf19624534fa99fa4725feca}{Execute()}} method, which will prevent premature cleanup. But remember, having done so it is your responsipility to call {\ttfamily \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a462054fd8e17e6139f9739e32d4d6ced}{Release()}} once the Command is complete. 
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/command/api/I\-Command.\-cs\end{DoxyCompactItemize}

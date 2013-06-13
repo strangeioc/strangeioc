@@ -1,0 +1,73 @@
+\hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder}{\section{strange.\-extensions.\-command.\-api.\-I\-Command\-Binder Interface Reference}
+\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder}\index{strange.\-extensions.\-command.\-api.\-I\-Command\-Binder@{strange.\-extensions.\-command.\-api.\-I\-Command\-Binder}}
+}
+
+
+Interface for a Binder that triggers the instantiation of Commands.  
+
+
+Inheritance diagram for strange.\-extensions.\-command.\-api.\-I\-Command\-Binder\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.777778cm]{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_a1703954ba61a4468ef7189cbe6263e85}{void \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_a1703954ba61a4468ef7189cbe6263e85}{React\-To} (object trigger)}\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_a1703954ba61a4468ef7189cbe6263e85}
+
+\begin{DoxyCompactList}\small\item\em Trigger a key that unlocks one or more Commands. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_aa409f9906be371e9818e30012091b67c}{void \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_aa409f9906be371e9818e30012091b67c}{React\-To} (object trigger, object data)}\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_aa409f9906be371e9818e30012091b67c}
+
+\begin{DoxyCompactList}\small\item\em Trigger a key that unlocks one or more Commands and provide a data injection to that Command. \end{DoxyCompactList}\item 
+void \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_ae063357e7694fe0e107a53cc77e8e112}{Release\-Command} (\hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} command)
+\begin{DoxyCompactList}\small\item\em Release a previously retained Command. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_a325a3e15e4a1efb6b35d624c2f940063}{new \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_a325a3e15e4a1efb6b35d624c2f940063}{Bind$<$ T $>$} ()}\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_a325a3e15e4a1efb6b35d624c2f940063}
+
+\begin{DoxyCompactList}\small\item\em Bind a trigger Key by generic Type. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_a3e3e87b88d2e817dfbb183a8b947d909}{new \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_a3e3e87b88d2e817dfbb183a8b947d909}{Bind} (object value)}\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_a3e3e87b88d2e817dfbb183a8b947d909}
+
+\begin{DoxyCompactList}\small\item\em Bind a trigger Key by value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface for a Binder that triggers the instantiation of Commands. 
+
+Commands are where the logic of your application belongs. These Commands typically focus on a single function, such as adding a View, requesting a service, reading from or saving to a model.
+
+The act of binding events to Commands means that code needn't know anything about an event recipient, or even how the event will be used. For example, a Mediator might send out an event that two View objects collided. A Command would then determine that the result of that event was to Destroy both objects, tell a Score\-Keeper model to change the score and request a message be sent to the server. Whether that example means one Command or three is up to your coding preference... Command\-Binder can trigger one Command or multiple Commands off the same event.
+
+Note that Strange also a features a Sequencer. Command\-Binder fires all Commands in parallel, while Sequencer runs them serially, with the option of suspending the chain at any time.
+
+Example bindings\-: \begin{DoxyVerb}Bind("someEvent").To<SomeCommand>(); //Works, but poor form to use strings. Use the next example instead
+
+Bind(EventMap.SOME_EVENT).To<SomeCommand>(); //Make it a constant
+
+Bind(ContextEvent.START).To<StartCommand>().Once(); //Destroy the binding immediately after a single use
+\end{DoxyVerb}
+
+
+See \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} for details on asynchronous Commands. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_ae063357e7694fe0e107a53cc77e8e112}{\index{strange\-::extensions\-::command\-::api\-::\-I\-Command\-Binder@{strange\-::extensions\-::command\-::api\-::\-I\-Command\-Binder}!Release\-Command@{Release\-Command}}
+\index{Release\-Command@{Release\-Command}!strange::extensions::command::api::ICommandBinder@{strange\-::extensions\-::command\-::api\-::\-I\-Command\-Binder}}
+\subsubsection[{Release\-Command}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-command.\-api.\-I\-Command\-Binder.\-Release\-Command (
+\begin{DoxyParamCaption}
+\item[{{\bf I\-Command}}]{command}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_ae063357e7694fe0e107a53cc77e8e112}
+
+
+Release a previously retained Command. 
+
+By default, a Command is garbage collected at the end of its {\ttfamily Execute()} method. But the Command can be retained for asynchronous calls. 
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a582e06f6f4dc8c94237e2e2c0d5e098c}{strange.\-extensions.\-command.\-impl.\-Command\-Binder}.
+
+
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/command/api/I\-Command\-Binder.\-cs\end{DoxyCompactItemize}

@@ -1,0 +1,63 @@
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher}{\section{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-api.\-I\-Event\-Dispatcher Interface Reference}
+\label{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher}\index{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-api.\-I\-Event\-Dispatcher@{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-api.\-I\-Event\-Dispatcher}}
+}
+
+
+Interface for allowing a client to register as an observer.  
+
+
+Inheritance diagram for strange.\-extensions.\-dispatcher.\-eventdispatcher.\-api.\-I\-Event\-Dispatcher\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_add77f1d49e0a99dbf3e8c890738470ce}{\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding}{I\-Event\-Binding} {\bfseries Bind} (object key)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_add77f1d49e0a99dbf3e8c890738470ce}
+
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_a79819f210f378e5a1cf4e94c426acf9e}{void \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_a79819f210f378e5a1cf4e94c426acf9e}{Add\-Listener} (object evt, \hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a936e11bc9a4f26a96ede9941cc730e72}{Event\-Callback} callback)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_a79819f210f378e5a1cf4e94c426acf9e}
+
+\begin{DoxyCompactList}\small\item\em Add an observer with exactly one argument to this Dispatcher. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_ac9c11c78ccf2b655eda84ed3cd95b72b}{void \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_ac9c11c78ccf2b655eda84ed3cd95b72b}{Add\-Listener} (object evt, \hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a4d68e68b31e6e0f733bd72ddcd6111fa}{Empty\-Callback} callback)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_ac9c11c78ccf2b655eda84ed3cd95b72b}
+
+\begin{DoxyCompactList}\small\item\em Add an observer with exactly no arguments to this Dispatcher. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_aeb0dc29e6c908ab34b650cdafb3b7423}{void \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_aeb0dc29e6c908ab34b650cdafb3b7423}{Remove\-Listener} (object evt, \hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a936e11bc9a4f26a96ede9941cc730e72}{Event\-Callback} callback)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_aeb0dc29e6c908ab34b650cdafb3b7423}
+
+\begin{DoxyCompactList}\small\item\em Remove a previously registered observer with exactly one argument from this Dispatcher. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_a419039bbd8163a46e3c3398b2aee22d2}{void \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_a419039bbd8163a46e3c3398b2aee22d2}{Remove\-Listener} (object evt, \hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a4d68e68b31e6e0f733bd72ddcd6111fa}{Empty\-Callback} callback)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_a419039bbd8163a46e3c3398b2aee22d2}
+
+\begin{DoxyCompactList}\small\item\em Remove a previously registered observer with exactly no arguments from this Dispatcher. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_aa3d14abbc3a556c08c79ba87904b569d}{bool \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_aa3d14abbc3a556c08c79ba87904b569d}{Has\-Listener} (object evt, \hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a936e11bc9a4f26a96ede9941cc730e72}{Event\-Callback} callback)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_aa3d14abbc3a556c08c79ba87904b569d}
+
+\begin{DoxyCompactList}\small\item\em Returns true if the provided observer is already registered. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_a57dcbefb0d2abca0e8dcb291730e357c}{bool \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_a57dcbefb0d2abca0e8dcb291730e357c}{Has\-Listener} (object evt, \hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a4d68e68b31e6e0f733bd72ddcd6111fa}{Empty\-Callback} callback)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_a57dcbefb0d2abca0e8dcb291730e357c}
+
+\begin{DoxyCompactList}\small\item\em Returns true if the provided observer is already registered. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_a4dfad16d1ee9491a30e9c7081ed86008}{void \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_a4dfad16d1ee9491a30e9c7081ed86008}{Update\-Listener} (bool to\-Add, object evt, \hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a936e11bc9a4f26a96ede9941cc730e72}{Event\-Callback} callback)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_a4dfad16d1ee9491a30e9c7081ed86008}
+
+\begin{DoxyCompactList}\small\item\em By passing true, an observer with exactly one argument will be added to this Dispatcher. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_adedbceace19d03903485977a10d30b68}{void \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_adedbceace19d03903485977a10d30b68}{Update\-Listener} (bool to\-Add, object evt, \hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a4d68e68b31e6e0f733bd72ddcd6111fa}{Empty\-Callback} callback)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher_adedbceace19d03903485977a10d30b68}
+
+\begin{DoxyCompactList}\small\item\em By passing true, an observer with exactly no arguments will be added to this Dispatcher. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface for allowing a client to register as an observer. 
+
+Event\-Dispatcher allows a client to register as an observer. Whenever the Dispatcher executes a {\ttfamily \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher_afec6755050bf9891321a7bfd4da1f06b}{Dispatch()}}, observers will be notified of any event (Key) for which they have registered.
+
+Event\-Dispatcher dispatches I\-Events.
+
+The Event\-Dispatcher is the only Dispatcher currently released with Strange (though by separating Event\-Dispatcher from Dispatcher I'm obviously signalling that I don't think it's the only possible one).
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event}{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-api.\-I\-Event} 
+\end{DoxySeeAlso}
+
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/dispatcher/eventdispatcher/api/I\-Event\-Dispatcher.\-cs\end{DoxyCompactItemize}

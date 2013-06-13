@@ -1,0 +1,67 @@
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher}{\section{strange.\-extensions.\-dispatcher.\-api.\-I\-Dispatcher Interface Reference}
+\label{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher}\index{strange.\-extensions.\-dispatcher.\-api.\-I\-Dispatcher@{strange.\-extensions.\-dispatcher.\-api.\-I\-Dispatcher}}
+}
+
+
+A Dispatcher sends notifiations to any registered listener.  
+
+
+Inheritance diagram for strange.\-extensions.\-dispatcher.\-api.\-I\-Dispatcher\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher_afec6755050bf9891321a7bfd4da1f06b}{Dispatch} (object event\-Type)
+\begin{DoxyCompactList}\small\item\em Send a notification of type event\-Type. \end{DoxyCompactList}\item 
+void \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher_a71f605859b2507f1248190fe37d96eed}{Dispatch} (object event\-Type, object data)
+\begin{DoxyCompactList}\small\item\em Send a notification of type event\-Type and the provided data payload. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A Dispatcher sends notifiations to any registered listener. 
+
+It represents the subject in a standard Observer pattern.
+
+In M\-V\-C\-S\-Context the dispatched notification is an I\-Event. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher_afec6755050bf9891321a7bfd4da1f06b}{\index{strange\-::extensions\-::dispatcher\-::api\-::\-I\-Dispatcher@{strange\-::extensions\-::dispatcher\-::api\-::\-I\-Dispatcher}!Dispatch@{Dispatch}}
+\index{Dispatch@{Dispatch}!strange::extensions::dispatcher::api::IDispatcher@{strange\-::extensions\-::dispatcher\-::api\-::\-I\-Dispatcher}}
+\subsubsection[{Dispatch}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-dispatcher.\-api.\-I\-Dispatcher.\-Dispatch (
+\begin{DoxyParamCaption}
+\item[{object}]{event\-Type}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher_afec6755050bf9891321a7bfd4da1f06b}
+
+
+Send a notification of type event\-Type. 
+
+No data. In M\-V\-C\-S\-Context this dispatches an I\-Event. 
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a70d8d7740798e10f960c866e03c4639b}{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Event\-Dispatcher}.
+
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher_a71f605859b2507f1248190fe37d96eed}{\index{strange\-::extensions\-::dispatcher\-::api\-::\-I\-Dispatcher@{strange\-::extensions\-::dispatcher\-::api\-::\-I\-Dispatcher}!Dispatch@{Dispatch}}
+\index{Dispatch@{Dispatch}!strange::extensions::dispatcher::api::IDispatcher@{strange\-::extensions\-::dispatcher\-::api\-::\-I\-Dispatcher}}
+\subsubsection[{Dispatch}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-dispatcher.\-api.\-I\-Dispatcher.\-Dispatch (
+\begin{DoxyParamCaption}
+\item[{object}]{event\-Type, }
+\item[{object}]{data}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher_a71f605859b2507f1248190fe37d96eed}
+
+
+Send a notification of type event\-Type and the provided data payload. 
+
+In M\-V\-C\-S\-Context this dispatches an I\-Event. 
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a14124806e6632e75aa0ff0c02d23483b}{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Event\-Dispatcher}.
+
+
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/dispatcher/api/I\-Dispatcher.\-cs\end{DoxyCompactItemize}

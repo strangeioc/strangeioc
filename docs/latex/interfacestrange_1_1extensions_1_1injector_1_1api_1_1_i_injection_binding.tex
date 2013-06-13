@@ -1,0 +1,124 @@
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{\section{strange.\-extensions.\-injector.\-api.\-I\-Injection\-Binding Interface Reference}
+\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}\index{strange.\-extensions.\-injector.\-api.\-I\-Injection\-Binding@{strange.\-extensions.\-injector.\-api.\-I\-Injection\-Binding}}
+}
+
+
+The Binding form for the Injection system.  
+
+
+Inheritance diagram for strange.\-extensions.\-injector.\-api.\-I\-Injection\-Binding\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_ae88e872043b9c0c8e6932d6457f8c5e7}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_ae88e872043b9c0c8e6932d6457f8c5e7}{To\-Singleton} ()}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_ae88e872043b9c0c8e6932d6457f8c5e7}
+
+\begin{DoxyCompactList}\small\item\em Map the Binding to a Singleton so that every {\ttfamily Get\-Instance()} on the Binder Key returns the same imstance. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a7e7eee027ed73a36c38f18b865bbe4c6}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a7e7eee027ed73a36c38f18b865bbe4c6}{To\-Value} (object o)}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a7e7eee027ed73a36c38f18b865bbe4c6}
+
+\begin{DoxyCompactList}\small\item\em Map the Binding to a stated instance so that every {\ttfamily Get\-Instance()} on the Binder Key returns the provided imstance. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a372558a435574953af1cb6118306117d}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a372558a435574953af1cb6118306117d}{To\-Inject} (bool value)}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a372558a435574953af1cb6118306117d}
+
+\begin{DoxyCompactList}\small\item\em Boolean setter to optionally override injection. If false, the instance will not be injected after instantiation. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a69d11f853421b478500e51a1f49ce189}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a69d11f853421b478500e51a1f49ce189}{Bind$<$ T $>$} ()}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a69d11f853421b478500e51a1f49ce189}
+
+\begin{DoxyCompactList}\small\item\em Bind is the same as Key, but permits Binder syntax\-: {\ttfamily Bind$<$T$>$().Bind$<$T$>$()} \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a156db878da329196cb7db46768db3326}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a156db878da329196cb7db46768db3326}{Bind} (object key)}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a156db878da329196cb7db46768db3326}
+
+\begin{DoxyCompactList}\small\item\em Bind is the same as Key, but permits Binder syntax\-: {\ttfamily Bind$<$T$>$().Bind$<$T$>$()} \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a2ba440297e1fb241be2a5977aef2acf0}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries Key$<$ T $>$} ()}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a2ba440297e1fb241be2a5977aef2acf0}
+
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a50a6cad1805b486cdbc1bfadff2494eb}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries Key} (object key)}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a50a6cad1805b486cdbc1bfadff2494eb}
+
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_adfb689e47ea59142e78ddcc42531e49d}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries To$<$ T $>$} ()}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_adfb689e47ea59142e78ddcc42531e49d}
+
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_ae47d6a358929057d50116bb55ffd9c1a}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries To} (object o)}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_ae47d6a358929057d50116bb55ffd9c1a}
+
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a091106e735b6b63321acc6cd072b574b}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries To\-Name$<$ T $>$} ()}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a091106e735b6b63321acc6cd072b574b}
+
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a99c1be56f6de25926a601df885c35d71}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries To\-Name} (object o)}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a99c1be56f6de25926a601df885c35d71}
+
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a7b8fe0d662eccf9e061cdb30b961cc43}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries Named$<$ T $>$} ()}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a7b8fe0d662eccf9e061cdb30b961cc43}
+
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_ade15c6b5ce9babb4d4eebdd718e9bc80}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries Named} (object o)}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_ade15c6b5ce9babb4d4eebdd718e9bc80}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_accffa605c37073081890281cc14d1c12}{bool \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_accffa605c37073081890281cc14d1c12}{to\-Inject}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_accffa605c37073081890281cc14d1c12}
+
+\begin{DoxyCompactList}\small\item\em Get the parameter that specifies whether this Binding allows an instance to be injected. \end{DoxyCompactList}\item 
+\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_aaf5414484d7eccb5c502984bd70549ae}{Injection\-Binding\-Type} \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_ab79532f96a6a17f831559143066fed78}{type}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Get and set the Injection\-Binding\-Type. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a44a79fe00fa37f91656098210db62d31}{object {\bfseries key}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a44a79fe00fa37f91656098210db62d31}
+
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_aa327532938e26bccb3d4c2ce8b5c15fb}{object {\bfseries name}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_aa327532938e26bccb3d4c2ce8b5c15fb}
+
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a1d64e731e4732f1acd876a76d1b1a33b}{object {\bfseries value}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a1d64e731e4732f1acd876a76d1b1a33b}
+
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_af62e792e40a882f5d2c52a372e0746b0}{Enum {\bfseries key\-Constraint}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_af62e792e40a882f5d2c52a372e0746b0}
+
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a9ee8175bec67b2f20e2bd6162b45eb8c}{Enum {\bfseries value\-Constraint}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_a9ee8175bec67b2f20e2bd6162b45eb8c}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The Binding form for the Injection system. 
+
+The Injection\-Binding allows mapping to three core types\-: 
+\begin{DoxyItemize}
+\item Default\-: every {\ttfamily Get\-Instance()} on the Binder Key returns a new imstance 
+\item To\-Singleton\-: every {\ttfamily Get\-Instance()} on the Binder Key returns the same imstance 
+\item To\-Value\-: every {\ttfamily Get\-Instance()} on the Binder Key returns the provided imstance 
+\end{DoxyItemize}
+
+Named injections are supported, thus\-: \begin{DoxyVerb}Bind<IMyInterface>().To<MyInterfaceImplementer>().ToName(SomeEnum.VALUE);
+\end{DoxyVerb}
+
+
+returns a My\-Interface\-Implementer instance only to injections that specifically tag Some\-Enum.\-Value. This will be the same instance whenever it is called.
+
+You can also map multiple Keys, allowing for polymorphic binding. This allows you to match two or more interfaces to a single class or value. \begin{DoxyVerb}Bind<IFirstInterface>().Bind<ISecondInterface>().To<PolymorphicClass>();
+\end{DoxyVerb}
+
+
+Note that while you can bind multiple keys to an Injection\-Binding, you can only bind one value. (The Injection system needs to know which concrete class you want created.)
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder}{strange.\-extensions.\-injector.\-api.\-I\-Injection\-Binder} 
+\end{DoxySeeAlso}
+
+
+\subsection{Property Documentation}
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_ab79532f96a6a17f831559143066fed78}{\index{strange\-::extensions\-::injector\-::api\-::\-I\-Injection\-Binding@{strange\-::extensions\-::injector\-::api\-::\-I\-Injection\-Binding}!type@{type}}
+\index{type@{type}!strange::extensions::injector::api::IInjectionBinding@{strange\-::extensions\-::injector\-::api\-::\-I\-Injection\-Binding}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Injection\-Binding\-Type} strange.\-extensions.\-injector.\-api.\-I\-Injection\-Binding.\-type\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding_ab79532f96a6a17f831559143066fed78}
+
+
+Get and set the Injection\-Binding\-Type. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_aaf5414484d7eccb5c502984bd70549ae}{Injection\-Binding\-Type} 
+\end{DoxySeeAlso}
+
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/injector/api/I\-Injection\-Binding.\-cs\end{DoxyCompactItemize}

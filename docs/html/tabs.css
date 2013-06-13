@@ -1,0 +1,107 @@
+.tabs, .tabs2,  {
+    width: 860px;
+    z-index: 101;
+    font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  	color:#333;
+  	font-weight:300;
+	text-align:center;
+	line-height:0px;
+}
+
+.tabs li:nth-child(4){
+	background:none;
+	border:none;
+	box-shadow:none;
+	position:fixed;
+	right:10px;
+	top:10px;
+}
+
+.tabs2 ul li{
+    font-size: 12px;
+	height:38px; 
+}
+
+.tabs3 ul li {
+	text-align:center;
+    font-size: 12px;
+	padding: 0px;
+	margin: 0px;
+	width:100%;
+	height:100%;
+	background:none;
+	border:none;
+	width:auto;
+}
+
+.tablist {
+    margin: 2px 2px 0px 0px;
+    padding: 0px;
+    display: table;
+}
+
+.tablist li {
+	float:left;
+  list-style:none;
+  height:40px;
+  background: #eee;
+  background: -moz-linear-gradient(top, #dddddd 0%, #f8f8f8 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dddddd), color-stop(100%,#f8f8f8));
+  background: -webkit-linear-gradient(top, #ddd 0%, #f8f8f8 100%);
+  background: -o-linear-gradient(top, #dddddd 0%,#f8f8f8 100%);
+  background: -ms-linear-gradient(top, #dddddd 0%,#f8f8f8 100%);
+  background: linear-gradient(top, #dddddd 0%,#f8f8f8 100%);
+  
+  border-radius:0px;
+  border:1px solid #d2d2d2;
+  box-shadow:inset #fff 0 1px 0, inset rgba(0,0,0,0.03) 0 -1px 0;
+  width:200px;
+  
+  vertical-align:central;
+}
+
+.tablist li:first-child {
+	border-top-left-radius:5px;
+	border-bottom-left-radius:5px;
+}
+
+.tablist li:last-child {
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
+}
+
+
+.tablist a {
+	text-align:center;
+	display:block;
+    font-weight: bold;
+    color: #283A5D;
+    text-decoration: none;
+    outline: none;
+	padding:10px;
+}
+
+.tablist a:hover {
+    color: #fff;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 1.0);
+    text-decoration: none;
+}
+
+.tablist li.current a{
+	color:#FFF;
+}
+
+.tablist li.current {
+	text-shadow: 0px 1px 1px #000;
+	background: -moz-linear-gradient(top, #111 0%, #444 100%);
+	background: -webkit-gradient(linear, left top, left bottom, 		color-stop(0%,#111), color-stop(100%,#444));
+	background: -webkit-linear-gradient(top, #111 0%,#444 100%);
+	background: -o-linear-gradient(top, #111 0%,#444 100%);
+	background: -ms-linear-gradient(top, #111 0%,#444 100%);
+	background: linear-gradient(top, #111 0%,#444 100%);
+}
+
+#navrow1 li + li + li {
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
+}

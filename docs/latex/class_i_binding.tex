@@ -1,0 +1,28 @@
+\hypertarget{class_i_binding}{\section{I\-Binding Class Reference}
+\label{class_i_binding}\index{I\-Binding@{I\-Binding}}
+}
+
+
+Interface for a binding.  
+
+
+
+
+\subsection{Detailed Description}
+Interface for a binding. 
+
+\hyperlink{class_i_binding}{I\-Binding} represents the smallest element of Strange with which most developers will normally interact.
+
+A Strange binding is made up of two required parts and one optional part (Semi\-Bindings). 
+\begin{DoxyItemize}
+\item key -\/ The Type or value that a client provides in order to unlock a value. 
+\item value -\/ One or more things tied to and released by the offering of a key 
+\item name -\/ An optional discriminator, allowing a client to differentiate between multiple keys of the same Type 
+\end{DoxyItemize}
+
+The required parts are a key and a value. The key triggers the value; thus an event can be the key that triggers a callback. Or the instantiation of one class can be the key that leads to the instantiation of another class. The optional part is a name. Under some circumstances, it is useful to qualify two bindings with identical keys. Under these circumstances, the name serves as a discriminator. \par
+ All three of these parts can be structured in one of two ways, either as a value or as a type using C\# generics. Using generics, for example we might say\-: {\ttfamily Key$<$\-Spaceship$>$().To$<$\-Liberator$>$();} The “\-Key” is the key, the “\-To” is the value. We might express the binding as a value\-: {\ttfamily Key(“\-Meaning\-Of\-Life”).To(42);} A binder fed with the input “\-Meaning\-Of\-Life” would react with the output 42. There are times when these two styles get mixed\-: {\ttfamily Key$<$\-Spaceship$>$().To(“\-Enterprise”);} When this binder is fed with the Type Spaceship, it outputs the string value “\-Enterprise”. When naming is called for, the binding looks much the same\-: {\ttfamily Key$<$\-I\-Computer$>$().To$<$\-Super\-Computer$>$().To\-Name(“\-Deep\-Thought”);} Finally, note that the following things are all the same\-: {\ttfamily Bind$<$\-I\-Drive$>$().To$<$\-Warp\-Drive$>$();} {\ttfamily Bind(typeof(\-I\-Drive)).To(typeof(\-Warp\-Drive));} {\ttfamily \hyperlink{class_i_binding}{I\-Binding} binding = Bind$<$\-I\-Drive$>$(); binding.\-To$<$\-Warp\-Drive$>$();} The differences are nothing more than syntactical sugar. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/framework/api/I\-Binding.\-cs\end{DoxyCompactItemize}

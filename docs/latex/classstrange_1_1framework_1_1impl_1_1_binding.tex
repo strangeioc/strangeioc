@@ -1,0 +1,118 @@
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding}{\section{strange.\-framework.\-impl.\-Binding Class Reference}
+\label{classstrange_1_1framework_1_1impl_1_1_binding}\index{strange.\-framework.\-impl.\-Binding@{strange.\-framework.\-impl.\-Binding}}
+}
+
+
+A binding maintains at least two — and optionally three — Semi\-Bindings\-:  
+
+
+Inheritance diagram for strange.\-framework.\-impl.\-Binding\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.450777cm]{classstrange_1_1framework_1_1impl_1_1_binding}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a50906fc241f67a1b588eebec8266a50e}{{\bfseries Binding} (\hyperlink{classstrange_1_1framework_1_1impl_1_1_binder_aa4e977fc31063ca4d0b029b1abe39dad}{Binder.\-Binding\-Resolver} resolver)}\label{classstrange_1_1framework_1_1impl_1_1_binding_a50906fc241f67a1b588eebec8266a50e}
+
+\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a6134684a8e35cac5fb78a50dfd69f67f}{virtual \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding_a6134684a8e35cac5fb78a50dfd69f67f}{Key$<$ T $>$} ()}\label{classstrange_1_1framework_1_1impl_1_1_binding_a6134684a8e35cac5fb78a50dfd69f67f}
+
+\begin{DoxyCompactList}\small\item\em Tie this binding to a Type key. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a371a89d365ef6c2ca6dceb8c170bbcd0}{virtual \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding_a371a89d365ef6c2ca6dceb8c170bbcd0}{Key} (object o)}\label{classstrange_1_1framework_1_1impl_1_1_binding_a371a89d365ef6c2ca6dceb8c170bbcd0}
+
+\begin{DoxyCompactList}\small\item\em Tie this binding to a value key, such as a string or class instance. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_af98b1180c87ab8f34268eb0916c7ba84}{virtual \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding_af98b1180c87ab8f34268eb0916c7ba84}{To$<$ T $>$} ()}\label{classstrange_1_1framework_1_1impl_1_1_binding_af98b1180c87ab8f34268eb0916c7ba84}
+
+\begin{DoxyCompactList}\small\item\em Set the \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding}{Binding}'s value to a Type. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a8459c625c1e51c9fee37bfeac10fbabf}{virtual \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding_a8459c625c1e51c9fee37bfeac10fbabf}{To} (object o)}\label{classstrange_1_1framework_1_1impl_1_1_binding_a8459c625c1e51c9fee37bfeac10fbabf}
+
+\begin{DoxyCompactList}\small\item\em Set the \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding}{Binding}'s value to a value, such as a string or class instance. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_aeaeda4996904515ad88b02d1f018b998}{virtual \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding_aeaeda4996904515ad88b02d1f018b998}{To\-Name$<$ T $>$} ()}\label{classstrange_1_1framework_1_1impl_1_1_binding_aeaeda4996904515ad88b02d1f018b998}
+
+\begin{DoxyCompactList}\small\item\em Qualify a binding using a marker type. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a7e84681dddc804c7197128eb9e9a87ad}{virtual \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding_a7e84681dddc804c7197128eb9e9a87ad}{To\-Name} (object o)}\label{classstrange_1_1framework_1_1impl_1_1_binding_a7e84681dddc804c7197128eb9e9a87ad}
+
+\begin{DoxyCompactList}\small\item\em Qualify a binding using a value, such as a string or class instance. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a12232c09dade189b179f6d5794181f7c}{virtual \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding_a12232c09dade189b179f6d5794181f7c}{Named$<$ T $>$} ()}\label{classstrange_1_1framework_1_1impl_1_1_binding_a12232c09dade189b179f6d5794181f7c}
+
+\begin{DoxyCompactList}\small\item\em Retrieve a binding if the supplied name matches, by Type. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a278173c5411039b32edd1307656f829a}{virtual \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding_a278173c5411039b32edd1307656f829a}{Named} (object o)}\label{classstrange_1_1framework_1_1impl_1_1_binding_a278173c5411039b32edd1307656f829a}
+
+\begin{DoxyCompactList}\small\item\em Retrieve a binding if the supplied name matches, by value. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_aea72624611f06e26d5f0e29470ccfb76}{virtual void \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding_aea72624611f06e26d5f0e29470ccfb76}{Remove\-Key} (object o)}\label{classstrange_1_1framework_1_1impl_1_1_binding_aea72624611f06e26d5f0e29470ccfb76}
+
+\begin{DoxyCompactList}\small\item\em Remove a specific key from the binding. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a278e130e4402e099201c308da15871f4}{virtual void \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding_a278e130e4402e099201c308da15871f4}{Remove\-Value} (object o)}\label{classstrange_1_1framework_1_1impl_1_1_binding_a278e130e4402e099201c308da15871f4}
+
+\begin{DoxyCompactList}\small\item\em Remove a specific value from the binding. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a5c8d21d0817375050735c39727126cf7}{virtual void \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding_a5c8d21d0817375050735c39727126cf7}{Remove\-Name} (object o)}\label{classstrange_1_1framework_1_1impl_1_1_binding_a5c8d21d0817375050735c39727126cf7}
+
+\begin{DoxyCompactList}\small\item\em Remove a name from the binding. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a3143beff45f6b1b1b1933b5839702b6e}{\hyperlink{classstrange_1_1framework_1_1impl_1_1_binder_aa4e977fc31063ca4d0b029b1abe39dad}{Binder.\-Binding\-Resolver} {\bfseries resolver}}\label{classstrange_1_1framework_1_1impl_1_1_binding_a3143beff45f6b1b1b1933b5839702b6e}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_addba9c5f7de6c2b09fdc76c3f34afd12}{\hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding}{I\-Semi\-Binding} {\bfseries \-\_\-key}}\label{classstrange_1_1framework_1_1impl_1_1_binding_addba9c5f7de6c2b09fdc76c3f34afd12}
+
+\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_aa1f9857269e62f91856536be1ac059b2}{\hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding}{I\-Semi\-Binding} {\bfseries \-\_\-value}}\label{classstrange_1_1framework_1_1impl_1_1_binding_aa1f9857269e62f91856536be1ac059b2}
+
+\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a36fe28dedcfe0d5c4d5264d30a9a3e33}{\hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding}{I\-Semi\-Binding} {\bfseries \-\_\-name}}\label{classstrange_1_1framework_1_1impl_1_1_binding_a36fe28dedcfe0d5c4d5264d30a9a3e33}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a6a69d0aab8e4fc7b8202ffa972e913e7}{object {\bfseries key}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{classstrange_1_1framework_1_1impl_1_1_binding_a6a69d0aab8e4fc7b8202ffa972e913e7}
+
+\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a3531d926cf5d6a939c945f5ebb57d8d4}{object {\bfseries value}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{classstrange_1_1framework_1_1impl_1_1_binding_a3531d926cf5d6a939c945f5ebb57d8d4}
+
+\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_ad56831478289dd40ed240331bd85bb09}{object {\bfseries name}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{classstrange_1_1framework_1_1impl_1_1_binding_ad56831478289dd40ed240331bd85bb09}
+
+\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a82f9ff6ddc6c2d32649078a231515517}{Enum {\bfseries key\-Constraint}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1framework_1_1impl_1_1_binding_a82f9ff6ddc6c2d32649078a231515517}
+
+\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_aaafcf5a2a0d94644c3a5b0240b02c554}{Enum {\bfseries value\-Constraint}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1framework_1_1impl_1_1_binding_aaafcf5a2a0d94644c3a5b0240b02c554}
+
+\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_aa06777def57895952df95f457a44ea93}{Enum {\bfseries name\-Constraint}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1framework_1_1impl_1_1_binding_aa06777def57895952df95f457a44ea93}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A binding maintains at least two — and optionally three — Semi\-Bindings\-: 
+
+
+\begin{DoxyItemize}
+\item key -\/ The Type or value that a client provides in order to unlock a value. 
+\item value -\/ One or more things tied to and released by the offering of a key 
+\item name -\/ An optional discriminator, allowing a client to differentiate between multiple keys of the same Type 
+\end{DoxyItemize}
+
+Resolver
+
+The resolver method (type \hyperlink{classstrange_1_1framework_1_1impl_1_1_binder_aa4e977fc31063ca4d0b029b1abe39dad}{Binder.\-Binding\-Resolver}) is a callback passed in to resolve instantiation chains.
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{strange.\-framework.\-api.\-I\-Binding} 
+
+\hyperlink{classstrange_1_1framework_1_1impl_1_1_binder}{strange.\-framework.\-impl.\-Binder}; 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/framework/impl/Binding.\-cs\end{DoxyCompactItemize}

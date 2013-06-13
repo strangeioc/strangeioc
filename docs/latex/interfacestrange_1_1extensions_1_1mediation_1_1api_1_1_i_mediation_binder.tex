@@ -1,0 +1,56 @@
+\hypertarget{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder}{\section{strange.\-extensions.\-mediation.\-api.\-I\-Mediation\-Binder Interface Reference}
+\label{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder}\index{strange.\-extensions.\-mediation.\-api.\-I\-Mediation\-Binder@{strange.\-extensions.\-mediation.\-api.\-I\-Mediation\-Binder}}
+}
+
+
+Interface for the Binder which maps Views to Mediators.  
+
+
+Inheritance diagram for strange.\-extensions.\-mediation.\-api.\-I\-Mediation\-Binder\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder_a7e394e1dbd3279239425740221f727c7}{Trigger} (\hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8}{Mediation\-Event} evt, \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view}{I\-View} view)
+\begin{DoxyCompactList}\small\item\em An event that just happened, and the View it happened to. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface for the Binder which maps Views to Mediators. 
+
+In a general sense, mediation is the act of using one thing to separate and communicate between two others. mediation in Strange refers to separating Views from the rest of the application. The reason for doing this is not at all theoretical, but highly practical. Views ypically come in two flavors\-: the \char`\"{}component\char`\"{}, which tends to be stable and dropped into multiple, highly varied situations, and the highly volatile \char`\"{}working\char`\"{} View, which changes rapidly according to last-\/minute design considerations. In both cases, Mediators help you to insulate the View from the app around it, and vice-\/versa. This yields components that are easier to re-\/use, and working Views whose chaos is structurally contained.
+
+The Mediation\-Binder quite simply Binds two (or more) classes. The Key is the View class, the Value is one or more Mediators. Whenever the View shows up, a corresponding Mediator joins it to buffer View from app. The View doesn't know about the Mediator, nor about the app beyond it. It simply establishes its A\-P\-I and waits tp be told what to do. The Mediator, on the other hand, is allowed to know quite a lot about the View and the app. It can be injected, it has access to the common event bus, and can listen for and Dispatch events. It is intended to be 'thin', that is, it should know just enough to provide mediation. Leave logic, data storage, and View behaviour to other classes.
+
+In the context of Unity3\-D, the View is a Mono\-Behaviour attached to a Game\-Object. The mediator is also a Mono\-Behaviour, so it has access to all the usual things a Momo\-Behaviour would. Consider it a best practice to attach only the View to your Game\-Object in Unity3\-D.
+
+Finally, two words of warning. First\-: Views may be injected. This allows you to provide a local Dispatcher, a Configuration file, or other items that might come in handy. I recommend very strongly that you do not inject the context-\/wide Dispatcher, nor any other class involving the world beyond the View's immediate area of interest. To do so risks negating the whole point of mediation.
+
+Second\-: experience tells me that understanding what belongs in Mediator and what in View is the trickiest part of this system. I recommend the 'thin' class approach, i.\-e., nothing goes in the Mediator but what it needs to mediate. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder_a7e394e1dbd3279239425740221f727c7}{\index{strange\-::extensions\-::mediation\-::api\-::\-I\-Mediation\-Binder@{strange\-::extensions\-::mediation\-::api\-::\-I\-Mediation\-Binder}!Trigger@{Trigger}}
+\index{Trigger@{Trigger}!strange::extensions::mediation::api::IMediationBinder@{strange\-::extensions\-::mediation\-::api\-::\-I\-Mediation\-Binder}}
+\subsubsection[{Trigger}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-mediation.\-api.\-I\-Mediation\-Binder.\-Trigger (
+\begin{DoxyParamCaption}
+\item[{{\bf Mediation\-Event}}]{evt, }
+\item[{{\bf I\-View}}]{view}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder_a7e394e1dbd3279239425740221f727c7}
+
+
+An event that just happened, and the View it happened to. 
+
+If the event was Awake, it will trigger creation of a mapped Mediator. 
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder_a239e22ae10b9abac39d32533771457f8}{strange.\-extensions.\-mediation.\-impl.\-Mediation\-Binder}.
+
+
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/mediation/api/I\-Mediation\-Binder.\-cs\end{DoxyCompactItemize}

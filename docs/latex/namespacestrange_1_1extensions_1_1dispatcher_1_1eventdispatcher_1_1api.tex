@@ -1,0 +1,65 @@
+\hypertarget{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api}{\section{Package strange.\-extensions.\-dispatcher.\-eventdispatcher.\-api}
+\label{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api}\index{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-api@{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-api}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event}{I\-Event}
+\begin{DoxyCompactList}\small\item\em The interface for an event sent by the Event\-Dispatcher. \end{DoxyCompactList}\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding}{I\-Event\-Binding}
+\begin{DoxyCompactList}\small\item\em Binding interface for Event\-Dispatcher. \end{DoxyCompactList}\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher}{I\-Event\-Dispatcher}
+\begin{DoxyCompactList}\small\item\em Interface for allowing a client to register as an observer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a7135cff6e8e84b74fb1aee88c8f5af4c}{Event\-Callback\-Type} \{ \hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a7135cff6e8e84b74fb1aee88c8f5af4caff382d535c95d1d8c1376594d1bcd9a2}{Event\-Callback\-Type.\-N\-O\-\_\-\-A\-R\-G\-U\-M\-E\-N\-T\-S}, 
+\hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a7135cff6e8e84b74fb1aee88c8f5af4ca6843284a1a144b2248243fe8201b60a9}{Event\-Callback\-Type.\-O\-N\-E\-\_\-\-A\-R\-G\-U\-M\-E\-N\-T}, 
+\hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a7135cff6e8e84b74fb1aee88c8f5af4ca8c02547a8a3b02382bac3557bcb2280d}{Event\-Callback\-Type.\-N\-O\-T\-\_\-\-F\-O\-U\-N\-D}
+ \}
+\item 
+enum \hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_ac82e4192fcc43ba5e64f0469a3c7c06d}{Event\-Dispatcher\-Exception\-Type} \{ \hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_ac82e4192fcc43ba5e64f0469a3c7c06da167e65bbf0cf6aa45533050ccb2511d6}{Event\-Dispatcher\-Exception\-Type.\-E\-V\-E\-N\-T\-\_\-\-K\-E\-Y\-\_\-\-N\-U\-L\-L}, 
+\hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_ac82e4192fcc43ba5e64f0469a3c7c06da5ff62c887d3c7f1707f7033db01438fa}{Event\-Dispatcher\-Exception\-Type.\-E\-V\-E\-N\-T\-\_\-\-T\-Y\-P\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}, 
+\hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_ac82e4192fcc43ba5e64f0469a3c7c06da830201fce8c6a7f553432649727cd2e1}{Event\-Dispatcher\-Exception\-Type.\-T\-A\-R\-G\-E\-T\-\_\-\-I\-N\-V\-O\-C\-A\-T\-I\-O\-N}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a936e11bc9a4f26a96ede9941cc730e72}{delegate void \hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a936e11bc9a4f26a96ede9941cc730e72}{Event\-Callback} (\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event}{I\-Event} payload)}\label{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a936e11bc9a4f26a96ede9941cc730e72}
+
+\begin{DoxyCompactList}\small\item\em Delegate for adding a listener with a single argument. \end{DoxyCompactList}\item 
+\hypertarget{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a4d68e68b31e6e0f733bd72ddcd6111fa}{delegate void \hyperlink{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a4d68e68b31e6e0f733bd72ddcd6111fa}{Empty\-Callback} ()}\label{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a4d68e68b31e6e0f733bd72ddcd6111fa}
+
+\begin{DoxyCompactList}\small\item\em Delegate for adding a listener with a no arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a7135cff6e8e84b74fb1aee88c8f5af4c}{\index{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api}!Event\-Callback\-Type@{Event\-Callback\-Type}}
+\index{Event\-Callback\-Type@{Event\-Callback\-Type}!strange::extensions::dispatcher::eventdispatcher::api@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api}}
+\subsubsection[{Event\-Callback\-Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf strange.\-extensions.\-dispatcher.\-eventdispatcher.\-api.\-Event\-Callback\-Type}}}\label{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a7135cff6e8e84b74fb1aee88c8f5af4c}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{N\-O\-\_\-\-A\-R\-G\-U\-M\-E\-N\-T\-S@{N\-O\-\_\-\-A\-R\-G\-U\-M\-E\-N\-T\-S}!strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api}}\index{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api}!N\-O\-\_\-\-A\-R\-G\-U\-M\-E\-N\-T\-S@{N\-O\-\_\-\-A\-R\-G\-U\-M\-E\-N\-T\-S}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a7135cff6e8e84b74fb1aee88c8f5af4caff382d535c95d1d8c1376594d1bcd9a2}{N\-O\-\_\-\-A\-R\-G\-U\-M\-E\-N\-T\-S}\label{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a7135cff6e8e84b74fb1aee88c8f5af4caff382d535c95d1d8c1376594d1bcd9a2}
+}]Indicates an Event\-Callback with no arguments. \index{O\-N\-E\-\_\-\-A\-R\-G\-U\-M\-E\-N\-T@{O\-N\-E\-\_\-\-A\-R\-G\-U\-M\-E\-N\-T}!strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api}}\index{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api}!O\-N\-E\-\_\-\-A\-R\-G\-U\-M\-E\-N\-T@{O\-N\-E\-\_\-\-A\-R\-G\-U\-M\-E\-N\-T}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a7135cff6e8e84b74fb1aee88c8f5af4ca6843284a1a144b2248243fe8201b60a9}{O\-N\-E\-\_\-\-A\-R\-G\-U\-M\-E\-N\-T}\label{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a7135cff6e8e84b74fb1aee88c8f5af4ca6843284a1a144b2248243fe8201b60a9}
+}]Indicates an Event\-Callback with one argument. \index{N\-O\-T\-\_\-\-F\-O\-U\-N\-D@{N\-O\-T\-\_\-\-F\-O\-U\-N\-D}!strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api}}\index{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api}!N\-O\-T\-\_\-\-F\-O\-U\-N\-D@{N\-O\-T\-\_\-\-F\-O\-U\-N\-D}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a7135cff6e8e84b74fb1aee88c8f5af4ca8c02547a8a3b02382bac3557bcb2280d}{N\-O\-T\-\_\-\-F\-O\-U\-N\-D}\label{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_a7135cff6e8e84b74fb1aee88c8f5af4ca8c02547a8a3b02382bac3557bcb2280d}
+}]Indicates no matching Event\-Callback could be found. \end{description}
+\end{Desc}
+\hypertarget{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_ac82e4192fcc43ba5e64f0469a3c7c06d}{\index{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api}!Event\-Dispatcher\-Exception\-Type@{Event\-Dispatcher\-Exception\-Type}}
+\index{Event\-Dispatcher\-Exception\-Type@{Event\-Dispatcher\-Exception\-Type}!strange::extensions::dispatcher::eventdispatcher::api@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api}}
+\subsubsection[{Event\-Dispatcher\-Exception\-Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf strange.\-extensions.\-dispatcher.\-eventdispatcher.\-api.\-Event\-Dispatcher\-Exception\-Type}}}\label{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_ac82e4192fcc43ba5e64f0469a3c7c06d}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{E\-V\-E\-N\-T\-\_\-\-K\-E\-Y\-\_\-\-N\-U\-L\-L@{E\-V\-E\-N\-T\-\_\-\-K\-E\-Y\-\_\-\-N\-U\-L\-L}!strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api}}\index{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api}!E\-V\-E\-N\-T\-\_\-\-K\-E\-Y\-\_\-\-N\-U\-L\-L@{E\-V\-E\-N\-T\-\_\-\-K\-E\-Y\-\_\-\-N\-U\-L\-L}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_ac82e4192fcc43ba5e64f0469a3c7c06da167e65bbf0cf6aa45533050ccb2511d6}{E\-V\-E\-N\-T\-\_\-\-K\-E\-Y\-\_\-\-N\-U\-L\-L}\label{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_ac82e4192fcc43ba5e64f0469a3c7c06da167e65bbf0cf6aa45533050ccb2511d6}
+}]Indicates that an event was fired with null as the key. \index{E\-V\-E\-N\-T\-\_\-\-T\-Y\-P\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H@{E\-V\-E\-N\-T\-\_\-\-T\-Y\-P\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}!strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api}}\index{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api}!E\-V\-E\-N\-T\-\_\-\-T\-Y\-P\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H@{E\-V\-E\-N\-T\-\_\-\-T\-Y\-P\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_ac82e4192fcc43ba5e64f0469a3c7c06da5ff62c887d3c7f1707f7033db01438fa}{E\-V\-E\-N\-T\-\_\-\-T\-Y\-P\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}\label{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_ac82e4192fcc43ba5e64f0469a3c7c06da5ff62c887d3c7f1707f7033db01438fa}
+}]Indicates that the type of Event in the call and the type of Event in the payload don't match. \index{T\-A\-R\-G\-E\-T\-\_\-\-I\-N\-V\-O\-C\-A\-T\-I\-O\-N@{T\-A\-R\-G\-E\-T\-\_\-\-I\-N\-V\-O\-C\-A\-T\-I\-O\-N}!strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api}}\index{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::api}!T\-A\-R\-G\-E\-T\-\_\-\-I\-N\-V\-O\-C\-A\-T\-I\-O\-N@{T\-A\-R\-G\-E\-T\-\_\-\-I\-N\-V\-O\-C\-A\-T\-I\-O\-N}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_ac82e4192fcc43ba5e64f0469a3c7c06da830201fce8c6a7f553432649727cd2e1}{T\-A\-R\-G\-E\-T\-\_\-\-I\-N\-V\-O\-C\-A\-T\-I\-O\-N}\label{namespacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_ac82e4192fcc43ba5e64f0469a3c7c06da830201fce8c6a7f553432649727cd2e1}
+}]When attempting to fire a callback, the callback was discovered to be casting illegally. \end{description}
+\end{Desc}

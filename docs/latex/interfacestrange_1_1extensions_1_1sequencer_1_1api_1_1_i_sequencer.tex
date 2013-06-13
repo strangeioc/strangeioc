@@ -1,0 +1,59 @@
+\hypertarget{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer}{\section{strange.\-extensions.\-sequencer.\-api.\-I\-Sequencer Interface Reference}
+\label{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer}\index{strange.\-extensions.\-sequencer.\-api.\-I\-Sequencer@{strange.\-extensions.\-sequencer.\-api.\-I\-Sequencer}}
+}
+
+
+Instantiates and executes one or more Sequence\-Commands in a specified order, based on the input key.  
+
+
+Inheritance diagram for strange.\-extensions.\-sequencer.\-api.\-I\-Sequencer\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_a567ef7d1f049ee678bc034b05a52c472}{void \hyperlink{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_a567ef7d1f049ee678bc034b05a52c472}{Stop} (object key)}\label{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_a567ef7d1f049ee678bc034b05a52c472}
+
+\begin{DoxyCompactList}\small\item\em Called to break the Sequence by providing a Key. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_aa915e265e0fecb81a6a4f3d8e15a77cf}{void \hyperlink{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_aa915e265e0fecb81a6a4f3d8e15a77cf}{Break\-Sequence} (\hyperlink{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequence_command}{I\-Sequence\-Command} command)}\label{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_aa915e265e0fecb81a6a4f3d8e15a77cf}
+
+\begin{DoxyCompactList}\small\item\em Called by a Sequence\-Command to indicate that it wants to terminate a sequence to which it belongs. \end{DoxyCompactList}\item 
+void \hyperlink{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_a82319428df4be5e5059493c25c0e6aa5}{Release\-Command} (\hyperlink{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequence_command}{I\-Sequence\-Command} command)
+\begin{DoxyCompactList}\small\item\em Release a previously retained Sequence\-Command. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_a89d1866b3c64fe9d95c62c85bfb5e252}{new \hyperlink{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequence_binding}{I\-Sequence\-Binding} \hyperlink{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_a89d1866b3c64fe9d95c62c85bfb5e252}{Bind$<$ T $>$} ()}\label{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_a89d1866b3c64fe9d95c62c85bfb5e252}
+
+\begin{DoxyCompactList}\small\item\em Bind a trigger Key by generic Type. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_a9c5fe9ddda2a85d8d49c7f8a4da00d7f}{new \hyperlink{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequence_binding}{I\-Sequence\-Binding} \hyperlink{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_a9c5fe9ddda2a85d8d49c7f8a4da00d7f}{Bind} (object value)}\label{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_a9c5fe9ddda2a85d8d49c7f8a4da00d7f}
+
+\begin{DoxyCompactList}\small\item\em Bind a trigger Key by value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Instantiates and executes one or more Sequence\-Commands in a specified order, based on the input key. 
+
+Each Sequence\-Command is only instantiated and executed after the prior one in the sequence has finished. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_a82319428df4be5e5059493c25c0e6aa5}{\index{strange\-::extensions\-::sequencer\-::api\-::\-I\-Sequencer@{strange\-::extensions\-::sequencer\-::api\-::\-I\-Sequencer}!Release\-Command@{Release\-Command}}
+\index{Release\-Command@{Release\-Command}!strange::extensions::sequencer::api::ISequencer@{strange\-::extensions\-::sequencer\-::api\-::\-I\-Sequencer}}
+\subsubsection[{Release\-Command}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-sequencer.\-api.\-I\-Sequencer.\-Release\-Command (
+\begin{DoxyParamCaption}
+\item[{{\bf I\-Sequence\-Command}}]{command}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer_a82319428df4be5e5059493c25c0e6aa5}
+
+
+Release a previously retained Sequence\-Command. 
+
+By default, a Command is garbage collected at the end of its {\ttfamily Execute()} method. But the Command can be retained for asynchronous calls. 
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer_a3bd35c4eb952086f159831612b13ce74}{strange.\-extensions.\-sequencer.\-impl.\-Sequencer}.
+
+
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/sequencer/api/I\-Sequencer.\-cs\end{DoxyCompactItemize}

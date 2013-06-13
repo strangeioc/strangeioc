@@ -1,15 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
 
 body {
-  padding:50px;
+  padding:0px;
+  background-color:#333;
   font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color:#777;
+  color:#333;
   font-weight:300;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color:#222;
-  margin:0 0 20px;
+	font:14px/1.5;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	color:#222;
+	margin:0 0 20px;
 }
 
 p, ul, ol, table, pre, dl {
@@ -46,14 +49,36 @@ a small {
 }
 
 .wrapper {
-  width:860px;
-  margin:0 auto;
+	background-color:#FFF;
+	width:830px;
+	margin:-5px auto;
+	padding:20px;
+	overflow: auto;
+}
+
+
+.docwrapper {
+	background-color:#FFF;
+	overflow: auto;
+	width:860px;
+	margin:-5px auto;
+	padding:10px;
+}
+
+.docHeader {
+	position:fixed;
+    top:52px;
+}
+
+.docsection {
+	width:600px;
+	float:right;
 }
 
 blockquote {
   border-left:1px solid #e5e5e5;
-  margin:0;
-  padding:0 0 0 20px;
+  margin:20px;
+  padding:20px;
   font-style:italic;
 }
 
@@ -99,6 +124,7 @@ header {
   width:270px;
   float:left;
   position:fixed;
+  background:inherit;
 }
 
 header ul {
@@ -150,13 +176,17 @@ header ul li + li {
 
 header ul li + li + li {
   border-right:none;
-  width:89px;
+  
 }
 
 header ul a strong {
   font-size:14px;
   display:block;
   color:#222;
+}
+  
+header p{
+    margin:5px 0px;
 }
 
 section {
@@ -183,9 +213,14 @@ footer {
   bottom:50px;
 }
 
+footer p {
+	margin:0px 0px;
+}
+
 @media print, screen and (max-width: 960px) {
   
   div.wrapper {
+	  background-color:#FFF;
     width:auto;
     margin:0;
   }
@@ -252,4 +287,53 @@ footer {
     font-size:12pt;
     color:#444;
   }
+}
+
+p.contents1 a{
+	font-weight:bold;
+	margin:0px 0px 0px 5px;
+}
+
+p.contents2 {
+	margin:0px 10px 10px 20px;
+}
+
+p.contents3 {
+	margin:0px 0px 10px 35px;
+}
+
+table.exampleTable td {
+	width:500px;
+	margin-left:auto;
+	margin-right:auto;
+	border:none;
+	border-width:0px;
+	text-align:left;
+	vertical-align:text-top;
+}
+
+.features {
+	height:auto;
+	position: relative;
+	background-color:#333;
+	color:#CCC;
+	text-align:left;
+	overflow:hidden;
+	padding:3px;
+}
+
+.features li {
+	list-style-type:square;
+	margin-left:-15px;
+}
+
+#featureLeft {
+	width: 49%;
+	padding-left:10px;
+}
+
+#featureRight {
+	float:right;
+	width: 49%;
+	padding-right:10px;
 }

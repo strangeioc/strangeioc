@@ -1,0 +1,35 @@
+\hypertarget{interfacestrange_1_1extensions_1_1reflector_1_1api_1_1_i_reflection_binder}{\section{strange.\-extensions.\-reflector.\-api.\-I\-Reflection\-Binder Interface Reference}
+\label{interfacestrange_1_1extensions_1_1reflector_1_1api_1_1_i_reflection_binder}\index{strange.\-extensions.\-reflector.\-api.\-I\-Reflection\-Binder@{strange.\-extensions.\-reflector.\-api.\-I\-Reflection\-Binder}}
+}
+
+
+Generates {\ttfamily Reflected\-Class} instances.  
+
+
+Inheritance diagram for strange.\-extensions.\-reflector.\-api.\-I\-Reflection\-Binder\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacestrange_1_1extensions_1_1reflector_1_1api_1_1_i_reflection_binder}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1reflector_1_1api_1_1_i_reflection_binder_ae9c19cb1036c588e85eeb6366c7cdfeb}{\hyperlink{interfacestrange_1_1extensions_1_1reflector_1_1api_1_1_i_reflected_class}{I\-Reflected\-Class} \hyperlink{interfacestrange_1_1extensions_1_1reflector_1_1api_1_1_i_reflection_binder_ae9c19cb1036c588e85eeb6366c7cdfeb}{Get} (Type type)}\label{interfacestrange_1_1extensions_1_1reflector_1_1api_1_1_i_reflection_binder_ae9c19cb1036c588e85eeb6366c7cdfeb}
+
+\begin{DoxyCompactList}\small\item\em Get a binding based on the provided Type. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1reflector_1_1api_1_1_i_reflection_binder_a97baa460e374709cba5d7ee08e667104}{\hyperlink{interfacestrange_1_1extensions_1_1reflector_1_1api_1_1_i_reflected_class}{I\-Reflected\-Class} \hyperlink{interfacestrange_1_1extensions_1_1reflector_1_1api_1_1_i_reflection_binder_a97baa460e374709cba5d7ee08e667104}{Get$<$ T $>$} ()}\label{interfacestrange_1_1extensions_1_1reflector_1_1api_1_1_i_reflection_binder_a97baa460e374709cba5d7ee08e667104}
+
+\begin{DoxyCompactList}\small\item\em Get a binding based on the provided Type generic. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Generates {\ttfamily Reflected\-Class} instances. 
+
+Reflection is a slow process. This binder isolates the calls to System.\-Reflector and caches the result, meaning that Reflection is performed only once per class.
+
+I\-Reflector\-Binder does not expose the usual Binder interface. It allows only the input of a class and the output of that class's reflection. 
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Assets/scripts/strange/extensions/reflector/api/I\-Reflection\-Binder.\-cs\end{DoxyCompactItemize}
