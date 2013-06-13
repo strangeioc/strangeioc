@@ -1,10 +1,29 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/strange/ReadMe.cs">
+    <Files>
+      <File FileName="Assets/scripts/strange/examples/multiplecontexts/game/GameContext.cs" Line="31" Column="2" />
+      <File FileName="Assets/scripts/strange/ReadMe.cs" Line="50" Column="120" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True" />
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="Assets" expanded="True">
+              <Node name="scripts" expanded="True">
+                <Node name="strange" expanded="True">
+                  <Node name="examples" expanded="True">
+                    <Node name="multiplecontexts" expanded="True">
+                      <Node name="game" expanded="True" />
+                      <Node name="social" expanded="True" />
+                    </Node>
+                  </Node>
+                  <Node name="ReadMe.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">
