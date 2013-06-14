@@ -171,7 +171,7 @@ sequencer.Bind(EventMap.MY_EVENT)
         <h3>Everything else Context</h3>
         <p>Those are the components of the Context, but there are few other things to note.</p>
         <h4>Where to map all those bindings?</h4>
-        <p>There&rsquo;s a method you can override called<code> mapBindings()</code>. Guess what it&rsquo;s for? There&rsquo;s also a <code>postBindings()</code> method in case you want to do anything after binding but before <code>Launch()</code>.</p>
+        <p>There&rsquo;s a method you can override called<code> mapBindings()</code>. Guess what it&rsquo;s for? There&rsquo;s also a <code>postBindings()</code> method in case you want to do anything after binding but before <code>Launch()</code>. MVCSContext uses <code>postBindings()</code> to process any Views which register early (before <code>mapBindings()</code> is called). Another obvious and useful case for this is to call <code>DontDestroyOnLoad(contextView)</code> inside <code>postBindings()</code>, in order to retain the contextView (and the Context!) when you load in a new scene.</p>
         <h4>Launch()</h4>
         <p>Launch fires a particular event: <strong>ContextEvent.START</strong>. Map a command to this event to fire your first Command.</p>
         <h4>Does Strange support more than one context?</h4>
