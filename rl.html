@@ -282,7 +282,7 @@ namespace com.example.spacebattle.controller
         <p>I initially made Mediators extend Monobehaviour because it created an easy place to store them: on the same GameObject as the View. But having them be actual MonoBehaviours is actually quite useful. For instance, access to gameObject, <code>Update()</code>, <code>FixedUpdate()</code>, <code>Coroutine</code>, etc., give the Mediator a little power to know about the View and about the app at large.</p>
         <p>Mediator injects the ContextView, while <strong>EventMediator</strong> also injects the context-wide dispatcher. You can of course inject other dependencies, and the one you really MUST inject (if your Mediator is to be of any use) is the View itself:</p>
          <pre class="prettyprint">[Inject]
-public DashboardView view;
+public DashboardView view {get;set;}
 
 override public OnRegister()
 {
