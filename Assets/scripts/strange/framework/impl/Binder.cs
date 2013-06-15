@@ -89,7 +89,17 @@ namespace strange.framework.impl
 		{
 			if (conflicts.Count > 0)
 			{
-				throw new BinderException ("Binder cannot fetch Bindings when the binder is in a conflicted state.\nConflict count: " + conflicts.Count, BinderExceptionType.CONFLICT_IN_BINDER);
+				string conflictSummary = "";
+				Dictionary<object, Dictionary<IBinding, object>>.KeyCollection keys = conflicts.Keys;
+				foreach (object k in keys)
+				{
+					if (conflictSummary.Length > 0)
+					{
+						conflictSummary+= ", ";
+					}
+					conflictSummary += k.ToString ();
+				}
+				throw new BinderException ("Binder cannot fetch Bindings when the binder is in a conflicted state.\nConflicts: " + conflictSummary, BinderExceptionType.CONFLICT_IN_BINDER);
 			}
 
 			if(bindings.ContainsKey (key))
