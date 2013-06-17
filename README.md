@@ -2,7 +2,7 @@
 
 > Strange attractors create predictable patterns, often in chaotic systems.
 
-Strange is a super-lightweight and highly extensible Inversion-of-Control (IoC) framework, written specifically for C# and Unity. We'��ve validated Strange on web, standalone, and iOS. We're not currently developing for Android, but we're fairly certain it'll run just fine there, too (er, please let us know!!!).
+Strange is a super-lightweight and highly extensible Inversion-of-Control (IoC) framework, written specifically for C# and Unity. We've validated Strange on web, standalone, and iOS. We're not currently developing for Android, but we're fairly certain it'll run just fine there, too (er, please let us know!!!).
 
 * [Overview](http://thirdmotion.github.com/strangeioc/exec.html
 * [StrangeIoC documentation](http://thirdmotion.github.com/strangeioc/docs/html/index.html)
@@ -34,7 +34,7 @@ It contains the following features, most of which are optional:
 * Multiple contexts
   * Allow subcomponents (separate Scenes) to function on their own, or in the context of larger apps.
   * Allow communication between contexts.
-* Don’t see what you need? The core binding framework is simple to extend. Build new Binders like:
+* Don't see what you need? The core binding framework is simple to extend. Build new Binders like:
   * A different type of dispatcher, like AS3-Signals
   * An entity framework
   * A multi-loader
@@ -45,13 +45,13 @@ In addition to organizing your project into a sensible structure, Strange offers
 * Separate UnityEngine code from the rest of your app.
   * Improves portability
   * Improves unit testability
-* A common event bus makes information flow easy and highly decoupled. (Note: Unity’s SendMessage method does this, of course, but it’s dangerous as all get-out. I may write a whole article on just this topic at some point.)
-* The extensible binder really is amazing (a friend used to tell me “it’s good to like your own cookin’!”). The number of things you can accomplish with the tiny core framework would justify Strange all on its own.
-* Multiple contexts allow you to “bootstrap” subcomponents so they operate fine either on their own or as an integrated part. This can hugely speed up your development process and allow developers to work in isolation, then integrate in later stages of development.
+* A common event bus makes information flow easy and highly decoupled. (Note: Unity's SendMessage method does this, of course, but it's dangerous as all get-out. I may write a whole article on just this topic at some point.)
+* The extensible binder really is amazing (a friend used to tell me "it's good to like your own cookin'"). The number of things you can accomplish with the tiny core framework would justify Strange all on its own.
+* Multiple contexts allow you to "bootstrap" subcomponents so they operate fine either on their own or as an integrated part. This can hugely speed up your development process and allow developers to work in isolation, then integrate in later stages of development.
 * Get rid of platform-specific #IF...#ELSE constructs in your code. IoC allows you to write whole concrete implementations correctly, then bind the ones you want to use at compile time or at run time. (As with other forms of binding, #IF...#ELSE clauses can be isolated into a single class and away from the rest of your code.)
 
 # Acknowledgements
-It is hard to adequately credit the creators of the open source Actionscript framework RobotLegs for their influence on the creation of StrangeIoC. While Strange is not a port of RobotLegs, the ensigns of that library are copiously reflected throughout this one. For their great service to my professional development, I offer that team my sincerest thanks. And a donut. Seriously, if you’re ever in town, let me buy you a donut.
+It is hard to adequately credit the creators of the open source Actionscript framework RobotLegs for their influence on the creation of StrangeIoC. While Strange is not a port of RobotLegs, the ensigns of that library are copiously reflected throughout this one. For their great service to my professional development, I offer that team my sincerest thanks. And a donut. Seriously, if you're ever in town, let me buy you a donut.
 
 I also need to thank and congratulate the folks at [ThirdMotion](http://www.thirdmotion.com) who inexplicably gave me time to build Strange and license to open source it.
 
