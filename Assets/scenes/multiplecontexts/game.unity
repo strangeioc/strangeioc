@@ -196,7 +196,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 6e7e5287efb15491e978d030e349e5a6, type: 2}
+  - {fileID: 2100000, guid: c4eb95348d4c84926840eb262e22aa80, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -229,9 +229,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 446396208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 769adfdfc5aaf44268e886976be9e868, type: 3}
+  m_Script: {fileID: 11500000, guid: aacc2be7bc74b498288485699bb119a2, type: 3}
   m_Name: 
-  requiresContext: 1
   edx_WobbleForce: .400000006
   edx_WobbleIncrement: .100000001
 --- !u!1 &973486101
@@ -264,7 +263,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 96ff4cbad998c4fa2949a337033afc52, type: 2}
+  - {fileID: 2100000, guid: 0da7b52011fea4432ae5311186d6fa9b, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -330,7 +329,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: a83b0614601374be5aad1e371d25e5c7, type: 2}
+  - {fileID: 2100000, guid: 6f74d17e0f5a344fb83a453e61ef2ef9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -405,7 +404,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1086878293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be89262d114104d86a04a3b468278d03, type: 3}
+  m_Script: {fileID: 11500000, guid: c1ea446819ed44159973186be186e8eb, type: 3}
   m_Name: 
 --- !u!1 &1098101123
 GameObject:
@@ -448,7 +447,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: a83b0614601374be5aad1e371d25e5c7, type: 2}
+  - {fileID: 2100000, guid: 6f74d17e0f5a344fb83a453e61ef2ef9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -576,7 +575,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: a83b0614601374be5aad1e371d25e5c7, type: 2}
+  - {fileID: 2100000, guid: 6f74d17e0f5a344fb83a453e61ef2ef9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -646,7 +645,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: d508442093bf74174b7d9ca0fa4694e9, type: 2}
+  - {fileID: 2100000, guid: f1f5579d70ba5443a8e79e9e357f34d3, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -679,8 +678,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1677938909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c8585e58e714dabb5f1643c5e6d93f, type: 3}
+  m_Script: {fileID: 11500000, guid: 93c328fab0b8b47fead0d075c409cd34, type: 3}
   m_Name: 
-  requiresContext: 1
-  edx_WobbleSize: 1
-  edx_WobbleIncrement: .0199999996
+  edx_WobbleSize: .100000001
+  edx_WobbleIncrement: .100000001

@@ -41,7 +41,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 170dbd45af378410ab7d54192a858ed3, type: 3}
+  - {fileID: 2100000, guid: ba0d34df64f55469eab0dcc758501ab9, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -76,7 +76,7 @@ TextMesh:
   m_FontSize: 0
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 12800000, guid: 170dbd45af378410ab7d54192a858ed3, type: 3}
+  m_Font: {fileID: 12800000, guid: ba0d34df64f55469eab0dcc758501ab9, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

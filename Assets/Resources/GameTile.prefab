@@ -63,13 +63,7 @@ GameObject:
   - 33: {fileID: 3300002}
   - 65: {fileID: 6500002}
   - 23: {fileID: 2300006}
-  - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
-  - 114: {fileID: 11400004}
-  - 114: {fileID: 11400006}
-  - 114: {fileID: 11400008}
   - 114: {fileID: 11400010}
-  - 114: {fileID: 11400012}
   m_Layer: 0
   m_Name: GameTile
   m_TagString: Untagged
@@ -154,7 +148,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: ba0d34df64f55469eab0dcc758501ab9, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -190,7 +184,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 01639280fbcc440beadce54211d89863, type: 2}
+  - {fileID: 2100000, guid: 4db5e6ce36b194cff8e9d6e08645c0cc, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -269,77 +263,7 @@ TextMesh:
   m_FontSize: 0
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccaf0b0afcfbc4b5dba76d4de814fc12, type: 3}
-  m_Name: 
-  requiresContext: 1
-  edx_ImageHolder: {fileID: 100004}
-  edx_UserName: {fileID: 10200002}
-  edx_Score: {fileID: 10200000}
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccaf0b0afcfbc4b5dba76d4de814fc12, type: 3}
-  m_Name: 
-  requiresContext: 1
-  edx_ImageHolder: {fileID: 100004}
-  edx_UserName: {fileID: 10200002}
-  edx_Score: {fileID: 10200000}
---- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccaf0b0afcfbc4b5dba76d4de814fc12, type: 3}
-  m_Name: 
-  requiresContext: 1
-  edx_ImageHolder: {fileID: 0}
-  edx_UserName: {fileID: 0}
-  edx_Score: {fileID: 0}
---- !u!114 &11400006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccaf0b0afcfbc4b5dba76d4de814fc12, type: 3}
-  m_Name: 
-  requiresContext: 1
-  edx_ImageHolder: {fileID: 0}
-  edx_UserName: {fileID: 0}
-  edx_Score: {fileID: 0}
---- !u!114 &11400008
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccaf0b0afcfbc4b5dba76d4de814fc12, type: 3}
-  m_Name: 
-  requiresContext: 1
-  edx_ImageHolder: {fileID: 0}
-  edx_UserName: {fileID: 0}
-  edx_Score: {fileID: 0}
+  m_Font: {fileID: 12800000, guid: ba0d34df64f55469eab0dcc758501ab9, type: 3}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -348,26 +272,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccaf0b0afcfbc4b5dba76d4de814fc12, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c8b1e657ef404441a9181a4c7087e36, type: 3}
   m_Name: 
-  requiresContext: 1
-  edx_ImageHolder: {fileID: 0}
-  edx_UserName: {fileID: 0}
-  edx_Score: {fileID: 0}
---- !u!114 &11400012
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccaf0b0afcfbc4b5dba76d4de814fc12, type: 3}
-  m_Name: 
-  requiresContext: 1
-  edx_ImageHolder: {fileID: 0}
-  edx_UserName: {fileID: 0}
-  edx_Score: {fileID: 0}
+  edx_ImageHolder: {fileID: 100004}
+  edx_UserName: {fileID: 10200002}
+  edx_Score: {fileID: 10200000}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

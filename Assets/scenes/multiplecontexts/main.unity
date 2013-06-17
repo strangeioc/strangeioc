@@ -103,7 +103,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: ba0d34df64f55469eab0dcc758501ab9, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -126,7 +126,7 @@ TextMesh:
   m_FontSize: 0
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: ba0d34df64f55469eab0dcc758501ab9, type: 3}
 --- !u!4 &296388316
 Transform:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: ba0d34df64f55469eab0dcc758501ab9, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -190,7 +190,7 @@ TextMesh:
   m_FontSize: 0
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: ba0d34df64f55469eab0dcc758501ab9, type: 3}
 --- !u!4 &902030971
 Transform:
   m_ObjectHideFlags: 0
@@ -319,5 +319,5 @@ MonoBehaviour:
   m_GameObject: {fileID: 2026218325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6688fa61d51741f3ad7079bf43d5797, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a7a9f3c1066c48da95f0f1ddd4e6f66, type: 3}
   m_Name: 

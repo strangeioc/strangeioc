@@ -183,9 +183,9 @@
      <Compile Include="Assets\scripts\strange\framework\impl\BinderException.cs" />
      <Compile Include="Assets\scripts\strange\framework\impl\Binding.cs" />
      <Compile Include="Assets\scripts\strange\framework\impl\SemiBinding.cs" />
-     <None Include="Assets\scripts\strange\examples\multiplecontexts\ReadMe.txt" />
-     <None Include="Assets\scripts\strange\examples\myfirstproject\ReadMe.txt" />
      <None Include="Assets\scripts\strange\extensions\ReadMe.txt" />
+     <None Include="Assets\scripts\strange\examples\myfirstproject\ReadMe.txt" />
+     <None Include="Assets\scripts\strange\examples\multiplecontexts\ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
