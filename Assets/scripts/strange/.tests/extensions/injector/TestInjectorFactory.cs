@@ -106,6 +106,32 @@ namespace strange.unittests
 			Assert.That (testResult.intValue == testvalue.intValue);
 			Assert.That (testResult.intValue == 42);
 		}
+
+		[Test]
+		public void TestToSingletonShortForm()
+		{
+			//This succeeds if no error
+			IInjectionBinding binding = new InjectionBinding(resolver).Bind<InjectableSuperClass> ().ToSingleton ();
+			factory.Get (binding);
+
+			//Succeeds if throws error
+			IInjectionBinding binding2 = new InjectionBinding(resolver).Bind<ISimpleInterface> ().ToSingleton ();
+			TestDelegate testDelegate = delegate()
+			{
+				factory.Get (binding2);
+			};
+			InjectionException ex = Assert.Throws<InjectionException>(testDelegate);
+			Assert.That (ex.type == InjectionExceptionType.NOT_INSTANTIABLE);
+
+			//Succeeds if throws error
+			IInjectionBinding binding3 = new InjectionBinding(resolver).Bind<AbstractClass> ().ToSingleton ();
+			TestDelegate testDelegate2 = delegate()
+			{
+				factory.Get(binding3);
+			};
+			InjectionException ex2 = Assert.Throws<InjectionException>(testDelegate2);
+			Assert.That (ex2.type == InjectionExceptionType.NOT_INSTANTIABLE);
+		}
 	}
 }
 

@@ -71,7 +71,23 @@ namespace strange.extensions.injector.impl
 			Dictionary<object, object> dict = objectMap [binding];
 			if (dict.ContainsKey(name) == false)
 			{
-				dict [name] = createFromValue(binding.value, args);
+				if (binding.value != null)
+				{
+					dict [name] = createFromValue(binding.value, args);
+				}
+				else
+				{
+					object key = (binding.key as object[]) [0];
+					Type type = key as Type;
+					if (!type.IsInterface && !type.IsAbstract)
+					{
+						dict [name] = createFromValue(key, args);
+					}
+					else
+					{
+						throw new InjectionException ("You can't create a Singleton of a class that can't be instantiated. Class: " + key.ToString(), InjectionExceptionType.NOT_INSTANTIABLE);
+					}
+				}
 			}
 			return dict[name];
 		}

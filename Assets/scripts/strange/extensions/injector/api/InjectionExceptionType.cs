@@ -31,6 +31,8 @@ namespace strange.extensions.injector.api
 		NO_REFLECTOR,
 		/// No InjectorFactory found.
 		NO_FACTORY,
+		/// The provided binding is not an instantiable class.
+		NOT_INSTANTIABLE,
 		/// The requested Binding was null or couldn't be found.
 		NULL_BINDING,
 		/// During an attempt to construct, no constructor was found.
