@@ -1,10 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/strange/ReadMe.cs">
-    <Files>
-      <File FileName="Assets/scripts/strange/examples/multiplecontexts/game/GameContext.cs" Line="31" Column="2" />
-      <File FileName="Assets/scripts/strange/ReadMe.cs" Line="50" Column="120" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
@@ -19,7 +15,11 @@
                       <Node name="social" expanded="True" />
                     </Node>
                   </Node>
-                  <Node name="ReadMe.cs" selected="True" />
+                  <Node name="framework" expanded="True">
+                    <Node name="impl" expanded="True">
+                      <Node name="Binder.cs" selected="True" />
+                    </Node>
+                  </Node>
                 </Node>
               </Node>
             </Node>
