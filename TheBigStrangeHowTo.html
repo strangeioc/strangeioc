@@ -496,9 +496,9 @@ namespace com.example.spacebattle.view
 	class DashboardMediator : EventMediator
 	{
 		[Inject]
-		public DashboardView view;
+		public DashboardView view{get;set;}
 
-		override public OnRegister()
+		override public void OnRegister()
 		{
 			view.init();
 			dispatcher.AddListener
@@ -507,13 +507,13 @@ namespace com.example.spacebattle.view
 				(ServiceEvent.REQUEST_ONLINE_PLAYERS);
 		}
 		
-		override public OnRemove()
+		override public void OnRemove()
 		{
 			dispatcher.RemoveListener
 				(ServiceEvent.FULFILL_ONLINE_PLAYERS, onPlayers);
 		}
 
-		private onPlayers(IEvent evt)
+		private void onPlayers(IEvent evt)
 		{
 			IPlayers[] playerList = evt.data as IPlayers[];
 			view.updatePlayerCount(playerList.Length);
