@@ -55,6 +55,9 @@ namespace strange.extensions.context.api
 		
 		/// Set and get the shared system bus for communicating across contexts
 		IDispatcher crossContextDispatcher{get;set;}
+		
+		//Get the ContextView
+		object GetContextView();
 	}
 }
 
