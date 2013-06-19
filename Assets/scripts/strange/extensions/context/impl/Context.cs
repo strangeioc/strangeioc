@@ -55,7 +55,7 @@ namespace strange.extensions.context.impl
 		
 		public Context (object view, bool autoStartup)
 		{
-			if (firstContext == null)
+			if (firstContext == null || firstContext.GetContextView() == null) //If the first context was unloaded, the contextView will be null. Assign the new context as firstContext
 			{
 				firstContext = this;
 			}
@@ -84,6 +84,11 @@ namespace strange.extensions.context.impl
 		{
 			contextView = view;
 			return this;
+		}
+		
+		virtual public object GetContextView() 
+		{ 
+			return contextView; 
 		}
 
 		/// Call this from your Root to set everything in action.
