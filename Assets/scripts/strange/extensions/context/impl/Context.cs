@@ -55,7 +55,8 @@ namespace strange.extensions.context.impl
 		
 		public Context (object view, bool autoStartup)
 		{
-			if (firstContext == null || firstContext.GetContextView() == null) //If the first context was unloaded, the contextView will be null. Assign the new context as firstContext
+			//If firstContext was unloaded, the contextView will be null. Assign the new context as firstContext.
+			if (firstContext == null || firstContext.GetContextView() == null)
 			{
 				firstContext = this;
 			}
