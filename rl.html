@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Intro for users of RobotLegs - StrangeIoC by ThirdMotion</title>
+    <title>Intro for users of Robotlegs - StrangeIoC by ThirdMotion</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -29,18 +29,26 @@
         <p class="view"><a href="./docs/html/index.html">Docs</a> (Doxygen-generated)</p>
         <p class="view"><a href="./TheBigStrangeHowTo.html">The Big, Strange How-To</a> (developer manual)</p>
         <p class="view"><a href="./faq.html">FAQ</a></p>
-        <p class="view">Use RobotLegs? <a href="./rl.html">This is for you</a>!</p>
+        <p class="view">Use Robotlegs? <a href="./rl.html">This is for you</a>!</p>
         <p class="view"><a href="http://github.com/thirdmotion/strangeioc/wiki">Strange Wiki</a></p>
       </header>
       <section>
         <h3>
 <img src="img/logo.png" alt="StrangeIoC" /></h3>
-        <h1>StrangeIoC: An introduction for users of RobotLegs</h1>
-        <p>So you know <a href="http://www.robotlegs.org/">RobotLegs</a>? Come on in, stroll around the place. It should look pretty familiar. Strange of course, but familiar. That&rsquo;s because StrangeIoC, while not a port of RobotLegs, was heavily inspired by that framework.</p>
-        <p>If you&rsquo;ve landed here and don&rsquo;t understand what I&rsquo;m talking about, let me sum up: <strong>RobotLegs</strong> is a spectacularly useful Inversion-of-Control micro-framework for Actionscript 3, the coding language that underpins Adobe Flash. If you still don&rsquo;t know what I&rsquo;m on about, you might want to check out today&rsquo;s <a href="http://www.xkcd.com">XKCD</a>. It probably has nothing to do with anything we&rsquo;re discussing, but it&rsquo;s probably very funny.</p>
-        <p>For those still with me, this article is intended to be a fast-track for those who don&rsquo;t need an explanation of concepts like <a href="http://en.wikipedia.org/wiki/Dependency_injection">Dependency Injection</a>, <a href="http://en.wikipedia.org/wiki/Inversion_of_control">Inversion-of-Control</a>, <a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC</a>, etc. It also assumes you know at least a bit about Unity and programming in C#. If you liked the structure and dependency decoupling RobotLegs offered, you should like Strange (always assuming I&rsquo;ve done my job). Basically, I want to explain what will look familiar, and what&rsquo;s different.</p>
+        <blockquote>
+   <p>&ldquo;I really like it! I recognize a well-thought-out API when I see it.&rdquo;<br>
+     - Till Schneidereit, Author of <a href="https://github.com/tschneidereit/SwiftSuspenders">Swiftsuspenders</a>, member of the <a href="https://github.com/mozilla/shumway">Shumway</a> team</p></blockquote>
+     
+<blockquote>
+   <p>@StrangeIoC I dig the &quot;bind everything&quot; concept.<br>
+     - Shaun Smith, Author of <a href="http://www.robotlegs.org/">Robotlegs</a> </p>
+</blockquote>
+        <h1>StrangeIoC: An introduction for users of Robotlegs</h1>
+        <p>So you know <a href="http://www.robotlegs.org/">Robotlegs</a>? Come on in, stroll around the place. It should look pretty familiar. Strange of course, but familiar. That&rsquo;s because StrangeIoC, while not a port of Robotlegs, was heavily inspired by that framework.</p>
+        <p>If you&rsquo;ve landed here and don&rsquo;t understand what I&rsquo;m talking about, let me sum up: <strong>Robotlegs</strong> is a spectacularly useful Inversion-of-Control micro-framework for Actionscript 3, the coding language that underpins Adobe Flash. If you still don&rsquo;t know what I&rsquo;m on about, you might want to check out today&rsquo;s <a href="http://www.xkcd.com">XKCD</a>. It probably has nothing to do with anything we&rsquo;re discussing, but it&rsquo;s probably very funny.</p>
+        <p>For those still with me, this article is intended to be a fast-track for those who don&rsquo;t need an explanation of concepts like <a href="http://en.wikipedia.org/wiki/Dependency_injection">Dependency Injection</a>, <a href="http://en.wikipedia.org/wiki/Inversion_of_control">Inversion-of-Control</a>, <a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC</a>, etc. It also assumes you know at least a bit about Unity and programming in C#. If you liked the structure and dependency decoupling Robotlegs offered, you should like Strange (always assuming I&rsquo;ve done my job). Basically, I want to explain what will look familiar, and what&rsquo;s different.</p>
         <h2>Getting Strange</h2>
-        <p>At first glance, Strange looks a lot like RobotLegs. A lot of concepts have survived more-or-less intact. I&rsquo;ll go through these, explaining where I&rsquo;ve made changes and why.</p>
+        <p>At first glance, Strange looks a lot like Robotlegs. A lot of concepts have survived more-or-less intact. I&rsquo;ll go through these, explaining where I&rsquo;ve made changes and why.</p>
         <h3>ContextView</h3>
         <p>The top-level GameObject is called the <strong>ContextView</strong>, just like the top-level Sprite in RL. It&rsquo;s injectable at various points around the app. Unfortunately, while Flash enforced the principle that everything was attached to the top-level object, Unity has no such mechanism. Unity also doesn&rsquo;t have Event bubbling, which was a critical element of how Views alerted Contexts to their existence. I&rsquo;ll talk more about the latter problem under Views &amp; Mediators. </p>
         <p>Despite these problems, you can more-or-less think of the ContextView as being the same as the one in Flash. Note that there is a ContextView class — a &quot;<strong>Mediator</strong>&quot; (a Monobehaviour, actually) — that you manually attach to your GameObject to declare that it is the ContextView. Instantiating the <strong>Context</strong> from a subclass of ContextView requires just two lines of code, which you probably want in the <code>Awake()</code> method:</p>
@@ -65,7 +73,7 @@ context.Start();</pre>
             <p><strong>mediationBinder</strong> (instance of <strong>MediationBinder</strong>)</p>
           </li>
         </ul>
-        <p>Now the thing that will probably stand out for you here is that one oft-repeated word: &lsquo;<strong>Binder</strong>&rsquo; (even the ones not so-named are Binders). The reason for that word is that Strange starts from a slightly different perspective than other IoC systems, including RobotLegs, in that it sees all forms of decoupling as merely varied types of a collection called Binder. A Binder in Strange is simply a dictionary of <strong>Bindings</strong>, which in turn are nothing more than a set of three lists with some relationship to each other. These lists are <strong>Key</strong>, <strong>Value</strong> and <strong>Name</strong>. It turns out that every Binding RL did, and a whole lot more besides, can be accomplished with this simple structure. For example, an EventDispatcher is nothing but a <em>Key</em> (the Event) that triggers <em>Values</em> (the callbacks). A Dependency Injector is little more than a <em>Key</em> (the interface or superclass) that resolves to a <em>Value</em> (the concrete or derived class) with the option of a <em>Name</em> (for named injections). All the components in Strange are built on this principle.</p>
+        <p>Now the thing that will probably stand out for you here is that one oft-repeated word: &lsquo;<strong>Binder</strong>&rsquo; (even the ones not so-named are Binders). The reason for that word is that Strange starts from a slightly different perspective than other IoC systems, including Robotlegs, in that it sees all forms of decoupling as merely varied types of a collection called Binder. A Binder in Strange is simply a dictionary of <strong>Bindings</strong>, which in turn are nothing more than a set of three lists with some relationship to each other. These lists are <strong>Key</strong>, <strong>Value</strong> and <strong>Name</strong>. It turns out that every Binding RL did, and a whole lot more besides, can be accomplished with this simple structure. For example, an EventDispatcher is nothing but a <em>Key</em> (the Event) that triggers <em>Values</em> (the callbacks). A Dependency Injector is little more than a <em>Key</em> (the interface or superclass) that resolves to a <em>Value</em> (the concrete or derived class) with the option of a <em>Name</em> (for named injections). All the components in Strange are built on this principle.</p>
         <p>Notwithstanding the above difference the effect is very similar to what you&rsquo;re already used to. There are some syntactic differences, though, because C# supports generics and we want to take that into account. Here&rsquo;s a list of bindings (mappings) that should look pretty familiar.</p>
         <h4>Injector Bindings</h4>
         <p>Basic <strong>factory binding</strong>, Interface to Concrete class.</p>
@@ -181,8 +189,8 @@ sequencer.Bind(EventMap.MY_EVENT)
         <h4>Anything else?</h4>
         <p>I added a crazy feature...maybe not a good idea, but it seemed worthwhile, called <code>Context.GetComponent()</code>, which essentially allows you to ask for mappings out of the injectionBinder. This was useful when setting up cross-context communication, so I thought it might have other useful applications.</p>
         <h3>Injection</h3>
-        <p>Let&rsquo;s talk about those marvelously injected classes. Unlike RL, which used the <strong>SwiftSuspenders</strong> injector, Strange has an injector of it&rsquo;s own. But if you&rsquo;re one of those people who feels they should roll their own, never fear; it&rsquo;s all abstracted so you could do just that.</p>
-        <p>Marking classes for injection is really straightforward if you&rsquo;re coming from RobotLegs. Here&rsquo;s a setter injection:</p>
+        <p>Let&rsquo;s talk about those marvelously injected classes. Unlike RL, which used the <strong>Swiftsuspenders</strong> injector, Strange has an injector of it&rsquo;s own. But if you&rsquo;re one of those people who feels they should roll their own, never fear; it&rsquo;s all abstracted so you could do just that.</p>
+        <p>Marking classes for injection is really straightforward if you&rsquo;re coming from Robotlegs. Here&rsquo;s a setter injection:</p>
          <pre class="prettyprint">[Inject]
 public IMyDependency myDependency{get;set;}</pre>
         <p>Notwithstanding a few C# syntactical differences, this is identical to the RL approach. You can inject things using the <code>[Inject]</code> metatag, but note that you must designate setters and getters, even if they&rsquo;re only stubs. Strange supports Setter injection and constructor injection, but not field injection.</p>
@@ -198,7 +206,7 @@ public void postConstruct()
 { 
     //do stuff immediately after injection
 }</pre>
-        <p>Just like in SwiftSuspenders, you can tag as many PostConstruct methods as you like. I haven&rsquo;t yet implemented an ordering parameter, but I&rsquo;ll attempt to add that soon.</p>
+        <p>Just like in Swiftsuspenders, you can tag as many PostConstruct methods as you like. I haven&rsquo;t yet implemented an ordering parameter, but I&rsquo;ll attempt to add that soon.</p>
         <p>Now Constructors are a bit more complicated, especially since in C# (unlike in Actionscript) you can have more than one. because of this, I&rsquo;ve created a set of rules to determine which Constructor to use. It works like so:</p>
         <ol>
           <li>
@@ -270,7 +278,7 @@ namespace com.example.spacebattle.controller
         <h3>Sequences</h3>
         <p>Everything you&rsquo;ve just read for Commands applies to <strong>Sequences</strong> as well. There are just a couple differences. First all Sequence Commands must implement the Interface <strong>ISequenceCommand</strong> (or just extend <strong>SequenceCommand</strong> or EventSequenceCommand). Second, as a result of that implementation, SequenceCommands come with an added method: <code>BreakSequence()</code>. If this method is called in any SequenceCommand, the chain is broken and the remainder of the Sequence will be abandoned.</p>
         <h3>Views and Mediation</h3>
-        <p><strong>Views</strong> and <strong>Mediators</strong> both extend MonoBehaviour, which means that when running in the Unity IDE you can actually look at and tweak public properties, even at runtime. The principle of these two classes is much the same as it is in RobotLegs: the View controls the UI, while the Mediator bridges communication between the View and the rest of the app. There are a few important differences to note, however.</p>
+        <p><strong>Views</strong> and <strong>Mediators</strong> both extend MonoBehaviour, which means that when running in the Unity IDE you can actually look at and tweak public properties, even at runtime. The principle of these two classes is much the same as it is in Robotlegs: the View controls the UI, while the Mediator bridges communication between the View and the rest of the app. There are a few important differences to note, however.</p>
         <h4>Events don&rsquo;t bubble</h4>
         <p>I touched briefly on this before. In RL, the bubbling <code>ADDED_TO_STAGE</code> event was used to capture, track and mediate views when they appeared. Unity has no such mechanism (and I deplore the use of <code>SendMessage</code>) which left me looking for another approach. The one I settled on was a sort of &ldquo;manual bubbling&rdquo;. Whenever a View fires its <code>Awake()</code> or <code>Start()</code> method, (they&rsquo;re Monobehaviours, remember) it traverses the Transform tree, looking for a ContextView. If it finds one, it registers with the Context and receives whatever mediation to which it might be mapped.</p>
         <p>In this manner, Views should ordinarily find the Context to which they belong.</p>
@@ -294,10 +302,10 @@ override public OnRegister()
         <p>The other difficulty is timing. Strange is very good at capturing Views as they appear (quite a bit of thought went into fallbacks to try and capture each View and place it in the correct Context), and its timing is very orderly; you know that the Context instantiates early, and you control the order of events, and also when things are placed on stage. But when an external scene loads that doesn&rsquo;t have a Context of its own, you need to make sure that the Views have appropriate time to register before continuing with other processes. This is generally nothing more than a single frame cycle, so pausing for an <code>Update()</code> after loading should do.</p>
         <h3>Models and Services</h3>
         <p>If you&rsquo;ve read this far, there&rsquo;s really nothing important to say about Models and Services. You already know how map them, to inject them, and to use them wisely.</p>
-        <h2>Something not at all RobotLegsy</h2>
+        <h2>Something not at all Robotlegsy</h2>
         <p>I mentioned at the top that Strange was all based on a collection called <strong>Binder</strong>. What I didn&rsquo;t really discuss was how simple and extensible this class is. Once I came to see all forms of decoupling as nothing more than variations on the Binder, a raft of possibilities opened up before me. I&rsquo;m reasonably convinced that there are a ton of use cases for Binders and that before long Strange developers will start finding great uses for them. I urge you to crawl through the core framework classes (there are only eight of them, and they&rsquo;re not long or hard to follow) and learn how to build new Binders yourself.</p>
         <h2>That&rsquo;s it. You&rsquo;re now Strange like me.</h2>
-        <p>I can&rsquo;t tell you how much I appreciate you taking time to look at Strange. It&rsquo;s my job, but it&rsquo;s also been a labor of love. I hope you find Strange useful and accessible, and that it provides at least some of the advantages you had with RobotLegs. If you have any ideas, suggestions or corrections, if you want to buy me a whisky or tell me about some great project in which you&rsquo;re using Strange, please feel free to contact me through GitHub.</p>
+        <p>I can&rsquo;t tell you how much I appreciate you taking time to look at Strange. It&rsquo;s my job, but it&rsquo;s also been a labor of love. I hope you find Strange useful and accessible, and that it provides at least some of the advantages you had with Robotlegs. If you have any ideas, suggestions or corrections, if you want to buy me a whisky or tell me about some great project in which you&rsquo;re using Strange, please feel free to contact me through GitHub.</p>
         <p>I look forward to Strange days ahead.</p>
         <br>
       </section>

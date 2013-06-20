@@ -19,7 +19,7 @@
             <div><a href="./docs/html/index.html">Docs</a></div>
             <div><a href="./TheBigStrangeHowTo.html">The Big, Strange How-To</a></div>
             <div><a href="./faq.html">FAQ</a></div>
-            <div><a href="./rl.html">RobotLegs Intro</a>!</div>
+            <div><a href="./rl.html">Robotlegs Intro</a>!</div>
             <div><a href="http://github.com/thirdmotion/strangeioc/wiki">Strange Wiki</a></div>
     </div>
   <div class="docsection">
@@ -109,7 +109,7 @@
     <li>Multiple contexts allow you to &ldquo;bootstrap&rdquo; subcomponents so they operate fine either on their own or as an integrated part. This can hugely speed up your development process and allow developers to work in isolation, then integrate in later stages of development.</li>
   </ul>
   <h2><a name="h.3e40286vrfxn"></a>Acknowledgements</h2>
-  <p>It is hard to adequately credit the creators of the open source Actionscript framework <a href="http://www.robotlegs.org">RobotLegs</a> for their influence on the creation of StrangeIoC. While Strange is not a port of RobotLegs, the ensigns of that library are copiously reflected throughout this one. For their great service to my professional development, I offer that team my sincerest thanks. And a donut. Seriously, if you&rsquo;re ever in town, let me buy you a donut.</p>
+  <p>It is hard to adequately credit the creators of the open source Actionscript framework <a href="http://www.robotlegs.org">Robotlegs</a> for their influence on the creation of StrangeIoC. While Strange is not a port of Robotlegs, the ensigns of that library are copiously reflected throughout this one. For their great service to my professional development, I offer that team my sincerest thanks. And a donut. Seriously, if you&rsquo;re ever in town, let me buy you a donut.</p>
   <p>I also need to thank and congratulate the folks at<a href="http://www.thirdmotion.com">ThirdMotion</a></span>&nbsp;who inexplicably gave me time to build Strange and license to open source it.</p>
   <h2><a name="h.vgufmpbziw9i"></a>Introduction: the directories</h2>
   <p>The downloaded project contains everything you need to get going, including a few example scenes. To find the code, which is most of what we&rsquo;re going to discuss, look inside <code>Ass</code><code>ets &gt; scripts &gt; strange</code>. You&rsquo;ll find four subdirectories (if you&rsquo;re looking from inside Unity, you&rsquo;ll only see three).</p>
@@ -342,7 +342,7 @@ public void PostConstruct()
 {
 	//Do stuff you&rsquo;d normally do in a constructor
 }</pre>
-  <p>Should you use setter injection or constructor injection? Shaun Smith, one of the authors of RobotLegs, has an excellent post on the subject <span class="c2"><a href="http://shaun.boyblack.co.za/blog/2009/05/01/constructor-injection-vs-setter-injection/">here</a></span>.</p>
+  <p>Should you use setter injection or constructor injection? Shaun Smith, one of the authors of Robotlegs, has an excellent post on the subject <span class="c2"><a href="http://shaun.boyblack.co.za/blog/2009/05/01/constructor-injection-vs-setter-injection/">here</a></span>.</p>
   <h4><a name="h.hfl5kq8at5l8"></a>Warnings</h4>
   <p>There are a couple of potential gotchas to beware of with injection.</p>
   <p>1. Be careful of dependency loops. If classes inject each other, this can lead to a never-ending dependency loop. Strange armors against this to avoid bringing down your app (and will throw an InjectionException to alert you), but you should avoid doing it in the first place.</p>
