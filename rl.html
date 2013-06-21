@@ -238,7 +238,9 @@ namespace com.example.spacebattle.controller
         }
     }
 }</pre>
-        <p>In C#, &lsquo;using&rsquo; is like AS3 <code>import</code>, and we&rsquo;ve covered the tiny differences in injection. The rest of it is almost identical. Command automatically injects injectionBinder,  commandBinder and the contextView. <strong>EventCommand</strong>, which extends Command, automatically injects the context-wide dispatcher, and any IEvent that may have been involved in the Command&rsquo;s instantiation.</p>
+        <p>In C#, &lsquo;using&rsquo; is like AS3 <code>import</code>, and we&rsquo;ve covered the tiny differences in injection. The rest of it is almost identical. Command automatically injects injectionBinder and commandBinder. <strong>EventCommand</strong>, which extends Command, automatically injects the context-wide dispatcher, and any IEvent that may have been involved in the Command&rsquo;s instantiation. One thing notably missing relative to Robotlegs is the injection of the ContextView. The key reason for this is that to do so would introduce a required dependency on Unity outside it's proscribed bounds. Essentially, I'm trying to keep Unity out of your code wherever possible, which improves both testability and portability. Of course you can still inject the ContextView yourself wherever you need it:</p>
+        <pre class="prettyprint">[Inject(ContextKeys.CONTEXT_VIEW)]
+public GameObject contextView{get;set;}</pre>
         <p>You can also get access to other useful components:</p>
          <pre class="prettyprint">[Inject]
 public IMediationBinder mediationBinder{get;set;}</pre>
