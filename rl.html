@@ -119,7 +119,7 @@ context.Start();</pre>
             <p><strong>data</strong> - An arbitrary payload.</p>
           </li>
         </ul>
-        <p>Also note that c# <em>hates</em> the word Event (and event)...I guess they&rsquo;re using it. Anyway, use my convention or come up with your own.</p>
+        <p>Also note that C# won't let you identify an event by the term 'event' since it's a keyword. So use my 'evt' convention or come up with your own.</p>
         <p><strong>Removing a listener</strong> is just what you&rsquo;d expect:</p>
          <pre class="prettyprint">dispatcher.RemoveListener(EventMap.MY_EVENT, onSomeEvent);</pre>
         <p>And we&rsquo;ve added a boolean convenience function (true to add, false to remove:</p>
