@@ -34,6 +34,8 @@ namespace strange.extensions.command.impl
 	{
 		public bool isOneOff{ get; set;}
 
+		public bool isSequence{ get; set;}
+
 		public CommandBinding() : base()
 		{
 		}
@@ -45,6 +47,18 @@ namespace strange.extensions.command.impl
 		public ICommandBinding Once()
 		{
 			isOneOff = true;
+			return this;
+		}
+
+		public ICommandBinding InParallel()
+		{
+			isSequence = false;
+			return this;
+		}
+
+		public ICommandBinding InSequence()
+		{
+			isSequence = true;
 			return this;
 		}
 

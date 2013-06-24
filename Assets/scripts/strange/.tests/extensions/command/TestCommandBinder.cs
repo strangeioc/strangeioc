@@ -100,6 +100,51 @@ namespace strange.unittests
 			Assert.IsNull (binding2);
 		}
 
+		[Test]
+		public void TestSequence ()
+		{
+			//CommandWithInjection requires an ISimpleInterface
+			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().ToSingleton();
+
+			//Bind the trigger to the command
+			commandBinder.Bind(SomeEnum.ONE).To<CommandWithInjection>().To<CommandWithExecute>().To<CommandWithoutExecute>().InSequence();
+
+			TestDelegate testDelegate = delegate 
+			{
+				commandBinder.ReactTo (SomeEnum.ONE);
+			};
+
+			//That the exception is thrown demonstrates that the last command ran
+			CommandException ex = Assert.Throws<CommandException> (testDelegate);
+			Assert.AreEqual (ex.type, CommandExceptionType.EXECUTE_OVERRIDE);
+
+			//That the value is 100 demonstrates that the first command ran
+			ISimpleInterface instance = injectionBinder.GetInstance<ISimpleInterface>() as ISimpleInterface;
+			Assert.AreEqual (100, instance.intValue);
+		}
+
+		[Test]
+		public void TestInterruptedSequence ()
+		{
+			//CommandWithInjection requires an ISimpleInterface
+			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().ToSingleton();
+
+			//Bind the trigger to the command
+			commandBinder.Bind(SomeEnum.ONE).To<CommandWithInjection>().To<FailCommand>().To<CommandWithoutExecute>().InSequence();
+
+			TestDelegate testDelegate = delegate 
+			{
+				commandBinder.ReactTo (SomeEnum.ONE);
+			};
+
+			//That the exception is not thrown demonstrates that the last command was interrupted
+			Assert.DoesNotThrow (testDelegate);
+
+			//That the value is 100 demonstrates that the first command ran
+			ISimpleInterface instance = injectionBinder.GetInstance<ISimpleInterface>() as ISimpleInterface;
+			Assert.AreEqual (100, instance.intValue);
+		}
+
 		//TODO: figure out how to do async tests
 		/*
 		[Test]

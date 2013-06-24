@@ -17,7 +17,7 @@
 /**
  * @interface strange.extensions.sequencer.api.ISequenceBinding
  * 
- * Defines the form of a binding for use with the Sequencer. 
+ * @deprecated
  */
 
 using System;

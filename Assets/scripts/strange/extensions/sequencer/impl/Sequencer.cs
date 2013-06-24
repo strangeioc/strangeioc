@@ -17,13 +17,7 @@
 /**
  * @class strange.extensions.sequencer.impl.Sequencer
  * 
- * Runs SequenceCommands in sequential order.
- * 
- * A variation on the CommandBinder that runs Commands in sequence
- * rather than in parallel. Each SequenceCommand in the Sequence
- * Executes then terminates, and then the next SequenceCommand
- * continues the process. Any SequenceCommand in the series is
- * permitted to call `BreakSequence()` to terminate the chain.
+ * @deprecated
  */
 
 using System;
@@ -43,7 +37,7 @@ namespace strange.extensions.sequencer.impl
 		[Inject]
 		new public IInjectionBinder injectionBinder{ get; set;}
 
-		protected Dictionary<ISequenceCommand, ISequenceBinding> activeSequences = new Dictionary<ISequenceCommand, ISequenceBinding> ();
+
 
 		public Sequencer ()
 		{
@@ -61,30 +55,6 @@ namespace strange.extensions.sequencer.impl
 			{
 				nextInSequence (binding, data, 0);
 			}
-		}
-
-		public void Stop(object key)
-		{
-			ISequenceBinding binding = GetBinding (key) as ISequenceBinding;
-			if (binding != null)
-			{
-				if (activeSequences.ContainsValue (binding))
-				{
-					foreach(KeyValuePair<ISequenceCommand, ISequenceBinding> sequence in activeSequences)
-					{
-						if (sequence.Value == binding)
-						{
-							ISequenceCommand command = sequence.Key;
-							removeSequence (command);
-						}
-					}
-				}
-			}
-		}
-
-		public void BreakSequence (ISequenceCommand command)
-		{
-			removeSequence (command);
 		}
 
 		private void removeSequence(ISequenceCommand command)
@@ -135,7 +105,7 @@ namespace strange.extensions.sequencer.impl
 			{
 				if (activeSequences.ContainsKey(command))
 				{
-					ISequenceBinding binding = activeSequences [command];
+					ISequenceBinding binding = activeSequences [command] as ISequenceBinding;
 					object data = command.data;
 					activeSequences.Remove (command);
 					nextInSequence (binding, data, command.sequenceId + 1);

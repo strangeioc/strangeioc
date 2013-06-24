@@ -33,9 +33,9 @@
  * CommandBinder can trigger one Command or multiple Commands off the
  * same event.
  * 
- * Note that Strange also a features a Sequencer. CommandBinder fires all
- * Commands in parallel, while Sequencer runs them serially, with the
- * option of suspending the chain at any time.
+ * Note that CommandBinder also a features sequencing. By default, CommandBinder fires all
+ * Commands in parallel. If your binding specifies `InSequence()`,  commands will run serially,
+ * with the option of suspending the chain at any time.
  * 
  * Example bindings:
 
@@ -45,8 +45,10 @@
 
 		Bind(ContextEvent.START).To<StartCommand>().Once(); //Destroy the binding immediately after a single use
 
+		Bind(EventMap.END_GAME_EVENT).To<FirstCommand>().To<SecondCommand>().To<ThirdGCommand>().InSequence();
+
  * 
- * See ICommand for details on asynchronous Commands.
+ * See Command for details on asynchronous Commands and cancelling sequences.
  */
 
 using System;
@@ -68,6 +70,9 @@ namespace strange.extensions.command.api
 		/// By default, a Command is garbage collected at the end of its `Execute()` method. 
 		/// But the Command can be retained for asynchronous calls.
 		void ReleaseCommand(ICommand command);
+
+		/// Called to halt execution of a currently running command group
+		void Stop(object key);
 
 		/// Bind a trigger Key by generic Type
 		new ICommandBinding Bind<T>();

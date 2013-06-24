@@ -28,6 +28,9 @@
  * call `Retain()` at the top of your `Execute()` method, which will prevent
  * premature cleanup. But remember, having done so it is your responsipility
  * to call `Release()` once the Command is complete.
+ * 
+ * Calling `Fail()` will terminate any sequence in which the Command is operating, but
+ * has no effect on Commands operating in parallel.
  */
 
 using System;
@@ -48,7 +51,11 @@ namespace strange.extensions.command.impl
 
 		public object data{ get; set;}
 
-		private bool _retain = false;
+		public bool cancelled{ get; set;}
+
+		public int sequenceId{ get; set; }
+
+		protected bool _retain = false;
 
 		public Command ()
 		{
@@ -71,6 +78,19 @@ namespace strange.extensions.command.impl
 			{
 				commandBinder.ReleaseCommand (this);
 			}
+		}
+
+		public void Fail()
+		{
+			if (commandBinder != null)
+			{
+				commandBinder.Stop (this);
+			}
+		}
+
+		public void Cancel()
+		{
+			cancelled = true;
 		}
 
 		public bool retain

@@ -17,9 +17,7 @@
 /**
  * @class strange.extensions.sequencer.impl.EventSequencer
  * 
- * This variation on Sequencer injects IEvents.
- * 
- * It's the version used in MVCSContext.
+ * @deprecated
  */
 
 using System;

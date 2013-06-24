@@ -33,9 +33,9 @@
  * CommandBinder can trigger one Command or multiple Commands off the
  * same event.
  * 
- * Note that Strange also a features a Sequencer. CommandBinder fires all
- * Commands in parallel, while Sequencer runs them serially, with the
- * option of suspending the chain at any time.
+ * Note that CommandBinder also a features sequencing. By default, CommandBinder fires all
+ * Commands in parallel. If your binding specifies `InSequence()`,  commands will run serially,
+ * with the option of suspending the chain at any time.
  * 
  * Example bindings:
 
@@ -45,8 +45,10 @@
 
 		Bind(ContextEvent.START).To<StartCommand>().Once(); //Destroy the binding immediately after a single use
 
+		Bind(EventMap.END_GAME_EVENT).To<FirstCommand>().To<SecondCommand>().To<ThirdGCommand>().InSequence();
+
  * 
- * See Command for details on asynchronous Commands.
+ * See Command for details on asynchronous Commands and cancelling sequences.
  */
 
 using System;
@@ -64,7 +66,11 @@ namespace strange.extensions.command.impl
 		[Inject]
 		public IInjectionBinder injectionBinder{ get; set;}
 
-		protected Dictionary<ICommand, ICommand> activeCommands = new Dictionary<ICommand, ICommand>();
+		/// Tracker for parallel commands in progress
+		protected HashSet<ICommand> activeCommands = new HashSet<ICommand>();
+
+		/// Tracker for sequences in progress
+		protected Dictionary<ICommand, ICommandBinding> activeSequences = new Dictionary<ICommand, ICommandBinding> ();
 
 		public CommandBinder ()
 		{
@@ -85,26 +91,46 @@ namespace strange.extensions.command.impl
 			ICommandBinding binding = GetBinding (trigger) as ICommandBinding;
 			if (binding != null)
 			{
-				object[] values = binding.value as object[];
-				int aa = values.Length;
-				for (int a = 0; a < aa; a++)
+				if (binding.isSequence)
 				{
-					Type cmd = values [a] as Type;
-					invokeCommand (cmd, binding, data, 0);
+					next (binding, data, 0);
+				}
+				else
+				{
+					object[] values = binding.value as object[];
+					int aa = values.Length + 1;
+					for (int a = 0; a < aa; a++)
+					{
+						next (binding, data, a);
+					}
 				}
 			}
 		}
 
-		virtual protected void invokeCommand(Type cmd, ICommandBinding binding, object data, int depth)
+		private void next(ICommandBinding binding, object data, int depth)
+		{
+			object[] values = binding.value as object[];
+			if (depth < values.Length)
+			{
+				Type cmd = values [depth] as Type;
+				ICommand command = invokeCommand (cmd, binding, data, depth);
+				ReleaseCommand (command);
+			}
+			else
+			{
+				if (binding.isOneOff)
+				{
+					Unbind (binding);
+				}
+			}
+		}
+
+		virtual protected ICommand invokeCommand(Type cmd, ICommandBinding binding, object data, int depth)
 		{
 			ICommand command = createCommand (cmd, data);
-			trackCommand (command);
+			trackCommand (command, binding);
 			executeCommand (command);
-			if (binding.isOneOff)
-			{
-				Unbind (binding);
-			}
-			ReleaseCommand (command);
+			return command;
 		}
 
 		virtual protected ICommand createCommand(object cmd, object data)
@@ -116,9 +142,16 @@ namespace strange.extensions.command.impl
 			return command;
 		}
 
-		private void trackCommand (ICommand command)
+		private void trackCommand (ICommand command, ICommandBinding binding)
 		{
-			activeCommands [command] = command;
+			if (binding.isSequence)
+			{
+				activeSequences [command] = binding;
+			}
+			else
+			{
+				activeCommands.Add(command);
+			}
 		}
 
 		private void executeCommand(ICommand command)
@@ -130,22 +163,56 @@ namespace strange.extensions.command.impl
 			command.Execute ();
 		}
 
-		public void ReleaseCommand (ICommand command)
+		public virtual void Stop(object key)
 		{
-			if (command.retain == false)
+			if (key is ICommand && activeSequences.ContainsKey(key as ICommand))
 			{
-				if (activeCommands.ContainsKey(command))
+				removeSequence (key as ICommand);
+			}
+			else
+			{
+				ICommandBinding binding = GetBinding (key) as ICommandBinding;
+				if (binding != null)
 				{
-					activeCommands.Remove (command);
+					if (activeSequences.ContainsValue (binding))
+					{
+						foreach(KeyValuePair<ICommand, ICommandBinding> sequence in activeSequences)
+						{
+							if (sequence.Value == binding)
+							{
+								ICommand command = sequence.Key;
+								removeSequence (command);
+							}
+						}
+					}
 				}
 			}
 		}
 
-		private void failIf(bool condition, string message, CommandExceptionType type)
+		public void ReleaseCommand (ICommand command)
 		{
-			if (condition)
+			if (command.retain == false)
 			{
-				throw new CommandException(message, type);
+				if (activeCommands.Contains(command))
+				{
+					activeCommands.Remove (command);
+				}
+				else if (activeSequences.ContainsKey(command))
+				{
+					ICommandBinding binding = activeSequences [command];
+					object data = command.data;
+					activeSequences.Remove (command);
+					next (binding, data, command.sequenceId + 1);
+				}
+			}
+		}
+
+		private void removeSequence(ICommand command)
+		{
+			if (activeSequences.ContainsKey (command))
+			{
+				command.Cancel();
+				activeSequences.Remove (command);
 			}
 		}
 

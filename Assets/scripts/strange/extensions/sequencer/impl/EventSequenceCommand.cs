@@ -17,12 +17,7 @@
 /**
  * @class strange.extensions.sequencer.impl.EventSequenceCommand
  * 
- * A subclass of SequenceCommand which injects an IEvent and a Dispatcher.
- * 
- * EventSequenceCommand extends SequenceCommand to provide access 
- * to EventDispatcher as the common system bus. SequenceCommands
- * which extend EventSequenceCommand will automatically inject 
- * the source IEvent.
+ * @deprecated
  */
 
 using System;

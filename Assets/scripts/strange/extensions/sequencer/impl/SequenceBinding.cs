@@ -17,7 +17,7 @@
 /**
  * @class strange.extensions.sequencer.impl.SequenceBinding
  * 
- * The binding for use with the Sequencer. 
+ * @deprecated
  */
 
 using System;

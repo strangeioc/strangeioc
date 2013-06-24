@@ -19,9 +19,10 @@
  * 
  * Defines the form of a Binding for use with the CommandBinder. 
  * 
- * The only real distinction between CommandBinding and Binding
- * is the addition of `Once()`, which signals that the Binding
- * should be destroyed immediately after a single use.
+ * The only real distinctions between CommandBinding and Binding
+ * are:
+ * - the addition of `Once()`, which signals that the Binding should be destroyed immediately after a single use.
+ * - a marker for running multiple commands in parallel (default) or sequentially.
  */
 
 using System;
@@ -36,6 +37,16 @@ namespace strange.extensions.command.api
 
 		/// Get/set the property set to `true` by `Once()`
 		bool isOneOff{ get; set;}
+
+		/// Declares that the bound commands will be run in parallel.
+		/// Parallel is the default. There is no need to call this unless you're changing from sequence.
+		ICommandBinding InParallel();
+
+		/// Declares that the bound commands will be run as a sequence, rather than in parallel
+		ICommandBinding InSequence ();
+
+		/// Get/set the propterty set by InSequence() and InParallel()
+		bool isSequence{ get; set;}
 
 		new ICommandBinding Key<T>();
 		new ICommandBinding Key(object key);

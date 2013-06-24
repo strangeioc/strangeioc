@@ -17,7 +17,7 @@
 /**
  * @class strange.extensions.sequencer.impl.SequencerException
  * 
- * An exception thrown by the Sequencer.
+ * @deprecated
  */
 
 using System;

@@ -1,9 +1,9 @@
 using System;
-using strange.extensions.sequencer.impl;
+using strange.extensions.command.impl;
 
 namespace strange.unittests
 {
-	public class SequenceInterruptingCommand : SequenceCommand
+	public class FailCommand : Command
 	{
 		public override void Execute ()
 		{
