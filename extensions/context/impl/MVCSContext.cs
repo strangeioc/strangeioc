@@ -177,8 +177,6 @@ namespace strange.extensions.context.impl
 {
 	public class MVCSContext : Context
 	{
-		/// The GameObject at the top of this Context's hierarchy
-		new public GameObject contextView{get;set;}
 
 		/// A Binder that handles dependency injection binding and instantiation
 		public IInjectionBinder injectionBinder{get;set;}
