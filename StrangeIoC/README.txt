@@ -15,23 +15,57 @@
  
 
 StrangeIoC v0.51
+
+1.0 CONTENTS
 This directory contains the following:
 
-1. LICENSE-2.0.txt
+1.1 LICENSE-2.0.txt
 The full Apache 2 license under which this software is released.
 
-2. README.txt
+1.2 README.txt
 This readme.
 
-3. scripts
+1.3 scripts
 The actual StrangeIoC code. This is the only bit you actually require in order to use Strange. scripts contains two folders:
- a. framework
+ 1.3a framework
  The core files that allow binding.
- b. extensions
+ 1.3b extensions
  All other StranceIoC functionalities, such as injection and event dispatch.
 
-4. docs
+1.4 docs
 Full documentation, including an overview, developer's manual, class library documentation, and more.
 
-5. examples
+1.5 examples
 Example scenes to help you start using StrangeIoC.
+
+
+
+2.0 QUICK START
+
+2.1 Quick start to try the examples
+
+Create a new Unity project.
+
+ - If you downloaded from the Unity Asset Store, import the download AND UNCHECK THE 'DOCS' FOLDER.
+
+ - If you pulled from GitHub, copy the StrangeIoC directory into your new project's Assets folder. THEN DELETE THE 'DOCS' FOLDER.
+
+In your new project, open Assets > StrangeIoC > examples > Assets > scenes > multiple contexts. Double-click on the scene 'main'.
+
+Go to File > Build Settings… . Click 'Add Current'.
+
+Open the remaining scenes, game, social and TestView (in scenes > myfirstproject). In each one, click 'Add Current' to add the scene to the project.
+
+You can now run 'TextView' or 'main' to see how they work. Then open the solution in MonoDevelop to walk through the code.
+
+2.2 Quick start to add StrangeIoC to your project
+
+ - If you downloaded from the Unity Asset Store, import the download AND UNCHECK EVERYTHING EXCEPT StrangeIoC > scripts.
+
+- If you pulled from GitHub, copy the StrangeIoC directory into your project's Assets folder. THEN DELETE EVERYTHING EXCEPT StrangeIoC > scripts.
+
+You're good to go.
+
+3.0 Documentation
+
+There's documentation in the docs folder. To make sure you've seen the latest, go to our site: http://thirdmotion.github.io/strangeioc/index.html
