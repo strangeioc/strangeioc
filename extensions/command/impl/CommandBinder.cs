@@ -128,6 +128,7 @@ namespace strange.extensions.command.impl
 		virtual protected ICommand invokeCommand(Type cmd, ICommandBinding binding, object data, int depth)
 		{
 			ICommand command = createCommand (cmd, data);
+			command.sequenceId = depth;
 			trackCommand (command, binding);
 			executeCommand (command);
 			return command;
