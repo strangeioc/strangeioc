@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Overview - StrangeIoC by ThirdMotion</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+    
+      <header>
+      <h1><a href="./index.html">StrangeIoC</a></h1>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/thirdmotion/strangeioc">View the Project on GitHub <small>thirdmotion/strangeioc</small></a></p>
+        <ul>
+          <li><a href="https://github.com/thirdmotion/strangeioc/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://TODO">Coming Soon!  <strong>Unity Store</strong></a></li>
+          <li><a href="https://github.com/thirdmotion/strangeioc">View on <strong>GitHub</strong></a></li>
+        </ul>
+        <p class="view"><a href="./exec.html">Overview</a> (why you want to get Strange)</p>
+        <p class="view"><a href="./docs/html/index.html">Docs</a> (Doxygen-generated)</p>
+        <p class="view"><a href="./TheBigStrangeHowTo.html">The Big, Strange How-To</a> (developer manual)</p>
+        <p class="view"><a href="./faq.html">FAQ</a></p>
+        <p class="view">Use Robotlegs? <a href="./rl.html">This is for you</a>!</p>
+        <p class="view"><a href="http://github.com/thirdmotion/strangeioc/wiki">Strange Wiki</a></p>
+      </header>
+      <section>
+       
+<img src="img/logo.png" alt="StrangeIoC" />
+ <blockquote>This is a high-level introduction to StrangeIoC, a binding framework supporting Dependency Injection written especially for use with C# and Unity. Mostly, it&rsquo;s a defense of Inversion-of-Control and the principle of employing decoupled architecture.</p>
+ <p>This article is about <strong>why</strong> you want to use Strange. For tutorials and more complete documentation on <strong>how</strong> to use Strange, <a href="./index.html">click here</a>.</blockquote>
+ <h2><a name="when-bad-code-happens-to-good-programmers" href="#when-bad-code-happens-to-good-programmers"></a>When bad code happens to good programmers</h2>
+ <p>I once worked at a company full of great engineers. Smart folks. Lots of experience. Dreadful code. No, really, this company full of smart, experienced engineers produced the worst code library I&rsquo;d ever seen — an unremitting snarl of interdependent spaghetti. At the time, I imagined many reasons for this oozing canker of a codebase. Management rushed out product before it was ready. Producers were driven like whipped and panicked huskies to show short-term results. Development was on a platform unfamiliar to much of the team, and there was never enough time to refactor. On top of it all, this creaky, fragile codebase was shared between multiple, slightly different, products. It seemed self-evident that the failure lay not in myself nor in my colleagues, but in external forces beyond our control.</p>
+ <p>In the thick of this impossibly depressing quagmire I dreamed up a utility I termed a scaffold: a mapping system to provide dependencies as-needed at runtime. I hoped that the scaffold would decouple much of the spaghetti and allow for the product variations our shared codebase demanded. Alas, while the idea was sound enough, it was too little, too late to save the struggling project which rapidly approached a degree of technical debt from which it would never recover. But a friend and fellow engineer looking over my scaffold concept asked me if I knew about an Inversion-of-Control framework called Robotlegs? I had to admit that I didn&rsquo;t know Robotlegs, nor even what Inversion-of-Control meant. &ldquo;Oh,&rdquo; he replied, &ldquo;It&rsquo;s what you&rsquo;re doing. It&rsquo;s just that Robotlegs does it right.&rdquo;</p>
+ <h2><a name="the-segfault-in-our-stars" href="#the-segfault-in-our-stars"></a>Standing on our own Legs</h2>
+ <p>Once I looked at <a href="http://robotlegs.org">Robotlegs</a>, I began to understand what my friend meant. My scaffold was in many senses naive; caught up as I was in our specific interdependency struggle, I failed to see the bigger picture. And while I was for practical purposes engaging in Inversion-of-Control (IoC) and a design pattern known as Dependency Injection (DI), those concepts were too novel to me at the time to grasp their significance. The core principle of IoC is simple: abstract the dependencies between code modules and then satisfy those dependencies at runtime. &ldquo;Uncle&rdquo; Bob Martin describes the benefits this way:</p>
+ <blockquote>
+   <p>&ldquo;The principle of dependency inversion is at the root of many of the benefits claimed for object-oriented technology. Its proper application is necessary for the creation of reusable frameworks. It is also critically important for the construction of code that is resilient to change. And, since the abstractions and details are all isolated from each other, the code is much easier to maintain.&rdquo;</p>
+ </blockquote>
+ <p>This &ldquo;inversion&rdquo; expresses the idea that, instead of a class declaring &ldquo;I need a thing&rdquo;, some other actor tells it &ldquo;here is what you need.&rdquo; Dependency Injection is the process by which a special class (the Injector) provides the things that the other classes need.</p>
+ <p>&ldquo;But&rdquo;, you might argue, &ldquo;I already practice good Object-Oriented programming. My code is DRY. I follow the KISS and single-responsibility principles. I program to interfaces. I know classic design patterns and anti-patterns. Why would I need anything else?&rdquo;</p>
+ <p>Here&rsquo;s an example why:</strong></p>
+ <p>Let's say you have a single-player game that connects to Facebook. Every time the game is over and you score a personal best, it wants to prompt you to send a post to the player's Facebook wall. In a classic Unity setup, you might send a score update to a FacebookService like so:</p>
+ <pre class="prettyprint">public class MyShip : MonoBehaviour
+ {
+     private FacebookService facebook;
+     private int myScore;
+     
+     void Awake()
+     {
+          facebook = FacebookService.getInstance();
+     }
+     
+     void onDie()
+     {
+          if (score &gt; highScore)
+               facebook.PostScore(myScore);
+     }
+}</pre>
+ <p>There are at least two big problems with this simple code snippet. First, the ship itself is acting as a controller. By telling the FacebookService that it wants to post, it tightly couples itself both to the game logic and to the FacebookService. Second, the FacebookService itself is written as a Singleton. What if the design changes and we need to post to Twitter...or Google+...or even the user&rsquo;s choice of social site? What if the logic of Facebook's terms of service changes? What if the game suddenly became two-player? If all your code were written like the above, you'd have a lot of refactoring to do. You might even conclude that it was easier to throw it away and start over.</p>
+ <p>With IoC, you'd write this very differently:</p>
+ <pre class="prettyprint">public class MyShip : MonoBehaviour
+{
+   void onDie()
+   {
+      dispatcher.Dispatch(GameEvent.SHIP_DEAD);
+   }
+}</pre>
+ <p>Notice how we've removed any reference to logic. The view has done something that precipitated death, that's all it needs to know. It sends a message. Somewhere else (the view doesn't know or care where), the logic that governs what to do about that death is handled. Specifically, it's handled by a Command, which looks like this:</p>
+ <pre class="prettyprint">public class OnShipDeathCommand : EventCommand
+{
+   [Inject]
+   ISocialService socialService{get; set;}
+   
+   [Inject]
+   IScoreModel scoreModel{get; set;}
+   
+   override public void Execute()
+   {
+      if (scoreModel.score &gt; scoreModel.highScore)
+         socialService.PostScore(scoreModel.score);
+   }
+ }</pre>
+ <p>Notice the [Inject] tags, which are tied to Interfaces, not concrete classes. By <em>injecting</em> classes that satisfy Interfaces, rather than declaring the classes themselves, we remove any dependencies that force this part of the code to expect a Facebook, Twitter or Google+ class. It simply knows that there's some  social service to which it can post.</p>
+ <p>And to answer the question of what gets concretely bound, there's a single, central class called a Context:</p>
+ <pre class="prettyprint">#if UNITY_ANDROID
+injectionBinder.Bind&lt;ISocialService&gt;().To&lt;GoogleService&gt;().AsSingleton();
+#else
+injectionBinder.Bind&lt;ISocialService&gt;().To&lt;FacebookService&gt;().AsSingleton();
+#endif
+//...or...
+//injectionBinder.Bind&lt;ISocialService&gt;().To&lt;MultiServiceResolver&gt;().AsSingleton();</p>
+
+injectionBinder.Bind&lt;IScoreModel&gt;().To&lt;ScoreModel&gt;().AsSingleton();
+commandBinder.Bind(GameEvent.SHIP_DEAD , OnShipDeathCommand);</pre>
+ <p>See how easily we can swap between Facebook, Google+ or anything else? With IoC, there's no need to bind anything concretely. Also notice how we never need to write a Singleton. We simply <em>map</em> it. Writing your code so that it <em>has</em> to be a Singleton  presumes that <em>it can never be anything else</em>. IoC moves you away from this limitation. We've also bound the event the Ship fires to the Command that runs the logic. Each piece is isolated, modular and portable. By binding, instead of coupling, code remains flexible and highly maintainable.</p>
+ <p>We&rsquo;ve even snuck in an example of dynamic binding based on platform. You can readily imagine other powerful use cases. </p>
+ <h2><a name="the-robot-dances" href="#the-robot-dances"></a>The Robot dances</h2>
+ <p> Robotlegs took the IoC principle and built on top of it a small but crazy useful micro-framework that paired IoC with a common event bus (so communication may be global) and a few basic patterns. Provided a team followed a handful of fairly simple rules (such as writing to interfaces), this effectively isolated controls and eliminated much of the confusion about where to put things and how to build them. This in turn removes lots of grunt work and frees developers to concentrate on more interesting and important tasks. It is not too hyperbolic a statement to say that understanding IoC/Dependency Injection was as profound for me as was my introduction to Object-Oriented Programming. Since the day my friend mocked my scaffold, it has fundamentally shifted the way I approach coding.</p>
+ <h2><a name="unity-its-time-to-get-strange" href="#unity-its-time-to-get-strange"></a>Unity: it&rsquo;s time to get Strange</h2>
+ <p>When ThirdMotion started using C# and Unity3D, we were surprised to find no serious IoC framework available for Unity. After a couple of projects in which our standard code libraries began to take shape, we formalized our in-house framework and decided to share it with the entire Unity community.</p>
+ <p>StrangeIoC is a super-lightweight and highly extensible Inversion-of-Control framework, written specifically for C# and Unity. We&rsquo;ve validated Strange on web,  standalone, and iOS (Android forthcoming). It contains the following features, most of which are optional:</p>
+ <ul>
+   <li>A core binding framework that pretty much lets you bind one or more of anything to one or more of anything else.</li>
+   <li>Dependency Injection
+     <ul>
+       <li>Map as singleton, value or factory (get a new instance each time you need one)</li>
+       <li>Name injections</li>
+       <li>Perform constructor or setter injection</li>
+       <li>Tag your preferred constructor</li>
+       <li>Tag a method to fire after construction</li>
+       <li>Inject into MonoBehaviours</li>
+       <li>Bind polymorphically (bind any or all of your interfaces to a single concrete class)</li>
+     </ul>
+   </li>
+   <li>Reflection binding dramatically reduces overhead of employing reflectivity</li>
+   <li>A shared event bus
+     <ul>
+       <li>Dispatch events to any point in your application</li>
+       <li>Map local event bus for local communication</li>
+       <li>Map events to Command or Sequence classes to separate business logic</li>
+     </ul>
+   </li>
+   <li>MonoBehaviour mediation
+     <ul>
+       <li>Facilitate separation of a view from the application using it</li>
+       <li>Isolate Unity-specific code  from the rest of the app</li>
+     </ul>
+   </li>
+   <li>Optional MVCS (Model/View/Controller/Service) structure</li>
+   <li>Multiple contexts
+     <ul>
+       <li>Allow subcomponents (separate Scenes) to function on their own, or in the context of larger apps.</li>
+       <li>Allow communication between contexts.</li>
+     </ul>
+   </li>
+   <li>Don&rsquo;t see what you need? The core binding framework is simple to extend. Build new Binders like:
+     <ul>
+       <li>A different type of dispatcher, like AS3-Signals</li>
+       <li>An entity framework</li>
+       <li>A multi-loader</li>
+     </ul>
+   </li>
+ </ul>
+ <p>In addition to organizing your project into a sensible structure, Strange offers the following benefits:</p>
+ <ul>
+   <li>Designed to play well with Unity3D. Also designed to play well without it.</li>
+   <li>Separate UnityEngine code from the rest of your app.
+     <ul>
+       <li>Improves portability</li>
+       <li>Improves unit testability</li>
+     </ul>
+   </li>
+   <li>A common event bus makes information flow easy and highly decoupled. (Note: Unity&rsquo;s SendMessage method does this, of course, but it&rsquo;s dangerous as all get-out. I may write a whole article on just this topic at some point.)</li>
+   <li>The extensible binder really is amazing (a friend used to tell me &ldquo;it&rsquo;s good to like your own cookin&rsquo;!&rdquo;). The number of things you can accomplish with the tiny core framework would justify Strange all on its own.</li>
+   <li>Multiple contexts allow you to &ldquo;bootstrap&rdquo; subcomponents so they operate fine either on their own or as an integrated part. This can hugely speed up your development process and allow developers to work in isolation, then integrate in later stages of development.</li>
+   <li>Get rid of platform-specific #IF...#ELSE constructs in your code. IoC allows you to write whole concrete implementations correctly, then bind the ones you want to use at compile time or at run time. (As with other forms of binding, #IF...#ELSE clauses can be isolated into a single class and away from the rest of your code.)</li>
+   <li>Comes with two simple example projects to walk through.</li>
+ </ul>
+ <h2><a name="binding-it-all-up" href=#binding-it-all-up"></a>Binding it all up</h2>
+ <p>They say generals are always fighting the last war. In a way, I guess that's what I'm doing here: fixing the problems that so beset the team I described at the top of this post. IoC leads to minimized interdependency — less spaghetti. A standardized, unified design pattern leads to less confusion as to where things go and why. A common event bus means never having to figure out how a message will travel from point-to-point. View mediation separates the volatile display code from the intricacies of how and where data is processed and stored.</p>
+ <p>In writing this first public release of Strange (v0.5), we&rsquo;ve  focused on flexibility, both in the framework itself and for you, and on the structures that make the most of  IoC. We&rsquo;ve probably missed a lot, and doubtless some aspects will need improvement. But overall we believe we&rsquo;ve delivered a powerful new tool to the Unity community, one which we&rsquo;ve seen bear out to astonishing effect in other environments. As Unity3D is exploding just now, we hope the release of a simple micro-framework that encourages rapid, organized development by engineers of radically different styles and abilities will be a useful addition to the available tool chest.</p>
+ <p>I hope you use Strange and find it worthy of all my claims. I hope to hear from you with lots of Strange ideas and Strange insights. Happy coding!</p>
+ <p>Follow StrangeIoC on <a href="https://twitter.com/strangeioc">Twitter</a> and <a href="http://www.facebook.com/strangeioc">Facebook</a>.</p>
+ <h3>&nbsp;</h3>
+      </section>
+      <footer>
+      	<p><small>StrangeIoC is a project by <a href="http://thirdmotion.com">ThirdMotion, Inc</a>.</small></p>
+        <p><small>&copy; 2013. Third Motion, Inc.</small></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>

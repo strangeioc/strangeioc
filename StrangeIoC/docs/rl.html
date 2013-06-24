@@ -1,0 +1,323 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Intro for users of Robotlegs - StrangeIoC by ThirdMotion</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+    
+      <header>
+      <h1><a href="./index.html">StrangeIoC</a></h1>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/thirdmotion/strangeioc">View the Project on GitHub <small>thirdmotion/strangeioc</small></a></p>
+        <ul>
+          <li><a href="https://github.com/thirdmotion/strangeioc/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://TODO">Coming Soon! <strong>Unity Store</strong></a></li>
+          <li><a href="https://github.com/thirdmotion/strangeioc">View on <strong>GitHub</strong></a></li>
+        </ul>
+        <p class="view"><a href="./exec.html">Overview</a> (why you want to get Strange)</p>
+        <p class="view"><a href="./docs/html/index.html">Docs</a> (Doxygen-generated)</p>
+        <p class="view"><a href="./TheBigStrangeHowTo.html">The Big, Strange How-To</a> (developer manual)</p>
+        <p class="view"><a href="./faq.html">FAQ</a></p>
+        <p class="view">Use Robotlegs? <a href="./rl.html">This is for you</a>!</p>
+        <p class="view"><a href="http://github.com/thirdmotion/strangeioc/wiki">Strange Wiki</a></p>
+      </header>
+      <section>
+        <h3>
+<img src="img/logo.png" alt="StrangeIoC" /></h3>
+        <blockquote>
+   <p>&ldquo;I really like it! I recognize a well-thought-out API when I see it.&rdquo;<br>
+     - Till Schneidereit, Author of <a href="https://github.com/tschneidereit/SwiftSuspenders">Swiftsuspenders</a>, member of the <a href="https://github.com/mozilla/shumway">Shumway</a> team</p></blockquote>
+     
+<blockquote>
+   <p>@StrangeIoC I dig the &quot;bind everything&quot; concept.<br>
+     - Shaun Smith, Author of <a href="http://www.robotlegs.org/">Robotlegs</a> </p>
+</blockquote>
+        <h1>StrangeIoC: An introduction for users of Robotlegs</h1>
+        <p>So you know <a href="http://www.robotlegs.org/">Robotlegs</a>? Come on in, stroll around the place. It should look pretty familiar. Strange of course, but familiar. That&rsquo;s because StrangeIoC, while not a port of Robotlegs, was heavily inspired by that framework.</p>
+        <p>If you&rsquo;ve landed here and don&rsquo;t understand what I&rsquo;m talking about, let me sum up: <strong>Robotlegs</strong> is a spectacularly useful Inversion-of-Control micro-framework for Actionscript 3, the coding language that underpins Adobe Flash. If you still don&rsquo;t know what I&rsquo;m on about, you might want to check out today&rsquo;s <a href="http://www.xkcd.com">XKCD</a>. It probably has nothing to do with anything we&rsquo;re discussing, but it&rsquo;s probably very funny.</p>
+        <p>For those still with me, this article is intended to be a fast-track for those who don&rsquo;t need an explanation of concepts like <a href="http://en.wikipedia.org/wiki/Dependency_injection">Dependency Injection</a>, <a href="http://en.wikipedia.org/wiki/Inversion_of_control">Inversion-of-Control</a>, <a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC</a>, etc. It also assumes you know at least a bit about Unity and programming in C#. If you liked the structure and dependency decoupling Robotlegs offered, you should like Strange (always assuming I&rsquo;ve done my job). Basically, I want to explain what will look familiar, and what&rsquo;s different.</p>
+        <h2>Getting Strange</h2>
+        <p>At first glance, Strange looks a lot like Robotlegs. A lot of concepts have survived more-or-less intact. I&rsquo;ll go through these, explaining where I&rsquo;ve made changes and why.</p>
+        <h3>ContextView</h3>
+        <p>The top-level GameObject is called the <strong>ContextView</strong>, just like the top-level Sprite in RL. It&rsquo;s injectable at various points around the app. Unfortunately, while Flash enforced the principle that everything was attached to the top-level object, Unity has no such mechanism. Unity also doesn&rsquo;t have Event bubbling, which was a critical element of how Views alerted Contexts to their existence. I&rsquo;ll talk more about the latter problem under Views &amp; Mediators. </p>
+        <p>Despite these problems, you can more-or-less think of the ContextView as being the same as the one in Flash. Note that there is a ContextView class — a &quot;<strong>Mediator</strong>&quot; (a Monobehaviour, actually) — that you manually attach to your GameObject to declare that it is the ContextView. Instantiating the <strong>Context</strong> from a subclass of ContextView requires just two lines of code, which you probably want in the <code>Awake()</code> method:</p>
+         <pre class="prettyprint">context = new MyContext(this, true);
+context.Start();</pre>
+        <h3>Context</h3>
+        <p>Just like RL, the Context is where you map your dependencies. If your Context is a subclass of <strong>MVCSContext</strong> (which I highly recommend, at least to start), the cast of characters will seem pretty familiar:</p>
+        <ul>
+          <li>
+            <p><strong>injectionBinder</strong> (instance of <strong>InjectionBinder</strong>)</p>
+          </li>
+          <li>
+            <p><strong>dispatcher</strong> (instance of <strong>EventDispatcher</strong>)</p>
+          </li>
+          <li>
+            <p><strong>commandBinder</strong> (instance of <strong>CommandBinder</strong>)</p>
+          </li>
+          <li>
+            <p><strong>sequencer</strong> (instance of <strong>Sequencer</strong>)</p>
+          </li>
+          <li>
+            <p><strong>mediationBinder</strong> (instance of <strong>MediationBinder</strong>)</p>
+          </li>
+        </ul>
+        <p>Now the thing that will probably stand out for you here is that one oft-repeated word: &lsquo;<strong>Binder</strong>&rsquo; (even the ones not so-named are Binders). The reason for that word is that Strange starts from a slightly different perspective than other IoC systems, including Robotlegs, in that it sees all forms of decoupling as merely varied types of a collection called Binder. A Binder in Strange is simply a dictionary of <strong>Bindings</strong>, which in turn are nothing more than a set of three lists with some relationship to each other. These lists are <strong>Key</strong>, <strong>Value</strong> and <strong>Name</strong>. It turns out that every Binding RL did, and a whole lot more besides, can be accomplished with this simple structure. For example, an EventDispatcher is nothing but a <em>Key</em> (the Event) that triggers <em>Values</em> (the callbacks). A Dependency Injector is little more than a <em>Key</em> (the interface or superclass) that resolves to a <em>Value</em> (the concrete or derived class) with the option of a <em>Name</em> (for named injections). All the components in Strange are built on this principle.</p>
+        <p>Notwithstanding the above difference the effect is very similar to what you&rsquo;re already used to. There are some syntactic differences, though, because C# supports generics and we want to take that into account. Here&rsquo;s a list of bindings (mappings) that should look pretty familiar.</p>
+        <h4>Injector Bindings</h4>
+        <p>Basic <strong>factory binding</strong>, Interface to Concrete class.</p>
+         <pre class="prettyprint">injectionBinder.Bind&lt;IMyInterface&gt;().To&lt;MyImplementation&gt;();</pre>
+        <p><strong>Map to Singleton</strong>:</p>
+        <pre class="prettyprint">injectionBinder.Bind&lt;IMyInterface&gt;()
+        .To&lt;MyImplementation&gt;()
+        .ToSingleton();</pre>
+        <p><strong>Map to value</strong>, note how the value does not use the generic brackets:</p>
+        <pre class="prettyprint">injectionBinder.Bind&lt;IMyInterface&gt;().ToValue(new MyImplementation());</pre>
+        <p><strong>Named injection 1</strong>. Name with a constant or Enum (non-generic):</p>
+        <pre class="prettyprint">injectionBinder.Bind&lt;IMyInterface&gt;()
+        .To&lt;MyImplementation&gt;()
+        .ToName(MyEnum.ONE);</pre>
+        <p><strong>Named injection 2</strong>. Name with a marker class (generic)...do you see how whenever we bind to a class we use generics?</p>
+        <pre class="prettyprint">injectionBinder.Bind&lt;IMyInterface&gt;()
+        .To&lt;MyImplementation&gt;()
+        .To&lt;MyMarkerClass&gt;ToName();</pre>
+        <p><strong>Polymorphous binding</strong>, multiple interfaces to a single implementation:</p>
+        <pre class="prettyprint">injectionBinder
+        .Bind&lt;IMyInterface&gt;()
+        .Bind&lt;IOtherInterface&gt;()
+        .To&lt;MyImplementation&gt;();</pre>
+        <p>We&rsquo;ll talk about<code> [Inject]</code> tags and the like a little further down.</p>
+        <h4>EventDispatcher bindings</h4>
+        <p>Just like in RL, we don&rsquo;t really do a lot of dispatcher mapping inside the context, but I&rsquo;ll discuss EventDispatcher here since it&rsquo;s one of the important pieces instantiated in the Context. First, note that, like most of Strange, use of the EventDispatcher is optional. You can subclass Context and set up a framework using a dispatcher you prefer (Unity-Signals anyone?). But the EventDispatcher works well here and will be pretty familiar. Also, it&rsquo;s probably worth noting that since our Events don&rsquo;t bubble, this dispatcher isn&rsquo;t quite as expensive as Flash&rsquo;s. Let&rsquo;s look at the mappings.</p>
+        <p><strong>Add a listener</strong>. Anything can be used as the event type. I recommend an Enum (EventMap below might be an Enum or a list of constants):</p>
+         <pre class="prettyprint">dispatcher.AddListener(EventMap.MY_EVENT, onSomeEvent);</pre>
+        <p>The handler must take either no arguments or a single argument like so:</p>
+         <pre class="prettyprint">private void onSomeEvent(IEvent evt)
+{ 
+	//do stuff.
+}</pre>
+        <p>A few important points here: <strong>IEvent</strong> is obviously the Event interface. For maximum decoupling, we use this instead of the concrete <strong>TmEvent</strong>. IEvent specifies three properties:</p>
+        <ul>
+          <li>
+            <p><strong>type</strong> - The Key of the event. Enum recommended, but can be anything.</p>
+          </li>
+          <li>
+            <p><strong>target</strong> - The dispatcher that dispatched the event.</p>
+          </li>
+          <li>
+            <p><strong>data</strong> - An arbitrary payload.</p>
+          </li>
+        </ul>
+        <p>Also note that C# won't let you identify an event by the term 'event' since it's a keyword. So use my 'evt' convention or come up with your own.</p>
+        <p><strong>Removing a listener</strong> is just what you&rsquo;d expect:</p>
+         <pre class="prettyprint">dispatcher.RemoveListener(EventMap.MY_EVENT, onSomeEvent);</pre>
+        <p>And we&rsquo;ve added a boolean convenience function (true to add, false to remove:</p>
+         <pre class="prettyprint">dispatcher.UpdateListener(true, Events.MY_EVENT, onSomeEvent);</pre>
+        <p>There are a number of options when <strong>dispatching</strong>.</p>
+        <p>Dispatch with null payload.</p>
+         <pre class="prettyprint">dispatcher.Dispatch(EventMap.MY_EVENT);</pre>
+        <p>Dispatch with payload.</p>
+         <pre class="prettyprint">dispatcher.Dispatch(EventMap.MY_EVENT, 42);</pre>
+        <p>Dispatch by providing the whole TmEvent explicitly:</p>
+         <pre class="prettyprint">TmEvent evt = new TmEvent
+         (EventMap.MY_EVENT, dispatcher, someVar);
+         dispatcher.Dispatch(evt);</pre>
+        <p>I&rsquo;ve not implemented priorities in dispatching, and, as I rarely used it, probably won&rsquo;t unless someone tells be it&rsquo;s desperately important. And as I&rsquo;ve noted already, bubbling doesn&rsquo;t really come into play.</p>
+        <p>A final word before I move on: there are three mappings for EventDispatcher in MVCSContext, each for a particular use:</p>
+        <ol>
+          <li>
+            <p>The context-wide dispatcher, mapped to the name <strong>ContextKeys.CONTEXT_DISPATCHER</strong>. Use this dispatcher as the event bus throughout your Context, just like RL.</p>
+          </li>
+          <li>
+            <p>The crossContextDispatcher dispatcher, mapped to the name <strong>ContextKeys.CROSS_CONTEXT_DISPATCHER</strong>. Use this dispatcher for communicating between contexts.</p>
+          </li>
+          <li>
+            <p>The <strong>local dispatcher</strong>, which isn&rsquo;t mapped to any name. Injecting this is useful for creating a new instance of EventDispatcher for use in highly local communication (as between a View and its Mediator).</p>
+          </li>
+        </ol>
+        <h4>Command and Sequence bindings</h4>
+        <p><strong>Command</strong> binding is a lot like the RL commandMap, but the <strong>Sequencer</strong> gives us an extra flavor to work with. Let&rsquo;s begin with binding an event to a Command.</p>
+         <pre class="prettyprint">commandBinder.Bind(EventMap.MY_EVENT).To&lt;MyCommand&gt;();</pre>
+        <p>Now we&rsquo;ll bind an event to several commands that fire in parallel.</p>
+         <pre class="prettyprint">commandBinder.Bind(EventMap.MY_EVENT).To&lt;MyFirstCommand&gt;()
+         .To&lt;MySecondCommand&gt;()
+         .To&lt;MyThirdCommand&gt;()
+         .To&lt;MyFourthCommand&gt;();</pre>
+        <p>Note that I&rsquo;m using the term &ldquo;in parallel&rdquo; a tad loosely. It&rsquo;s just a loop firing one after the other. But the Commands are assumed to be disconnected from one another and will all fire independently.</p>
+        <p>The Sequencer, on the other hand, gives us the ability to fire events serially. This is useful for setting up guards to stop a Command from firing if certain conditions aren&rsquo;t met, and for handling complex chains where a process must complete a step before continuing.</p>
+        <p>It won&rsquo;t surprise you that the syntax is identical:</p>
+         <pre class="prettyprint">sequencer.Bind(EventMap.MY_EVENT).To&lt;MyFirstCommand&gt;()
+         .To&lt;MySecondCommand&gt;()
+         .To&lt;MyThirdCommand&gt;()
+         .To&lt;MyFourthCommand&gt;();</pre>
+        <p>RL&rsquo;s one-off method is also supported in the form:</p>
+         <pre class="prettyprint">commandBinder.Bind(EventMap.MY_EVENT)
+         .To&lt;MyCommand&gt;().Once();
+         
+sequencer.Bind(EventMap.MY_EVENT)
+         .To&lt;MyCommand&gt;().Once();</pre>
+        <p>Which unmaps the binding as soon as the Command has fired.</p>
+        <h4>Mediation binding</h4>
+        <p>After everything you&rsquo;ve read so far, mediation binding will seem a dawdle:</p>
+         <pre class="prettyprint">mediationBinder.Bind&lt;MyView&gt;().To&lt;MyMediator&gt;();</pre>
+        <p>Just that simple. The only addition Strange supports is the option to bind multiple mediators. This allows the dynamic adding of Monobehaviours to your gameObjects.</p>
+         <pre class="prettyprint">mediationBinder.Bind&lt;MyView&gt;()
+         .To&lt;MyMediator&gt;()
+         .To&lt;MyOtherMediator&gt;();</pre>
+        <p>The Views in question extend Monobehaviour, as do the Mediators. We&rsquo;ll discuss all that when we come to the mediation section.</p>
+        <h3>Everything else Context</h3>
+        <p>Those are the components of the Context, but there are few other things to note.</p>
+        <h4>Where to map all those bindings?</h4>
+        <p>There&rsquo;s a method you can override called<code> mapBindings()</code>. Guess what it&rsquo;s for? There&rsquo;s also a <code>postBindings()</code> method in case you want to do anything after binding but before <code>Launch()</code>. MVCSContext uses <code>postBindings()</code> to process any Views which register early (before <code>mapBindings()</code> is called). Another obvious and useful case for this is to call <code>DontDestroyOnLoad(contextView)</code> inside <code>postBindings()</code>, in order to retain the contextView (and the Context!) when you load in a new scene.</p>
+        <h4>Launch()</h4>
+        <p>Launch fires a particular event: <strong>ContextEvent.START</strong>. Map a command to this event to fire your first Command.</p>
+        <h4>Does Strange support more than one context?</h4>
+        <p>No.</p>
+        <p>Nah, I&rsquo;m just messin&rsquo; with ya! Of course it does (which you&rsquo;d know if you&rsquo;d read carefully above). You can set up as many contexts as you like and they can be in the same Scene or different Scenes. the first Context to register has slightly special properties, though. It defines the <strong>crossContextDispatcher</strong> (CCD) which it shares with all the other contexts to provide communication. Once a context is listening to the CCD, you pick up CCD events on your own context&rsquo;s dispatcher. So while you dispatch to the CCD, you can choose to simply listen locally.</p>
+        <p>The other special thing about firstContext is, er <strong>firstContext</strong>. This is a static property (<code>Context.firstContext</code>) which is the Context of last resort for lost Views. I&rsquo;ll explain this more in the Mediation section; for now just know that it&rsquo;s there to help you.</p>
+        <h4>Anything else?</h4>
+        <p>I added a crazy feature...maybe not a good idea, but it seemed worthwhile, called <code>Context.GetComponent()</code>, which essentially allows you to ask for mappings out of the injectionBinder. This was useful when setting up cross-context communication, so I thought it might have other useful applications.</p>
+        <h3>Injection</h3>
+        <p>Let&rsquo;s talk about those marvelously injected classes. Unlike RL, which used the <strong>Swiftsuspenders</strong> injector, Strange has an injector of it&rsquo;s own. But if you&rsquo;re one of those people who feels they should roll their own, never fear; it&rsquo;s all abstracted so you could do just that.</p>
+        <p>Marking classes for injection is really straightforward if you&rsquo;re coming from Robotlegs. Here&rsquo;s a setter injection:</p>
+         <pre class="prettyprint">[Inject]
+public IMyDependency myDependency{get;set;}</pre>
+        <p>Notwithstanding a few C# syntactical differences, this is identical to the RL approach. You can inject things using the <code>[Inject]</code> metatag, but note that you must designate setters and getters, even if they&rsquo;re only stubs. Strange supports Setter injection and constructor injection, but not field injection.</p>
+        <p>You can also do a named injection. Here&rsquo;s an example with the name based on an Enum. I like this.</p>
+        <pre class="prettyprint">[Inject(SomeEnum.ONE)]
+public IMyDependency myDependency{get;set;}</pre>
+        <p>But you could also map a name to a marker class. The syntax ends up a little more convoluted.</p>
+         <pre class="prettyprint">[Inject(typeof(MyMarkerClass))]
+public IMyDependency myDependency{get;set;}</pre>
+        <p>Strange also supports the metatag <code>[PostConstruct]</code>.</p>
+         <pre class="prettyprint">[PostConstruct]
+public void postConstruct()
+{ 
+    //do stuff immediately after injection
+}</pre>
+        <p>Just like in Swiftsuspenders, you can tag as many PostConstruct methods as you like. I haven&rsquo;t yet implemented an ordering parameter, but I&rsquo;ll attempt to add that soon.</p>
+        <p>Now Constructors are a bit more complicated, especially since in C# (unlike in Actionscript) you can have more than one. because of this, I&rsquo;ve created a set of rules to determine which Constructor to use. It works like so:</p>
+        <ol>
+          <li>
+            <p>If there&rsquo;s only one constructor, use it.</p>
+          </li>
+          <li>
+            <p>If any constructor is marked with the <code>[Construct]</code> metatag, use that method for constructing.</p>
+          </li>
+          <li>
+            <p>If there are more than one, but none is marked with <code>[Construct]</code>, use the one with the fewest parameters.</p>
+          </li>
+        </ol>
+        <p><strong>IMPORTANT SAFETY TIP</strong>: <em>You can inject MonoBehaviours, but you can&rsquo;t Construct them</em>. MonoBehaviours have to go through <code>GameObject.AddComponent()</code> method. If you map one for instantiation as if it were a normal class, Strange will burn your village to the ground and jump up and down on the ashes. Or throw an error. Depends on its mood.</p>
+        <h3>Commands</h3>
+        <p>Ok, that&rsquo;s injection done and dusted, so let&rsquo;s talk about <strong>Commands</strong>. Again, this will look pretty familiar to you from RL. Here&rsquo;s a basic Command:</p>
+         <pre class="prettyprint">using strange.extensions.command.impl;
+using com.example.spacebattle.utils;
+namespace com.example.spacebattle.controller
+{
+    class StartGameCommand : EventCommand
+    {
+        [Inject] 
+        public ITimer gameTimer{get;set;}
+     
+        override public void Execute()
+        {
+            gameTimer.start(); 
+            dispatcher.dispatch(GameEvent.STARTED); 
+        }
+    }
+}</pre>
+        <p>In C#, &lsquo;using&rsquo; is like AS3 <code>import</code>, and we&rsquo;ve covered the tiny differences in injection. The rest of it is almost identical. Command automatically injects injectionBinder and commandBinder. <strong>EventCommand</strong>, which extends Command, automatically injects the context-wide dispatcher, and any IEvent that may have been involved in the Command&rsquo;s instantiation. One thing notably missing relative to Robotlegs is the injection of the ContextView. The key reason for this is that to do so would introduce a required dependency on Unity outside it's proscribed bounds. Essentially, I'm trying to keep Unity out of your code wherever possible, which improves both testability and portability. Of course you can still inject the ContextView yourself wherever you need it:</p>
+        <pre class="prettyprint">[Inject(ContextKeys.CONTEXT_VIEW)]
+public GameObject contextView{get;set;}</pre>
+        <p>You can also get access to other useful components:</p>
+         <pre class="prettyprint">[Inject]
+public IMediationBinder mediationBinder{get;set;}</pre>
+         <pre class="prettyprint">[Inject(ContextKeys.CROSS_CONTEXT_DISPATCHER)]
+public IEventDispatcher crossContextDispatcher{get;set;}</pre>
+         <pre class="prettyprint">[Inject]
+public ISequencer sequencer{get;set;}</pre>
+        <p>And of course anything else you see fit to inject.</p>
+        <p>By default a Command is garbage collected as soon as Execute() completes, but you can hold it around if necessary for async operations by using <code>Retain()</code>/<code>Release()</code>.</p>
+         <pre class="prettyprint">using strange.extensions.command.impl;
+using com.example.spacebattle.utils;
+namespace com.example.spacebattle.controller
+{
+    class StartGameCommand : EventCommand
+    {
+        [Inject] public IService server{get;set;}
+        
+        override public void Execute() 
+        { 
+            Retain(); 
+            server.dispatcher.AddListener
+                (ServerEvent.COMPLETE, onComplete); 
+            server.call();
+        }
+
+        private void onComplete(IEvent evt) 
+        { 
+            //remember to remove listeners!!! 
+            server.dispatcher.RemoveListener
+                (ServerEvent.COMPLETE, onComplete); 
+            //Do something with the result
+            Release();
+        }
+    }
+}</pre>
+        <p>Be sure to clean up your listeners and call <code>Release()</code>, or the Command will not be garbage collected.</p>
+        <h3>Sequences</h3>
+        <p>Everything you&rsquo;ve just read for Commands applies to <strong>Sequences</strong> as well. There are just a couple differences. First all Sequence Commands must implement the Interface <strong>ISequenceCommand</strong> (or just extend <strong>SequenceCommand</strong> or EventSequenceCommand). Second, as a result of that implementation, SequenceCommands come with an added method: <code>BreakSequence()</code>. If this method is called in any SequenceCommand, the chain is broken and the remainder of the Sequence will be abandoned.</p>
+        <h3>Views and Mediation</h3>
+        <p><strong>Views</strong> and <strong>Mediators</strong> both extend MonoBehaviour, which means that when running in the Unity IDE you can actually look at and tweak public properties, even at runtime. The principle of these two classes is much the same as it is in Robotlegs: the View controls the UI, while the Mediator bridges communication between the View and the rest of the app. There are a few important differences to note, however.</p>
+        <h4>Events don&rsquo;t bubble</h4>
+        <p>I touched briefly on this before. In RL, the bubbling <code>ADDED_TO_STAGE</code> event was used to capture, track and mediate views when they appeared. Unity has no such mechanism (and I deplore the use of <code>SendMessage</code>) which left me looking for another approach. The one I settled on was a sort of &ldquo;manual bubbling&rdquo;. Whenever a View fires its <code>Awake()</code> or <code>Start()</code> method, (they&rsquo;re Monobehaviours, remember) it traverses the Transform tree, looking for a ContextView. If it finds one, it registers with the Context and receives whatever mediation to which it might be mapped.</p>
+        <p>In this manner, Views should ordinarily find the Context to which they belong.</p>
+        <p>However, since the top of a Unity app is not a GameObject with a MonoBehaviour attached, it is possible for this bubbling to fail. I.e., if you set the View in the scene, not attached to any GameObject, there&rsquo;s nothing to bubble to. In this case, the View will look for <strong>firstContext</strong> (remember where I mentioned that above?). If it finds firstContext, it will add itself to that.</p>
+        <h4>You can inject into Views</h4>
+        <p>Unlike RL, which forced you into a curious workaround to inject into Views, I&rsquo;ve decided to allow this. RL&rsquo;s reasoning is perfectly sound (at least as I understand it): Views are meant to be insulated from the rest of the app. Therefore injection might be seen as a bad practice. But a colleague convinced me that there are plenty of perfectly sensible cases where injection into Views makes sense, including a local dispatcher to communicate with the Mediator and injection of pure-view config files. My job, ultimately, is to provide you with tools. I strongly urge you to use those tools wisely, but I&rsquo;m not your mother.</p>
+        <p>In fact, I&rsquo;m sooo not your mother I even provided you with <strong>EventView</strong>, which injects a local EventDispatcher, just the right size for dispatching to its own Mediator.</p>
+        <h4>Mediators as MonoBehaviours</h4>
+        <p>I initially made Mediators extend Monobehaviour because it created an easy place to store them: on the same GameObject as the View. But having them be actual MonoBehaviours is actually quite useful. For instance, access to gameObject, <code>Update()</code>, <code>FixedUpdate()</code>, <code>Coroutine</code>, etc., give the Mediator a little power to know about the View and about the app at large.</p>
+        <p>Mediator injects the ContextView, while <strong>EventMediator</strong> also injects the context-wide dispatcher. You can of course inject other dependencies, and the one you really MUST inject (if your Mediator is to be of any use) is the View itself:</p>
+         <pre class="prettyprint">[Inject]
+public DashboardView view {get;set;}
+
+override public void OnRegister()
+{
+    view.doPrettyFunnyExcitingEmotionallyMoistStuff();
+}</pre>
+        <h4>Views, Mediators and loading external scenes</h4>
+        <p>Probably the trickiest part of most any project is the marshalling of external assets. Using Strange doesn&rsquo;t change this, but it does present some particular touchpoints you&rsquo;ll want to be aware of.</p>
+        <p>First, as we&rsquo;ve already noted, the display tree in Unity is a little different than the one in Flash. If you load a Scene outside the display hierarchy of the ContextView, you might get into a muddle. The firstContext will of course pick up stragglers, but in a complex application this could get difficult. I strongly advise that you load and attach your scenes with appropriate care. Consider yourself warned! </p>
+        <p>The other difficulty is timing. Strange is very good at capturing Views as they appear (quite a bit of thought went into fallbacks to try and capture each View and place it in the correct Context), and its timing is very orderly; you know that the Context instantiates early, and you control the order of events, and also when things are placed on stage. But when an external scene loads that doesn&rsquo;t have a Context of its own, you need to make sure that the Views have appropriate time to register before continuing with other processes. This is generally nothing more than a single frame cycle, so pausing for an <code>Update()</code> after loading should do.</p>
+        <h3>Models and Services</h3>
+        <p>If you&rsquo;ve read this far, there&rsquo;s really nothing important to say about Models and Services. You already know how map them, to inject them, and to use them wisely.</p>
+        <h2>Something not at all Robotlegsy</h2>
+        <p>I mentioned at the top that Strange was all based on a collection called <strong>Binder</strong>. What I didn&rsquo;t really discuss was how simple and extensible this class is. Once I came to see all forms of decoupling as nothing more than variations on the Binder, a raft of possibilities opened up before me. I&rsquo;m reasonably convinced that there are a ton of use cases for Binders and that before long Strange developers will start finding great uses for them. I urge you to crawl through the core framework classes (there are only eight of them, and they&rsquo;re not long or hard to follow) and learn how to build new Binders yourself.</p>
+        <h2>That&rsquo;s it. You&rsquo;re now Strange like me.</h2>
+        <p>I can&rsquo;t tell you how much I appreciate you taking time to look at Strange. It&rsquo;s my job, but it&rsquo;s also been a labor of love. I hope you find Strange useful and accessible, and that it provides at least some of the advantages you had with Robotlegs. If you have any ideas, suggestions or corrections, if you want to buy me a whisky or tell me about some great project in which you&rsquo;re using Strange, please feel free to contact me through GitHub.</p>
+        <p>I look forward to Strange days ahead.</p>
+        <br>
+      </section>
+     <footer>
+      	<p><small>StrangeIoC is a project by <a href="http://thirdmotion.com">ThirdMotion, Inc</a>.</small></p>
+        <p><small>&copy; 2013. Third Motion, Inc.</small></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
