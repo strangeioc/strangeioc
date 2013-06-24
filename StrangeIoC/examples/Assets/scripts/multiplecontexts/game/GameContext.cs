@@ -48,7 +48,7 @@ namespace strange.examples.multiplecontexts.game
 			mediationBinder.Bind<EnemyView>().To<EnemyMediator>();
 			mediationBinder.Bind<ScoreboardView>().To<ScoreboardMediator>();
 			
-			sequencer.Bind(ContextEvent.START).To<StartAppCommand>().To<StartGameCommand>().Once();
+			commandBinder.Bind(ContextEvent.START).To<StartAppCommand>().To<StartGameCommand>().Once().InSequence();
 			
 			commandBinder.Bind(GameEvent.ADD_TO_SCORE).To<UpdateScoreCommand>();
 			commandBinder.Bind(GameEvent.SHIP_DESTROYED).To<ShipDestroyedCommand>();

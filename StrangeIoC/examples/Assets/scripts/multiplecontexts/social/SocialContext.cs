@@ -45,7 +45,7 @@ namespace strange.examples.multiplecontexts.social
 			commandBinder.Bind(ContextEvent.START).To<StartCommand>().Once();
 			commandBinder.Bind(SocialEvent.FULFILL_CURRENT_USER_REQUEST).To<CreateUserTileCommand>();
 				
-			sequencer.Bind(MainEvent.GAME_COMPLETE)
+			commandBinder.Bind(MainEvent.GAME_COMPLETE).InSequence()
 				.To<GameCompleteCommand>()
 				.To<CreateFriendListCommand>();
 			
