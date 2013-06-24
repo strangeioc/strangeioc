@@ -20,12 +20,12 @@ using System;
 using UnityEngine;
 using strange.extensions.context.api;
 using strange.extensions.context.impl;
-using strange.extensions.sequencer.impl;
+using strange.extensions.command.impl;
 using strange.extensions.dispatcher.eventdispatcher.impl;
 
 namespace strange.examples.multiplecontexts.game
 {
-	public class StartAppCommand : SequenceCommand
+	public class StartAppCommand : Command
 	{
 		[Inject(ContextKeys.CONTEXT_VIEW)]
 		public GameObject contextView{get;set;}

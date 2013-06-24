@@ -22,13 +22,12 @@ using System;
 using System.Collections;
 using UnityEngine;
 using strange.extensions.context.api;
-using strange.extensions.sequencer.api;
-using strange.extensions.sequencer.impl;
+using strange.extensions.command.impl;
 using strange.extensions.dispatcher.eventdispatcher.api;
 
 namespace strange.examples.multiplecontexts.social
 {
-	public class GameCompleteCommand : EventSequenceCommand
+	public class GameCompleteCommand : EventCommand
 	{
 		
 		[Inject(ContextKeys.CONTEXT_VIEW)]

@@ -19,12 +19,12 @@
 using System;
 using UnityEngine;
 using strange.extensions.context.api;
-using strange.extensions.sequencer.impl;
+using strange.extensions.command.impl;
 using strange.extensions.dispatcher.eventdispatcher.impl;
 
 namespace strange.examples.multiplecontexts.game
 {
-	public class StartGameCommand : SequenceCommand
+	public class StartGameCommand : Command
 	{
 		[Inject]
 		public IGameTimer timer{get;set;}
