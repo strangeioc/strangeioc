@@ -69,3 +69,8 @@ You're good to go.
 3.0 Documentation
 
 There's documentation in the docs folder. To make sure you've seen the latest, go to our site: http://thirdmotion.github.io/strangeioc/index.html
+
+4.0 Version history
+
+v0.5  - Initial public release
+v0.51 - Reorganized repo for simplicity/uniformity with Unity Asset Store. Deprecated Sequencer.
