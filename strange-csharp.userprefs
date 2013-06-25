@@ -5,10 +5,7 @@
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp-vs" expanded="True">
-            <Node name="References" selected="True" />
-            <Node name="Assets" expanded="True">
-              <Node name="scripts" expanded="True" />
-            </Node>
+            <Node name="Assets" selected="True" />
           </Node>
         </State>
       </Pad>
@@ -22,11 +19,7 @@
         <State selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True">
-          <Node name="Assembly-CSharp-vs" expanded="True">
-            <Node name="strange" expanded="True" />
-          </Node>
-        </State>
+        <State expanded="True" selected="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

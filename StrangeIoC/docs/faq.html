@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>FAQ - StrangeIoC by ThirdMotion</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+    
+      <header>
+      <h1><a href="./index.html">StrangeIoC</a></h1>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/thirdmotion/strangeioc">View the Project on GitHub <small>thirdmotion/strangeioc</small></a></p>
+        <ul>
+          <li><a href="https://github.com/thirdmotion/strangeioc/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://TODO">Coming Soon!  <strong>Unity Store</strong></a></li>
+          <li><a href="https://github.com/thirdmotion/strangeioc">View on <strong>GitHub</strong></a></li>
+        </ul>
+        <p class="view"><a href="./exec.html">Overview</a> (why you want to get Strange)</p>
+        <p class="view"><a href="./docs/html/index.html">Docs</a> (Doxygen-generated)</p>
+        <p class="view"><a href="./TheBigStrangeHowTo.html">The Big, Strange How-To</a> (developer manual)</p>
+        <p class="view"><a href="./faq.html">FAQ</a></p>
+        <p class="view">Use Robotlegs? <a href="./rl.html">This is for you</a>!</p>
+        <p class="view"><a href="http://github.com/thirdmotion/strangeioc/wiki">Strange Wiki</a></p>
+      </header>
+      <section>
+       
+<img src="img/logo.png" alt="StrangeIoC" />
+ <h3>FAQ</h3>
+
+ <h2><a name="whats-strange" href="#whats-strange"></a>What is Strange? What is StrangeIoC? Is there a difference?</h2>
+ <p><strong>StrangeIoC</strong> is an Inversion-of-Control library written for C# and specifically with Unity3D in mind. It features Dependency Injection, a common event bus and an optional MVCS structure which is great for building games and apps from something quite simple up to the very, very complex. <strong>Strange</strong> is just another (colloquial) name for StrangeIoC.</p>
+ <h2><a name="whats-mvcs" href="#whats-mvcs"></a>What's MVCS?</h2>
+ <p><a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">Model-View-Controller</a> (MVC) is a standard architecture/design pattern for designing applications. The 'S' in MVCS refers to services, which suggests that MVC doesn't entirely cover the aspect of architecture that involves communicating with resources outside the application itself.</p>
+ <h2><a name="whats-ioc-di" href="whats-ioc-di"></a>What's Inversion-of-Control? What's Dependency Injection?</h2>
+ <p><a href="http://en.wikipedia.org/wiki/Inversion_of_control">Inversion-of-Control</a> (IoC) and <a href="http://en.wikipedia.org/wiki/Dependency_injection">Dependency Injection</a> (DI) are design patterns in which classes declare dependencies only in an abstract form, for example, by naming an Interface or a superclass, rather than the specific class they need. It is up to some other actor in the system to supply a concrete class to fulfill those dependencies. There are many forms of DI.</p>
+ <p>This &ldquo;inversion&rdquo; expresses the idea that, instead of a class declaring &ldquo;I need a thing&rdquo;, some other actor tells it &ldquo;here is what you need.&rdquo; Dependency Injection is the process by which a special class (the Injector) provides the things that the other classes need.</p>
+ <p>Strange fulfills DI with a runtime Reflector that analyzes each class (using System.Reflection). An Injector class then fulfills the dependencies based on the Reflector's analysis.</p>
+ <h2><a name="ioc-different" href="#ioc-different"></a>I already use Interfaces. That's basic OO. How is IoC any different?</h2>
+ <p>"Uncle" Bob Martin explains this better than I can <a href="http://www.objectmentor.com/resources/articles/dip.pdf">in this paper</a>. The gist is that IoC is an extension of OO principles that refer not so much to how you <em>structure your classes</em> as to how you <em>fulfill their dependencies</em>. IoC structures your <em>system</em> so that your classes are truly Object-Oriented.</p>
+ <h2><a name="slow-reflection" href="#slow-reflection"></a>I've heard that System.Reflection is slow. Is that true?</h2>
+ <p>Yes, it is slow. Strange handles this problem by caching each reflection. So no class is ever reflected more than once. We've also added two "pre-reflection" methods, which  allow you to send as many reflections as you like to the reflector at a moment of your choosing (say, while the user is looking at some UI).</p>
+ <h2><a name="current-version" href="#current-version"></a>What's the current version?</h2>
+ <p>The current stable version of StrangeIoC is 0.51.</p>
+ <h2><a name="other-features" href="#other-features"></a>What other features does Strange provide?</h2>
+ <p>Strange has a big feature set for such a small library. The full feature set is on our <a href="./index.html">home</a> page.</p>
+ <h2><a name="binding-framework" href="#binding-framework"></a>You've explained IoC, but I've heard you say that Strange is also a Binding framework. What's that mean?</h2>
+ <p>Strange is built on top of a very simple class called "Binder", which is a Collection (just like Array or Dictionary). The Binder basically attaches any item - or a set of items - to any other item or set. The 'Key' items are triggers, while the 'Value' items are results. So, in DI for example, an Interface "key" could trigger a concrete class "value". But the uses of Binder go way past DI. Strange has an EventDispatcher which is a Binder. An event triggers one or more callbacks. There's a CommandBinder in which an event triggers a command, a batch of commands or a sequence of Commands. If you think in terms of a Binder being a collection of actions/reactions, the uses are endless.</p>
+ <h2><a name="how-much" href="#how-much"></a>OK. I'm interested! How much does it cost?</h2>
+ <p>Totally free! And Open Source under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2</a>. You can download it from any of the buttons on the left, pull it from <a href="https://github.com/thirdmotion/strangeioc">github</a>, or else get it for free from the <a href="http://unity3d.com/asset-store/">Unity Store</a>.</p>
+ <h2><a name="feature-ideas" href="#feature-ideas"></a>I have a feature idea. Where does that...?</h2>
+ <p>Way ahead of you. Add it <a href="https://github.com/thirdmotion/strangeioc/issues">here</a></p>
+ <h2><a name="bugs" href="#bugs"></a>I've found a bug. How do I...?</h2>
+ <p>Right <a href="https://github.com/thirdmotion/strangeioc/issues">here</a> cowboy.</p>
+ <h2><a name="pull-request" href="#pull-request"></a>I've fixed a bug/added a feature to StrangeIoC and would like to contribute.</h2>
+ <p>We'd love to review it and consider it for inclusion. Send us a pull request via GitHub. Please note that in order for any contribution to StrangeIoC to be considered,  the author must agree to contribute under the same Apache 2 license that governs StrangeIoC itself.</p>
+ <h2><a name="support" href="#support"></a>Do you provide support?</h2>
+ <p>Strange is one of those "provided as-is" things. I'm very keen to hear your reactions and will try to make fixes. And of course you can fork the repo and send me pull requests. I hope a community will spring up around this framework and others will assist in providing mutual support. But I've got a job and unfortunately can't field requests day-to-day.</p>
+ <h2><a name="strange-is-a-strange-name" href="#strange-is-a-strange-name"></a>"Strange" is a strange name.</h2>
+ <p>That's not a question.</p>
+ <h2><a name="name-strange" href="#name-strange"></a>OK, why did you name your framework "Strange?"</h2>
+ <p>Ah! The idea came from the mathematical notion of "<a href="http://en.wikipedia.org/wiki/Attractor#Strange_attractor">strange attractors</a>" which, as best I understand them, are meant to create orderly patterns, mostly in the context of chaotic systems. I thought this was a great metaphor for what I'm doing. Plus, it's kind of funny. Don't you think it's funny?</p>
+ <h2><a name="look-im-the-one" href="#look-im-the-one"></a>Look, I'm the one who's supposed to be asking the questions.</h2>
+ <p>Oh yeah. Sorry.</p>
+ <p>&nbsp;</p>
+      </section>
+      <footer>
+      	<p><small>StrangeIoC is a project by <a href="http://thirdmotion.com">ThirdMotion, Inc</a>.</small></p>
+        <p><small>&copy; 2013. Third Motion, Inc.</small></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+  </body>
+</html>
