@@ -21,10 +21,6 @@
             <div><a href="./faq.html">FAQ</a></div>
             <div><a href="./rl.html">Robotlegs Intro</a>!</div>
             <div><a href="http://github.com/thirdmotion/strangeioc/wiki">Strange Wiki</a></div>
-              <div><a href="https://groups.google.com/forum/#!forum/strangeioc">GoogleGroup</a></div>
-              <div>Follow us on:</div>
-              <div><a href="https://www.facebook.com/strangeioc">Facebook</a></div>
-             <div><a href="https://twitter.com/StrangeIoC">Twitter</a></div>
     </div>
   <div class="docsection">
   <img src="img/logo.png" alt="StrangeIoC" />
@@ -43,8 +39,7 @@
   <p class="contents2"><a href="#h.yqfl5c38lq6a">The reflector extension</a></p>
   <p class="contents2"><a href="#h.xnfvsfxfho97">The dispatcher extension</a></p>
   <p class="contents2"><a href="#h.wvehwwtgkcqn">The command extension</a></p>
-  <p class="contents3"><a href="#h.9i3l3dtor5wa">Mapping commands</a></p>
-  <p class="contents2"><a href="#h.rwr943mkgmyy">The sequence extension</a></p>
+  <p class="contents3"><a href="#h.9i3l3dtor5wa">Mapping commands</a>  </p>
   <p class="contents2"><a href="#h.sjblqrdytark">The mediation extension</a></p>
   <p class="contents3"><a href="#h.jzr0vg3lxl94">View</a></p>
   <p class="contents3"><a href="#h.gacf03kx765a">Mediator</a></p>
@@ -80,7 +75,7 @@
   <ul>
     <li>Dispatch events to any point in your application</li>
     <li>Map local event bus for local communication</li>
-    <li>Map events to Command or Sequence classes to separate business logic</li>
+    <li>Map events to Command  classes to separate business logic</li>
   </ul>
   <li>MonoBehaviour mediation</li>
   <ul>
@@ -467,16 +462,15 @@ namespace com.example.spacebattle.controller
   <pre class="prettyprint">commandBinder.Unbind(ServerEvent.POST_SCORE);</pre>
   <p>There&rsquo;s also a nice &ldquo;one-off&rdquo; command for those times where you only want a Command to fire just the next time an event occurs.</p>
   <pre class="prettyprint">commandBinder.Bind(GameEvent.HIT).To&lt;DestroyEnemyCommand&gt;().Once();</pre>
-  <p>By declaring <code>Once</code>, you ensure that the binding will be destroyed the next time the Command fires.</p>
-  <h3><a name="h.rwr943mkgmyy"></a>The sequence extension</h3>
-  <p><strong>Sequences</strong> are the same as Commands, really, with just a couple additions. First, as the name implies, a Sequence is designed to run several commands in order. Like a command, a Sequence may be synchronous or asynchronous. But unlike regular commands, a <strong>SequenceCommand</strong> can call <code>BreakSequence()</code> at any point. This allows the chain of events to occur in precisely the correct order, (without the need to fire multiple events), and to fail if something goes wrong along the way. This can be useful for setting up a chain of dependent events, for building ordered animations, or for setting a guard to determine whether or not a Command should really execute.</p>
-  <p>Mapping a sequence is identical to mapping a Command:</p>
-  <pre class="prettyprint">sequencer.Bind(GameEvent.HIT)
+  <p>By declaring <code>Once</code>, you ensure that the binding will be destroyed the next time the Command fires.  </p>
+  <p><strong>Sequences</strong> are  a group of commands fired in order. The commands fire one-by-one either until the sequence reaches the end, or one of the commands fails. A command can call <code>Fail()</code> at any point, which breaks the sequence. This can be useful for setting up a chain of dependent events, for building ordered animations, or for setting a guard to determine whether or not a Command should really execute.</p>
+  <p>Mapping a sequence simply requires the addition of the <span class="prettyprint"><code>InSequence()</code></span> instruction:</p>
+  <pre class="prettyprint">commandBinder.Bind(GameEvent.HIT).InSequence()
 	.To&lt;CheckLevelClearedCommand&gt;()
 	.To&lt;EndLevelCommand&gt;()
 	.To&lt;GameOverCommand&gt;();</pre>
-  <p>The idea behind this sequence is that a hit might indicate that a level has been cleared. So we run the CheckLevelClearedCommand. If it passes, we run EndLevelCommand. If that Command indicates we&rsquo;ve reached the final level, run the GameOverCommand. Commands in a sequence execute successively, so at any point along the way, a Command can simply call <code>BreakSequence()</code> to stop the execution flow.</p>
-  <p>As with regular Commands, SequenceCommands may execute asynchronously. If they do (and presuming <code>BreakSequence()</code> isn&rsquo;t called), the subsequent Command will be fired as soon as <code>Release()</code> is invoked.</p>
+  <p>The idea behind this sequence is that a hit might indicate that a level has been cleared. So we run the <code>CheckLevelClearedCommand</code>. If it passes, we run <code>EndLevelCommand</code>. If that Command indicates we&rsquo;ve reached the final level, run the <code>GameOverCommand</code>. Commands in a sequence execute successively, so at any point along the way, a Command can simply call <code>Fail()</code> to stop the execution flow.</p>
+  <p>As with regular Commands, commands in a sequence may execute asynchronously. If they do (and presuming <code>Fail()</code> isn&rsquo;t called), the subsequent Command will be fired as soon as <code>Release()</code> is invoked.</p>
   <h3><a name="h.sjblqrdytark"></a>The mediation extension</h3>
   <p>The <strong>MediationContext</strong> is the only part of Strange written exclusively for use with Unity3D. This is because mediation is all about carefully controlling how your views (GameObjects) interface with the rest of your app. Views are by nature highly volatile during development, and it&#39;s advisable to constrain that natural chaos to within the view classes themseves. For this reason, the mediation model advises your view consist of at least two distinct MonoBehaviours: View and Mediator.</p>
   <h4><a name="h.jzr0vg3lxl94"></a>View</h4>
@@ -540,7 +534,7 @@ namespace com.example.spacebattle.view
     <li>Mediation binding is instance-to-instance. Whenever a new View comes onto stage a <span class="c30">new</span>&nbsp;Mediator is created to support it. So lots of Views means lots of Mediators.</li>
   </ol>
   <h3><a name="h.yk3f3ky5ye4t"></a>The context extension</h3>
-  <p>The context package puts all your various Binders under one roof, so to speak. For example, the MVCSContext includes an EventDispatcher, an InjectionBinder, a MediationBinder, a CommandBinder and a Sequencer. The CommandBinder and Sequencer listen to the EventDispatcher. Commands and Mediators rely on Injection. The Context is where we wire up these dependencies. And the dependencies aren&#39;t just for the core framework, either. To create a project, you&#39;ll override Context or MVCSContext and it&#39;s in this child class that you&#39;ll write all the bindings that make your application do what it does.</p>
+  <p>The context package puts all your various Binders under one roof, so to speak. For example, the MVCSContext includes an EventDispatcher, an InjectionBinder, a MediationBinder, and a CommandBinder. The CommandBinder  listens to the EventDispatcher. Commands and Mediators rely on Injection. The Context is where we wire up these dependencies. And the dependencies aren&#39;t just for the core framework, either. To create a project, you&#39;ll override Context or MVCSContext and it&#39;s in this child class that you&#39;ll write all the bindings that make your application do what it does.</p>
   <p>It is also possible &mdash; desirable even &mdash; to have <span class="c30">multiple</span>&nbsp;Contexts. This allows your app to be highly modular. Self-standing modules can run on their own, only interfacing with other modules as needed. Thus a core game can be written as one app, a social media component written separately, and a chat app as a third, and all three can be bound together late in development, each only sharing the pieces that the other components care about.</p>
   <h2><a name="h.me68wmbdn57u"></a>3. MVCSContext: the big picture</h2>
   <p>This section is basically a recipe for building a Strange app with MVCSContext. In the last section I described all the parts; in this one I&rsquo;ll explain how to assemble them.</p>
@@ -632,7 +626,7 @@ namespace strange.examples.myfirstproject
         }
     }
 }</pre>
-  <p>As you see we&rsquo;re extending MVCSContext, which means we inherit all its mappings (you might find it interesting to explore that class in depth). So we already have things like an injectionBinder and a commandBinder and a dispatcher. Note that the dispatcher is accessible all across the app, and is coupled to the commandBinder and sequencer, so any event dispatched can trigger  callbacks and also trigger commands and sequences.</p>
+  <p>As you see we&rsquo;re extending MVCSContext, which means we inherit all its mappings (you might find it interesting to explore that class in depth). So we already have things like an injectionBinder and a commandBinder and a dispatcher. Note that the dispatcher is accessible all across the app, and is coupled to the commandBinder, so any event dispatched can trigger  callbacks and also trigger commands and sequences.</p>
   <p>The mappings here are just what you&rsquo;d expect if you&rsquo;ve read about the various components. For injection, we&rsquo;re mapping one model and one service, both as Singletons. We&rsquo;re going to have just one view (ExampleView) for this example, and we bind it to a Mediator (ExampleMediator). Finally, we&rsquo;re mapping two commands. The more important of the two is StartCommand. It&rsquo;s bound to a special event: <strong>ContextEvent.START</strong>. This is the event fired to kick off your app. You should bind some command (or sequence) to it and think of that command as being like an init() for your entire app. Also see that we&rsquo;ve bound it with <code>.Once()</code>, which a special method that Unbinds the event after a single firing.</p>
   <p>Note that there's also a <code>postBindings()</code> method. This is a useful place to put other code you need to run after binding, but before <code>Launch()</code>. MVCSContext uses this to process any Views which register early (before <code>mapBindings()</code> is called). Another obvious and useful case for this is to call <code>DontDestroyOnLoad(contextView)</code> inside <code>postBindings()</code>, in order to retain the contextView (and the Context!) when you load in a new scene.</p>
   <h3><a name="h.71erjfgxnci8"></a>A Command fires...</h3>

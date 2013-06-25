@@ -23,6 +23,9 @@ Inheritance diagram for strange.\-extensions.\-command.\-api.\-I\-Command\-Binde
 \begin{DoxyCompactList}\small\item\em Trigger a key that unlocks one or more Commands and provide a data injection to that Command. \end{DoxyCompactList}\item 
 void \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_ae063357e7694fe0e107a53cc77e8e112}{Release\-Command} (\hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} command)
 \begin{DoxyCompactList}\small\item\em Release a previously retained Command. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_a713eaa890edf38bdb3762579aab91609}{void \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_a713eaa890edf38bdb3762579aab91609}{Stop} (object key)}\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_a713eaa890edf38bdb3762579aab91609}
+
+\begin{DoxyCompactList}\small\item\em Called to halt execution of a currently running command group. \end{DoxyCompactList}\item 
 \hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_a325a3e15e4a1efb6b35d624c2f940063}{new \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_a325a3e15e4a1efb6b35d624c2f940063}{Bind$<$ T $>$} ()}\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_a325a3e15e4a1efb6b35d624c2f940063}
 
 \begin{DoxyCompactList}\small\item\em Bind a trigger Key by generic Type. \end{DoxyCompactList}\item 
@@ -38,17 +41,19 @@ Commands are where the logic of your application belongs. These Commands typical
 
 The act of binding events to Commands means that code needn't know anything about an event recipient, or even how the event will be used. For example, a Mediator might send out an event that two View objects collided. A Command would then determine that the result of that event was to Destroy both objects, tell a Score\-Keeper model to change the score and request a message be sent to the server. Whether that example means one Command or three is up to your coding preference... Command\-Binder can trigger one Command or multiple Commands off the same event.
 
-Note that Strange also a features a Sequencer. Command\-Binder fires all Commands in parallel, while Sequencer runs them serially, with the option of suspending the chain at any time.
+Note that Command\-Binder also a features sequencing. By default, Command\-Binder fires all Commands in parallel. If your binding specifies {\ttfamily In\-Sequence()}, commands will run serially, with the option of suspending the chain at any time.
 
 Example bindings\-: \begin{DoxyVerb}Bind("someEvent").To<SomeCommand>(); //Works, but poor form to use strings. Use the next example instead
 
 Bind(EventMap.SOME_EVENT).To<SomeCommand>(); //Make it a constant
 
 Bind(ContextEvent.START).To<StartCommand>().Once(); //Destroy the binding immediately after a single use
+
+Bind(EventMap.END_GAME_EVENT).To<FirstCommand>().To<SecondCommand>().To<ThirdGCommand>().InSequence();
 \end{DoxyVerb}
 
 
-See \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} for details on asynchronous Commands. 
+See Command for details on asynchronous Commands and cancelling sequences. 
 
 \subsection{Member Function Documentation}
 \hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_ae063357e7694fe0e107a53cc77e8e112}{\index{strange\-::extensions\-::command\-::api\-::\-I\-Command\-Binder@{strange\-::extensions\-::command\-::api\-::\-I\-Command\-Binder}!Release\-Command@{Release\-Command}}
@@ -70,4 +75,4 @@ Implemented in \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_comm
 
 The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-Assets/scripts/strange/extensions/command/api/I\-Command\-Binder.\-cs\end{DoxyCompactItemize}
+Strange\-Io\-C/scripts/strange/extensions/command/api/I\-Command\-Binder.\-cs\end{DoxyCompactItemize}

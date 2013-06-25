@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.5</span>
+   &#160;<span id="projectnumber">0.51</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li>
@@ -90,6 +91,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -105,8 +107,10 @@ Inheritance diagram for strange.extensions.command.impl.Command:</div>
  <div class="center">
   <img src="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.png" usemap="#strange.extensions.command.impl.Command_map" alt=""/>
   <map id="strange.extensions.command.impl.Command_map" name="strange.extensions.command.impl.Command_map">
-<area href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html" title="Interface for Commands, which is where you place your business logic. " alt="strange.extensions.command.api.ICommand" shape="rect" coords="0,0,291,24"/>
-<area href="classstrange_1_1extensions_1_1command_1_1impl_1_1_event_command.html" title="Subclass of Command with injections for dispatcher and events. " alt="strange.extensions.command.impl.EventCommand" shape="rect" coords="0,112,291,136"/>
+<area href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html" title="Interface for Commands, which is where you place your business logic. " alt="strange.extensions.command.api.ICommand" shape="rect" coords="181,0,534,24"/>
+<area href="classstrange_1_1extensions_1_1command_1_1impl_1_1_event_command.html" title="Subclass of Command with injections for dispatcher and events. " alt="strange.extensions.command.impl.EventCommand" shape="rect" coords="0,112,353,136"/>
+<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command.html" alt="strange.extensions.sequencer.impl.SequenceCommand" shape="rect" coords="363,112,716,136"/>
+<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequence_command.html" alt="strange.extensions.sequencer.impl.EventSequenceCommand" shape="rect" coords="363,168,716,192"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -124,6 +128,20 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html#a783b532e62f1c5c7789ae1a5791c75c7">Release</a> ()</td></tr>
 <tr class="memdesc:a783b532e62f1c5c7789ae1a5791c75c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows a previous Retained <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a> to be disposed. <br/></td></tr>
 <tr class="separator:a783b532e62f1c5c7789ae1a5791c75c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa91c0b75c21945fdf87105d806d3ba79"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa91c0b75c21945fdf87105d806d3ba79"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html#aa91c0b75c21945fdf87105d806d3ba79">Fail</a> ()</td></tr>
+<tr class="memdesc:aa91c0b75c21945fdf87105d806d3ba79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inidcates that the <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a> failed Used in sequential command groups to terminate the sequence. <br/></td></tr>
+<tr class="separator:aa91c0b75c21945fdf87105d806d3ba79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a500dacf34f897fec9ad6930a24ec3332"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a500dacf34f897fec9ad6930a24ec3332"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html#a500dacf34f897fec9ad6930a24ec3332">Cancel</a> ()</td></tr>
+<tr class="memdesc:a500dacf34f897fec9ad6930a24ec3332"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inform the <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a> that further Execution has been terminated. <br/></td></tr>
+<tr class="separator:a500dacf34f897fec9ad6930a24ec3332"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a5af3d1e83f6f702ee7d4ca069efd348f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5af3d1e83f6f702ee7d4ca069efd348f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_retain</b> = false</td></tr>
+<tr class="separator:a5af3d1e83f6f702ee7d4ca069efd348f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -138,6 +156,12 @@ Properties</h2></td></tr>
 <tr class="memitem:af313eea4d80d65db2a526d5ce28712e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af313eea4d80d65db2a526d5ce28712e8"></a>
 object&#160;</td><td class="memItemRight" valign="bottom"><b>data</b><code> [get, set]</code></td></tr>
 <tr class="separator:af313eea4d80d65db2a526d5ce28712e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cf80e414ea49add9026d441466c119a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6cf80e414ea49add9026d441466c119a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>cancelled</b><code> [get, set]</code></td></tr>
+<tr class="separator:a6cf80e414ea49add9026d441466c119a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa73766a45e3f739d77662fb2e909ee1e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa73766a45e3f739d77662fb2e909ee1e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>sequenceId</b><code> [get, set]</code></td></tr>
+<tr class="separator:aa73766a45e3f739d77662fb2e909ee1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf51b3ae205b21b57e76ba3aad11bc74"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf51b3ae205b21b57e76ba3aad11bc74"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>retain</b><code> [get]</code></td></tr>
 <tr class="separator:adf51b3ae205b21b57e76ba3aad11bc74"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,18 +174,25 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#afa2693fc9c9747093acde1dcab858570">data</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:afa2693fc9c9747093acde1dcab858570 inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="mdescLeft">&#160;</td><td class="mdescRight">A payload injected into the Command. Most commonly, this an IEvent. <br/></td></tr>
 <tr class="separator:afa2693fc9c9747093acde1dcab858570 inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a213e1477e49f74dbbaa9a85887af4b5b inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#a213e1477e49f74dbbaa9a85887af4b5b">cancelled</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a213e1477e49f74dbbaa9a85887af4b5b inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="mdescLeft">&#160;</td><td class="mdescRight">The property set to true by a <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#afe6c708912de7fe65dbe44d1ba83b547" title="Inform the Command that further Execution has been terminated. ">Cancel()</a> call.  <a href="#a213e1477e49f74dbbaa9a85887af4b5b">More...</a><br/></td></tr>
+<tr class="separator:a213e1477e49f74dbbaa9a85887af4b5b inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf31811d9547a0c45cc143f5ca828dbe inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf31811d9547a0c45cc143f5ca828dbe"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>sequenceId</b><code> [get, set]</code></td></tr>
+<tr class="separator:aaf31811d9547a0c45cc143f5ca828dbe inherit properties_interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Commands are where you place your business logic. </p>
 <p>In the MVCSContext setup, commands are mapped to IEvents. The firing of a specific event on the global event bus triggers the instantiation, injection and execution of any Command(s) bound to that event.</p>
-<p>By default, commands are cleaned up immediately on completion of the <code><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html#a4a1155270428842c342482c6885b2652" title="Override this! Execute() is where you place the logic for your Command. ">Execute()</a></code> method. For asynchronous Commands (e.g., calling a service and awaiting a response), call <code><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html#a1525def9650d4b6ed6ed6cef2936d892" title="Keeps the Command in memory. Use only in conjunction with Release() ">Retain()</a></code> at the top of your <code><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html#a4a1155270428842c342482c6885b2652" title="Override this! Execute() is where you place the logic for your Command. ">Execute()</a></code> method, which will prevent premature cleanup. But remember, having done so it is your responsipility to call <code><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html#a783b532e62f1c5c7789ae1a5791c75c7" title="Allows a previous Retained Command to be disposed. ">Release()</a></code> once the <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a> is complete. </p>
+<p>By default, commands are cleaned up immediately on completion of the <code><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html#a4a1155270428842c342482c6885b2652" title="Override this! Execute() is where you place the logic for your Command. ">Execute()</a></code> method. For asynchronous Commands (e.g., calling a service and awaiting a response), call <code><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html#a1525def9650d4b6ed6ed6cef2936d892" title="Keeps the Command in memory. Use only in conjunction with Release() ">Retain()</a></code> at the top of your <code><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html#a4a1155270428842c342482c6885b2652" title="Override this! Execute() is where you place the logic for your Command. ">Execute()</a></code> method, which will prevent premature cleanup. But remember, having done so it is your responsipility to call <code><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html#a783b532e62f1c5c7789ae1a5791c75c7" title="Allows a previous Retained Command to be disposed. ">Release()</a></code> once the <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a> is complete.</p>
+<p>Calling <code><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html#aa91c0b75c21945fdf87105d806d3ba79" title="Inidcates that the Command failed Used in sequential command groups to terminate the sequence...">Fail()</a></code> will terminate any sequence in which the <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a> is operating, but has no effect on Commands operating in parallel. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>Assets/scripts/strange/extensions/command/impl/Command.cs</li>
+<li>StrangeIoC/scripts/strange/extensions/command/impl/Command.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 12 2013 11:09:42 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 25 2013 08:58:49 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

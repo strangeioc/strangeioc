@@ -31,10 +31,6 @@
         <p class="view"><a href="./faq.html">FAQ</a></p>
         <p class="view">Use Robotlegs? <a href="./rl.html">This is for you</a>!</p>
         <p class="view"><a href="http://github.com/thirdmotion/strangeioc/wiki">Strange Wiki</a></p>
-        <p class="view"><a href="https://groups.google.com/forum/#!forum/strangeioc">GoogleGroup</a></p>
-        <p class="view">Follow us on:</p>
-        <p class="view"><a href="https://www.facebook.com/strangeioc">Facebook</a></p>
-        <p class="view"><a href="https://twitter.com/StrangeIoC">Twitter</a></p>
       </header>
       <section>
         <h3>
@@ -69,9 +65,6 @@ context.Start();</pre>
           </li>
           <li>
             <p><strong>commandBinder</strong> (instance of <strong>CommandBinder</strong>)</p>
-          </li>
-          <li>
-            <p><strong>sequencer</strong> (instance of <strong>Sequencer</strong>)</p>
           </li>
           <li>
             <p><strong>mediationBinder</strong> (instance of <strong>MediationBinder</strong>)</p>
@@ -150,8 +143,8 @@ context.Start();</pre>
             <p>The <strong>local dispatcher</strong>, which isn&rsquo;t mapped to any name. Injecting this is useful for creating a new instance of EventDispatcher for use in highly local communication (as between a View and its Mediator).</p>
           </li>
         </ol>
-        <h4>Command and Sequence bindings</h4>
-        <p><strong>Command</strong> binding is a lot like the RL commandMap, but the <strong>Sequencer</strong> gives us an extra flavor to work with. Let&rsquo;s begin with binding an event to a Command.</p>
+        <h4>Command bindings</h4>
+        <p><strong>Command</strong> binding is a lot like the RL commandMap, but <strong>sequencing</strong> gives us an extra flavor to work with. Let&rsquo;s begin with binding an event to a Command.</p>
          <pre class="prettyprint">commandBinder.Bind(EventMap.MY_EVENT).To&lt;MyCommand&gt;();</pre>
         <p>Now we&rsquo;ll bind an event to several commands that fire in parallel.</p>
          <pre class="prettyprint">commandBinder.Bind(EventMap.MY_EVENT).To&lt;MyFirstCommand&gt;()
@@ -159,19 +152,17 @@ context.Start();</pre>
          .To&lt;MyThirdCommand&gt;()
          .To&lt;MyFourthCommand&gt;();</pre>
         <p>Note that I&rsquo;m using the term &ldquo;in parallel&rdquo; a tad loosely. It&rsquo;s just a loop firing one after the other. But the Commands are assumed to be disconnected from one another and will all fire independently.</p>
-        <p>The Sequencer, on the other hand, gives us the ability to fire events serially. This is useful for setting up guards to stop a Command from firing if certain conditions aren&rsquo;t met, and for handling complex chains where a process must complete a step before continuing.</p>
-        <p>It won&rsquo;t surprise you that the syntax is identical:</p>
-         <pre class="prettyprint">sequencer.Bind(EventMap.MY_EVENT).To&lt;MyFirstCommand&gt;()
-         .To&lt;MySecondCommand&gt;()
-         .To&lt;MyThirdCommand&gt;()
-         .To&lt;MyFourthCommand&gt;();</pre>
+        <p>If you'd like to fire events serially, commandBinder has this capability too. This is useful for setting up guards to stop a Command from firing if certain conditions aren&rsquo;t met, and for handling complex chains where a process must complete a step before continuing.</p>
+        <p>To fire a sequence, just mark the binding with <code>InSequence()</code>.</p>
+         <pre class="prettyprint">commandBinder.Bind(EventMap.MY_EVENT).InSequence()
+       .To&lt;MyFirstCommand&gt;()
+       .To&lt;MySecondCommand&gt;()
+       .To&lt;MyThirdCommand&gt;()
+       .To&lt;MyFourthCommand&gt;();</pre>
         <p>RL&rsquo;s one-off method is also supported in the form:</p>
          <pre class="prettyprint">commandBinder.Bind(EventMap.MY_EVENT)
-         .To&lt;MyCommand&gt;().Once();
-         
-sequencer.Bind(EventMap.MY_EVENT)
          .To&lt;MyCommand&gt;().Once();</pre>
-        <p>Which unmaps the binding as soon as the Command has fired.</p>
+        <p>Which unmaps the binding as soon as the Command has fired. Note that for sequences the unmapping occurs only after the sequence has successfully completed.</p>
         <h4>Mediation binding</h4>
         <p>After everything you&rsquo;ve read so far, mediation binding will seem a dawdle:</p>
          <pre class="prettyprint">mediationBinder.Bind&lt;MyView&gt;().To&lt;MyMediator&gt;();</pre>
@@ -250,8 +241,6 @@ public GameObject contextView{get;set;}</pre>
 public IMediationBinder mediationBinder{get;set;}</pre>
          <pre class="prettyprint">[Inject(ContextKeys.CROSS_CONTEXT_DISPATCHER)]
 public IEventDispatcher crossContextDispatcher{get;set;}</pre>
-         <pre class="prettyprint">[Inject]
-public ISequencer sequencer{get;set;}</pre>
         <p>And of course anything else you see fit to inject.</p>
         <p>By default a Command is garbage collected as soon as Execute() completes, but you can hold it around if necessary for async operations by using <code>Retain()</code>/<code>Release()</code>.</p>
          <pre class="prettyprint">using strange.extensions.command.impl;
@@ -280,9 +269,28 @@ namespace com.example.spacebattle.controller
         }
     }
 }</pre>
-        <p>Be sure to clean up your listeners and call <code>Release()</code>, or the Command will not be garbage collected.</p>
-        <h3>Sequences</h3>
-        <p>Everything you&rsquo;ve just read for Commands applies to <strong>Sequences</strong> as well. There are just a couple differences. First all Sequence Commands must implement the Interface <strong>ISequenceCommand</strong> (or just extend <strong>SequenceCommand</strong> or EventSequenceCommand). Second, as a result of that implementation, SequenceCommands come with an added method: <code>BreakSequence()</code>. If this method is called in any SequenceCommand, the chain is broken and the remainder of the Sequence will be abandoned.</p>
+        <p>Be sure to clean up your listeners and call <code>Release()</code>, or the Command will not be garbage collected.        </p>
+        <p>If you're running a Command as part of a sequence and want the sequence to terminate, you can call <code>Fail()</code>.</p>
+        <pre class="prettyprint">        override public void Execute() 
+        {
+            if (server.isAvailable)
+            {
+                Retain(); 
+                server.dispatcher.AddListener
+                    (ServerEvent.COMPLETE, onComplete); 
+                server.call();
+            }
+            else
+            {
+                server.retries ++;
+                if(server.retries &gt; server.maxRetries)
+                {
+                    dispatcher.Dispatch(ServerEvent.NOT_RESPONDING);
+                }
+                Fail();
+            }
+        }</pre>
+<p>This Command terminates its sequence if the server isn't available. After a specified number of tries, it dispatches an event so that some other system can do something about it. <code>Fail()</code> has no effect if fired in a Command that is not part of a sequence.</p>
         <h3>Views and Mediation</h3>
         <p><strong>Views</strong> and <strong>Mediators</strong> both extend MonoBehaviour, which means that when running in the Unity IDE you can actually look at and tweak public properties, even at runtime. The principle of these two classes is much the same as it is in Robotlegs: the View controls the UI, while the Mediator bridges communication between the View and the rest of the app. There are a few important differences to note, however.</p>
         <h4>Events don&rsquo;t bubble</h4>
