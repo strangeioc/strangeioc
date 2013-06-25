@@ -21,6 +21,11 @@ Inheritance diagram for strange.\-extensions.\-command.\-impl.\-Command\-Binding
 \hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binding_a8e9748be1b68811006095c2b91b226f6}{\hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binding_a8e9748be1b68811006095c2b91b226f6}{Once} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binding_a8e9748be1b68811006095c2b91b226f6}
 
 \begin{DoxyCompactList}\small\item\em Declares that the Binding is a one-\/off. As soon as it's satisfied, it will be unmapped. \end{DoxyCompactList}\item 
+\hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binding_a25ea62fb08609aaba172f2c1c8c6efa6}{In\-Parallel} ()
+\begin{DoxyCompactList}\small\item\em Declares that the bound commands will be run in parallel. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binding_a9969c6ea7325cd974a80383f800f92dd}{\hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binding_a9969c6ea7325cd974a80383f800f92dd}{In\-Sequence} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binding_a9969c6ea7325cd974a80383f800f92dd}
+
+\begin{DoxyCompactList}\small\item\em Declares that the bound commands will be run as a sequence, rather than in parallel. \end{DoxyCompactList}\item 
 \hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binding_ad71805e2d0c3194b533300494b13f0d1}{\hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} {\bfseries Bind$<$ T $>$} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binding_ad71805e2d0c3194b533300494b13f0d1}
 
 \item 
@@ -56,6 +61,9 @@ Inheritance diagram for strange.\-extensions.\-command.\-impl.\-Command\-Binding
 \item 
 \hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binding_a310f0164dcd9324688d1e0000174dcaa}{bool {\bfseries is\-One\-Off}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binding_a310f0164dcd9324688d1e0000174dcaa}
 
+\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binding_ab2a00dd6d304cd3a92588aeecf9b7097}{bool {\bfseries is\-Sequence}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binding_ab2a00dd6d304cd3a92588aeecf9b7097}
+
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
@@ -65,6 +73,24 @@ The Binding for \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_com
 
 The only real distinction between \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binding}{Command\-Binding} and Binding is the addition of {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binding_a8e9748be1b68811006095c2b91b226f6}{Once()}}, which signals that the Binding should be destroyed immediately after a single use. 
 
+\subsection{Member Function Documentation}
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binding_a25ea62fb08609aaba172f2c1c8c6efa6}{\index{strange\-::extensions\-::command\-::impl\-::\-Command\-Binding@{strange\-::extensions\-::command\-::impl\-::\-Command\-Binding}!In\-Parallel@{In\-Parallel}}
+\index{In\-Parallel@{In\-Parallel}!strange::extensions::command::impl::CommandBinding@{strange\-::extensions\-::command\-::impl\-::\-Command\-Binding}}
+\subsubsection[{In\-Parallel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\-Command\-Binding} strange.\-extensions.\-command.\-impl.\-Command\-Binding.\-In\-Parallel (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binding_a25ea62fb08609aaba172f2c1c8c6efa6}
+
+
+Declares that the bound commands will be run in parallel. 
+
+Parallel is the default. There is no need to call this unless you're changing from sequence. 
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding_acbaef737b3351ad56d071e214061af1d}{strange.\-extensions.\-command.\-api.\-I\-Command\-Binding}.
+
+
+
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-Assets/scripts/strange/extensions/command/impl/Command\-Binding.\-cs\end{DoxyCompactItemize}
+Strange\-Io\-C/scripts/strange/extensions/command/impl/Command\-Binding.\-cs\end{DoxyCompactItemize}

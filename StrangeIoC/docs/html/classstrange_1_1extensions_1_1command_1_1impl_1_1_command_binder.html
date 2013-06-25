@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.5</span>
+   &#160;<span id="projectnumber">0.51</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li>
@@ -113,8 +114,8 @@ Inheritance diagram for strange.extensions.command.impl.CommandBinder:</div>
 <area href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html" title="Collection class for bindings. " alt="strange.framework.api.IBinder" shape="rect" coords="0,0,328,24"/>
 <area href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html" title="Collection class for bindings. " alt="strange.framework.api.IBinder" shape="rect" coords="338,0,666,24"/>
 <area href="classstrange_1_1extensions_1_1command_1_1impl_1_1_event_command_binder.html" title="A subclass of CommandBinder which relies on an IEventDispatcher as the common system bus..." alt="strange.extensions.command.impl.EventCommandBinder" shape="rect" coords="169,168,497,192"/>
-<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer.html" title="Runs SequenceCommands in sequential order. " alt="strange.extensions.sequencer.impl.Sequencer" shape="rect" coords="507,168,835,192"/>
-<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequencer.html" title="This variation on Sequencer injects IEvents. " alt="strange.extensions.sequencer.impl.EventSequencer" shape="rect" coords="507,224,835,248"/>
+<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer.html" alt="strange.extensions.sequencer.impl.Sequencer" shape="rect" coords="507,168,835,192"/>
+<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequencer.html" alt="strange.extensions.sequencer.impl.EventSequencer" shape="rect" coords="507,224,835,248"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -132,6 +133,10 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html#a40b47054aba067ba839f3927ea2aeff9">ReactTo</a> (object trigger, object data)</td></tr>
 <tr class="memdesc:a40b47054aba067ba839f3927ea2aeff9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trigger a key that unlocks one or more Commands and provide a data injection to that <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a>. <br/></td></tr>
 <tr class="separator:a40b47054aba067ba839f3927ea2aeff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e7ec542cbdfec1a78ce0583451b1565"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e7ec542cbdfec1a78ce0583451b1565"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html#a3e7ec542cbdfec1a78ce0583451b1565">Stop</a> (object key)</td></tr>
+<tr class="memdesc:a3e7ec542cbdfec1a78ce0583451b1565"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called to halt execution of a currently running command group. <br/></td></tr>
+<tr class="separator:a3e7ec542cbdfec1a78ce0583451b1565"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a582e06f6f4dc8c94237e2e2c0d5e098c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html#a582e06f6f4dc8c94237e2e2c0d5e098c">ReleaseCommand</a> (<a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html">ICommand</a> command)</td></tr>
 <tr class="memdesc:a582e06f6f4dc8c94237e2e2c0d5e098c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release a previously retained <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a>.  <a href="#a582e06f6f4dc8c94237e2e2c0d5e098c">More...</a><br/></td></tr>
 <tr class="separator:a582e06f6f4dc8c94237e2e2c0d5e098c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,14 +148,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html#af5ad5b130439533dda9731f857b33ab6">Trigger</a> (object key, object data)</td></tr>
 <tr class="memdesc:af5ad5b130439533dda9731f857b33ab6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cause this ITriggerable to access any provided Key in its Binder by the provided key and data. <br/></td></tr>
 <tr class="separator:af5ad5b130439533dda9731f857b33ab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f28c0acf4e3deb7c4749d13e0d316d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f28c0acf4e3deb7c4749d13e0d316d6"></a>
-new <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding.html">ICommandBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html#a8f28c0acf4e3deb7c4749d13e0d316d6">Bind&lt; T &gt;</a> ()</td></tr>
-<tr class="memdesc:a8f28c0acf4e3deb7c4749d13e0d316d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind a trigger Key by generic Type. <br/></td></tr>
-<tr class="separator:a8f28c0acf4e3deb7c4749d13e0d316d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0dc4852ac626f07b1ce2ca2e2ffbe75"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac0dc4852ac626f07b1ce2ca2e2ffbe75"></a>
-new <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding.html">ICommandBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html#ac0dc4852ac626f07b1ce2ca2e2ffbe75">Bind</a> (object value)</td></tr>
-<tr class="memdesc:ac0dc4852ac626f07b1ce2ca2e2ffbe75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind a trigger Key by value. <br/></td></tr>
-<tr class="separator:ac0dc4852ac626f07b1ce2ca2e2ffbe75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ebf06f8c2b143f7af5475c851173808"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ebf06f8c2b143f7af5475c851173808"></a>
+new virtual <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding.html">ICommandBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html#a2ebf06f8c2b143f7af5475c851173808">Bind&lt; T &gt;</a> ()</td></tr>
+<tr class="memdesc:a2ebf06f8c2b143f7af5475c851173808"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind a trigger Key by generic Type. <br/></td></tr>
+<tr class="separator:a2ebf06f8c2b143f7af5475c851173808"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63849fed5502d91b346caab1e0fe9a43"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63849fed5502d91b346caab1e0fe9a43"></a>
+new virtual <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding.html">ICommandBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html#a63849fed5502d91b346caab1e0fe9a43">Bind</a> (object value)</td></tr>
+<tr class="memdesc:a63849fed5502d91b346caab1e0fe9a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind a trigger Key by value. <br/></td></tr>
+<tr class="separator:a63849fed5502d91b346caab1e0fe9a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classstrange_1_1framework_1_1impl_1_1_binder')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html">strange.framework.impl.Binder</a></td></tr>
 <tr class="memitem:aa4e977fc31063ca4d0b029b1abe39dad inherit pub_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4e977fc31063ca4d0b029b1abe39dad"></a>
 delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#aa4e977fc31063ca4d0b029b1abe39dad">BindingResolver</a> (<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding)</td></tr>
@@ -207,9 +212,9 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a8ad642c44ee3081703c815a46b38489d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8ad642c44ee3081703c815a46b38489d"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>invokeCommand</b> (Type cmd, <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding.html">ICommandBinding</a> binding, object data, int depth)</td></tr>
-<tr class="separator:a8ad642c44ee3081703c815a46b38489d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ac0eaf086a6425a54492846f858703d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6ac0eaf086a6425a54492846f858703d"></a>
+virtual <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html">ICommand</a>&#160;</td><td class="memItemRight" valign="bottom"><b>invokeCommand</b> (Type cmd, <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding.html">ICommandBinding</a> binding, object data, int depth)</td></tr>
+<tr class="separator:a6ac0eaf086a6425a54492846f858703d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcde1b363255b70ed9f84c7f90d139d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afcde1b363255b70ed9f84c7f90d139d4"></a>
 virtual <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html">ICommand</a>&#160;</td><td class="memItemRight" valign="bottom"><b>createCommand</b> (object cmd, object data)</td></tr>
 <tr class="separator:afcde1b363255b70ed9f84c7f90d139d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -238,9 +243,15 @@ object[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:afecf5c141c75658b7326efe1b34ff382"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afecf5c141c75658b7326efe1b34ff382"></a>
-Dictionary&lt; <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html">ICommand</a>, <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html">ICommand</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>activeCommands</b> = new Dictionary&lt;<a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html">ICommand</a>, <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html">ICommand</a>&gt;()</td></tr>
-<tr class="separator:afecf5c141c75658b7326efe1b34ff382"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b6b770089f105b017000c9957aa7125"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b6b770089f105b017000c9957aa7125"></a>
+HashSet&lt; <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html">ICommand</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html#a8b6b770089f105b017000c9957aa7125">activeCommands</a> = new HashSet&lt;<a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html">ICommand</a>&gt;()</td></tr>
+<tr class="memdesc:a8b6b770089f105b017000c9957aa7125"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tracker for parallel commands in progress. <br/></td></tr>
+<tr class="separator:a8b6b770089f105b017000c9957aa7125"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada066db5cf3c3014735a7874260ed4b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada066db5cf3c3014735a7874260ed4b1"></a>
+Dictionary&lt; <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html">ICommand</a>, <br class="typebreak"/>
+<a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding.html">ICommandBinding</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html#ada066db5cf3c3014735a7874260ed4b1">activeSequences</a> = new Dictionary&lt;<a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html">ICommand</a>, <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding.html">ICommandBinding</a>&gt; ()</td></tr>
+<tr class="memdesc:ada066db5cf3c3014735a7874260ed4b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tracker for sequences in progress. <br/></td></tr>
+<tr class="separator:ada066db5cf3c3014735a7874260ed4b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classstrange_1_1framework_1_1impl_1_1_binder"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classstrange_1_1framework_1_1impl_1_1_binder')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html">strange.framework.impl.Binder</a></td></tr>
 <tr class="memitem:a3b76e3cb4822c1f8732fd45fbd4d1802 inherit pro_attribs_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; object, Dictionary<br class="typebreak"/>
 &lt; object, <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a3b76e3cb4822c1f8732fd45fbd4d1802">bindings</a></td></tr>
@@ -261,14 +272,16 @@ Properties</h2></td></tr>
 <div class="textblock"><p>A Binder that triggers the instantiation of Commands. </p>
 <p>Commands are where the logic of your application belongs. These Commands typically focus on a single function, such as adding a View, requesting a service, reading from or saving to a model.</p>
 <p>The act of binding events to Commands means that code needn't know anything about an event recipient, or even how the event will be used. For example, a Mediator might send out an event that two View objects collided. A <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a> would then determine that the result of that event was to Destroy both objects, tell a ScoreKeeper model to change the score and request a message be sent to the server. Whether that example means one <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a> or three is up to your coding preference... <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html" title="A Binder that triggers the instantiation of Commands. ">CommandBinder</a> can trigger one <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a> or multiple Commands off the same event.</p>
-<p>Note that Strange also a features a Sequencer. <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html" title="A Binder that triggers the instantiation of Commands. ">CommandBinder</a> fires all Commands in parallel, while Sequencer runs them serially, with the option of suspending the chain at any time.</p>
+<p>Note that <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html" title="A Binder that triggers the instantiation of Commands. ">CommandBinder</a> also a features sequencing. By default, <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html" title="A Binder that triggers the instantiation of Commands. ">CommandBinder</a> fires all Commands in parallel. If your binding specifies <code>InSequence()</code>, commands will run serially, with the option of suspending the chain at any time.</p>
 <p>Example bindings: </p>
 <pre class="fragment">Bind("someEvent").To&lt;SomeCommand&gt;(); //Works, but poor form to use strings. Use the next example instead
 
 Bind(EventMap.SOME_EVENT).To&lt;SomeCommand&gt;(); //Make it a constant
 
 Bind(ContextEvent.START).To&lt;StartCommand&gt;().Once(); //Destroy the binding immediately after a single use
-</pre><p>See <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a> for details on asynchronous Commands. </p>
+
+Bind(EventMap.END_GAME_EVENT).To&lt;FirstCommand&gt;().To&lt;SecondCommand&gt;().To&lt;ThirdGCommand&gt;().InSequence();
+</pre><p>See <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. ">Command</a> for details on asynchronous Commands and cancelling sequences. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a582e06f6f4dc8c94237e2e2c0d5e098c"></a>
 <div class="memitem">
@@ -300,12 +313,12 @@ Bind(ContextEvent.START).To&lt;StartCommand&gt;().Once(); //Destroy the binding 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>Assets/scripts/strange/extensions/command/impl/CommandBinder.cs</li>
+<li>StrangeIoC/scripts/strange/extensions/command/impl/CommandBinder.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 12 2013 11:09:42 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 25 2013 08:58:49 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

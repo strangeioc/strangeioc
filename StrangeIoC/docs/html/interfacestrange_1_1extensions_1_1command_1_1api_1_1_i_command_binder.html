@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.5</span>
+   &#160;<span id="projectnumber">0.51</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li>
@@ -106,12 +107,12 @@ Inheritance diagram for strange.extensions.command.api.ICommandBinder:</div>
   <map id="strange.extensions.command.api.ICommandBinder_map" name="strange.extensions.command.api.ICommandBinder_map">
 <area href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html" title="Collection class for bindings. " alt="strange.framework.api.IBinder" shape="rect" coords="422,0,750,24"/>
 <area href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html" title="A Binder that triggers the instantiation of Commands. " alt="strange.extensions.command.impl.CommandBinder" shape="rect" coords="169,112,497,136"/>
-<area href="interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer.html" title="Instantiates and executes one or more SequenceCommands in a specified order, based on the input key..." alt="strange.extensions.sequencer.api.ISequencer" shape="rect" coords="676,112,1004,136"/>
+<area href="interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer.html" alt="strange.extensions.sequencer.api.ISequencer" shape="rect" coords="676,112,1004,136"/>
 <area href="classstrange_1_1extensions_1_1command_1_1impl_1_1_event_command_binder.html" title="A subclass of CommandBinder which relies on an IEventDispatcher as the common system bus..." alt="strange.extensions.command.impl.EventCommandBinder" shape="rect" coords="0,168,328,192"/>
-<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer.html" title="Runs SequenceCommands in sequential order. " alt="strange.extensions.sequencer.impl.Sequencer" shape="rect" coords="338,168,666,192"/>
-<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer.html" title="Runs SequenceCommands in sequential order. " alt="strange.extensions.sequencer.impl.Sequencer" shape="rect" coords="676,168,1004,192"/>
-<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequencer.html" title="This variation on Sequencer injects IEvents. " alt="strange.extensions.sequencer.impl.EventSequencer" shape="rect" coords="338,224,666,248"/>
-<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequencer.html" title="This variation on Sequencer injects IEvents. " alt="strange.extensions.sequencer.impl.EventSequencer" shape="rect" coords="676,224,1004,248"/>
+<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer.html" alt="strange.extensions.sequencer.impl.Sequencer" shape="rect" coords="338,168,666,192"/>
+<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer.html" alt="strange.extensions.sequencer.impl.Sequencer" shape="rect" coords="676,168,1004,192"/>
+<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequencer.html" alt="strange.extensions.sequencer.impl.EventSequencer" shape="rect" coords="338,224,666,248"/>
+<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequencer.html" alt="strange.extensions.sequencer.impl.EventSequencer" shape="rect" coords="676,224,1004,248"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -128,6 +129,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 <tr class="memitem:ae063357e7694fe0e107a53cc77e8e112"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder.html#ae063357e7694fe0e107a53cc77e8e112">ReleaseCommand</a> (<a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html">ICommand</a> command)</td></tr>
 <tr class="memdesc:ae063357e7694fe0e107a53cc77e8e112"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release a previously retained Command.  <a href="#ae063357e7694fe0e107a53cc77e8e112">More...</a><br/></td></tr>
 <tr class="separator:ae063357e7694fe0e107a53cc77e8e112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a713eaa890edf38bdb3762579aab91609"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a713eaa890edf38bdb3762579aab91609"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder.html#a713eaa890edf38bdb3762579aab91609">Stop</a> (object key)</td></tr>
+<tr class="memdesc:a713eaa890edf38bdb3762579aab91609"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called to halt execution of a currently running command group. <br/></td></tr>
+<tr class="separator:a713eaa890edf38bdb3762579aab91609"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a325a3e15e4a1efb6b35d624c2f940063"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a325a3e15e4a1efb6b35d624c2f940063"></a>
 new <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding.html">ICommandBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder.html#a325a3e15e4a1efb6b35d624c2f940063">Bind&lt; T &gt;</a> ()</td></tr>
 <tr class="memdesc:a325a3e15e4a1efb6b35d624c2f940063"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind a trigger Key by generic Type. <br/></td></tr>
@@ -194,14 +199,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 <div class="textblock"><p>Interface for a Binder that triggers the instantiation of Commands. </p>
 <p>Commands are where the logic of your application belongs. These Commands typically focus on a single function, such as adding a View, requesting a service, reading from or saving to a model.</p>
 <p>The act of binding events to Commands means that code needn't know anything about an event recipient, or even how the event will be used. For example, a Mediator might send out an event that two View objects collided. A Command would then determine that the result of that event was to Destroy both objects, tell a ScoreKeeper model to change the score and request a message be sent to the server. Whether that example means one Command or three is up to your coding preference... CommandBinder can trigger one Command or multiple Commands off the same event.</p>
-<p>Note that Strange also a features a Sequencer. CommandBinder fires all Commands in parallel, while Sequencer runs them serially, with the option of suspending the chain at any time.</p>
+<p>Note that CommandBinder also a features sequencing. By default, CommandBinder fires all Commands in parallel. If your binding specifies <code>InSequence()</code>, commands will run serially, with the option of suspending the chain at any time.</p>
 <p>Example bindings: </p>
 <pre class="fragment">Bind("someEvent").To&lt;SomeCommand&gt;(); //Works, but poor form to use strings. Use the next example instead
 
 Bind(EventMap.SOME_EVENT).To&lt;SomeCommand&gt;(); //Make it a constant
 
 Bind(ContextEvent.START).To&lt;StartCommand&gt;().Once(); //Destroy the binding immediately after a single use
-</pre><p>See <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html" title="Interface for Commands, which is where you place your business logic. ">ICommand</a> for details on asynchronous Commands. </p>
+
+Bind(EventMap.END_GAME_EVENT).To&lt;FirstCommand&gt;().To&lt;SecondCommand&gt;().To&lt;ThirdGCommand&gt;().InSequence();
+</pre><p>See Command for details on asynchronous Commands and cancelling sequences. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="ae063357e7694fe0e107a53cc77e8e112"></a>
 <div class="memitem">
@@ -225,12 +232,12 @@ Bind(ContextEvent.START).To&lt;StartCommand&gt;().Once(); //Destroy the binding 
 </div>
 </div>
 <hr/>The documentation for this interface was generated from the following file:<ul>
-<li>Assets/scripts/strange/extensions/command/api/ICommandBinder.cs</li>
+<li>StrangeIoC/scripts/strange/extensions/command/api/ICommandBinder.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 12 2013 11:09:42 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 25 2013 08:58:49 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

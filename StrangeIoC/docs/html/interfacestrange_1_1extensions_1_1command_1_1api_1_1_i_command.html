@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.5</span>
+   &#160;<span id="projectnumber">0.51</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li>
@@ -105,11 +106,13 @@ Inheritance diagram for strange.extensions.command.api.ICommand:</div>
  <div class="center">
   <img src="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.png" usemap="#strange.extensions.command.api.ICommand_map" alt=""/>
   <map id="strange.extensions.command.api.ICommand_map" name="strange.extensions.command.api.ICommand_map">
-<area href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. " alt="strange.extensions.command.impl.Command" shape="rect" coords="0,56,353,80"/>
-<area href="interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequence_command.html" title="Interface for Commands run by the Sequencer. " alt="strange.extensions.sequencer.api.ISequenceCommand" shape="rect" coords="363,56,716,80"/>
+<area href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command.html" title="Commands are where you place your business logic. " alt="strange.extensions.command.impl.Command" shape="rect" coords="181,56,534,80"/>
+<area href="interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequence_command.html" alt="strange.extensions.sequencer.api.ISequenceCommand" shape="rect" coords="726,56,1079,80"/>
 <area href="classstrange_1_1extensions_1_1command_1_1impl_1_1_event_command.html" title="Subclass of Command with injections for dispatcher and events. " alt="strange.extensions.command.impl.EventCommand" shape="rect" coords="0,112,353,136"/>
-<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command.html" title="A subclass of Command that runs in the Sequencer. " alt="strange.extensions.sequencer.impl.SequenceCommand" shape="rect" coords="363,112,716,136"/>
-<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequence_command.html" title="A subclass of SequenceCommand which injects an IEvent and a Dispatcher. " alt="strange.extensions.sequencer.impl.EventSequenceCommand" shape="rect" coords="363,168,716,192"/>
+<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command.html" alt="strange.extensions.sequencer.impl.SequenceCommand" shape="rect" coords="363,112,716,136"/>
+<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command.html" alt="strange.extensions.sequencer.impl.SequenceCommand" shape="rect" coords="726,112,1079,136"/>
+<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequence_command.html" alt="strange.extensions.sequencer.impl.EventSequenceCommand" shape="rect" coords="363,168,716,192"/>
+<area href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequence_command.html" alt="strange.extensions.sequencer.impl.EventSequenceCommand" shape="rect" coords="726,168,1079,192"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -127,6 +130,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#a462054fd8e17e6139f9739e32d4d6ced">Release</a> ()</td></tr>
 <tr class="memdesc:a462054fd8e17e6139f9739e32d4d6ced"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows a previous Retained Command to be disposed. <br/></td></tr>
 <tr class="separator:a462054fd8e17e6139f9739e32d4d6ced"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ad585b6fcc3e4dad5823100a62d9053"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1ad585b6fcc3e4dad5823100a62d9053"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#a1ad585b6fcc3e4dad5823100a62d9053">Fail</a> ()</td></tr>
+<tr class="memdesc:a1ad585b6fcc3e4dad5823100a62d9053"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inidcates that the Command failed Used in sequential command groups to terminate the sequence. <br/></td></tr>
+<tr class="separator:a1ad585b6fcc3e4dad5823100a62d9053"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe6c708912de7fe65dbe44d1ba83b547"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afe6c708912de7fe65dbe44d1ba83b547"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#afe6c708912de7fe65dbe44d1ba83b547">Cancel</a> ()</td></tr>
+<tr class="memdesc:afe6c708912de7fe65dbe44d1ba83b547"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inform the Command that further Execution has been terminated. <br/></td></tr>
+<tr class="separator:afe6c708912de7fe65dbe44d1ba83b547"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -138,18 +149,49 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#afa2693fc9c9747093acde1dcab858570">data</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:afa2693fc9c9747093acde1dcab858570"><td class="mdescLeft">&#160;</td><td class="mdescRight">A payload injected into the Command. Most commonly, this an IEvent. <br/></td></tr>
 <tr class="separator:afa2693fc9c9747093acde1dcab858570"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a213e1477e49f74dbbaa9a85887af4b5b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#a213e1477e49f74dbbaa9a85887af4b5b">cancelled</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a213e1477e49f74dbbaa9a85887af4b5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The property set to true by a <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#afe6c708912de7fe65dbe44d1ba83b547" title="Inform the Command that further Execution has been terminated. ">Cancel()</a> call.  <a href="#a213e1477e49f74dbbaa9a85887af4b5b">More...</a><br/></td></tr>
+<tr class="separator:a213e1477e49f74dbbaa9a85887af4b5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf31811d9547a0c45cc143f5ca828dbe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf31811d9547a0c45cc143f5ca828dbe"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>sequenceId</b><code> [get, set]</code></td></tr>
+<tr class="separator:aaf31811d9547a0c45cc143f5ca828dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface for Commands, which is where you place your business logic. </p>
 <p>In the default StrangeIoC setup, commands are mapped to IEvents. The firing of a specific event on the global event bus triggers the instantiation, injection and execution of any Command(s) bound to that event.</p>
-<p>By default, commands are cleaned up immediately on completion of the <code><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#a49ddf3bbaf19624534fa99fa4725feca" title="Override this! Execute() is where you place the logic for your Command. ">Execute()</a></code> method. For asynchronous Commands (e.g., calling a service and awaiting a response), call <code><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#ae24532aa617e2bee62a3798b59b78458" title="Keeps the Command in memory. Use only in conjunction with Release() ">Retain()</a></code> at the top of your <code><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#a49ddf3bbaf19624534fa99fa4725feca" title="Override this! Execute() is where you place the logic for your Command. ">Execute()</a></code> method, which will prevent premature cleanup. But remember, having done so it is your responsipility to call <code><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#a462054fd8e17e6139f9739e32d4d6ced" title="Allows a previous Retained Command to be disposed. ">Release()</a></code> once the Command is complete. </p>
-</div><hr/>The documentation for this interface was generated from the following file:<ul>
-<li>Assets/scripts/strange/extensions/command/api/ICommand.cs</li>
+<p>By default, commands are cleaned up immediately on completion of the <code><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#a49ddf3bbaf19624534fa99fa4725feca" title="Override this! Execute() is where you place the logic for your Command. ">Execute()</a></code> method. For asynchronous Commands (e.g., calling a service and awaiting a response), call <code><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#ae24532aa617e2bee62a3798b59b78458" title="Keeps the Command in memory. Use only in conjunction with Release() ">Retain()</a></code> at the top of your <code><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#a49ddf3bbaf19624534fa99fa4725feca" title="Override this! Execute() is where you place the logic for your Command. ">Execute()</a></code> method, which will prevent premature cleanup. But remember, having done so it is your responsipility to call <code><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#a462054fd8e17e6139f9739e32d4d6ced" title="Allows a previous Retained Command to be disposed. ">Release()</a></code> once the Command is complete.</p>
+<p>Calling <code><a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#a1ad585b6fcc3e4dad5823100a62d9053" title="Inidcates that the Command failed Used in sequential command groups to terminate the sequence...">Fail()</a></code> will terminate any sequence in which the Command is operating, but has no effect on Commands operating in parallel. </p>
+</div><h2 class="groupheader">Property Documentation</h2>
+<a class="anchor" id="a213e1477e49f74dbbaa9a85887af4b5b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool strange.extensions.command.api.ICommand.cancelled</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The property set to true by a <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html#afe6c708912de7fe65dbe44d1ba83b547" title="Inform the Command that further Execution has been terminated. ">Cancel()</a> call. </p>
+<p>Use cancelled internally to determine if further execution is warranted, especially in asynchronous calls. </p>
+
+</div>
+</div>
+<hr/>The documentation for this interface was generated from the following file:<ul>
+<li>StrangeIoC/scripts/strange/extensions/command/api/ICommand.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 12 2013 11:09:42 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 25 2013 08:58:49 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

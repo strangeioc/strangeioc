@@ -1,62 +1,37 @@
 \hypertarget{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command}{\section{strange.\-extensions.\-sequencer.\-impl.\-Sequence\-Command Class Reference}
 \label{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command}\index{strange.\-extensions.\-sequencer.\-impl.\-Sequence\-Command@{strange.\-extensions.\-sequencer.\-impl.\-Sequence\-Command}}
 }
-
-
-A subclass of Command that runs in the \hyperlink{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer}{Sequencer}.  
-
-
 Inheritance diagram for strange.\-extensions.\-sequencer.\-impl.\-Sequence\-Command\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=4.000000cm]{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command}
+\includegraphics[height=3.102493cm]{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a3eb9670db9fd5b07b7004be5acb9e266}{void \hyperlink{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a3eb9670db9fd5b07b7004be5acb9e266}{Break\-Sequence} ()}\label{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a3eb9670db9fd5b07b7004be5acb9e266}
+\hypertarget{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a338497a5f3812ed4b115cf222f372b9e}{new void \hyperlink{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a338497a5f3812ed4b115cf222f372b9e}{Fail} ()}\label{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a338497a5f3812ed4b115cf222f372b9e}
 
-\begin{DoxyCompactList}\small\item\em Called by a \hyperlink{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command}{Sequence\-Command} that determines its entire Sequence should terminate. \end{DoxyCompactList}\item 
-\hypertarget{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a6debd17d38f4d90dce14857a695f7c7f}{virtual void \hyperlink{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a6debd17d38f4d90dce14857a695f7c7f}{Execute} ()}\label{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a6debd17d38f4d90dce14857a695f7c7f}
+\begin{DoxyCompactList}\small\item\em Inidcates that the Command failed Used in sequential command groups to terminate the sequence. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a570b3772279bc89be06d7377a6c0827b}{virtual new void \hyperlink{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a570b3772279bc89be06d7377a6c0827b}{Execute} ()}\label{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a570b3772279bc89be06d7377a6c0827b}
 
-\begin{DoxyCompactList}\small\item\em Override this! {\ttfamily \hyperlink{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a6debd17d38f4d90dce14857a695f7c7f}{Execute()}} is where you place the logic for your Command. \end{DoxyCompactList}\item 
-\hypertarget{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a9c7fe29154b21cdd9ea70c4865707b01}{void \hyperlink{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a9c7fe29154b21cdd9ea70c4865707b01}{Retain} ()}\label{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a9c7fe29154b21cdd9ea70c4865707b01}
+\begin{DoxyCompactList}\small\item\em Override this! {\ttfamily \hyperlink{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a570b3772279bc89be06d7377a6c0827b}{Execute()}} is where you place the logic for your Command. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a3701cfea169824248179b71f4117c791}{new void \hyperlink{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a3701cfea169824248179b71f4117c791}{Release} ()}\label{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a3701cfea169824248179b71f4117c791}
 
-\begin{DoxyCompactList}\small\item\em Keeps the Command in memory. Use only in conjunction with {\ttfamily \hyperlink{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_aacc937245572b5b026a079bb0527f58a}{Release()}} \end{DoxyCompactList}\item 
-\hypertarget{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_aacc937245572b5b026a079bb0527f58a}{void \hyperlink{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_aacc937245572b5b026a079bb0527f58a}{Release} ()}\label{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_aacc937245572b5b026a079bb0527f58a}
-
-\begin{DoxyCompactList}\small\item\em Allows a previous Retained Command to be disposed. \end{DoxyCompactList}\item 
-\hypertarget{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a26fca3bcb6c780a7713375b09fbdec81}{void {\bfseries Cancel} ()}\label{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a26fca3bcb6c780a7713375b09fbdec81}
-
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Allows a previous Retained Command to be disposed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
 \hypertarget{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a5d1248ae0b796af73a45eefa66bced14}{\hyperlink{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer}{I\-Sequencer} {\bfseries sequencer}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a5d1248ae0b796af73a45eefa66bced14}
 
-\item 
-\hypertarget{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_ac7fa2c325ae463b28d9a25b8016d667f}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder}{I\-Injection\-Binder} {\bfseries injection\-Binder}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_ac7fa2c325ae463b28d9a25b8016d667f}
-
-\item 
-\hypertarget{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_ab33d26b74a2c50351b35e2c97f839b89}{object {\bfseries data}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_ab33d26b74a2c50351b35e2c97f839b89}
-
-\item 
-\hypertarget{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_abd7a94d30c7b26f223956638a0772ac1}{bool {\bfseries retain}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_abd7a94d30c7b26f223956638a0772ac1}
-
-\item 
-\hypertarget{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a262d277af1d177fbb31cc07b81a6ff08}{bool {\bfseries cancelled}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a262d277af1d177fbb31cc07b81a6ff08}
-
-\item 
-\hypertarget{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a3b018839ded619cbdddfa687fb123874}{int {\bfseries sequence\-Id}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a3b018839ded619cbdddfa687fb123874}
-
 \end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
 
 
 \subsection{Detailed Description}
-A subclass of Command that runs in the \hyperlink{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequencer}{Sequencer}. 
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000007}{Deprecated}]\end{DoxyRefDesc}
 
-A \hyperlink{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command}{Sequence\-Command} is simply a Command that runs in a series and can optionally call {\ttfamily \hyperlink{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a3eb9670db9fd5b07b7004be5acb9e266}{Break\-Sequence()}} to stop the implementation of that series.
 
 \begin{DoxySeeAlso}{See Also}
 \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{strange.\-extensions.\-command.\-api.\-I\-Command} 
@@ -65,4 +40,4 @@ A \hyperlink{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_comman
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-Assets/scripts/strange/extensions/sequencer/impl/Sequence\-Command.\-cs\end{DoxyCompactItemize}
+Strange\-Io\-C/scripts/strange/extensions/sequencer/impl/Sequence\-Command.\-cs\end{DoxyCompactItemize}
