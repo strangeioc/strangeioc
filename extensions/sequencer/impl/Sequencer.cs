@@ -138,12 +138,12 @@ namespace strange.extensions.sequencer.impl
 			}
 		}
 
-		new public ISequenceBinding Bind<T> ()
+		new public virtual ISequenceBinding Bind<T> ()
 		{
 			return base.Bind<T> () as ISequenceBinding;
 		}
 
-		new public ISequenceBinding Bind (object value)
+		new public virtual ISequenceBinding Bind (object value)
 		{
 			return base.Bind (value) as ISequenceBinding;
 		}

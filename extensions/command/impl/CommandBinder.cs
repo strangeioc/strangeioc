@@ -227,12 +227,12 @@ namespace strange.extensions.command.impl
 			ReactTo(key, data);
 		}
 
-		new public ICommandBinding Bind<T> ()
+		new public virtual  ICommandBinding Bind<T> ()
 		{
 			return base.Bind<T> () as ICommandBinding;
 		}
 
-		new public ICommandBinding Bind (object value)
+		new public virtual ICommandBinding Bind (object value)
 		{
 			return base.Bind (value) as ICommandBinding;
 		}
