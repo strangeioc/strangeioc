@@ -77,19 +77,20 @@ namespace strange.extensions.injector.impl
 				}
 				else
 				{
-					object key = (binding.key as object[]) [0];
-					Type type = key as Type;
-					if (!type.IsInterface && !type.IsAbstract)
-					{
-						dict [name] = createFromValue(key, args);
-					}
-					else
-					{
-						throw new InjectionException ("You can't create a Singleton of a class that can't be instantiated. Class: " + key.ToString(), InjectionExceptionType.NOT_INSTANTIABLE);
-					}
+					dict [name] = generateImplicit ((binding.key as object[]) [0], args);
 				}
 			}
 			return dict[name];
+		}
+
+		protected object generateImplicit(object key, object[] args)
+		{
+			Type type = key as Type;
+			if (!type.IsInterface && !type.IsAbstract)
+			{
+				return createFromValue(key, args);
+			}
+			throw new InjectionException ("You can't create a class that can't be instantiated. Class: " + key.ToString(), InjectionExceptionType.NOT_INSTANTIABLE);
 		}
 
 		/// The binding already has a value. Simply return it.
@@ -101,7 +102,12 @@ namespace strange.extensions.injector.impl
 		/// Generate a new instance
 		protected object instanceOf(IInjectionBinding binding, object[] args)
 		{
-			return createFromValue(binding.value, args);
+			if (binding.value != null)
+			{
+				return createFromValue(binding.value, args);
+			}
+			object value = generateImplicit ((binding.key as object[]) [0], args);
+			return createFromValue(value, args);
 		}
 
 		/// Call the Activator to attempt instantiation the given object
