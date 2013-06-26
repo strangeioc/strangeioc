@@ -44,7 +44,7 @@ namespace strange.extensions.mediation.impl
 			}
 			set
 			{
-				requiresContext = value;
+				_requiresContext = value;
 			}
 		}
 		
