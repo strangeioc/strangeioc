@@ -102,7 +102,7 @@ namespace strange.extensions.mediation.impl
 			return base.Bind<T> ();
 		}
 
-		/// Creates and registers a Mediator for a specific View instance.
+		/// Creates and registers one or more Mediators for a specific View instance.
 		/// Takes a specific View instance and a binding and, if a binding is found for that type, creates and registers a Mediator.
 		virtual protected void mapView(IView view, IMediationBinding binding)
 		{
@@ -116,12 +116,18 @@ namespace strange.extensions.mediation.impl
 				{
 					MonoBehaviour mono = view as MonoBehaviour;
 					Type mediatorType = values [a] as Type;
-					IMediator mediator = mono.gameObject.AddComponent(mediatorType) as IMediator;
-					mediator.PreRegister ();
+					if (mediatorType == viewType)
+					{
+						throw new MediationException(viewType + "mapped to itself. The result would be a stack overflow.", MediationExceptionType.MEDIATOR_VIEW_STACK_OVERFLOW);
+					}
+					MonoBehaviour mediator = mono.gameObject.AddComponent(mediatorType) as MonoBehaviour;
+					if (mediator is IMediator)
+						((IMediator)mediator).PreRegister ();
 					injectionBinder.Bind (viewType).ToValue (view).ToInject(false);
 					injectionBinder.injector.Inject (mediator);
 					injectionBinder.Unbind(viewType);
-					mediator.OnRegister ();
+					if (mediator is IMediator)
+						((IMediator)mediator).OnRegister ();
 				}
 			}
 		}

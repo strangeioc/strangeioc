@@ -29,7 +29,12 @@ namespace strange.extensions.mediation.api
 		/// Note: to avoid infinite looping, there is a bubbling limit of 100
 		/// layers. If your View needs to be more than 100 transforms deep, 
 		/// that might signal a design problem.
-		NO_CONTEXT
+		NO_CONTEXT,
+
+		/// Exception raised when a View is mapped to itself.
+		/// If a View is accidentally mapped to itself, the result will be an
+		/// infinite loop of Mediation creation.
+		MEDIATOR_VIEW_STACK_OVERFLOW
 	}
 }
 
