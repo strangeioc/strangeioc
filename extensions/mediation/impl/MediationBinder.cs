@@ -92,9 +92,10 @@ namespace strange.extensions.mediation.impl
 						continue;
 					}
 					iView.registeredWithContext = true;
+					Trigger (MediationEvent.AWAKE, iView);
 				}
-				injectionBinder.injector.Inject (views[a], false);
 			}
+			injectionBinder.injector.Inject (mono, false);
 		}
 
 		public override IBinding Bind<T> ()
