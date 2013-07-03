@@ -92,7 +92,7 @@ namespace strange.extensions.mediation.impl
 						continue;
 					}
 					iView.registeredWithContext = true;
-					if (iView != mono)
+					if (iView.Equals(mono))
 						Trigger (MediationEvent.AWAKE, iView);
 				}
 			}
