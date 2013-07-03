@@ -92,7 +92,8 @@ namespace strange.extensions.mediation.impl
 						continue;
 					}
 					iView.registeredWithContext = true;
-					Trigger (MediationEvent.AWAKE, iView);
+					if (iView != mono)
+						Trigger (MediationEvent.AWAKE, iView);
 				}
 			}
 			injectionBinder.injector.Inject (mono, false);
