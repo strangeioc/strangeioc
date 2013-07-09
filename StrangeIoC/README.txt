@@ -14,7 +14,7 @@
  		limitations under the License.
  
 
-StrangeIoC v0.51
+StrangeIoC v0.51a
 
 1.0 CONTENTS
 This directory contains the following:
@@ -32,7 +32,7 @@ The actual StrangeIoC code. This is the only bit you actually require in order t
  1.3b extensions
  All other StranceIoC functionalities, such as injection and event dispatch.
 
-1.4 docs
+1.4 .docs
 Full documentation, including an overview, developer's manual, class library documentation, and more.
 
 1.5 examples
@@ -46,9 +46,9 @@ Example scenes to help you start using StrangeIoC.
 
 Create a new Unity project.
 
- - If you downloaded from the Unity Asset Store, import the download AND UNCHECK THE 'DOCS' FOLDER.
+ - If you downloaded from the Unity Asset Store, import the download and uncheck the '.docs' folder.
 
- - If you pulled from GitHub, copy the StrangeIoC directory into your new project's Assets folder. THEN DELETE THE 'DOCS' FOLDER.
+ - If you pulled from GitHub, copy the StrangeIoC directory into your new project's Assets folder. Then delete the '.docs' folder.
 
 In your new project, open Assets > StrangeIoC > examples > Assets > scenes > multiple contexts. Double-click on the scene 'main'.
 
@@ -68,9 +68,10 @@ You're good to go.
 
 3.0 Documentation
 
-There's documentation in the docs folder. To make sure you've seen the latest, go to our site: http://thirdmotion.github.io/strangeioc/index.html
+There's documentation in the .docs folder. To make sure you've seen the latest, go to our site: http://thirdmotion.github.io/strangeioc/index.html
 
 4.0 Version history
 
 v0.5  - Initial public release
 v0.51 - Reorganized repo for simplicity/uniformity with Unity Asset Store. Deprecated Sequencer.
+v0.51a - To avoid errors on first install, renamed 'docs' to '.docs', which makes Unity ignore the folder.
