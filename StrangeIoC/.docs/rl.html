@@ -105,7 +105,7 @@ context.Start();</pre>
          <pre class="prettyprint">dispatcher.AddListener(EventMap.MY_EVENT, onSomeEvent);</pre>
         <p>The handler must take either no arguments or a single argument like so:</p>
          <pre class="prettyprint">private void onSomeEvent(IEvent evt)
-{ 
+{
 	//do stuff.
 }</pre>
         <p>A few important points here: <strong>IEvent</strong> is obviously the Event interface. For maximum decoupling, we use this instead of the concrete <strong>TmEvent</strong>. IEvent specifies three properties:</p>
@@ -188,7 +188,7 @@ context.Start();</pre>
         <h4>Anything else?</h4>
         <p>I added a crazy feature...maybe not a good idea, but it seemed worthwhile, called <code>Context.GetComponent()</code>, which essentially allows you to ask for mappings out of the injectionBinder. This was useful when setting up cross-context communication, so I thought it might have other useful applications.</p>
         <h3>Injection</h3>
-        <p>Let&rsquo;s talk about those marvelously injected classes. Unlike RL, which used the <strong>Swiftsuspenders</strong> injector, Strange has an injector of it&rsquo;s own. But if you&rsquo;re one of those people who feels they should roll their own, never fear; it&rsquo;s all abstracted so you could do just that.</p>
+        <p>Let&rsquo;s talk about those marvelously injected classes. Unlike RL, which used the <strong>Swiftsuspenders</strong> injector, Strange has an injector of its own. But if you&rsquo;re one of those people who feels they should roll their own, never fear; it&rsquo;s all abstracted so you could do just that.</p>
         <p>Marking classes for injection is really straightforward if you&rsquo;re coming from Robotlegs. Here&rsquo;s a setter injection:</p>
          <pre class="prettyprint">[Inject]
 public IMyDependency myDependency{get;set;}</pre>
@@ -227,17 +227,17 @@ namespace com.example.spacebattle.controller
 {
     class StartGameCommand : EventCommand
     {
-        [Inject] 
+        [Inject]
         public ITimer gameTimer{get;set;}
      
         override public void Execute()
         {
-            gameTimer.start(); 
-            dispatcher.dispatch(GameEvent.STARTED); 
+            gameTimer.start();
+            dispatcher.dispatch(GameEvent.STARTED);
         }
     }
 }</pre>
-        <p>In C#, &lsquo;using&rsquo; is like AS3 <code>import</code>, and we&rsquo;ve covered the tiny differences in injection. The rest of it is almost identical. Command automatically injects injectionBinder and commandBinder. <strong>EventCommand</strong>, which extends Command, automatically injects the context-wide dispatcher, and any IEvent that may have been involved in the Command&rsquo;s instantiation. One thing notably missing relative to Robotlegs is the injection of the ContextView. The key reason for this is that to do so would introduce a required dependency on Unity outside it's proscribed bounds. Essentially, I'm trying to keep Unity out of your code wherever possible, which improves both testability and portability. Of course you can still inject the ContextView yourself wherever you need it:</p>
+        <p>In C#, &lsquo;using&rsquo; is like AS3 <code>import</code>, and we&rsquo;ve covered the tiny differences in injection. The rest of it is almost identical. Command automatically injects injectionBinder and commandBinder. <strong>EventCommand</strong>, which extends Command, automatically injects the context-wide dispatcher, and any IEvent that may have been involved in the Command&rsquo;s instantiation. One thing notably missing relative to Robotlegs is the injection of the ContextView. The key reason for this is that to do so would introduce a required dependency on Unity outside its proscribed bounds. Essentially, I'm trying to keep Unity out of your code wherever possible, which improves both testability and portability. Of course you can still inject the ContextView yourself wherever you need it:</p>
         <pre class="prettyprint">[Inject(ContextKeys.CONTEXT_VIEW)]
 public GameObject contextView{get;set;}</pre>
         <p>You can also get access to other useful components:</p>
@@ -263,11 +263,11 @@ namespace com.example.spacebattle.controller
             server.call();
         }
 
-        private void onComplete(IEvent evt) 
-        { 
-            //remember to remove listeners!!! 
+        private void onComplete(IEvent evt)
+        {
+            //remember to remove listeners!!!
             server.dispatcher.RemoveListener
-                (ServerEvent.COMPLETE, onComplete); 
+                (ServerEvent.COMPLETE, onComplete);
             //Do something with the result
             Release();
         }
@@ -281,12 +281,12 @@ namespace com.example.spacebattle.controller
             {
                 Retain(); 
                 server.dispatcher.AddListener
-                    (ServerEvent.COMPLETE, onComplete); 
+                    (ServerEvent.COMPLETE, onComplete);
                 server.call();
             }
             else
             {
-                server.retries ++;
+                server.retries++;
                 if(server.retries &gt; server.maxRetries)
                 {
                     dispatcher.Dispatch(ServerEvent.NOT_RESPONDING);
