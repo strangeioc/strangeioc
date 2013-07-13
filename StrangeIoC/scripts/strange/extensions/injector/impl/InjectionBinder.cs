@@ -133,10 +133,11 @@ namespace strange.extensions.injector.impl
 				foreach(KeyValuePair<object, IBinding> bPair in dict)
 				{
 					IBinding binding = bPair.Value as IBinding;
-					Type t = (Type)binding.value;
-					if (list.IndexOf(t) == -1)
-					{
-						list.Add (t);
+					Type t = binding.value as Type;
+					if (t != null) { 
+						if (list.IndexOf (t) == -1) {
+							list.Add (t);
+						}
 					}
 				}
 			}
