@@ -291,6 +291,7 @@ namespace strange.extensions.context.impl
 
 		override public IContext RemoveContext(IContext context)
 		{
+			((context.crossContextDispatcher) as ITriggerProvider).RemoveTriggerable(context.GetComponent<IEventDispatcher>(ContextKeys.CONTEXT_DISPATCHER) as ITriggerable);
 			context.crossContextDispatcher = null;
 			return this;
 		}
