@@ -256,7 +256,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			{
 				if (triggerClients[a] == target)
 				{
-					spliceValueAt(a, triggerClients);
+					triggerClients = spliceValueAt<ITriggerable>(a, triggerClients) as ITriggerable[];
 					break;
 				}
 			}
