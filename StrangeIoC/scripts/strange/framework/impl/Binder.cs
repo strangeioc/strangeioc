@@ -361,10 +361,9 @@ namespace strange.framework.impl
 			}
 		}
 
-		/// Remove the item at splicePos from the list objectValue 
-		protected object[] spliceValueAt(int splicePos, object[] objectValue)
+		protected T[] spliceValueAt<T>(int splicePos, object[] objectValue)
 		{
-			object[] newList = new object[objectValue.Length - 1];
+			T[] newList = new T[objectValue.Length - 1];
 			int mod = 0;
 			int aa = objectValue.Length;
 			for(int a = 0; a < aa; a++)
@@ -374,9 +373,15 @@ namespace strange.framework.impl
 					mod = -1;
 					continue;
 				}
-				newList [a + mod] = objectValue [a];
+				newList [a + mod] = (T)objectValue [a];
 			}
 			return newList;
+		}
+
+		/// Remove the item at splicePos from the list objectValue 
+		protected object[] spliceValueAt(int splicePos, object[] objectValue)
+		{
+			return spliceValueAt<object>(splicePos, objectValue);
 		}
 	}
 }
