@@ -133,7 +133,7 @@ namespace strange.extensions.injector.impl
 				foreach(KeyValuePair<object, IBinding> bPair in dict)
 				{
 					IBinding binding = bPair.Value as IBinding;
-					Type t = (Type)binding.value;
+					Type t = (binding.value is Type) ? (Type) binding.value : binding.value.GetType();
 					if (list.IndexOf(t) == -1)
 					{
 						list.Add (t);
@@ -148,6 +148,11 @@ namespace strange.extensions.injector.impl
 			int count = 0;
 			foreach(Type t in list)
 			{
+				//Reflector won't permit primitive types, so screen them
+				if (t.IsPrimitive || t == typeof(Decimal) || t == typeof(string))
+				{
+					continue;
+				}
 				count ++;
 				injector.reflector.Get (t);
 			}
