@@ -138,6 +138,18 @@ namespace strange.extensions.command.impl
 		{
 			injectionBinder.Bind<ICommand> ().To (cmd);
 			ICommand command = injectionBinder.GetInstance<ICommand> () as ICommand;
+
+			if (command == null)
+			{
+				string msg = "A Command ";
+				if (data != null)
+				{
+					msg += "tied to data " + data.ToString ();
+				}
+				msg += " could not be instantiated.\nThis might be caused by a null pointer during instantiation or failing to override Execute (generally you shouldn't have constructor code in Commands).";
+				throw new CommandException(msg, CommandExceptionType.BAD_CONSTRUCTOR);
+			}
+
 			command.data = data;
 			injectionBinder.Unbind<ICommand> ();
 			return command;
