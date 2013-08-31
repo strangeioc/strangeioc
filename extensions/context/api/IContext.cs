@@ -35,12 +35,6 @@ namespace strange.extensions.context.api
 		/// Kick the context into action
 		IContext Start();
 		
-		/// Request a component from the context (might be useful in certain cross-context situations)
-		object GetComponent<T>();
-		
-		/// Request a component from the context (might be useful in certain cross-context situations)
-		object GetComponent<T>(object name);
-		
 		/// Register a new context to this one
 		IContext AddContext(IContext context);
 		
@@ -52,9 +46,6 @@ namespace strange.extensions.context.api
 		
 		/// Remove a view from this context
 		void RemoveView(object view);
-		
-		/// Set and get the shared system bus for communicating across contexts
-		IDispatcher crossContextDispatcher{get;set;}
 		
 		/// Get the ContextView
 		object GetContextView();

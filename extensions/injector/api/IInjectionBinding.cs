@@ -58,7 +58,12 @@ namespace strange.extensions.injector.api
 		/// Map the Binding to a stated instance so that every `GetInstance()` on the Binder Key returns the provided imstance.
 		IInjectionBinding ToValue (object o);
 
-		/// Boolean setter to optionally override injection. If false, the instance will not be injected after instantiation.
+		/// Map the binding and give access to all contexts in hierarchy
+        IInjectionBinding CrossContext();
+
+        bool isCrossContext { get; }
+        
+        /// Boolean setter to optionally override injection. If false, the instance will not be injected after instantiation.
 		IInjectionBinding ToInject(bool value);
 
 		/// Get the parameter that specifies whether this Binding allows an instance to be injected

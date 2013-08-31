@@ -95,6 +95,7 @@ namespace strange.extensions.injector.api
 
 		IInjectionBinding Bind<T>();
 		IInjectionBinding Bind(Type key);
+        IBinding Bind(object key);
 		IInjectionBinding GetBinding<T>();
 		IInjectionBinding GetBinding<T>(object name);
 		IInjectionBinding GetBinding(object key);

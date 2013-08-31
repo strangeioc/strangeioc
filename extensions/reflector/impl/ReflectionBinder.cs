@@ -45,10 +45,12 @@ namespace strange.extensions.reflector.impl
 
 		public IReflectedClass Get (Type type)
 		{
+            System.Console.Write("reflection binder get for type: " + type + "\n");
 			IBinding binding = GetBinding(type);
 			IReflectedClass retv;
 			if (binding == null)
 			{
+                System.Console.Write("binding is null, doing stuff\n");
 				binding = GetRawBinding ();
 				IReflectedClass reflected = new ReflectedClass ();
 				mapPreferredConstructor (reflected, binding, type);
@@ -60,6 +62,7 @@ namespace strange.extensions.reflector.impl
 			}
 			else
 			{
+                System.Console.Write("binding is not null, return value\n");
 				retv = binding.value as IReflectedClass;
 				retv.preGenerated = true;
 			}

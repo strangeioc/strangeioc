@@ -47,16 +47,32 @@ namespace strange.unittests
 			Assert.AreEqual (EventCallbackType.ONE_ARGUMENT, type);
 
 			object[] parameters = new object[1];
-			parameters [0] = INIT_VALUE;
+			parameters [0] = new TestEvent("TEST", null, INIT_VALUE);
 			extracted.DynamicInvoke(parameters);
 			//Calling the method should change the confirmationValue
 			Assert.AreEqual (confirmationValue, INIT_VALUE * INIT_VALUE);
 		}
 
-		private void oneArgumentCallback(object o)
+		private void oneArgumentCallback(IEvent o)
 		{
-			confirmationValue *= (int)o;
+			confirmationValue *= (int)o.data;
 		}
+
+
+        class TestEvent : IEvent
+        {
+            public object type{ get; set;}
+		    public IEventDispatcher target{ get; set;}
+		    public object data{ get; set;}
+
+            
+            public TestEvent(object type, IEventDispatcher target, object data)
+		    {
+			    this.type = type;
+			    this.target = target;
+			    this.data = data;
+		    }
+        }
 	}
 }
 

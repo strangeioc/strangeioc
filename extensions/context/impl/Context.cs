@@ -30,6 +30,7 @@ using System;
 using strange.extensions.context.api;
 using strange.extensions.dispatcher.api;
 using strange.framework.impl;
+using UnityEngine;
 
 namespace strange.extensions.context.impl
 {
@@ -41,9 +42,6 @@ namespace strange.extensions.context.impl
 
 		/// In a multi-Context app, this represents the first Context to instantiate.
 		public static IContext firstContext;
-
-		/// A Dispatcher instance which communicates across Contexts.
-		virtual public IDispatcher crossContextDispatcher{get;set;}
 
 		/// If false, the `Launch()` method won't fire.
 		public bool autoStartup;

@@ -48,7 +48,9 @@ namespace strange.extensions.injector.api
 		/// The list of setters and setter names must have exactly the same number of entries.
 		/// Two lists are required because Unity does not at present support Tuple.
 		/// Seeing this error likely indicates a problem with the Reflector (it's not you, it's me).
-		SETTER_NAME_MISMATCH
+		SETTER_NAME_MISMATCH,
+        /// When requesting a cross context injector and it is null
+        MISSING_CROSS_CONTEXT_INJECTOR,
 	}
 }
 

@@ -37,6 +37,7 @@ namespace strange.extensions.injector.impl
 
 		public object Get(IInjectionBinding binding, object[] args)
 		{
+            
 			if (binding == null)
 			{
 				throw new InjectionException ("InjectorFactory cannot act on null binding", InjectionExceptionType.NULL_BINDING);
@@ -50,8 +51,10 @@ namespace strange.extensions.injector.impl
 			switch (type)
 			{
 				case InjectionBindingType.SINGLETON:
+                    System.Console.Write("injector factory get singleton\n");
 					return singletonOf (binding, args);
 				case InjectionBindingType.VALUE:
+                    System.Console.Write("injector factory get value \n");
 					return valueOf (binding);
 				default:
 					break;
@@ -67,24 +70,43 @@ namespace strange.extensions.injector.impl
 		/// Generate a Singleton instance
 		protected object singletonOf(IInjectionBinding binding, object[] args)
 		{
+            
 			object name = binding.name;
 			Dictionary<object, object> dict = objectMap [binding];
-			if (dict.ContainsKey(name) == false)
-			{
-				if (binding.value != null)
-				{
-					dict [name] = createFromValue(binding.value, args);
-				}
-				else
-				{
-					dict [name] = generateImplicit ((binding.key as object[]) [0], args);
-				}
-			}
+            if (dict.ContainsKey(name) == false)
+            {
+                if (binding.value != null)
+                {
+                    System.Console.Write("injector facotry singletonOf binding value is not null! return value! name is: " + name + " \n");
+                    dict[name] = createFromValue(binding.value, args);
+                }
+                else
+                {
+                    System.Console.Write("injector facotry singletonOf binding value is null and name is: " + name + " and objectmap size is: " + objectMap.Count + " \n");
+
+                    foreach (object objectMapKey in objectMap.Keys)
+                    {
+                        InjectionBinding storedBinding = (InjectionBinding)objectMapKey;
+                        System.Console.Write("injector factory object map key: " + objectMapKey + " and the stored binding key is: " + storedBinding.key + " and stored binding value is: " + storedBinding.value + "\n");
+                    }
+                    dict[name] = generateImplicit((binding.key as object[])[0], args);
+                }
+            }
+            else
+            {
+                System.Console.Write("injector facotry singletonOf contains key name wtf?!?! is not null! return dict[name]!  what is the fucking name though....? " + name + " \n");
+                foreach (object objectMapKey in objectMap.Keys)
+                {
+                    InjectionBinding storedBinding = (InjectionBinding)objectMapKey;
+                    System.Console.Write("injector factory object map key: " + objectMapKey + " and the stored binding key is: " + storedBinding.key + " and stored binding value is: " + storedBinding.value + "\n");
+                }
+            }
 			return dict[name];
 		}
 
 		protected object generateImplicit(object key, object[] args)
 		{
+            System.Console.Write("injector facotry generate implicit\n");
 			Type type = key as Type;
 			if (!type.IsInterface && !type.IsAbstract)
 			{
@@ -113,6 +135,7 @@ namespace strange.extensions.injector.impl
 		/// Call the Activator to attempt instantiation the given object
 		protected object createFromValue(object o, object[] args)
 		{
+            System.Console.Write("injector facotry create from value\n");
 			Type value = (o is Type) ? o as Type : o.GetType ();
 			object retv = null;
 			try
