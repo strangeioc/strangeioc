@@ -32,7 +32,6 @@
  * instantiation of a particular class.
  */
 
-using System;
 using System.Collections.Generic;
 using strange.framework.api;
 
@@ -101,7 +100,7 @@ namespace strange.framework.impl
 				}
 				throw new BinderException ("Binder cannot fetch Bindings when the binder is in a conflicted state.\nConflicts: " + conflictSummary, BinderExceptionType.CONFLICT_IN_BINDER);
 			}
-
+            
 			if(bindings.ContainsKey (key))
 			{
 				Dictionary<object, IBinding> dict = bindings [key];
@@ -131,15 +130,24 @@ namespace strange.framework.impl
 
 		virtual public void Unbind(object key, object name)
 		{
-			if (bindings.ContainsKey(key))
-			{
-				Dictionary<object, IBinding> dict = bindings [key];
-				object bindingName = (name == null) ? BindingConst.NULLOID : name;
-				if (dict.ContainsKey(bindingName))
-				{
-					dict.Remove (bindingName);
-				}
-			}
+            if (bindings.ContainsKey(key))
+            {
+                System.Console.Write("BINDING WAS FOUND YAYAYA FOUND1 \n");
+                System.Console.Write("BINDING WAS FOUND YAYAYA FOUND2 \n");
+                System.Console.Write("BINDING WAS FOUND YAYAYA FOUND3 \n");
+                System.Console.Write("BINDING WAS FOUND YAYAYA FOUND4 \n");
+                System.Console.Write("BINDING WAS FOUND YAYAYA FOUND5 \n");
+                Dictionary<object, IBinding> dict = bindings[key];
+                object bindingName = (name == null) ? BindingConst.NULLOID : name;
+                if (dict.ContainsKey(bindingName))
+                {
+                    dict.Remove(bindingName);
+                }
+            }
+            else
+            {
+                System.Console.Write("BINDING NOT FOUND \n");
+            }
 		}
 
 		virtual public void Unbind(IBinding binding)

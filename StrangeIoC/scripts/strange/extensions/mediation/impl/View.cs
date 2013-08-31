@@ -75,6 +75,12 @@ namespace strange.extensions.mediation.impl
 			bubbleToContext(this, false, false);
 		}
 
+        public void AttemptRegister()
+        {
+            if (!registeredWithContext)
+                bubbleToContext(this, true, false);
+        }
+
 		/// Recurses through Transform.parent to find the GameObject to which ContextView is attached
 		/// Has a loop limit of 100 levels.
 		/// By default, raises an Exception if no Context is found.
@@ -87,26 +93,26 @@ namespace strange.extensions.mediation.impl
 			{
 				loopLimiter ++;
 				trans = trans.parent;
-				
-				if (trans.gameObject.GetComponent<ContextView>() != null)
-				{
-					ContextView contextView = trans.gameObject.GetComponent<ContextView>() as ContextView;
-					if (contextView.context != null)
-					{
-						IContext context = contextView.context;
-						if (toAdd)
-						{
-							context.AddView(view);
-							registeredWithContext = true;
-							return;
-						}
-						else
-						{
-							context.RemoveView(view);
-							return;
-						}
-					}
-				}
+
+                if (trans.gameObject.GetComponent<ContextView>() != null)
+                {
+                    ContextView contextView = trans.gameObject.GetComponent<ContextView>() as ContextView;
+                    if (contextView.context != null)
+                    {
+                        IContext context = contextView.context;
+                        if (toAdd)
+                        {
+                            context.AddView(view);
+                            registeredWithContext = true;
+                            return;
+                        }
+                        else
+                        {
+                            context.RemoveView(view);
+                            return;
+                        }
+                    }
+                }
 			}
 			if (requiresContext && finalTry)
 			{
