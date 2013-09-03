@@ -47,7 +47,7 @@ public class CrossContext : Context, ICrossContextCapable
     
     protected override void addCoreComponents()
 	{
-        base.instantiateCoreComponents();
+        base.addCoreComponents();
         if (injectionBinder.CrossContextBinder == null)  //Only null if it could not find a parent context / firstContext
         {
             injectionBinder.CrossContextBinder = new CrossContextInjectionBinder();

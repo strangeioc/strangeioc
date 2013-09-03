@@ -21,28 +21,16 @@ public class CrossContextInjectionBinder : InjectionBinder, ICrossContextInjecti
         
         IInjectionBinding binding = base.GetBinding(key, name) as IInjectionBinding;
 
-        if (CrossContextBinder != null)
-        {
 
-            if (binding == null) //Attempt to get this from the cross context. Cross context is always SECOND PRIORITY. Local injections always override
+        if (binding == null) //Attempt to get this from the cross context. Cross context is always SECOND PRIORITY. Local injections always override
+        {
+            if (CrossContextBinder != null)
             {
-                if (CrossContextBinder != null)
-                {
-                    binding = CrossContextBinder.GetBinding(key, name) as IInjectionBinding;
-                }
-                else
-                {
-                    throw new InjectionException("Cross Context Injector is null while attempting to resolve a cross context binding", InjectionExceptionType.MISSING_CROSS_CONTEXT_INJECTOR);
-                }
+                binding = CrossContextBinder.GetBinding(key, name) as IInjectionBinding;
             }
         }
 
         return binding;
-    }
-
-    protected void AddBinding(InjectionBinding binding)
-    {
-
     }
 
     override public void resolveBinding(IBinding binding, object key)
