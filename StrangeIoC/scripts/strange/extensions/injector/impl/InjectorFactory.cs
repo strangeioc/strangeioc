@@ -77,19 +77,20 @@ namespace strange.extensions.injector.impl
             {
                 if (binding.value != null)
                 {
-                    System.Console.Write("injector facotry singletonOf binding value is not null! return value! name is: " + name + " \n");
+                    System.Console.Write("injector factory singletonOf binding value is not null! return value! name is: " + name + " \n");
                     dict[name] = createFromValue(binding.value, args);
                 }
                 else
                 {
-                    System.Console.Write("injector facotry singletonOf binding value is null and name is: " + name + " and objectmap size is: " + objectMap.Count + " \n");
+                    System.Console.Write("injector factory singletonOf binding value is null and name is: " + name + " and objectmap size is: " + objectMap.Count + " \n");
 
                     foreach (object objectMapKey in objectMap.Keys)
                     {
                         InjectionBinding storedBinding = (InjectionBinding)objectMapKey;
                         System.Console.Write("injector factory object map key: " + objectMapKey + " and the stored binding key is: " + storedBinding.key + " and stored binding value is: " + storedBinding.value + "\n");
                     }
-                    dict[name] = generateImplicit((binding.key as object[])[0], args);
+                    binding.ToValue(generateImplicit((binding.key as object[])[0], args));
+                    dict[name] = binding.value;
                 }
             }
             else

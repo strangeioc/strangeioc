@@ -161,6 +161,10 @@ namespace strange.extensions.injector.impl
 			}
 			return count;
 		}
+
+        public bool IsCrossContext { get; set; }
     }
+
+    
 }
 

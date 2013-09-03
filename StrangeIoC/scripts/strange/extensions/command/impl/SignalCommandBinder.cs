@@ -64,7 +64,7 @@ namespace strange.extensions.command.impl
 {
     public class SignalCommandBinder : CommandBinder
     {
-        override protected void resolveBinding(IBinding binding, object key)
+        override public void resolveBinding(IBinding binding, object key)
         {
             base.resolveBinding(binding, key);
 

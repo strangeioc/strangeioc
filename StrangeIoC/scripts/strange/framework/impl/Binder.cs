@@ -261,7 +261,7 @@ namespace strange.framework.impl
 		 * Conflicts in the course of fluent binding are expected, but GetBinding
 		 * will throw an error if there are any unresolved conflicts.
 		 */
-		virtual protected void resolveBinding(IBinding binding, object key)
+		virtual public void resolveBinding(IBinding binding, object key)
 		{
 			if (conflicts.ContainsKey(key))	//does the current key have any conflicts?
 			{

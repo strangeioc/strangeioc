@@ -64,7 +64,7 @@ namespace strange.unittests
         [Test]
         public void TestCrossInjectionFromSingleton()
         {
-            Parent.injectionBinder.Bind<MyTestSignal>().CrossContext(); //bind it once here and it should be accessible everywhere
+            Parent.injectionBinder.Bind<MyTestSignal>().ToSingleton().CrossContext(); //bind it once here and it should be accessible everywhere
             //Parent.injectionBinder.CrossContextBinder.Bind<MyTestSignal>().ToSingleton();
             System.Console.Write("getinstance parent\n");
             MyTestSignal parentSignal = Parent.injectionBinder.GetInstance<MyTestSignal>() as MyTestSignal;
@@ -104,7 +104,7 @@ namespace strange.unittests
                 parentSignal.Dispatch();
             };
 
-            //Assert.Throws<TestPassedException>(testDelegate); //first, addonce should handle removal. Tested elsewhere
+            Assert.Throws<TestPassedException>(testDelegate); //first, addonce should handle removal. Tested elsewhere
 
             
             System.Console.Write("getinstance childtwo\n");
@@ -115,6 +115,18 @@ namespace strange.unittests
 
             Assert.Throws<TestPassedException>(testDelegate); //With the second one
 
+        }
+
+        [Test]
+        public void TestSingleton()
+        {
+            Parent.injectionBinder.Bind<MyTestSignal>().ToSingleton();
+
+            MyTestSignal one = Parent.injectionBinder.GetInstance<MyTestSignal>() as MyTestSignal;
+
+            MyTestSignal two = Parent.injectionBinder.GetInstance<MyTestSignal>() as MyTestSignal;
+
+            Assert.AreEqual(one, two);
         }
 
         

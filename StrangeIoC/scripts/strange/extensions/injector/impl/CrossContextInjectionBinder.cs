@@ -57,7 +57,12 @@ public class CrossContextInjectionBinder : InjectionBinder, ICrossContextInjecti
         return binding;
     }
 
-    override protected void resolveBinding(IBinding binding, object key)
+    protected void AddBinding(InjectionBinding binding)
+    {
+
+    }
+
+    override public void resolveBinding(IBinding binding, object key)
     {
         System.Console.Write("resolve binding on binding: " + binding + "with key: " + key + " \n");
         //Decide whether to resolve locally or not
@@ -66,11 +71,17 @@ public class CrossContextInjectionBinder : InjectionBinder, ICrossContextInjecti
             InjectionBinding injectionBinding = (InjectionBinding)binding;
             if (injectionBinding.isCrossContext)
             {
-                if (CrossContextBinder != null)
+
+                if (IsCrossContext && CrossContextBinder == null)
+                {
+                    System.Console.Write("I am a cross context and this is a cross context binding, resolve locally");
+                    base.resolveBinding(binding, key);
+                }
+                else if (CrossContextBinder != null)
                 {
                     //System.Console.Write("unbinding previous thingy \n");
                     //Unbind(binding); //Remove it locally if it exists
-
+                    /*
                     IInjectionBinding crossBinding = null;
                     if (injectionBinding.type.Equals(InjectionBindingType.VALUE))
                     {
@@ -102,6 +113,9 @@ public class CrossContextInjectionBinder : InjectionBinder, ICrossContextInjecti
                         crossBinding = ((IInjectionBinding)CrossContextBinder.Bind(key)).To(binding.value);
                     }
                     crossBinding.ToInject(injectionBinding.toInject);
+                     */
+                    System.Console.Write("passing binding along to cross context binder to resolve \n");
+                    CrossContextBinder.resolveBinding(binding, key);
                 }
                 else
                 {
@@ -110,7 +124,7 @@ public class CrossContextInjectionBinder : InjectionBinder, ICrossContextInjecti
             }
             else
             {
-                System.Console.Write("CCIB about to resolve due to not being cross context \n");
+                System.Console.Write("non cross context resolve \n");
                 base.resolveBinding(binding, key);
             }
         }
