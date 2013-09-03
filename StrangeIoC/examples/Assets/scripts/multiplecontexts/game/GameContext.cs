@@ -54,6 +54,7 @@ namespace strange.examples.multiplecontexts.game
 			commandBinder.Bind(GameEvent.SHIP_DESTROYED).To<ShipDestroyedCommand>();
 			commandBinder.Bind(GameEvent.GAME_OVER).To<GameOverCommand>();
 			commandBinder.Bind(GameEvent.REPLAY).To<ReplayGameCommand>();
+			commandBinder.Bind(GameEvent.REMOVE_SOCIAL_CONTEXT).To<RemoveSocialContextCommand>();
 		}
 	}
 }

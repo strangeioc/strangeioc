@@ -49,6 +49,8 @@ namespace strange.examples.multiplecontexts.social
 				.To<GameCompleteCommand>()
 				.To<CreateFriendListCommand>();
 			
+			commandBinder.Bind (MainEvent.REMOVE_SOCIAL_CONTEXT).To<RemoveContextCommand>();
+			
 			//So today we're posting to Facebook. Maybe tomorrow we'll want to use
 			//GooglePlus, or Twitter, or Pinterest...
 			injectionBinder.Bind<ISocialService> ().To<FacebookService> ().ToSingleton ();

@@ -15,20 +15,24 @@
  */
 
 using System;
+using UnityEngine;
+using strange.extensions.command.impl;
+using strange.extensions.context.api;
+using strange.extensions.dispatcher.eventdispatcher.api;
+using strange.examples.multiplecontexts.main;
 
 namespace strange.examples.multiplecontexts.game
 {
-	public enum GameEvent
+	public class RemoveSocialContextCommand : EventCommand
 	{
-		ADD_TO_SCORE,
-		GAME_OVER,
-		GAME_UPDATE,
-		LIVES_CHANGE,
-		REMOVE_SOCIAL_CONTEXT,
-		REPLAY,
-		RESTART_GAME,
-		SCORE_CHANGE,
-		SHIP_DESTROYED
+		
+		[Inject(ContextKeys.CROSS_CONTEXT_DISPATCHER)]
+		public IEventDispatcher crossContextDispatcher{get;set;}
+		
+		public override void Execute()
+		{
+			crossContextDispatcher.Dispatch(MainEvent.REMOVE_SOCIAL_CONTEXT);
+		}
 	}
 }
 
