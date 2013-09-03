@@ -51,7 +51,6 @@ public class CrossContext : Context, ICrossContextCapable
         if (injectionBinder.CrossContextBinder == null)  //Only null if it could not find a parent context / firstContext
         {
             injectionBinder.CrossContextBinder = new CrossContextInjectionBinder();
-            injectionBinder.CrossContextBinder.IsCrossContext = true;
         }
 
         if (firstContext == this)

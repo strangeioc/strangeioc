@@ -76,7 +76,6 @@ namespace strange.extensions.injector.impl
 			type = InjectionBindingType.SINGLETON;
             if (resolver != null)
             {
-                System.Console.Write("calling resolver from injection binding tosingleton \n");
 				resolver (this);
             }
 			return this;
@@ -110,7 +109,6 @@ namespace strange.extensions.injector.impl
             _isCrossContext = true;
             if (resolver != null)
             {
-                System.Console.Write("calling resolver from injection binding crosscontext\n");
                 resolver(this);
             }
             return this;

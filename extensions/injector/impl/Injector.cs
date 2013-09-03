@@ -63,7 +63,6 @@ namespace strange.extensions.injector.impl
 
 		public object Instantiate(IInjectionBinding binding)
 		{
-            System.Console.Write("injector instantiate binding: " + binding + "\n");
 			failIf(binder == null, "Attempt to instantiate from Injector without a Binder", InjectionExceptionType.NO_BINDER);
 			failIf(factory == null, "Attempt to inject into Injector without a Factory", InjectionExceptionType.NO_FACTORY);
 
@@ -111,7 +110,6 @@ namespace strange.extensions.injector.impl
 
 		public object Inject(object target, bool attemptConstructorInjection)
 		{
-            System.Console.Write("inject target: " + target + "\n");
 			failIf(binder == null, "Attempt to inject into Injector without a Binder", InjectionExceptionType.NO_BINDER);
 			failIf(reflector == null, "Attempt to inject without a reflector", InjectionExceptionType.NO_REFLECTOR);
 			failIf(target == null, "Attempt to inject into null instance", InjectionExceptionType.NULL_TARGET);
@@ -136,7 +134,6 @@ namespace strange.extensions.injector.impl
 
 		private object performConstructorInjection(object target, IReflectedClass reflection)
 		{
-            System.Console.Write("Perform ctr inj\n");
 			failIf(target == null, "Attempt to perform constructor injection into a null object", InjectionExceptionType.NULL_TARGET);
 			failIf(reflection == null, "Attempt to perform constructor injection without a reflection", InjectionExceptionType.NULL_REFLECTION);
 
@@ -162,7 +159,6 @@ namespace strange.extensions.injector.impl
 
 		private void performSetterInjection(object target, IReflectedClass reflection)
 		{
-            System.Console.Write("Perform setter inj\n");
 			failIf(target == null, "Attempt to inject into a null object", InjectionExceptionType.NULL_TARGET);
 			failIf(reflection == null, "Attempt to inject without a reflection", InjectionExceptionType.NULL_REFLECTION);
 			failIf(reflection.setters.Length != reflection.setterNames.Length, "Attempt to perform setter injection with mismatched names.\nThere must be exactly as many names as setters.", InjectionExceptionType.SETTER_NAME_MISMATCH);

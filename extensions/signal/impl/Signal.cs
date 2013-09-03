@@ -15,8 +15,8 @@ namespace strange.extensions.signal.impl
         {
             Listener();
             OnceListener();
-            base.Dispatch(null);
             OnceListener = delegate { };
+            base.Dispatch(null);
         }
     }
 
