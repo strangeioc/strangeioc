@@ -132,21 +132,12 @@ namespace strange.framework.impl
 		{
             if (bindings.ContainsKey(key))
             {
-                System.Console.Write("BINDING WAS FOUND YAYAYA FOUND1 \n");
-                System.Console.Write("BINDING WAS FOUND YAYAYA FOUND2 \n");
-                System.Console.Write("BINDING WAS FOUND YAYAYA FOUND3 \n");
-                System.Console.Write("BINDING WAS FOUND YAYAYA FOUND4 \n");
-                System.Console.Write("BINDING WAS FOUND YAYAYA FOUND5 \n");
                 Dictionary<object, IBinding> dict = bindings[key];
                 object bindingName = (name == null) ? BindingConst.NULLOID : name;
                 if (dict.ContainsKey(bindingName))
                 {
                     dict.Remove(bindingName);
                 }
-            }
-            else
-            {
-                System.Console.Write("BINDING NOT FOUND \n");
             }
 		}
 

@@ -8,17 +8,8 @@ public class CrossContextInjectionBinder : InjectionBinder, ICrossContextInjecti
     /// Cross Context Injector is shared with all child contexts.
     public IInjectionBinder CrossContextBinder { get; set; }
 
-    public static int WTF = 0;
-
-    public int MYWTF = -1;
-
     public CrossContextInjectionBinder() : base()
     {
-        WTF++;
-        MYWTF = WTF;
-        System.Console.Write("Instantiating a cross context injectionbinder\n");
-
-
     }
     public override IInjectionBinding GetBinding<T>()
     {
@@ -30,13 +21,6 @@ public class CrossContextInjectionBinder : InjectionBinder, ICrossContextInjecti
         
         IInjectionBinding binding = base.GetBinding(key, name) as IInjectionBinding;
 
-        if (binding != null && CrossContextBinder == null)
-        {
-            System.Console.Write("I AM CROSS CONTEXTOMG OMG OGMI am cross context with MYWTF: " + MYWTF + " and I found a binding: " + binding + " \n");
-        }
-
-        if (CrossContextBinder != null)
-            binding = null;
         if (CrossContextBinder != null)
         {
 
@@ -44,7 +28,6 @@ public class CrossContextInjectionBinder : InjectionBinder, ICrossContextInjecti
             {
                 if (CrossContextBinder != null)
                 {
-                    System.Console.Write("binding is null and cross context binder is not null and my WTF is: " + MYWTF + " \n");
                     binding = CrossContextBinder.GetBinding(key, name) as IInjectionBinding;
                 }
                 else
@@ -64,7 +47,6 @@ public class CrossContextInjectionBinder : InjectionBinder, ICrossContextInjecti
 
     override public void resolveBinding(IBinding binding, object key)
     {
-        System.Console.Write("resolve binding on binding: " + binding + "with key: " + key + " \n");
         //Decide whether to resolve locally or not
         if (binding is IInjectionBinding)
         {
@@ -72,59 +54,17 @@ public class CrossContextInjectionBinder : InjectionBinder, ICrossContextInjecti
             if (injectionBinding.isCrossContext)
             {
 
-                if (IsCrossContext && CrossContextBinder == null)
+                if (CrossContextBinder == null) //We are a crosscontextbinder
                 {
-                    System.Console.Write("I am a cross context and this is a cross context binding, resolve locally");
                     base.resolveBinding(binding, key);
                 }
-                else if (CrossContextBinder != null)
+                else 
                 {
-                    //System.Console.Write("unbinding previous thingy \n");
-                    //Unbind(binding); //Remove it locally if it exists
-                    /*
-                    IInjectionBinding crossBinding = null;
-                    if (injectionBinding.type.Equals(InjectionBindingType.VALUE))
-                    {
-                        crossBinding = ((IInjectionBinding)CrossContextBinder.Bind(key)).ToValue(binding.value); //.Named(binding.name);
-                    }
-                    else if (injectionBinding.type.Equals(InjectionBindingType.SINGLETON))
-                    {
-                        System.Console.Write("AM I EVER GOING IN TO HERE WTF? \n");
-                        IInjectionBinding previousBinding = CrossContextBinder.GetBinding((Type)key);
-                        if (previousBinding != null)
-                        {
-                            System.Console.Write("previous binding exists \n");
-                            return;
-                        }
-                        else
-                        {
-                            crossBinding = binding as InjectionBinding;
-                            crossBinding = injectionBinding;
-                            object o = CrossContextBinder.injector.Instantiate(crossBinding);
-                            System.Console.Write("previous binding does not exist \n");
-                            //crossBinding = ((IInjectionBinding)CrossContextBinder.Bind((Type)key)).ToSingleton();
-                        }
-                        //object instance = CrossContextBinder.GetInstance((Type)key);
-                        //System.Console.Write("binding singleton in resoolve binding, the key is: " + key + " and instance is: " + instance + " and instance type is: " + instance.GetType() +"\n");
-                        //crossBinding = ((IInjectionBinding)CrossContextBinder.Bind(key)).ToValue( instance);
-                    }
-                    else
-                    {
-                        crossBinding = ((IInjectionBinding)CrossContextBinder.Bind(key)).To(binding.value);
-                    }
-                    crossBinding.ToInject(injectionBinding.toInject);
-                     */
-                    System.Console.Write("passing binding along to cross context binder to resolve \n");
                     CrossContextBinder.resolveBinding(binding, key);
-                }
-                else
-                {
-                    throw new InjectionException("Cross Context Injector is null while attempting to resolve a cross context binding", InjectionExceptionType.MISSING_CROSS_CONTEXT_INJECTOR);
                 }
             }
             else
             {
-                System.Console.Write("non cross context resolve \n");
                 base.resolveBinding(binding, key);
             }
         }
