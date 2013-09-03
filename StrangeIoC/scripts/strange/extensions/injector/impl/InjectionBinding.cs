@@ -107,7 +107,6 @@ namespace strange.extensions.injector.impl
 		
         public IInjectionBinding CrossContext()
         {
-            type = InjectionBindingType.SINGLETON;
             _isCrossContext = true;
             if (resolver != null)
             {
