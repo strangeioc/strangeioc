@@ -14,7 +14,10 @@ public class CrossContext : Context, ICrossContextCapable
         get
         {
             if (_injectionBinder == null)
+            {
                 _injectionBinder = new CrossContextInjectionBinder();
+
+            }
             return _injectionBinder;
         }
         set
@@ -48,6 +51,7 @@ public class CrossContext : Context, ICrossContextCapable
         if (injectionBinder.CrossContextBinder == null)  //Only null if it could not find a parent context / firstContext
         {
             injectionBinder.CrossContextBinder = new CrossContextInjectionBinder();
+            injectionBinder.CrossContextBinder.IsCrossContext = true;
         }
 
         if (firstContext == this)

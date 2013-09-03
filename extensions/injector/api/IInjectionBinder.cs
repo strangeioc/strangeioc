@@ -105,6 +105,9 @@ namespace strange.extensions.injector.api
 		void Unbind (object key);
 		void Unbind (object key, object name);
 		void Unbind (IBinding binding);
+
+        void resolveBinding(IBinding binding, object key); //exposed for test
+        bool IsCrossContext { get; set; }
 	}
 }
 
