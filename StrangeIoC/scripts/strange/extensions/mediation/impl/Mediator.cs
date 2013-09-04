@@ -22,11 +22,9 @@
  * @see strange.extensions.mediation.api.IMediationBinder
  */
 
-using System;
-using UnityEngine;
 using strange.extensions.context.api;
-using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.mediation.api;
+using UnityEngine;
 
 namespace strange.extensions.mediation.impl
 {
