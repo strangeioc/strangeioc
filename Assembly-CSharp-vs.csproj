@@ -344,5 +344,7 @@
     <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\view\ClickDetector.cs" />
     <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\view\ExampleMediator.cs" />
     <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\view\ExampleView.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\controller\RemoveSocialContextCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\controller\RemoveContextCommand.cs" />
   </ItemGroup>
 </Project>
