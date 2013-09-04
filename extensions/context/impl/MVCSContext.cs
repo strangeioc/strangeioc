@@ -333,22 +333,6 @@ namespace strange.extensions.context.impl
 			viewCache = new SemiBinding();
 		}
 
-        //public void AssignCrossContext(ICrossContextCapable childContext)
-        //{
-        //    childContext.CrossContextInjectionBinder = CrossContextInjectionBinder;
-        //}
-
-        public IInjectionBinder CrossContextInjectionBinder
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
     }
 }
 
