@@ -382,6 +382,8 @@ namespace strange.framework.impl
 		{
 			return spliceValueAt<object>(splicePos, objectValue);
 		}
+
+        virtual public void OnRemove() { }
 	}
 }
 

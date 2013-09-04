@@ -125,6 +125,7 @@ namespace strange.extensions.context.impl
 		/// Remove a context from this one.
 		virtual public IContext RemoveContext(IContext context)
 		{
+            context.OnRemove();
 			return this;
 		}
 
@@ -152,6 +153,8 @@ namespace strange.extensions.context.impl
 		{
 			//Override in subclasses
 		}
+
+        virtual public void OnRemove() { }
 	}
 }
 
