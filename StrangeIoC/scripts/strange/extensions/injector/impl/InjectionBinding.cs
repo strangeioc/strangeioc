@@ -97,10 +97,8 @@ namespace strange.extensions.injector.impl
 					throw new InjectionException("Injection cannot bind a value that does not extend or implement the binding type.", InjectionExceptionType.ILLEGAL_BINDING_VALUE);
 				}
 			}
-			To (o);
 			type = InjectionBindingType.VALUE;
-			if (resolver != null)
-				resolver (this);
+			To (o);
 			return this;
 		}
 		
