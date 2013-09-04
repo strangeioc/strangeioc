@@ -73,6 +73,10 @@ namespace strange.extensions.injector.impl
 
 		public IInjectionBinding ToSingleton()
 		{
+			//If already a value, this mapping is redundant
+			if (type == InjectionBindingType.VALUE)
+				return this;
+
 			type = InjectionBindingType.SINGLETON;
             if (resolver != null)
             {

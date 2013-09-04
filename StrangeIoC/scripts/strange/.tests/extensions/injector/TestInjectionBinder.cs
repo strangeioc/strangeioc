@@ -161,6 +161,25 @@ namespace strange.unittests
 			GuaranteedUniqueInstances instance1 = binder.GetInstance <GuaranteedUniqueInstances> () as GuaranteedUniqueInstances;
 			GuaranteedUniqueInstances instance2 = binder.GetInstance <GuaranteedUniqueInstances> () as GuaranteedUniqueInstances;
 			Assert.AreEqual (instance1.uid, instance2.uid);
+			Assert.AreSame (instance1, instance2);
+		}
+
+		//RE: Issue #23. A value-mapping trumps a Singleton mapping
+		[Test]
+		public void TestValueToSingletonBinding ()
+		{
+			InjectableSuperClass instance = new InjectableSuperClass ();
+			InjectionBinding binding = binder.Bind<InjectableSuperClass> ().ToValue (instance).ToSingleton() as InjectionBinding;
+			Assert.AreEqual (InjectionBindingType.VALUE, binding.type);
+		}
+
+		//RE: Issue #23. A value-mapping trumps a Singleton mapping
+		[Test]
+		public void TestSingletonToValueBinding ()
+		{
+			InjectableSuperClass instance = new InjectableSuperClass ();
+			InjectionBinding binding = binder.Bind<InjectableSuperClass> ().ToSingleton().ToValue (instance) as InjectionBinding;
+			Assert.AreEqual (InjectionBindingType.VALUE, binding.type);
 		}
 
 		[Test]

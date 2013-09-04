@@ -25,6 +25,9 @@ namespace strange.examples.multiplecontexts.game
 	{
 		[Inject]
 		public ScoreboardView view{ get; set;}
+
+		[Inject]
+		public IScore model{ get; set;}
 		
 		private const string SCORE_STRING = "score: ";
 		private const string LIVES_STRING = "lives remaining: ";
@@ -32,9 +35,7 @@ namespace strange.examples.multiplecontexts.game
 		public override void OnRegister()
 		{
 			UpdateListeners(true);
-			//I'm cheating a little here for the sake of simplicity.
-			//The number 3 should be supplied from an injected config.
-			view.init (SCORE_STRING + "0", LIVES_STRING + "3");
+			view.init (SCORE_STRING + "0", LIVES_STRING + model.lives.ToString());
 		}
 		
 		public override void OnRemove()
