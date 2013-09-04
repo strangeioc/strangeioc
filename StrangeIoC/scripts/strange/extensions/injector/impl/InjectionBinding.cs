@@ -63,6 +63,10 @@ namespace strange.extensions.injector.impl
 
 		public IInjectionBinding ToSingleton()
 		{
+			//If already a value, this mapping is redundant
+			if (type == InjectionBindingType.VALUE)
+				return this;
+
 			type = InjectionBindingType.SINGLETON;
 			if (resolver != null)
 				resolver (this);
@@ -85,10 +89,8 @@ namespace strange.extensions.injector.impl
 					throw new InjectionException("Injection cannot bind a value that does not extend or implement the binding type.", InjectionExceptionType.ILLEGAL_BINDING_VALUE);
 				}
 			}
-			To (o);
 			type = InjectionBindingType.VALUE;
-			if (resolver != null)
-				resolver (this);
+			To (o);
 			return this;
 		}
 		
