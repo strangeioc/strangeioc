@@ -1,5 +1,6 @@
 using System;
 using NUnit.Framework;
+using strange.extensions.dispatcher.api;
 using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.dispatcher.eventdispatcher.impl;
 
@@ -96,6 +97,38 @@ namespace strange.unittests
 			dispatcher.Dispatch (SomeEnum.ONE, PAYLOAD);
 
 			Assert.AreEqual(INIT_VALUE + PAYLOAD + INCREMENT, confirmationValue);
+		}
+
+		[Test]
+		public void TestTriggerClientRemoval()
+		{
+			Assert.AreEqual (0, (dispatcher as ITriggerProvider).Triggerables);
+
+			EventDispatcher anotherDispatcher1 = new EventDispatcher ();
+			(dispatcher as ITriggerProvider).AddTriggerable (anotherDispatcher1);
+
+			Assert.AreEqual (1, (dispatcher as ITriggerProvider).Triggerables);
+			
+			EventDispatcher anotherDispatcher2 = new EventDispatcher ();
+			(dispatcher as ITriggerProvider).AddTriggerable (anotherDispatcher2);
+
+			Assert.AreEqual (2, (dispatcher as ITriggerProvider).Triggerables);
+
+			dispatcher.AddListener (SomeEnum.ONE, removeTriggerClientMethod);
+			dispatcher.Dispatch (SomeEnum.ONE, anotherDispatcher1);
+
+			Assert.AreEqual (1, (dispatcher as ITriggerProvider).Triggerables);
+
+			dispatcher.AddListener (SomeEnum.ONE, removeTriggerClientMethod);
+			dispatcher.Dispatch (SomeEnum.ONE, anotherDispatcher2);
+
+			Assert.AreEqual (0, (dispatcher as ITriggerProvider).Triggerables);
+		}
+
+		private void removeTriggerClientMethod(IEvent evt)
+		{
+			EventDispatcher target = evt.data as EventDispatcher;
+			(dispatcher as ITriggerProvider).RemoveTriggerable (target);
 		}
 
 		[Test]
