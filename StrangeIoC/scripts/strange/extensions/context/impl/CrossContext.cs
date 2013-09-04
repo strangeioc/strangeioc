@@ -95,8 +95,11 @@ public class CrossContext : Context, ICrossContextCapable
 
     virtual public void RemoveCrossContext(ICrossContextCapable childContext)
     {
-        ((childContext.crossContextDispatcher) as ITriggerProvider).RemoveTriggerable(childContext.GetComponent<IEventDispatcher>(ContextKeys.CONTEXT_DISPATCHER) as ITriggerable);
-        childContext.crossContextDispatcher = null;
+        if (childContext.crossContextDispatcher != null)
+        {
+            ((childContext.crossContextDispatcher) as ITriggerProvider).RemoveTriggerable(childContext.GetComponent<IEventDispatcher>(ContextKeys.CONTEXT_DISPATCHER) as ITriggerable);
+            childContext.crossContextDispatcher = null;
+        }
     }
     override public IContext RemoveContext(IContext context)
     {

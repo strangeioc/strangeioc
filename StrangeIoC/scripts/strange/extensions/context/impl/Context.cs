@@ -154,7 +154,6 @@ namespace strange.extensions.context.impl
 			//Override in subclasses
 		}
 
-        virtual public void OnRemove() { }
 	}
 }
 

@@ -18,6 +18,10 @@ namespace strange.unittests
 	public class TestCrossContext
 	{
         object view;
+        CrossContext Parent;
+        CrossContext ChildOne;
+        CrossContext ChildTwo;
+
         [SetUp]
         public void SetUp()
         {
@@ -27,101 +31,69 @@ namespace strange.unittests
             ChildOne = new CrossContext(view, true);
             ChildTwo = new CrossContext(view, true);
         }
-
-        CrossContext Parent;
-        CrossContext ChildOne;
-        CrossContext ChildTwo;
         
-		[Test]
-		public void TestCrossInjectionFromValue()
-		{
-            MyTestSignal parentSignal = new MyTestSignal();
-            Parent.injectionBinder.Bind<MyTestSignal>().ToValue(parentSignal).CrossContext(); //bind it once here and it should be accessible everywhere
+        [Test]
+        public void TestCrossInjectionFromValue()
+        {
+            TestModel parentModel = new TestModel();
+            Parent.injectionBinder.Bind<TestModel>().ToValue(parentModel).CrossContext(); //bind it once here and it should be accessible everywhere
 
-            MyTestSignal parentSignalTwo = Parent.injectionBinder.GetInstance<MyTestSignal>() as MyTestSignal;
+            TestModel parentModelTwo = Parent.injectionBinder.GetInstance<TestModel>() as TestModel;
 
-            Assert.AreEqual(parentSignal, parentSignalTwo); //Assure that this value is correct
+            Assert.AreSame(parentModel, parentModelTwo); //Assure that this value is correct
 
-            MyTestSignal signal = ChildOne.injectionBinder.GetInstance<MyTestSignal>() as MyTestSignal;
-            Assert.IsNotNull(signal);
-            MyTestSignal sameSignal = ChildTwo.injectionBinder.GetInstance<MyTestSignal>() as MyTestSignal;
-            Assert.IsNotNull(sameSignal);
-            Assert.AreEqual(signal, sameSignal); //These two should be the same object
+            TestModel childOneModel = ChildOne.injectionBinder.GetInstance<TestModel>() as TestModel;
+            Assert.IsNotNull(childOneModel);
+            TestModel childTwoModel = ChildTwo.injectionBinder.GetInstance<TestModel>() as TestModel;
+            Assert.IsNotNull(childTwoModel);
+            Assert.AreSame(childOneModel, childTwoModel); //These two should be the same object
 
-            signal.AddOnce(TestCallback);
-            TestDelegate testDelegate = delegate
-            {
-                parentSignal.Dispatch();
-            };
+            Assert.AreEqual(0, parentModel.Value);
 
-            Assert.Throws<TestPassedException>(testDelegate); //first, addonce should handle removal. Tested elsewhere
-            sameSignal.AddOnce(TestCallback);
-            Assert.Throws<TestPassedException>(testDelegate); //With the second one
-		}
+            parentModel.Value++;
+            Assert.AreEqual(1, childOneModel.Value);
+
+            parentModel.Value++;
+            Assert.AreEqual(2, childTwoModel.Value);
+
+        }
+
 
         [Test]
         public void TestCrossInjectionFromSingleton()
         {
-            Parent.injectionBinder.Bind<MyTestSignal>().ToSingleton().CrossContext(); //bind it once here and it should be accessible everywhere
-            MyTestSignal parentSignal = Parent.injectionBinder.GetInstance<MyTestSignal>() as MyTestSignal;
-            Assert.IsNotNull(parentSignal);
+            Parent.injectionBinder.Bind<TestModel>().ToSingleton().CrossContext(); //bind it once here and it should be accessible everywhere
 
-            TestDelegate testDelegate = delegate
-            {
-                parentSignal.Dispatch();
-            };
+            TestModel parentModel = Parent.injectionBinder.GetInstance<TestModel>() as TestModel;
+            Assert.IsNotNull(parentModel);
+
+            TestModel childOneModel = ChildOne.injectionBinder.GetInstance<TestModel>() as TestModel;
+            Assert.IsNotNull(childOneModel);
+            TestModel childTwoModel = ChildTwo.injectionBinder.GetInstance<TestModel>() as TestModel;
+            Assert.IsNotNull(childTwoModel);
+            
+            Assert.AreSame(parentModel, childOneModel); 
+            Assert.AreSame(parentModel, childTwoModel);
+            Assert.AreSame(childOneModel, childTwoModel);
 
 
-            MyTestSignal childOneSignal = ChildOne.injectionBinder.GetInstance<MyTestSignal>() as MyTestSignal;
-            MyTestSignal childTwoSignal = ChildTwo.injectionBinder.GetInstance<MyTestSignal>() as MyTestSignal;
-            Assert.IsNotNull(childOneSignal);
-            Assert.IsNotNull(childTwoSignal);
+            Assert.AreEqual(0, parentModel.Value);
 
-            Assert.AreEqual(parentSignal, childOneSignal); //These two should be the same object
-            Assert.AreEqual(parentSignal, childTwoSignal);
-            Assert.AreEqual(childOneSignal, childTwoSignal);
+            parentModel.Value++;
+            Assert.AreEqual(1, childOneModel.Value);
 
-            childOneSignal.AddOnce(TestCallback);
-            Assert.Throws<TestPassedException>(testDelegate);
+            parentModel.Value++;
+            Assert.AreEqual(2, childTwoModel.Value);
 
-            childTwoSignal.AddOnce(TestCallbackTwo);
-            Assert.Throws<TestPassedException>(testDelegate);
-        }
-
-        [Test]
-        public void TestSingleton()
-        {
-            Parent.injectionBinder.Bind<MyTestSignal>().ToSingleton();
-
-            MyTestSignal one = Parent.injectionBinder.GetInstance<MyTestSignal>() as MyTestSignal;
-            MyTestSignal two = Parent.injectionBinder.GetInstance<MyTestSignal>() as MyTestSignal;
-
-            Assert.AreEqual(one, two);
-        }
-
-        
-        private void TestCallback()
-        {
-            throw new TestPassedException("Test One Passed");
-        }
-
-        private void TestCallbackTwo()
-        {
-            throw new TestPassedException("Test Two Passed");
-        }
-
-        class TestPassedException : Exception
-        {
-            public TestPassedException(string exception) : base(exception)
-            {
-                
-            }
         }
 
 
 	}
 
-    public class MyTestSignal : Signal
+
+    public class TestModel
     {
+        public int Value = 0;
     }
+
 }

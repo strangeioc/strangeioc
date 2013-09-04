@@ -50,7 +50,6 @@ namespace strange.extensions.context.api
 		/// Get the ContextView
 		object GetContextView();
 
-        void OnRemove();
 	}
 }
 
