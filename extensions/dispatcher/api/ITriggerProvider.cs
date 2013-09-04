@@ -39,6 +39,9 @@ namespace strange.extensions.dispatcher.api
 
 		/// Remove a previously registered Triggerable client from this provider.
 		void RemoveTriggerable(ITriggerable target);
+
+		/// Count of the current number of trigger clients.
+		int Triggerables{ get;}
 	}
 }
 

@@ -47,7 +47,9 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 	public class EventDispatcher : Binder, IEventDispatcher, ITriggerProvider, ITriggerable
 	{
 		/// The list of clients that will be triggered as a consequence of an Event firing.
-		protected ITriggerable[] triggerClients;
+		protected HashSet<ITriggerable> triggerClients;
+		protected HashSet<ITriggerable> triggerClientRemovals;
+		protected bool isTriggeringClients;
 
 		public EventDispatcher ()
 		{
@@ -96,16 +98,21 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 				//Client provided an eventType and some data which is not a IEvent.
 				data = new TmEvent(eventType, this, data);
 			}
-			
+
 			if (triggerClients != null)
 			{
-				int aa = triggerClients.Length;
-				for (int a = 0; a < aa; a++)
+				isTriggeringClients = true;
+				foreach (ITriggerable trigger in triggerClients)
 				{
-					triggerClients[a].Trigger(eventType, data);
+					trigger.Trigger(eventType, data);
 				}
+				if (triggerClientRemovals != null)
+				{
+					flushRemovals();
+				}
+				isTriggeringClients = false;
 			}
-			
+
 			IEventBinding binding = GetBinding (eventType) as IEventBinding;
 			if (binding == null)
 			{
@@ -113,7 +120,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			}
 
 			object[] callbacks = binding.value as object[];
-			
+
 			if (callbacks == null)
 			{
 				return;
@@ -237,29 +244,51 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 		{
 			if (triggerClients == null)
 			{
-				triggerClients = new ITriggerable[1];
+				triggerClients = new HashSet<ITriggerable>();
 			}
-			else
-			{
-				ITriggerable[] tempList = triggerClients;
-				int len = tempList.Length;
-				triggerClients = new ITriggerable[len + 1];
-				tempList.CopyTo (triggerClients, 0);
-			}
-			triggerClients [triggerClients.Length - 1] = target;
+			triggerClients.Add(target);
 		}
 
 		public void RemoveTriggerable(ITriggerable target)
 		{
-			int aa = triggerClients.Length;
-			for (int a = 0; a < aa; a++)
+			if (triggerClients.Contains(target))
 			{
-				if (triggerClients[a] == target)
+				if (triggerClientRemovals == null)
 				{
-					triggerClients = spliceValueAt<ITriggerable>(a, triggerClients) as ITriggerable[];
-					break;
+					triggerClientRemovals = new HashSet<ITriggerable>();
+				}
+				triggerClientRemovals.Add (target);
+				if (!isTriggeringClients)
+				{
+					flushRemovals();
 				}
 			}
+		}
+
+		public int Triggerables
+		{
+			get
+			{
+				if (triggerClients == null)
+					return 0;
+				return triggerClients.Count;
+			}
+		}
+
+		protected void flushRemovals()
+		{
+			if (triggerClientRemovals == null)
+			{
+				return;
+			}
+			foreach(ITriggerable target in triggerClientRemovals)
+			{
+				if (triggerClients.Contains(target))
+				{
+					triggerClients.Remove(target);
+				}
+			}
+			triggerClientRemovals = null;
 		}
 
 		public void Trigger<T>(object data)
@@ -273,4 +302,3 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 		}
 	}
 }
-
