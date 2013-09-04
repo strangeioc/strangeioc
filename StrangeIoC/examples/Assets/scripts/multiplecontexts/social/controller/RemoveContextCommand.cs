@@ -14,21 +14,31 @@
  *		limitations under the License.
  */
 
-using System;
+/// RemoveContextCommand
+/// ============================
+/// Demonstrates how to remove a Context
 
-namespace strange.examples.multiplecontexts.game
+using System;
+using strange.extensions.context.impl;
+using strange.extensions.command.impl;
+using strange.extensions.context.api;
+using UnityEngine;
+
+namespace strange.examples.multiplecontexts.social
 {
-	public enum GameEvent
+	public class RemoveContextCommand : EventCommand
 	{
-		ADD_TO_SCORE,
-		GAME_OVER,
-		GAME_UPDATE,
-		LIVES_CHANGE,
-		REMOVE_SOCIAL_CONTEXT,
-		REPLAY,
-		RESTART_GAME,
-		SCORE_CHANGE,
-		SHIP_DESTROYED
+		[Inject(ContextKeys.CONTEXT)]
+		public IContext context{get;set;}
+		
+		[Inject(ContextKeys.CONTEXT_VIEW)]
+		public GameObject contextView{get;set;}
+		
+		public override void Execute()
+		{
+			Context.firstContext.RemoveContext(context);
+			GameObject.Destroy(contextView);
+		}
 	}
 }
 

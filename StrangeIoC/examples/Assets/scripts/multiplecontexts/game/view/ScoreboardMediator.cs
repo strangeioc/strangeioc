@@ -49,6 +49,7 @@ namespace strange.examples.multiplecontexts.game
 			dispatcher.UpdateListener(value, GameEvent.GAME_OVER, onGameOver);
 			
 			view.dispatcher.AddListener(ScoreboardView.REPLAY, onReplay);
+			view.dispatcher.AddListener(ScoreboardView.REMOVE_CONTEXT, onRemoveContext);
 			dispatcher.AddListener(GameEvent.RESTART_GAME, onRestart);
 		}
 		
@@ -73,6 +74,11 @@ namespace strange.examples.multiplecontexts.game
 		private void onReplay()
 		{
 			dispatcher.Dispatch(GameEvent.REPLAY);
+		}
+		
+		private void onRemoveContext()
+		{
+			dispatcher.Dispatch(GameEvent.REMOVE_SOCIAL_CONTEXT);
 		}
 		
 		private void onRestart()
