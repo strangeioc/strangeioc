@@ -52,6 +52,19 @@ namespace strange.unittests
 			Assert.That (instance.floatVal == (float)Math.PI * 2f);
 		}
 
+		//RE: Issue #23. A value-mapped object must never attempt to re-instantiate
+		[Test]
+		public void TestValueMappingWithConstructorArguments()
+		{
+			string stringVal = "Ender Wiggin";
+			ClassWithConstructorParametersOnlyOneConstructor instance = new ClassWithConstructorParametersOnlyOneConstructor (stringVal);
+			binder.Bind<ClassWithConstructorParametersOnlyOneConstructor> ().ToValue (instance);
+			//If this class attempts to construct, with no string mapped, there'll be an error
+			ClassWithConstructorParametersOnlyOneConstructor instance2 = binder.GetInstance<ClassWithConstructorParametersOnlyOneConstructor> () as ClassWithConstructorParametersOnlyOneConstructor;
+			Assert.AreSame (instance, instance2);
+			Assert.AreEqual (stringVal, instance2.stringVal);
+		}
+
 		[Test]
 		public void TestMultiplePostConstructs ()
 		{
