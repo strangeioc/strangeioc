@@ -27,8 +27,6 @@ using System;
 using System.Collections.Generic;
 using strange.framework.api;
 using strange.extensions.injector.api;
-using strange.extensions.injector.impl;
-using strange.extensions.reflector.api;
 using strange.extensions.reflector.impl;
 using strange.framework.impl;
 
@@ -99,12 +97,17 @@ namespace strange.extensions.injector.impl
 			return base.Bind<T> () as IInjectionBinding;
 		}
 
-		public IInjectionBinding Bind(Type key)
-		{
-			return base.Bind(key) as IInjectionBinding;
-		}
+        public IInjectionBinding Bind(Type key)
+        {
+            return base.Bind(key) as IInjectionBinding;
+        }
 
-		new public IInjectionBinding GetBinding<T>()
+        public override IBinding Bind(object key)
+        {
+            return base.Bind(key);
+        } 
+
+		new virtual public IInjectionBinding GetBinding<T>()
 		{
 			return base.GetBinding<T> () as IInjectionBinding;
 		}
@@ -119,9 +122,9 @@ namespace strange.extensions.injector.impl
 			return base.GetBinding (key) as IInjectionBinding;
 		}
 
-		new public IInjectionBinding GetBinding(object key, object name)
+		virtual public IInjectionBinding GetBinding(object key, object name)
 		{
-			return base.GetBinding (key, name) as IInjectionBinding;
+            return base.GetBinding(key, name) as IInjectionBinding;
 		}
 
 		public int ReflectAll()
@@ -158,6 +161,9 @@ namespace strange.extensions.injector.impl
 			}
 			return count;
 		}
-	}
+
+    }
+
+    
 }
 

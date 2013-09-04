@@ -84,6 +84,8 @@ namespace strange.framework.api
 
 		/// Remove a select name from the given binding
 		void RemoveName (IBinding binding, object value);
+
+        void OnRemove();
 	}
 }
 

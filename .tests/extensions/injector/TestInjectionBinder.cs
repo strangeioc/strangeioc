@@ -244,18 +244,15 @@ namespace strange.unittests
 			binder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ().ToName(SomeEnum.ONE);
 			binder.Bind<ISimpleInterface> ().To<PolymorphicClass> ();
 			binder.Bind<InjectableSuperClass> ().To<InjectableDerivedClass> ();
-			binder.Bind<int> ().ToValue (42);
-			binder.Bind<string> ().ToValue ("zaphod"); //primitives won't get reflected...
 
 			System.Collections.Generic.List<Type> list = new System.Collections.Generic.List<Type> ();
 			list.Add (typeof(HasNamedInjections));
 			list.Add (typeof(SimpleInterfaceImplementer));
 			list.Add (typeof(PolymorphicClass));
 			list.Add (typeof(InjectableDerivedClass));
-			list.Add (typeof(int));
 
 			int count = binder.Reflect (list);
-			Assert.AreEqual (4, count);		//...so list length will not include primitives
+			Assert.AreEqual (4, count);
 
 			IReflectedClass reflected1 = binder.injector.reflector.Get<HasNamedInjections> ();
 			Assert.True (reflected1.preGenerated);
@@ -278,11 +275,9 @@ namespace strange.unittests
 			binder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ().ToName(SomeEnum.ONE);
 			binder.Bind<ISimpleInterface> ().To<PolymorphicClass> ();
 			binder.Bind<InjectableSuperClass> ().To<InjectableDerivedClass> ();
-			binder.Bind<int> ().ToValue (42);
-			binder.Bind<string> ().ToValue ("zaphod"); //primitives won't get reflected...
 
 			int count = binder.ReflectAll ();
-			Assert.AreEqual (4, count);		//...so list length will not include primitives
+			Assert.AreEqual (4, count);
 
 			ISimpleInterface s = binder.GetInstance<ISimpleInterface> () as ISimpleInterface;
 			Assert.IsTrue (s is PolymorphicClass);

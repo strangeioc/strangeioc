@@ -26,6 +26,7 @@ using System;
 using strange.framework.api;
 using strange.framework.impl;
 using strange.extensions.injector.api;
+using UnityEngine;
 
 namespace strange.extensions.injector.impl
 {
@@ -33,6 +34,7 @@ namespace strange.extensions.injector.impl
 	{
 		private InjectionBindingType _type = InjectionBindingType.DEFAULT;
 		private bool _toInject = true;
+        private bool _isCrossContext = false;
 
 		public InjectionBinding (Binder.BindingResolver resolver)
 		{
@@ -61,6 +63,14 @@ namespace strange.extensions.injector.impl
 			}
 		}
 
+        public bool isCrossContext
+        {
+            get
+            {
+                return _isCrossContext;
+            }
+        }
+
 		public IInjectionBinding ToSingleton()
 		{
 			//If already a value, this mapping is redundant
@@ -68,8 +78,10 @@ namespace strange.extensions.injector.impl
 				return this;
 
 			type = InjectionBindingType.SINGLETON;
-			if (resolver != null)
+            if (resolver != null)
+            {
 				resolver (this);
+            }
 			return this;
 		}
 
@@ -94,6 +106,15 @@ namespace strange.extensions.injector.impl
 			return this;
 		}
 		
+        public IInjectionBinding CrossContext()
+        {
+            _isCrossContext = true;
+            if (resolver != null)
+            {
+                resolver(this);
+            }
+            return this;
+        }
 		public IInjectionBinding ToInject(bool value)
 		{
 			_toInject = value;
