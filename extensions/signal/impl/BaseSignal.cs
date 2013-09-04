@@ -21,7 +21,7 @@ namespace strange.extensions.signal.impl
             foreach (Delegate del in BaseListener.GetInvocationList())
             {
                 Action<IBaseSignal, object[]> action = (Action<IBaseSignal, object[]>)del;
-                if (callback == action) //If this callback exists already, ignore this addlistener
+                if (callback.Equals(action)) //If this callback exists already, ignore this addlistener
                     return;
             }
 
@@ -33,7 +33,7 @@ namespace strange.extensions.signal.impl
             foreach (Delegate del in OnceBaseListener.GetInvocationList())
             {
                 Action<IBaseSignal, object[]> action = (Action<IBaseSignal, object[]>)del;
-                if (callback == action) //If this callback exists already, ignore this addlistener
+                if (callback.Equals(action)) //If this callback exists already, ignore this addlistener
                     return;
             }
             OnceBaseListener += callback;

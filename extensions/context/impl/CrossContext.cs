@@ -105,7 +105,7 @@ public class CrossContext : Context, ICrossContextCapable
             RemoveCrossContext((ICrossContextCapable)context);
         }
         
-        return this;
+        return base.RemoveContext(context);
     }
 
     virtual public IDispatcher crossContextDispatcher

@@ -76,6 +76,18 @@ namespace strange.extensions.command.impl
 
         }
 
+        override public void OnRemove()
+        {
+            foreach (object key in bindings.Keys)
+            {
+                IBaseSignal signal = (IBaseSignal)key;
+                if (signal != null)
+                {
+                    signal.RemoveListener(ReactTo);
+                }
+            }
+        }
+
         protected override ICommand invokeCommand(Type cmd, ICommandBinding binding, object data, int depth)
         {
             IBaseSignal signal = (IBaseSignal)binding.key;

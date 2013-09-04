@@ -46,6 +46,12 @@ namespace strange.extensions.context.impl
 		public ContextView ()
 		{
 		}
+
+        protected virtual void OnDestroy()
+        {
+            if (context != null)
+                Context.firstContext.RemoveContext(context);
+        }
 	}
 }
 

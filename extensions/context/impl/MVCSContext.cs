@@ -333,6 +333,12 @@ namespace strange.extensions.context.impl
 			viewCache = new SemiBinding();
 		}
 
+        public override void OnRemove()
+        {
+            base.OnRemove();
+            commandBinder.OnRemove();
+        }
+
     }
 }
 
