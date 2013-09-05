@@ -79,19 +79,8 @@ namespace strange.extensions.injector.impl
                 }
                 else
                 {
-                    foreach (object objectMapKey in objectMap.Keys)
-                    {
-                        InjectionBinding storedBinding = (InjectionBinding)objectMapKey;
-                    }
                     binding.ToValue(generateImplicit((binding.key as object[])[0], args));
                     dict[name] = binding.value;
-                }
-            }
-            else
-            {
-                foreach (object objectMapKey in objectMap.Keys)
-                {
-                    InjectionBinding storedBinding = (InjectionBinding)objectMapKey;
                 }
             }
 			return dict[name];

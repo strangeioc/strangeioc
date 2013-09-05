@@ -26,11 +26,8 @@
  * your extension from the ContextView.
  */
 
-using System;
 using strange.extensions.context.api;
-using strange.extensions.dispatcher.api;
 using strange.framework.impl;
-using UnityEngine;
 
 namespace strange.extensions.context.impl
 {
