@@ -156,7 +156,6 @@
  * 
  */
 
-using System;
 using UnityEngine;
 using strange.extensions.command.api;
 using strange.extensions.command.impl;
@@ -165,7 +164,6 @@ using strange.extensions.dispatcher.api;
 using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.dispatcher.eventdispatcher.impl;
 using strange.extensions.injector.api;
-using strange.extensions.injector.impl;
 using strange.extensions.mediation.api;
 using strange.extensions.mediation.impl;
 using strange.extensions.sequencer.api;

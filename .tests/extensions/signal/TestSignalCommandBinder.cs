@@ -127,8 +127,81 @@ namespace strange.unittests
             {
                 signal.Dispatch(injectedValue, secondInjectedValue); 
             };
-            Assert.Throws<SignalException>(testDelegate);
+            SignalException ex = Assert.Throws<SignalException>(testDelegate);
+            Assert.AreEqual(ex.type, SignalExceptionType.COMMAND_VALUE_CONFLICT);
         }
+
+
+        [Test]
+        public void TestSequence()
+        {
+            //CommandWithInjection requires an ISimpleInterface
+            injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer>().ToSingleton();
+
+            //Bind the trigger to the command
+            commandBinder.Bind<NoArgSignal>().To<CommandWithInjection>().To<CommandWithExecute>().To<CommandWithoutExecute>().InSequence();
+
+            TestDelegate testDelegate = delegate
+            {
+                NoArgSignal signal = injectionBinder.GetInstance<NoArgSignal>() as NoArgSignal;
+                signal.Dispatch();
+            };
+
+            //That the exception is thrown demonstrates that the last command ran
+            CommandException ex = Assert.Throws<CommandException>(testDelegate);
+            Assert.AreEqual(ex.type, CommandExceptionType.EXECUTE_OVERRIDE);
+
+            //That the value is 100 demonstrates that the first command ran
+            ISimpleInterface instance = injectionBinder.GetInstance<ISimpleInterface>() as ISimpleInterface;
+            Assert.AreEqual(100, instance.intValue);
+        }
+
+
+        [Test]
+        public void TestSequenceTwo()
+        {
+            //Slightly different test to be thorough
+
+            //Bind the trigger to the command
+            commandBinder.Bind<TwoArgSignal>().To<TwoArgSignalCommand>().To<TwoArgSignalCommandTwo>().To<TwoArgSignalCommandThree>().InSequence();
+            TestModel testModel = injectionBinder.GetInstance<TestModel>() as TestModel;
+            int intValue = 1;
+            bool boolValue = true;
+
+            TestDelegate testDelegate = delegate
+            {
+                TwoArgSignal signal = injectionBinder.GetInstance<TwoArgSignal>() as TwoArgSignal;
+                signal.Dispatch(intValue, boolValue);
+            };
+
+            Assert.Throws<TestPassedException>(testDelegate);
+            int intendedValue = 2; //intValue twice (addition because of bool == true)
+            Assert.AreEqual(intendedValue, testModel.StoredValue);
+        }
+
+        [Test]
+        public void TestInterruptedSequence()
+        {
+            //CommandWithInjection requires an ISimpleInterface
+            injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer>().ToSingleton();
+
+            //Bind the trigger to the command
+            commandBinder.Bind <NoArgSignal>().To<CommandWithInjection>().To<FailCommand>().To<CommandWithoutExecute>().InSequence();
+
+            TestDelegate testDelegate = delegate
+            {
+                NoArgSignal signal = injectionBinder.GetInstance<NoArgSignal>() as NoArgSignal;
+                signal.Dispatch();
+            };
+
+            //That the exception is not thrown demonstrates that the last command was interrupted
+            Assert.DoesNotThrow(testDelegate);
+
+            //That the value is 100 demonstrates that the first command ran
+            ISimpleInterface instance = injectionBinder.GetInstance<ISimpleInterface>() as ISimpleInterface;
+            Assert.AreEqual(100, instance.intValue);
+        }
+
 
         class TestModel
         {
@@ -196,6 +269,39 @@ namespace strange.unittests
             }
         }
 
+        class TwoArgSignalCommandTwo : Command
+        {
+            [Inject]
+            public int injectedValue { get; set; }
+            [Inject]
+            public bool injectedBool { get; set; }
+            [Inject]
+            public TestModel TestModel { get; set; }
+
+            public override void Execute()
+            {
+                if (injectedBool)
+                    TestModel.StoredValue += injectedValue;
+                else
+                    TestModel.StoredValue -= injectedValue;
+            }
+        }
+
+        class TwoArgSignalCommandThree : Command
+        {
+            [Inject]
+            public int injectedValue { get; set; }
+            [Inject]
+            public bool injectedBool { get; set; }
+            [Inject]
+            public TestModel TestModel { get; set; }
+
+            public override void Execute()
+            {
+                throw new TestPassedException("Test Passed");
+            }
+        }
+
         class TwoArgSameTypeSignalCommand : Command
         {
             [Inject]
@@ -210,6 +316,11 @@ namespace strange.unittests
                 //This should never be run
                 throw new Exception("This should not be reached");
             }
+        }
+
+        class TestPassedException : Exception
+        {
+            public TestPassedException(string str) : base(str) { }
         }
 	}
 }

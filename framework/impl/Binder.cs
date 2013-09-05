@@ -130,12 +130,15 @@ namespace strange.framework.impl
 
 		virtual public void Unbind(object key, object name)
 		{
+            System.Console.Write("Unbind");
             if (bindings.ContainsKey(key))
             {
+                System.Console.Write("Unbind contains key");
                 Dictionary<object, IBinding> dict = bindings[key];
                 object bindingName = (name == null) ? BindingConst.NULLOID : name;
                 if (dict.ContainsKey(bindingName))
                 {
+                    System.Console.Write("Binder: Unbind is successful");
                     dict.Remove(bindingName);
                 }
             }
