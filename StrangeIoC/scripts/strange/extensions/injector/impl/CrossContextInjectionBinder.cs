@@ -1,7 +1,6 @@
 ﻿using strange.extensions.injector.impl;
 using strange.extensions.injector.api;
 using strange.framework.api;
-using System;
 
 public class CrossContextInjectionBinder : InjectionBinder, ICrossContextInjectionBinder
 {
@@ -48,6 +47,7 @@ public class CrossContextInjectionBinder : InjectionBinder, ICrossContextInjecti
                 }
                 else 
                 {
+                    Unbind(key); //remove this cross context binding from the local binder
                     CrossContextBinder.resolveBinding(binding, key);
                 }
             }

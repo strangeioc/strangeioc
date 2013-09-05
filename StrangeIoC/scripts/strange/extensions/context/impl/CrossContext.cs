@@ -1,5 +1,4 @@
 ﻿using strange.extensions.context.impl;
-using strange.extensions.injector.impl;
 using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.dispatcher.eventdispatcher.impl;
 using strange.extensions.context.api;

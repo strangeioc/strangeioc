@@ -52,7 +52,7 @@ namespace strange.unittests
         }
     }
 
-    public class TestPassedException : Exception
+    class TestPassedException : Exception
     {
         public TestPassedException(string str) : base(str) { }
     }
