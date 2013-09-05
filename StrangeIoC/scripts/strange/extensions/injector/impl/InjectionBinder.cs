@@ -122,7 +122,7 @@ namespace strange.extensions.injector.impl
 			return base.GetBinding (key) as IInjectionBinding;
 		}
 
-		virtual public IInjectionBinding GetBinding(object key, object name)
+		new virtual public IInjectionBinding GetBinding(object key, object name)
 		{
             return base.GetBinding(key, name) as IInjectionBinding;
 		}
