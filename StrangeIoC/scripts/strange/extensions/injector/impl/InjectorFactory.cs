@@ -38,7 +38,6 @@ namespace strange.extensions.injector.impl
 
 		public object Get(IInjectionBinding binding, object[] args)
 		{
-            
 			if (binding == null)
 			{
 				throw new InjectionException ("InjectorFactory cannot act on null binding", InjectionExceptionType.NULL_BINDING);
@@ -69,20 +68,15 @@ namespace strange.extensions.injector.impl
 		/// Generate a Singleton instance
 		protected object singletonOf(IInjectionBinding binding, object[] args)
 		{
-            
 			object name = binding.name;
 			Dictionary<object, object> dict = objectMap [binding];
-            if (dict.ContainsKey(name) == false)
-            {
-                if (binding.value != null)
-                {
-                    dict[name] = createFromValue(binding.value, args);
-                }
-                else
-                {
-                    dict[name] = generateImplicit((binding.key as object[])[0], args);
-                }
-            }
+			if (dict.ContainsKey (name) == false) {
+				if (binding.value != null) {
+					dict [name] = createFromValue (binding.value, args);
+				} else {
+					dict [name] = generateImplicit ((binding.key as object[]) [0], args);
+				}
+			}
 			return dict[name];
 		}
 
