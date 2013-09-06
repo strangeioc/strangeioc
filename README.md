@@ -25,10 +25,12 @@ It contains the following features, most of which are optional:
   * Inject into MonoBehaviours
   * Bind polymorphically (bind any or all of your interfaces to a single concrete class)
 * Reflection binding dramatically reduces overhead of employing reflectivity
-* A shared event bus
+* Two shared event bus systems, EventDispatcher and Signals. Both allow you to:
   * Dispatch events to any point in your application
-  * Map local event bus for local communication
-  * Map events to Command or Sequence classes to separate business logic
+  * Map local events for local communication
+  * Map events to Commands classes to separate business logic
+  * EventDispatcher transmits data payloads as primitives or ValueObjects
+  * Signals transmits data in bindable, type-safe parameters
 * MonoBehaviour mediation
   * Facilitate separation of a view from the application using it
   * Keep Unity-specific code isolated from the rest of the app
@@ -54,6 +56,8 @@ In addition to organizing your project into a sensible structure, Strange offers
 
 # Acknowledgements
 It is hard to adequately credit the creators of the open source Actionscript framework RobotLegs for their influence on the creation of StrangeIoC. While Strange is not a port of RobotLegs, the ensigns of that library are copiously reflected throughout this one. For their great service to my professional development, I offer that team my sincerest thanks. And a donut. Seriously, if you're ever in town, let me buy you a donut.
+
+Kudos to Will Corwin for picking up a thrown-down gauntlet and writing the Signals implementation.
 
 I also need to thank and congratulate the folks at [ThirdMotion](http://www.thirdmotion.com) who inexplicably gave me time to build Strange and license to open source it.
 

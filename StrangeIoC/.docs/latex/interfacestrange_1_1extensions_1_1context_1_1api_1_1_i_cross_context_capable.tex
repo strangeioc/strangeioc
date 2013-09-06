@@ -1,0 +1,86 @@
+\hypertarget{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable}{\section{strange.\-extensions.\-context.\-api.\-I\-Cross\-Context\-Capable Interface Reference}
+\label{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable}\index{strange.\-extensions.\-context.\-api.\-I\-Cross\-Context\-Capable@{strange.\-extensions.\-context.\-api.\-I\-Cross\-Context\-Capable}}
+}
+
+
+A\-P\-I for allowing Contexts to register across the Context border.  
+
+
+Inheritance diagram for strange.\-extensions.\-context.\-api.\-I\-Cross\-Context\-Capable\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_abdc8d8c8eba09f90cec414f9a3fb4af4}{void \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_abdc8d8c8eba09f90cec414f9a3fb4af4}{Assign\-Cross\-Context} (\hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable}{I\-Cross\-Context\-Capable} child\-Context)}\label{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_abdc8d8c8eba09f90cec414f9a3fb4af4}
+
+\begin{DoxyCompactList}\small\item\em Add cross-\/context functionality to a child context being added. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_a79d2c03da24ad3457b758a56623e3b22}{void \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_a79d2c03da24ad3457b758a56623e3b22}{Remove\-Cross\-Context} (\hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable}{I\-Cross\-Context\-Capable} child\-Context)}\label{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_a79d2c03da24ad3457b758a56623e3b22}
+
+\begin{DoxyCompactList}\small\item\em Clean up cross-\/context functionality from a child context being removed. \end{DoxyCompactList}\item 
+object \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_ad598d53c2eed0d24fbf0db37e4cafe88}{Get\-Component$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Request a component from the context (might be useful in certain cross-\/context situations) This is technically a deprecated methodology. \end{DoxyCompactList}\item 
+object \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_a06a45c44b9bcc05f592d9262bfff146d}{Get\-Component$<$ T $>$} (object name)
+\begin{DoxyCompactList}\small\item\em Request a component from the context (might be useful in certain cross-\/context situations) This is technically a deprecated methodology. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_a671d1f503d40abeb5acf4f046cde3c3c}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_cross_context_injection_binder}{I\-Cross\-Context\-Injection\-Binder} \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_a671d1f503d40abeb5acf4f046cde3c3c}{injection\-Binder}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_a671d1f503d40abeb5acf4f046cde3c3c}
+
+\begin{DoxyCompactList}\small\item\em All cross-\/context capable contexts must implement an injection\-Binder. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_aad7b3f38bed324e8a2fa86482ef1f733}{\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher}{I\-Dispatcher} \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_aad7b3f38bed324e8a2fa86482ef1f733}{cross\-Context\-Dispatcher}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_aad7b3f38bed324e8a2fa86482ef1f733}
+
+\begin{DoxyCompactList}\small\item\em Set and get the shared system bus for communicating across contexts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A\-P\-I for allowing Contexts to register across the Context border. 
+
+Implement this interface to create a binding context that can communicate across Context boundaries.
+
+M\-V\-C\-S\-Context inherits Cross\-Context to obtain important capabilities, such as shared injections.
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{strange.\-extensions.\-injector.\-api.\-I\-Injection\-Binding} 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_ad598d53c2eed0d24fbf0db37e4cafe88}{\index{strange\-::extensions\-::context\-::api\-::\-I\-Cross\-Context\-Capable@{strange\-::extensions\-::context\-::api\-::\-I\-Cross\-Context\-Capable}!Get\-Component$<$ T $>$@{Get\-Component$<$ T $>$}}
+\index{Get\-Component$<$ T $>$@{Get\-Component$<$ T $>$}!strange::extensions::context::api::ICrossContextCapable@{strange\-::extensions\-::context\-::api\-::\-I\-Cross\-Context\-Capable}}
+\subsubsection[{Get\-Component$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}object strange.\-extensions.\-context.\-api.\-I\-Cross\-Context\-Capable.\-Get\-Component$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_ad598d53c2eed0d24fbf0db37e4cafe88}
+
+
+Request a component from the context (might be useful in certain cross-\/context situations) This is technically a deprecated methodology. 
+
+Bind using Cross\-Context() instead. 
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a094adf14d43505eaa0d5c2c786c2e5f9}{strange.\-extensions.\-context.\-impl.\-M\-V\-C\-S\-Context}.
+
+\hypertarget{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_a06a45c44b9bcc05f592d9262bfff146d}{\index{strange\-::extensions\-::context\-::api\-::\-I\-Cross\-Context\-Capable@{strange\-::extensions\-::context\-::api\-::\-I\-Cross\-Context\-Capable}!Get\-Component$<$ T $>$@{Get\-Component$<$ T $>$}}
+\index{Get\-Component$<$ T $>$@{Get\-Component$<$ T $>$}!strange::extensions::context::api::ICrossContextCapable@{strange\-::extensions\-::context\-::api\-::\-I\-Cross\-Context\-Capable}}
+\subsubsection[{Get\-Component$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}object strange.\-extensions.\-context.\-api.\-I\-Cross\-Context\-Capable.\-Get\-Component$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{object}]{name}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_a06a45c44b9bcc05f592d9262bfff146d}
+
+
+Request a component from the context (might be useful in certain cross-\/context situations) This is technically a deprecated methodology. 
+
+Bind using Cross\-Context() instead. 
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a6ea387573cba1bfe0a629dec3d1e6b37}{strange.\-extensions.\-context.\-impl.\-M\-V\-C\-S\-Context}.
+
+
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Strange\-Io\-C/scripts/strange/extensions/context/api/I\-Cross\-Context\-Capable.\-cs\end{DoxyCompactItemize}

@@ -9,7 +9,7 @@ A Binder that triggers the instantiation of Commands.
 Inheritance diagram for strange.\-extensions.\-command.\-impl.\-Command\-Binder\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.777778cm]{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder}
+\includegraphics[height=2.753196cm]{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -49,6 +49,12 @@ void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder
 \item 
 \hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_afcde1b363255b70ed9f84c7f90d139d4}{virtual \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} {\bfseries create\-Command} (object cmd, object data)}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_afcde1b363255b70ed9f84c7f90d139d4}
 
+\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_ac72e98df4d7b5c47d4f6514fd515f4ec}{void {\bfseries track\-Command} (\hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} command, \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} binding)}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_ac72e98df4d7b5c47d4f6514fd515f4ec}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a31a0b6d3b5de1d9a8029ab8461fd46ee}{void {\bfseries execute\-Command} (\hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} command)}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a31a0b6d3b5de1d9a8029ab8461fd46ee}
+
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -75,7 +81,7 @@ Commands are where the logic of your application belongs. These Commands typical
 
 The act of binding events to Commands means that code needn't know anything about an event recipient, or even how the event will be used. For example, a Mediator might send out an event that two View objects collided. A \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} would then determine that the result of that event was to Destroy both objects, tell a Score\-Keeper model to change the score and request a message be sent to the server. Whether that example means one \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} or three is up to your coding preference... \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder}{Command\-Binder} can trigger one \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} or multiple Commands off the same event.
 
-Note that \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder}{Command\-Binder} also a features sequencing. By default, \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder}{Command\-Binder} fires all Commands in parallel. If your binding specifies {\ttfamily In\-Sequence()}, commands will run serially, with the option of suspending the chain at any time.
+Note that \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder}{Command\-Binder} also features sequencing. By default, \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder}{Command\-Binder} fires all Commands in parallel. If your binding specifies {\ttfamily In\-Sequence()}, commands will run serially, with the option of suspending the chain at any time.
 
 Example bindings\-: \begin{DoxyVerb}Bind("someEvent").To<SomeCommand>(); //Works, but poor form to use strings. Use the next example instead
 

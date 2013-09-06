@@ -5,7 +5,7 @@
 %%For: 
 %Magnification: 1.00
 %%Orientation: Portrait
-%%BoundingBox: 0 0 500 99.206349
+%%BoundingBox: 0 0 500 98.328417
 %%Pages: 0
 %%BeginSetup
 %%EndSetup
@@ -19,7 +19,7 @@
 /marginwidth 10 def
 /distx 20 def
 /disty 40 def
-/boundaspect 5.040000 def  % aspect ratio of the BoundingBox (width/height)
+/boundaspect 5.085000 def  % aspect ratio of the BoundingBox (width/height)
 /boundx 500 def
 /boundy boundx boundaspect div def
 /xspacing 0 def
@@ -180,6 +180,7 @@ boxfont setfont
 (strange.framework.api.IBinder) cw
 (strange.framework.api.IBinder) cw
 (strange.extensions.command.impl.EventCommandBinder) cw
+(strange.extensions.command.impl.SignalCommandBinder) cw
 (strange.extensions.sequencer.impl.Sequencer) cw
 (strange.extensions.sequencer.impl.EventSequencer) cw
 /boxwidth boxwidth marginwidth 2 mul add def
@@ -199,9 +200,10 @@ boundx scalefactor div boundy scalefactor div scale
  (strange.extensions.dispatcher.api.ITriggerable) 2.000000 3.000000 box
  (strange.framework.api.IBinder) 0.000000 4.000000 box
  (strange.framework.api.IBinder) 1.000000 4.000000 box
- (strange.extensions.command.impl.EventCommandBinder) 0.500000 1.000000 box
- (strange.extensions.sequencer.impl.Sequencer) 1.500000 1.000000 box
- (strange.extensions.sequencer.impl.EventSequencer) 1.500000 0.000000 box
+ (strange.extensions.command.impl.EventCommandBinder) 0.000000 1.000000 box
+ (strange.extensions.command.impl.SignalCommandBinder) 1.000000 1.000000 box
+ (strange.extensions.sequencer.impl.Sequencer) 2.000000 1.000000 box
+ (strange.extensions.sequencer.impl.EventSequencer) 2.000000 0.000000 box
 
 % ----- relations -----
 
@@ -226,12 +228,14 @@ solid
 solid
 1 1.000000 1.250000 out
 solid
-0.500000 1.500000 2.000000 conn
+0.000000 2.000000 2.000000 conn
 solid
-0 0.500000 1.750000 in
+0 0.000000 1.750000 in
 solid
-0 1.500000 1.750000 in
+0 1.000000 1.750000 in
 solid
-1 1.500000 0.250000 out
+0 2.000000 1.750000 in
 solid
-0 1.500000 0.750000 in
+1 2.000000 0.250000 out
+solid
+0 2.000000 0.750000 in

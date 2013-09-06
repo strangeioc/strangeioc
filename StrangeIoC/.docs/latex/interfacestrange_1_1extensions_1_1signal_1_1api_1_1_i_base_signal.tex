@@ -1,0 +1,55 @@
+\hypertarget{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal}{\section{strange.\-extensions.\-signal.\-api.\-I\-Base\-Signal Class Reference}
+\label{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal}\index{strange.\-extensions.\-signal.\-api.\-I\-Base\-Signal@{strange.\-extensions.\-signal.\-api.\-I\-Base\-Signal}}
+}
+
+
+The A\-P\-I that defines the use of a Signal.  
+
+
+Inheritance diagram for strange.\-extensions.\-signal.\-api.\-I\-Base\-Signal\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.073483cm]{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal_a51e7fe8ae7a26ebeddbff1f9641515ad}{void \hyperlink{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal_a51e7fe8ae7a26ebeddbff1f9641515ad}{Dispatch} (object\mbox{[}$\,$\mbox{]} args)}\label{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal_a51e7fe8ae7a26ebeddbff1f9641515ad}
+
+\begin{DoxyCompactList}\small\item\em Instruct a Signal to call on all its registered listeners. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal_a6793d4b57efe3f0e5c6e1cfbc5650fba}{void \hyperlink{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal_a6793d4b57efe3f0e5c6e1cfbc5650fba}{Add\-Listener} (Action$<$ \hyperlink{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal}{I\-Base\-Signal}, object\mbox{[}$\,$\mbox{]}$>$ callback)}\label{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal_a6793d4b57efe3f0e5c6e1cfbc5650fba}
+
+\begin{DoxyCompactList}\small\item\em Attach a callback to this Signal The callback parameters must match the Types and order which were originally assigned to the Signal on its creation. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal_a00b2908f0ce7467e85902fc076eb0d93}{void \hyperlink{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal_a00b2908f0ce7467e85902fc076eb0d93}{Add\-Once} (Action$<$ \hyperlink{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal}{I\-Base\-Signal}, object\mbox{[}$\,$\mbox{]}$>$ callback)}\label{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal_a00b2908f0ce7467e85902fc076eb0d93}
+
+\begin{DoxyCompactList}\small\item\em Attach a callback to this Signal for the duration of exactly one Dispatch The callback parameters must match the Types and order which were originally assigned to the Signal on its creation, and the callback will be removed immediately after the Signal dispatches. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal_a5a3d3d93779f80693a767fd4a1040954}{void \hyperlink{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal_a5a3d3d93779f80693a767fd4a1040954}{Remove\-Listener} (Action$<$ \hyperlink{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal}{I\-Base\-Signal}, object\mbox{[}$\,$\mbox{]}$>$ callback)}\label{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal_a5a3d3d93779f80693a767fd4a1040954}
+
+\begin{DoxyCompactList}\small\item\em Remove a callback from this Signal. \end{DoxyCompactList}\item 
+\hypertarget{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal_aa67779e6ccb87c8c6cebe4583ce4f438}{List$<$ Type $>$ \hyperlink{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal_aa67779e6ccb87c8c6cebe4583ce4f438}{Get\-Types} ()}\label{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal_aa67779e6ccb87c8c6cebe4583ce4f438}
+
+\begin{DoxyCompactList}\small\item\em Returns a List$<$\-System.\-Type$>$ representing the Types bindable to this Signal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The A\-P\-I that defines the use of a Signal. 
+
+Signals are a type-\/safe approach to communication that essentially replace the standard Event\-Dispatcher model. Signals can be injected/mapped just like any other object -- as Singletons, as instances, or as values. Signals can even be mapped across Contexts to provide an effective and type-\/safe way of communicating between the parts of your application.
+
+Additionally, the Signal\-Command\-Map allows you to map Signals to Commands, in just the same way as you would map Events to Commands. Note that Signals bind their parameters to Command injections by comparing Types and do not understand named injections. Therefore, in order to Bind a Command's injections to a Signal, P\-A\-R\-A\-M\-E\-T\-E\-R\-S/\-I\-N\-J\-E\-C\-T\-I\-O\-N P\-A\-I\-R\-S M\-U\-S\-T B\-E O\-F U\-N\-I\-Q\-U\-E T\-Y\-P\-E\-S. So while Signals themselves are allowed to have two parameters of the same Type, Signals mapped to Commands must never do this.
+
+Signals in Strange use the Action Class as the underlying mechanism for type safety. Unity's C\# implementation currently allows up to F\-O\-U\-R parameters in an Action, therefore S\-I\-G\-N\-A\-L\-S A\-R\-E L\-I\-M\-I\-T\-E\-D T\-O F\-O\-U\-R P\-A\-R\-A\-M\-E\-T\-E\-R\-S. If you require more than four, consider creating a value object to hold additional values.
+
+Example uses in \hyperlink{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal}{strange.\-extensions.\-signal.\-impl.\-Signal}
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{classstrange_1_1extensions_1_1signal_1_1impl_1_1_base_signal}{strange.\-extensions.\-signal.\-impl.\-Base\-Signal} 
+
+\hyperlink{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal}{strange.\-extensions.\-signal.\-impl.\-Signal} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Strange\-Io\-C/scripts/strange/extensions/signal/api/I\-Base\-Signal.\-cs\end{DoxyCompactItemize}

@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.51</span>
+   &#160;<span id="projectnumber">0.6.0</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Events</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -176,6 +176,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html#a1d683db48676ef933f3bd4ad53da40ed">RemoveName</a> (<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding, object value)</td></tr>
 <tr class="memdesc:a1d683db48676ef933f3bd4ad53da40ed inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a select name from the given binding. <br/></td></tr>
 <tr class="separator:a1d683db48676ef933f3bd4ad53da40ed inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b0a2a64b0c105a1305fdccf7736839f inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b0a2a64b0c105a1305fdccf7736839f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html#a7b0a2a64b0c105a1305fdccf7736839f">OnRemove</a> ()</td></tr>
+<tr class="memdesc:a7b0a2a64b0c105a1305fdccf7736839f inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Binder is being removed Override this method to clean up remaining bindings. <br/></td></tr>
+<tr class="separator:a7b0a2a64b0c105a1305fdccf7736839f inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a973c34bf47d4101bc97da3572b4b3f75 inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html#a973c34bf47d4101bc97da3572b4b3f75">ResolveBinding</a> (<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding, object key)</td></tr>
+<tr class="memdesc:a973c34bf47d4101bc97da3572b4b3f75 inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Places individual Bindings into the bindings Dictionary as part of the resolving process  <a href="#a973c34bf47d4101bc97da3572b4b3f75">More...</a><br/></td></tr>
+<tr class="separator:a973c34bf47d4101bc97da3572b4b3f75 inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface for the Binder which maps Views to Mediators. </p>
@@ -222,7 +229,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 25 2013 08:58:50 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 6 2013 12:07:16 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

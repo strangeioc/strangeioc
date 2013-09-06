@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.51</span>
+   &#160;<span id="projectnumber">0.6.0</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Events</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,7 +106,10 @@ Inheritance diagram for strange.extensions.injector.api.IInjectionBinder:</div>
  <div class="center">
   <img src="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder.png" usemap="#strange.extensions.injector.api.IInjectionBinder_map" alt=""/>
   <map id="strange.extensions.injector.api.IInjectionBinder_map" name="strange.extensions.injector.api.IInjectionBinder_map">
-<area href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder.html" title="The Binder for creating Injection mappings. " alt="strange.extensions.injector.impl.InjectionBinder" shape="rect" coords="0,56,277,80"/>
+<area href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_cross_context_injection_binder.html" alt="strange.extensions.injector.api.ICrossContextInjectionBinder" shape="rect" coords="0,56,352,80"/>
+<area href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder.html" title="The Binder for creating Injection mappings. " alt="strange.extensions.injector.impl.InjectionBinder" shape="rect" coords="362,56,714,80"/>
+<area href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder.html" title="A special version of InjectionBinder that allows shared injections across multiple Contexts..." alt="strange.extensions.injector.impl.CrossContextInjectionBinder" shape="rect" coords="0,112,352,136"/>
+<area href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder.html" title="A special version of InjectionBinder that allows shared injections across multiple Contexts..." alt="strange.extensions.injector.impl.CrossContextInjectionBinder" shape="rect" coords="362,112,714,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -131,12 +134,18 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inter
 <tr class="memitem:a4f5f1efc3286ca4358d6ca9443c0f1d2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder.html#a4f5f1efc3286ca4358d6ca9443c0f1d2">ReflectAll</a> ()</td></tr>
 <tr class="memdesc:a4f5f1efc3286ca4358d6ca9443c0f1d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reflect all the types currently registered with InjectionBinder Return the number of types reflected, which should be equal to the number of concrete classes you've mapped.  <a href="#a4f5f1efc3286ca4358d6ca9443c0f1d2">More...</a><br/></td></tr>
 <tr class="separator:a4f5f1efc3286ca4358d6ca9443c0f1d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15c29624d07058e29487fa0713b806a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder.html#a15c29624d07058e29487fa0713b806a3">ResolveBinding</a> (<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding, object key)</td></tr>
+<tr class="memdesc:a15c29624d07058e29487fa0713b806a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Places individual Bindings into the bindings Dictionary as part of the resolving process  <a href="#a15c29624d07058e29487fa0713b806a3">More...</a><br/></td></tr>
+<tr class="separator:a15c29624d07058e29487fa0713b806a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7faee07278ae6f408125b2f5bfe3e380"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7faee07278ae6f408125b2f5bfe3e380"></a>
 <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Bind&lt; T &gt;</b> ()</td></tr>
 <tr class="separator:a7faee07278ae6f408125b2f5bfe3e380"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd394dfe8af8c8678ba48e7badf55f8f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afd394dfe8af8c8678ba48e7badf55f8f"></a>
 <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Bind</b> (Type key)</td></tr>
 <tr class="separator:afd394dfe8af8c8678ba48e7badf55f8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5602ebd8283eb4d8a44a3346cd56be81"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5602ebd8283eb4d8a44a3346cd56be81"></a>
+<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Bind</b> (object key)</td></tr>
+<tr class="separator:a5602ebd8283eb4d8a44a3346cd56be81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3284a844e2b20f7759bcb29c3a0b5098"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3284a844e2b20f7759bcb29c3a0b5098"></a>
 <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetBinding&lt; T &gt;</b> ()</td></tr>
 <tr class="separator:a3284a844e2b20f7759bcb29c3a0b5098"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -239,7 +248,7 @@ Properties</h2></td></tr>
 <p>Retrieve an Instance based on a key/name combo. </p>
 <p>ex. <code>injectionBinder.Get(typeof(ISomeInterface), SomeEnum.MY_ENUM);</code> </p>
 
-<p>Implemented in <a class="el" href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder.html#a27b1453d99d77871caf7c0068e211a2f">strange.extensions.injector.impl.InjectionBinder</a>.</p>
+<p>Implemented in <a class="el" href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder.html#af695f0c65ded51228d02afc0374bacd5">strange.extensions.injector.impl.InjectionBinder</a>.</p>
 
 </div>
 </div>
@@ -303,13 +312,45 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a15c29624d07058e29487fa0713b806a3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void strange.extensions.injector.api.IInjectionBinder.ResolveBinding </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a>&#160;</td>
+          <td class="paramname"><em>binding</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Places individual Bindings into the bindings Dictionary as part of the resolving process </p>
+<p>Note that while some Bindings may store multiple keys, each key takes a unique position in the bindings Dictionary.</p>
+<p>Conflicts in the course of fluent binding are expected, but GetBinding will throw an error if there are any unresolved conflicts. </p>
+
+<p>Implemented in <a class="el" href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder.html#ad93ea865f14a6249af575633f6472a7e">strange.extensions.injector.impl.CrossContextInjectionBinder</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this interface was generated from the following file:<ul>
 <li>StrangeIoC/scripts/strange/extensions/injector/api/IInjectionBinder.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 25 2013 08:58:50 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 6 2013 12:07:16 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

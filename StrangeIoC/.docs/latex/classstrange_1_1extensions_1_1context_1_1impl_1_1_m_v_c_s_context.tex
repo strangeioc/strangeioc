@@ -9,7 +9,7 @@ The recommended \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_con
 Inheritance diagram for strange.\-extensions.\-context.\-impl.\-M\-V\-C\-S\-Context\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=4.000000cm]{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context}
+\includegraphics[height=2.925810cm]{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -22,12 +22,6 @@ override \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_conte
 \begin{DoxyCompactList}\small\item\em Set the object that represents the top of the \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context} hierarchy. \end{DoxyCompactList}\item 
 override void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a70e1400cfb5a71447080acdf79ca93f9}{Launch} ()
 \begin{DoxyCompactList}\small\item\em Fires Context\-Event.\-S\-T\-A\-R\-T Whatever Command/\-Sequence you want to happen first should be mapped to this event. \end{DoxyCompactList}\item 
-\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a27f92d370b558c358804365136176957}{override \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context}{I\-Context} \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a27f92d370b558c358804365136176957}{Add\-Context} (\hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context}{I\-Context} context)}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a27f92d370b558c358804365136176957}
-
-\begin{DoxyCompactList}\small\item\em Add another \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context} to this one. \end{DoxyCompactList}\item 
-\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a2a069cafa02893c41915b47d5e03269d}{override \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context}{I\-Context} \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a2a069cafa02893c41915b47d5e03269d}{Remove\-Context} (\hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context}{I\-Context} context)}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a2a069cafa02893c41915b47d5e03269d}
-
-\begin{DoxyCompactList}\small\item\em Remove a context from this one. \end{DoxyCompactList}\item 
 override object \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a094adf14d43505eaa0d5c2c786c2e5f9}{Get\-Component$<$ T $>$} ()
 \begin{DoxyCompactList}\small\item\em Gets an instance of the provided generic type. \end{DoxyCompactList}\item 
 override object \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a6ea387573cba1bfe0a629dec3d1e6b37}{Get\-Component$<$ T $>$} (object name)
@@ -37,7 +31,10 @@ override object \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v
 \begin{DoxyCompactList}\small\item\em Register a View with this \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context}. \end{DoxyCompactList}\item 
 \hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a35068ddfa0cbd9aa94c5c02ba9969588}{override void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a35068ddfa0cbd9aa94c5c02ba9969588}{Remove\-View} (object view)}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a35068ddfa0cbd9aa94c5c02ba9969588}
 
-\begin{DoxyCompactList}\small\item\em Remove a View from this \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Remove a View from this \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context}. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a39276c1ee875079a62e1cc586858ad3e}{override void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a39276c1ee875079a62e1cc586858ad3e}{On\-Remove} ()}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a39276c1ee875079a62e1cc586858ad3e}
+
+\begin{DoxyCompactList}\small\item\em Clean up. Called by a \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_view}{Context\-View} in its On\-Destroy method. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -54,11 +51,6 @@ virtual void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_
 \hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_abb0ebe5ae03d434da56eece8a20be876}{virtual void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_abb0ebe5ae03d434da56eece8a20be876}{mediate\-View\-Cache} ()}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_abb0ebe5ae03d434da56eece8a20be876}
 
 \begin{DoxyCompactList}\small\item\em Provide mediation for early-\/riser Views. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Protected Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher}{I\-Event\-Dispatcher} \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a55fc4efce14c8f9021cba2e25851942b}{\-\_\-cross\-Context\-Dispatcher}
-\begin{DoxyCompactList}\small\item\em A specific instance of Event\-Dispatcher that communicates across multiple contexts. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -68,9 +60,6 @@ virtual void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_afe136a86f154ed170eb60fb655b18548}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder}{I\-Injection\-Binder} \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_afe136a86f154ed170eb60fb655b18548}{injection\-Binder}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_afe136a86f154ed170eb60fb655b18548}
-
-\begin{DoxyCompactList}\small\item\em A Binder that handles dependency injection binding and instantiation. \end{DoxyCompactList}\item 
 \hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a7100de9c1148ef6c3300b8e608d0ed00}{\hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder}{I\-Command\-Binder} \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a7100de9c1148ef6c3300b8e608d0ed00}{command\-Binder}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a7100de9c1148ef6c3300b8e608d0ed00}
 
 \begin{DoxyCompactList}\small\item\em A Binder that maps Events to Commands. \end{DoxyCompactList}\item 
@@ -82,10 +71,7 @@ virtual void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_
 \begin{DoxyCompactList}\small\item\em A Binder that maps Views to Mediators. \end{DoxyCompactList}\item 
 \hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_af18bbe60ff223bebf24d0643c07c1c6f}{\hyperlink{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer}{I\-Sequencer} \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_af18bbe60ff223bebf24d0643c07c1c6f}{sequencer}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_af18bbe60ff223bebf24d0643c07c1c6f}
 
-\begin{DoxyCompactList}\small\item\em A Binder that maps Events to Sequences. \end{DoxyCompactList}\item 
-\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a149995ccefc2f46a2e7784d3c78cb119}{override \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher}{I\-Dispatcher} {\bfseries cross\-Context\-Dispatcher}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a149995ccefc2f46a2e7784d3c78cb119}
-
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A Binder that maps Events to Sequences. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
@@ -215,7 +201,7 @@ Map the relationships between the Binders.
 
 Although you can override this method, it is recommended that you provide all your application bindings in {\ttfamily \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a69ab00c1a523096ebc8d1a31738296e2}{map\-Bindings()}}. 
 
-Reimplemented from \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a57e5e9aeb378aca525f8f28a426d59cc}{strange.\-extensions.\-context.\-impl.\-Context}.
+Reimplemented from \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_a93b6bb362ee0dd4e26f598667bb94c78}{strange.\-extensions.\-context.\-impl.\-Cross\-Context}.
 
 \hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_aec7fc8d5e39c2e005410412e5c20c182}{\index{strange\-::extensions\-::context\-::impl\-::\-M\-V\-C\-S\-Context@{strange\-::extensions\-::context\-::impl\-::\-M\-V\-C\-S\-Context}!cache\-View@{cache\-View}}
 \index{cache\-View@{cache\-View}!strange::extensions::context::impl::MVCSContext@{strange\-::extensions\-::context\-::impl\-::\-M\-V\-C\-S\-Context}}
@@ -234,14 +220,14 @@ If a View is on stage at startup, it's possible for that View to be Awake before
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a094adf14d43505eaa0d5c2c786c2e5f9}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a094adf14d43505eaa0d5c2c786c2e5f9}
 
 
 Gets an instance of the provided generic type. 
 
 Always bear in mind that doing this risks adding dependencies that must be cleaned up when Contexts are removed. 
 
-Reimplemented from \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a865a54a288d59c43adc3225e5f6a4b5d}{strange.\-extensions.\-context.\-impl.\-Context}.
+Implements \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_ad598d53c2eed0d24fbf0db37e4cafe88}{strange.\-extensions.\-context.\-api.\-I\-Cross\-Context\-Capable}.
 
 \hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a6ea387573cba1bfe0a629dec3d1e6b37}{\index{strange\-::extensions\-::context\-::impl\-::\-M\-V\-C\-S\-Context@{strange\-::extensions\-::context\-::impl\-::\-M\-V\-C\-S\-Context}!Get\-Component$<$ T $>$@{Get\-Component$<$ T $>$}}
 \index{Get\-Component$<$ T $>$@{Get\-Component$<$ T $>$}!strange::extensions::context::impl::MVCSContext@{strange\-::extensions\-::context\-::impl\-::\-M\-V\-C\-S\-Context}}
@@ -249,14 +235,14 @@ Reimplemented from \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_
 \begin{DoxyParamCaption}
 \item[{object}]{name}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a6ea387573cba1bfe0a629dec3d1e6b37}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a6ea387573cba1bfe0a629dec3d1e6b37}
 
 
 Gets an instance of the provided generic type and name from the Injection\-Binder Always bear in mind that doing this risks adding dependencies that must be cleaned up when Contexts are removed. 
 
 
 
-Reimplemented from \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_aa9a7d7c49d19ca3fca754431d0f111aa}{strange.\-extensions.\-context.\-impl.\-Context}.
+Implements \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable_a06a45c44b9bcc05f592d9262bfff146d}{strange.\-extensions.\-context.\-api.\-I\-Cross\-Context\-Capable}.
 
 \hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a70e1400cfb5a71447080acdf79ca93f9}{\index{strange\-::extensions\-::context\-::impl\-::\-M\-V\-C\-S\-Context@{strange\-::extensions\-::context\-::impl\-::\-M\-V\-C\-S\-Context}!Launch@{Launch}}
 \index{Launch@{Launch}!strange::extensions::context::impl::MVCSContext@{strange\-::extensions\-::context\-::impl\-::\-M\-V\-C\-S\-Context}}
@@ -289,20 +275,6 @@ In \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context}
 Reimplemented from \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a376f83ac4bf2233eedbc760f1aeddccd}{strange.\-extensions.\-context.\-impl.\-Context}.
 
 
-
-\subsection{Member Data Documentation}
-\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a55fc4efce14c8f9021cba2e25851942b}{\index{strange\-::extensions\-::context\-::impl\-::\-M\-V\-C\-S\-Context@{strange\-::extensions\-::context\-::impl\-::\-M\-V\-C\-S\-Context}!\-\_\-cross\-Context\-Dispatcher@{\-\_\-cross\-Context\-Dispatcher}}
-\index{\-\_\-cross\-Context\-Dispatcher@{\-\_\-cross\-Context\-Dispatcher}!strange::extensions::context::impl::MVCSContext@{strange\-::extensions\-::context\-::impl\-::\-M\-V\-C\-S\-Context}}
-\subsubsection[{\-\_\-cross\-Context\-Dispatcher}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\-Event\-Dispatcher} strange.\-extensions.\-context.\-impl.\-M\-V\-C\-S\-Context.\-\_\-cross\-Context\-Dispatcher\hspace{0.3cm}{\ttfamily [protected]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a55fc4efce14c8f9021cba2e25851942b}
-
-
-A specific instance of Event\-Dispatcher that communicates across multiple contexts. 
-
-An event sent across this dispatcher will be re-\/dispatched by the various context-\/wide dispatchers. So a dispatch to other contexts is simply
-
-{\ttfamily cross\-Context\-Dispatcher.\-Dispatch(\-M\-Y\-\_\-\-E\-V\-E\-N\-T, payload)};
-
-Other contexts don't need to listen to the cross-\/context dispatcher as such, just map the necessary event to your local context dispatcher and you'll receive it. 
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 

@@ -1,0 +1,74 @@
+\hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder}{\section{strange.\-extensions.\-injector.\-impl.\-Cross\-Context\-Injection\-Binder Class Reference}
+\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder}\index{strange.\-extensions.\-injector.\-impl.\-Cross\-Context\-Injection\-Binder@{strange.\-extensions.\-injector.\-impl.\-Cross\-Context\-Injection\-Binder}}
+}
+
+
+A special version of \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder}{Injection\-Binder} that allows shared injections across multiple Contexts.  
+
+
+Inheritance diagram for strange.\-extensions.\-injector.\-impl.\-Cross\-Context\-Injection\-Binder\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.074074cm]{classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder_a46e2850751ef5b12efaa24945f3beedb}{override \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries Get\-Binding$<$ T $>$} ()}\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder_a46e2850751ef5b12efaa24945f3beedb}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder_a1f1987dd762c7feee56747cd4ceb7e90}{override \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries Get\-Binding} (object key, object name)}\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder_a1f1987dd762c7feee56747cd4ceb7e90}
+
+\item 
+override void \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder_ad93ea865f14a6249af575633f6472a7e}{Resolve\-Binding} (\hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} binding, object key)
+\begin{DoxyCompactList}\small\item\em Places individual Bindings into the bindings Dictionary as part of the resolving process \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder_a03faea5c258e2557cb67031d58df3041}{override \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector}{I\-Injector} {\bfseries Get\-Injector\-For\-Binding} (\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} binding)}\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder_a03faea5c258e2557cb67031d58df3041}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder_acb7ba99973c93cb3435227803434c6ca}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder}{I\-Injection\-Binder} {\bfseries Cross\-Context\-Binder}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder_acb7ba99973c93cb3435227803434c6ca}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A special version of \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder}{Injection\-Binder} that allows shared injections across multiple Contexts. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder}{strange.\-extensions.\-injector.\-api.\-I\-Injection\-Binder} 
+
+\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_cross_context_injection_binder}{strange.\-extensions.\-injector.\-api.\-I\-Cross\-Context\-Injection\-Binder} 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder_ad93ea865f14a6249af575633f6472a7e}{\index{strange\-::extensions\-::injector\-::impl\-::\-Cross\-Context\-Injection\-Binder@{strange\-::extensions\-::injector\-::impl\-::\-Cross\-Context\-Injection\-Binder}!Resolve\-Binding@{Resolve\-Binding}}
+\index{Resolve\-Binding@{Resolve\-Binding}!strange::extensions::injector::impl::CrossContextInjectionBinder@{strange\-::extensions\-::injector\-::impl\-::\-Cross\-Context\-Injection\-Binder}}
+\subsubsection[{Resolve\-Binding}]{\setlength{\rightskip}{0pt plus 5cm}override void strange.\-extensions.\-injector.\-impl.\-Cross\-Context\-Injection\-Binder.\-Resolve\-Binding (
+\begin{DoxyParamCaption}
+\item[{{\bf I\-Binding}}]{binding, }
+\item[{object}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder_ad93ea865f14a6249af575633f6472a7e}
+
+
+Places individual Bindings into the bindings Dictionary as part of the resolving process 
+
+Note that while some Bindings may store multiple keys, each key takes a unique position in the bindings Dictionary.
+
+Conflicts in the course of fluent binding are expected, but Get\-Binding will throw an error if there are any unresolved conflicts. 
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a15c29624d07058e29487fa0713b806a3}{strange.\-extensions.\-injector.\-api.\-I\-Injection\-Binder}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Strange\-Io\-C/scripts/strange/extensions/injector/impl/Cross\-Context\-Injection\-Binder.\-cs\end{DoxyCompactItemize}

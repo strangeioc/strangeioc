@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.51</span>
+   &#160;<span id="projectnumber">0.6.0</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Events</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -123,14 +123,17 @@ override <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_
 <tr class="memitem:a6ac0eaf086a6425a54492846f858703d inherit pro_methods_classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6ac0eaf086a6425a54492846f858703d"></a>
 virtual <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html">ICommand</a>&#160;</td><td class="memItemRight" valign="bottom"><b>invokeCommand</b> (Type cmd, <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding.html">ICommandBinding</a> binding, object data, int depth)</td></tr>
 <tr class="separator:a6ac0eaf086a6425a54492846f858703d inherit pro_methods_classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac72e98df4d7b5c47d4f6514fd515f4ec inherit pro_methods_classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac72e98df4d7b5c47d4f6514fd515f4ec"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>trackCommand</b> (<a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html">ICommand</a> command, <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding.html">ICommandBinding</a> binding)</td></tr>
+<tr class="separator:ac72e98df4d7b5c47d4f6514fd515f4ec inherit pro_methods_classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31a0b6d3b5de1d9a8029ab8461fd46ee inherit pro_methods_classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31a0b6d3b5de1d9a8029ab8461fd46ee"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>executeCommand</b> (<a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html">ICommand</a> command)</td></tr>
+<tr class="separator:a31a0b6d3b5de1d9a8029ab8461fd46ee inherit pro_methods_classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classstrange_1_1framework_1_1impl_1_1_binder')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html">strange.framework.impl.Binder</a></td></tr>
 <tr class="memitem:a8f463a4edc3e3bbdaac51a8aaa5d240f inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f463a4edc3e3bbdaac51a8aaa5d240f"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a8f463a4edc3e3bbdaac51a8aaa5d240f">resolver</a> (<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding)</td></tr>
 <tr class="memdesc:a8f463a4edc3e3bbdaac51a8aaa5d240f inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default handler for resolving bindings during chained commands. <br/></td></tr>
 <tr class="separator:a8f463a4edc3e3bbdaac51a8aaa5d240f inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a376bc9c4030c38eeb12818cc92fdcd5f inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a376bc9c4030c38eeb12818cc92fdcd5f">resolveBinding</a> (<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding, object key)</td></tr>
-<tr class="memdesc:a376bc9c4030c38eeb12818cc92fdcd5f inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method places individual Bindings into the bindings Dictionary as part of the resolving process.  <a href="#a376bc9c4030c38eeb12818cc92fdcd5f">More...</a><br/></td></tr>
-<tr class="separator:a376bc9c4030c38eeb12818cc92fdcd5f inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6150d8762ded854628d21c5e35489adc inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a6150d8762ded854628d21c5e35489adc">registerNameConflict</a> (object key, <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> newBinding, <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> existingBinding)</td></tr>
 <tr class="memdesc:a6150d8762ded854628d21c5e35489adc inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Take note of bindings that are in conflict.  <a href="#a6150d8762ded854628d21c5e35489adc">More...</a><br/></td></tr>
 <tr class="separator:a6150d8762ded854628d21c5e35489adc inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,6 +144,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a1a426d227eeaa00823a744472c219698 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1a426d227eeaa00823a744472c219698"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clearConflict</b> (object key, object name, Dictionary&lt; <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a>, object &gt; dict)</td></tr>
 <tr class="separator:a1a426d227eeaa00823a744472c219698 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1550cafde3f21467d63dae64e1078fb0 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1550cafde3f21467d63dae64e1078fb0"></a>
+T[]&#160;</td><td class="memItemRight" valign="bottom"><b>spliceValueAt&lt; T &gt;</b> (int splicePos, object[] objectValue)</td></tr>
+<tr class="separator:a1550cafde3f21467d63dae64e1078fb0 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a349b12bdc879e7f465a7cf7dfeb3b5b4 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a349b12bdc879e7f465a7cf7dfeb3b5b4"></a>
 object[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a349b12bdc879e7f465a7cf7dfeb3b5b4">spliceValueAt</a> (int splicePos, object[] objectValue)</td></tr>
 <tr class="memdesc:a349b12bdc879e7f465a7cf7dfeb3b5b4 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the item at splicePos from the list objectValue. <br/></td></tr>
@@ -207,7 +213,7 @@ Dictionary&lt; <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 25 2013 08:58:49 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 6 2013 12:07:15 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

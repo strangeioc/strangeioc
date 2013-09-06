@@ -42,9 +42,12 @@
   <p class="contents3"><a href="#h.4ohcqnvtzbvm">Some things you can do with Injectable Classes</a></p>
   <p class="contents3"><a href="#h.hfl5kq8at5l8">Warnings</a></p>
   <p class="contents2"><a href="#h.yqfl5c38lq6a">The reflector extension</a></p>
-  <p class="contents2"><a href="#h.xnfvsfxfho97">The dispatcher extension</a></p>
+  <p class="contents2"><a href="#h.xnfvsfxfho97">The dispatcher extension</a>  </p>
   <p class="contents2"><a href="#h.wvehwwtgkcqn">The command extension</a></p>
   <p class="contents3"><a href="#h.9i3l3dtor5wa">Mapping commands</a>  </p>
+  <p class="contents2"><a href="#signal_extension">The signal extension</a></p>
+  <p class="contents3"><a href="#mappingSignalsToCommands">Mapping Signals To Commands</a></p>
+  <p class="contents3"><a href="#MappingSignalsWithoutCommands">Mapping Signals Without Commands</a></p>
   <p class="contents2"><a href="#h.sjblqrdytark">The mediation extension</a></p>
   <p class="contents3"><a href="#h.jzr0vg3lxl94">View</a></p>
   <p class="contents3"><a href="#h.gacf03kx765a">Mediator</a></p>
@@ -59,6 +62,10 @@
   <p class="contents2"><a href="#h.chl3cqtj4wua">A View is mediated...</a></p>
   <p class="contents2"><a href="#h.dz7mgonvjj3b">Another Command fires...</a></p>
   <p class="contents2"><a href="#h.is2hucj1s8fy">And we&rsquo;re served...</a></p>
+  <p class="contents2"><a href="#MappingAcrossContexts">Mapping Across Contexts</a></p>
+  
+  
+  
   <p class="contents1"><a href="#h.k89t9cewdrri">4. Conclusion</a></p>
   <h1 class="c0 c36"><a name="h.abl9zfglei73"></a>Strange: the IoC framework for Unity</h1>
   <blockquote>Strange attractors create predictable patterns, often in chaotic systems.</blockquote>
@@ -76,11 +83,13 @@
     <li>Bind polymorphically (bind any or all of your interfaces to a single concrete class)</li>
     <li>Reflection binding dramatically reduces overhead of employing reflectivity</li>
   </ul>
-  <li>A shared event bus</li>
+  <li>Two styles of shared event bus.</li>
   <ul>
-    <li>Dispatch events to any point in your application</li>
-    <li>Map local event bus for local communication</li>
-    <li>Map events to Command  classes to separate business logic</li>
+    <li>Both dispatch events to any point in your application</li>
+    <li>Both map local event bus for local communication</li>
+    <li>Both map events to Command  classes to separate business logic</li>
+    <li>The new Signals implementation adds type saftety</li>
+    <li><strong>NB: Examples in this document use the default EventDispatcher. We've added a section explaining Signals, but didn't, frankly, have the patience to re-write the entire guide. Nevertheless, we encourage the use of Signals as the preferred means of communication.</strong></li>
   </ul>
   <li>MonoBehaviour mediation</li>
   <ul>
@@ -114,7 +123,8 @@
   </ul>
   <h2><a name="h.3e40286vrfxn"></a>Acknowledgements</h2>
   <p>It is hard to adequately credit the creators of the open source Actionscript framework <a href="http://www.robotlegs.org">Robotlegs</a> for their influence on the creation of StrangeIoC. While Strange is not a port of Robotlegs, the ensigns of that library are copiously reflected throughout this one. For their great service to my professional development, I offer that team my sincerest thanks. And a donut. Seriously, if you&rsquo;re ever in town, let me buy you a donut.</p>
-  <p>I also need to thank and congratulate the folks at<a href="http://www.thirdmotion.com">ThirdMotion</a></span>&nbsp;who inexplicably gave me time to build Strange and license to open source it.</p>
+  <p>Kudos to Will Corwin for contributing the awesome Signals implementation.</p>
+  <p>I also need to thank and congratulate the folks at <a href="http://www.thirdmotion.com">ThirdMotion</a></span>&nbsp;who inexplicably gave me time to build Strange and license to open source it.</p>
   <h2><a name="h.vgufmpbziw9i"></a>Introduction: the directories</h2>
   <p>The downloaded project contains everything you need to get going, including a few example scenes. To find the code, which is most of what we&rsquo;re going to discuss, look inside <code>Ass</code><code>ets &gt; scripts &gt; strange</code>. You&rsquo;ll find four subdirectories (if you&rsquo;re looking from inside Unity, you&rsquo;ll only see three).</p>
   <ol start="1">
@@ -367,6 +377,7 @@ int count = injectionBinder.Reflect (list);</pre>
 <p>The second example simply reflects everything already mapped to the injectionBinder;</p>
 <pre class="prettyprint">injectionBinder.ReflectAll();</pre>
   <h3><a name="h.xnfvsfxfho97"></a>The dispatcher extension</h3>
+  <p><strong>NB: EventDispatcher is the original and default dispatch system for Strange. There is now a <a href="#signal_extension">Signals</a> extension which adds type-safety to your dispatches. We recommend the new system, but plan to support both for the foreseeable future. Which package you use is up to you.</strong></p>
   <p>In principle, a dispatcher is any class that functions as the &#39;subject&#39; in a classic Observer Pattern. That is, it allows clients to listen to it, and then tells those clients whenever certain events occur. In Strange, we&#39;ve implemented the <strong>EventDispatcher</strong>, which binds a trigger (which can be anything, but a string or Enum usually does the trick) to single-parameter or no-parameter methods which will react when that trigger fires. The resulting parameter (if required) will be in the form of an <strong>IEvent</strong>, a simple value object which contains any data relevant to that event (while you can write your own event that satisfies the IEvent interface, the canonical Strange event is called <strong>TmEvent</strong>).</p>
   <p>If you&#39;re using the MVCSContext version of Strange, there&#39;s a global EventDispatcher (dubbed &lsquo;<strong>contextDispatcher</strong>&rsquo;) automatically injected at various points around the app and you can use that to send messages throughout your app. There&#39;s also a <strong>crossContextDispatcher</strong> for communicating between Contexts.</p>
   <p>There are two basic things you can do with EventDipatcher: dispatch events and listen to them. That said, there are quite a few ways to configure just how those events are sent and received. Let&rsquo;s start with the simplest form of listening.</p>
@@ -398,7 +409,7 @@ dispatcher.Dispatch(AttackEvent.FIRE_MISSILE, this.orientation);</pre>
   <p>Finally, you can actually create the TmEvent explicitly and dispatch that:</p>
   <pre class="prettyprint">TmEvent evt = new TmEvent(AttackEvent.FIRE_MISSILE, dispatcher, this.orientation);
 dispatcher.Dispatch(evt);</pre>
-  <p>Which version of Dispatch you use is largely a stylistic choice. Every version looks the same to a listener.</p>
+  <p>Which version of Dispatch you use is largely a stylistic choice. Every version looks the same to a listener.  </p>
   <h3><a name="h.wvehwwtgkcqn"></a>The command extension</h3>
   <p>In addition to binding events to methods, you can bind them to <strong>Commands</strong>. Commands are the Controllers in the classic Model-View-Controller-Service structure. In the MVCSContext version of Strange, the <strong>CommandBinder</strong> listens to every dispatch from the dispatcher (of course you can change this if you want in your own Context). Whenever an event fires, the CommandBinder determines whether that event is bound to one or more Commands. If CommandBinder finds a binding, a new Command instance is instantiated. The Command is injected, executed, then disposed of. Let&rsquo;s start by looking at a simple Command:</p>
   <pre class="prettyprint">using strange.extensions.command.impl;
@@ -476,6 +487,99 @@ namespace com.example.spacebattle.controller
 	.To&lt;GameOverCommand&gt;();</pre>
   <p>The idea behind this sequence is that a hit might indicate that a level has been cleared. So we run the <code>CheckLevelClearedCommand</code>. If it passes, we run <code>EndLevelCommand</code>. If that Command indicates we&rsquo;ve reached the final level, run the <code>GameOverCommand</code>. Commands in a sequence execute successively, so at any point along the way, a Command can simply call <code>Fail()</code> to stop the execution flow.</p>
   <p>As with regular Commands, commands in a sequence may execute asynchronously. If they do (and presuming <code>Fail()</code> isn&rsquo;t called), the subsequent Command will be fired as soon as <code>Release()</code> is invoked.</p>
+  <h3><a name="signal_extension"></a>The signal extension</h3>
+  <p>Signals are an dispatch mechanism &#8212; an alternative to EventDispatcher &#8212; introduced with <em>Strange v.0.6.0</em>. Whereas EventDispatcher creates and dispatches <code>IEvent</code> objects with a single <code>data</code> property, Signals hook to callbacks, passing 0-4 strongly-typed arguments. This has two major advantages over the EventDispatcher. First, Signal dispatch results in no new object creation, and therefore no need to GC a lot of created instances. Second, and far more importantly, Signal dispatches are type-safe and will break at compile-time if the Signals and their mapped callbacks don't match.</p>
+  <p>Another important distinction is that while there is a single 'global' EventDispatcher for each context (and another 'even-more-global' CrossContextDispatcher) firing off Event triggers,  Signals uses a different model. Each 'Event' is the result of an individual Signal tasked to some duty. So while  EventDispatcher is monolithic, there may be any number of Signals. Let's show some examples.</p>
+  <p>Here are two Signals, each with one parameter:</p>
+  <pre class="prettyprint">Signal&lt;int&gt; signalDispatchesInt = new Signal&lt;int&gt;();
+Signal&lt;string&gt; signalDispatchesString = new Signal&lt;string&gt;();</pre>
+  <p>Notice how the dispatch type of each Signal has been baked right into the instantiation. Let's build this out with some callbacks:</p>
+  <pre class="prettyprint">Signal&lt;int&gt; signalDispatchesInt = new Signal&lt;int&gt;();
+Signal&lt;string&gt; signalDispatchesString = new Signal&lt;string&gt;();
+
+signalDispatchesInt.AddListener(callbackInt);		//Add a callback with an int parameter
+signalDispatchesString.AddListener(callbackString);	//Add a callback with a string parameter
+
+signalDispatchesInt.Dispatch(42);			//dispatch an int
+signalDispatchesString.Dispatch(&quot;Ender Wiggin&quot;);	//dispatch a string
+
+void callbackInt(int value)
+{
+	//Do something with this int
+}
+
+void callback(string value)
+{
+	//Do something with this string
+}</pre>
+<p>What's worth noticing here is that once the Signal bakes in its type, that type <em>is a compile-time requirement</em> of any listener to that Signal. This means the app simply won't compile if, for example, you accidentally do this:</p>
+ <pre class="prettyprint">Signal&lt;int&gt; signalDispatchesInt = new Signal&lt;int&gt;();
+Signal&lt;string&gt; signalDispatchesString = new Signal&lt;string&gt;();
+
+signalDispatchesInt.AddListener(callbackString); //Oops! I attached the wrong callback to my Signal!
+signalDispatchesString.AddListener(callbackInt); //Oops! I did it again! (Am I klutzy or what?!)</pre>
+<p>This makes screwing up your listeners pretty darned difficult.</p>
+<p>You can write Signals with 0-4 parameters. Signals use the Action Class as the underlying mechanism for type safety. Unity's C# implementation allows a maximum of four parameters to an Action, so that's as far as we can take you. If you require more than four parameters, consider creating a value object and sending that instead.</p>
+ <pre class="prettyprint">//works
+Signal signal0 = new Signal();
+
+//works
+Signal&lt;SomeValueObject&gt; signal1 = new Signal&lt;SomeValueObject&gt;();
+
+//works
+Signal&lt;int, string&gt; signal2 = new Signal&lt;int, string&gt;();
+
+//works
+Signal&lt;int, int, int&gt; signal3 = new Signal&lt;int, int, int&gt;();
+
+//works
+Signal&lt;SomeValueObject, int, string, MonoBehaviour&gt; signal4 = new Signal&lt;SomeValueObject, int, string, MonoBehaviour&gt;();
+
+//FAILS!!!! Too many params.
+Signal&lt;int, string, float, Vector2, Rect&gt; signal5 = new Signal&lt;int, string, float, Vector2, Rect&gt;(); </pre>
+ <p>You can write your own Signal subclasses, of course, instead of declaring them like the inline examples above. This is especially useful in Strange, where you probably want to have some handy, human-readable names for mapping Signals within and between Contexts. Here's an example of a Signal subclass:</p>
+ <pre class="prettyprint">using System;
+using UnityEngine;
+using strange.extensions.signal.impl;
+
+namespace mynamespace
+{
+	//We're typing this Signal's payloads to MonoBehaviour and int
+	public class ShipDestroyedSignal : Signal<string>&lt;MonoBehaviour, int&gt;
+	{
+		public ShipDestroyedSignal ()
+		{
+		}
+	}
+}</pre>
+<h4><a name="mappingSignalsToCommands"></a>Mapping Signals to Commands</h4>
+<p>If you want your Context to be able to bind Signals to Commands (a very good idea) you need to make one small plumbing change. This is required to keep EventDispatcher as the default event bus. But if you'd rather get the full Signals experience, then add this to your Context:</p>
+<pre class="prettyprint">protected override void addCoreComponents()
+{
+	base.addCoreComponents();
+	injectionBinder.Unbind&lt;ICommandBinder&gt;();
+	injectionBinder.Bind&lt;ICommandBinder&gt;().To&lt;SignalCommandBinder&gt;().ToSingleton();
+}</pre>
+<p>Doing this informs Strange that we're going away with the default EventDispatcher and replacing it with the SignalCommandBinder.</p>
+<p>Having done this,  Signals can now be mapped to Commands much as Events can. The basic syntax is:</p>
+<pre class="prettyprint">signalCommandBinder.Bind&lt;SomeSignal&gt;().To&lt;SomeCommand&gt;();</pre>
+<p>Of course the full range of Command-mapping behavior is supported, including multiple Commands, sequences and mapping <code>Once()</code>.</p>
+<p>An important caveat: while Signals support multiple params of the same Type, injections do not. <strong>It is therefore not possible for a Signal with two parameters of the same Type to be mapped to a Command</strong>.</p>
+<pre class="prettyprint">//This works
+Signal&lt;int, int&gt; twoIntSignal = new Signal&lt;int, int&gt;();
+twoIntSignal.AddListener(twoIntCallback);
+
+//This fails
+Signal&lt;int, int&gt; twoIntSignal = new Signal&lt;int, int&gt;();
+signalCommandBinder.Bind(twoIntSignal).To&lt;SomeCommand&gt;();</pre>
+<p>Once again, this you can work around this limitation by mapping ValueObjects instead.</p>
+<p>Mapping a Signal to a Command automatically creates a mapping which you can retrieve by injecting elsewhere, like so:</p>
+<pre class="prettyprint">[Inject]
+public ShipDestroyedSignal shipDestroyedSignal{get; set;}</pre>
+<p>Use this injection wherever necessary (always remembering to apply some common sense), including in Commands or Mediators.</p>
+<h4><a name="MappingSignalsWithoutCommands"></a>Mapping Signals without Commands</h4>
+<p>As mentioned above, mapping a Signal to a Command automatically creates a mapping which you can retrieve by injecting elsewhere, but what if you want to Inject a Signal without binding to a Command? In this case, simply map it using the injectionBinder, just like any other injected class:</p>
+<pre class="prettyprint">injectionBinder.Bind&lt;<span class="prettyprint">ShipDestroyedSignal</span>&gt;().ToSingleton();</pre>
   <h3><a name="h.sjblqrdytark"></a>The mediation extension</h3>
   <p>The <strong>MediationContext</strong> is the only part of Strange written exclusively for use with Unity3D. This is because mediation is all about carefully controlling how your views (GameObjects) interface with the rest of your app. Views are by nature highly volatile during development, and it&#39;s advisable to constrain that natural chaos to within the view classes themseves. For this reason, the mediation model advises your view consist of at least two distinct MonoBehaviours: View and Mediator.</p>
   <h4><a name="h.jzr0vg3lxl94"></a>View</h4>
@@ -792,6 +896,10 @@ namespace strange.examples.myfirstproject
   <p>You can certainly inject into them, and there&rsquo;s nothing the matter with injecting a local dispatcher (as we do here) and allowing it to talk back to your Commands. There&rsquo;s also nothing wrong with injecting the context dispatcher and dispatching events. But...</p>
   <p><strong>DON&rsquo;T ALLOW MODELS AND SERVICES TO LISTEN FOR EVENTS.</strong></p>
   <p>Oh, did I say that again? So sorry.</p>
+  <h3><a name="MappingAcrossContexts"></a>Mapping Across Contexts</h3>
+  <p>Generally speaking, you want to abide by the Context boundary. After all,, the boundary is there for a reason: it allows parts of your app to function in isolation, increasing modularity. But there are times when some object...perhaps a model, a service or a Signal...needs to be accessible across more than one Context. In v.0.6.0 of Strange we added a mechanism to make this easier, and easy it is:</p>
+  <pre class="prettyprint">injectionBinder.Bind&lt;IStarship&gt;().To&lt;HeartOfGold&gt;().ToSingleton().CrossContext();</pre>
+  <p>Adding <code>CrossContext()</code> signals that the binding should be instantiated across the Context boundary. It will be available to all child Contexts. Note that you can also override a CrossContext binding. If you map the key locally, the local binding will override the CrossContext one.</p>
   <h2><a name="h.k89t9cewdrri"></a>4. Conclusion</h2>
   <p>That wraps up the Big, Strange How-To. You now know a lot about how Strange works and what it can do to make your world a better place. I suggest you try out the multiplecontexts example since that&rsquo;ll open you up to more possibilities. I also suggest you build something with Strange, since there&rsquo;s nothing like making for learning. If you&rsquo;ve never used an IoC framework before, I guarantee it will improve your approach to coding. If you have, I hope it lives up to the experience you&rsquo;ve had so far.</p>
   <p>Finally, Strange was written to be extended. An endless number of Binders can be made to allow anything to trigger anything else. As others turn their minds to this way of thinking, I hope we&rsquo;ll see loads of amazing (and Strange) add-ons.</p>

@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['ibasesignal',['IBaseSignal',['../interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal.html',1,'strange::extensions::signal::api']]],
   ['ibinder',['IBinder',['../interfacestrange_1_1framework_1_1api_1_1_i_binder.html',1,'strange::framework::api']]],
   ['ibinding',['IBinding',['../interfacestrange_1_1framework_1_1api_1_1_i_binding.html',1,'strange::framework::api']]],
   ['icommand',['ICommand',['../interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command.html',1,'strange::extensions::command::api']]],
@@ -7,6 +8,8 @@ var searchData=
   ['icommandbinding',['ICommandBinding',['../interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding.html',1,'strange::extensions::command::api']]],
   ['icontext',['IContext',['../interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html',1,'strange::extensions::context::api']]],
   ['icontextview',['IContextView',['../interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context_view.html',1,'strange::extensions::context::api']]],
+  ['icrosscontextcapable',['ICrossContextCapable',['../interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable.html',1,'strange::extensions::context::api']]],
+  ['icrosscontextinjectionbinder',['ICrossContextInjectionBinder',['../interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_cross_context_injection_binder.html',1,'strange::extensions::injector::api']]],
   ['idispatcher',['IDispatcher',['../interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher.html',1,'strange::extensions::dispatcher::api']]],
   ['ievent',['IEvent',['../interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event.html',1,'strange::extensions::dispatcher::eventdispatcher::api']]],
   ['ieventbinding',['IEventBinding',['../interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding.html',1,'strange::extensions::dispatcher::eventdispatcher::api']]],

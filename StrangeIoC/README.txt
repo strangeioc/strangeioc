@@ -73,5 +73,6 @@ There's documentation in the .docs folder. To make sure you've seen the latest, 
 4.0 Version history
 
 v0.5  - Initial public release
-v0.51 - Reorganized repo for simplicity/uniformity with Unity Asset Store. Deprecated Sequencer.
-v0.51a - To avoid errors on first install, renamed 'docs' to '.docs', which makes Unity ignore the folder.
+v0.5.1 - Reorganized repo for simplicity/uniformity with Unity Asset Store. Deprecated Sequencer.
+v0.5.1a - To avoid errors on first install, renamed 'docs' to '.docs', which makes Unity ignore the folder.
+v0.6.0 - Added Signals and improved Cross-Context support

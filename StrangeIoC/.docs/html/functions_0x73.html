@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.51</span>
+   &#160;<span id="projectnumber">0.6.0</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -75,6 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
       <li><a href="functions_prop.html"><span>Properties</span></a></li>
+      <li><a href="functions_evnt.html"><span>Events</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -108,7 +109,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Events</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -134,17 +135,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>setters
 : <a class="el" href="interfacestrange_1_1extensions_1_1reflector_1_1api_1_1_i_reflected_class.html#a27d795a13a05ebde2bf9efebd00e75cc">strange.extensions.reflector.api.IReflectedClass</a>
 </li>
+<li>SignalException()
+: <a class="el" href="classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal_exception.html#a1797e5a7f814714a06d63b21c94a5943">strange.extensions.signal.impl.SignalException</a>
+</li>
 <li>singletonOf()
 : <a class="el" href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injector_factory.html#a6432d11c775cb07e6ed9ed5ab2a0bfd6">strange.extensions.injector.impl.InjectorFactory</a>
 </li>
 <li>spliceValueAt()
-: <a class="el" href="classstrange_1_1framework_1_1impl_1_1_semi_binding.html#a15a785ae9b34142bc49d0d6e8a04209a">strange.framework.impl.SemiBinding</a>
-, <a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a349b12bdc879e7f465a7cf7dfeb3b5b4">strange.framework.impl.Binder</a>
+: <a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a349b12bdc879e7f465a7cf7dfeb3b5b4">strange.framework.impl.Binder</a>
+, <a class="el" href="classstrange_1_1framework_1_1impl_1_1_semi_binding.html#a15a785ae9b34142bc49d0d6e8a04209a">strange.framework.impl.SemiBinding</a>
 </li>
 <li>Start()
-: <a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html#ab29c9eb26414deed84d0e02ef1c12869">strange.extensions.context.api.IContext</a>
+: <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html#a9a876bf06590c1a1bacb243311489500">strange.extensions.mediation.impl.View</a>
+, <a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html#ab29c9eb26414deed84d0e02ef1c12869">strange.extensions.context.api.IContext</a>
 , <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html#a29da25935b72076b614409b2a3bf5ba0">strange.extensions.context.impl.Context</a>
-, <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html#a9a876bf06590c1a1bacb243311489500">strange.extensions.mediation.impl.View</a>
 </li>
 <li>Stop()
 : <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html#a3e7ec542cbdfec1a78ce0583451b1565">strange.extensions.command.impl.CommandBinder</a>
@@ -154,7 +158,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 25 2013 08:58:50 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 6 2013 12:07:17 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

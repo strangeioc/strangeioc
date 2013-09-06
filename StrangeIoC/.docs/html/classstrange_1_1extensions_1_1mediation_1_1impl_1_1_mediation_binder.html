@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.51</span>
+   &#160;<span id="projectnumber">0.6.0</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Events</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -184,6 +184,13 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a834c55607151d7a30856e6b6f6a8df1e">RemoveName</a> (<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding, object name)</td></tr>
 <tr class="memdesc:a834c55607151d7a30856e6b6f6a8df1e inherit pub_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a select name from the given binding. <br/></td></tr>
 <tr class="separator:a834c55607151d7a30856e6b6f6a8df1e inherit pub_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59b9ca38325bf6cf4c55aa309e92d00c inherit pub_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a59b9ca38325bf6cf4c55aa309e92d00c">ResolveBinding</a> (<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding, object key)</td></tr>
+<tr class="memdesc:a59b9ca38325bf6cf4c55aa309e92d00c inherit pub_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method places individual Bindings into the bindings Dictionary as part of the resolving process.  <a href="#a59b9ca38325bf6cf4c55aa309e92d00c">More...</a><br/></td></tr>
+<tr class="separator:a59b9ca38325bf6cf4c55aa309e92d00c inherit pub_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae43511788f7ce5bc0c840816c935036d inherit pub_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae43511788f7ce5bc0c840816c935036d"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#ae43511788f7ce5bc0c840816c935036d">OnRemove</a> ()</td></tr>
+<tr class="memdesc:ae43511788f7ce5bc0c840816c935036d inherit pub_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html" title="Collection class for bindings. ">Binder</a> is being removed Override this method to clean up remaining bindings. <br/></td></tr>
+<tr class="separator:ae43511788f7ce5bc0c840816c935036d inherit pub_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -192,7 +199,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memdesc:a01f172fc7a3cd0a45a44568a65e62a4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize all IViews within this view. <br/></td></tr>
 <tr class="separator:a01f172fc7a3cd0a45a44568a65e62a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f43c7f8bf7b41f12f7b453bcbfc5fcd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder.html#a8f43c7f8bf7b41f12f7b453bcbfc5fcd">mapView</a> (<a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html">IView</a> view, <a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binding.html">IMediationBinding</a> binding)</td></tr>
-<tr class="memdesc:a8f43c7f8bf7b41f12f7b453bcbfc5fcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and registers a <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator.html" title="Base class for all Mediators. ">Mediator</a> for a specific <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html" title="Parent class for all your Views. ">View</a> instance.  <a href="#a8f43c7f8bf7b41f12f7b453bcbfc5fcd">More...</a><br/></td></tr>
+<tr class="memdesc:a8f43c7f8bf7b41f12f7b453bcbfc5fcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and registers one or more Mediators for a specific <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html" title="Parent class for all your Views. ">View</a> instance.  <a href="#a8f43c7f8bf7b41f12f7b453bcbfc5fcd">More...</a><br/></td></tr>
 <tr class="separator:a8f43c7f8bf7b41f12f7b453bcbfc5fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac920c35b85c82588c9d847e494159a18"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac920c35b85c82588c9d847e494159a18"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder.html#ac920c35b85c82588c9d847e494159a18">unmapView</a> (<a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html">IView</a> view, <a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binding.html">IMediationBinding</a> binding)</td></tr>
@@ -203,9 +210,6 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a8f463a4edc3e3bbdaac51a8aaa5d240f">resolver</a> (<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding)</td></tr>
 <tr class="memdesc:a8f463a4edc3e3bbdaac51a8aaa5d240f inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default handler for resolving bindings during chained commands. <br/></td></tr>
 <tr class="separator:a8f463a4edc3e3bbdaac51a8aaa5d240f inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a376bc9c4030c38eeb12818cc92fdcd5f inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a376bc9c4030c38eeb12818cc92fdcd5f">resolveBinding</a> (<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding, object key)</td></tr>
-<tr class="memdesc:a376bc9c4030c38eeb12818cc92fdcd5f inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method places individual Bindings into the bindings Dictionary as part of the resolving process.  <a href="#a376bc9c4030c38eeb12818cc92fdcd5f">More...</a><br/></td></tr>
-<tr class="separator:a376bc9c4030c38eeb12818cc92fdcd5f inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6150d8762ded854628d21c5e35489adc inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a6150d8762ded854628d21c5e35489adc">registerNameConflict</a> (object key, <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> newBinding, <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> existingBinding)</td></tr>
 <tr class="memdesc:a6150d8762ded854628d21c5e35489adc inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Take note of bindings that are in conflict.  <a href="#a6150d8762ded854628d21c5e35489adc">More...</a><br/></td></tr>
 <tr class="separator:a6150d8762ded854628d21c5e35489adc inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -216,6 +220,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a1a426d227eeaa00823a744472c219698 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1a426d227eeaa00823a744472c219698"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clearConflict</b> (object key, object name, Dictionary&lt; <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a>, object &gt; dict)</td></tr>
 <tr class="separator:a1a426d227eeaa00823a744472c219698 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1550cafde3f21467d63dae64e1078fb0 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1550cafde3f21467d63dae64e1078fb0"></a>
+T[]&#160;</td><td class="memItemRight" valign="bottom"><b>spliceValueAt&lt; T &gt;</b> (int splicePos, object[] objectValue)</td></tr>
+<tr class="separator:a1550cafde3f21467d63dae64e1078fb0 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a349b12bdc879e7f465a7cf7dfeb3b5b4 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a349b12bdc879e7f465a7cf7dfeb3b5b4"></a>
 object[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a349b12bdc879e7f465a7cf7dfeb3b5b4">spliceValueAt</a> (int splicePos, object[] objectValue)</td></tr>
 <tr class="memdesc:a349b12bdc879e7f465a7cf7dfeb3b5b4 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the item at splicePos from the list objectValue. <br/></td></tr>
@@ -275,7 +282,7 @@ Dictionary&lt; object, Dictionary<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Creates and registers a <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator.html" title="Base class for all Mediators. ">Mediator</a> for a specific <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html" title="Parent class for all your Views. ">View</a> instance. </p>
+<p>Creates and registers one or more Mediators for a specific <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html" title="Parent class for all your Views. ">View</a> instance. </p>
 <p>Takes a specific <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html" title="Parent class for all your Views. ">View</a> instance and a binding and, if a binding is found for that type, creates and registers a <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator.html" title="Base class for all Mediators. ">Mediator</a>. </p>
 
 </div>
@@ -325,7 +332,7 @@ Dictionary&lt; object, Dictionary<br class="typebreak"/>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 25 2013 08:58:50 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 6 2013 12:07:16 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
