@@ -15,30 +15,20 @@
  */
 
 /**
- * @class strange.extensions.signal.impl.SignalException
- * 
- * An exception thrown by the Signal system.
+ * @class strange.extensions.signal.api.SignalExceptionType
  */
-
-using System;
-using strange.extensions.signal.api;
-
-namespace strange.extensions.signal.impl
+namespace strange.extensions.signal.api
 {
-	public class SignalException : Exception
+	public enum SignalExceptionType
 	{
 
-		public SignalExceptionType type { get; set; }
-		public SignalException() : base()
-		{
-		}
+		/// Attempting to bind more than one value of the same type to a command
+		COMMAND_VALUE_CONFLICT,
 
-		/// Constructs a SignalException with a message and SignalExceptionType
-		public SignalException(string message, SignalExceptionType exceptionType) : base(message)
-		{
-			type = exceptionType;
-		}
+		/// A Signal mapped to a Command found no matching injectable Type to bind a parameter to.
+		COMMAND_VALUE_NOT_FOUND,
 
+		/// SignalCommandBinder attempted to bind a null value from a signal to a Command
+		COMMAND_NULL_INJECTION,
 	}
 }
-
