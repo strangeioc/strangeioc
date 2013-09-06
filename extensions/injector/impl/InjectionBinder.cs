@@ -93,7 +93,6 @@ namespace strange.extensions.injector.impl
 				}
 				_injector = value;
 				_injector.binder = this;
-
 			}
 		}
 
@@ -161,9 +160,6 @@ namespace strange.extensions.injector.impl
 			}
 			return count;
 		}
-
     }
-
-    
 }
 
