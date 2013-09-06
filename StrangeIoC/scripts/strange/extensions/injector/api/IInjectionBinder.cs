@@ -93,9 +93,19 @@ namespace strange.extensions.injector.api
 		/// of concrete classes you've mapped.
 		int ReflectAll();
 
+		/// <summary>
+		/// Places individual Bindings into the bindings Dictionary as part of the resolving process
+		/// </summary>
+		/// Note that while some Bindings may store multiple keys, each key takes a unique position in the
+		/// bindings Dictionary.
+		/// 
+		/// Conflicts in the course of fluent binding are expected, but GetBinding
+		/// will throw an error if there are any unresolved conflicts.
+		void ResolveBinding(IBinding binding, object key);
+
 		IInjectionBinding Bind<T>();
 		IInjectionBinding Bind(Type key);
-        IBinding Bind(object key);
+		IBinding Bind(object key);
 		IInjectionBinding GetBinding<T>();
 		IInjectionBinding GetBinding<T>(object name);
 		IInjectionBinding GetBinding(object key);
@@ -105,8 +115,6 @@ namespace strange.extensions.injector.api
 		void Unbind (object key);
 		void Unbind (object key, object name);
 		void Unbind (IBinding binding);
-
-        void ResolveBinding(IBinding binding, object key);
 	}
 }
 
