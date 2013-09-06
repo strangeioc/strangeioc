@@ -32,7 +32,6 @@
  * instantiation of a particular class.
  */
 
-using System;
 using System.Collections.Generic;
 using strange.framework.api;
 
@@ -101,7 +100,7 @@ namespace strange.framework.impl
 				}
 				throw new BinderException ("Binder cannot fetch Bindings when the binder is in a conflicted state.\nConflicts: " + conflictSummary, BinderExceptionType.CONFLICT_IN_BINDER);
 			}
-
+            
 			if(bindings.ContainsKey (key))
 			{
 				Dictionary<object, IBinding> dict = bindings [key];
@@ -131,15 +130,15 @@ namespace strange.framework.impl
 
 		virtual public void Unbind(object key, object name)
 		{
-			if (bindings.ContainsKey(key))
-			{
-				Dictionary<object, IBinding> dict = bindings [key];
-				object bindingName = (name == null) ? BindingConst.NULLOID : name;
-				if (dict.ContainsKey(bindingName))
-				{
-					dict.Remove (bindingName);
-				}
-			}
+            if (bindings.ContainsKey(key))
+            {
+                Dictionary<object, IBinding> dict = bindings[key];
+                object bindingName = (name == null) ? BindingConst.NULLOID : name;
+                if (dict.ContainsKey(bindingName))
+                {
+                    dict.Remove(bindingName);
+                }
+            }
 		}
 
 		virtual public void Unbind(IBinding binding)
@@ -231,7 +230,7 @@ namespace strange.framework.impl
 		{
 			object key = binding.key;
 			if (binding.keyConstraint.Equals(BindingConstraintType.ONE)) {
-				resolveBinding (binding, key);
+				ResolveBinding (binding, key);
 			} 
 			else
 			{
@@ -239,7 +238,7 @@ namespace strange.framework.impl
 				int aa = keys.Length;
 				for(int a = 0; a < aa; a++)
 				{
-					resolveBinding (binding, keys[a]);
+					ResolveBinding (binding, keys[a]);
 				}
 			}
 		}
@@ -253,7 +252,7 @@ namespace strange.framework.impl
 		 * Conflicts in the course of fluent binding are expected, but GetBinding
 		 * will throw an error if there are any unresolved conflicts.
 		 */
-		virtual protected void resolveBinding(IBinding binding, object key)
+		virtual public void ResolveBinding(IBinding binding, object key)
 		{
 			if (conflicts.ContainsKey(key))	//does the current key have any conflicts?
 			{
@@ -383,6 +382,8 @@ namespace strange.framework.impl
 		{
 			return spliceValueAt<object>(splicePos, objectValue);
 		}
+
+        virtual public void OnRemove() { }
 	}
 }
 

@@ -48,6 +48,7 @@ namespace strange.extensions.mediation.impl
 			}
 		}
 		
+
 		public bool registeredWithContext{get; set;}
 
 		/// A MonoBehaviour Awake handler.
@@ -87,26 +88,26 @@ namespace strange.extensions.mediation.impl
 			{
 				loopLimiter ++;
 				trans = trans.parent;
-				
-				if (trans.gameObject.GetComponent<ContextView>() != null)
-				{
-					ContextView contextView = trans.gameObject.GetComponent<ContextView>() as ContextView;
-					if (contextView.context != null)
-					{
-						IContext context = contextView.context;
-						if (toAdd)
-						{
-							context.AddView(view);
-							registeredWithContext = true;
-							return;
-						}
-						else
-						{
-							context.RemoveView(view);
-							return;
-						}
-					}
-				}
+
+                if (trans.gameObject.GetComponent<ContextView>() != null)
+                {
+                    ContextView contextView = trans.gameObject.GetComponent<ContextView>() as ContextView;
+                    if (contextView.context != null)
+                    {
+                        IContext context = contextView.context;
+                        if (toAdd)
+                        {
+                            context.AddView(view);
+                            registeredWithContext = true;
+                            return;
+                        }
+                        else
+                        {
+                            context.RemoveView(view);
+                            return;
+                        }
+                    }
+                }
 			}
 			if (requiresContext && finalTry)
 			{

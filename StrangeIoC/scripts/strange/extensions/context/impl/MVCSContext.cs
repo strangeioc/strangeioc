@@ -156,7 +156,6 @@
  * 
  */
 
-using System;
 using UnityEngine;
 using strange.extensions.command.api;
 using strange.extensions.command.impl;
@@ -165,7 +164,6 @@ using strange.extensions.dispatcher.api;
 using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.dispatcher.eventdispatcher.impl;
 using strange.extensions.injector.api;
-using strange.extensions.injector.impl;
 using strange.extensions.mediation.api;
 using strange.extensions.mediation.impl;
 using strange.extensions.sequencer.api;
@@ -175,12 +173,8 @@ using strange.framework.impl;
 
 namespace strange.extensions.context.impl
 {
-	public class MVCSContext : Context
+	public class MVCSContext : CrossContext
 	{
-
-		/// A Binder that handles dependency injection binding and instantiation
-		public IInjectionBinder injectionBinder{get;set;}
-
 		/// A Binder that maps Events to Commands
 		public ICommandBinder commandBinder{get;set;}
 
@@ -193,17 +187,6 @@ namespace strange.extensions.context.impl
 		/// A Binder that maps Events to Sequences
 		public ISequencer sequencer{get;set;}
 
-		/// A specific instance of EventDispatcher that communicates 
-		/// across multiple contexts. An event sent across this 
-		/// dispatcher will be re-dispatched by the various context-wide 
-		/// dispatchers. So a dispatch to other contexts is simply 
-		/// 
-		/// `crossContextDispatcher.Dispatch(MY_EVENT, payload)`;
-		/// 
-		/// Other contexts don't need to listen to the cross-context dispatcher
-		/// as such, just map the necessary event to your local context
-		/// dispatcher and you'll receive it.
-		protected IEventDispatcher _crossContextDispatcher;
 
 		/// A list of Views Awake before the Context is fully set up.
 		protected static ISemiBinding viewCache = new SemiBinding();
@@ -212,7 +195,8 @@ namespace strange.extensions.context.impl
 		{}
 		
 		public MVCSContext(MonoBehaviour view, bool autoStartup) : base(view, autoStartup)
-		{}
+		{
+        }
 		
 		override public IContext SetContextView(object view)
 		{
@@ -229,7 +213,7 @@ namespace strange.extensions.context.impl
 		/// that you provide all your application bindings in `mapBindings()`.
 		protected override void addCoreComponents()
 		{
-			injectionBinder = new InjectionBinder();
+            base.addCoreComponents();
 			injectionBinder.Bind<IInjectionBinder>().ToValue(injectionBinder);
 			injectionBinder.Bind<IContext>().ToValue(this).ToName(ContextKeys.CONTEXT);
 			injectionBinder.Bind<ICommandBinder>().To<EventCommandBinder>().ToSingleton();
@@ -239,18 +223,11 @@ namespace strange.extensions.context.impl
 			injectionBinder.Bind<IEventDispatcher>().To<EventDispatcher>().ToSingleton().ToName(ContextKeys.CONTEXT_DISPATCHER);
 			injectionBinder.Bind<IMediationBinder>().To<MediationBinder>().ToSingleton();
 			injectionBinder.Bind<ISequencer>().To<EventSequencer>().ToSingleton();
-			if (firstContext == this)
-			{
-				injectionBinder.Bind<IEventDispatcher>().To<EventDispatcher>().ToSingleton().ToName(ContextKeys.CROSS_CONTEXT_DISPATCHER);
-			}
-			else if (crossContextDispatcher != null)
-			{
-				injectionBinder.Bind<IEventDispatcher>().ToValue(crossContextDispatcher).ToName(ContextKeys.CROSS_CONTEXT_DISPATCHER);
-			}
 		}
 		
 		protected override void instantiateCoreComponents()
 		{
+            base.instantiateCoreComponents();
 			if (contextView == null)
 			{
 				throw new ContextException("MVCSContext requires a ContextView of type MonoBehaviour", ContextExceptionType.NO_CONTEXT_VIEW);
@@ -264,9 +241,6 @@ namespace strange.extensions.context.impl
 			
 			(dispatcher as ITriggerProvider).AddTriggerable(commandBinder as ITriggerable);
 			(dispatcher as ITriggerProvider).AddTriggerable(sequencer as ITriggerable);
-
-			crossContextDispatcher = injectionBinder.GetInstance<IEventDispatcher>(ContextKeys.CROSS_CONTEXT_DISPATCHER) as IEventDispatcher;
-			(crossContextDispatcher as ITriggerProvider).AddTriggerable(dispatcher as ITriggerable);
 		}
 		
 		protected override void postBindings()
@@ -283,31 +257,6 @@ namespace strange.extensions.context.impl
 			dispatcher.Dispatch(ContextEvent.START);
 		}
 		
-		override public IContext AddContext(IContext context)
-		{
-			context.crossContextDispatcher = crossContextDispatcher;
-			return this;
-		}
-
-		override public IContext RemoveContext(IContext context)
-		{
-			((context.crossContextDispatcher) as ITriggerProvider).RemoveTriggerable(context.GetComponent<IEventDispatcher>(ContextKeys.CONTEXT_DISPATCHER) as ITriggerable);
-			context.crossContextDispatcher = null;
-			return this;
-		}
-
-		override public IDispatcher crossContextDispatcher
-		{
-			get
-			{
-				return _crossContextDispatcher;
-			}
-			set
-			{
-				_crossContextDispatcher = value as IEventDispatcher;
-			}
-		}
-
 		/// Gets an instance of the provided generic type.
 		/// Always bear in mind that doing this risks adding
 		/// dependencies that must be cleaned up when Contexts
@@ -381,6 +330,13 @@ namespace strange.extensions.context.impl
 			}
 			viewCache = new SemiBinding();
 		}
-	}
+
+        public override void OnRemove()
+        {
+            base.OnRemove();
+            commandBinder.OnRemove();
+        }
+
+    }
 }
 

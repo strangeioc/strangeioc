@@ -27,8 +27,6 @@ using System;
 using System.Collections.Generic;
 using strange.framework.api;
 using strange.extensions.injector.api;
-using strange.extensions.injector.impl;
-using strange.extensions.reflector.api;
 using strange.extensions.reflector.impl;
 using strange.framework.impl;
 
@@ -50,16 +48,21 @@ namespace strange.extensions.injector.impl
 			return GetInstance(key, null);
 		}
 
-		public object GetInstance(Type key, object name)
+		public virtual object GetInstance(Type key, object name)
 		{
 			IInjectionBinding binding = GetBinding (key, name) as IInjectionBinding;
 			if (binding == null)
 			{
 				throw new InjectionException ("InjectionBinder has no binding for:\n\tkey: " + key + "\nname: " + name, InjectionExceptionType.NULL_BINDING);
 			}
-			object instance = injector.Instantiate (binding);
+			object instance = GetInjectorForBinding(binding).Instantiate (binding);
 			return instance;
 		}
+
+        protected virtual IInjector GetInjectorForBinding(IInjectionBinding binding)
+        {
+            return injector;
+        }
 
 		public object GetInstance<T>()
 		{
@@ -99,12 +102,12 @@ namespace strange.extensions.injector.impl
 			return base.Bind<T> () as IInjectionBinding;
 		}
 
-		public IInjectionBinding Bind(Type key)
-		{
-			return base.Bind(key) as IInjectionBinding;
-		}
+        public IInjectionBinding Bind(Type key)
+        {
+            return base.Bind(key) as IInjectionBinding;
+        }
 
-		new public IInjectionBinding GetBinding<T>()
+		new virtual public IInjectionBinding GetBinding<T>()
 		{
 			return base.GetBinding<T> () as IInjectionBinding;
 		}
@@ -119,9 +122,9 @@ namespace strange.extensions.injector.impl
 			return base.GetBinding (key) as IInjectionBinding;
 		}
 
-		new public IInjectionBinding GetBinding(object key, object name)
+		new virtual public IInjectionBinding GetBinding(object key, object name)
 		{
-			return base.GetBinding (key, name) as IInjectionBinding;
+            return base.GetBinding(key, name) as IInjectionBinding;
 		}
 
 		public int ReflectAll()
@@ -158,6 +161,9 @@ namespace strange.extensions.injector.impl
 			}
 			return count;
 		}
-	}
+
+    }
+
+    
 }
 

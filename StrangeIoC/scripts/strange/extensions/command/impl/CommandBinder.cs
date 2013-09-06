@@ -155,7 +155,7 @@ namespace strange.extensions.command.impl
 			return command;
 		}
 
-		private void trackCommand (ICommand command, ICommandBinding binding)
+		protected void trackCommand (ICommand command, ICommandBinding binding)
 		{
 			if (binding.isSequence)
 			{
@@ -167,7 +167,7 @@ namespace strange.extensions.command.impl
 			}
 		}
 
-		private void executeCommand(ICommand command)
+		protected void executeCommand(ICommand command)
 		{
 			if (command == null)
 			{
