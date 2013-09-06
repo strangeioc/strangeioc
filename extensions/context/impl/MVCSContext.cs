@@ -196,7 +196,7 @@ namespace strange.extensions.context.impl
 		
 		public MVCSContext(MonoBehaviour view, bool autoStartup) : base(view, autoStartup)
 		{
-        }
+		}
 		
 		override public IContext SetContextView(object view)
 		{
@@ -213,7 +213,7 @@ namespace strange.extensions.context.impl
 		/// that you provide all your application bindings in `mapBindings()`.
 		protected override void addCoreComponents()
 		{
-            base.addCoreComponents();
+			base.addCoreComponents();
 			injectionBinder.Bind<IInjectionBinder>().ToValue(injectionBinder);
 			injectionBinder.Bind<IContext>().ToValue(this).ToName(ContextKeys.CONTEXT);
 			injectionBinder.Bind<ICommandBinder>().To<EventCommandBinder>().ToSingleton();
@@ -227,7 +227,7 @@ namespace strange.extensions.context.impl
 		
 		protected override void instantiateCoreComponents()
 		{
-            base.instantiateCoreComponents();
+			base.instantiateCoreComponents();
 			if (contextView == null)
 			{
 				throw new ContextException("MVCSContext requires a ContextView of type MonoBehaviour", ContextExceptionType.NO_CONTEXT_VIEW);
@@ -331,12 +331,12 @@ namespace strange.extensions.context.impl
 			viewCache = new SemiBinding();
 		}
 
-        public override void OnRemove()
-        {
-            base.OnRemove();
-            commandBinder.OnRemove();
-        }
-
-    }
+		/// Clean up. Called by a ContextView in its OnDestroy method
+		public override void OnRemove()
+		{
+			base.OnRemove();
+			commandBinder.OnRemove();
+		}
+	}
 }
 

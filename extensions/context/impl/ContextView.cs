@@ -47,11 +47,14 @@ namespace strange.extensions.context.impl
 		{
 		}
 
-        protected virtual void OnDestroy()
-        {
-            if (context != null)
-                Context.firstContext.RemoveContext(context);
-        }
+		/// <summary>
+		/// When a ContextView is Destroyed, automatically removes the associated Context.
+		/// </summary>
+		protected virtual void OnDestroy()
+		{
+			if (context != null)
+				Context.firstContext.RemoveContext(context);
+		}
 	}
 }
 
