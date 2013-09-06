@@ -32,7 +32,7 @@ public class CrossContextInjectionBinder : InjectionBinder, ICrossContextInjecti
         return binding;
     }
 
-    override public void resolveBinding(IBinding binding, object key)
+    override public void ResolveBinding(IBinding binding, object key)
     {
         //Decide whether to resolve locally or not
         if (binding is IInjectionBinding)
@@ -43,20 +43,30 @@ public class CrossContextInjectionBinder : InjectionBinder, ICrossContextInjecti
 
                 if (CrossContextBinder == null) //We are a crosscontextbinder
                 {
-                    base.resolveBinding(binding, key);
+                    base.ResolveBinding(binding, key);
                 }
                 else 
                 {
                     Unbind(key); //remove this cross context binding from the local binder
-                    CrossContextBinder.resolveBinding(binding, key);
+                    CrossContextBinder.ResolveBinding(binding, key);
                 }
             }
             else
             {
-                base.resolveBinding(binding, key);
+                base.ResolveBinding(binding, key);
             }
         }
-       
+    }
 
+    protected override IInjector GetInjectorForBinding(IInjectionBinding binding)
+    {
+        if (binding.isCrossContext && CrossContextBinder != null)
+        {
+            return CrossContextBinder.injector;
+        }
+        else
+        {
+            return injector;
+        }
     }
 }

@@ -26,7 +26,6 @@ using System;
 using strange.framework.api;
 using strange.framework.impl;
 using strange.extensions.injector.api;
-using UnityEngine;
 
 namespace strange.extensions.injector.impl
 {
