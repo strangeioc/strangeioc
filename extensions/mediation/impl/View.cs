@@ -47,7 +47,6 @@ namespace strange.extensions.mediation.impl
 				_requiresContext = value;
 			}
 		}
-		
 
 		public bool registeredWithContext{get; set;}
 
@@ -88,26 +87,25 @@ namespace strange.extensions.mediation.impl
 			{
 				loopLimiter ++;
 				trans = trans.parent;
-
-                if (trans.gameObject.GetComponent<ContextView>() != null)
-                {
-                    ContextView contextView = trans.gameObject.GetComponent<ContextView>() as ContextView;
-                    if (contextView.context != null)
-                    {
-                        IContext context = contextView.context;
-                        if (toAdd)
-                        {
-                            context.AddView(view);
-                            registeredWithContext = true;
-                            return;
-                        }
-                        else
-                        {
-                            context.RemoveView(view);
-                            return;
-                        }
-                    }
-                }
+				if (trans.gameObject.GetComponent<ContextView>() != null)
+				{
+					ContextView contextView = trans.gameObject.GetComponent<ContextView>() as ContextView;
+					if (contextView.context != null)
+					{
+						IContext context = contextView.context;
+						if (toAdd)
+						{
+							context.AddView(view);
+							registeredWithContext = true;
+							return;
+						}
+						else
+						{
+							context.RemoveView(view);
+							return;
+						}
+					}
+				}
 			}
 			if (requiresContext && finalTry)
 			{
