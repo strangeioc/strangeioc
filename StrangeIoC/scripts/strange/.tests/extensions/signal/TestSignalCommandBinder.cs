@@ -5,6 +5,7 @@ using strange.extensions.injector.impl;
 using strange.extensions.command.impl;
 using strange.extensions.command.api;
 using strange.extensions.signal.impl;
+using strange.extensions.signal.api;
 
 namespace strange.unittests
 {

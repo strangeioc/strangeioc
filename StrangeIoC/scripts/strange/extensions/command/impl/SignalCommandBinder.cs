@@ -36,7 +36,7 @@
  * Signals bind their parameters to Command injections by comparing types and do not understand
  * named injections. Therefore, in order to Bind a Command's injections to a Signal,
  * PARAMETERS/INJECTIONS MUST BE OF UNIQUE TYPES. It is not, therefore, possible to bind a
- * Signal with two of the same type to a Command:
+ * Signal with two of the same type to a Command.
  * 
  * Note that like CommandBinder, SignalCommandBinder features sequencing. By default,
  * SignalCommandBinder fires all Commands in parallel. If your binding specifies `InSequence()`,
@@ -137,18 +137,18 @@ namespace strange.extensions.command.impl
 							}
 							else //Do not allow null injections
 							{
-								throw new SignalException("SignalCommandBinder attempted to bind a null value from a signal in to SignalCommand: " + cmd.GetType() + " to type: " + type, SignalExceptionType.COMMAND_NULL_INJECTION);
+								throw new SignalException("SignalCommandBinder attempted to bind a null value from a signal to Command: " + cmd.GetType() + " to type: " + type, SignalExceptionType.COMMAND_NULL_INJECTION);
 							}
 						}
 						if (!foundValue)
 						{
-							throw new SignalException("Could not find an unused injectable value to inject in to SignalCommand: " + cmd.GetType() + " for Type: " + type, SignalExceptionType.COMMAND_VALUE_NOT_FOUND);
+							throw new SignalException("Could not find an unused injectable value to inject in to Command: " + cmd.GetType() + " for Type: " + type, SignalExceptionType.COMMAND_VALUE_NOT_FOUND);
 						}
 					}
 					else
 					{
 						throw new SignalException("SignalCommandBinder: You have attempted to map more than one value of type: " + type +
-							" in SignalCommand: " + cmd.GetType() + ". Only the first value of a type will be injected. You may want to place your values in a VO, instead.",
+							" in Command: " + cmd.GetType() + ". Only the first value of a type will be injected. You may want to place your values in a VO, instead.",
 							SignalExceptionType.COMMAND_VALUE_CONFLICT);
 					}
 			}
