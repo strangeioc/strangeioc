@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using strange.extensions.context.impl;
+using strange.extensions.injector.impl;
 
 namespace strange.unittests
 {
@@ -109,35 +110,35 @@ namespace strange.unittests
         [Test]
         public void TestLocalOverridesCrossContext()
         {
-            Parent.injectionBinder.Bind<TestModel>().ToSingleton().CrossContext(); //bind it once here and it should be accessible everywhere
-            TestModel parentModel = new TestModel();
-            parentModel.Value = 1000;
-            //Parent.injectionBinder.Unbind<TestModel>();
-            Parent.injectionBinder.Bind<TestModel>().ToValue(parentModel);
+            Parent.injectionBinder.Bind<TestModel>().ToSingleton().CrossContext(); //bind the cross context binding.
+            TestModel initialChildOneModel = new TestModel();
+            initialChildOneModel.Value = 1000;
 
-            TestModel parentModelTwo = Parent.injectionBinder.GetInstance<TestModel>() as TestModel;
 
-            Assert.AreSame(parentModel, parentModelTwo); //Assure that this value is the same as the locally injected alue
+            ChildOne.injectionBinder.Bind<TestModel>().ToValue(initialChildOneModel); //Bind a local override in this child
+
+            TestModel parentModel = Parent.injectionBinder.GetInstance<TestModel>() as TestModel; //Get the instance from the parent injector (The cross context binding)
 
 
             TestModel childOneModel = ChildOne.injectionBinder.GetInstance<TestModel>() as TestModel;
-            Assert.IsNotNull(childOneModel);
+            Assert.AreSame(initialChildOneModel, childOneModel); // The value from getInstance is the same as the value we just mapped as a value locally
+            Assert.AreNotSame(childOneModel, parentModel); //The value from getinstance is NOT the same as the cross context value. We have overidden the cross context value locally
+
+
             TestModel childTwoModel = ChildTwo.injectionBinder.GetInstance<TestModel>() as TestModel;
             Assert.IsNotNull(childTwoModel);
-
-            Assert.AreSame(childOneModel, childTwoModel); //These two should be the same object, both through the cross context and both different from the parent model
-            Assert.AreNotSame(parentModel, childOneModel); 
-            Assert.AreNotSame(parentModel, childTwoModel);
+            Assert.AreNotSame(childOneModel, childTwoModel); //These two are different objects, the childTwoModel being cross context, and childone being the override
+            Assert.AreSame(parentModel, childTwoModel); //Both cross context models are the same
 
 
             parentModel.Value++;
-            Assert.AreEqual(0, childOneModel.Value); //doesn't change
+            Assert.AreEqual(1, childTwoModel.Value); //cross context model should be changed
 
             parentModel.Value++;
-            Assert.AreEqual(0, childTwoModel.Value); //doesn't cahnge
+            Assert.AreEqual(1000, childOneModel.Value); //local model is not changed
 
 
-            Assert.AreEqual(1002, parentModel.Value); //this was unchanged
+            Assert.AreEqual(2, parentModel.Value); //cross context model is changed
 
         }
 
@@ -168,7 +169,6 @@ namespace strange.unittests
             Assert.AreEqual(2, childTwoModel.Value);
 
         }
-
 
 	}
 

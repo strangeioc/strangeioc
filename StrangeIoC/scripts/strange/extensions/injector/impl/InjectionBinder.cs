@@ -48,16 +48,21 @@ namespace strange.extensions.injector.impl
 			return GetInstance(key, null);
 		}
 
-		public object GetInstance(Type key, object name)
+		public virtual object GetInstance(Type key, object name)
 		{
 			IInjectionBinding binding = GetBinding (key, name) as IInjectionBinding;
 			if (binding == null)
 			{
 				throw new InjectionException ("InjectionBinder has no binding for:\n\tkey: " + key + "\nname: " + name, InjectionExceptionType.NULL_BINDING);
 			}
-			object instance = injector.Instantiate (binding);
+			object instance = GetInjectorForBinding(binding).Instantiate (binding);
 			return instance;
 		}
+
+        protected virtual IInjector GetInjectorForBinding(IInjectionBinding binding)
+        {
+            return injector;
+        }
 
 		public object GetInstance<T>()
 		{
@@ -101,11 +106,6 @@ namespace strange.extensions.injector.impl
         {
             return base.Bind(key) as IInjectionBinding;
         }
-
-        public override IBinding Bind(object key)
-        {
-            return base.Bind(key);
-        } 
 
 		new virtual public IInjectionBinding GetBinding<T>()
 		{

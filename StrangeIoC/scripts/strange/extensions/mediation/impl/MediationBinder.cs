@@ -59,6 +59,7 @@ namespace strange.extensions.mediation.impl
 				{
 					case MediationEvent.AWAKE:
 						injectViewAndChildren(view); //Inject and Map all children and itself
+                        mapView(view, binding);
 						break;
 					case MediationEvent.DESTROYED:
 						unmapView (view, binding);
@@ -90,9 +91,9 @@ namespace strange.extensions.mediation.impl
 					{
 						continue;
 					}
-                    IMediationBinding binding = GetBinding(iView.GetType()) as IMediationBinding;
-                    if (binding != null)
-                        mapView(iView, binding);
+                    //IMediationBinding binding = GetBinding(iView.GetType()) as IMediationBinding;
+                    //if (binding != null)
+                    //    mapView(iView, binding);
 					iView.registeredWithContext = true;
                     if (iView.Equals(mono) == false)
                         Trigger(MediationEvent.AWAKE, iView);
