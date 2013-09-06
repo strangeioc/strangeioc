@@ -28,6 +28,7 @@ namespace strange.extensions.injector.impl
 {
 	public class InjectorFactory : IInjectorFactory
 	{
+
 		protected Dictionary<IInjectionBinding, Dictionary<object, object>> objectMap;
 
 		public InjectorFactory ()
@@ -79,8 +80,7 @@ namespace strange.extensions.injector.impl
                 }
                 else
                 {
-                    binding.ToValue(generateImplicit((binding.key as object[])[0], args));
-                    dict[name] = binding.value;
+                    dict[name] = generateImplicit((binding.key as object[])[0], args);
                 }
             }
 			return dict[name];

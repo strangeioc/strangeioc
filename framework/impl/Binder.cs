@@ -130,15 +130,12 @@ namespace strange.framework.impl
 
 		virtual public void Unbind(object key, object name)
 		{
-            System.Console.Write("Unbind");
             if (bindings.ContainsKey(key))
             {
-                System.Console.Write("Unbind contains key");
                 Dictionary<object, IBinding> dict = bindings[key];
                 object bindingName = (name == null) ? BindingConst.NULLOID : name;
                 if (dict.ContainsKey(bindingName))
                 {
-                    System.Console.Write("Binder: Unbind is successful");
                     dict.Remove(bindingName);
                 }
             }
@@ -233,7 +230,7 @@ namespace strange.framework.impl
 		{
 			object key = binding.key;
 			if (binding.keyConstraint.Equals(BindingConstraintType.ONE)) {
-				resolveBinding (binding, key);
+				ResolveBinding (binding, key);
 			} 
 			else
 			{
@@ -241,7 +238,7 @@ namespace strange.framework.impl
 				int aa = keys.Length;
 				for(int a = 0; a < aa; a++)
 				{
-					resolveBinding (binding, keys[a]);
+					ResolveBinding (binding, keys[a]);
 				}
 			}
 		}
@@ -255,7 +252,7 @@ namespace strange.framework.impl
 		 * Conflicts in the course of fluent binding are expected, but GetBinding
 		 * will throw an error if there are any unresolved conflicts.
 		 */
-		virtual public void resolveBinding(IBinding binding, object key)
+		virtual public void ResolveBinding(IBinding binding, object key)
 		{
 			if (conflicts.ContainsKey(key))	//does the current key have any conflicts?
 			{

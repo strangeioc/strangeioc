@@ -48,6 +48,7 @@ namespace strange.extensions.mediation.impl
 			}
 		}
 		
+
 		public bool registeredWithContext{get; set;}
 
 		/// A MonoBehaviour Awake handler.
@@ -74,12 +75,6 @@ namespace strange.extensions.mediation.impl
 		{
 			bubbleToContext(this, false, false);
 		}
-
-        public void AttemptRegister()
-        {
-            if (!registeredWithContext)
-                bubbleToContext(this, true, false);
-        }
 
 		/// Recurses through Transform.parent to find the GameObject to which ContextView is attached
 		/// Has a loop limit of 100 levels.

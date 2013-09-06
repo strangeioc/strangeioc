@@ -27,9 +27,9 @@ namespace strange.extensions.command.impl
 {
     public class SignalCommandBinder : CommandBinder
     {
-        override public void resolveBinding(IBinding binding, object key)
+        override public void ResolveBinding(IBinding binding, object key)
         {
-            base.resolveBinding(binding, key);
+            base.ResolveBinding(binding, key);
 
             if (bindings.ContainsKey(key)) //If this key already exists, don't bind this again
             {
@@ -101,23 +101,23 @@ namespace strange.extensions.command.impl
                             }
                             else //Do not allow null injections
                             {
-                                throw new SignalException("Attempted to bind a null value to type: " + type, SignalExceptionType.COMMAND_NULL_INJECTION);
+                                throw new SignalException("SignalCommandBinder attempted to bind a null value from a signal in to SignalCommand: " + cmd.GetType() + " to type: " + type, SignalExceptionType.COMMAND_NULL_INJECTION);
                             }
                         }
                         if (!foundValue)
                         {
-                            throw new SignalException("Could not find an unused injectable value to inject in to signal command for Type: " + type, SignalExceptionType.COMMAND_VALUE_NOT_FOUND);
+                            throw new SignalException("Could not find an unused injectable value to inject in to SignalCommand: " + cmd.GetType() + " for Type: " + type, SignalExceptionType.COMMAND_VALUE_NOT_FOUND);
                         }
                     }
                     else
                     {
-                        throw new SignalException("ActionCommandBinder: You have attempted to map more than one value of type: " + type +
-                            " in ActionCommand: " + cmd.GetType() + ". Only the first value of a type will be injected. You may want to place your values in a VO, instead.",
+                        throw new SignalException("SignalCommandBinder: You have attempted to map more than one value of type: " + type +
+                            " in SignalCommand: " + cmd.GetType() + ". Only the first value of a type will be injected. You may want to place your values in a VO, instead.",
                             SignalExceptionType.COMMAND_VALUE_CONFLICT);
                     }
                 }
                 command = injectionBinder.GetInstance<ICommand>() as ICommand;
-                command.data = data; //Just to support swapping from EventCommand to ActionCommand more easily. No reason not to.
+                command.data = data; //Just to support swapping from EventCommand to SignalCommand more easily. No reason not to.
                 
                 foreach (Type typeToRemove in signalTypes) //clean up these bindings
                     injectionBinder.Unbind(typeToRemove);
@@ -126,7 +126,7 @@ namespace strange.extensions.command.impl
             else
             {
                 command = injectionBinder.GetInstance<ICommand>() as ICommand;
-                command.data = data; //Just to support swapping from EventCommand to ActionCommand more easily. No reason not to.
+                command.data = data; //Just to support swapping from EventCommand to SignalCommand more easily. No reason not to.
             }
             injectionBinder.Unbind<ICommand>();
             return command;
