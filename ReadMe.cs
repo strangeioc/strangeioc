@@ -24,7 +24,11 @@
  * <ul>
  *  <li>A core binding framework that pretty much lets you bind one or more of anything to one or more of anything else.</li>
  *  <li>Dependency Injection</li>
- *  <li>A shared event bus</li>
+ *  <li>Two types of shared event bus</li>
+ *   <ul>
+ *     <li>EventDispatcher (the default) is a simple, but non-type-safe, dispatching bus</li>
+ *     <li>Signals, which offer type-safety</li>
+ *   </ul>
  *  <li>MonoBehaviour mediation</li>
  *  <li>Optional MVCS (Model/View/Controller/Service) structure</li>
  *  <li>Multiple contexts</li>
