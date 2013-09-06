@@ -85,7 +85,19 @@ namespace strange.framework.api
 		/// Remove a select name from the given binding
 		void RemoveName (IBinding binding, object value);
 
-        void OnRemove();
+		/// The Binder is being removed
+		/// Override this method to clean up remaining bindings
+		void OnRemove();
+
+		/// <summary>
+		/// Places individual Bindings into the bindings Dictionary as part of the resolving process
+		/// </summary>
+		/// Note that while some Bindings may store multiple keys, each key takes a unique position in the
+		/// bindings Dictionary.
+		/// 
+		/// Conflicts in the course of fluent binding are expected, but GetBinding
+		/// will throw an error if there are any unresolved conflicts.
+		void ResolveBinding(IBinding binding, object key);
 	}
 }
 
