@@ -49,8 +49,8 @@ namespace strange.extensions.injector.api
 		/// Two lists are required because Unity does not at present support Tuple.
 		/// Seeing this error likely indicates a problem with the Reflector (it's not you, it's me).
 		SETTER_NAME_MISMATCH,
-        /// When requesting a cross context injector and it is null
-        MISSING_CROSS_CONTEXT_INJECTOR,
+		/// The requested cross-context injector returned null
+		MISSING_CROSS_CONTEXT_INJECTOR,
 	}
 }
 
