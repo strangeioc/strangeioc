@@ -33,8 +33,8 @@
  * CommandBinder can trigger one Command or multiple Commands off the
  * same event.
  * 
- * Note that CommandBinder also a features sequencing. By default, CommandBinder fires all
- * Commands in parallel. If your binding specifies `InSequence()`,  commands will run serially,
+ * Note that CommandBinder also features sequencing. By default, CommandBinder fires all
+ * Commands in parallel. If your binding specifies `InSequence()`, commands will run serially,
  * with the option of suspending the chain at any time.
  * 
  * Example bindings:
