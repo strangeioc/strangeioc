@@ -519,6 +519,14 @@ Signal&lt;string&gt; signalDispatchesString = new Signal&lt;string&gt;();
 signalDispatchesInt.AddListener(callbackString); //Oops! I attached the wrong callback to my Signal!
 signalDispatchesString.AddListener(callbackInt); //Oops! I did it again! (Am I klutzy or what?!)</pre>
 <p>This makes screwing up your listeners pretty darned difficult.</p>
+<p>The parameters of a Signal are type-safe and <em>down-castable</em>. This means that anything assignable from the parameter's Type is a legal mapping.</p>
+<pre class="prettyprint">//You can do this...
+Signal&lt;SuperClass&gt; signal = new Signal&lt;SuperClass&gt;();
+signal.Dispatch(instanceOfASubclass);
+
+//...but never this
+Signal&lt;SubClass&gt; signal = new Signal&lt;SubClass&gt;();
+signal.Dispatch(instanceOfASuperclass);</pre>
 <p>You can write Signals with 0-4 parameters. Signals use the Action Class as the underlying mechanism for type safety. Unity's C# implementation allows a maximum of four parameters to an Action, so that's as far as we can take you. If you require more than four parameters, consider creating a value object and sending that instead.</p>
  <pre class="prettyprint">//works
 Signal signal0 = new Signal();
@@ -547,9 +555,6 @@ namespace mynamespace
 	//We're typing this Signal's payloads to MonoBehaviour and int
 	public class ShipDestroyedSignal : Signal<string>&lt;MonoBehaviour, int&gt;
 	{
-		public ShipDestroyedSignal ()
-		{
-		}
 	}
 }</pre>
 <h4><a name="mappingSignalsToCommands"></a>Mapping Signals to Commands</h4>
@@ -560,28 +565,73 @@ namespace mynamespace
 	injectionBinder.Unbind&lt;ICommandBinder&gt;();
 	injectionBinder.Bind&lt;ICommandBinder&gt;().To&lt;SignalCommandBinder&gt;().ToSingleton();
 }</pre>
-<p>Doing this informs Strange that we're going away with the default EventDispatcher and replacing it with the SignalCommandBinder.</p>
+<p>Doing this informs Strange that we're doing away with the default EventDispatcher and replacing it with the SignalCommandBinder.</p>
 <p>Having done this,  Signals can now be mapped to Commands much as Events can. The basic syntax is:</p>
-<pre class="prettyprint">signalCommandBinder.Bind&lt;SomeSignal&gt;().To&lt;SomeCommand&gt;();</pre>
-<p>Of course the full range of Command-mapping behavior is supported, including multiple Commands, sequences and mapping <code>Once()</code>.</p>
-<p>An important caveat: while Signals support multiple params of the same Type, injections do not. <strong>It is therefore not possible for a Signal with two parameters of the same Type to be mapped to a Command</strong>.</p>
+<pre class="prettyprint">commandBinder.Bind&lt;SomeSignal&gt;().To&lt;SomeCommand&gt;();</pre>
+<p>Note that it's still  <code>commandBinder</code>. We simply unmapped the one that worked with EventDispatcher and hooked it up to a new one that works with Signals. Of course the full range of Command-mapping behavior is supported, including multiple Commands, sequences and mapping <code>Once()</code>.</p>
+<p>Mapping a Signal to a Command automatically creates an injection mapping which you can retrieve with the <code>[Inject]</code> tag, like so:</p>
+<pre class="prettyprint">[Inject]
+public ShipDestroyedSignal shipDestroyedSignal{get; set;}</pre>
+<p>Use this injection wherever necessary (always remembering to apply some common sense), including in Commands or Mediators.</p>
+<p>To clarify how Signal/Command mapping works, let's briefly go through an example by mapping the <code>ShipDestroyedSignal</code> above to a Command. We'll start in the Context by binding the signal:</p>
+<pre class="prettyprint">commandBinder.Bind&lt;ShipDestroyedSignal&gt;().To&lt;ShipDestroyedCommand&gt;();</pre>
+<p>In a ShipMediator, we Inject the signal, then Dispatch it:</p>
+<pre class="prettyprint">[Inject]
+public ShipDestroyedSignal shipDestroyedSignal{get; set;}</span>
+
+private int basePointValue; //imagining that the Mediator holds a value for this ship
+
+//Something happened that resulted in destruction
+private void OnShipDestroyed()
+{
+	shipDestroyedSignal.Dispatch(view, basePointValue);
+}</pre>
+<p>Dispatching a Signal mapped via the SignalCommandBinder results in the instantiation of a ShipDestroyedCommand:</p>
+<pre class="prettyprint">using System;
+using strange.extensions.command.impl;
+using UnityEngine;
+
+namespace mynamespace
+{
+	//Note how we extend Command, not EventCommand
+	public class ShipDestroyedCommand : Command
+	{
+		[Inject]
+		public MonoBehaviour view{ get; set;}
+
+		[Inject]
+		public int basePointValue{ get; set;}
+
+		public override void Execute ()
+		{
+			//Do unspeakable things to the destroyed ship
+		}
+	}
+}</pre>
+<p>As you can see, the methodology for mapping Signals to Commands is very similar to the methodology used with Events.</p>
+<p>Two important caveats: first, while Signals support multiple parameters of the same Type, injections do not. <strong>It is therefore not possible for a Signal with two parameters of the same Type to be mapped to a Command</strong>.</p>
 <pre class="prettyprint">//This works
 Signal&lt;int, int&gt; twoIntSignal = new Signal&lt;int, int&gt;();
 twoIntSignal.AddListener(twoIntCallback);
 
 //This fails
 Signal&lt;int, int&gt; twoIntSignal = new Signal&lt;int, int&gt;();
-signalCommandBinder.Bind(twoIntSignal).To&lt;SomeCommand&gt;();</pre>
+commandBinder.Bind(twoIntSignal).To&lt;SomeCommand&gt;();</pre>
 <p>Once again, this you can work around this limitation by mapping ValueObjects instead.</p>
-<p>Mapping a Signal to a Command automatically creates a mapping which you can retrieve by injecting elsewhere, like so:</p>
-<pre class="prettyprint">[Inject]
-public ShipDestroyedSignal shipDestroyedSignal{get; set;}</pre>
-<p>Use this injection wherever necessary (always remembering to apply some common sense), including in Commands or Mediators.</p>
+<p>The second caveat: Strange has a handy-dandy, built-in Start event for kicking things off. Unbinding the EventDispatcher turns this off. It is therefore the recommended practice to override your Context's Start method with a custom StartSignal, like so:</p>
+<pre>override public IContext Start()
+<span class="prettyprint"></span>{
+<span class="prettyprint"></span><span class="prettyprint">	</span>base.Start();
+<span class="prettyprint">	</span>//Make sure you mapped this to a StartCommand!
+<span class="prettyprint"></span><span class="prettyprint">	</span>StartSignal startSignal= (StartSignal)injectionBinder.GetInstance<StartSignal>();
+<span class="prettyprint"></span><span class="prettyprint">	</span>startSignal.Dispatch();
+<span class="prettyprint"></span><span class="prettyprint">	</span>return this;
+}</pre>
 <h4><a name="MappingSignalsWithoutCommands"></a>Mapping Signals without Commands</h4>
 <p>As mentioned above, mapping a Signal to a Command automatically creates a mapping which you can retrieve by injecting elsewhere, but what if you want to Inject a Signal without binding to a Command? In this case, simply map it using the injectionBinder, just like any other injected class:</p>
 <pre class="prettyprint">injectionBinder.Bind&lt;<span class="prettyprint">ShipDestroyedSignal</span>&gt;().ToSingleton();</pre>
   <h3><a name="h.sjblqrdytark"></a>The mediation extension</h3>
-  <p>The <strong>MediationContext</strong> is the only part of Strange written exclusively for use with Unity3D. This is because mediation is all about carefully controlling how your views (GameObjects) interface with the rest of your app. Views are by nature highly volatile during development, and it&#39;s advisable to constrain that natural chaos to within the view classes themseves. For this reason, the mediation model advises your view consist of at least two distinct MonoBehaviours: View and Mediator.</p>
+  <p>The <strong>MediationContext</strong> is the only part of Strange written exclusively for use with Unity3D. This is because mediation is all about carefully controlling how your views (GameObjects) interface with the rest of your app. Views are by nature highly volatile during development, and it&#39;s advisable to constrain that natural chaos to within the view classes themseves. For this reason, we suggest that your view consist of at least two distinct MonoBehaviours: View and Mediator.</p>
   <h4><a name="h.jzr0vg3lxl94"></a>View</h4>
   <p>The <strong>View</strong> class is a MonoBehaviour that you extend to write the behavior that controls the visual input and output that a user sees. This class can be attached in the Unity3D IDE to the relevant GameObject. If it has public components, these can be tweaked right in the IDE as normal. Want a green button? Wire it up in the View. Want the green button to have a number on it? Wire that up in the View. Want to inject a model or service? <em>WAIT! </em><em><span class="c30">Don&rsquo;t do that!</span></em>&nbsp;Why?</p>
   <p>While your Views are injectable, it&rsquo;s almost always bad practice to tie your Views directly to models and services. As we&rsquo;ve said, your View code is apt to get messy and it&rsquo;s worth insulating your other classes from that mess. In the next chapter we&rsquo;ll get into what we consider the best structure for app development with Strange, but for now just humor us and consider the idea that your View should only be responsible for the following:</p>
