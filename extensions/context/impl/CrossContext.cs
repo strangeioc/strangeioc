@@ -66,7 +66,6 @@ public class CrossContext : Context, ICrossContextCapable
     {
         base.instantiateCoreComponents();
 
-        //WC: This is a potential flag for me. While the order of operations is true, we may not have an event dispatcher at this point (however unlikely)
         IEventDispatcher dispatcher = injectionBinder.GetInstance<IEventDispatcher>(ContextKeys.CONTEXT_DISPATCHER) as IEventDispatcher;
 
         if (dispatcher != null)

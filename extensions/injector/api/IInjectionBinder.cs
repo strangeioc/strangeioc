@@ -106,7 +106,7 @@ namespace strange.extensions.injector.api
 		void Unbind (object key, object name);
 		void Unbind (IBinding binding);
 
-        void resolveBinding(IBinding binding, object key);
+        void ResolveBinding(IBinding binding, object key);
 	}
 }
 
