@@ -1,37 +1,23 @@
 /// An example view
 /// ==========================
-/// The view is where you program and configure the particulars of an item
-/// in a scene. For example, if you have a GameObject with buttons and a
-/// test readout, wire all that into this class.
 /// 
-/// By default, Views do not have access to the common Event bus. While you
-/// could inject it, we STRONGLY recommend against doing this. Views are by
-/// nature volatile, possibly the piece of your app most likely to change.
-/// Mediation mapping allows you to automatically attach a 'Mediator' class
-/// whose responsibility it is to connect the View to the rest of the app.
-/// 
-/// Building a view in code here. Ordinarily, you'd do this in the scene.
-/// You could argue that this code is kind of messy...not ideal for a demo...
-/// but that's kind of the point. View code is often highly volatile and
-/// reactive. It gets messy. Let your view be what it needs to be while
-/// insulating the rest of your app from this chaos.
 
 using System;
 using System.Collections;
 using UnityEngine;
 using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.mediation.impl;
+using strange.extensions.signal.impl;
 
-namespace strange.examples.myfirstproject
+namespace strange.examples.signals
 {
 	public class ExampleView : View
 	{
-		internal const string CLICK_EVENT = "CLICK_EVENT";
+		public Signal clickSignal = new Signal();
 		
-		[Inject]
-		public IEventDispatcher dispatcher{get;set;}
+		GameObject latestGO;
 		
-		private float theta = .005f;
+		private float theta = 20f;
 		private Vector3 basePosition;
 		
 		//Publicly settable from Unity3D
@@ -41,7 +27,9 @@ namespace strange.examples.myfirstproject
 		
 		internal void init()
 		{
-			GameObject go = Instantiate(Resources.Load("Textfield")) as GameObject;
+			latestGO = Instantiate(Resources.Load("Textfield")) as GameObject;
+			GameObject go = latestGO;
+			go.name = "first";
 			
 			TextMesh textMesh = go.GetComponent<TextMesh>();
 			textMesh.text = "http://www.thirdmotion.com";
@@ -63,17 +51,28 @@ namespace strange.examples.myfirstproject
 			
 			go.AddComponent<ClickDetector>();
 			ClickDetector clicker = go.GetComponent<ClickDetector>() as ClickDetector;
-			clicker.dispatcher.AddListener(ClickDetector.CLICK, onClick);
+			clicker.clickSignal.AddListener(onClick);
 		}
 		
 		internal void updateScore(string score)
 		{
-			GameObject go = Instantiate(Resources.Load("Textfield")) as GameObject;
+			latestGO = Instantiate(Resources.Load("Textfield")) as GameObject;
+			GameObject go = latestGO;
 			TextMesh textMesh = go.GetComponent<TextMesh>();
 			textMesh.font.material.color = Color.white;
 			go.transform.parent = transform;
 
 			textMesh.text = score.ToString();
+		}
+		
+		internal string currentText
+		{
+			get
+			{
+				GameObject go = latestGO;
+				TextMesh textMesh = go.GetComponent<TextMesh>();
+				return textMesh.text;
+			}
 		}
 		
 		void Update()
@@ -83,7 +82,7 @@ namespace strange.examples.myfirstproject
 		
 		void onClick()
 		{
-			dispatcher.Dispatch(CLICK_EVENT);
+			clickSignal.Dispatch();
 			startWobble();
 		}
 		

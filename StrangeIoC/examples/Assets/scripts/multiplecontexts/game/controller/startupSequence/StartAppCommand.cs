@@ -39,7 +39,7 @@ namespace strange.examples.multiplecontexts.game
 			//This is one way to do it, but there is no "right" way
 			if (context != Context.firstContext)
 			{
-				AudioListener[] audioListeners = Camera.FindSceneObjectsOfType(typeof(AudioListener)) as AudioListener[];
+				AudioListener[] audioListeners = Camera.FindObjectsOfType(typeof(AudioListener)) as AudioListener[];
 				int aa = audioListeners.Length;
 				for (int a = 1; a < aa; a++)
 				{

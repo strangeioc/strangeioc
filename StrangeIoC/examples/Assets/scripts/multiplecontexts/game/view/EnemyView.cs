@@ -53,7 +53,7 @@ namespace strange.examples.multiplecontexts.game
 		void wobble()
 		{
 			theta += edx_WobbleIncrement;
-			gameObject.transform.RotateAround(Vector3.forward, edx_WobbleForce * Mathf.Sin(theta));
+			gameObject.transform.Rotate(Vector3.forward, edx_WobbleForce * Mathf.Sin(theta));
 		}
 	}
 }
