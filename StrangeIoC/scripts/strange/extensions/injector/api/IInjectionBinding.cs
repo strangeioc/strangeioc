@@ -57,8 +57,8 @@ namespace strange.extensions.injector.api
 		/// Map the Binding to a stated instance so that every `GetInstance()` on the Binder Key returns the provided imstance. Sets type to Value
 		IInjectionBinding ToValue (object o);
 
-        /// Map the Binding to a stated instance so that every `GetInstance()` on the Binder Key returns the provided imstance. Does not set type.
-        IInjectionBinding SetValue(object o);
+		/// Map the Binding to a stated instance so that every `GetInstance()` on the Binder Key returns the provided imstance. Does not set type.
+		IInjectionBinding SetValue(object o);
 
 		/// Map the binding and give access to all contexts in hierarchy
 		IInjectionBinding CrossContext();

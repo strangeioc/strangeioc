@@ -43,13 +43,13 @@ namespace strange.extensions.injector.impl
 			switch (type)
 			{
 				case InjectionBindingType.SINGLETON:
-                    return singletonOf (binding, args);;
+					return singletonOf (binding, args);;
 				case InjectionBindingType.VALUE:
 					return valueOf (binding);
 				default:
 					break;
 			}
-            
+
 			return instanceOf (binding, args);
 		}
 
@@ -58,26 +58,26 @@ namespace strange.extensions.injector.impl
 			return Get (binding, null);
 		}
 
-        /// Generate a Singleton instance
-        protected object singletonOf(IInjectionBinding binding, object[] args)
-        {
-            if (binding.value != null)
-            {
-                if (binding.value.GetType().IsInstanceOfType(typeof(Type)))
-                {
-                    binding.SetValue(createFromValue(binding.value, args));
-                }
-                else
-                {
-                    //no-op. We already have a binding value!
-                }
-            }
-            else
-            {
-                binding.SetValue(generateImplicit((binding.key as object[])[0], args));
-            }
-            return binding.value;
-        }
+		/// Generate a Singleton instance
+		protected object singletonOf(IInjectionBinding binding, object[] args)
+		{
+			if (binding.value != null)
+			{
+				if (binding.value.GetType().IsInstanceOfType(typeof(Type)))
+				{
+					binding.SetValue(createFromValue(binding.value, args));
+				}
+				else
+				{
+					//no-op. We already have a binding value!
+				}
+			}
+			else
+			{
+				binding.SetValue(generateImplicit((binding.key as object[])[0], args));
+			}
+			return binding.value;
+		}
 
 		protected object generateImplicit(object key, object[] args)
 		{
