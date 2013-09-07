@@ -623,7 +623,7 @@ commandBinder.Bind(twoIntSignal).To&lt;SomeCommand&gt;();</pre>
 <span class="prettyprint"></span>{
 <span class="prettyprint"></span><span class="prettyprint">	</span>base.Start();
 <span class="prettyprint">	</span>//Make sure you mapped this to a StartCommand!
-<span class="prettyprint"></span><span class="prettyprint">	</span>StartSignal startSignal= (StartSignal)injectionBinder.GetInstance<StartSignal>();
+<span class="prettyprint"></span><span class="prettyprint">	</span>StartSignal startSignal= (StartSignal)injectionBinder.GetInstance<StartSignal>&lt;StartSignal&gt;();
 <span class="prettyprint"></span><span class="prettyprint">	</span>startSignal.Dispatch();
 <span class="prettyprint"></span><span class="prettyprint">	</span>return this;
 }</pre>
