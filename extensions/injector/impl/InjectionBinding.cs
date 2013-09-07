@@ -86,24 +86,31 @@ namespace strange.extensions.injector.impl
 
 		public IInjectionBinding ToValue (object o)
 		{
-			Type objType = o.GetType ();
-
-			object[] keys = key as object[];
-			int aa = keys.Length;
-			//Check that value is legal for the provided keys
-			for (int a = 0; a < aa; a++)
-			{
-				object aKey = keys[a];
-				Type keyType = (aKey is Type) ? aKey as Type : aKey.GetType ();
-				if (keyType.IsAssignableFrom(objType) == false)
-				{
-					throw new InjectionException("Injection cannot bind a value that does not extend or implement the binding type.", InjectionExceptionType.ILLEGAL_BINDING_VALUE);
-				}
-			}
 			type = InjectionBindingType.VALUE;
-			To (o);
+            SetValue(o);
 			return this;
 		}
+
+        public IInjectionBinding SetValue(object o)
+        {
+
+            Type objType = o.GetType();
+
+            object[] keys = key as object[];
+            int aa = keys.Length;
+            //Check that value is legal for the provided keys
+            for (int a = 0; a < aa; a++)
+            {
+                object aKey = keys[a];
+                Type keyType = (aKey is Type) ? aKey as Type : aKey.GetType();
+                if (keyType.IsAssignableFrom(objType) == false)
+                {
+                    throw new InjectionException("Injection cannot bind a value that does not extend or implement the binding type.", InjectionExceptionType.ILLEGAL_BINDING_VALUE);
+                }
+            }
+            To(o);
+            return this;
+        }
 		
         public IInjectionBinding CrossContext()
         {
@@ -147,6 +154,7 @@ namespace strange.extensions.injector.impl
 
 		new public IInjectionBinding To(object o)
 		{
+
 			return base.To (o) as IInjectionBinding;
 		}
 
