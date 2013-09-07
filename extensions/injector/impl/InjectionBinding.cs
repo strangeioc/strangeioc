@@ -62,13 +62,13 @@ namespace strange.extensions.injector.impl
 			}
 		}
 
-        public bool isCrossContext
-        {
-            get
-            {
-                return _isCrossContext;
-            }
-        }
+		public bool isCrossContext
+		{
+			get
+			{
+				return _isCrossContext;
+			}
+		}
 
 		public IInjectionBinding ToSingleton()
 		{
@@ -77,50 +77,51 @@ namespace strange.extensions.injector.impl
 				return this;
 
 			type = InjectionBindingType.SINGLETON;
-            if (resolver != null)
-            {
+			if (resolver != null)
+			{
 				resolver (this);
-            }
+			}
 			return this;
 		}
 
 		public IInjectionBinding ToValue (object o)
 		{
 			type = InjectionBindingType.VALUE;
-            SetValue(o);
+			SetValue(o);
 			return this;
 		}
 
-        public IInjectionBinding SetValue(object o)
-        {
+		public IInjectionBinding SetValue(object o)
+		{
 
-            Type objType = o.GetType();
+			Type objType = o.GetType();
 
-            object[] keys = key as object[];
-            int aa = keys.Length;
-            //Check that value is legal for the provided keys
-            for (int a = 0; a < aa; a++)
-            {
-                object aKey = keys[a];
-                Type keyType = (aKey is Type) ? aKey as Type : aKey.GetType();
-                if (keyType.IsAssignableFrom(objType) == false)
-                {
-                    throw new InjectionException("Injection cannot bind a value that does not extend or implement the binding type.", InjectionExceptionType.ILLEGAL_BINDING_VALUE);
-                }
-            }
-            To(o);
-            return this;
-        }
+			object[] keys = key as object[];
+			int aa = keys.Length;
+			//Check that value is legal for the provided keys
+			for (int a = 0; a < aa; a++)
+			{
+				object aKey = keys[a];
+				Type keyType = (aKey is Type) ? aKey as Type : aKey.GetType();
+				if (keyType.IsAssignableFrom(objType) == false)
+				{
+					throw new InjectionException("Injection cannot bind a value that does not extend or implement the binding type.", InjectionExceptionType.ILLEGAL_BINDING_VALUE);
+				}
+			}
+			To(o);
+			return this;
+		}
 		
-        public IInjectionBinding CrossContext()
-        {
-            _isCrossContext = true;
-            if (resolver != null)
-            {
-                resolver(this);
-            }
-            return this;
-        }
+		public IInjectionBinding CrossContext()
+		{
+			_isCrossContext = true;
+			if (resolver != null)
+			{
+				resolver(this);
+			}
+			return this;
+		}
+
 		public IInjectionBinding ToInject(bool value)
 		{
 			_toInject = value;
