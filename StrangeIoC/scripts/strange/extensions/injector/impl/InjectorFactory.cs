@@ -21,7 +21,6 @@
  */
 
 using System;
-using System.Collections.Generic;
 using strange.extensions.injector.api;
 
 namespace strange.extensions.injector.impl
@@ -29,11 +28,8 @@ namespace strange.extensions.injector.impl
 	public class InjectorFactory : IInjectorFactory
 	{
 
-		protected Dictionary<IInjectionBinding, Dictionary<object, object>> objectMap;
-
 		public InjectorFactory ()
 		{
-			objectMap = new Dictionary<IInjectionBinding, Dictionary<object, object>> ();
 		}
 
 		public object Get(IInjectionBinding binding, object[] args)
@@ -43,20 +39,17 @@ namespace strange.extensions.injector.impl
 				throw new InjectionException ("InjectorFactory cannot act on null binding", InjectionExceptionType.NULL_BINDING);
 			}
 			InjectionBindingType type = binding.type;
-			if (objectMap.ContainsKey(binding) == false)
-			{
-				objectMap [binding] = new Dictionary<object, object> ();
-			}
 
 			switch (type)
 			{
 				case InjectionBindingType.SINGLETON:
-					return singletonOf (binding, args);
+                    return singletonOf (binding, args);;
 				case InjectionBindingType.VALUE:
 					return valueOf (binding);
 				default:
 					break;
 			}
+            
 			return instanceOf (binding, args);
 		}
 
@@ -65,20 +58,26 @@ namespace strange.extensions.injector.impl
 			return Get (binding, null);
 		}
 
-		/// Generate a Singleton instance
-		protected object singletonOf(IInjectionBinding binding, object[] args)
-		{
-			object name = binding.name;
-			Dictionary<object, object> dict = objectMap [binding];
-			if (dict.ContainsKey (name) == false) {
-				if (binding.value != null) {
-					dict [name] = createFromValue (binding.value, args);
-				} else {
-					dict [name] = generateImplicit ((binding.key as object[]) [0], args);
-				}
-			}
-			return dict[name];
-		}
+        /// Generate a Singleton instance
+        protected object singletonOf(IInjectionBinding binding, object[] args)
+        {
+            if (binding.value != null)
+            {
+                if (binding.value.GetType().IsInstanceOfType(typeof(Type)))
+                {
+                    binding.SetValue(createFromValue(binding.value, args));
+                }
+                else
+                {
+                    //no-op. We already have a binding value!
+                }
+            }
+            else
+            {
+                binding.SetValue(generateImplicit((binding.key as object[])[0], args));
+            }
+            return binding.value;
+        }
 
 		protected object generateImplicit(object key, object[] args)
 		{

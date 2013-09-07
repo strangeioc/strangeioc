@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using strange.extensions.context.impl;
 using strange.extensions.injector.impl;
+using strange.extensions.injector.api;
 
 namespace strange.unittests
 {
@@ -158,6 +159,14 @@ namespace strange.unittests
             Assert.AreSame(parentModel, childOneModel); 
             Assert.AreSame(parentModel, childTwoModel);
             Assert.AreSame(childOneModel, childTwoModel);
+
+            IInjectionBinding binding = Parent.injectionBinder.GetBinding<TestModel>();
+            Assert.IsNotNull(binding);
+            Assert.IsTrue(binding.isCrossContext);
+
+            IInjectionBinding childBinding = ChildOne.injectionBinder.GetBinding<TestModel>();
+            Assert.IsNotNull(childBinding);
+            Assert.IsTrue(childBinding.isCrossContext);
 
 
             Assert.AreEqual(0, parentModel.Value);
