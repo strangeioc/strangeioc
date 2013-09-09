@@ -76,14 +76,14 @@ namespace strange.unittests
 		}
 
 		[Test]
-		public void TestNamedInjections ()
+		public void TestNamedInstances ()
 		{
 			InjectableSuperClass testValue = new InjectableSuperClass ();
 			float defaultFloatValue = testValue.floatValue;
 			testValue.floatValue = 3.14f;
 
 			binder.Bind<int> ().ToValue (20);
-			binder.Bind<InjectableSuperClass> ().To<InjectableSuperClass> ().ToName (SomeEnum.ONE);
+			binder.Bind<InjectableSuperClass> ().ToSingleton().ToName (SomeEnum.ONE);
 			binder.Bind<InjectableSuperClass> ().ToName<MarkerClass> ().ToValue(testValue);
 			binder.Bind<HasNamedInjections> ().To<HasNamedInjections> ();
 			HasNamedInjections instance = binder.GetInstance<HasNamedInjections> () as HasNamedInjections;
@@ -94,6 +94,38 @@ namespace strange.unittests
 			Assert.AreEqual (20, instance.injectionTwo.intValue);
 			Assert.That (instance.injectionOne.floatValue == defaultFloatValue);
 			Assert.That (instance.injectionTwo.floatValue == 3.14f);
+		}
+
+		[Test]
+		public void TestNamedFactories ()
+		{
+			binder.Bind<int> ().ToValue (20);
+			binder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer>().ToName (SomeEnum.ONE);
+			binder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementerTwo>().ToName (SomeEnum.TWO);
+
+			ISimpleInterface valueOneOne = binder.GetInstance<ISimpleInterface> (SomeEnum.ONE) as ISimpleInterface;
+			ISimpleInterface valueOneTwo = binder.GetInstance<ISimpleInterface> (SomeEnum.ONE) as ISimpleInterface;
+
+			ISimpleInterface valueTwoOne = binder.GetInstance<ISimpleInterface> (SomeEnum.TWO) as ISimpleInterface;
+			ISimpleInterface valueTwoTwo = binder.GetInstance<ISimpleInterface> (SomeEnum.TWO) as ISimpleInterface;
+
+			//Of course nothing should return null
+			Assert.NotNull (valueOneOne);
+			Assert.NotNull (valueOneTwo);
+			Assert.NotNull (valueTwoOne);
+			Assert.NotNull (valueTwoTwo);
+
+			//All four instances should be unique.
+			Assert.AreNotSame (valueOneOne, valueOneTwo);
+			Assert.AreNotSame (valueOneTwo, valueTwoOne);
+			Assert.AreNotSame (valueTwoOne, valueTwoTwo);
+			Assert.AreNotSame (valueOneOne, valueTwoTwo);
+			//First pair should be of type SimpleInterfaceImplementer.
+			Assert.IsInstanceOf<SimpleInterfaceImplementer> (valueOneOne);
+			Assert.IsInstanceOf<SimpleInterfaceImplementer> (valueOneTwo);
+			//Second pair should be of type SimpleInterfaceImplementerTwo.
+			Assert.IsInstanceOf<SimpleInterfaceImplementerTwo> (valueTwoOne);
+			Assert.IsInstanceOf<SimpleInterfaceImplementerTwo> (valueTwoTwo);
 		}
 
 		[Test]

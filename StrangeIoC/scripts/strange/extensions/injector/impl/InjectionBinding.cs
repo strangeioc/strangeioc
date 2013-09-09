@@ -155,7 +155,6 @@ namespace strange.extensions.injector.impl
 
 		new public IInjectionBinding To(object o)
 		{
-
 			return base.To (o) as IInjectionBinding;
 		}
 
@@ -166,13 +165,6 @@ namespace strange.extensions.injector.impl
 
 		new public IInjectionBinding ToName(object o)
 		{
-			if (o != null)
-			{
-				if (type == InjectionBindingType.DEFAULT)
-				{
-					type = InjectionBindingType.SINGLETON;
-				}
-			}
 			return base.ToName (o) as IInjectionBinding;
 		}
 
