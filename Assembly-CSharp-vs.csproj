@@ -359,5 +359,6 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceCommandWithoutExecute.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceInterruptingCommand.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\signal\api\SignalExceptionType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SimpleInterfaceImplementerTwo.cs" />
   </ItemGroup>
 </Project>
