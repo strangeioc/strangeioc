@@ -1,6 +1,6 @@
 ## Strange: the IoC framework for `Unity3D` and `C#`
 
-Current version: v0.51
+Current version: v0.6.0
 
 > Strange attractors create predictable patterns, often in chaotic systems.
 
@@ -39,7 +39,7 @@ It contains the following features, most of which are optional:
   * Allow subcomponents (separate Scenes) to function on their own, or in the context of larger apps.
   * Allow communication between contexts.
 * Don't see what you need? The core binding framework is simple to extend. Build new Binders like:
-  * A different type of dispatcher, like AS3-Signals
+  * A different type of dispatcher, like AS3-Signals <- WAIT A MOMENT! WE DID EXACTLY THAT!!!
   * An entity framework
   * A multi-loader
 
