@@ -1,8 +1,9 @@
 strange-core
 ============
 
-StrangeIoC. Just the code.
+StrangeIoC.
 v0.6.0
+Just the code.
 
 The full StrangeIoC repo is at:
 https://github.com/thirdmotion/strangeioc
