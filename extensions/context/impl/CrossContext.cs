@@ -31,12 +31,14 @@ using strange.extensions.context.api;
 using strange.extensions.dispatcher.api;
 using strange.extensions.injector.api;
 using strange.extensions.injector.impl;
+using strange.framework.api;
 
 namespace strange.extensions.context.impl
 {
 	public class CrossContext : Context, ICrossContextCapable
 	{
 		private ICrossContextInjectionBinder _injectionBinder;
+		private IBinder _crossContextBridge;
 
 		/// A Binder that handles dependency injection binding and instantiation
 		public ICrossContextInjectionBinder injectionBinder
@@ -84,11 +86,8 @@ namespace strange.extensions.context.impl
 
 			if (firstContext == this)
 			{
-				injectionBinder.Bind<IEventDispatcher>().To<EventDispatcher>().ToSingleton().ToName(ContextKeys.CROSS_CONTEXT_DISPATCHER);
-			}
-			else if (crossContextDispatcher != null)
-			{
-				injectionBinder.Bind<IEventDispatcher>().ToValue(crossContextDispatcher).ToName(ContextKeys.CROSS_CONTEXT_DISPATCHER);
+				injectionBinder.Bind<IEventDispatcher>().To<EventDispatcher>().ToSingleton().ToName(ContextKeys.CROSS_CONTEXT_DISPATCHER).CrossContext();
+				injectionBinder.Bind<CrossContextBridge> ().ToSingleton ().CrossContext();
 			}
 		}
 
@@ -102,7 +101,7 @@ namespace strange.extensions.context.impl
 			{
 				crossContextDispatcher = injectionBinder.GetInstance<IEventDispatcher>(ContextKeys.CROSS_CONTEXT_DISPATCHER) as IEventDispatcher;
 				(crossContextDispatcher as ITriggerProvider).AddTriggerable(dispatcher as ITriggerable);
-				(dispatcher as ITriggerProvider).AddTriggerable(crossContextDispatcher as ITriggerable);
+				(dispatcher as ITriggerProvider).AddTriggerable(crossContextBridge as ITriggerable);
 			}
 		}
 
@@ -145,6 +144,22 @@ namespace strange.extensions.context.impl
 			get
 			{
 				return _crossContextDispatcher;
+			}
+			set
+			{
+				_crossContextDispatcher = value as IEventDispatcher;
+			}
+		}
+
+		virtual public IBinder crossContextBridge
+		{
+			get
+			{
+				if (_crossContextBridge == null)
+				{
+					_crossContextBridge = injectionBinder.GetInstance<CrossContextBridge> () as IBinder;
+				}
+				return _crossContextBridge;
 			}
 			set
 			{
