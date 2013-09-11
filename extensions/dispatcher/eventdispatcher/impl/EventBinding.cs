@@ -96,25 +96,6 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			return this;
 		}
 
-		public IEventBinding CrossContext()
-		{
-			return CrossContext (true);
-		}
-
-		public IEventBinding CrossContext(bool value)
-		{
-			isCrossContext = value;
-			return this;
-		}
-
-		public bool IsCrossContext
-		{
-			get
-			{
-				return isCrossContext;
-			}
-		}
-
 		override public void RemoveValue(object value)
 		{
 			base.RemoveValue (value);
