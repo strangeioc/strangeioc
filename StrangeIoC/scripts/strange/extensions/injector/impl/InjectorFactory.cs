@@ -43,7 +43,7 @@ namespace strange.extensions.injector.impl
 			switch (type)
 			{
 				case InjectionBindingType.SINGLETON:
-					return singletonOf (binding, args);;
+					return singletonOf (binding, args);
 				case InjectionBindingType.VALUE:
 					return valueOf (binding);
 				default:
