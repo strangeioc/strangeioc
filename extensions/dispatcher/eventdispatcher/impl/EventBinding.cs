@@ -39,7 +39,6 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 	public class EventBinding : Binding, IEventBinding
 	{
 		private Dictionary<Delegate, EventCallbackType> callbackTypes;
-		private bool isCrossContext;
 
 		public EventBinding () : this(null)
 		{
