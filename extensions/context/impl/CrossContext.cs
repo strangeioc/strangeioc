@@ -102,6 +102,7 @@ namespace strange.extensions.context.impl
 			{
 				crossContextDispatcher = injectionBinder.GetInstance<IEventDispatcher>(ContextKeys.CROSS_CONTEXT_DISPATCHER) as IEventDispatcher;
 				(crossContextDispatcher as ITriggerProvider).AddTriggerable(dispatcher as ITriggerable);
+				(dispatcher as ITriggerProvider).AddTriggerable(crossContextDispatcher as ITriggerable);
 			}
 		}
 
