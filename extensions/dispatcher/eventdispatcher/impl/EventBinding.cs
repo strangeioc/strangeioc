@@ -39,6 +39,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 	public class EventBinding : Binding, IEventBinding
 	{
 		private Dictionary<Delegate, EventCallbackType> callbackTypes;
+		private bool isCrossContext;
 
 		public EventBinding () : this(null)
 		{
@@ -93,6 +94,25 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			base.To (value);
 			storeMethodType(value as Delegate);
 			return this;
+		}
+
+		public IEventBinding CrossContext()
+		{
+			return CrossContext (true);
+		}
+
+		public IEventBinding CrossContext(bool value)
+		{
+			isCrossContext = value;
+			return this;
+		}
+
+		public bool IsCrossContext
+		{
+			get
+			{
+				return isCrossContext;
+			}
 		}
 
 		override public void RemoveValue(object value)

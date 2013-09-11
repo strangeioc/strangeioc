@@ -50,6 +50,16 @@ namespace strange.extensions.dispatcher.eventdispatcher.api
 		new IEventBinding Key (object key);
 		IEventBinding To (EventCallback callback);
 		IEventBinding To (EmptyCallback callback);
+
+		/// Define a binding as dispatchable across Contexts
+		/// If value == true, EventDispatcher will attempt to dispatch Cross-Context
+		IEventBinding CrossContext(bool value);
+
+		/// Convenience method for defining a binding as CrossContext (identical to CrossContext(true)
+		IEventBinding CrossContext();
+
+		/// Determine if the current binding is mapped CrossContext
+		bool IsCrossContext{get;}
 	}
 }
 

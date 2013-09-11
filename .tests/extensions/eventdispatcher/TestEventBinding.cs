@@ -53,6 +53,20 @@ namespace strange.unittests
 			Assert.AreEqual (confirmationValue, INIT_VALUE * INIT_VALUE);
 		}
 
+		[Test]
+		public void TestCrossContextMapping()
+		{
+			IEventBinding binding = new EventBinding ();
+			binding.Key (SomeEnum.ONE).To (oneArgumentCallback).CrossContext();
+			Assert.IsTrue (binding.IsCrossContext);
+
+			binding.CrossContext (false);
+			Assert.IsFalse (binding.IsCrossContext);
+
+			binding.CrossContext (true);
+			Assert.IsTrue (binding.IsCrossContext);
+		}
+
 		private void oneArgumentCallback(IEvent o)
 		{
 			confirmationValue *= (int)o.data;
