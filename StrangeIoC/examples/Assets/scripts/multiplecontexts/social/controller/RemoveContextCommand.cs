@@ -19,7 +19,6 @@
 /// Demonstrates how to remove a Context
 
 using System;
-using strange.extensions.context.impl;
 using strange.extensions.command.impl;
 using strange.extensions.context.api;
 using UnityEngine;
@@ -28,15 +27,13 @@ namespace strange.examples.multiplecontexts.social
 {
 	public class RemoveContextCommand : EventCommand
 	{
-		[Inject(ContextKeys.CONTEXT)]
-		public IContext context{get;set;}
 		
 		[Inject(ContextKeys.CONTEXT_VIEW)]
 		public GameObject contextView{get;set;}
 		
 		public override void Execute()
 		{
-			Context.firstContext.RemoveContext(context);
+			//The act of destroying the CONTEXT_VIEW GameObject automatically removes the Context
 			GameObject.Destroy(contextView);
 		}
 	}

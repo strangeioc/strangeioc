@@ -17,8 +17,6 @@
 using System;
 using UnityEngine;
 using strange.extensions.command.impl;
-using strange.extensions.context.api;
-using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.examples.multiplecontexts.main;
 
 namespace strange.examples.multiplecontexts.game
@@ -26,12 +24,9 @@ namespace strange.examples.multiplecontexts.game
 	public class RemoveSocialContextCommand : EventCommand
 	{
 		
-		[Inject(ContextKeys.CROSS_CONTEXT_DISPATCHER)]
-		public IEventDispatcher crossContextDispatcher{get;set;}
-		
 		public override void Execute()
 		{
-			crossContextDispatcher.Dispatch(MainEvent.REMOVE_SOCIAL_CONTEXT);
+			dispatcher.Dispatch(MainEvent.REMOVE_SOCIAL_CONTEXT);
 		}
 	}
 }

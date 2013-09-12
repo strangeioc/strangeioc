@@ -17,8 +17,6 @@
 using System;
 using UnityEngine;
 using strange.extensions.command.impl;
-using strange.extensions.context.api;
-using strange.extensions.dispatcher.eventdispatcher.api;
 
 namespace strange.examples.multiplecontexts.game
 {
@@ -30,14 +28,10 @@ namespace strange.examples.multiplecontexts.game
 		[Inject]
 		public IGameTimer gameTimer{get;set;}
 		
-		[Inject(ContextKeys.CROSS_CONTEXT_DISPATCHER)]
-		public IEventDispatcher crossContextDispatcher{get;set;}
-		
 		public override void Execute()
 		{
 			scoreKeeper.Reset();
 			dispatcher.Dispatch(GameEvent.RESTART_GAME);
-			crossContextDispatcher.Dispatch(GameEvent.RESTART_GAME);
 			gameTimer.Start();
 		}
 	}
