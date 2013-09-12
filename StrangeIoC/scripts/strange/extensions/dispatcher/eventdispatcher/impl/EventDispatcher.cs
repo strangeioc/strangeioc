@@ -99,12 +99,16 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 				data = new TmEvent(eventType, this, data);
 			}
 
+			bool continueDispatch = true;
 			if (triggerClients != null)
 			{
 				isTriggeringClients = true;
 				foreach (ITriggerable trigger in triggerClients)
 				{
-					trigger.Trigger(eventType, data);
+					if (!trigger.Trigger(eventType, data))
+					{
+						continueDispatch = false;
+					}
 				}
 				if (triggerClientRemovals != null)
 				{
@@ -112,6 +116,9 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 				}
 				isTriggeringClients = false;
 			}
+
+			if (!continueDispatch)
+				return;
 
 			IEventBinding binding = GetBinding (eventType) as IEventBinding;
 			if (binding == null)
@@ -291,14 +298,15 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			triggerClientRemovals = null;
 		}
 
-		public void Trigger<T>(object data)
+		public bool Trigger<T>(object data)
 		{
-			Trigger (typeof(T), data);
+			return Trigger (typeof(T), data);
 		}
 
-		public void Trigger(object key, object data)
+		public bool Trigger(object key, object data)
 		{
 			Dispatch(key, data);
+			return true;
 		}
 	}
 }

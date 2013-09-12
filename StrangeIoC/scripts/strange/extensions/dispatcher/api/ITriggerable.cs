@@ -34,10 +34,12 @@ namespace strange.extensions.dispatcher.api
 	public interface ITriggerable
 	{
 		/// Cause this ITriggerable to access any provided Key in its Binder by the provided generic and data.
-		void Trigger<T>(object data);
+		/// <returns>false if the originator should abort dispatch</returns>
+		bool Trigger<T>(object data);
 
 		/// Cause this ITriggerable to access any provided Key in its Binder by the provided key and data.
-		void Trigger(object key, object data);
+		/// <returns>false if the originator should abort dispatch</returns>
+		bool Trigger(object key, object data);
 	}
 }
 

@@ -229,14 +229,15 @@ namespace strange.extensions.command.impl
 			}
 		}
 
-		public void Trigger<T>(object data)
+		public bool Trigger<T>(object data)
 		{
-			Trigger (typeof(T), data);
+			return Trigger (typeof(T), data);
 		}
 
-		public void Trigger(object key, object data)
+		public bool Trigger(object key, object data)
 		{
 			ReactTo(key, data);
+			return true;
 		}
 
 		new public virtual  ICommandBinding Bind<T> ()

@@ -71,12 +71,12 @@ namespace strange.extensions.context.impl
 
 		#region ITriggerable implementation
 
-		public void Trigger<T> (object data)
+		public bool Trigger<T> (object data)
 		{
-			Trigger (typeof(T), data);
+			return Trigger (typeof(T), data);
 		}
 
-		public void Trigger (object key, object data)
+		public bool Trigger (object key, object data)
 		{
 			IBinding binding = GetBinding (key, null);
 			if (binding != null && !eventsInProgress.Contains(key))
@@ -84,7 +84,9 @@ namespace strange.extensions.context.impl
 				eventsInProgress.Add (key);
 				crossContextDispatcher.Dispatch (key, data);
 				eventsInProgress.Remove (key);
+				return false;
 			}
+			return true;
 		}
 
 		#endregion
