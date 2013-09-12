@@ -31,7 +31,7 @@ namespace strange.examples.myfirstproject
 		[Inject]
 		public IEventDispatcher dispatcher{get;set;}
 		
-		private float theta = .005f;
+		private float theta = 20f;
 		private Vector3 basePosition;
 		
 		//Publicly settable from Unity3D
