@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.51</span>
+   &#160;<span id="projectnumber">0.6.0</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Events</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,7 +91,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#properties">Properties</a> &#124;
 <a href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">strange.extensions.context.api.IContext Interface Reference</div>  </div>
@@ -108,7 +107,8 @@ Inheritance diagram for strange.extensions.context.api.IContext:</div>
   <map id="strange.extensions.context.api.IContext_map" name="strange.extensions.context.api.IContext_map">
 <area href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html" title="Collection class for bindings. " alt="strange.framework.api.IBinder" shape="rect" coords="0,0,270,24"/>
 <area href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html" title="A Context is the entry point to the binding framework. " alt="strange.extensions.context.impl.Context" shape="rect" coords="0,112,270,136"/>
-<area href="classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context.html" title="The recommended Context for getting the most out of StrangeIoC. " alt="strange.extensions.context.impl.MVCSContext" shape="rect" coords="0,168,270,192"/>
+<area href="classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context.html" title="Provides the capabilities that allow a Context to communicate across the Context boundary. " alt="strange.extensions.context.impl.CrossContext" shape="rect" coords="0,168,270,192"/>
+<area href="classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context.html" title="The recommended Context for getting the most out of StrangeIoC. " alt="strange.extensions.context.impl.MVCSContext" shape="rect" coords="0,224,270,248"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -118,14 +118,6 @@ Public Member Functions</h2></td></tr>
 <a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html">IContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html#ab29c9eb26414deed84d0e02ef1c12869">Start</a> ()</td></tr>
 <tr class="memdesc:ab29c9eb26414deed84d0e02ef1c12869"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kick the context into action. <br/></td></tr>
 <tr class="separator:ab29c9eb26414deed84d0e02ef1c12869"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50599e2a7432aa68b579882a434ff0c2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a50599e2a7432aa68b579882a434ff0c2"></a>
-object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html#a50599e2a7432aa68b579882a434ff0c2">GetComponent&lt; T &gt;</a> ()</td></tr>
-<tr class="memdesc:a50599e2a7432aa68b579882a434ff0c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request a component from the context (might be useful in certain cross-context situations) <br/></td></tr>
-<tr class="separator:a50599e2a7432aa68b579882a434ff0c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00ae657d3971417e6e13e125f769d94f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a00ae657d3971417e6e13e125f769d94f"></a>
-object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html#a00ae657d3971417e6e13e125f769d94f">GetComponent&lt; T &gt;</a> (object name)</td></tr>
-<tr class="memdesc:a00ae657d3971417e6e13e125f769d94f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request a component from the context (might be useful in certain cross-context situations) <br/></td></tr>
-<tr class="separator:a00ae657d3971417e6e13e125f769d94f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7aef991d8881ce583bcde52fd0c29c4d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7aef991d8881ce583bcde52fd0c29c4d"></a>
 <a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html">IContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html#a7aef991d8881ce583bcde52fd0c29c4d">AddContext</a> (<a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html">IContext</a> context)</td></tr>
 <tr class="memdesc:a7aef991d8881ce583bcde52fd0c29c4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a new context to this one. <br/></td></tr>
@@ -207,13 +199,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html#a1d683db48676ef933f3bd4ad53da40ed">RemoveName</a> (<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding, object value)</td></tr>
 <tr class="memdesc:a1d683db48676ef933f3bd4ad53da40ed inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a select name from the given binding. <br/></td></tr>
 <tr class="separator:a1d683db48676ef933f3bd4ad53da40ed inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
-Properties</h2></td></tr>
-<tr class="memitem:ac0e9b15b9639efe7ad58d0b9cfe0445a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac0e9b15b9639efe7ad58d0b9cfe0445a"></a>
-<a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher.html">IDispatcher</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html#ac0e9b15b9639efe7ad58d0b9cfe0445a">crossContextDispatcher</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:ac0e9b15b9639efe7ad58d0b9cfe0445a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set and get the shared system bus for communicating across contexts. <br/></td></tr>
-<tr class="separator:ac0e9b15b9639efe7ad58d0b9cfe0445a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b0a2a64b0c105a1305fdccf7736839f inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b0a2a64b0c105a1305fdccf7736839f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html#a7b0a2a64b0c105a1305fdccf7736839f">OnRemove</a> ()</td></tr>
+<tr class="memdesc:a7b0a2a64b0c105a1305fdccf7736839f inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Binder is being removed Override this method to clean up remaining bindings. <br/></td></tr>
+<tr class="separator:a7b0a2a64b0c105a1305fdccf7736839f inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a973c34bf47d4101bc97da3572b4b3f75 inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html#a973c34bf47d4101bc97da3572b4b3f75">ResolveBinding</a> (<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding, object key)</td></tr>
+<tr class="memdesc:a973c34bf47d4101bc97da3572b4b3f75 inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Places individual Bindings into the bindings Dictionary as part of the resolving process  <a href="#a973c34bf47d4101bc97da3572b4b3f75">More...</a><br/></td></tr>
+<tr class="separator:a973c34bf47d4101bc97da3572b4b3f75 inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A Context is the entry point to the binding framework. </p>
@@ -225,7 +217,7 @@ Properties</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 25 2013 08:58:49 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 12 2013 11:15:52 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

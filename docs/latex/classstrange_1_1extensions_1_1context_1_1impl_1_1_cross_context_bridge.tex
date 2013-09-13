@@ -1,0 +1,59 @@
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge}{\section{strange.\-extensions.\-context.\-impl.\-Cross\-Context\-Bridge Class Reference}
+\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge}\index{strange.\-extensions.\-context.\-impl.\-Cross\-Context\-Bridge@{strange.\-extensions.\-context.\-impl.\-Cross\-Context\-Bridge}}
+}
+
+
+A relay for events mapped across multiple Contexts.  
+
+
+Inheritance diagram for strange.\-extensions.\-context.\-impl.\-Cross\-Context\-Bridge\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.700965cm]{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_aa7e3dbb298fa06272710bab69d790809}{override \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_aa7e3dbb298fa06272710bab69d790809}{Bind} (object key)}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_aa7e3dbb298fa06272710bab69d790809}
+
+\begin{DoxyCompactList}\small\item\em Bind a Binding Key to a value. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_ae51d7fa46c044427cd0c023d7324a292}{void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_ae51d7fa46c044427cd0c023d7324a292}{Trigger$<$ T $>$} (object data)}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_ae51d7fa46c044427cd0c023d7324a292}
+
+\begin{DoxyCompactList}\small\item\em Cause this I\-Triggerable to access any provided Key in its Binder by the provided generic and data. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_aff66cf10f02ef93bedd0f353c45b054a}{void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_aff66cf10f02ef93bedd0f353c45b054a}{Trigger} (object key, object data)}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_aff66cf10f02ef93bedd0f353c45b054a}
+
+\begin{DoxyCompactList}\small\item\em Cause this I\-Triggerable to access any provided Key in its Binder by the provided key and data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_a8ccc8f8fa78e4bd6fd2db7741f16feaf}{Hash\-Set$<$ object $>$ \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_a8ccc8f8fa78e4bd6fd2db7741f16feaf}{events\-In\-Progress} = new Hash\-Set$<$object$>$()}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_a8ccc8f8fa78e4bd6fd2db7741f16feaf}
+
+\begin{DoxyCompactList}\small\item\em Prevents the currently dispatching Event from cycling back on itself. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_a8c9d156dc45e53c7d4b428ac6bf601c2}{\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher}{I\-Event\-Dispatcher} {\bfseries cross\-Context\-Dispatcher}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_a8c9d156dc45e53c7d4b428ac6bf601c2}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A relay for events mapped across multiple Contexts. 
+
+This simple class gates events fired by the local Context-\/wide Event\-Dispatcher. Any event trigger mapped to this Binder will be relayed to the Cross\-Context\-Dispatcher for consumption by others. This removes the necessity to ever inject the Cross\-Context\-Dispatcher at an endpoint (e.\-g., a Command or Mediator).
+
+Because the Bridge itself is mapped cross-\/context (and therefore shared), it is up to the developer to decide where to make cross-\/\-Context the mappings.
+
+This \char`\"{}freedom\char`\"{} is also a potential pitfall; we recommend that you map all Cross-\/\-Context events in first\-Context to avoid confusion.
+
+Example\-:
+
+cross\-Context\-Bridge.\-Bind(Game\-Event.\-M\-I\-S\-S\-I\-L\-E\-\_\-\-H\-I\-T);
+
+By doing this from any \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context} in your app, any \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context} Dispatcher that fires {\ttfamily Game\-Event.\-M\-I\-S\-S\-I\-L\-E\-\_\-\-H\-I\-T} will relay that Event to other Contexts. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Strange\-Io\-C/scripts/strange/extensions/context/impl/Cross\-Context\-Bridge.\-cs\end{DoxyCompactItemize}

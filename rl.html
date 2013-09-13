@@ -51,6 +51,7 @@
         <p>So you know <a href="http://www.robotlegs.org/">Robotlegs</a>? Come on in, stroll around the place. It should look pretty familiar. Strange of course, but familiar. That&rsquo;s because StrangeIoC, while not a port of Robotlegs, was heavily inspired by that framework.</p>
         <p>If you&rsquo;ve landed here and don&rsquo;t understand what I&rsquo;m talking about, let me sum up: <strong>Robotlegs</strong> is a spectacularly useful Inversion-of-Control micro-framework for Actionscript 3, the coding language that underpins Adobe Flash. If you still don&rsquo;t know what I&rsquo;m on about, you might want to check out today&rsquo;s <a href="http://www.xkcd.com">XKCD</a>. It probably has nothing to do with anything we&rsquo;re discussing, but it&rsquo;s probably very funny.</p>
         <p>For those still with me, this article is intended to be a fast-track for those who don&rsquo;t need an explanation of concepts like <a href="http://en.wikipedia.org/wiki/Dependency_injection">Dependency Injection</a>, <a href="http://en.wikipedia.org/wiki/Inversion_of_control">Inversion-of-Control</a>, <a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC</a>, etc. It also assumes you know at least a bit about Unity and programming in C#. If you liked the structure and dependency decoupling Robotlegs offered, you should like Strange (always assuming I&rsquo;ve done my job). Basically, I want to explain what will look familiar, and what&rsquo;s different.</p>
+        <p><strong>Note: with the release of StrangeIoC v.0.6.0, Strange now has Signals. Like other features inspired from our old friends in the ActionScript world, Signals will seem pretty familiar. We don't go into Signals in this document, but we've covered it <a href="./TheBigStrangeHowTo.html#signal_extension">pretty well</a> in the Big, Strange How-To, so check it out!</strong></p>
         <h2>Getting Strange</h2>
         <p>At first glance, Strange looks a lot like Robotlegs. A lot of concepts have survived more-or-less intact. I&rsquo;ll go through these, explaining where I&rsquo;ve made changes and why.</p>
         <h3>ContextView</h3>
@@ -105,7 +106,7 @@ context.Start();</pre>
          <pre class="prettyprint">dispatcher.AddListener(EventMap.MY_EVENT, onSomeEvent);</pre>
         <p>The handler must take either no arguments or a single argument like so:</p>
          <pre class="prettyprint">private void onSomeEvent(IEvent evt)
-{ 
+{
 	//do stuff.
 }</pre>
         <p>A few important points here: <strong>IEvent</strong> is obviously the Event interface. For maximum decoupling, we use this instead of the concrete <strong>TmEvent</strong>. IEvent specifies three properties:</p>
@@ -188,7 +189,7 @@ context.Start();</pre>
         <h4>Anything else?</h4>
         <p>I added a crazy feature...maybe not a good idea, but it seemed worthwhile, called <code>Context.GetComponent()</code>, which essentially allows you to ask for mappings out of the injectionBinder. This was useful when setting up cross-context communication, so I thought it might have other useful applications.</p>
         <h3>Injection</h3>
-        <p>Let&rsquo;s talk about those marvelously injected classes. Unlike RL, which used the <strong>Swiftsuspenders</strong> injector, Strange has an injector of it&rsquo;s own. But if you&rsquo;re one of those people who feels they should roll their own, never fear; it&rsquo;s all abstracted so you could do just that.</p>
+        <p>Let&rsquo;s talk about those marvelously injected classes. Unlike RL, which used the <strong>Swiftsuspenders</strong> injector, Strange has an injector of its own. But if you&rsquo;re one of those people who feels they should roll their own, never fear; it&rsquo;s all abstracted so you could do just that.</p>
         <p>Marking classes for injection is really straightforward if you&rsquo;re coming from Robotlegs. Here&rsquo;s a setter injection:</p>
          <pre class="prettyprint">[Inject]
 public IMyDependency myDependency{get;set;}</pre>
@@ -227,17 +228,17 @@ namespace com.example.spacebattle.controller
 {
     class StartGameCommand : EventCommand
     {
-        [Inject] 
+        [Inject]
         public ITimer gameTimer{get;set;}
      
         override public void Execute()
         {
-            gameTimer.start(); 
-            dispatcher.dispatch(GameEvent.STARTED); 
+            gameTimer.start();
+            dispatcher.dispatch(GameEvent.STARTED);
         }
     }
 }</pre>
-        <p>In C#, &lsquo;using&rsquo; is like AS3 <code>import</code>, and we&rsquo;ve covered the tiny differences in injection. The rest of it is almost identical. Command automatically injects injectionBinder and commandBinder. <strong>EventCommand</strong>, which extends Command, automatically injects the context-wide dispatcher, and any IEvent that may have been involved in the Command&rsquo;s instantiation. One thing notably missing relative to Robotlegs is the injection of the ContextView. The key reason for this is that to do so would introduce a required dependency on Unity outside it's proscribed bounds. Essentially, I'm trying to keep Unity out of your code wherever possible, which improves both testability and portability. Of course you can still inject the ContextView yourself wherever you need it:</p>
+        <p>In C#, &lsquo;using&rsquo; is like AS3 <code>import</code>, and we&rsquo;ve covered the tiny differences in injection. The rest of it is almost identical. Command automatically injects injectionBinder and commandBinder. <strong>EventCommand</strong>, which extends Command, automatically injects the context-wide dispatcher, and any IEvent that may have been involved in the Command&rsquo;s instantiation. One thing notably missing relative to Robotlegs is the injection of the ContextView. The key reason for this is that to do so would introduce a required dependency on Unity outside its proscribed bounds. Essentially, I'm trying to keep Unity out of your code wherever possible, which improves both testability and portability. Of course you can still inject the ContextView yourself wherever you need it:</p>
         <pre class="prettyprint">[Inject(ContextKeys.CONTEXT_VIEW)]
 public GameObject contextView{get;set;}</pre>
         <p>You can also get access to other useful components:</p>
@@ -263,11 +264,11 @@ namespace com.example.spacebattle.controller
             server.call();
         }
 
-        private void onComplete(IEvent evt) 
-        { 
-            //remember to remove listeners!!! 
+        private void onComplete(IEvent evt)
+        {
+            //remember to remove listeners!!!
             server.dispatcher.RemoveListener
-                (ServerEvent.COMPLETE, onComplete); 
+                (ServerEvent.COMPLETE, onComplete);
             //Do something with the result
             Release();
         }
@@ -281,12 +282,12 @@ namespace com.example.spacebattle.controller
             {
                 Retain(); 
                 server.dispatcher.AddListener
-                    (ServerEvent.COMPLETE, onComplete); 
+                    (ServerEvent.COMPLETE, onComplete);
                 server.call();
             }
             else
             {
-                server.retries ++;
+                server.retries++;
                 if(server.retries &gt; server.maxRetries)
                 {
                     dispatcher.Dispatch(ServerEvent.NOT_RESPONDING);

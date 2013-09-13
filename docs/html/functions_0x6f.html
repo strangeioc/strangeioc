@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.51</span>
+   &#160;<span id="projectnumber">0.6.0</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -75,6 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
       <li><a href="functions_prop.html"><span>Properties</span></a></li>
+      <li><a href="functions_evnt.html"><span>Events</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -108,7 +109,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Events</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -127,22 +128,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_binding.html#a073ca25f3860ecf53b90fbf44a7cd679">strange.extensions.sequencer.impl.SequenceBinding</a>
 , <a class="el" href="interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequence_binding.html#a2ee9928660f3e2973c970aa8c802b648">strange.extensions.sequencer.api.ISequenceBinding</a>
 </li>
+<li>OnceBaseListener
+: <a class="el" href="classstrange_1_1extensions_1_1signal_1_1impl_1_1_base_signal.html#affb58988f8dee88d610022d952d10e9b">strange.extensions.signal.impl.BaseSignal</a>
+</li>
 <li>OnDestroy()
-: <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html#a373a95c35d2d86746ed5db0512222767">strange.extensions.mediation.impl.View</a>
+: <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context_view.html#a3a41e584731cc8e98f478427e2710d9a">strange.extensions.context.impl.ContextView</a>
+, <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html#a373a95c35d2d86746ed5db0512222767">strange.extensions.mediation.impl.View</a>
 </li>
 <li>OnRegister()
 : <a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator.html#a4b16074a7b4cbb23b497e2057b1a316c">strange.extensions.mediation.api.IMediator</a>
 , <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator.html#a9ebac485743098c35f48fb9fecc3a8da">strange.extensions.mediation.impl.Mediator</a>
 </li>
 <li>OnRemove()
-: <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator.html#a09e316a7e7fd37d5d11fe5cff0f9a8d1">strange.extensions.mediation.impl.Mediator</a>
+: <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context.html#a39276c1ee875079a62e1cc586858ad3e">strange.extensions.context.impl.MVCSContext</a>
+, <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator.html#a09e316a7e7fd37d5d11fe5cff0f9a8d1">strange.extensions.mediation.impl.Mediator</a>
+, <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html#a7b0a2a64b0c105a1305fdccf7736839f">strange.framework.api.IBinder</a>
 , <a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator.html#a89be84629dff0c2880605c64dd7fe20d">strange.extensions.mediation.api.IMediator</a>
+, <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder.html#ab901d2f3ce792135ba5e1ea15c2ea7d6">strange.extensions.command.impl.SignalCommandBinder</a>
+, <a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#ae43511788f7ce5bc0c840816c935036d">strange.framework.impl.Binder</a>
 </li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 25 2013 08:58:50 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 12 2013 11:15:53 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

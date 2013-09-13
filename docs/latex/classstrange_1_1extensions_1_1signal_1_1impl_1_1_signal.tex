@@ -1,0 +1,68 @@
+\hypertarget{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal}{\section{strange.\-extensions.\-signal.\-impl.\-Signal Class Reference}
+\label{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal}\index{strange.\-extensions.\-signal.\-impl.\-Signal@{strange.\-extensions.\-signal.\-impl.\-Signal}}
+}
+
+
+Base concrete form for a \hyperlink{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal}{Signal} with no parameters.  
+
+
+Inheritance diagram for strange.\-extensions.\-signal.\-impl.\-Signal\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal_a702a00d633f4a3d06956fbfb0846a5f0}{void {\bfseries Add\-Listener} (Action callback)}\label{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal_a702a00d633f4a3d06956fbfb0846a5f0}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal_af32f50ed1f56aa949fcce4dd27de4c7a}{void {\bfseries Add\-Once} (Action callback)}\label{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal_af32f50ed1f56aa949fcce4dd27de4c7a}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal_a54ba93a84187e73a97dfb80ca8f6e7be}{void {\bfseries Remove\-Listener} (Action callback)}\label{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal_a54ba93a84187e73a97dfb80ca8f6e7be}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal_a9e421cbcc37652203baf80f1fd1a1342}{override List$<$ Type $>$ {\bfseries Get\-Types} ()}\label{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal_a9e421cbcc37652203baf80f1fd1a1342}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal_a5c26cbb652d491c58fe8ee3c5fdd3103}{void {\bfseries Dispatch} ()}\label{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal_a5c26cbb652d491c58fe8ee3c5fdd3103}
+
+\end{DoxyCompactItemize}
+\subsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal_ad82e1d832201cf55851e364f73c225a4}{Action {\bfseries Listener} = delegate \{ \}}\label{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal_ad82e1d832201cf55851e364f73c225a4}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal_a224582fbc7969988e1f8fce207e9b556}{Action {\bfseries Once\-Listener} = delegate \{ \}}\label{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal_a224582fbc7969988e1f8fce207e9b556}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base concrete form for a \hyperlink{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal}{Signal} with no parameters. 
+
+This is actually a series of classes defining the Base concrete form for all Signals.
+
+Signals are a type-\/safe approach to communication that essentially replace the standard Event\-Dispatcher model. Signals can be injected/mapped just like any other object -- as Singletons, as instances, or as values. Signals can even be mapped across Contexts to provide an effective and type-\/safe way of communicating between the parts of your application.
+
+Signals in Strange use the Action Class as the underlying mechanism for type safety. Unity's C\# implementation currently allows up to F\-O\-U\-R parameters in an Action, therefore S\-I\-G\-N\-A\-L\-S A\-R\-E L\-I\-M\-I\-T\-E\-D T\-O F\-O\-U\-R P\-A\-R\-A\-M\-E\-T\-E\-R\-S. If you require more than four, consider creating a value object to hold additional values.
+
+Examples\-:
+
+B\-A\-S\-I\-C S\-I\-G\-N\-A\-L C\-R\-E\-A\-T\-I\-O\-N/\-D\-I\-S\-P\-A\-T\-C\-H Create a new signal \hyperlink{classstrange_1_1extensions_1_1signal_1_1impl_1_1_signal}{Signal} signal\-With\-No\-Parameters = new Signal(); Add a listener signal\-With\-No\-Parameters.\-Add\-Listener(callback\-With\-No\-Parameters); This would throw a compile-\/time error signal\-With\-No\-Parameters.\-Add\-Listener(callback\-With\-One\-Parameter); Dispatch signal\-With\-No\-Parameters.\-Dispatch(); Remove the listener signal\-With\-No\-Parameters.\-Remove\-Listener(callback\-With\-No\-Parameters);
+
+S\-I\-G\-N\-A\-L W\-I\-T\-H P\-A\-R\-A\-M\-E\-T\-E\-R\-S Create a new signal with two parameters Signal$<$int, string$>$ signal = new Signal$<$int, string$>$(); Add a listener signal.\-Add\-Listener(callback\-With\-Params\-Int\-And\-String); Add a listener for the duration of precisely one Dispatch signal.\-Add\-Once(another\-Callback\-With\-Params\-Int\-And\-String); These all throw compile-\/time errors signal.\-Add\-Listener(callback\-With\-Params\-String\-And\-Int); signal.\-Add\-Listener(callback\-With\-One\-Parameter); signal.\-Add\-Listener(callback\-With\-No\-Parameters); Dispatch signal.\-Dispatch(42, \char`\"{}zaphod\char`\"{}); Remove the first listener. The listener added by Add\-Once has been automatically removed. signal.\-Remove\-Listener(callback\-With\-Params\-Int\-And\-String);
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{interfacestrange_1_1extensions_1_1signal_1_1api_1_1_i_base_signal}{strange.\-extensions.\-signal.\-api.\-I\-Base\-Signal} 
+
+strange.\-extensions.\-signal.\-impl.\-Basr\-Signal 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Strange\-Io\-C/scripts/strange/extensions/signal/impl/Signal.\-cs\end{DoxyCompactItemize}

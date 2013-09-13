@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.51</span>
+   &#160;<span id="projectnumber">0.6.0</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Events</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -97,6 +97,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_cross_context_injection_binder.html">ICrossContextInjectionBinder</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder.html">IInjectionBinder</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Binder that implements Dependency Injection in StrangeIoC.  <a href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,6 +110,9 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_factory.html">IInjectorFactory</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for the Factory that instantiates all instances.  <a href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_factory.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1injector_1_1api_1_1_cross_context_injection_binder.html">CrossContextInjectionBinder</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A special version of InjectionBinder that allows shared injections across multiple Contexts.  <a href="classstrange_1_1extensions_1_1injector_1_1api_1_1_cross_context_injection_binder.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -133,7 +138,8 @@ Enumerations</h2></td></tr>
 <a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#a465caee64cba80e952ad7dd9a050e6c3a8a7371180fcfcf8d19f526506f886887">InjectionExceptionType.NULL_TARGET</a>, 
 <a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#a465caee64cba80e952ad7dd9a050e6c3ab91f1fd5e0526d191cf6d1d871b77685">InjectionExceptionType.NULL_VALUE_INJECTION</a>, 
 <br/>
-&#160;&#160;<a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#a465caee64cba80e952ad7dd9a050e6c3aa2bdd50d3a2f2f510f0209f648f0c0b6">InjectionExceptionType.SETTER_NAME_MISMATCH</a>
+&#160;&#160;<a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#a465caee64cba80e952ad7dd9a050e6c3aa2bdd50d3a2f2f510f0209f648f0c0b6">InjectionExceptionType.SETTER_NAME_MISMATCH</a>, 
+<a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#a465caee64cba80e952ad7dd9a050e6c3a24f92bc48507459616449c4f27267560">InjectionExceptionType.MISSING_CROSS_CONTEXT_INJECTOR</a>
 <br/>
  }</td></tr>
 <tr class="separator:a465caee64cba80e952ad7dd9a050e6c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -213,6 +219,9 @@ Enumerations</h2></td></tr>
 <p>The list of setters and setter names must have exactly the same number of entries. </p>
 <p>Two lists are required because Unity does not at present support Tuple. Seeing this error likely indicates a problem with the Reflector (it's not you, it's me). </p>
 </td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a465caee64cba80e952ad7dd9a050e6c3a24f92bc48507459616449c4f27267560"></a>MISSING_CROSS_CONTEXT_INJECTOR</em>&nbsp;</td><td class="fielddoc">
+<p>The requested cross-context injector returned null. </p>
+</td></tr>
 </table>
 
 </div>
@@ -220,7 +229,7 @@ Enumerations</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 25 2013 08:58:50 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 12 2013 11:15:52 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

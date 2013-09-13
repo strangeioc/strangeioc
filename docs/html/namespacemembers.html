@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.51</span>
+   &#160;<span id="projectnumber">0.6.0</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -98,7 +98,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Events</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -118,6 +118,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <h3><a class="anchor" id="index_b"></a>- b -</h3><ul>
+<li>BAD_CONSTRUCTOR
+: <a class="el" href="namespacestrange_1_1extensions_1_1command_1_1api.html#a27c9226cc8d55624f3294319d48879e3a4ca656dfba09ff902c42fee01c7c8405">strange::extensions::command::api</a>
+</li>
 <li>BinderExceptionType
 : <a class="el" href="namespacestrange_1_1framework_1_1api.html#ae9308e863579d2ca38f2729e1104dac9">strange::framework::api</a>
 </li>
@@ -137,8 +140,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>CIRCULAR_DEPENDENCY
 : <a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#a465caee64cba80e952ad7dd9a050e6c3a79b274c6abdd5dbdee1fc57599e4199b">strange::extensions::injector::api</a>
 </li>
+<li>COMMAND_NULL_INJECTION
+: <a class="el" href="namespacestrange_1_1extensions_1_1signal_1_1api.html#a1303547618565f5ed4dea0f25f27975da1dedd40aa296cd154568f394d88c5bd2">strange::extensions::signal::api</a>
+</li>
 <li>COMMAND_USED_IN_SEQUENCE
 : <a class="el" href="namespacestrange_1_1extensions_1_1sequencer_1_1api.html#aeddaacdea22f90d94ab298d24cbce41ba80650e930022474abe93d5663d7e6744">strange::extensions::sequencer::api</a>
+</li>
+<li>COMMAND_VALUE_CONFLICT
+: <a class="el" href="namespacestrange_1_1extensions_1_1signal_1_1api.html#a1303547618565f5ed4dea0f25f27975da18c5b6af1953195e1a4b42a86b77d476">strange::extensions::signal::api</a>
+</li>
+<li>COMMAND_VALUE_NOT_FOUND
+: <a class="el" href="namespacestrange_1_1extensions_1_1signal_1_1api.html#a1303547618565f5ed4dea0f25f27975da78d4fc65e714d3c83feeec903511caaf">strange::extensions::signal::api</a>
 </li>
 <li>CommandExceptionType
 : <a class="el" href="namespacestrange_1_1extensions_1_1command_1_1api.html#a27c9226cc8d55624f3294319d48879e3">strange::extensions::command::api</a>
@@ -241,6 +253,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>MediationExceptionType
 : <a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#aef97993ec02a40c5f887dbfaf4f06e4a">strange::extensions::mediation::api</a>
 </li>
+<li>MEDIATOR_VIEW_STACK_OVERFLOW
+: <a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#aef97993ec02a40c5f887dbfaf4f06e4aa46ff5442e205aeec7c75b331260f5a49">strange::extensions::mediation::api</a>
+</li>
+<li>MISSING_CROSS_CONTEXT_INJECTOR
+: <a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#a465caee64cba80e952ad7dd9a050e6c3a24f92bc48507459616449c4f27267560">strange::extensions::injector::api</a>
+</li>
 </ul>
 
 
@@ -324,6 +342,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>SETTER_NAME_MISMATCH
 : <a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#a465caee64cba80e952ad7dd9a050e6c3aa2bdd50d3a2f2f510f0209f648f0c0b6">strange::extensions::injector::api</a>
 </li>
+<li>SignalExceptionType
+: <a class="el" href="namespacestrange_1_1extensions_1_1signal_1_1api.html#a1303547618565f5ed4dea0f25f27975d">strange::extensions::signal::api</a>
+</li>
 <li>SINGLETON
 : <a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#aaf5414484d7eccb5c502984bd70549aeaecf2a6aabcb0538532ba2a7d0d281557">strange::extensions::injector::api</a>
 </li>
@@ -348,7 +369,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 25 2013 08:58:50 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 12 2013 11:15:53 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

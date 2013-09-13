@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.51</span>
+   &#160;<span id="projectnumber">0.6.0</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Events</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -118,8 +118,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae88e872043b9c0c8e6932d6457f8c5e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e7eee027ed73a36c38f18b865bbe4c6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e7eee027ed73a36c38f18b865bbe4c6"></a>
 <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html#a7e7eee027ed73a36c38f18b865bbe4c6">ToValue</a> (object o)</td></tr>
-<tr class="memdesc:a7e7eee027ed73a36c38f18b865bbe4c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map the Binding to a stated instance so that every <code>GetInstance()</code> on the Binder Key returns the provided imstance. <br/></td></tr>
+<tr class="memdesc:a7e7eee027ed73a36c38f18b865bbe4c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map the Binding to a stated instance so that every <code>GetInstance()</code> on the Binder Key returns the provided imstance. Sets type to Value. <br/></td></tr>
 <tr class="separator:a7e7eee027ed73a36c38f18b865bbe4c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf4603dc2e97ccc6dbfefbf20cc77de4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf4603dc2e97ccc6dbfefbf20cc77de4"></a>
+<a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html#aaf4603dc2e97ccc6dbfefbf20cc77de4">SetValue</a> (object o)</td></tr>
+<tr class="memdesc:aaf4603dc2e97ccc6dbfefbf20cc77de4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map the Binding to a stated instance so that every <code>GetInstance()</code> on the Binder Key returns the provided imstance. Does not set type. <br/></td></tr>
+<tr class="separator:aaf4603dc2e97ccc6dbfefbf20cc77de4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ef8ddab4816a595f4e6db7e66be7d03"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ef8ddab4816a595f4e6db7e66be7d03"></a>
+<a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html#a9ef8ddab4816a595f4e6db7e66be7d03">CrossContext</a> ()</td></tr>
+<tr class="memdesc:a9ef8ddab4816a595f4e6db7e66be7d03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map the binding and give access to all contexts in hierarchy. <br/></td></tr>
+<tr class="separator:a9ef8ddab4816a595f4e6db7e66be7d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a372558a435574953af1cb6118306117d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a372558a435574953af1cb6118306117d"></a>
 <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html#a372558a435574953af1cb6118306117d">ToInject</a> (bool value)</td></tr>
 <tr class="memdesc:a372558a435574953af1cb6118306117d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boolean setter to optionally override injection. If false, the instance will not be injected after instantiation. <br/></td></tr>
@@ -159,6 +167,9 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
+<tr class="memitem:a964dae4babe47419ece25ce7df016401"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a964dae4babe47419ece25ce7df016401"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>isCrossContext</b><code> [get]</code></td></tr>
+<tr class="separator:a964dae4babe47419ece25ce7df016401"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accffa605c37073081890281cc14d1c12"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="accffa605c37073081890281cc14d1c12"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html#accffa605c37073081890281cc14d1c12">toInject</a><code> [get]</code></td></tr>
 <tr class="memdesc:accffa605c37073081890281cc14d1c12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the parameter that specifies whether this Binding allows an instance to be injected. <br/></td></tr>
@@ -230,7 +241,7 @@ ToValue: every <code>GetInstance()</code> on the Binder Key returns the provided
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 25 2013 08:58:50 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 12 2013 11:15:52 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

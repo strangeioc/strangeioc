@@ -8,9 +8,11 @@ var searchData=
   ['mediationbinder',['MediationBinder',['../classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder.html',1,'strange::extensions::mediation::impl']]],
   ['mediationbinding',['MediationBinding',['../classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binding.html',1,'strange::extensions::mediation::impl']]],
   ['mediationevent',['MediationEvent',['../namespacestrange_1_1extensions_1_1mediation_1_1api.html#ae5a81bb1edf9fca1d2aca9f4fada72a8',1,'strange::extensions::mediation::api']]],
-  ['mediationexception',['MediationException',['../classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_exception.html#a7adb6956311480480989cd0d1d13eabe',1,'strange::extensions::mediation::impl::MediationException']]],
   ['mediationexception',['MediationException',['../classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_exception.html',1,'strange::extensions::mediation::impl']]],
+  ['mediationexception',['MediationException',['../classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_exception.html#a7adb6956311480480989cd0d1d13eabe',1,'strange::extensions::mediation::impl::MediationException']]],
   ['mediationexceptiontype',['MediationExceptionType',['../namespacestrange_1_1extensions_1_1mediation_1_1api.html#aef97993ec02a40c5f887dbfaf4f06e4a',1,'strange::extensions::mediation::api']]],
   ['mediator',['Mediator',['../classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediator.html',1,'strange::extensions::mediation::impl']]],
+  ['mediator_5fview_5fstack_5foverflow',['MEDIATOR_VIEW_STACK_OVERFLOW',['../namespacestrange_1_1extensions_1_1mediation_1_1api.html#aef97993ec02a40c5f887dbfaf4f06e4aa46ff5442e205aeec7c75b331260f5a49',1,'strange::extensions::mediation::api']]],
+  ['missing_5fcross_5fcontext_5finjector',['MISSING_CROSS_CONTEXT_INJECTOR',['../namespacestrange_1_1extensions_1_1injector_1_1api.html#a465caee64cba80e952ad7dd9a050e6c3a24f92bc48507459616449c4f27267560',1,'strange::extensions::injector::api']]],
   ['mvcscontext',['MVCSContext',['../classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context.html',1,'strange::extensions::context::impl']]]
 ];

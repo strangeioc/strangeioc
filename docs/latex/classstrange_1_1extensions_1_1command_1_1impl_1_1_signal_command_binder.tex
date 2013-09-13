@@ -1,0 +1,127 @@
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder}{\section{strange.\-extensions.\-command.\-impl.\-Signal\-Command\-Binder Class Reference}
+\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder}\index{strange.\-extensions.\-command.\-impl.\-Signal\-Command\-Binder@{strange.\-extensions.\-command.\-impl.\-Signal\-Command\-Binder}}
+}
+
+
+A Binder that triggers the instantiation of Commands using Signals.  
+
+
+Inheritance diagram for strange.\-extensions.\-command.\-impl.\-Signal\-Command\-Binder\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.202557cm]{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_a8968e1632b03d1f9223f8e66e721327f}{Resolve\-Binding} (\hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} binding, object key)
+\begin{DoxyCompactList}\small\item\em This method places individual Bindings into the bindings Dictionary as part of the resolving process. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_ab901d2f3ce792135ba5e1ea15c2ea7d6}{override void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_ab901d2f3ce792135ba5e1ea15c2ea7d6}{On\-Remove} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_ab901d2f3ce792135ba5e1ea15c2ea7d6}
+
+\begin{DoxyCompactList}\small\item\em The Binder is being removed Override this method to clean up remaining bindings. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_ac80ab27639b330cbbfaea137328ba032}{override \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_ac80ab27639b330cbbfaea137328ba032}{Bind$<$ T $>$} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_ac80ab27639b330cbbfaea137328ba032}
+
+\begin{DoxyCompactList}\small\item\em Bind a trigger Key by generic Type. \end{DoxyCompactList}\item 
+override void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_a017bc40c1b059569e918cfee6b9b5965}{Unbind$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Unbind by Signal Type\end{DoxyCompactList}\item 
+override void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_a4a069725160e63dd054001d3f11ba29c}{Unbind} (object key, object name)
+\begin{DoxyCompactList}\small\item\em Unbind by Signal Instance\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_ae50bae7a041628b864cd02f9d2019064}{override \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} {\bfseries invoke\-Command} (Type cmd, \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} binding, object data, int depth)}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_ae50bae7a041628b864cd02f9d2019064}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_ab3207df45f860c0e62bf86830ebb9ea9}{\hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_ab3207df45f860c0e62bf86830ebb9ea9}{create\-Command\-For\-Signal} (object cmd, object data, List$<$ Type $>$ signal\-Types)}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_ab3207df45f860c0e62bf86830ebb9ea9}
+
+\begin{DoxyCompactList}\small\item\em Create a \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} and bind its injectable parameters to the Signal types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A Binder that triggers the instantiation of Commands using Signals. 
+
+Commands are where the logic of your application belongs. These Commands typically focus on a single function, such as adding a View, requesting a service, reading from or saving to a model.
+
+The act of binding Signals to Commands means that code needn't know anything about a Signal recipient, or even how the Signal will be used. For example, a Mediator might dispatch a Signal that two View objects collided. A \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} would then determine that the result of that Signal was to Destroy both objects, tell a Score\-Keeper model to change the score and request a message be sent to the server. Whether that example means one \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} or three is up to your coding preference... \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder}{Signal\-Command\-Binder} can trigger one \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} or multiple Commands off the same Signal.
+
+Signals bind their parameters to \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} injections by comparing types and do not understand named injections. Therefore, in order to Bind a \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command}'s injections to a Signal, P\-A\-R\-A\-M\-E\-T\-E\-R\-S/\-I\-N\-J\-E\-C\-T\-I\-O\-N\-S M\-U\-S\-T B\-E O\-F U\-N\-I\-Q\-U\-E T\-Y\-P\-E\-S. It is not, therefore, possible to bind a Signal with two of the same type to a \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command}.
+
+Note that like \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder}{Command\-Binder}, \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder}{Signal\-Command\-Binder} features sequencing. By default, \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder}{Signal\-Command\-Binder} fires all Commands in parallel. If your binding specifies {\ttfamily In\-Sequence()}, Commands will run serially, with the option of suspending the chain at any time.
+
+Example bindings\-: \begin{DoxyVerb}Bind(someSignal).To<SomeCommand>();
+
+Bind<SomeSignalClass>().To<StartCommand>().Once(); //Destroy the binding immediately after a single use
+
+Bind<SomeSignalClass>().To<FirstCommand>().To<SecondCommand>().To<ThirdGCommand>().InSequence(); //Bind a sequence
+\end{DoxyVerb}
+
+
+See \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} for details on asynchronous Commands and cancelling sequences. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_a8968e1632b03d1f9223f8e66e721327f}{\index{strange\-::extensions\-::command\-::impl\-::\-Signal\-Command\-Binder@{strange\-::extensions\-::command\-::impl\-::\-Signal\-Command\-Binder}!Resolve\-Binding@{Resolve\-Binding}}
+\index{Resolve\-Binding@{Resolve\-Binding}!strange::extensions::command::impl::SignalCommandBinder@{strange\-::extensions\-::command\-::impl\-::\-Signal\-Command\-Binder}}
+\subsubsection[{Resolve\-Binding}]{\setlength{\rightskip}{0pt plus 5cm}override void strange.\-extensions.\-command.\-impl.\-Signal\-Command\-Binder.\-Resolve\-Binding (
+\begin{DoxyParamCaption}
+\item[{{\bf I\-Binding}}]{binding, }
+\item[{object}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_a8968e1632b03d1f9223f8e66e721327f}
+
+
+This method places individual Bindings into the bindings Dictionary as part of the resolving process. 
+
+Note that while some Bindings may store multiple keys, each key takes a unique position in the bindings Dictionary.
+
+Conflicts in the course of fluent binding are expected, but Get\-Binding will throw an error if there are any unresolved conflicts. 
+
+Reimplemented from \hyperlink{classstrange_1_1framework_1_1impl_1_1_binder_a59b9ca38325bf6cf4c55aa309e92d00c}{strange.\-framework.\-impl.\-Binder}.
+
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_a4a069725160e63dd054001d3f11ba29c}{\index{strange\-::extensions\-::command\-::impl\-::\-Signal\-Command\-Binder@{strange\-::extensions\-::command\-::impl\-::\-Signal\-Command\-Binder}!Unbind@{Unbind}}
+\index{Unbind@{Unbind}!strange::extensions::command::impl::SignalCommandBinder@{strange\-::extensions\-::command\-::impl\-::\-Signal\-Command\-Binder}}
+\subsubsection[{Unbind}]{\setlength{\rightskip}{0pt plus 5cm}override void strange.\-extensions.\-command.\-impl.\-Signal\-Command\-Binder.\-Unbind (
+\begin{DoxyParamCaption}
+\item[{object}]{key, }
+\item[{object}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_a4a069725160e63dd054001d3f11ba29c}
+
+
+Unbind by Signal Instance
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Instance of I\-Base\-Signal\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classstrange_1_1framework_1_1impl_1_1_binder_a821d230985f6c00af9289209d50ef237}{strange.\-framework.\-impl.\-Binder}.
+
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_a017bc40c1b059569e918cfee6b9b5965}{\index{strange\-::extensions\-::command\-::impl\-::\-Signal\-Command\-Binder@{strange\-::extensions\-::command\-::impl\-::\-Signal\-Command\-Binder}!Unbind$<$ T $>$@{Unbind$<$ T $>$}}
+\index{Unbind$<$ T $>$@{Unbind$<$ T $>$}!strange::extensions::command::impl::SignalCommandBinder@{strange\-::extensions\-::command\-::impl\-::\-Signal\-Command\-Binder}}
+\subsubsection[{Unbind$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}override void {\bf strange.\-extensions.\-command.\-impl.\-Signal\-Command\-Binder.\-Unbind}$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_signal_command_binder_a017bc40c1b059569e918cfee6b9b5965}
+
+
+Unbind by Signal Type
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Injection\-Exception} & If there is no binding for this type.\\
+\hline
+\end{DoxyExceptions}
+
+
+Reimplemented from \hyperlink{classstrange_1_1framework_1_1impl_1_1_binder_a3c385fdd591d1decb1334b7cdee0237a}{strange.\-framework.\-impl.\-Binder}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Strange\-Io\-C/scripts/strange/extensions/command/impl/Signal\-Command\-Binder.\-cs\end{DoxyCompactItemize}

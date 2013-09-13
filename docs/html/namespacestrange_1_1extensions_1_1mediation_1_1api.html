@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.51</span>
+   &#160;<span id="projectnumber">0.6.0</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Events</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -118,7 +118,8 @@ Enumerations</h2></td></tr>
 <a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#ae5a81bb1edf9fca1d2aca9f4fada72a8a055c1a591abb0e8cd86dc969727bcc0b">MediationEvent.DISABLED</a>
  }</td></tr>
 <tr class="separator:ae5a81bb1edf9fca1d2aca9f4fada72a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef97993ec02a40c5f887dbfaf4f06e4a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#aef97993ec02a40c5f887dbfaf4f06e4a">MediationExceptionType</a> { <a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#aef97993ec02a40c5f887dbfaf4f06e4aac89f949bb64ae5754bb687bf056de559">MediationExceptionType.NO_CONTEXT</a>
+<tr class="memitem:aef97993ec02a40c5f887dbfaf4f06e4a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#aef97993ec02a40c5f887dbfaf4f06e4a">MediationExceptionType</a> { <a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#aef97993ec02a40c5f887dbfaf4f06e4aac89f949bb64ae5754bb687bf056de559">MediationExceptionType.NO_CONTEXT</a>, 
+<a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#aef97993ec02a40c5f887dbfaf4f06e4aa46ff5442e205aeec7c75b331260f5a49">MediationExceptionType.MEDIATOR_VIEW_STACK_OVERFLOW</a>
  }</td></tr>
 <tr class="separator:aef97993ec02a40c5f887dbfaf4f06e4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -164,6 +165,10 @@ Enumerations</h2></td></tr>
 <p>Views contact the Context by "bubbling" their existence up the display chain (recursively using transform.parent). If a View reaches the top of that chain without locating a Context, it will raise this Exception to warn you.</p>
 <p>Note: to avoid infinite looping, there is a bubbling limit of 100 layers. If your View needs to be more than 100 transforms deep, that might signal a design problem. </p>
 </td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="aef97993ec02a40c5f887dbfaf4f06e4aa46ff5442e205aeec7c75b331260f5a49"></a>MEDIATOR_VIEW_STACK_OVERFLOW</em>&nbsp;</td><td class="fielddoc">
+<p>Exception raised when a View is mapped to itself. </p>
+<p>If a View is accidentally mapped to itself, the result will be an infinite loop of Mediation creation. </p>
+</td></tr>
 </table>
 
 </div>
@@ -171,7 +176,7 @@ Enumerations</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 25 2013 08:58:50 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 12 2013 11:15:53 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

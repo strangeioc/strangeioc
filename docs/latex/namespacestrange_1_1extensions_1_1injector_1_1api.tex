@@ -4,6 +4,8 @@
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_cross_context_injection_binder}{I\-Cross\-Context\-Injection\-Binder}
+\item 
 interface \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder}{I\-Injection\-Binder}
 \begin{DoxyCompactList}\small\item\em A Binder that implements Dependency Injection in Strange\-Io\-C. \end{DoxyCompactList}\item 
 interface \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding}
@@ -11,7 +13,9 @@ interface \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_inj
 interface \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector}{I\-Injector}
 \begin{DoxyCompactList}\small\item\em Interface for the Injector, which dependencies into provided instances. \end{DoxyCompactList}\item 
 interface \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_factory}{I\-Injector\-Factory}
-\begin{DoxyCompactList}\small\item\em Interface for the Factory that instantiates all instances. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Interface for the Factory that instantiates all instances. \end{DoxyCompactList}\item 
+class \hyperlink{classstrange_1_1extensions_1_1injector_1_1api_1_1_cross_context_injection_binder}{Cross\-Context\-Injection\-Binder}
+\begin{DoxyCompactList}\small\item\em A special version of Injection\-Binder that allows shared injections across multiple Contexts. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
@@ -36,7 +40,8 @@ enum \hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba8
 \hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a8a7371180fcfcf8d19f526506f886887}{Injection\-Exception\-Type.\-N\-U\-L\-L\-\_\-\-T\-A\-R\-G\-E\-T}, 
 \hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3ab91f1fd5e0526d191cf6d1d871b77685}{Injection\-Exception\-Type.\-N\-U\-L\-L\-\_\-\-V\-A\-L\-U\-E\-\_\-\-I\-N\-J\-E\-C\-T\-I\-O\-N}, 
 \\*
-\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3aa2bdd50d3a2f2f510f0209f648f0c0b6}{Injection\-Exception\-Type.\-S\-E\-T\-T\-E\-R\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}
+\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3aa2bdd50d3a2f2f510f0209f648f0c0b6}{Injection\-Exception\-Type.\-S\-E\-T\-T\-E\-R\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}, 
+\hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a24f92bc48507459616449c4f27267560}{Injection\-Exception\-Type.\-M\-I\-S\-S\-I\-N\-G\-\_\-\-C\-R\-O\-S\-S\-\_\-\-C\-O\-N\-T\-E\-X\-T\-\_\-\-I\-N\-J\-E\-C\-T\-O\-R}
  \}
 \end{DoxyCompactItemize}
 
@@ -88,5 +93,7 @@ enum \hyperlink{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba8
 \hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3ab91f1fd5e0526d191cf6d1d871b77685}{N\-U\-L\-L\-\_\-\-V\-A\-L\-U\-E\-\_\-\-I\-N\-J\-E\-C\-T\-I\-O\-N}\label{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3ab91f1fd5e0526d191cf6d1d871b77685}
 }]The value being injected into the target resolved to null. \index{S\-E\-T\-T\-E\-R\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H@{S\-E\-T\-T\-E\-R\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}!strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}}\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!S\-E\-T\-T\-E\-R\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H@{S\-E\-T\-T\-E\-R\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}}\item[{\em 
 \hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3aa2bdd50d3a2f2f510f0209f648f0c0b6}{S\-E\-T\-T\-E\-R\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}\label{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3aa2bdd50d3a2f2f510f0209f648f0c0b6}
-}]The list of setters and setter names must have exactly the same number of entries. Two lists are required because Unity does not at present support Tuple. Seeing this error likely indicates a problem with the Reflector (it's not you, it's me). \end{description}
+}]The list of setters and setter names must have exactly the same number of entries. Two lists are required because Unity does not at present support Tuple. Seeing this error likely indicates a problem with the Reflector (it's not you, it's me). \index{M\-I\-S\-S\-I\-N\-G\-\_\-\-C\-R\-O\-S\-S\-\_\-\-C\-O\-N\-T\-E\-X\-T\-\_\-\-I\-N\-J\-E\-C\-T\-O\-R@{M\-I\-S\-S\-I\-N\-G\-\_\-\-C\-R\-O\-S\-S\-\_\-\-C\-O\-N\-T\-E\-X\-T\-\_\-\-I\-N\-J\-E\-C\-T\-O\-R}!strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}}\index{strange\-::extensions\-::injector\-::api@{strange\-::extensions\-::injector\-::api}!M\-I\-S\-S\-I\-N\-G\-\_\-\-C\-R\-O\-S\-S\-\_\-\-C\-O\-N\-T\-E\-X\-T\-\_\-\-I\-N\-J\-E\-C\-T\-O\-R@{M\-I\-S\-S\-I\-N\-G\-\_\-\-C\-R\-O\-S\-S\-\_\-\-C\-O\-N\-T\-E\-X\-T\-\_\-\-I\-N\-J\-E\-C\-T\-O\-R}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a24f92bc48507459616449c4f27267560}{M\-I\-S\-S\-I\-N\-G\-\_\-\-C\-R\-O\-S\-S\-\_\-\-C\-O\-N\-T\-E\-X\-T\-\_\-\-I\-N\-J\-E\-C\-T\-O\-R}\label{namespacestrange_1_1extensions_1_1injector_1_1api_a465caee64cba80e952ad7dd9a050e6c3a24f92bc48507459616449c4f27267560}
+}]The requested cross-\/context injector returned null. \end{description}
 \end{Desc}

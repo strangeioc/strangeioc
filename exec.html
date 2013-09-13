@@ -126,11 +126,12 @@ commandBinder.Bind(GameEvent.SHIP_DEAD , OnShipDeathCommand);</pre>
      </ul>
    </li>
    <li>Reflection binding dramatically reduces overhead of employing reflectivity</li>
-   <li>A shared event bus
+   <li>Two styles of shared event bus.
      <ul>
-       <li>Dispatch events to any point in your application</li>
-       <li>Map local event bus for local communication</li>
-       <li>Map events to Command or Sequence classes to separate business logic</li>
+       <li>Both dispatch events to any point in your application</li>
+       <li>Both map local events  for local communication</li>
+       <li>Both map events to Command classes to separate business logic</li>
+       <li>The new Signals implementation adds type-safety</li>
      </ul>
    </li>
    <li>MonoBehaviour mediation

@@ -21,7 +21,8 @@ enum \hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9
 \hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8a055c1a591abb0e8cd86dc969727bcc0b}{Mediation\-Event.\-D\-I\-S\-A\-B\-L\-E\-D}
  \}
 \item 
-enum \hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4a}{Mediation\-Exception\-Type} \{ \hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aac89f949bb64ae5754bb687bf056de559}{Mediation\-Exception\-Type.\-N\-O\-\_\-\-C\-O\-N\-T\-E\-X\-T}
+enum \hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4a}{Mediation\-Exception\-Type} \{ \hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aac89f949bb64ae5754bb687bf056de559}{Mediation\-Exception\-Type.\-N\-O\-\_\-\-C\-O\-N\-T\-E\-X\-T}, 
+\hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aa46ff5442e205aeec7c75b331260f5a49}{Mediation\-Exception\-Type.\-M\-E\-D\-I\-A\-T\-O\-R\-\_\-\-V\-I\-E\-W\-\_\-\-S\-T\-A\-C\-K\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W}
  \}
 \end{DoxyCompactItemize}
 
@@ -53,5 +54,7 @@ enum \hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a
 \hypertarget{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aac89f949bb64ae5754bb687bf056de559}{N\-O\-\_\-\-C\-O\-N\-T\-E\-X\-T}\label{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aac89f949bb64ae5754bb687bf056de559}
 }]Exception raised when a View can't locate a Context. Views contact the Context by \char`\"{}bubbling\char`\"{} their existence up the display chain (recursively using transform.\-parent). If a View reaches the top of that chain without locating a Context, it will raise this Exception to warn you.
 
-Note\-: to avoid infinite looping, there is a bubbling limit of 100 layers. If your View needs to be more than 100 transforms deep, that might signal a design problem. \end{description}
+Note\-: to avoid infinite looping, there is a bubbling limit of 100 layers. If your View needs to be more than 100 transforms deep, that might signal a design problem. \index{M\-E\-D\-I\-A\-T\-O\-R\-\_\-\-V\-I\-E\-W\-\_\-\-S\-T\-A\-C\-K\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W@{M\-E\-D\-I\-A\-T\-O\-R\-\_\-\-V\-I\-E\-W\-\_\-\-S\-T\-A\-C\-K\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W}!strange\-::extensions\-::mediation\-::api@{strange\-::extensions\-::mediation\-::api}}\index{strange\-::extensions\-::mediation\-::api@{strange\-::extensions\-::mediation\-::api}!M\-E\-D\-I\-A\-T\-O\-R\-\_\-\-V\-I\-E\-W\-\_\-\-S\-T\-A\-C\-K\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W@{M\-E\-D\-I\-A\-T\-O\-R\-\_\-\-V\-I\-E\-W\-\_\-\-S\-T\-A\-C\-K\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aa46ff5442e205aeec7c75b331260f5a49}{M\-E\-D\-I\-A\-T\-O\-R\-\_\-\-V\-I\-E\-W\-\_\-\-S\-T\-A\-C\-K\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W}\label{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aa46ff5442e205aeec7c75b331260f5a49}
+}]Exception raised when a View is mapped to itself. If a View is accidentally mapped to itself, the result will be an infinite loop of Mediation creation. \end{description}
 \end{Desc}

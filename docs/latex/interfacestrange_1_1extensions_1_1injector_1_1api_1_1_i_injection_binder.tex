@@ -9,7 +9,7 @@ A Binder that implements Dependency Injection in Strange\-Io\-C.
 Inheritance diagram for strange.\-extensions.\-injector.\-api.\-I\-Injection\-Binder\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder}
+\includegraphics[height=2.333333cm]{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -28,10 +28,15 @@ object \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_inject
 \begin{DoxyCompactList}\small\item\em Reflect all the types in the list Return the number of types in the list, which should be equal to the list length. \end{DoxyCompactList}\item 
 int \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a4f5f1efc3286ca4358d6ca9443c0f1d2}{Reflect\-All} ()
 \begin{DoxyCompactList}\small\item\em Reflect all the types currently registered with Injection\-Binder Return the number of types reflected, which should be equal to the number of concrete classes you've mapped. \end{DoxyCompactList}\item 
+void \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a15c29624d07058e29487fa0713b806a3}{Resolve\-Binding} (\hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} binding, object key)
+\begin{DoxyCompactList}\small\item\em Places individual Bindings into the bindings Dictionary as part of the resolving process \end{DoxyCompactList}\item 
 \hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a7faee07278ae6f408125b2f5bfe3e380}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries Bind$<$ T $>$} ()}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a7faee07278ae6f408125b2f5bfe3e380}
 
 \item 
 \hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_afd394dfe8af8c8678ba48e7badf55f8f}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries Bind} (Type key)}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_afd394dfe8af8c8678ba48e7badf55f8f}
+
+\item 
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a5602ebd8283eb4d8a44a3346cd56be81}{\hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} {\bfseries Bind} (object key)}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a5602ebd8283eb4d8a44a3346cd56be81}
 
 \item 
 \hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a3284a844e2b20f7759bcb29c3a0b5098}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries Get\-Binding$<$ T $>$} ()}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a3284a844e2b20f7759bcb29c3a0b5098}
@@ -137,7 +142,7 @@ Retrieve an Instance based on a key/name combo.
 
 ex. {\ttfamily injection\-Binder.\-Get(typeof(\-I\-Some\-Interface), Some\-Enum.\-M\-Y\-\_\-\-E\-N\-U\-M);} 
 
-Implemented in \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a27b1453d99d77871caf7c0068e211a2f}{strange.\-extensions.\-injector.\-impl.\-Injection\-Binder}.
+Implemented in \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_af695f0c65ded51228d02afc0374bacd5}{strange.\-extensions.\-injector.\-impl.\-Injection\-Binder}.
 
 \hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a20bcbae77a818103c60eb063e75fd956}{\index{strange\-::extensions\-::injector\-::api\-::\-I\-Injection\-Binder@{strange\-::extensions\-::injector\-::api\-::\-I\-Injection\-Binder}!Get\-Instance$<$ T $>$@{Get\-Instance$<$ T $>$}}
 \index{Get\-Instance$<$ T $>$@{Get\-Instance$<$ T $>$}!strange::extensions::injector::api::IInjectionBinder@{strange\-::extensions\-::injector\-::api\-::\-I\-Injection\-Binder}}
@@ -183,6 +188,24 @@ Reflect all the types currently registered with Injection\-Binder Return the num
 
 
 Implemented in \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a5a03e345237a56af33953e215852526b}{strange.\-extensions.\-injector.\-impl.\-Injection\-Binder}.
+
+\hypertarget{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a15c29624d07058e29487fa0713b806a3}{\index{strange\-::extensions\-::injector\-::api\-::\-I\-Injection\-Binder@{strange\-::extensions\-::injector\-::api\-::\-I\-Injection\-Binder}!Resolve\-Binding@{Resolve\-Binding}}
+\index{Resolve\-Binding@{Resolve\-Binding}!strange::extensions::injector::api::IInjectionBinder@{strange\-::extensions\-::injector\-::api\-::\-I\-Injection\-Binder}}
+\subsubsection[{Resolve\-Binding}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-injector.\-api.\-I\-Injection\-Binder.\-Resolve\-Binding (
+\begin{DoxyParamCaption}
+\item[{{\bf I\-Binding}}]{binding, }
+\item[{object}]{key}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a15c29624d07058e29487fa0713b806a3}
+
+
+Places individual Bindings into the bindings Dictionary as part of the resolving process 
+
+Note that while some Bindings may store multiple keys, each key takes a unique position in the bindings Dictionary.
+
+Conflicts in the course of fluent binding are expected, but Get\-Binding will throw an error if there are any unresolved conflicts. 
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder_ad93ea865f14a6249af575633f6472a7e}{strange.\-extensions.\-injector.\-impl.\-Cross\-Context\-Injection\-Binder}.
 
 
 

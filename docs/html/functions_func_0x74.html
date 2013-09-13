@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.51</span>
+   &#160;<span id="projectnumber">0.6.0</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -75,6 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
       <li><a href="functions_prop.html"><span>Properties</span></a></li>
+      <li><a href="functions_evnt.html"><span>Events</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -107,7 +108,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Events</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -169,27 +170,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html#a7e7eee027ed73a36c38f18b865bbe4c6">strange.extensions.injector.api.IInjectionBinding</a>
 </li>
 <li>Trigger()
-: <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html#a0360965a7abcec6aaf0d0d139cdba649">strange.extensions.dispatcher.eventdispatcher.impl.EventDispatcher</a>
-, <a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder.html#a7e394e1dbd3279239425740221f727c7">strange.extensions.mediation.api.IMediationBinder</a>
+: <a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder.html#a7e394e1dbd3279239425740221f727c7">strange.extensions.mediation.api.IMediationBinder</a>
+, <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge.html#aff66cf10f02ef93bedd0f353c45b054a">strange.extensions.context.impl.CrossContextBridge</a>
+, <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable.html#a361da017a6fcf4462bf05089cbfa6304">strange.extensions.dispatcher.api.ITriggerable</a>
+, <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html#a0360965a7abcec6aaf0d0d139cdba649">strange.extensions.dispatcher.eventdispatcher.impl.EventDispatcher</a>
 , <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_mediation_binder.html#a239e22ae10b9abac39d32533771457f8">strange.extensions.mediation.impl.MediationBinder</a>
 , <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html#af5ad5b130439533dda9731f857b33ab6">strange.extensions.command.impl.CommandBinder</a>
-, <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable.html#a361da017a6fcf4462bf05089cbfa6304">strange.extensions.dispatcher.api.ITriggerable</a>
 </li>
 <li>Trigger&lt; T &gt;()
 : <a class="el" href="classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder.html#a4e5f412df2d54ffd94571acadf6bf862">strange.extensions.command.impl.CommandBinder</a>
-, <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html#a00aa67359048450f440195fcb6303279">strange.extensions.dispatcher.eventdispatcher.impl.EventDispatcher</a>
 , <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable.html#af2d6a85b1e00a06bab56f21add189549">strange.extensions.dispatcher.api.ITriggerable</a>
+, <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge.html#ae51d7fa46c044427cd0c023d7324a292">strange.extensions.context.impl.CrossContextBridge</a>
+, <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher.html#a00aa67359048450f440195fcb6303279">strange.extensions.dispatcher.eventdispatcher.impl.EventDispatcher</a>
 </li>
 <li>typeForCallback()
-: <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding.html#a1502733e905d30d9a76c2cb4195c2350">strange.extensions.dispatcher.eventdispatcher.api.IEventBinding</a>
-, <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_binding.html#af0aa373b97c9a9aa4ac79534247a405b">strange.extensions.dispatcher.eventdispatcher.impl.EventBinding</a>
+: <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_binding.html#af0aa373b97c9a9aa4ac79534247a405b">strange.extensions.dispatcher.eventdispatcher.impl.EventBinding</a>
 , <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_binding.html#aea1695dda47672e984598ce802e62ee8">strange.extensions.dispatcher.eventdispatcher.api.IEventBinding</a>
+, <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_binding.html#a1e4027e8f6f429448248362dbba6be5b">strange.extensions.dispatcher.eventdispatcher.impl.EventBinding</a>
 </li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 25 2013 08:58:50 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 12 2013 11:15:53 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

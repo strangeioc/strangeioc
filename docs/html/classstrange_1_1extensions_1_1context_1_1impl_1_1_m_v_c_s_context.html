@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">StrangeIoC
-   &#160;<span id="projectnumber">0.51</span>
+   &#160;<span id="projectnumber">0.6.0</span>
    </div>
    <div id="projectbrief">The IoC/Binding Framework for Unity3D and C#</div>
   </td>
@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Events</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,7 +92,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context-members.html">List of all members</a>  </div>
@@ -109,11 +108,13 @@ Inheritance diagram for strange.extensions.context.impl.MVCSContext:</div>
  <div class="center">
   <img src="classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context.png" usemap="#strange.extensions.context.impl.MVCSContext_map" alt=""/>
   <map id="strange.extensions.context.impl.MVCSContext_map" name="strange.extensions.context.impl.MVCSContext_map">
-<area href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html" title="A Context is the entry point to the binding framework. " alt="strange.extensions.context.impl.Context" shape="rect" coords="140,112,410,136"/>
-<area href="classstrange_1_1framework_1_1impl_1_1_binder.html" title="Collection class for bindings. " alt="strange.framework.impl.Binder" shape="rect" coords="0,56,270,80"/>
-<area href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html" title="A Context is the entry point to the binding framework. " alt="strange.extensions.context.api.IContext" shape="rect" coords="280,56,550,80"/>
-<area href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html" title="Collection class for bindings. " alt="strange.framework.api.IBinder" shape="rect" coords="0,0,270,24"/>
-<area href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html" title="Collection class for bindings. " alt="strange.framework.api.IBinder" shape="rect" coords="280,0,550,24"/>
+<area href="classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context.html" title="Provides the capabilities that allow a Context to communicate across the Context boundary. " alt="strange.extensions.context.impl.CrossContext" shape="rect" coords="321,168,632,192"/>
+<area href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html" title="A Context is the entry point to the binding framework. " alt="strange.extensions.context.impl.Context" shape="rect" coords="160,112,471,136"/>
+<area href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable.html" title="API for allowing Contexts to register across the Context border. " alt="strange.extensions.context.api.ICrossContextCapable" shape="rect" coords="481,112,792,136"/>
+<area href="classstrange_1_1framework_1_1impl_1_1_binder.html" title="Collection class for bindings. " alt="strange.framework.impl.Binder" shape="rect" coords="0,56,311,80"/>
+<area href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html" title="A Context is the entry point to the binding framework. " alt="strange.extensions.context.api.IContext" shape="rect" coords="321,56,632,80"/>
+<area href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html" title="Collection class for bindings. " alt="strange.framework.api.IBinder" shape="rect" coords="0,0,311,24"/>
+<area href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html" title="Collection class for bindings. " alt="strange.framework.api.IBinder" shape="rect" coords="321,0,632,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -128,14 +129,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a70e1400cfb5a71447080acdf79ca93f9"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context.html#a70e1400cfb5a71447080acdf79ca93f9">Launch</a> ()</td></tr>
 <tr class="memdesc:a70e1400cfb5a71447080acdf79ca93f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fires ContextEvent.START Whatever Command/Sequence you want to happen first should be mapped to this event.  <a href="#a70e1400cfb5a71447080acdf79ca93f9">More...</a><br/></td></tr>
 <tr class="separator:a70e1400cfb5a71447080acdf79ca93f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27f92d370b558c358804365136176957"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a27f92d370b558c358804365136176957"></a>
-override <a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html">IContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context.html#a27f92d370b558c358804365136176957">AddContext</a> (<a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html">IContext</a> context)</td></tr>
-<tr class="memdesc:a27f92d370b558c358804365136176957"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add another <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html" title="A Context is the entry point to the binding framework. ">Context</a> to this one. <br/></td></tr>
-<tr class="separator:a27f92d370b558c358804365136176957"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a069cafa02893c41915b47d5e03269d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a069cafa02893c41915b47d5e03269d"></a>
-override <a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html">IContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context.html#a2a069cafa02893c41915b47d5e03269d">RemoveContext</a> (<a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html">IContext</a> context)</td></tr>
-<tr class="memdesc:a2a069cafa02893c41915b47d5e03269d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a context from this one. <br/></td></tr>
-<tr class="separator:a2a069cafa02893c41915b47d5e03269d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a094adf14d43505eaa0d5c2c786c2e5f9"><td class="memItemLeft" align="right" valign="top">override object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context.html#a094adf14d43505eaa0d5c2c786c2e5f9">GetComponent&lt; T &gt;</a> ()</td></tr>
 <tr class="memdesc:a094adf14d43505eaa0d5c2c786c2e5f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets an instance of the provided generic type.  <a href="#a094adf14d43505eaa0d5c2c786c2e5f9">More...</a><br/></td></tr>
 <tr class="separator:a094adf14d43505eaa0d5c2c786c2e5f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,6 +143,30 @@ override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context.html#a35068ddfa0cbd9aa94c5c02ba9969588">RemoveView</a> (object view)</td></tr>
 <tr class="memdesc:a35068ddfa0cbd9aa94c5c02ba9969588"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a View from this <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html" title="A Context is the entry point to the binding framework. ">Context</a>. <br/></td></tr>
 <tr class="separator:a35068ddfa0cbd9aa94c5c02ba9969588"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39276c1ee875079a62e1cc586858ad3e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a39276c1ee875079a62e1cc586858ad3e"></a>
+override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context.html#a39276c1ee875079a62e1cc586858ad3e">OnRemove</a> ()</td></tr>
+<tr class="memdesc:a39276c1ee875079a62e1cc586858ad3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clean up. Called by a <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context_view.html" title="The Root View of a Context hierarchy. ">ContextView</a> in its OnDestroy method. <br/></td></tr>
+<tr class="separator:a39276c1ee875079a62e1cc586858ad3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context.html">strange.extensions.context.impl.CrossContext</a></td></tr>
+<tr class="memitem:a640cb17729539da09ff83a783018b333 inherit pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a640cb17729539da09ff83a783018b333"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>CrossContext</b> (object view, bool <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html#a3386ea2967ba720218b89eaefac77d56">autoStartup</a>)</td></tr>
+<tr class="separator:a640cb17729539da09ff83a783018b333 inherit pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab12586e3d3dd4797f553090512e4a8e5 inherit pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab12586e3d3dd4797f553090512e4a8e5"></a>
+override <a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html">IContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context.html#ab12586e3d3dd4797f553090512e4a8e5">AddContext</a> (<a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html">IContext</a> context)</td></tr>
+<tr class="memdesc:ab12586e3d3dd4797f553090512e4a8e5 inherit pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add another <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html" title="A Context is the entry point to the binding framework. ">Context</a> to this one. <br/></td></tr>
+<tr class="separator:ab12586e3d3dd4797f553090512e4a8e5 inherit pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6361c6910225f255cb8a38be8afd475b inherit pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6361c6910225f255cb8a38be8afd475b"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context.html#a6361c6910225f255cb8a38be8afd475b">AssignCrossContext</a> (<a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable.html">ICrossContextCapable</a> childContext)</td></tr>
+<tr class="memdesc:a6361c6910225f255cb8a38be8afd475b inherit pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add cross-context functionality to a child context being added. <br/></td></tr>
+<tr class="separator:a6361c6910225f255cb8a38be8afd475b inherit pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7158b3ee84a563ed0f069f25faa626c6 inherit pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7158b3ee84a563ed0f069f25faa626c6"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context.html#a7158b3ee84a563ed0f069f25faa626c6">RemoveCrossContext</a> (<a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable.html">ICrossContextCapable</a> childContext)</td></tr>
+<tr class="memdesc:a7158b3ee84a563ed0f069f25faa626c6 inherit pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clean up cross-context functionality from a child context being removed. <br/></td></tr>
+<tr class="separator:a7158b3ee84a563ed0f069f25faa626c6 inherit pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d89f38a223f4e3e6c9f5142bcb5c0b1 inherit pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d89f38a223f4e3e6c9f5142bcb5c0b1"></a>
+override <a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html">IContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context.html#a9d89f38a223f4e3e6c9f5142bcb5c0b1">RemoveContext</a> (<a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html">IContext</a> context)</td></tr>
+<tr class="memdesc:a9d89f38a223f4e3e6c9f5142bcb5c0b1 inherit pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a context from this one. <br/></td></tr>
+<tr class="separator:a9d89f38a223f4e3e6c9f5142bcb5c0b1 inherit pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_context"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_context')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html">strange.extensions.context.impl.Context</a></td></tr>
 <tr class="memitem:a771c415dd8d8ee10fa09d5906318ff9c inherit pub_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_context"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a771c415dd8d8ee10fa09d5906318ff9c"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Context</b> (object view, bool <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html#a3386ea2967ba720218b89eaefac77d56">autoStartup</a>)</td></tr>
@@ -227,6 +244,9 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 virtual <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#aa9e1ffe31a00f92c3edbbdc452301c03">GetRawBinding</a> ()</td></tr>
 <tr class="memdesc:aa9e1ffe31a00f92c3edbbdc452301c03 inherit pub_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an unpopulated IBinding in whatever concrete form the <a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html" title="Collection class for bindings. ">Binder</a> dictates. <br/></td></tr>
 <tr class="separator:aa9e1ffe31a00f92c3edbbdc452301c03 inherit pub_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59b9ca38325bf6cf4c55aa309e92d00c inherit pub_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a59b9ca38325bf6cf4c55aa309e92d00c">ResolveBinding</a> (<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding, object key)</td></tr>
+<tr class="memdesc:a59b9ca38325bf6cf4c55aa309e92d00c inherit pub_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method places individual Bindings into the bindings Dictionary as part of the resolving process.  <a href="#a59b9ca38325bf6cf4c55aa309e92d00c">More...</a><br/></td></tr>
+<tr class="separator:a59b9ca38325bf6cf4c55aa309e92d00c inherit pub_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -248,39 +268,6 @@ override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context.html#abb0ebe5ae03d434da56eece8a20be876">mediateViewCache</a> ()</td></tr>
 <tr class="memdesc:abb0ebe5ae03d434da56eece8a20be876"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provide mediation for early-riser Views. <br/></td></tr>
 <tr class="separator:abb0ebe5ae03d434da56eece8a20be876"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_context"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_context')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html">strange.extensions.context.impl.Context</a></td></tr>
-<tr class="memitem:a69ab00c1a523096ebc8d1a31738296e2 inherit pro_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_context"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69ab00c1a523096ebc8d1a31738296e2"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html#a69ab00c1a523096ebc8d1a31738296e2">mapBindings</a> ()</td></tr>
-<tr class="memdesc:a69ab00c1a523096ebc8d1a31738296e2 inherit pro_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_context"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override to map project-specific bindings. <br/></td></tr>
-<tr class="separator:a69ab00c1a523096ebc8d1a31738296e2 inherit pro_methods_classstrange_1_1extensions_1_1context_1_1impl_1_1_context"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classstrange_1_1framework_1_1impl_1_1_binder')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html">strange.framework.impl.Binder</a></td></tr>
-<tr class="memitem:a8f463a4edc3e3bbdaac51a8aaa5d240f inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f463a4edc3e3bbdaac51a8aaa5d240f"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a8f463a4edc3e3bbdaac51a8aaa5d240f">resolver</a> (<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding)</td></tr>
-<tr class="memdesc:a8f463a4edc3e3bbdaac51a8aaa5d240f inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default handler for resolving bindings during chained commands. <br/></td></tr>
-<tr class="separator:a8f463a4edc3e3bbdaac51a8aaa5d240f inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a376bc9c4030c38eeb12818cc92fdcd5f inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a376bc9c4030c38eeb12818cc92fdcd5f">resolveBinding</a> (<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding, object key)</td></tr>
-<tr class="memdesc:a376bc9c4030c38eeb12818cc92fdcd5f inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method places individual Bindings into the bindings Dictionary as part of the resolving process.  <a href="#a376bc9c4030c38eeb12818cc92fdcd5f">More...</a><br/></td></tr>
-<tr class="separator:a376bc9c4030c38eeb12818cc92fdcd5f inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6150d8762ded854628d21c5e35489adc inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a6150d8762ded854628d21c5e35489adc">registerNameConflict</a> (object key, <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> newBinding, <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> existingBinding)</td></tr>
-<tr class="memdesc:a6150d8762ded854628d21c5e35489adc inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Take note of bindings that are in conflict.  <a href="#a6150d8762ded854628d21c5e35489adc">More...</a><br/></td></tr>
-<tr class="separator:a6150d8762ded854628d21c5e35489adc inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a541607fe739b65b5f28b4152bec49a46 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a541607fe739b65b5f28b4152bec49a46"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a541607fe739b65b5f28b4152bec49a46">isConflictCleared</a> (Dictionary&lt; <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a>, object &gt; dict, <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a> binding)</td></tr>
-<tr class="memdesc:a541607fe739b65b5f28b4152bec49a46 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the provided binding and the binding in the dict are no longer conflicting. <br/></td></tr>
-<tr class="separator:a541607fe739b65b5f28b4152bec49a46 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a426d227eeaa00823a744472c219698 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1a426d227eeaa00823a744472c219698"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clearConflict</b> (object key, object name, Dictionary&lt; <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a>, object &gt; dict)</td></tr>
-<tr class="separator:a1a426d227eeaa00823a744472c219698 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a349b12bdc879e7f465a7cf7dfeb3b5b4 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a349b12bdc879e7f465a7cf7dfeb3b5b4"></a>
-object[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1framework_1_1impl_1_1_binder.html#a349b12bdc879e7f465a7cf7dfeb3b5b4">spliceValueAt</a> (int splicePos, object[] objectValue)</td></tr>
-<tr class="memdesc:a349b12bdc879e7f465a7cf7dfeb3b5b4 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the item at splicePos from the list objectValue. <br/></td></tr>
-<tr class="separator:a349b12bdc879e7f465a7cf7dfeb3b5b4 inherit pro_methods_classstrange_1_1framework_1_1impl_1_1_binder"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:a55fc4efce14c8f9021cba2e25851942b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher.html">IEventDispatcher</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context.html#a55fc4efce14c8f9021cba2e25851942b">_crossContextDispatcher</a></td></tr>
-<tr class="memdesc:a55fc4efce14c8f9021cba2e25851942b"><td class="mdescLeft">&#160;</td><td class="mdescRight">A specific instance of EventDispatcher that communicates across multiple contexts.  <a href="#a55fc4efce14c8f9021cba2e25851942b">More...</a><br/></td></tr>
-<tr class="separator:a55fc4efce14c8f9021cba2e25851942b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
@@ -291,10 +278,6 @@ static <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_semi_bindi
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:afe136a86f154ed170eb60fb655b18548"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afe136a86f154ed170eb60fb655b18548"></a>
-<a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder.html">IInjectionBinder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context.html#afe136a86f154ed170eb60fb655b18548">injectionBinder</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:afe136a86f154ed170eb60fb655b18548"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Binder that handles dependency injection binding and instantiation. <br/></td></tr>
-<tr class="separator:afe136a86f154ed170eb60fb655b18548"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7100de9c1148ef6c3300b8e608d0ed00"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7100de9c1148ef6c3300b8e608d0ed00"></a>
 <a class="el" href="interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder.html">ICommandBinder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context.html#a7100de9c1148ef6c3300b8e608d0ed00">commandBinder</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a7100de9c1148ef6c3300b8e608d0ed00"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Binder that maps Events to Commands. <br/></td></tr>
@@ -311,22 +294,30 @@ Properties</h2></td></tr>
 <a class="el" href="interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer.html">ISequencer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context.html#af18bbe60ff223bebf24d0643c07c1c6f">sequencer</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:af18bbe60ff223bebf24d0643c07c1c6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Binder that maps Events to Sequences. <br/></td></tr>
 <tr class="separator:af18bbe60ff223bebf24d0643c07c1c6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a149995ccefc2f46a2e7784d3c78cb119"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a149995ccefc2f46a2e7784d3c78cb119"></a>
-override <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher.html">IDispatcher</a>&#160;</td><td class="memItemRight" valign="bottom"><b>crossContextDispatcher</b><code> [get, set]</code></td></tr>
-<tr class="separator:a149995ccefc2f46a2e7784d3c78cb119"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td colspan="2" onclick="javascript:toggleInherit('properties_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context.html">strange.extensions.context.impl.CrossContext</a></td></tr>
+<tr class="memitem:aa9e5959a8c384f30821f024a6342da1d inherit properties_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9e5959a8c384f30821f024a6342da1d"></a>
+<a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_cross_context_injection_binder.html">ICrossContextInjectionBinder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context.html#aa9e5959a8c384f30821f024a6342da1d">injectionBinder</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:aa9e5959a8c384f30821f024a6342da1d inherit properties_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Binder that handles dependency injection binding and instantiation. <br/></td></tr>
+<tr class="separator:aa9e5959a8c384f30821f024a6342da1d inherit properties_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa020f2f7a4dbc95dd6df440197d0349e inherit properties_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa020f2f7a4dbc95dd6df440197d0349e"></a>
+virtual <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher.html">IDispatcher</a>&#160;</td><td class="memItemRight" valign="bottom"><b>crossContextDispatcher</b><code> [get, set]</code></td></tr>
+<tr class="separator:aa020f2f7a4dbc95dd6df440197d0349e inherit properties_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaa1de297f6c13a502f384a5cb20b596 inherit properties_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acaa1de297f6c13a502f384a5cb20b596"></a>
+virtual <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html">IBinder</a>&#160;</td><td class="memItemRight" valign="bottom"><b>crossContextBridge</b><code> [get, set]</code></td></tr>
+<tr class="separator:acaa1de297f6c13a502f384a5cb20b596 inherit properties_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_classstrange_1_1extensions_1_1context_1_1impl_1_1_context"><td colspan="2" onclick="javascript:toggleInherit('properties_classstrange_1_1extensions_1_1context_1_1impl_1_1_context')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html">strange.extensions.context.impl.Context</a></td></tr>
 <tr class="memitem:a6403b0233cce89fdf38d810c740795c2 inherit properties_classstrange_1_1extensions_1_1context_1_1impl_1_1_context"><td class="memItemLeft" align="right" valign="top">object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html#a6403b0233cce89fdf38d810c740795c2">contextView</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a6403b0233cce89fdf38d810c740795c2 inherit properties_classstrange_1_1extensions_1_1context_1_1impl_1_1_context"><td class="mdescLeft">&#160;</td><td class="mdescRight">The top of the View hierarchy.  <a href="#a6403b0233cce89fdf38d810c740795c2">More...</a><br/></td></tr>
 <tr class="separator:a6403b0233cce89fdf38d810c740795c2 inherit properties_classstrange_1_1extensions_1_1context_1_1impl_1_1_context"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2358f952cd0785dbba2ba9a8258d300c inherit properties_classstrange_1_1extensions_1_1context_1_1impl_1_1_context"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2358f952cd0785dbba2ba9a8258d300c"></a>
-virtual <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher.html">IDispatcher</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html#a2358f952cd0785dbba2ba9a8258d300c">crossContextDispatcher</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a2358f952cd0785dbba2ba9a8258d300c inherit properties_classstrange_1_1extensions_1_1context_1_1impl_1_1_context"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Dispatcher instance which communicates across Contexts. <br/></td></tr>
-<tr class="separator:a2358f952cd0785dbba2ba9a8258d300c inherit properties_classstrange_1_1extensions_1_1context_1_1impl_1_1_context"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header properties_interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context"><td colspan="2" onclick="javascript:toggleInherit('properties_interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html">strange.extensions.context.api.IContext</a></td></tr>
-<tr class="memitem:ac0e9b15b9639efe7ad58d0b9cfe0445a inherit properties_interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac0e9b15b9639efe7ad58d0b9cfe0445a"></a>
-<a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher.html">IDispatcher</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html#ac0e9b15b9639efe7ad58d0b9cfe0445a">crossContextDispatcher</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:ac0e9b15b9639efe7ad58d0b9cfe0445a inherit properties_interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set and get the shared system bus for communicating across contexts. <br/></td></tr>
-<tr class="separator:ac0e9b15b9639efe7ad58d0b9cfe0445a inherit properties_interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable"><td colspan="2" onclick="javascript:toggleInherit('properties_interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable.html">strange.extensions.context.api.ICrossContextCapable</a></td></tr>
+<tr class="memitem:a671d1f503d40abeb5acf4f046cde3c3c inherit properties_interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a671d1f503d40abeb5acf4f046cde3c3c"></a>
+<a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_cross_context_injection_binder.html">ICrossContextInjectionBinder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable.html#a671d1f503d40abeb5acf4f046cde3c3c">injectionBinder</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a671d1f503d40abeb5acf4f046cde3c3c inherit properties_interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable"><td class="mdescLeft">&#160;</td><td class="mdescRight">All cross-context capable contexts must implement an injectionBinder. <br/></td></tr>
+<tr class="separator:a671d1f503d40abeb5acf4f046cde3c3c inherit properties_interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad7b3f38bed324e8a2fa86482ef1f733 inherit properties_interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aad7b3f38bed324e8a2fa86482ef1f733"></a>
+<a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher.html">IDispatcher</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable.html#aad7b3f38bed324e8a2fa86482ef1f733">crossContextDispatcher</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:aad7b3f38bed324e8a2fa86482ef1f733 inherit properties_interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set and get the shared system bus for communicating across contexts. <br/></td></tr>
+<tr class="separator:aad7b3f38bed324e8a2fa86482ef1f733 inherit properties_interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -340,6 +331,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 static <a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html">IContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html#a91925d82f688390fea8c703ab4135c79">firstContext</a></td></tr>
 <tr class="memdesc:a91925d82f688390fea8c703ab4135c79 inherit pub_static_attribs_classstrange_1_1extensions_1_1context_1_1impl_1_1_context"><td class="mdescLeft">&#160;</td><td class="mdescRight">In a multi-Context app, this represents the first <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html" title="A Context is the entry point to the binding framework. ">Context</a> to instantiate. <br/></td></tr>
 <tr class="separator:a91925d82f688390fea8c703ab4135c79 inherit pub_static_attribs_classstrange_1_1extensions_1_1context_1_1impl_1_1_context"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context.html">strange.extensions.context.impl.CrossContext</a></td></tr>
+<tr class="memitem:a00c68512ad80d15236954614f223820e inherit pro_attribs_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher.html">IEventDispatcher</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context.html#a00c68512ad80d15236954614f223820e">_crossContextDispatcher</a></td></tr>
+<tr class="memdesc:a00c68512ad80d15236954614f223820e inherit pro_attribs_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="mdescLeft">&#160;</td><td class="mdescRight">A specific instance of EventDispatcher that communicates across multiple contexts.  <a href="#a00c68512ad80d15236954614f223820e">More...</a><br/></td></tr>
+<tr class="separator:a00c68512ad80d15236954614f223820e inherit pro_attribs_classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The recommended <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html" title="A Context is the entry point to the binding framework. ">Context</a> for getting the most out of StrangeIoC. </p>
@@ -453,7 +448,7 @@ IMediationBinder mediationBinder{get;set;}
 <p>Map the relationships between the Binders. </p>
 <p>Although you can override this method, it is recommended that you provide all your application bindings in <code><a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html#a69ab00c1a523096ebc8d1a31738296e2" title="Override to map project-specific bindings. ">mapBindings()</a></code>. </p>
 
-<p>Reimplemented from <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html#a57e5e9aeb378aca525f8f28a426d59cc">strange.extensions.context.impl.Context</a>.</p>
+<p>Reimplemented from <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context.html#a93b6bb362ee0dd4e26f598667bb94c78">strange.extensions.context.impl.CrossContext</a>.</p>
 
 </div>
 </div>
@@ -500,7 +495,7 @@ IMediationBinder mediationBinder{get;set;}
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -508,7 +503,7 @@ IMediationBinder mediationBinder{get;set;}
 <p>Gets an instance of the provided generic type. </p>
 <p>Always bear in mind that doing this risks adding dependencies that must be cleaned up when Contexts are removed. </p>
 
-<p>Reimplemented from <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html#a865a54a288d59c43adc3225e5f6a4b5d">strange.extensions.context.impl.Context</a>.</p>
+<p>Implements <a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable.html#ad598d53c2eed0d24fbf0db37e4cafe88">strange.extensions.context.api.ICrossContextCapable</a>.</p>
 
 </div>
 </div>
@@ -529,14 +524,14 @@ IMediationBinder mediationBinder{get;set;}
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Gets an instance of the provided generic type and name from the InjectionBinder Always bear in mind that doing this risks adding dependencies that must be cleaned up when Contexts are removed. </p>
 
-<p>Reimplemented from <a class="el" href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context.html#aa9a7d7c49d19ca3fca754431d0f111aa">strange.extensions.context.impl.Context</a>.</p>
+<p>Implements <a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_cross_context_capable.html#a06a45c44b9bcc05f592d9262bfff146d">strange.extensions.context.api.ICrossContextCapable</a>.</p>
 
 </div>
 </div>
@@ -596,39 +591,13 @@ IMediationBinder mediationBinder{get;set;}
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a55fc4efce14c8f9021cba2e25851942b"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher.html">IEventDispatcher</a> strange.extensions.context.impl.MVCSContext._crossContextDispatcher</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>A specific instance of EventDispatcher that communicates across multiple contexts. </p>
-<p>An event sent across this dispatcher will be re-dispatched by the various context-wide dispatchers. So a dispatch to other contexts is simply</p>
-<p><code>crossContextDispatcher.Dispatch(MY_EVENT, payload)</code>;</p>
-<p>Other contexts don't need to listen to the cross-context dispatcher as such, just map the necessary event to your local context dispatcher and you'll receive it. </p>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>StrangeIoC/scripts/strange/extensions/context/impl/MVCSContext.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 25 2013 08:58:50 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 12 2013 11:15:52 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
