@@ -488,7 +488,7 @@ namespace com.example.spacebattle.controller
   <p>The idea behind this sequence is that a hit might indicate that a level has been cleared. So we run the <code>CheckLevelClearedCommand</code>. If it passes, we run <code>EndLevelCommand</code>. If that Command indicates we&rsquo;ve reached the final level, run the <code>GameOverCommand</code>. Commands in a sequence execute successively, so at any point along the way, a Command can simply call <code>Fail()</code> to stop the execution flow.</p>
   <p>As with regular Commands, commands in a sequence may execute asynchronously. If they do (and presuming <code>Fail()</code> isn&rsquo;t called), the subsequent Command will be fired as soon as <code>Release()</code> is invoked.</p>
   <h3><a name="signal_extension"></a>The signal extension</h3>
-  <p>Signals are an dispatch mechanism &#8212; an alternative to EventDispatcher &#8212; introduced with <em>Strange v.0.6.0</em>. Whereas EventDispatcher creates and dispatches <code>IEvent</code> objects with a single <code>data</code> property, Signals hook to callbacks, passing 0-4 strongly-typed arguments. This has two major advantages over the EventDispatcher. First, Signal dispatch results in no new object creation, and therefore no need to GC a lot of created instances. Second, and far more importantly, Signal dispatches are type-safe and will break at compile-time if the Signals and their mapped callbacks don't match.</p>
+  <p>Signals are a dispatch mechanism &#8212; an alternative to EventDispatcher &#8212; introduced with <em>Strange v.0.6.0</em>. Whereas EventDispatcher creates and dispatches <code>IEvent</code> objects with a single <code>data</code> property, Signals hook to callbacks, passing 0-4 strongly-typed arguments. This has two major advantages over the EventDispatcher. First, Signal dispatch results in no new object creation, and therefore no need to GC a lot of created instances. Second, and far more importantly, Signal dispatches are type-safe and will break at compile-time if the Signals and their mapped callbacks don't match.</p>
   <p>Another important distinction is that while there is a single 'global' EventDispatcher for each context (and another 'even-more-global' CrossContextDispatcher) firing off Event triggers,  Signals uses a different model. Each 'Event' is the result of an individual Signal tasked to some duty. So while  EventDispatcher is monolithic, there may be any number of Signals. Let's show some examples.</p>
   <p>Here are two Signals, each with one parameter:</p>
   <pre class="prettyprint">Signal&lt;int&gt; signalDispatchesInt = new Signal&lt;int&gt;();
@@ -558,14 +558,14 @@ namespace mynamespace
 	}
 }</pre>
 <h4><a name="mappingSignalsToCommands"></a>Mapping Signals to Commands</h4>
-<p>If you want your Context to be able to bind Signals to Commands (a very good idea) you need to make one small plumbing change. This is required to keep EventDispatcher as the default event bus. But if you'd rather get the full Signals experience, then add this to your Context:</p>
+<p>If you want your Context to be able to bind Signals to Commands (a very good idea) you need to make one small plumbing change. If you'd rather get the full Signals experience, then add this to your Context:</p>
 <pre class="prettyprint">protected override void addCoreComponents()
 {
 	base.addCoreComponents();
 	injectionBinder.Unbind&lt;ICommandBinder&gt;();
 	injectionBinder.Bind&lt;ICommandBinder&gt;().To&lt;SignalCommandBinder&gt;().ToSingleton();
 }</pre>
-<p>Doing this informs Strange that we're doing away with the default EventDispatcher and replacing it with the SignalCommandBinder.</p>
+<p>Doing this informs Strange that we're doing away with the default CommandBinder and replacing it with the SignalCommandBinder. Thus Signals, rather than Events, will trigger Commands. Note that Strange currently supports <em>either</em>Events <em>or</em> Signals mapped to Commands, but not both.</p>
 <p>Having done this,  Signals can now be mapped to Commands much as Events can. The basic syntax is:</p>
 <pre class="prettyprint">commandBinder.Bind&lt;SomeSignal&gt;().To&lt;SomeCommand&gt;();</pre>
 <p>Note that it's still  <code>commandBinder</code>. We simply unmapped the one that worked with EventDispatcher and hooked it up to a new one that works with Signals. Of course the full range of Command-mapping behavior is supported, including multiple Commands, sequences and mapping <code>Once()</code>.</p>
