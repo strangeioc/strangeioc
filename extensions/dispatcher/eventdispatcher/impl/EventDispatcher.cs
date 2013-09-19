@@ -108,6 +108,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 					if (!trigger.Trigger(eventType, data))
 					{
 						continueDispatch = false;
+						break;
 					}
 				}
 				if (triggerClientRemovals != null)
