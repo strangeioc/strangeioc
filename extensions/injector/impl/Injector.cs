@@ -184,7 +184,9 @@ namespace strange.extensions.injector.impl
 				}
 				else
 				{
-					return Inject(binding.value, false);
+					object retv = Inject(binding.value, false);
+					binding.ToInject (false);
+					return retv;
 				}
 			}
 			else
