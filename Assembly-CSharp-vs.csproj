@@ -362,5 +362,7 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SimpleInterfaceImplementerTwo.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\context\impl\CrossContextBridge.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestCrossContextBridge.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PostConstructSimple.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectsPostConstructSimple.cs" />
   </ItemGroup>
 </Project>
