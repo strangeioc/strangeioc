@@ -182,6 +182,23 @@ namespace strange.unittests
 			Assert.AreEqual (InjectionBindingType.VALUE, binding.type);
 		}
 
+		//RE: Issue #32. A value-bound injection should not post-construct twice
+		//The PostConstruct fires when the class is requested.
+		[Test]
+		public void TestDoublePostConstruct()
+		{
+			PostConstructSimple instance = new PostConstructSimple ();
+			binder.Bind<PostConstructSimple> ().ToValue (instance);
+			binder.Bind<InjectsPostConstructSimple> ().To<InjectsPostConstructSimple>();
+
+			InjectsPostConstructSimple instance1 = binder.GetInstance<InjectsPostConstructSimple> () as InjectsPostConstructSimple;
+			InjectsPostConstructSimple instance2 = binder.GetInstance<InjectsPostConstructSimple> () as InjectsPostConstructSimple;
+
+			Assert.AreSame (instance, instance1.pcs);
+			Assert.AreNotSame (instance1, instance2);
+			Assert.AreEqual (1, PostConstructSimple.PostConstructCount);
+		}
+
 		[Test]
 		public void TestPolymorphicBinding()
 		{
