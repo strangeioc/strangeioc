@@ -51,11 +51,6 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 		protected HashSet<ITriggerable> triggerClientRemovals;
 		protected bool isTriggeringClients;
 
-		/// List of callbacks for the current dispatch loop
-		protected List<object> callbackList = new List<object>();
-		/// A duplicate of callbackList that updates throughout the iteration, allowing clean removal of listeners mid-loop
-		protected List<object> currentCallbackList = new List<object>();
-
 		public EventDispatcher ()
 		{
 		}
@@ -108,28 +103,21 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 				return;
 			}
 
-			object[] callbacks = binding.value as object[];
+			object[] callbacks = (binding.value as object[]).Clone() as object[];
 			if (callbacks == null)
-			{
 				return;
-			}
-
-			callbackList.AddRange (callbacks);
-			callbackList.Reverse ();
-
-			while(callbackList.Count > 0)
+			for(int a = 0; a < callbacks.Length; a++)
 			{
-				currentCallbackList.Clear ();
-				callbacks = binding.value as object[];
-				currentCallbackList.AddRange (callbacks);
-
-				object callback = callbackList [callbackList.Count - 1];
-				callbackList.Remove (callback);
-
-				if (currentCallbackList.Contains(callback) == false)
-				{
+				object callback = callbacks[a];
+				if(callback == null)
 					continue;
-				}
+
+				callbacks[a] = null;
+
+				object[] currentCallbacks = binding.value as object[];
+				if(Array.IndexOf(currentCallbacks, callback) == -1)
+					continue;
+
 				if (callback is EventCallback)
 				{
 					invokeEventCallback (data, callback as EventCallback);
@@ -139,8 +127,6 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 					(callback as EmptyCallback)();
 				}
 			}
-			callbackList.Clear ();
-			currentCallbackList.Clear ();
 		}
 
 		virtual protected object conformDataToEvent(object eventType, object data)
