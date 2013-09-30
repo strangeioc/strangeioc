@@ -51,6 +51,11 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 		protected HashSet<ITriggerable> triggerClientRemovals;
 		protected bool isTriggeringClients;
 
+		/// List of callbacks for the current dispatch loop
+		protected List<object> callbackList = new List<object>();
+		/// A duplicate of callbackList that updates throughout the iteration, allowing clean removal of listeners mid-loop
+		protected List<object> currentCallbackList = new List<object>();
+
 		public EventDispatcher ()
 		{
 		}
@@ -73,31 +78,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 		public void Dispatch (object eventType, object data)
 		{
 			//Scrub the data to make eventType and data conform if possible
-			if (eventType == null)
-			{
-				throw new EventDispatcherException("Attempt to Dispatch to null.\ndata: " + data, EventDispatcherExceptionType.EVENT_KEY_NULL);
-			}
-			else if (eventType is IEvent)
-			{
-				//Client provided a full-formed event
-				data = eventType;
-				eventType = (data as IEvent).type;
-			}
-			else if (data == null)
-			{
-				//Client provided just an event ID. Create an event for injection
-				data = new TmEvent(eventType, this, null);
-			}
-			else if (data is IEvent)
-			{
-				//Client provided both an evertType and a full-formed IEvent
-				(data as IEvent).type = eventType;
-			}
-			else
-			{
-				//Client provided an eventType and some data which is not a IEvent.
-				data = new TmEvent(eventType, this, data);
-			}
+			data = conformDataToEvent (eventType, data);
 
 			bool continueDispatch = true;
 			if (triggerClients != null)
@@ -128,40 +109,87 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			}
 
 			object[] callbacks = binding.value as object[];
-
 			if (callbacks == null)
 			{
 				return;
 			}
 
-			int bb = callbacks.Length;
-			for(int b = 0; b < bb; b++)
+			callbackList.AddRange (callbacks);
+			callbackList.Reverse ();
+
+			while(callbackList.Count > 0)
 			{
-				object callback = callbacks [b];
-				object[] parameters = null;
+				currentCallbackList.Clear ();
+				callbacks = binding.value as object[];
+				currentCallbackList.AddRange (callbacks);
+
+				object callback = callbackList [callbackList.Count - 1];
+				callbackList.Remove (callback);
+
+				if (currentCallbackList.Contains(callback) == false)
+				{
+					continue;
+				}
 				if (callback is EventCallback)
 				{
-					parameters = new object[1];
-					parameters [0] = data;
-					EventCallback evtCb = callback as EventCallback;
-
-					try
-					{
-						evtCb (parameters [0] as IEvent);
-					}
-					catch(InvalidCastException)
-					{
-						object tgt = evtCb.Target;
-						string methodName = (callback as Delegate).Method.Name;
-						string message = "An EventCallback is attempting an illegal cast. One possible reason is not typing the payload to IEvent in your callback. Another is illegal casting of the data.\nTarget class: "  + tgt + " method: " + methodName;
-						throw new EventDispatcherException (message, EventDispatcherExceptionType.TARGET_INVOCATION);
-					}
+					invokeEventCallback (data, callback as EventCallback);
 				}
 				else if (callback is EmptyCallback)
 				{
-					EmptyCallback emptyCb = callback as EmptyCallback;
-					emptyCb ();
+					(callback as EmptyCallback)();
 				}
+			}
+			callbackList.Clear ();
+			currentCallbackList.Clear ();
+		}
+
+		virtual protected object conformDataToEvent(object eventType, object data)
+		{
+			if (eventType == null)
+			{
+				throw new EventDispatcherException("Attempt to Dispatch to null.\ndata: " + data, EventDispatcherExceptionType.EVENT_KEY_NULL);
+			}
+			else if (eventType is IEvent)
+			{
+				//Client provided a full-formed event
+				data = eventType;
+				eventType = (data as IEvent).type;
+			}
+			else if (data == null)
+			{
+				//Client provided just an event ID. Create an event for injection
+				data = createEvent (eventType, null);
+			}
+			else if (data is IEvent)
+			{
+				//Client provided both an evertType and a full-formed IEvent
+				(data as IEvent).type = eventType;
+			}
+			else
+			{
+				//Client provided an eventType and some data which is not a IEvent.
+				data = createEvent (eventType, data);
+			}
+			return data;
+		}
+
+		virtual protected object createEvent(object eventType, object data)
+		{
+			return new TmEvent(eventType, this, data);
+		}
+
+		virtual protected void invokeEventCallback(object data, EventCallback callback)
+		{
+			try
+			{
+				callback (data as IEvent);
+			}
+			catch(InvalidCastException)
+			{
+				object tgt = callback.Target;
+				string methodName = (callback as Delegate).Method.Name;
+				string message = "An EventCallback is attempting an illegal cast. One possible reason is not typing the payload to IEvent in your callback. Another is illegal casting of the data.\nTarget class: "  + tgt + " method: " + methodName;
+				throw new EventDispatcherException (message, EventDispatcherExceptionType.TARGET_INVOCATION);
 			}
 		}
 

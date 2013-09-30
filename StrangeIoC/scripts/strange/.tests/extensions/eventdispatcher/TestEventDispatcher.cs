@@ -145,6 +145,18 @@ namespace strange.unittests
 			Assert.That (ex.type == EventDispatcherExceptionType.TARGET_INVOCATION);
 		}
 
+		[Test]
+		public void TestMidpointRemoval()
+		{
+			confirmationValue = INIT_VALUE;
+			dispatcher.AddListener (SomeEnum.ONE, interruptMethod);
+			dispatcher.AddListener (SomeEnum.ONE, noArgumentsMethod);
+
+			dispatcher.Dispatch (SomeEnum.ONE);
+
+			Assert.AreEqual (INIT_VALUE, confirmationValue);
+		}
+
 		private void noArgumentsMethod()
 		{
 			confirmationValue += INCREMENT;
@@ -162,6 +174,11 @@ namespace strange.unittests
 			int data = (int)payload;
 
 			confirmationValue += data;
+		}
+
+		private void interruptMethod()
+		{
+			dispatcher.RemoveListener (SomeEnum.ONE, noArgumentsMethod);
 		}
 	}
 }
