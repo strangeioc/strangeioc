@@ -159,7 +159,6 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 				}
 				else if (callback is EmptyCallback)
 				{
-					parameters = new object[0];
 					EmptyCallback emptyCb = callback as EmptyCallback;
 					emptyCb ();
 				}
