@@ -156,6 +156,21 @@ namespace strange.extensions.reflector.impl
 			KeyValuePair<Type, PropertyInfo>[] pairs = new KeyValuePair<Type, PropertyInfo>[0];
 			object[] names = new object[0];
 
+			MemberInfo[] privateMembers = type.FindMembers(MemberTypes.Property,
+			                                        BindingFlags.FlattenHierarchy | 
+			                                        BindingFlags.SetProperty | 
+			                                        BindingFlags.NonPublic | 
+			                                        BindingFlags.Instance, 
+			                                        null, null);
+			foreach (MemberInfo member in privateMembers)
+			{
+				object[] injections = member.GetCustomAttributes(typeof(Inject), true);
+				if (injections.Length > 0)
+				{
+					throw new ReflectionException ("The class " + type.Name + " has a non-public Injection setter " + member.Name + ". Make the setter public to allow injection.", ReflectionExceptionType.CANNOT_INJECT_INTO_NONPUBLIC_SETTER);
+				}
+			}
+
 			MemberInfo[] members = type.FindMembers(MemberTypes.Property,
 			                                              BindingFlags.FlattenHierarchy | 
 			                                              BindingFlags.SetProperty | 
