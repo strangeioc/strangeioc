@@ -218,6 +218,17 @@ namespace strange.unittests
 			IReflectedClass reflected2 = reflector.Get<HasNamedInjections> ();
 			Assert.True (reflected2.preGenerated);
 		}
+
+		[Test]
+		public void TestNonpublicInjectionMapping()
+		{
+			TestDelegate testDelegate = delegate()
+			{
+				reflector.Get<NonpublicInjection> ();
+			};
+			ReflectionException ex = Assert.Throws<ReflectionException>(testDelegate);
+			Assert.That (ex.type == ReflectionExceptionType.CANNOT_INJECT_INTO_NONPUBLIC_SETTER);
+		}
 	}
 }
 
