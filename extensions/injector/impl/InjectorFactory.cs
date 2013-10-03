@@ -65,7 +65,10 @@ namespace strange.extensions.injector.impl
 			{
 				if (binding.value.GetType().IsInstanceOfType(typeof(Type)))
 				{
-					binding.SetValue(createFromValue(binding.value, args));
+					object o = createFromValue (binding.value, args);
+					if (o == null)
+						return null;
+					binding.SetValue(o);
 				}
 				else
 				{
@@ -86,7 +89,7 @@ namespace strange.extensions.injector.impl
 			{
 				return createFromValue(key, args);
 			}
-			throw new InjectionException ("You can't create a class that can't be instantiated. Class: " + key.ToString(), InjectionExceptionType.NOT_INSTANTIABLE);
+			throw new InjectionException ("InjectorFactory can't instantiate an Interface or Abstract Class. Class: " + key.ToString(), InjectionExceptionType.NOT_INSTANTIABLE);
 		}
 
 		/// The binding already has a value. Simply return it.
