@@ -182,6 +182,16 @@ namespace strange.unittests
 			Assert.AreEqual (InjectionBindingType.VALUE, binding.type);
 		}
 
+		//RE:Issue #34. Ensure that a Singleton instance can properly use constructor injection
+		[Test]
+		public void TestConstructorToSingleton()
+		{
+			binder.Bind<ClassToBeInjected> ().To<ClassToBeInjected> ();
+			binder.Bind<ConstructorInjectsClassToBeInjected>().To<ConstructorInjectsClassToBeInjected>().ToSingleton();
+			ConstructorInjectsClassToBeInjected instance = binder.GetInstance<ConstructorInjectsClassToBeInjected>() as ConstructorInjectsClassToBeInjected;
+			Assert.IsNotNull (instance.injected);
+		}
+
 		//RE: Issue #32. A value-bound injection should not post-construct twice
 		//The PostConstruct fires when the class is requested.
 		[Test]
