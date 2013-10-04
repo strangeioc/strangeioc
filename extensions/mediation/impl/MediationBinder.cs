@@ -123,6 +123,8 @@ namespace strange.extensions.mediation.impl
 						throw new MediationException(viewType + "mapped to itself. The result would be a stack overflow.", MediationExceptionType.MEDIATOR_VIEW_STACK_OVERFLOW);
 					}
 					MonoBehaviour mediator = mono.gameObject.AddComponent(mediatorType) as MonoBehaviour;
+					if (mediator == null)
+						throw new MediationException ("The view: " + viewType.ToString() + " is mapped to mediator: " + mediatorType.ToString() + ". AddComponent resulted in null, which probably means " + mediatorType.ToString().Substring(mediatorType.ToString().LastIndexOf(".")+1) + " is not a MonoBehaviour.", MediationExceptionType.NULL_MEDIATOR);
 					if (mediator is IMediator)
 						((IMediator)mediator).PreRegister ();
 					injectionBinder.Bind (viewType).ToValue (view).ToInject(false);
