@@ -36,10 +36,11 @@
 using System;
 using strange.extensions.command.api;
 using strange.extensions.injector.api;
+using strange.framework.api;
 
 namespace strange.extensions.command.impl
 {
-	public class Command : ICommand
+	public class Command : ICommand, IPoolable
 	{
 		/// Back reference to the CommandBinder that instantiated this Commmand
 		[Inject]

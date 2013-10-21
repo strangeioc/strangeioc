@@ -29,7 +29,7 @@ namespace strange.framework.impl
 {
 	public class SemiBinding : ISemiBinding
 	{
-		private object[] objectValue;
+		protected object[] objectValue;
 
 		public Enum constraint{ get; set;}
 		public bool uniqueValues{ get; set;}
@@ -39,6 +39,8 @@ namespace strange.framework.impl
 			constraint = BindingConstraintType.ONE;
 			uniqueValues = true;
 		}
+
+		#region ISemiBinding implementation
 
 		public ISemiBinding Add(object o)
 		{
@@ -113,13 +115,15 @@ namespace strange.framework.impl
 		{ 
 			get
 			{
-				if ((BindingConstraintType)constraint == BindingConstraintType.ONE)
+				if (constraint.Equals(BindingConstraintType.ONE))
 				{
 					return (objectValue == null) ? null : objectValue [0];
 				}
 				return objectValue;
 			}
 		}
+		#endregion
+
 	}
 }
 
