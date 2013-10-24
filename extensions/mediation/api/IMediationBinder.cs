@@ -64,6 +64,7 @@
 
 using System;
 using strange.framework.api;
+using UnityEngine;
 
 namespace strange.extensions.mediation.api
 {
@@ -72,6 +73,9 @@ namespace strange.extensions.mediation.api
 		/// An event that just happened, and the View it happened to.
 		/// If the event was Awake, it will trigger creation of a mapped Mediator.
 		void Trigger (MediationEvent evt, IView view);
+
+		/// Porcelain for Bind<T> providing a little extra clarity and security.
+		IMediationBinding BindView<T> () where T : MonoBehaviour;
 	}
 }
 
