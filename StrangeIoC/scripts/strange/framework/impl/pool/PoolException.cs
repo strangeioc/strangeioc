@@ -14,17 +14,25 @@
  *		limitations under the License.
  */
 
+
 using System;
+using strange.framework.api;
 
-namespace strange.framework.api
+namespace strange.framework.impl
 {
-	public enum PoolInflationType
+	public class PoolException : Exception
 	{
-		/// When a dynamic pool inflates, add one to the pool.
-		INCREMENT,
+		public PoolExceptionType type{ get; set;}
 
-		/// When a dynamic pool inflates, double the size of the pool
-		DOUBLE
+		public PoolException() : base()
+		{
+		}
+
+		/// Constructs a PoolException with a message and PoolExceptionType
+		public PoolException(string message, PoolExceptionType exceptionType) : base(message)
+		{
+			type = exceptionType;
+		}
 	}
 }
 

@@ -18,13 +18,14 @@ using System;
 
 namespace strange.framework.api
 {
-	public enum PoolInflationType
+	public enum PoolExceptionType
 	{
-		/// When a dynamic pool inflates, add one to the pool.
-		INCREMENT,
 
-		/// When a dynamic pool inflates, double the size of the pool
-		DOUBLE
+		/// POOL HAS OVERFLOWED ITS LIMIT
+		OVERFLOW,
+
+		/// ATTEMPT TO ADD AN INSTANCE OF DIFFERENT TYPE TO A POOL
+		TYPE_MISMATCH,
 	}
 }
 

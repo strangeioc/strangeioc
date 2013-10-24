@@ -31,8 +31,8 @@ namespace strange.framework.impl
 	{
 		protected object[] objectValue;
 
-		public Enum constraint{ get; set;}
-		public bool uniqueValues{ get; set;}
+		public Enum Constraint{ get; set;}
+		public bool UniqueValues{ get; set;}
 
 		public SemiBinding ()
 		{
@@ -111,7 +111,7 @@ namespace strange.framework.impl
 			objectValue = (newList.Length == 0) ? null : newList;
 		}
 
-		virtual public object value
+		virtual public object Value
 		{ 
 			get
 			{
@@ -121,6 +121,37 @@ namespace strange.framework.impl
 				}
 				return objectValue;
 			}
+		}
+
+		/// DEPRECATED
+		virtual public bool uniqueValues
+		{
+			get
+			{
+				return UniqueValues;
+			}
+			set
+			{
+				UniqueValues = value;
+			}
+		}
+
+		/// DEPRECATED
+		virtual public Enum constraint{
+			get
+			{
+				return Constraint;
+			}
+			set
+			{
+				Constraint = value;
+			}
+		}
+
+		/// DEPRECATED
+		virtual public object value
+		{
+			get { return Value; }
 		}
 		#endregion
 
