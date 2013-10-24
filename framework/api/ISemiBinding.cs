@@ -44,11 +44,24 @@ namespace strange.framework.api
 	public interface ISemiBinding
 	{
 		/// Set or get the constraint. 
+		Enum Constraint{ get; set;}
+
+		/// A secondary constraint that ensures that this SemiBinding will never contain multiple values equivalent to each other. 
+		bool UniqueValues{get;set;}
+
+		/// Retrieve the value of this SemiBinding. If the constraint is MANY, the value will be an Array.
+		object Value{ get; }
+
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		/// Set or get the constraint. 
 		Enum constraint{ get; set;}
 
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		/// A secondary constraint that ensures that this SemiBinding will never contain multiple values equivalent to each other. 
 		bool uniqueValues{get;set;}
 
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		/// Retrieve the value of this SemiBinding. If the constraint is MANY, the value will be an Array.
 		object value{ get; }
 
