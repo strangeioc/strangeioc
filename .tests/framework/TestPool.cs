@@ -198,6 +198,28 @@ namespace strange.unittests
 			PoolException ex = Assert.Throws<PoolException> (testDelegate);
 			Assert.That (ex.type == PoolExceptionType.TYPE_MISMATCH);
 		}
+
+		[Test]
+		public void TestReleaseOfPoolable()
+		{
+			pool.Size = 4;
+			pool.Add (new PooledInstance ());
+			PooledInstance instance = pool.GetInstance () as PooledInstance;
+			instance.someValue = 42;
+			Assert.AreEqual (42, instance.someValue);
+			pool.ReturnInstance (instance);
+			Assert.AreEqual (0, instance.someValue);
+		}
+	}
+
+	class PooledInstance : IPoolable
+	{
+		public int someValue = 0;
+
+		public void Release ()
+		{
+			someValue = 0;
+		}
 	}
 }
 
