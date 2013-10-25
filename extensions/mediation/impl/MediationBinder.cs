@@ -104,6 +104,11 @@ namespace strange.extensions.mediation.impl
 			return base.Bind<T> ();
 		}
 
+		public IMediationBinding BindView<T>() where T : MonoBehaviour
+		{
+			return base.Bind<T> () as IMediationBinding;
+		}
+
 		/// Creates and registers one or more Mediators for a specific View instance.
 		/// Takes a specific View instance and a binding and, if a binding is found for that type, creates and registers a Mediator.
 		virtual protected void mapView(IView view, IMediationBinding binding)

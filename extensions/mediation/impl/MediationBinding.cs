@@ -35,6 +35,10 @@ namespace strange.extensions.mediation.impl
 		{
 		}
 
+		IMediationBinding IMediationBinding.ToMediator<T> ()
+		{
+			return base.To (typeof(T)) as IMediationBinding;
+		}
 	}
 }
 
