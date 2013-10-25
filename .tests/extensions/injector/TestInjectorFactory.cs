@@ -23,7 +23,7 @@ namespace strange.unittests
 		[Test]
 		public void TestInstantiation ()
 		{
-			IInjectionBinding defaultBinding = new InjectionBinding (resolver).Key<InjectableSuperClass> ().To <InjectableDerivedClass> ();
+			IInjectionBinding defaultBinding = new InjectionBinding (resolver).Bind<InjectableSuperClass> ().To <InjectableDerivedClass> ();
 			InjectableDerivedClass testResult = factory.Get (defaultBinding) as InjectableDerivedClass;
 			Assert.IsNotNull (testResult);
 		}
@@ -31,7 +31,7 @@ namespace strange.unittests
 		[Test]
 		public void TestInstantiationFactory ()
 		{
-			IInjectionBinding defaultBinding = new InjectionBinding (resolver).Key<InjectableSuperClass> ().To <InjectableDerivedClass> ();
+			IInjectionBinding defaultBinding = new InjectionBinding (resolver).Bind<InjectableSuperClass> ().To <InjectableDerivedClass> ();
 			InjectableDerivedClass testResult = factory.Get (defaultBinding) as InjectableDerivedClass;
 			Assert.IsNotNull (testResult);
 			int defaultValue = testResult.intValue;
@@ -45,7 +45,7 @@ namespace strange.unittests
 		[Test]
 		public void TestInstantiateSingleton ()
 		{
-			IInjectionBinding defaultBinding = new InjectionBinding (resolver).Key<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToSingleton();
+			IInjectionBinding defaultBinding = new InjectionBinding (resolver).Bind<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToSingleton();
 			InjectableDerivedClass testResult = factory.Get (defaultBinding) as InjectableDerivedClass;
 			Assert.IsNotNull (testResult);
 			//Set a value
@@ -59,8 +59,8 @@ namespace strange.unittests
 		public void TestNamedInstances ()
 		{
 			//Create two named instances
-			IInjectionBinding defaultBinding = new InjectionBinding (resolver).Key<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToName (SomeEnum.ONE);
-			IInjectionBinding defaultBinding2 = new InjectionBinding (resolver).Key<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToName (SomeEnum.TWO);
+			IInjectionBinding defaultBinding = new InjectionBinding (resolver).Bind<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToName (SomeEnum.ONE);
+			IInjectionBinding defaultBinding2 = new InjectionBinding (resolver).Bind<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToName (SomeEnum.TWO);
 
 			InjectableDerivedClass testResult = factory.Get (defaultBinding) as InjectableDerivedClass;
 			int defaultValue = testResult.intValue;
@@ -80,8 +80,8 @@ namespace strange.unittests
 		public void TestNamedSingletons ()
 		{
 			//Create two named singletons
-			IInjectionBinding defaultBinding = new InjectionBinding (resolver).Key<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToName (SomeEnum.ONE).ToSingleton();
-			IInjectionBinding defaultBinding2 = new InjectionBinding (resolver).Key<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToName (SomeEnum.TWO).ToSingleton();
+			IInjectionBinding defaultBinding = new InjectionBinding (resolver).Bind<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToName (SomeEnum.ONE).ToSingleton();
+			IInjectionBinding defaultBinding2 = new InjectionBinding (resolver).Bind<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToName (SomeEnum.TWO).ToSingleton();
 
 			InjectableDerivedClass testResult = factory.Get (defaultBinding) as InjectableDerivedClass;
 			int defaultValue = testResult.intValue;
@@ -100,7 +100,7 @@ namespace strange.unittests
 		{
 			InjectableDerivedClass testvalue = new InjectableDerivedClass ();
 			testvalue.intValue = 42;
-			IInjectionBinding binding = new InjectionBinding (resolver).Key<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToValue (testvalue);
+			IInjectionBinding binding = new InjectionBinding (resolver).Bind<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToValue (testvalue);
 			InjectableDerivedClass testResult = factory.Get (binding) as InjectableDerivedClass;
 			Assert.IsNotNull (testResult);
 			Assert.That (testResult.intValue == testvalue.intValue);

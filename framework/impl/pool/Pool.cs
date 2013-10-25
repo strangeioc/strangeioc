@@ -21,7 +21,7 @@ using strange.framework.api;
 
 namespace strange.framework.impl
 {
-	public class Pool : ISemiBinding, IPool
+	public class Pool : ISemiBinding, IPool, IPoolable
 	{
 		/// The object Type of the first object added to the pool.
 		/// Pool objects must be of the same concrete type. This property enforces that requirement. 
@@ -36,7 +36,7 @@ namespace strange.framework.impl
 		public Pool () : base()
 		{
 			Size = 0;
-			constraint = BindingConstraintType.MANY;
+			constraint = BindingConstraintType.POOL;
 			uniqueValues = true;
 
 			OverflowBehavior = PoolOverflowBehavior.EXCEPTION;
@@ -165,6 +165,16 @@ namespace strange.framework.impl
 		virtual public PoolOverflowBehavior OverflowBehavior { get; set; }
 
 		virtual public PoolInflationType InflationType { get; set; }
+
+		#endregion
+
+		#region IPoolable implementation
+
+		public void Release ()
+		{
+			Clean ();
+			Size = 0;
+		}
 
 		#endregion
 

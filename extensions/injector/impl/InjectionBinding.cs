@@ -128,24 +128,14 @@ namespace strange.extensions.injector.impl
 			return this;
 		}
 
-		public IInjectionBinding Bind<T>()
+		new public IInjectionBinding Bind<T>()
 		{
-			return Key<T> ();
+			return base.Bind<T> () as IInjectionBinding;
 		}
 
-		public IInjectionBinding Bind(object key)
+		new public IInjectionBinding Bind(object key)
 		{
-			return Key (key);
-		}
-
-		new public IInjectionBinding Key<T>()
-		{
-			return base.Key<T> () as IInjectionBinding;
-		}
-
-		new public IInjectionBinding Key(object key)
-		{
-			return base.Key (key) as IInjectionBinding;
+			return base.Bind (key) as IInjectionBinding;
 		}
 
 		new public IInjectionBinding To<T>()

@@ -81,8 +81,6 @@ namespace strange.extensions.injector.api
 		/// Bind is the same as Key, but permits Binder syntax: `Bind<T>().Bind<T>()`
 		IInjectionBinding Bind(object key);
 
-		IInjectionBinding Key<T>();
-		IInjectionBinding Key(object key);
 		IInjectionBinding To<T>();
 		IInjectionBinding To(object o);
 		IInjectionBinding ToName<T> ();

@@ -17,7 +17,7 @@ namespace strange.unittests
 		{
 			confirmationValue = INIT_VALUE;
 			IEventBinding binding = new EventBinding ();
-			binding.Key (SomeEnum.ONE).To (noArgumentCallback);
+			binding.Bind (SomeEnum.ONE).To (noArgumentCallback);
 			EventCallbackType type = binding.typeForCallback (noArgumentCallback);
 			object[] value = binding.value as object[];
 			Delegate extracted =  value[0] as Delegate;
@@ -39,7 +39,7 @@ namespace strange.unittests
 		{
 			confirmationValue = INIT_VALUE;
 			IEventBinding binding = new EventBinding ();
-			binding.Key (SomeEnum.ONE).To (oneArgumentCallback);
+			binding.Bind (SomeEnum.ONE).To (oneArgumentCallback);
 			EventCallbackType type = binding.typeForCallback (oneArgumentCallback);
 			object[] value = binding.value as object[];
 			Delegate extracted =  value[0] as Delegate;

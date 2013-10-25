@@ -49,11 +49,11 @@ namespace strange.framework.api
 		/**
 		 * Tie this binding to a Type key
 		 */
-		IBinding Key<T>();
+		IBinding Bind<T>();
 		/**
 		 * Tie this binding to a value key, such as a string or class instance
 		 */
-		IBinding Key(object key);
+		IBinding Bind(object key);
 
 		/**
 		 * Set the Binding's value to a Type
@@ -99,18 +99,44 @@ namespace strange.framework.api
 		 */
 		void RemoveName (object o);
 
+		/// Employ a Pool for the Value of this Binding. Defaults to 0.
+		void ToPool (int value);
+
+		/// Employ a Pool for the Value of this Binding. Defaults to 0.
+		void ToPool ();
+
+		/// Get the binding''s key
+		object Key{ get; }
+
+		/// Get the binding's name
+		object Name{ get; }
+
+		/// Get the binding's value
+		object Value{ get; }
+
+		/// Get or set a MANY or ONE constraint on the Key
+		Enum KeyConstraint{ get; set;}
+
+		/// Get or set a MANY or ONE constraint on the Value
+		Enum ValueConstraint{ get; set;}
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		/// Get the binding''s key
 		object key{ get; }
 
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		/// Get the binding's name
 		object name{ get; }
 
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		/// Get the binding's value
 		object value{ get; }
 
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		/// Get or set a MANY or ONE constraint on the Key
 		Enum keyConstraint{ get; set;}
 
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		/// Get or set a MANY or ONE constraint on the Value
 		Enum valueConstraint{ get; set;}
 	}

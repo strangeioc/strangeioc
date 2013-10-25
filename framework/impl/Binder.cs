@@ -65,7 +65,7 @@ namespace strange.framework.impl
 		{
 			IBinding binding;
 			binding = GetRawBinding ();
-			binding.Key(key);
+			binding.Bind(key);
 			return binding;
 		}
 

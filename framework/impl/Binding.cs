@@ -28,8 +28,12 @@
  * <p>Resolver</p>
  * The resolver method (type Binder.BindingResolver) is a callback passed in to resolve
  * instantiation chains.
+ *
+ * Strange v0.7 adds Pools as an alternative form of SemiBinding. Pools can recycle groups of instances.
+ * Binding implements IPool to act as a facade on any Pool SemiBinding.
  * 
- * @see strange.framework.api.IBinding
+ * @see strange.framework.api.IBinding;
+ * @see strange.framework.api.IPool;
  * @see strange.framework.impl.Binder;
  */
 
@@ -38,68 +42,13 @@ using System;
 
 namespace strange.framework.impl
 {
-	public class Binding : IBinding
+	public class Binding : IBinding, IPool
 	{
 		public Binder.BindingResolver resolver;
 
 		protected ISemiBinding _key;
-		public object key
-		{ 
-			get
-			{
-				return _key.value;
-			}
-		}
 		protected ISemiBinding _value;
-		public object value
-		{ 
-			get
-			{
-				return _value.value;
-			}
-		}
 		protected ISemiBinding _name;
-		public object name
-		{ 
-			get
-			{
-				return (_name.value == null) ? BindingConst.NULLOID : _name.value;
-			}
-		}
-
-		public Enum keyConstraint
-		{ 
-			get
-			{
-				return _key.constraint;
-			}
-			set
-			{
-				_key.constraint = value;
-			}
-		}
-		public Enum valueConstraint
-		{ 
-			get
-			{
-				return _value.constraint;
-			}
-			set
-			{
-				_value.constraint = value;
-			}
-		}
-		public Enum nameConstraint
-		{ 
-			get
-			{
-				return _name.constraint;
-			}
-			set
-			{
-				_name.constraint = value;
-			}
-		}
 
 		public Binding(Binder.BindingResolver resolver)
 		{
@@ -118,13 +67,74 @@ namespace strange.framework.impl
 		{
 		}
 
-
-		virtual public IBinding Key<T>()
-		{
-			return Key (typeof(T));
+		#region IBinding implementation
+		public object Key
+		{ 
+			get
+			{
+				return _key.value;
+			}
 		}
 
-		virtual public IBinding Key(object o)
+		public object Value
+		{ 
+			get
+			{
+				return _value.value;
+			}
+		}
+
+		public object Name
+		{ 
+			get
+			{
+				return (_name.value == null) ? BindingConst.NULLOID : _name.value;
+			}
+		}
+
+		public Enum KeyConstraint
+		{ 
+			get
+			{
+				return _key.constraint;
+			}
+			set
+			{
+				_key.constraint = value;
+			}
+		}
+
+		public Enum ValueConstraint
+		{ 
+			get
+			{
+				return _value.constraint;
+			}
+			set
+			{
+				_value.constraint = value;
+			}
+		}
+
+		public Enum NameConstraint
+		{ 
+			get
+			{
+				return _name.constraint;
+			}
+			set
+			{
+				_name.constraint = value;
+			}
+		}
+
+
+		virtual public IBinding Bind<T>()
+		{
+			return Bind (typeof(T));
+		}
+
+		virtual public IBinding Bind(object o)
 		{
 			_key.Add (o);
 			return this;
@@ -183,5 +193,171 @@ namespace strange.framework.impl
 		{
 			_name.Remove (o);
 		}
+
+		virtual public void ToPool()
+		{
+			ToPool (0);
+		}
+
+		virtual public void ToPool(int value)
+		{
+			ValueConstraint = BindingConstraintType.POOL;
+			_value = new Pool ();
+		}
+
+		/// [Obsolete]
+		public object key
+		{ 
+			get
+			{
+				return Key;
+			}
+		}
+
+		/// [Obsolete]
+		public object value
+		{ 
+			get
+			{
+				return Value;
+			}
+		}
+
+		/// [Obsolete]
+		public object name
+		{ 
+			get
+			{
+				return Name;
+			}
+		}
+
+		/// [Obsolete]
+		public Enum keyConstraint
+		{ 
+			get
+			{
+				return KeyConstraint;
+			}
+			set
+			{
+				KeyConstraint = value;
+			}
+		}
+
+		/// [Obsolete]
+		public Enum valueConstraint
+		{ 
+			get
+			{
+				return ValueConstraint;
+			}
+			set
+			{
+				ValueConstraint = value;
+			}
+		}
+
+		/// [Obsolete]
+		public Enum nameConstraint
+		{ 
+			get
+			{
+				return NameConstraint;
+			}
+			set
+			{
+				NameConstraint = value;
+			}
+		}
+		#endregion
+
+		#region IPool implementation
+
+		private string FAILED_FACADE = "IPool method fail in Binding not marked as Pool";
+
+		object IPool.GetInstance ()
+		{
+			failIfNotPool ();
+			return (_value as IPool).GetInstance ();
+		}
+
+		void IPool.ReturnInstance (object value)
+		{
+			failIfNotPool ();
+			(_value as IPool).ReturnInstance (value);
+		}
+
+		void IPool.Clean ()
+		{
+			failIfNotPool ();
+			(_value as IPool).Clean ();
+		}
+
+		int IPool.Available
+		{
+			get
+			{
+				failIfNotPool ();
+				return (_value as IPool).Available;
+			}
+		}
+
+		int IPool.Size
+		{
+			get
+			{
+				failIfNotPool ();
+				return (_value as IPool).Size;
+			}
+			set
+			{
+				failIfNotPool ();
+				(_value as IPool).Size = value;
+			}
+		}
+
+		PoolOverflowBehavior IPool.OverflowBehavior
+		{
+			get
+			{
+				failIfNotPool ();
+				return (_value as IPool).OverflowBehavior;
+			}
+			set
+			{
+				failIfNotPool ();
+				(_value as IPool).OverflowBehavior = value;
+			}
+		}
+
+		PoolInflationType IPool.InflationType
+		{
+			get
+			{
+				failIfNotPool ();
+				return (_value as IPool).InflationType;
+			}
+			set
+			{
+				failIfNotPool ();
+				(_value as IPool).InflationType = value;
+			}
+		}
+
+		#endregion
+
+		virtual protected void failIfNotPool()
+		{
+			failIf (ValueConstraint.Equals(BindingConstraintType.POOL) == false, FAILED_FACADE, PoolExceptionType.FAILED_FACADE);
+		}
+
+		virtual protected void failIf(bool condition, string message, PoolExceptionType type)
+		{
+			if (condition)
+			{
+				throw new PoolException(message, type);
+			}
+		} 
 	}
 }

@@ -26,14 +26,14 @@ namespace strange.unittests
 		[Test]
 		public void TestKeyAsType ()
 		{
-			binding.Key<MarkerClass> ();
+			binding.Bind<MarkerClass> ();
 			Assert.That (binding.key == typeof(MarkerClass));
 		}
 
 		[Test]
 		public void TestKeyAsIntType ()
 		{
-			binding.Key<int> ();
+			binding.Bind<int> ();
 			Type typeOfInt = typeof(int);
 			Assert.That (binding.key == typeOfInt);
 		}
@@ -42,7 +42,7 @@ namespace strange.unittests
 		public void TestKeyAsObject ()
 		{
 			MarkerClass value = new MarkerClass ();
-			binding.Key (value);
+			binding.Bind (value);
 
 			Assert.That (binding.key == value);
 		}
@@ -50,7 +50,7 @@ namespace strange.unittests
 		[Test]
 		public void TestKeyToAsTypes()
 		{
-			binding.Key<InjectableSuperClass> ().To<InjectableDerivedClass> ();
+			binding.Bind<InjectableSuperClass> ().To<InjectableDerivedClass> ();
 			Assert.That (binding.key == typeof(InjectableSuperClass));
 			object[] values = binding.value as object[];
 			Assert.That (values[0] == typeof(InjectableDerivedClass));
@@ -61,7 +61,7 @@ namespace strange.unittests
 		{
 			const string TEST_KEY = "Test Key";
 			const string TEST_VALUE = "Test result value";
-			binding.Key(TEST_KEY).To(TEST_VALUE);
+			binding.Bind(TEST_KEY).To(TEST_VALUE);
 			Assert.That (TEST_KEY == binding.key as string);
 			object[] values = binding.value as object[];
 			Assert.That (TEST_VALUE == values[0] as string);
@@ -71,7 +71,7 @@ namespace strange.unittests
 		public void TestIntToValue()
 		{
 			const int TEST_VALUE = 42;
-			binding.Key<int>().To(TEST_VALUE);
+			binding.Bind<int>().To(TEST_VALUE);
 			Assert.That (typeof(int) == binding.key);
 			object[] values = binding.value as object[];
 			Assert.That (TEST_VALUE == (int)values[0]);
@@ -80,14 +80,14 @@ namespace strange.unittests
 		[Test]
 		public void TestNameAsType()
 		{
-			binding.Key<InjectableSuperClass> ().To<InjectableDerivedClass> ().ToName<MarkerClass> ();
+			binding.Bind<InjectableSuperClass> ().To<InjectableDerivedClass> ().ToName<MarkerClass> ();
 			Assert.That (binding.name == typeof(MarkerClass));
 		}
 
 		[Test]
 		public void TestNameToValue()
 		{
-			binding.Key<InjectableSuperClass> ().To<InjectableDerivedClass> ().ToName (SomeEnum.FOUR);
+			binding.Bind<InjectableSuperClass> ().To<InjectableDerivedClass> ().ToName (SomeEnum.FOUR);
 			Assert.That ((SomeEnum)binding.name == SomeEnum.FOUR);
 		}
 
@@ -98,7 +98,7 @@ namespace strange.unittests
 			ClassWithConstructorParameters test2 = new ClassWithConstructorParameters (2, "def");
 			ClassWithConstructorParameters test3 = new ClassWithConstructorParameters (3, "ghi");
 
-			binding.Key<ISimpleInterface> ().To (test1).To (test2).To (test3);
+			binding.Bind<ISimpleInterface> ().To (test1).To (test2).To (test3);
 			Assert.That (binding.key == typeof(ISimpleInterface));
 
 			object[] values = binding.value as object[];
@@ -120,7 +120,7 @@ namespace strange.unittests
 			ClassWithConstructorParameters test3 = new ClassWithConstructorParameters (3, "ghi");
 
 			binding.valueConstraint = BindingConstraintType.ONE;
-			binding.Key<ISimpleInterface> ().To (test1).To (test2).To (test3);
+			binding.Bind<ISimpleInterface> ().To (test1).To (test2).To (test3);
 			Assert.That (binding.key == typeof(ISimpleInterface));
 			Assert.That (binding.value is ClassWithConstructorParameters);
 			Assert.That ((binding.value as ClassWithConstructorParameters).intValue == 3);
