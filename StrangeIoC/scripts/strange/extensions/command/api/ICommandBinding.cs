@@ -48,8 +48,8 @@ namespace strange.extensions.command.api
 		/// Get/set the propterty set by InSequence() and InParallel()
 		bool isSequence{ get; set;}
 
-		new ICommandBinding Key<T>();
-		new ICommandBinding Key(object key);
+		new ICommandBinding Bind<T>();
+		new ICommandBinding Bind(object key);
 		new ICommandBinding To<T>();
 		new ICommandBinding To(object o);
 		new ICommandBinding ToName<T> ();

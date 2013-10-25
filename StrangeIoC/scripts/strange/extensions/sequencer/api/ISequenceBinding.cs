@@ -35,8 +35,8 @@ namespace strange.extensions.sequencer.api
 		/// Get/set the property set to `true` by `Once()`
 		new bool isOneOff{ get; set;}
 
-		new ISequenceBinding Key<T>();
-		new ISequenceBinding Key(object key);
+		new ISequenceBinding Bind<T>();
+		new ISequenceBinding Bind(object key);
 		new ISequenceBinding To<T>();
 		new ISequenceBinding To(object o);
 		new ISequenceBinding ToName<T> ();

@@ -123,7 +123,7 @@ namespace strange.framework.impl
 			}
 		}
 
-		/// DEPRECATED
+		/// [Obsolete]
 		virtual public bool uniqueValues
 		{
 			get
@@ -136,7 +136,7 @@ namespace strange.framework.impl
 			}
 		}
 
-		/// DEPRECATED
+		/// [Obsolete]
 		virtual public Enum constraint{
 			get
 			{
@@ -148,7 +148,7 @@ namespace strange.framework.impl
 			}
 		}
 
-		/// DEPRECATED
+		/// [Obsolete]
 		virtual public object value
 		{
 			get { return Value; }

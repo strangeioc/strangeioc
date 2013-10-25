@@ -54,7 +54,7 @@ namespace strange.extensions.reflector.impl
 				mapPreferredConstructor (reflected, binding, type);
 				mapPostConstructors (reflected, binding, type);
 				mapSetters (reflected, binding, type);
-				binding.Key (type).To (reflected);
+				binding.Bind (type).To (reflected);
 				retv = binding.value as IReflectedClass;
 				retv.preGenerated = false;
 			}

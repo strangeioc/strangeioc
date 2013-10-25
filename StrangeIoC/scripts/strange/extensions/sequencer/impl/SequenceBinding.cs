@@ -49,22 +49,12 @@ namespace strange.extensions.sequencer.impl
 		//Everything below this point is simply facade on Binding to ensure fluent interface
 		new public ISequenceBinding Bind<T>()
 		{
-			return Key<T> ();
+			return Bind<T> ();
 		}
 
 		new public ISequenceBinding Bind(object key)
 		{
-			return Key (key);
-		}
-
-		new public ISequenceBinding Key<T>()
-		{
-			return base.Key<T> () as ISequenceBinding;
-		}
-
-		new public ISequenceBinding Key(object key)
-		{
-			return base.Key (key) as ISequenceBinding;
+			return Bind (key);
 		}
 
 		new public ISequenceBinding To<T>()

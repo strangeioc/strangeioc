@@ -63,24 +63,16 @@ namespace strange.extensions.command.impl
 		}
 
 		//Everything below this point is simply facade on Binding to ensure fluent interface
-		public ICommandBinding Bind<T>()
+
+
+		new public ICommandBinding Bind<T>()
 		{
-			return Key<T> ();
+			return base.Bind<T> () as ICommandBinding;
 		}
 
-		public ICommandBinding Bind(object key)
+		new public ICommandBinding Bind(object key)
 		{
-			return Key (key);
-		}
-
-		new public ICommandBinding Key<T>()
-		{
-			return base.Key<T> () as ICommandBinding;
-		}
-
-		new public ICommandBinding Key(object key)
-		{
-			return base.Key (key) as ICommandBinding;
+			return base.Bind (key) as ICommandBinding;
 		}
 
 		new public ICommandBinding To<T>()

@@ -64,7 +64,7 @@ namespace strange.extensions.context.impl
 		{
 			IBinding binding;
 			binding = GetRawBinding ();
-			binding.Key(key);
+			binding.Bind(key);
 			resolver (binding);
 			return binding;
 		}

@@ -66,7 +66,7 @@ namespace strange.unittests
 				Assert.That ((binding as InjectionBinding).type == correctType);
 				a++;
 			};
-			new InjectionBinding (resolver).Key<InjectableSuperClass> ().To<InjectableDerivedClass> ().ToSingleton ();
+			new InjectionBinding (resolver).Bind<InjectableSuperClass> ().To<InjectableDerivedClass> ().ToSingleton ();
 		}
 
 		[Test]
@@ -85,7 +85,7 @@ namespace strange.unittests
 				}
 				a++;
 			};
-			new InjectionBinding (resolver).Key<InjectableSuperClass>().To<InjectableDerivedClass>().ToValue (testValue);
+			new InjectionBinding (resolver).Bind<InjectableSuperClass>().To<InjectableDerivedClass>().ToValue (testValue);
 		}
 
 		[Test]
@@ -96,7 +96,7 @@ namespace strange.unittests
 			Binder.BindingResolver resolver = delegate (IBinding binding){};
 			TestDelegate testDelegate = delegate()
 			{
-				new InjectionBinding (resolver).Key<InjectableSuperClass> ().To<InjectableDerivedClass> ().ToValue (illegalValue);
+				new InjectionBinding (resolver).Bind<InjectableSuperClass> ().To<InjectableDerivedClass> ().ToValue (illegalValue);
 			};
 			InjectionException ex = 
 				Assert.Throws<InjectionException> (testDelegate);

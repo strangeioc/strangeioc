@@ -69,9 +69,9 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			return EventCallbackType.NOT_FOUND;
 		}
 
-		new public IEventBinding Key(object key)
+		new public IEventBinding Bind(object key)
 		{
-			return base.Key (key) as IEventBinding;
+			return base.Bind (key) as IEventBinding;
 		}
 
 		public IEventBinding To(EventCallback value)

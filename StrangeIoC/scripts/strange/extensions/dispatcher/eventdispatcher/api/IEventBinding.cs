@@ -47,7 +47,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.api
 		/// Retrieve the type of the provided callback
 		EventCallbackType typeForCallback (EmptyCallback callback);
 
-		new IEventBinding Key (object key);
+		new IEventBinding Bind (object key);
 		IEventBinding To (EventCallback callback);
 		IEventBinding To (EmptyCallback callback);
 	}
