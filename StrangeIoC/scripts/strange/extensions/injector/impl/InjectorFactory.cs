@@ -22,6 +22,7 @@
 
 using System;
 using strange.extensions.injector.api;
+using strange.framework.api;
 
 namespace strange.extensions.injector.impl
 {
@@ -38,7 +39,7 @@ namespace strange.extensions.injector.impl
 			{
 				throw new InjectionException ("InjectorFactory cannot act on null binding", InjectionExceptionType.NULL_BINDING);
 			}
-			InjectionBindingType type = binding.type;
+			InjectionBindingType type = binding.Type;
 
 			switch (type)
 			{
@@ -46,6 +47,8 @@ namespace strange.extensions.injector.impl
 					return singletonOf (binding, args);
 				case InjectionBindingType.VALUE:
 					return valueOf (binding);
+				case InjectionBindingType.POOL:
+					return poolInstanceOf (binding, args);
 				default:
 					break;
 			}
@@ -96,6 +99,57 @@ namespace strange.extensions.injector.impl
 		protected object valueOf(IInjectionBinding binding)
 		{
 			return binding.value;
+		}
+
+		/// The binding manages a Pool. Look for or create an instance as required.
+		protected object poolInstanceOf(IInjectionBinding binding, object[] args)
+		{
+			IPool pool = binding as IPool;
+			//If pool has an instance to give, return it
+			object retv = pool.GetInstance ();
+			if (retv != null)
+				return retv;
+
+			//If not, can the pool expand?
+			int size = pool.Size;
+			int instanceCount = pool.InstanceCount;
+			int instancesToCreate = 0;
+
+			//New fixed-size pool. Populate.
+			if (size > 0 && instanceCount == 0)
+			{
+				instancesToCreate = size;
+			}
+			//New infinite pool. Give us our first instance.
+			else if (size == 0 && instanceCount == 0)
+			{
+				instancesToCreate = 1;
+			}
+			//Existing infinite pool. Expand it.
+			if (size == 0 && instanceCount > 0)
+			{
+				if (pool.InflationType.Equals (PoolInflationType.DOUBLE))
+				{
+					instancesToCreate = instanceCount;
+				}
+				else
+				{
+					instancesToCreate = 1;
+				}
+			}
+
+			if (instancesToCreate > 0)
+			{
+				for (int a = 0; a < instancesToCreate; a++)
+				{
+					object newInstance = createFromValue (pool.PoolType, args);
+					pool.Add (newInstance);
+				}
+				return pool.GetInstance ();
+			}
+
+			//If not, return null
+			return null;
 		}
 
 		/// Generate a new instance

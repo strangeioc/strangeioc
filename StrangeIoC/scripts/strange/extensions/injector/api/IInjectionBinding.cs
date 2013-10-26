@@ -46,6 +46,7 @@
  */
 
 using System;
+using strange.framework.api;
 
 namespace strange.extensions.injector.api
 {
@@ -69,11 +70,11 @@ namespace strange.extensions.injector.api
 		IInjectionBinding ToInject(bool value);
 
 		/// Get the parameter that specifies whether this Binding allows an instance to be injected
-		bool toInject{get;}
+		bool AllowInject{get;}
 
 		/// Get and set the InjectionBindingType
 		/// @see InjectionBindingType
-		InjectionBindingType type{get; set;}
+		InjectionBindingType Type{get; set;}
 
 		/// Bind is the same as Key, but permits Binder syntax: `Bind<T>().Bind<T>()`
 		IInjectionBinding Bind<T>();
@@ -87,11 +88,28 @@ namespace strange.extensions.injector.api
 		IInjectionBinding ToName (object o);
 		IInjectionBinding Named<T>();
 		IInjectionBinding Named(object o);
+		IInjectionBinding ToPool();
+		IInjectionBinding ToPool(int value);
 
+		object Key{ get; }
+		object Value { get; }
+		object Name{ get; }
+		Enum KeyConstraint{ get; set;}
+		Enum ValueConstraint{ get; set;}
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		/// Get and set the InjectionBindingType
+		/// @see InjectionBindingType
+		//InjectionBindingType type{get; set;}
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		object key{ get; }
-		object name{ get; }
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		object value{ get; }
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		object name{ get; }
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		Enum keyConstraint{ get; set;}
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		Enum valueConstraint{ get; set;}
 	}
 }
