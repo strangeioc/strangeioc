@@ -194,15 +194,45 @@ namespace strange.framework.impl
 			_name.Remove (o);
 		}
 
-		virtual public void ToPool()
+		virtual public IBinding ToPool()
 		{
 			ToPool (0);
+			return this;
 		}
 
-		virtual public void ToPool(int value)
+		virtual public IBinding ToPool(int value)
 		{
+			//Cull from SemiBinding if there is one
+			object existing = null;
+			if (_value != null)
+			{
+				existing = _value.Value;
+			}
+
+			Pool pool = new Pool ();
+			if (existing != null)
+			{
+				if (_value.Constraint.Equals(BindingConstraintType.MANY))
+				{
+					object[] list = _value.Value as object[];
+					if (list [0] is System.Type)
+						pool.PoolType = list [0] as System.Type;
+					else
+						pool.Add (list);
+				}
+				else if (existing is System.Type)
+				{
+					pool.PoolType = existing as System.Type;
+				}
+				else
+				{
+					pool.Add (existing);
+				}
+			}
+			pool.Size = value;
 			ValueConstraint = BindingConstraintType.POOL;
-			_value = new Pool ();
+			_value = pool;
+			return this;
 		}
 
 		/// [Obsolete]
@@ -275,6 +305,53 @@ namespace strange.framework.impl
 		#region IPool implementation
 
 		private string FAILED_FACADE = "IPool method fail in Binding not marked as Pool";
+
+		public IManagedList Add(object value)
+		{
+			failIfNotPool ();
+			return (_value as IPool).Add(value);
+		}
+
+		public IManagedList Add(object[] value)
+		{
+			failIfNotPool ();
+			return (_value as IPool).Add(value);
+		}
+
+		public IManagedList Remove(object value)
+		{
+			failIfNotPool ();
+			return (_value as IPool).Remove(value);
+		}
+
+		public IManagedList Remove(object[] value)
+		{
+			failIfNotPool ();
+			return (_value as IPool).Remove(value);
+		}
+
+		Type IPool.PoolType
+		{
+			get
+			{
+				failIfNotPool ();
+				return (_value as IPool).PoolType;
+			}
+			set
+			{
+				failIfNotPool ();
+				(_value as IPool).PoolType = value;
+			}
+		}
+
+		public int InstanceCount
+		{
+			get
+			{
+				failIfNotPool ();
+				return (_value as IPool).InstanceCount;
+			}
+		}
 
 		object IPool.GetInstance ()
 		{

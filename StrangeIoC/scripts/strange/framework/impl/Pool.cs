@@ -23,15 +23,14 @@ namespace strange.framework.impl
 {
 	public class Pool : ISemiBinding, IPool, IPoolable
 	{
-		/// The object Type of the first object added to the pool.
-		/// Pool objects must be of the same concrete type. This property enforces that requirement. 
-		protected Type poolType;
 
 		/// Stack of instances still in the Pool.
 		protected Stack instancesAvailable = new Stack ();
 
 		/// A HashSet of the objects checked out of the Pool.
 		protected HashSet<object> instancesInUse = new HashSet<object> ();
+
+		protected int _instanceCount;
 
 		public Pool () : base()
 		{
@@ -47,14 +46,15 @@ namespace strange.framework.impl
 
 		virtual public IManagedList Add (object value)
 		{
-			if (poolType == null)
+			if (PoolType == null)
 			{
-				poolType = value.GetType ();
+				PoolType = value.GetType ();
 			}
 			else
 			{
-				failIf(value.GetType () != poolType, "Pool Type mismatch. Pools must consist of a common concrete type.\n\t\tPool type: " + poolType.ToString() + "\n\t\tMismatch type: " + value.GetType ().ToString(), PoolExceptionType.TYPE_MISMATCH);
+				failIf(value.GetType () != PoolType, "Pool Type mismatch. Pools must consist of a common concrete type.\n\t\tPool type: " + PoolType.ToString() + "\n\t\tMismatch type: " + value.GetType ().ToString(), PoolExceptionType.TYPE_MISMATCH);
 			}
+			_instanceCount++;
 			instancesAvailable.Push (value);
 			return this;
 		}
@@ -69,6 +69,7 @@ namespace strange.framework.impl
 
 		virtual public IManagedList Remove (object value)
 		{
+			_instanceCount--;
 			removeInstance (value);
 			return this;
 		}
@@ -129,6 +130,18 @@ namespace strange.framework.impl
 
 		#region IPool implementation
 
+		/// The object Type of the first object added to the pool.
+		/// Pool objects must be of the same concrete type. This property enforces that requirement. 
+		public Type PoolType { get; set; }
+
+		public int InstanceCount
+		{
+			get
+			{
+				return _instanceCount;
+			}
+		}
+
 		virtual public object GetInstance ()
 		{
 			// Is an instance available?
@@ -139,13 +152,16 @@ namespace strange.framework.impl
 				return retv;
 			}
 
-			failIf(OverflowBehavior == PoolOverflowBehavior.EXCEPTION,
-			       "A pool has overflowed its limit.\n\t\tPool type: " + poolType,
-			       PoolExceptionType.OVERFLOW);
-
-			if (OverflowBehavior == PoolOverflowBehavior.WARNING)
+			if (Size > 0)
 			{
-				Console.WriteLine ("WARNING: A pool has overflowed its limit.\n\t\tPool type: " + poolType, PoolExceptionType.OVERFLOW);
+				failIf (OverflowBehavior == PoolOverflowBehavior.EXCEPTION,
+					"A pool has overflowed its limit.\n\t\tPool type: " + PoolType,
+					PoolExceptionType.OVERFLOW);
+
+				if (OverflowBehavior == PoolOverflowBehavior.WARNING)
+				{
+					Console.WriteLine ("WARNING: A pool has overflowed its limit.\n\t\tPool type: " + PoolType, PoolExceptionType.OVERFLOW);
+				}
 			}
 
 			return null;
@@ -168,6 +184,7 @@ namespace strange.framework.impl
 		{
 			instancesAvailable.Clear ();
 			instancesInUse = new HashSet<object> ();
+			_instanceCount = 0;
 		}
 
 		virtual public int Available
@@ -205,7 +222,7 @@ namespace strange.framework.impl
 		/// <param name="value">An instance to remove permanently from the Pool.</param>
 		virtual protected void removeInstance(object value)
 		{
-			failIf (value.GetType() != poolType, "Attempt to remove a instance from a pool that is of the wrong Type:\n\t\tPool type: " + poolType.ToString() + "\n\t\tInstance type: " + value.GetType().ToString(), PoolExceptionType.TYPE_MISMATCH);
+			failIf (value.GetType() != PoolType, "Attempt to remove a instance from a pool that is of the wrong Type:\n\t\tPool type: " + PoolType.ToString() + "\n\t\tInstance type: " + value.GetType().ToString(), PoolExceptionType.TYPE_MISMATCH);
 			if (instancesInUse.Contains(value))
 			{
 				instancesInUse.Remove (value);
