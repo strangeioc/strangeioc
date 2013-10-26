@@ -40,9 +40,9 @@ namespace strange.framework.impl
 			uniqueValues = true;
 		}
 
-		#region ISemiBinding implementation
+		#region IManagedList implementation
 
-		public ISemiBinding Add(object o)
+		public IManagedList Add(object o)
 		{
 			if (objectValue == null || (BindingConstraintType)constraint == BindingConstraintType.ONE)
 			{
@@ -73,7 +73,15 @@ namespace strange.framework.impl
 			return this;
 		}
 
-		public ISemiBinding Remove(object o)
+		public IManagedList Add(object[] list)
+		{
+			foreach (object item in list)
+				Add (item);
+
+			return this;
+		}
+
+		public IManagedList Remove(object o)
 		{
 			if (o.Equals(objectValue) || objectValue == null)
 			{
@@ -93,6 +101,33 @@ namespace strange.framework.impl
 			return this;
 		}
 
+		public IManagedList Remove(object[] list)
+		{
+			foreach (object item in list)
+				Remove (item);
+
+			return this;
+		}
+		virtual public object Value
+		{ 
+			get
+			{
+				if (constraint.Equals(BindingConstraintType.ONE))
+				{
+					return (objectValue == null) ? null : objectValue [0];
+				}
+				return objectValue;
+			}
+		}
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		virtual public object value
+		{
+			get { return Value; }
+		}
+
+		#endregion
+
 		/// Remove the value at index splicePos
 		protected void spliceValueAt(int splicePos)
 		{
@@ -111,19 +146,10 @@ namespace strange.framework.impl
 			objectValue = (newList.Length == 0) ? null : newList;
 		}
 
-		virtual public object Value
-		{ 
-			get
-			{
-				if (constraint.Equals(BindingConstraintType.ONE))
-				{
-					return (objectValue == null) ? null : objectValue [0];
-				}
-				return objectValue;
-			}
-		}
 
-		/// [Obsolete]
+		#region ISemiBinding implementation
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		virtual public bool uniqueValues
 		{
 			get
@@ -136,7 +162,7 @@ namespace strange.framework.impl
 			}
 		}
 
-		/// [Obsolete]
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		virtual public Enum constraint{
 			get
 			{
@@ -146,12 +172,6 @@ namespace strange.framework.impl
 			{
 				Constraint = value;
 			}
-		}
-
-		/// [Obsolete]
-		virtual public object value
-		{
-			get { return Value; }
 		}
 		#endregion
 

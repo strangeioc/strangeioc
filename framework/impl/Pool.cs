@@ -43,9 +43,9 @@ namespace strange.framework.impl
 			InflationType = PoolInflationType.INCREMENT;
 		}
 
-		#region ISemiBinding implementation
+		#region IManagedList implementation
 
-		virtual public ISemiBinding Add (object value)
+		virtual public IManagedList Add (object value)
 		{
 			if (poolType == null)
 			{
@@ -59,15 +59,28 @@ namespace strange.framework.impl
 			return this;
 		}
 
-		virtual public ISemiBinding Remove (object value)
+		virtual public IManagedList Add (object[] list)
+		{
+			foreach (object item in list)
+				Add (item);
+
+			return this;
+		}
+
+		virtual public IManagedList Remove (object value)
 		{
 			removeInstance (value);
 			return this;
 		}
 
+		virtual public IManagedList Remove (object[] list)
+		{
+			foreach (object item in list)
+				Remove (item);
 
-		virtual public bool UniqueValues{get;set;}
-		virtual public Enum Constraint { get; set; }
+			return this;
+		}
+
 		virtual public object Value 
 		{
 			get 
@@ -76,7 +89,18 @@ namespace strange.framework.impl
 			}
 		}
 
-		/// DEPRECATED
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		virtual public object value
+		{
+			get { return Value; }
+		}
+		#endregion
+
+		#region ISemiBinding region
+		virtual public bool UniqueValues{get;set;}
+		virtual public Enum Constraint { get; set; }
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		virtual public bool uniqueValues
 		{
 			get
@@ -89,7 +113,7 @@ namespace strange.framework.impl
 			}
 		}
 
-		/// DEPRECATED
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		virtual public Enum constraint{
 			get
 			{
@@ -99,12 +123,6 @@ namespace strange.framework.impl
 			{
 				Constraint = value;
 			}
-		}
-
-		/// DEPRECATED
-		virtual public object value
-		{
-			get { return Value; }
 		}
 
 		#endregion
