@@ -1,0 +1,46 @@
+/*
+ * Copyright 2013 ThirdMotion, Inc.
+ *
+ *	Licensed under the Apache License, Version 2.0 (the "License");
+ *	you may not use this file except in compliance with the License.
+ *	You may obtain a copy of the License at
+ *
+ *		http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *		Unless required by applicable law or agreed to in writing, software
+ *		distributed under the License is distributed on an "AS IS" BASIS,
+ *		WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *		See the License for the specific language governing permissions and
+ *		limitations under the License.
+ */
+
+using System;
+
+namespace strange.framework.api
+{
+	public interface IManagedList
+	{
+		/// Add a value to this List. 
+		IManagedList Add(object value);
+
+		/// Add a set of values to this List. 
+		IManagedList Add(object[] list);
+
+		/// Remove a value from this List. 
+		IManagedList Remove(object value);
+
+		/// Remove a set of values from this List. 
+		IManagedList Remove(object[] list);
+
+		/// Retrieve the value of this List.
+		/// If the constraint is MANY, the value will be an Array.
+		/// If the constraint is POOL, this becomes a synonym for GetInstance().
+		object Value{ get; }
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		/// Retrieve the value of this List. If the constraint is MANY, the value will be an Array.
+		/// If the constraint is POOL, this becomes a synonym for GetInstance().
+		object value{ get; }
+	}
+}
+
