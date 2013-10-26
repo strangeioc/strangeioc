@@ -19,8 +19,12 @@ using strange.framework.api;
 
 namespace strange.framework.api
 {
-	public interface IPool
+	public interface IPool : IManagedList
 	{
+		/// The object Type of the first object added to the pool.
+		/// Pool objects must be of the same concrete type. This property enforces that requirement. 
+		Type PoolType { get; set; }
+
 		/// <summary>
 		/// Gets an instance from the pool if one is available.
 		/// </summary>
@@ -49,6 +53,11 @@ namespace strange.framework.api
 		/// </summary>
 		/// <value>The pool size. '0' is a special value indicating infinite size. Infinite pools expand as necessary to accomodate requirement.</value>
 		int Size { get; set; }
+
+		/// <summary>
+		/// Returns the total number of instances currently managed by this pool.
+		/// </summary>
+		int InstanceCount { get; }
 
 		/// <summary>
 		/// Gets or sets the overflow behavior of this pool.
