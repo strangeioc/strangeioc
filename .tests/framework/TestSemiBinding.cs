@@ -98,6 +98,25 @@ namespace strange.unittests
 		}
 
 		[Test]
+		public void TestAddList()
+		{
+			semibinding.constraint = BindingConstraintType.MANY;
+
+			ClassWithConstructorParameters o = new ClassWithConstructorParameters (42, "abc");
+			ClassWithConstructorParameters o1 = new ClassWithConstructorParameters (43, "def");
+			ClassWithConstructorParameters o2 = new ClassWithConstructorParameters (44, "ghi");
+
+			ClassWithConstructorParameters[] list = new ClassWithConstructorParameters[3]{o, o1, o2};
+			semibinding.Add (list);
+
+			object[] values = semibinding.value as object[];
+			Assert.AreEqual (3, values.Length);
+			ClassWithConstructorParameters value = values [2] as ClassWithConstructorParameters;
+			Assert.AreEqual (o2, value);
+			Assert.AreEqual (44, value.intValue);
+		}
+
+		[Test]
 		public void TestRemoveFromMultiSemibinding ()
 		{
 			semibinding.constraint = BindingConstraintType.MANY;
@@ -122,6 +141,33 @@ namespace strange.unittests
 			ClassWithConstructorParameters afterValue = after [1] as ClassWithConstructorParameters;
 			Assert.AreEqual (o2, afterValue);
 			Assert.AreEqual (44, afterValue.intValue);
+		}
+
+		[Test]
+		public void TestRemoveList()
+		{
+			semibinding.constraint = BindingConstraintType.MANY;
+
+			ClassWithConstructorParameters o = new ClassWithConstructorParameters (42, "abc");
+			ClassWithConstructorParameters o1 = new ClassWithConstructorParameters (43, "def");
+			ClassWithConstructorParameters o2 = new ClassWithConstructorParameters (44, "ghi");
+			ClassWithConstructorParameters[] list = new ClassWithConstructorParameters[3]{o, o1, o2};
+			semibinding.Add (list);
+
+			object[] before = semibinding.value as object[];
+			Assert.AreEqual (3, before.Length);
+			ClassWithConstructorParameters beforeValue = before [2] as ClassWithConstructorParameters;
+			Assert.AreEqual (o2, beforeValue);
+			Assert.AreEqual (44, beforeValue.intValue);
+
+			ClassWithConstructorParameters[] removalList = new ClassWithConstructorParameters[2]{o, o2};
+			semibinding.Remove (removalList);
+
+			object[] after = semibinding.value as object[];
+			Assert.AreEqual (1, after.Length);
+			ClassWithConstructorParameters afterValue = after [0] as ClassWithConstructorParameters;
+			Assert.AreEqual (o1, afterValue);
+			Assert.AreEqual (43, afterValue.intValue);
 		}
 	}
 }

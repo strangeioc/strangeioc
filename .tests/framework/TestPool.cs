@@ -49,6 +49,30 @@ namespace strange.unittests
 		}
 
 		[Test]
+		public void TestAdd()
+		{
+			pool.Size = 4;
+			for (int a = 0; a < pool.Size; a++)
+			{
+				pool.Add (new ClassToBeInjected ());
+				Assert.AreEqual (a + 1, pool.Available);
+			}
+		}
+
+		[Test]
+		public void TestAddList()
+		{
+			pool.Size = 4;
+			ClassToBeInjected[] list = new ClassToBeInjected[pool.Size];
+			for (int a = 0; a < pool.Size; a++)
+			{
+				list[a] = new ClassToBeInjected ();
+			}
+			pool.Add (list);
+			Assert.AreEqual (pool.Size, pool.Available);
+		}
+
+		[Test]
 		public void TestGetInstance()
 		{
 			pool.Size = 4;
@@ -184,6 +208,42 @@ namespace strange.unittests
 			}
 
 			Assert.AreEqual (0, pool.Available);
+		}
+
+		[Test]
+		public void TestRemoveList1()
+		{
+			pool.Size = 4;
+			for (int a = 0; a < pool.Size; a++)
+			{
+				pool.Add (new ClassToBeInjected ());
+			}
+
+			ClassToBeInjected[] removalList = new ClassToBeInjected[3];
+			for (int a = 0; a < pool.Size - 1; a++)
+			{
+				removalList [a] = new ClassToBeInjected ();
+			}
+			pool.Remove (removalList);
+			Assert.AreEqual (1, pool.Available);
+		}
+
+		[Test]
+		public void TestRemoveList2()
+		{
+			pool.Size = 4;
+			for (int a = 0; a < pool.Size; a++)
+			{
+				pool.Add (new ClassToBeInjected ());
+			}
+
+			ClassToBeInjected[] removalList = new ClassToBeInjected[3];
+			for (int a = 0; a < pool.Size - 1; a++)
+			{
+				removalList [a] = pool.GetInstance () as ClassToBeInjected;
+			}
+			pool.Remove (removalList);
+			Assert.AreEqual (1, pool.Available);
 		}
 
 		[Test]
