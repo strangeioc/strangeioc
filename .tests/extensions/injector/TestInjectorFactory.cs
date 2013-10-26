@@ -158,6 +158,33 @@ namespace strange.unittests
 			InjectionException ex2 = Assert.Throws<InjectionException>(testDelegate2);
 			Assert.That (ex2.type == InjectionExceptionType.NOT_INSTANTIABLE);
 		}
+
+		[Test]
+		public void TestGetFromPool()
+		{
+			IInjectionBinding poolBinding = new InjectionBinding (resolver).Bind<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToPool();
+			IPool pool = poolBinding as IPool;
+			pool.InflationType = PoolInflationType.DOUBLE;
+
+
+			InjectableDerivedClass testResult = factory.Get (poolBinding) as InjectableDerivedClass;
+			Assert.IsNotNull (testResult);
+			int defaultValue = testResult.intValue;
+			//Set a value
+			testResult.intValue = 42;
+			//Now get an instance again and ensure it's a different instance
+			InjectableDerivedClass testResult2 = factory.Get (poolBinding) as InjectableDerivedClass;
+			Assert.AreEqual (defaultValue, testResult2.intValue);
+
+			//And a third
+			InjectableDerivedClass testResult3 = factory.Get (poolBinding) as InjectableDerivedClass;
+			Assert.AreEqual (defaultValue, testResult3.intValue);
+
+
+			Assert.AreEqual (1, pool.Available);
+			Assert.AreEqual (0, pool.Size);
+			Assert.AreEqual (4, pool.InstanceCount);
+		}
 	}
 }
 

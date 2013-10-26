@@ -42,7 +42,7 @@ namespace strange.extensions.injector.impl
 			valueConstraint = BindingConstraintType.ONE;
 		}
 
-		public InjectionBindingType type
+		public InjectionBindingType Type
 		{
 			get
 			{
@@ -54,12 +54,18 @@ namespace strange.extensions.injector.impl
 			}
 		}
 		
-		public bool toInject
+		public bool AllowInject
 		{
 			get
 			{
 				return _toInject;
 			}
+		}
+
+		public IInjectionBinding ToInject(bool value)
+		{
+			_toInject = value;
+			return this;
 		}
 
 		public bool isCrossContext
@@ -122,12 +128,6 @@ namespace strange.extensions.injector.impl
 			return this;
 		}
 
-		public IInjectionBinding ToInject(bool value)
-		{
-			_toInject = value;
-			return this;
-		}
-
 		new public IInjectionBinding Bind<T>()
 		{
 			return base.Bind<T> () as IInjectionBinding;
@@ -166,6 +166,30 @@ namespace strange.extensions.injector.impl
 		new public IInjectionBinding Named(object o)
 		{
 			return base.Named (o) as IInjectionBinding;
+		}
+
+		new public IInjectionBinding ToPool(int value)
+		{
+			Type = InjectionBindingType.POOL;
+			return base.ToPool (value) as IInjectionBinding;
+		}
+
+		new public IInjectionBinding ToPool()
+		{
+			return ToPool (0);
+		}
+
+		/// [Obsolete]
+		public InjectionBindingType type
+		{
+			get
+			{
+				return Type;
+			}
+			set
+			{
+				Type = value;
+			}
 		}
 	}
 }
