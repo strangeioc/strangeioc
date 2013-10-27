@@ -214,7 +214,7 @@ namespace strange.extensions.context.impl
 		protected override void addCoreComponents()
 		{
 			base.addCoreComponents();
-			injectionBinder.Bind<IInjectionBinder>().ToValue(injectionBinder);
+			injectionBinder.Bind<IInstanceProvider>().Bind<IInjectionBinder>().ToValue(injectionBinder);
 			injectionBinder.Bind<IContext>().ToValue(this).ToName(ContextKeys.CONTEXT);
 			injectionBinder.Bind<ICommandBinder>().To<EventCommandBinder>().ToSingleton();
 			//This binding is for local dispatchers
