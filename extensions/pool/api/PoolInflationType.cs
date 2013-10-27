@@ -16,7 +16,7 @@
 
 using System;
 
-namespace strange.framework.api
+namespace strange.extensions.pool.api
 {
 	public enum PoolInflationType
 	{

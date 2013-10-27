@@ -18,11 +18,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using strange.framework.api;
+using strange.extensions.pool.api;
 
-namespace strange.framework.impl
+namespace strange.extensions.pool.impl
 {
-	public class Pool : ISemiBinding, IPool, IPoolable
+	public class Pool<T> : IPool, IPoolable
 	{
+
+		[Inject]
+		public IInstanceProvider InstanceProvider { get; set; }
 
 		/// Stack of instances still in the Pool.
 		protected Stack instancesAvailable = new Stack ();
@@ -34,26 +38,21 @@ namespace strange.framework.impl
 
 		public Pool () : base()
 		{
+			PoolType = typeof (T);
+
 			Size = 0;
 			constraint = BindingConstraintType.POOL;
 			uniqueValues = true;
 
 			OverflowBehavior = PoolOverflowBehavior.EXCEPTION;
-			InflationType = PoolInflationType.INCREMENT;
+			InflationType = PoolInflationType.DOUBLE;
 		}
 
 		#region IManagedList implementation
 
 		virtual public IManagedList Add (object value)
 		{
-			if (PoolType == null)
-			{
-				PoolType = value.GetType ();
-			}
-			else
-			{
-				failIf(value.GetType () != PoolType, "Pool Type mismatch. Pools must consist of a common concrete type.\n\t\tPool type: " + PoolType.ToString() + "\n\t\tMismatch type: " + value.GetType ().ToString(), PoolExceptionType.TYPE_MISMATCH);
-			}
+			failIf(value.GetType () != PoolType, "Pool Type mismatch. Pools must consist of a common concrete type.\n\t\tPool type: " + PoolType.ToString() + "\n\t\tMismatch type: " + value.GetType ().ToString(), PoolExceptionType.TYPE_MISMATCH);
 			_instanceCount++;
 			instancesAvailable.Push (value);
 			return this;
@@ -132,7 +131,7 @@ namespace strange.framework.impl
 
 		/// The object Type of the first object added to the pool.
 		/// Pool objects must be of the same concrete type. This property enforces that requirement. 
-		public Type PoolType { get; set; }
+		public System.Type PoolType { get; set; }
 
 		public int InstanceCount
 		{
@@ -152,18 +151,56 @@ namespace strange.framework.impl
 				return retv;
 			}
 
+			int instancesToCreate = 0;
+
+			//New fixed-size pool. Populate.
 			if (Size > 0)
 			{
-				failIf (OverflowBehavior == PoolOverflowBehavior.EXCEPTION,
-					"A pool has overflowed its limit.\n\t\tPool type: " + PoolType,
-					PoolExceptionType.OVERFLOW);
-
-				if (OverflowBehavior == PoolOverflowBehavior.WARNING)
+				if (InstanceCount == 0)
 				{
-					Console.WriteLine ("WARNING: A pool has overflowed its limit.\n\t\tPool type: " + PoolType, PoolExceptionType.OVERFLOW);
+					//New pool. Add instances.
+					instancesToCreate = Size;
+				}
+				else
+				{
+					//Illegal overflow. Report and return null
+					failIf (OverflowBehavior == PoolOverflowBehavior.EXCEPTION,
+						"A pool has overflowed its limit.\n\t\tPool type: " + PoolType,
+						PoolExceptionType.OVERFLOW);
+
+					if (OverflowBehavior == PoolOverflowBehavior.WARNING)
+					{
+						Console.WriteLine ("WARNING: A pool has overflowed its limit.\n\t\tPool type: " + PoolType, PoolExceptionType.OVERFLOW);
+					}
+					return null;
+				}
+			}
+			else
+			{
+				//Zero-sized pools will expand.
+				if (InstanceCount == 0 || InflationType == PoolInflationType.INCREMENT)
+				{
+					instancesToCreate = 1;
+				}
+				else
+				{
+					instancesToCreate = InstanceCount;
 				}
 			}
 
+			if (instancesToCreate > 0)
+			{
+				failIf (InstanceProvider == null, "A Pool of type: " + PoolType + " has no instance provider.", PoolExceptionType.NO_INSTANCE_PROVIDER);
+
+				for (int a = 0; a < instancesToCreate; a++)
+				{
+					object newInstance = InstanceProvider.GetInstance (PoolType);
+					Add (newInstance);
+				}
+				return GetInstance ();
+			}
+
+			//If not, return null
 			return null;
 		}
 

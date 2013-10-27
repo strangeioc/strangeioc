@@ -42,7 +42,7 @@ using System;
 
 namespace strange.framework.impl
 {
-	public class Binding : IBinding, IPool
+	public class Binding : IBinding
 	{
 		public Binder.BindingResolver resolver;
 
@@ -194,47 +194,6 @@ namespace strange.framework.impl
 			_name.Remove (o);
 		}
 
-		virtual public IBinding ToPool()
-		{
-			ToPool (0);
-			return this;
-		}
-
-		virtual public IBinding ToPool(int value)
-		{
-			//Cull from SemiBinding if there is one
-			object existing = null;
-			if (_value != null)
-			{
-				existing = _value.Value;
-			}
-
-			Pool pool = new Pool ();
-			if (existing != null)
-			{
-				if (_value.Constraint.Equals(BindingConstraintType.MANY))
-				{
-					object[] list = _value.Value as object[];
-					if (list [0] is System.Type)
-						pool.PoolType = list [0] as System.Type;
-					else
-						pool.Add (list);
-				}
-				else if (existing is System.Type)
-				{
-					pool.PoolType = existing as System.Type;
-				}
-				else
-				{
-					pool.Add (existing);
-				}
-			}
-			pool.Size = value;
-			ValueConstraint = BindingConstraintType.POOL;
-			_value = pool;
-			return this;
-		}
-
 		/// [Obsolete]
 		public object key
 		{ 
@@ -301,140 +260,5 @@ namespace strange.framework.impl
 			}
 		}
 		#endregion
-
-		#region IPool implementation
-
-		private string FAILED_FACADE = "IPool method fail in Binding not marked as Pool";
-
-		public IManagedList Add(object value)
-		{
-			failIfNotPool ();
-			return (_value as IPool).Add(value);
-		}
-
-		public IManagedList Add(object[] value)
-		{
-			failIfNotPool ();
-			return (_value as IPool).Add(value);
-		}
-
-		public IManagedList Remove(object value)
-		{
-			failIfNotPool ();
-			return (_value as IPool).Remove(value);
-		}
-
-		public IManagedList Remove(object[] value)
-		{
-			failIfNotPool ();
-			return (_value as IPool).Remove(value);
-		}
-
-		Type IPool.PoolType
-		{
-			get
-			{
-				failIfNotPool ();
-				return (_value as IPool).PoolType;
-			}
-			set
-			{
-				failIfNotPool ();
-				(_value as IPool).PoolType = value;
-			}
-		}
-
-		public int InstanceCount
-		{
-			get
-			{
-				failIfNotPool ();
-				return (_value as IPool).InstanceCount;
-			}
-		}
-
-		object IPool.GetInstance ()
-		{
-			failIfNotPool ();
-			return (_value as IPool).GetInstance ();
-		}
-
-		void IPool.ReturnInstance (object value)
-		{
-			failIfNotPool ();
-			(_value as IPool).ReturnInstance (value);
-		}
-
-		void IPool.Clean ()
-		{
-			failIfNotPool ();
-			(_value as IPool).Clean ();
-		}
-
-		int IPool.Available
-		{
-			get
-			{
-				failIfNotPool ();
-				return (_value as IPool).Available;
-			}
-		}
-
-		int IPool.Size
-		{
-			get
-			{
-				failIfNotPool ();
-				return (_value as IPool).Size;
-			}
-			set
-			{
-				failIfNotPool ();
-				(_value as IPool).Size = value;
-			}
-		}
-
-		PoolOverflowBehavior IPool.OverflowBehavior
-		{
-			get
-			{
-				failIfNotPool ();
-				return (_value as IPool).OverflowBehavior;
-			}
-			set
-			{
-				failIfNotPool ();
-				(_value as IPool).OverflowBehavior = value;
-			}
-		}
-
-		PoolInflationType IPool.InflationType
-		{
-			get
-			{
-				failIfNotPool ();
-				return (_value as IPool).InflationType;
-			}
-			set
-			{
-				failIfNotPool ();
-				(_value as IPool).InflationType = value;
-			}
-		}
-
-		#endregion
-
-		virtual protected void failIfNotPool()
-		{
-			failIf (ValueConstraint.Equals(BindingConstraintType.POOL) == false, FAILED_FACADE, PoolExceptionType.FAILED_FACADE);
-		}
-
-		virtual protected void failIf(bool condition, string message, PoolExceptionType type)
-		{
-			if (condition)
-			{
-				throw new PoolException(message, type);
-			}
-		} 
 	}
 }
