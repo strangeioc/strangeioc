@@ -17,7 +17,7 @@
 using System;
 using strange.framework.api;
 
-namespace strange.framework.api
+namespace strange.extensions.pool.api
 {
 	public interface IPool : IManagedList
 	{
@@ -68,8 +68,13 @@ namespace strange.framework.api
 		/// <summary>
 		/// Gets or sets the type of inflation for infinite-sized pools.
 		/// </summary>
+		/// By default, a pool doubles its InstanceCount.
 		/// <value>A PoolInflationType value.</value>
 		PoolInflationType InflationType{ get; set; }
+	}
+
+	public interface IPool<T> : IPool
+	{
 	}
 }
 

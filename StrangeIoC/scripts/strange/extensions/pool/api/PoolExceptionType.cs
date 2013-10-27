@@ -14,25 +14,21 @@
  *		limitations under the License.
  */
 
-
 using System;
-using strange.framework.api;
 
-namespace strange.framework.impl
+namespace strange.extensions.pool.api
 {
-	public class PoolException : Exception
+	public enum PoolExceptionType
 	{
-		public PoolExceptionType type{ get; set;}
 
-		public PoolException() : base()
-		{
-		}
+		/// POOL HAS OVERFLOWED ITS LIMIT
+		OVERFLOW,
 
-		/// Constructs a PoolException with a message and PoolExceptionType
-		public PoolException(string message, PoolExceptionType exceptionType) : base(message)
-		{
-			type = exceptionType;
-		}
+		/// ATTEMPT TO ADD AN INSTANCE OF DIFFERENT TYPE TO A POOL
+		TYPE_MISMATCH,
+
+		/// A POOL HAS NO INSTANCE PROVIDER
+		NO_INSTANCE_PROVIDER,
 	}
 }
 

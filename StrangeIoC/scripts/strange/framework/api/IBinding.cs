@@ -99,16 +99,6 @@ namespace strange.framework.api
 		 */
 		void RemoveName (object o);
 
-		/// Employ a Pool for the Value of this Binding.
-		/// Defaults to 0, which will expand as necessary.
-		/// Pick a value >0 to create a fixed-size pool.
-		IBinding ToPool (int value);
-
-		/// Employ a Pool for the Value of this Binding.
-		/// Defaults to 0, which will expand as necessary.
-		/// Pick a value >0 to create a fixed-size pool.
-		IBinding ToPool ();
-
 		/// Get the binding''s key
 		object Key{ get; }
 
