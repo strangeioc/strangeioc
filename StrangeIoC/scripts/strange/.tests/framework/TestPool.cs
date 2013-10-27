@@ -1,21 +1,22 @@
 using System;
 using NUnit.Framework;
-using strange.framework.api;
-using strange.framework.impl;
+using strange.extensions.pool.api;
+using strange.extensions.pool.impl;
 using System.Collections;
+using strange.framework.api;
 
 namespace strange.unittests
 {
 	[TestFixture()]
 	public class TestPool
 	{
-		Pool pool;
+		Pool<ClassToBeInjected> pool;
 
 
 		[SetUp]
 		public void Setup()
 		{
-			pool = new Pool ();
+			pool = new Pool<ClassToBeInjected> ();
 		}
 
 		[TearDown]
@@ -150,7 +151,7 @@ namespace strange.unittests
 				pool.GetInstance();
 			};
 			PoolException ex = Assert.Throws<PoolException> (testDelegate);
-			Assert.That (ex.type == PoolExceptionType.OVERFLOW);
+			Assert.AreEqual (PoolExceptionType.OVERFLOW, ex.type);
 		}
 
 		[Test]
@@ -188,7 +189,7 @@ namespace strange.unittests
 				pool.Add(new InjectableDerivedClass());
 			};
 			PoolException ex = Assert.Throws<PoolException> (testDelegate);
-			Assert.That (ex.type == PoolExceptionType.TYPE_MISMATCH);
+			Assert.AreEqual (PoolExceptionType.TYPE_MISMATCH, ex.type);
 		}
 
 		[Test]
@@ -256,19 +257,85 @@ namespace strange.unittests
 				pool.Remove (new InjectableDerivedClass ());
 			};
 			PoolException ex = Assert.Throws<PoolException> (testDelegate);
-			Assert.That (ex.type == PoolExceptionType.TYPE_MISMATCH);
+			Assert.AreEqual (PoolExceptionType.TYPE_MISMATCH, ex.type);
 		}
 
 		[Test]
 		public void TestReleaseOfPoolable()
 		{
-			pool.Size = 4;
-			pool.Add (new PooledInstance ());
-			PooledInstance instance = pool.GetInstance () as PooledInstance;
+			Pool<PooledInstance> anotherPool = new Pool<PooledInstance>();
+
+			anotherPool.Size = 4;
+			anotherPool.Add (new PooledInstance ());
+			PooledInstance instance = anotherPool.GetInstance () as PooledInstance;
 			instance.someValue = 42;
 			Assert.AreEqual (42, instance.someValue);
-			pool.ReturnInstance (instance);
+			anotherPool.ReturnInstance (instance);
 			Assert.AreEqual (0, instance.someValue);
+		}
+
+		//Double is default
+		[Test]
+		public void TestAutoInflationDouble()
+		{
+			pool.InstanceProvider = new TestInstanceProvider ();
+
+			ClassToBeInjected instance1 = pool.GetInstance () as ClassToBeInjected;
+			Assert.IsNotNull (instance1);
+			Assert.AreEqual (1, pool.InstanceCount);	//First call creates one instance
+			Assert.AreEqual (0, pool.Available);		//Nothing available
+
+			ClassToBeInjected instance2 = pool.GetInstance () as ClassToBeInjected;
+			Assert.IsNotNull (instance2);
+			Assert.AreNotSame (instance1, instance2);
+			Assert.AreEqual (2, pool.InstanceCount);	//Second call doubles. We have 2
+			Assert.AreEqual (0, pool.Available);		//Nothing available
+
+			ClassToBeInjected instance3 = pool.GetInstance () as ClassToBeInjected;
+			Assert.IsNotNull (instance3);
+			Assert.AreEqual (4, pool.InstanceCount);	//Third call doubles. We have 4
+			Assert.AreEqual (1, pool.Available);		//One allocated. One available.
+
+			ClassToBeInjected instance4 = pool.GetInstance () as ClassToBeInjected;
+			Assert.IsNotNull (instance4);
+			Assert.AreEqual (4, pool.InstanceCount);	//Fourth call. No doubling since one was available.
+			Assert.AreEqual (0, pool.Available);
+
+			ClassToBeInjected instance5 = pool.GetInstance () as ClassToBeInjected;
+			Assert.IsNotNull (instance5);
+			Assert.AreEqual (8, pool.InstanceCount);	//Fifth call. Double to 8.
+			Assert.AreEqual (3, pool.Available);		//Three left unallocated.
+		}
+
+		[Test]
+		public void TestAutoInflationIncrement()
+		{
+			pool.InstanceProvider = new TestInstanceProvider ();
+			pool.InflationType = PoolInflationType.INCREMENT;
+
+			int testCount = 10;
+
+			Stack stack = new Stack();
+
+			//Calls should simply increment. There will never be unallocated
+			for (int a = 0; a < testCount; a++)
+			{
+				ClassToBeInjected instance = pool.GetInstance () as ClassToBeInjected;
+				Assert.IsNotNull (instance);
+				Assert.AreEqual (a + 1, pool.InstanceCount);
+				Assert.AreEqual (0, pool.Available);
+				stack.Push (instance);
+			}
+
+			//Now return the instances
+			for (int a = 0; a < testCount; a++)
+			{
+				ClassToBeInjected instance = stack.Pop () as ClassToBeInjected;
+				pool.ReturnInstance (instance);
+
+				Assert.AreEqual (a + 1, pool.Available, "This one");
+				Assert.AreEqual (testCount, pool.InstanceCount, "Or this one");
+			}
 		}
 	}
 
@@ -279,6 +346,19 @@ namespace strange.unittests
 		public void Release ()
 		{
 			someValue = 0;
+		}
+	}
+
+	class TestInstanceProvider : IInstanceProvider
+	{
+		public object GetInstance<T>()
+		{
+			return Activator.CreateInstance (typeof (T));
+		}
+
+		public object GetInstance(Type key)
+		{
+			return Activator.CreateInstance (key);
 		}
 	}
 }
