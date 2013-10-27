@@ -37,6 +37,7 @@ using System;
 using strange.extensions.command.api;
 using strange.extensions.injector.api;
 using strange.framework.api;
+using strange.extensions.pool.api;
 
 namespace strange.extensions.command.impl
 {
