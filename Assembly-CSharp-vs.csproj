@@ -74,7 +74,7 @@
     <Folder Include="StrangeIoC\examples\" />
     <Folder Include="StrangeIoC\scripts\strange\extensions\signal\" />
     <Folder Include="StrangeIoC\scripts\strange\.tests\" />
-    <Folder Include="StrangeIoC\scripts\strange\framework\impl\pool\" />
+    <Folder Include="StrangeIoC\scripts\strange\extensions\pool\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StrangeIoC\scripts\strange\extensions\context\api\ContextEvent.cs.meta" />
@@ -367,13 +367,15 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectsPostConstructSimple.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\NonpublicInjection.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ConstructorInjectsClassToBeInjected.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\framework\api\IPool.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\framework\api\PoolInflationType.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\framework\api\PoolOverflowBehavior.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\framework\api\IPoolable.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\framework\impl\pool\Pool.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\framework\TestPool.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\framework\api\PoolExceptionType.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\framework\impl\pool\PoolException.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\framework\api\IInstanceProvider.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\pool\api\IPool.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\pool\api\IPoolable.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\pool\api\PoolExceptionType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\pool\api\PoolInflationType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\pool\api\PoolOverflowBehavior.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\pool\impl\Pool.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\pool\impl\PoolException.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\framework\api\IManagedList.cs" />
   </ItemGroup>
 </Project>
