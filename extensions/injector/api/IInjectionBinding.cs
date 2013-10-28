@@ -88,8 +88,8 @@ namespace strange.extensions.injector.api
 		IInjectionBinding ToName (object o);
 		IInjectionBinding Named<T>();
 		IInjectionBinding Named(object o);
-		IInjectionBinding ToPool();
-		IInjectionBinding ToPool(int value);
+		//IInjectionBinding ToPool();
+		//IInjectionBinding ToPool(int value);
 
 		object Key{ get; }
 		object Value { get; }

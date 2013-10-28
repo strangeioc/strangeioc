@@ -28,9 +28,6 @@ namespace strange.extensions.injector.api
 
 		/// The binding always provides the same instance based on a provided value
 		VALUE,
-
-		/// The binding draws from a pool
-		POOL,
 	}
 }
 
