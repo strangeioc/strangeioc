@@ -89,19 +89,23 @@ namespace strange.extensions.context.impl
 				injectionBinder.Bind<IEventDispatcher>().To<EventDispatcher>().ToSingleton().ToName(ContextKeys.CROSS_CONTEXT_DISPATCHER).CrossContext();
 				injectionBinder.Bind<CrossContextBridge> ().ToSingleton ().CrossContext();
 			}
+
 		}
 
 		protected override void instantiateCoreComponents()
 		{
 			base.instantiateCoreComponents();
 
-			IEventDispatcher dispatcher = injectionBinder.GetInstance<IEventDispatcher>(ContextKeys.CONTEXT_DISPATCHER) as IEventDispatcher;
+			IInjectionBinding dispatcherBinding = injectionBinder.GetBinding<IEventDispatcher> (ContextKeys.CONTEXT_DISPATCHER);
 
-			if (dispatcher != null)
-			{
-				crossContextDispatcher = injectionBinder.GetInstance<IEventDispatcher>(ContextKeys.CROSS_CONTEXT_DISPATCHER) as IEventDispatcher;
-				(crossContextDispatcher as ITriggerProvider).AddTriggerable(dispatcher as ITriggerable);
-				(dispatcher as ITriggerProvider).AddTriggerable(crossContextBridge as ITriggerable);
+			if (dispatcherBinding != null) {
+				IEventDispatcher dispatcher = injectionBinder.GetInstance<IEventDispatcher> (ContextKeys.CONTEXT_DISPATCHER) as IEventDispatcher;
+
+				if (dispatcher != null) {
+					crossContextDispatcher = injectionBinder.GetInstance<IEventDispatcher> (ContextKeys.CROSS_CONTEXT_DISPATCHER) as IEventDispatcher;
+					(crossContextDispatcher as ITriggerProvider).AddTriggerable (dispatcher as ITriggerable);
+					(dispatcher as ITriggerProvider).AddTriggerable (crossContextBridge as ITriggerable);
+				}
 			}
 		}
 
