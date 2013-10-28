@@ -3,6 +3,10 @@ using NUnit.Framework;
 using strange.extensions.injector.api;
 using strange.extensions.injector.impl;
 using strange.extensions.reflector.api;
+using strange.extensions.pool.api;
+using strange.extensions.pool.impl;
+using strange.framework.api;
+using System.Collections.Generic;
 
 namespace strange.unittests
 {
@@ -303,14 +307,14 @@ namespace strange.unittests
 		public void TestPrereflectAll()
 		{
 			binder.Bind<HasNamedInjections> ().To<HasNamedInjections> ();
-			binder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ().ToName(SomeEnum.ONE);
+			binder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ().ToName (SomeEnum.ONE);
 			binder.Bind<ISimpleInterface> ().To<PolymorphicClass> ();
 			binder.Bind<InjectableSuperClass> ().To<InjectableDerivedClass> ();
-            binder.Bind<int>().ToValue(42);
-            binder.Bind<string>().ToValue("zaphod"); //primitives won't get reflected...
+			binder.Bind<int> ().ToValue (42);
+			binder.Bind<string> ().ToValue ("zaphod"); //primitives won't get reflected...
 
 			int count = binder.ReflectAll ();
-            Assert.AreEqual(4, count);             //...so list length will not include primitives
+			Assert.AreEqual (4, count);             //...so list length will not include primitives
 
 			ISimpleInterface s = binder.GetInstance<ISimpleInterface> () as ISimpleInterface;
 			Assert.IsTrue (s is PolymorphicClass);
@@ -328,6 +332,71 @@ namespace strange.unittests
 			IReflectedClass reflected4 = binder.injector.reflector.Get<InjectableDerivedClass> ();
 			Assert.True (reflected4.preGenerated);
 
+		}
+
+		[Test]
+		public void TestGetPoolInjection()
+		{
+			//Pool requires an instance provider. This InjectionBinder is that provider for the integrated test.
+			//In MVCSContext this is handled automatically.
+			binder.Bind<IInstanceProvider> ().ToValue (binder);
+
+			binder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ();
+			binder.Bind<Pool<ISimpleInterface>> ().To<Pool<SimpleInterfaceImplementer>> ().ToSingleton();
+			binder.Bind<IUsesPool> ().To<UsesPool> ().ToSingleton();
+
+			IUsesPool instance = binder.GetInstance<IUsesPool>() as IUsesPool;
+
+			Assert.IsNotNull (instance);
+			Assert.IsNotNull (instance.Instance1);
+			Assert.IsNotNull (instance.Instance2);
+
+
+			/*
+			binder.Bind<HashSet<ISimpleInterface>> ().To<HashSet<SimpleInterfaceImplementer>> ();
+
+
+			//object o = binder.GetInstance<HashSet<ISimpleInterface>> ();
+			object o = new HashSet<SimpleInterfaceImplementer> ();
+
+			HashSet<ISimpleInterface> myset = o as HashSet<ISimpleInterface>;
+
+			Assert.IsNotNull (myset);
+			*/
+		}
+	}
+
+	interface ITestPooled : IPoolable
+	{
+	}
+
+	class TestPooled : ITestPooled
+	{
+		public void Release ()
+		{
+			throw new NotImplementedException ();
+		}
+	}
+
+	interface IUsesPool
+	{
+		ISimpleInterface Instance1{ get; set; }
+		ISimpleInterface Instance2{ get; set; }
+	}
+
+	class UsesPool : IUsesPool
+	{
+		[Inject]
+		public Pool<ISimpleInterface> pool { get; set; }
+
+		public ISimpleInterface Instance1{ get; set; }
+		public ISimpleInterface Instance2{ get; set; }
+
+		[PostConstruct]
+		public void PostConstruct()
+		{
+			Instance1 = pool.GetInstance () as ISimpleInterface;
+			Instance2 = pool.GetInstance () as ISimpleInterface;
 		}
 	}
 }

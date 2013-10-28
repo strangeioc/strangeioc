@@ -4,6 +4,8 @@ using strange.extensions.injector.api;
 using strange.extensions.injector.impl;
 using strange.framework.api;
 using strange.framework.impl;
+using strange.extensions.pool.api;
+using strange.extensions.pool.impl;
 
 namespace strange.unittests
 {
@@ -158,7 +160,7 @@ namespace strange.unittests
 			InjectionException ex2 = Assert.Throws<InjectionException>(testDelegate2);
 			Assert.That (ex2.type == InjectionExceptionType.NOT_INSTANTIABLE);
 		}
-
+		/*
 		[Test]
 		public void TestGetFromPool()
 		{
@@ -184,6 +186,23 @@ namespace strange.unittests
 			Assert.AreEqual (1, pool.Available);
 			Assert.AreEqual (0, pool.Size);
 			Assert.AreEqual (4, pool.InstanceCount);
+		}
+		*/
+
+		[Test]
+		public void TestGetFromPool()
+		{
+			IInjectionBinding binding = new InjectionBinding (resolver);
+			binding.Bind<IPool<ClassToBeInjected>> ().To <Pool<ClassToBeInjected>> ();
+
+			Pool<ClassToBeInjected> pool = factory.Get (binding) as Pool<ClassToBeInjected>;
+			Assert.NotNull (pool);
+
+			pool.InstanceProvider = new TestInstanceProvider ();
+
+			ClassToBeInjected instance = pool.GetInstance () as ClassToBeInjected;
+			Assert.NotNull (instance);
+
 		}
 	}
 }

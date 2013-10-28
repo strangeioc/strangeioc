@@ -22,7 +22,7 @@ using strange.extensions.pool.api;
 
 namespace strange.extensions.pool.impl
 {
-	public class Pool<T> : IPool, IPoolable
+	public class Pool<T> : IPool<T>, IPoolable
 	{
 
 		[Inject]

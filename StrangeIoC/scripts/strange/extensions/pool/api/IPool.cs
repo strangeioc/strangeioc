@@ -19,7 +19,7 @@ using strange.framework.api;
 
 namespace strange.extensions.pool.api
 {
-	public interface IPool : IManagedList
+	public interface IPool<T> : IManagedList
 	{
 		/// The object Type of the first object added to the pool.
 		/// Pool objects must be of the same concrete type. This property enforces that requirement. 
@@ -72,9 +72,9 @@ namespace strange.extensions.pool.api
 		/// <value>A PoolInflationType value.</value>
 		PoolInflationType InflationType{ get; set; }
 	}
-
-	public interface IPool<T> : IPool
+	/*
+	public interface IPool<out T> : IPool
 	{
-	}
+	}*/
 }
 

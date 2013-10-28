@@ -109,13 +109,41 @@ namespace strange.extensions.injector.impl
 			{
 				object aKey = keys[a];
 				Type keyType = (aKey is Type) ? aKey as Type : aKey.GetType();
-				if (keyType.IsAssignableFrom(objType) == false)
+				if (keyType.IsAssignableFrom(objType) == false && (HasGenericAssignableFrom(keyType, objType) == false))
 				{
 					throw new InjectionException("Injection cannot bind a value that does not extend or implement the binding type.", InjectionExceptionType.ILLEGAL_BINDING_VALUE);
 				}
 			}
 			To(o);
 			return this;
+		}
+
+		protected bool HasGenericAssignableFrom(Type keyType, Type objType)
+		{
+			//FIXME: We need to figure out how to determine generic assignability
+			if (keyType.IsGenericType == false)
+				return false;
+
+			return true;
+		}
+
+		protected bool IsGenericTypeAssignable(Type givenType, Type genericType)
+		{
+			var interfaceTypes = givenType.GetInterfaces();
+
+			foreach (var it in interfaceTypes)
+			{
+				if (it.IsGenericType && it.GetGenericTypeDefinition() == genericType)
+					return true;
+			}
+
+			if (givenType.IsGenericType && givenType.GetGenericTypeDefinition() == genericType)
+				return true;
+
+			Type baseType = givenType.BaseType;
+			if (baseType == null) return false;
+
+			return IsGenericTypeAssignable(baseType, genericType);
 		}
 		
 		public IInjectionBinding CrossContext()
@@ -167,7 +195,7 @@ namespace strange.extensions.injector.impl
 		{
 			return base.Named (o) as IInjectionBinding;
 		}
-
+		/*
 		new public IInjectionBinding ToPool(int value)
 		{
 			Type = InjectionBindingType.POOL;
@@ -178,7 +206,7 @@ namespace strange.extensions.injector.impl
 		{
 			return ToPool (0);
 		}
-
+*/
 		/// [Obsolete]
 		public InjectionBindingType type
 		{

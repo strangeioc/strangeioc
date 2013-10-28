@@ -63,22 +63,14 @@ using strange.framework.api;
 
 namespace strange.extensions.injector.api
 {
-	public interface IInjectionBinder
+	public interface IInjectionBinder : IInstanceProvider
 	{
 		/// Get or set an Injector to use. By default, Injector instantiates it's own, but that can be overridden.
 		IInjector injector{ get; set;}
 
-		/// Retrieve an Instance based on the key.
-		/// ex. `injectionBinder.Get(typeof(ISomeInterface));`
-		object GetInstance(Type key);
-
 		/// Retrieve an Instance based on a key/name combo.
 		/// ex. `injectionBinder.Get(typeof(ISomeInterface), SomeEnum.MY_ENUM);`
 		object GetInstance(Type key, object name);
-
-		/// Retrieve an Instance based on the key.
-		/// ex. `injectionBinder.Get<cISomeInterface>();`
-		object GetInstance<T>();
 
 		/// Retrieve an Instance based on a key/name combo.
 		/// ex. `injectionBinder.Get<cISomeInterface>(SomeEnum.MY_ENUM);`
