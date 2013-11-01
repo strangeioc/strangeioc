@@ -224,6 +224,25 @@ namespace strange.unittests
 		}
 
 		[Test]
+		public void TestPolymorphicSingleton()
+		{
+			binder.Bind<ISimpleInterface> ().Bind<IAnotherSimpleInterface> ().To<PolymorphicClass> ().ToSingleton();
+
+			ISimpleInterface callOnce = binder.GetInstance<ISimpleInterface> () as ISimpleInterface;
+			Assert.NotNull (callOnce);
+			Assert.IsInstanceOf<PolymorphicClass> (callOnce);
+
+			IAnotherSimpleInterface callAgain = binder.GetInstance<IAnotherSimpleInterface> () as IAnotherSimpleInterface;
+			Assert.NotNull (callAgain);
+			Assert.IsInstanceOf<PolymorphicClass> (callAgain);
+
+			callOnce.intValue = 42;
+
+			Assert.AreSame (callOnce, callAgain);
+			Assert.AreEqual (42, (callAgain  as ISimpleInterface).intValue);
+		}
+
+		[Test]
 		public void TestNamedInstanceBeforeUnnamedInstance()
 		{
 			binder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ().ToName(SomeEnum.ONE);
