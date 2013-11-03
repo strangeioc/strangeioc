@@ -343,7 +343,7 @@ namespace strange.unittests
 	{
 		public int someValue = 0;
 
-		public void Release ()
+		public void Restore ()
 		{
 			someValue = 0;
 		}

@@ -19,8 +19,14 @@ using strange.framework.api;
 
 namespace strange.extensions.pool.api
 {
-	public interface IPool<T> : IManagedList
+	public interface IPool<T> : IPool{}
+	public interface IPool : IManagedList
 	{
+		/// A class that provides instances to the pool when it needs them.
+		/// This can be the InjectionBinder, or any class you write that satisfies the IInstanceProvider
+		/// interface.
+		IInstanceProvider InstanceProvider { get; set; }
+
 		/// The object Type of the first object added to the pool.
 		/// Pool objects must be of the same concrete type. This property enforces that requirement. 
 		Type PoolType { get; set; }
@@ -72,9 +78,5 @@ namespace strange.extensions.pool.api
 		/// <value>A PoolInflationType value.</value>
 		PoolInflationType InflationType{ get; set; }
 	}
-	/*
-	public interface IPool<out T> : IPool
-	{
-	}*/
 }
 
