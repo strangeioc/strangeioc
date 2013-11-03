@@ -360,8 +360,8 @@ namespace strange.unittests
 			//In MVCSContext this is handled automatically.
 			binder.Bind<IInstanceProvider> ().ToValue (binder);
 
-			binder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ();
-			binder.Bind<Pool<ISimpleInterface>> ().To<Pool<SimpleInterfaceImplementer>> ().ToSingleton();
+			binder.Bind<SimpleInterfaceImplementer> ().To<SimpleInterfaceImplementer> ();
+			binder.Bind<Pool<SimpleInterfaceImplementer>> ().ToSingleton();
 			binder.Bind<IUsesPool> ().To<UsesPool> ().ToSingleton();
 
 			IUsesPool instance = binder.GetInstance<IUsesPool>() as IUsesPool;
@@ -391,7 +391,7 @@ namespace strange.unittests
 
 	class TestPooled : ITestPooled
 	{
-		public void Release ()
+		public void Restore ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -406,7 +406,7 @@ namespace strange.unittests
 	class UsesPool : IUsesPool
 	{
 		[Inject]
-		public Pool<ISimpleInterface> pool { get; set; }
+		public Pool<SimpleInterfaceImplementer> pool { get; set; }
 
 		public ISimpleInterface Instance1{ get; set; }
 		public ISimpleInterface Instance2{ get; set; }

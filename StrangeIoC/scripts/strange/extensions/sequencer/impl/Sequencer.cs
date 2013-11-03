@@ -34,10 +34,6 @@ namespace strange.extensions.sequencer.impl
 {
 	public class Sequencer : CommandBinder, ISequencer, ITriggerable
 	{
-		[Inject]
-		new public IInjectionBinder injectionBinder{ get; set;}
-
-
 
 		public Sequencer ()
 		{

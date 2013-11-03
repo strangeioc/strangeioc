@@ -82,6 +82,11 @@ namespace strange.extensions.command.impl
 			}
 		}
 
+		public void Restore()
+		{
+			//Use this space to clean up the Command for recycling
+		}
+
 		public void Fail()
 		{
 			if (commandBinder != null)
