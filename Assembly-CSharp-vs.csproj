@@ -380,5 +380,9 @@
     <Compile Include="StrangeIoC\scripts\strange\extensions\pool\api\PoolInflationType.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\pool\api\PoolOverflowBehavior.cs" />
     <Compile Include="StrangeIoC\scripts\strange\framework\api\IInstanceProvider.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommandPooling.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\CommandKeys.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\MarkablePoolCommand.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\IPooledCommandBinder.cs" />
   </ItemGroup>
 </Project>
