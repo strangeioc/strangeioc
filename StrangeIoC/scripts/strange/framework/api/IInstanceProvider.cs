@@ -27,7 +27,7 @@ namespace strange.framework.api
 	{
 		/// Retrieve an Instance based on the key.
 		/// ex. `injectionBinder.Get<cISomeInterface>();`
-		object GetInstance<T>();
+		T GetInstance<T>();
 
 		/// Retrieve an Instance based on the key.
 		/// ex. `injectionBinder.Get(typeof(ISomeInterface));`

@@ -74,7 +74,7 @@ namespace strange.extensions.injector.api
 
 		/// Retrieve an Instance based on a key/name combo.
 		/// ex. `injectionBinder.Get<cISomeInterface>(SomeEnum.MY_ENUM);`
-		object GetInstance<T>(object name);
+		T GetInstance<T>(object name);
 
 		/// Reflect all the types in the list
 		/// Return the number of types in the list, which should be equal to the list length
