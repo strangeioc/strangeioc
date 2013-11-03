@@ -31,7 +31,7 @@ namespace strange.unittests
 		public void TestGetBindingFlat ()
 		{
 			binder.Bind<InjectableSuperClass> ().To<InjectableSuperClass> ();
-			IInjectionBinding binding = binder.GetBinding<InjectableSuperClass> () as IInjectionBinding;
+			IInjectionBinding binding = binder.GetBinding<InjectableSuperClass> ();
 			Assert.IsNotNull (binding);
 		}
 
@@ -39,7 +39,7 @@ namespace strange.unittests
 		public void TestGetBindingAbstract ()
 		{
 			binder.Bind<ISimpleInterface> ().To<ClassWithConstructorParameters> ();
-			IInjectionBinding binding = binder.GetBinding<ISimpleInterface> () as IInjectionBinding;
+			IInjectionBinding binding = binder.GetBinding<ISimpleInterface> ();
 			Assert.IsNotNull (binding);
 		}
 
@@ -47,7 +47,7 @@ namespace strange.unittests
 		public void TestGetNamedBinding ()
 		{
 			binder.Bind<ISimpleInterface> ().To<ClassWithConstructorParameters> ().ToName<MarkerClass>();
-			IInjectionBinding binding = binder.GetBinding<ISimpleInterface> (typeof(MarkerClass)) as IInjectionBinding;
+			IInjectionBinding binding = binder.GetBinding<ISimpleInterface> (typeof(MarkerClass));
 			Assert.IsNotNull (binding);
 		}
 
@@ -67,7 +67,7 @@ namespace strange.unittests
 		{
 			binder.Bind<ClassToBeInjected> ().To<ClassToBeInjected> ();
 
-			ClassToBeInjected instance = binder.GetInstance<ClassToBeInjected> () as ClassToBeInjected;
+			ClassToBeInjected instance = binder.GetInstance<ClassToBeInjected> ();
 
 			Assert.IsNotNull (instance);
 			Assert.That (instance is ClassToBeInjected);
@@ -89,7 +89,7 @@ namespace strange.unittests
 		{
 			binder.Bind<ClassToBeInjected> ().To<ClassToBeInjected> ().ToName<MarkerClass>();
 
-			ClassToBeInjected instance = binder.GetInstance<ClassToBeInjected> (typeof(MarkerClass)) as ClassToBeInjected;
+			ClassToBeInjected instance = binder.GetInstance<ClassToBeInjected> (typeof(MarkerClass));
 
 			Assert.IsNotNull (instance);
 			Assert.That (instance is ClassToBeInjected);
@@ -111,7 +111,7 @@ namespace strange.unittests
 		{
 			binder.Bind<ClassToBeInjected> ().To<ClassToBeInjected> ().ToName(SomeEnum.ONE);
 
-			ClassToBeInjected instance = binder.GetInstance<ClassToBeInjected> (SomeEnum.ONE) as ClassToBeInjected;
+			ClassToBeInjected instance = binder.GetInstance<ClassToBeInjected> (SomeEnum.ONE);
 
 			Assert.IsNotNull (instance);
 			Assert.That (instance is ClassToBeInjected);
@@ -133,7 +133,7 @@ namespace strange.unittests
 		{
 			binder.Bind<InjectableSuperClass> ().To<InjectableSuperClass> ();
 			binder.Bind<int> ().ToValue (42);
-			InjectableSuperClass testValue = binder.GetInstance<InjectableSuperClass> () as InjectableSuperClass;
+			InjectableSuperClass testValue = binder.GetInstance<InjectableSuperClass> ();
 			Assert.IsNotNull (testValue);
 			Assert.That (testValue.intValue == 42);
 		}
@@ -143,7 +143,7 @@ namespace strange.unittests
 		{
 			binder.Bind<InjectableSuperClass> ().To<InjectableSuperClass> ();
 			binder.Bind<int> ().ToValue (42);
-			InjectableSuperClass testValueBeforeUnbinding = binder.GetInstance<InjectableSuperClass> () as InjectableSuperClass;
+			InjectableSuperClass testValueBeforeUnbinding = binder.GetInstance<InjectableSuperClass> ();
 			Assert.IsNotNull (testValueBeforeUnbinding);
 			Assert.That (testValueBeforeUnbinding.intValue == 42);
 
@@ -162,8 +162,8 @@ namespace strange.unittests
 		{
 			GuaranteedUniqueInstances uniqueInstance = new GuaranteedUniqueInstances ();
 			binder.Bind<GuaranteedUniqueInstances> ().ToValue (uniqueInstance);
-			GuaranteedUniqueInstances instance1 = binder.GetInstance <GuaranteedUniqueInstances> () as GuaranteedUniqueInstances;
-			GuaranteedUniqueInstances instance2 = binder.GetInstance <GuaranteedUniqueInstances> () as GuaranteedUniqueInstances;
+			GuaranteedUniqueInstances instance1 = binder.GetInstance <GuaranteedUniqueInstances> ();
+			GuaranteedUniqueInstances instance2 = binder.GetInstance <GuaranteedUniqueInstances> ();
 			Assert.AreEqual (instance1.uid, instance2.uid);
 			Assert.AreSame (instance1, instance2);
 		}
@@ -192,7 +192,7 @@ namespace strange.unittests
 		{
 			binder.Bind<ClassToBeInjected> ().To<ClassToBeInjected> ();
 			binder.Bind<ConstructorInjectsClassToBeInjected>().To<ConstructorInjectsClassToBeInjected>().ToSingleton();
-			ConstructorInjectsClassToBeInjected instance = binder.GetInstance<ConstructorInjectsClassToBeInjected>() as ConstructorInjectsClassToBeInjected;
+			ConstructorInjectsClassToBeInjected instance = binder.GetInstance<ConstructorInjectsClassToBeInjected>();
 			Assert.IsNotNull (instance.injected);
 		}
 
@@ -205,8 +205,8 @@ namespace strange.unittests
 			binder.Bind<PostConstructSimple> ().ToValue (instance);
 			binder.Bind<InjectsPostConstructSimple> ().To<InjectsPostConstructSimple>();
 
-			InjectsPostConstructSimple instance1 = binder.GetInstance<InjectsPostConstructSimple> () as InjectsPostConstructSimple;
-			InjectsPostConstructSimple instance2 = binder.GetInstance<InjectsPostConstructSimple> () as InjectsPostConstructSimple;
+			InjectsPostConstructSimple instance1 = binder.GetInstance<InjectsPostConstructSimple> ();
+			InjectsPostConstructSimple instance2 = binder.GetInstance<InjectsPostConstructSimple> ();
 
 			Assert.AreSame (instance, instance1.pcs);
 			Assert.AreNotSame (instance1, instance2);
@@ -218,11 +218,11 @@ namespace strange.unittests
 		{
 			binder.Bind<ISimpleInterface> ().Bind<IAnotherSimpleInterface> ().To<PolymorphicClass> ();
 
-			ISimpleInterface callOnce = binder.GetInstance<ISimpleInterface> () as ISimpleInterface;
+			ISimpleInterface callOnce = binder.GetInstance<ISimpleInterface> ();
 			Assert.NotNull (callOnce);
 			Assert.IsInstanceOf<PolymorphicClass> (callOnce);
 
-			IAnotherSimpleInterface callAgain = binder.GetInstance<IAnotherSimpleInterface> () as IAnotherSimpleInterface;
+			IAnotherSimpleInterface callAgain = binder.GetInstance<IAnotherSimpleInterface> ();
 			Assert.NotNull (callAgain);
 			Assert.IsInstanceOf<PolymorphicClass> (callAgain);
 		}
@@ -232,11 +232,11 @@ namespace strange.unittests
 		{
 			binder.Bind<ISimpleInterface> ().Bind<IAnotherSimpleInterface> ().To<PolymorphicClass> ().ToSingleton();
 
-			ISimpleInterface callOnce = binder.GetInstance<ISimpleInterface> () as ISimpleInterface;
+			ISimpleInterface callOnce = binder.GetInstance<ISimpleInterface> ();
 			Assert.NotNull (callOnce);
 			Assert.IsInstanceOf<PolymorphicClass> (callOnce);
 
-			IAnotherSimpleInterface callAgain = binder.GetInstance<IAnotherSimpleInterface> () as IAnotherSimpleInterface;
+			IAnotherSimpleInterface callAgain = binder.GetInstance<IAnotherSimpleInterface> ();
 			Assert.NotNull (callAgain);
 			Assert.IsInstanceOf<PolymorphicClass> (callAgain);
 
@@ -252,8 +252,8 @@ namespace strange.unittests
 			binder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ().ToName(SomeEnum.ONE);
 			binder.Bind<ISimpleInterface> ().To<PolymorphicClass> ();
 
-			ISimpleInterface instance1 = binder.GetInstance<ISimpleInterface> (SomeEnum.ONE) as ISimpleInterface;
-			ISimpleInterface instance2 = binder.GetInstance<ISimpleInterface> () as ISimpleInterface;
+			ISimpleInterface instance1 = binder.GetInstance<ISimpleInterface> (SomeEnum.ONE);
+			ISimpleInterface instance2 = binder.GetInstance<ISimpleInterface> ();
 
 			Assert.That (instance1 is SimpleInterfaceImplementer);
 			Assert.That (instance2 is PolymorphicClass);
@@ -266,8 +266,8 @@ namespace strange.unittests
 			binder.Bind<ISimpleInterface> ().To<PolymorphicClass> ();
 			binder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ().ToName(SomeEnum.ONE);
 
-			ISimpleInterface instance1 = binder.GetInstance<ISimpleInterface> (SomeEnum.ONE) as ISimpleInterface;
-			ISimpleInterface instance2 = binder.GetInstance<ISimpleInterface> () as ISimpleInterface;
+			ISimpleInterface instance1 = binder.GetInstance<ISimpleInterface> (SomeEnum.ONE);
+			ISimpleInterface instance2 = binder.GetInstance<ISimpleInterface> ();
 
 			Assert.That (instance1 is SimpleInterfaceImplementer);
 			Assert.That (instance2 is PolymorphicClass);
@@ -335,7 +335,7 @@ namespace strange.unittests
 			int count = binder.ReflectAll ();
 			Assert.AreEqual (4, count);             //...so list length will not include primitives
 
-			ISimpleInterface s = binder.GetInstance<ISimpleInterface> () as ISimpleInterface;
+			ISimpleInterface s = binder.GetInstance<ISimpleInterface> ();
 			Assert.IsTrue (s is PolymorphicClass);
 
 			IReflectedClass reflected1 = binder.injector.reflector.Get<HasNamedInjections> ();
@@ -364,7 +364,7 @@ namespace strange.unittests
 			binder.Bind<Pool<SimpleInterfaceImplementer>> ().ToSingleton();
 			binder.Bind<IUsesPool> ().To<UsesPool> ().ToSingleton();
 
-			IUsesPool instance = binder.GetInstance<IUsesPool>() as IUsesPool;
+			IUsesPool instance = binder.GetInstance<IUsesPool>();
 
 			Assert.IsNotNull (instance);
 			Assert.IsNotNull (instance.Instance1);

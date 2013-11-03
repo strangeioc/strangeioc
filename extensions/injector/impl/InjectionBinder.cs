@@ -64,14 +64,18 @@ namespace strange.extensions.injector.impl
             return injector;
         }
 
-		public object GetInstance<T>()
+		public T GetInstance<T>()
 		{
-			return GetInstance (typeof(T));
+			object instance = GetInstance (typeof (T));
+			T retv = (T) instance;
+			return retv;
 		}
 
-		public object GetInstance<T>(object name)
+		public T GetInstance<T>(object name)
 		{
-			return GetInstance (typeof(T), name);
+			object instance = GetInstance (typeof (T), name);
+			T retv = (T) instance;
+			return retv;
 		}
 
 		override public IBinding GetRawBinding()
