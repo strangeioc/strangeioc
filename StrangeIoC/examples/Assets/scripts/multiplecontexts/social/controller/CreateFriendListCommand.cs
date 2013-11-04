@@ -43,7 +43,7 @@ namespace strange.examples.multiplecontexts.social
 		
 		public override void Execute()
 		{
-			ArrayList list = data as ArrayList;
+			ArrayList list = Data as ArrayList;
 			
 			int highScore = 0;
 			int aa = list.Count;
