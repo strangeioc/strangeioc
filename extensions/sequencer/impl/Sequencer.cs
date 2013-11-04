@@ -65,7 +65,7 @@ namespace strange.extensions.sequencer.impl
 		private void invokeCommand(Type cmd, ISequenceBinding binding, object data, int depth)
 		{
 			ISequenceCommand command = createCommand (cmd, data);
-			command.sequenceId = depth;
+			command.SequenceId = depth;
 			trackCommand (command, binding);
 			executeCommand (command);
 			ReleaseCommand (command);
@@ -76,7 +76,7 @@ namespace strange.extensions.sequencer.impl
 		{
 			injectionBinder.Bind<ISequenceCommand> ().To (cmd);
 			ISequenceCommand command = injectionBinder.GetInstance<ISequenceCommand> () as ISequenceCommand;
-			command.data = data;
+			command.Data = data;
 			injectionBinder.Unbind<ISequenceCommand> ();
 			return command;
 		}
@@ -97,14 +97,14 @@ namespace strange.extensions.sequencer.impl
 
 		public void ReleaseCommand (ISequenceCommand command)
 		{
-			if (command.retain == false)
+			if (command.Retained == false)
 			{
 				if (activeSequences.ContainsKey(command))
 				{
 					ISequenceBinding binding = activeSequences [command] as ISequenceBinding;
-					object data = command.data;
+					object data = command.Data;
 					activeSequences.Remove (command);
-					nextInSequence (binding, data, command.sequenceId + 1);
+					nextInSequence (binding, data, command.SequenceId + 1);
 				}
 			}
 		}
@@ -119,7 +119,7 @@ namespace strange.extensions.sequencer.impl
 			}
 			else
 			{
-				if (binding.isOneOff)
+				if (binding.IsOneOff)
 				{
 					Unbind (binding);
 				}

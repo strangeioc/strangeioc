@@ -95,7 +95,7 @@ namespace strange.extensions.command.impl
 		{
 			IBaseSignal signal = (IBaseSignal)binding.key;
 			ICommand command = createCommandForSignal(cmd, data, signal.GetTypes()); //Special signal-only command creation
-			command.sequenceId = depth;
+			command.SequenceId = depth;
 			trackCommand(command, binding);
 			executeCommand(command);
 			return command;
@@ -153,7 +153,7 @@ namespace strange.extensions.command.impl
 					}
 			}
 			command = injectionBinder.GetInstance<ICommand>() as ICommand;
-			command.data = data; //Just to support swapping from EventCommand to SignalCommand more easily. No reason not to.
+			command.Data = data; //Just to support swapping from EventCommand to SignalCommand more easily. No reason not to.
 
 			foreach (Type typeToRemove in signalTypes) //clean up these bindings
 				injectionBinder.Unbind(typeToRemove);
@@ -161,7 +161,7 @@ namespace strange.extensions.command.impl
 			else
 			{
 				command = injectionBinder.GetInstance<ICommand>() as ICommand;
-				command.data = data; //Just to support swapping from EventCommand to SignalCommand more easily. No reason not to.
+				command.Data = data; //Just to support swapping from EventCommand to SignalCommand more easily. No reason not to.
 			}
 			injectionBinder.Unbind<ICommand>();
 			return command;
