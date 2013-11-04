@@ -66,7 +66,7 @@ namespace strange.extensions.injector.api
 	public interface IInjectionBinder : IInstanceProvider
 	{
 		/// Get or set an Injector to use. By default, Injector instantiates it's own, but that can be overridden.
-		IInjector injector{ get; set;}
+		IInjector Injector{ get; set;}
 
 		/// Retrieve an Instance based on a key/name combo.
 		/// ex. `injectionBinder.Get(typeof(ISomeInterface), SomeEnum.MY_ENUM);`
@@ -107,6 +107,9 @@ namespace strange.extensions.injector.api
 		void Unbind (object key);
 		void Unbind (object key, object name);
 		void Unbind (IBinding binding);
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		IInjector injector{ get; set;}
 	}
 }
 

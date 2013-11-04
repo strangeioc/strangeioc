@@ -284,7 +284,7 @@ namespace strange.unittests
 
 			Assert.AreEqual (1, count);
 
-			IReflectedClass reflected = binder.injector.reflector.Get<PolymorphicClass> ();
+			IReflectedClass reflected = binder.injector.Reflector.Get<PolymorphicClass> ();
 			Assert.True (reflected.preGenerated);
 		}
 
@@ -308,17 +308,17 @@ namespace strange.unittests
 			int count = binder.Reflect (list);
             Assert.AreEqual(4, count);             //...so list length will not include primitives
 
-			IReflectedClass reflected1 = binder.injector.reflector.Get<HasNamedInjections> ();
+			IReflectedClass reflected1 = binder.injector.Reflector.Get<HasNamedInjections> ();
 			Assert.True (reflected1.preGenerated);
 
-			IReflectedClass reflected2 = binder.injector.reflector.Get<SimpleInterfaceImplementer> ();
+			IReflectedClass reflected2 = binder.injector.Reflector.Get<SimpleInterfaceImplementer> ();
 			Assert.True (reflected2.preGenerated);
 
-			IReflectedClass reflected3 = binder.injector.reflector.Get<PolymorphicClass> ();
+			IReflectedClass reflected3 = binder.injector.Reflector.Get<PolymorphicClass> ();
 			Assert.True (reflected3.preGenerated);
 			Assert.AreNotEqual (reflected2.constructor, reflected3.constructor);
 
-			IReflectedClass reflected4 = binder.injector.reflector.Get<InjectableDerivedClass> ();
+			IReflectedClass reflected4 = binder.injector.Reflector.Get<InjectableDerivedClass> ();
 			Assert.True (reflected4.preGenerated);
 		}
 
@@ -338,17 +338,17 @@ namespace strange.unittests
 			ISimpleInterface s = binder.GetInstance<ISimpleInterface> ();
 			Assert.IsTrue (s is PolymorphicClass);
 
-			IReflectedClass reflected1 = binder.injector.reflector.Get<HasNamedInjections> ();
+			IReflectedClass reflected1 = binder.injector.Reflector.Get<HasNamedInjections> ();
 			Assert.True (reflected1.preGenerated);
 
-			IReflectedClass reflected2 = binder.injector.reflector.Get<SimpleInterfaceImplementer> ();
+			IReflectedClass reflected2 = binder.injector.Reflector.Get<SimpleInterfaceImplementer> ();
 			Assert.True (reflected2.preGenerated);
 
-			IReflectedClass reflected3 = binder.injector.reflector.Get<PolymorphicClass> ();
+			IReflectedClass reflected3 = binder.injector.Reflector.Get<PolymorphicClass> ();
 			Assert.True (reflected3.preGenerated);
 			Assert.AreNotEqual (reflected2.constructor, reflected3.constructor);
 
-			IReflectedClass reflected4 = binder.injector.reflector.Get<InjectableDerivedClass> ();
+			IReflectedClass reflected4 = binder.injector.Reflector.Get<InjectableDerivedClass> ();
 			Assert.True (reflected4.preGenerated);
 
 		}
