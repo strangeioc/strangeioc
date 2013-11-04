@@ -88,7 +88,7 @@ namespace strange.extensions.injector.impl
 			}
 			else
 			{
-				return injector;
+				return Injector;
 			}
 		}
 	}

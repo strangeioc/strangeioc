@@ -38,9 +38,9 @@ namespace strange.extensions.injector.impl
 
 		public InjectionBinder ()
 		{
-			injector = new Injector ();
-			injector.binder = this;
-			injector.reflector = new ReflectionBinder ();
+			Injector = new Injector ();
+			Injector.Binder = this;
+			Injector.Reflector = new ReflectionBinder ();
 		}
 
 		public object GetInstance(Type key)
@@ -61,7 +61,7 @@ namespace strange.extensions.injector.impl
 
         protected virtual IInjector GetInjectorForBinding(IInjectionBinding binding)
         {
-            return injector;
+			return Injector;
         }
 
 		public T GetInstance<T>()
@@ -83,7 +83,7 @@ namespace strange.extensions.injector.impl
 			return new InjectionBinding (resolver);
 		}
 
-		public IInjector injector
+		public IInjector Injector
 		{ 
 			get
 			{
@@ -93,10 +93,10 @@ namespace strange.extensions.injector.impl
 			{
 				if (_injector != null)
 				{
-					_injector.binder = null;
+					_injector.Binder = null;
 				}
 				_injector = value;
-				_injector.binder = this;
+				_injector.Binder = this;
 			}
 		}
 
@@ -160,9 +160,20 @@ namespace strange.extensions.injector.impl
 					continue;
 				}
 				count ++;
-				injector.reflector.Get (t);
+				Injector.Reflector.Get (t);
 			}
 			return count;
+		}
+
+		public IInjector injector
+		{
+			get {
+				return Injector;
+			}
+			set
+			{
+				Injector = value;
+			}
 		}
     }
 }

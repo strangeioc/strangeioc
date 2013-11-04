@@ -54,27 +54,34 @@ namespace strange.extensions.injector.impl
 		
 		public Injector ()
 		{
-			factory = new InjectorFactory();
+			Factory = new InjectorFactory();
 		}
 
-		public IInjectorFactory factory{ get; set;}
-		public IInjectionBinder binder{ get; set;}
-		public IReflectionBinder reflector{ get; set;}
+		public IInjectorFactory Factory{ get; set;}
+		public IInjectionBinder Binder{ get; set;}
+		public IReflectionBinder Reflector{ get; set;}
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		public IInjectorFactory factory{ get { return Factory; } set { Factory = value; }}
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		public IInjectionBinder binder{ get { return Binder; } set { Binder = value; }}
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		public IReflectionBinder reflector{ get { return Reflector; } set { Reflector = value; }}
 
 		public object Instantiate(IInjectionBinding binding)
 		{
-			failIf(binder == null, "Attempt to instantiate from Injector without a Binder", InjectionExceptionType.NO_BINDER);
-			failIf(factory == null, "Attempt to inject into Injector without a Factory", InjectionExceptionType.NO_FACTORY);
+			failIf(Binder == null, "Attempt to instantiate from Injector without a Binder", InjectionExceptionType.NO_BINDER);
+			failIf(Factory == null, "Attempt to inject into Injector without a Factory", InjectionExceptionType.NO_FACTORY);
 
 			armorAgainstInfiniteLoops (binding);
 
-			object retv = factory.Get (binding);
+			object retv = Factory.Get (binding);
 
 			//Factory can return null in the case that there are no parameterless constructors.
 			//In this case, the following routine attempts to generate based on a preferred constructor
 			if (retv == null)
 			{
-				IReflectedClass reflection = reflector.Get (binding.value as Type);
+				IReflectedClass reflection = Reflector.Get (binding.value as Type);
 				Type[] parameters = reflection.constructorParameters;
 				int aa = parameters.Length;
 				object[] args = new object [aa];
@@ -82,7 +89,7 @@ namespace strange.extensions.injector.impl
 				{
 					args [a] = getValueInjection (parameters[a] as Type, null, retv);
 				}
-				retv = factory.Get (binding, args);
+				retv = Factory.Get (binding, args);
 				if (retv == null)
 				{
 					return null;
@@ -110,8 +117,8 @@ namespace strange.extensions.injector.impl
 
 		public object Inject(object target, bool attemptConstructorInjection)
 		{
-			failIf(binder == null, "Attempt to inject into Injector without a Binder", InjectionExceptionType.NO_BINDER);
-			failIf(reflector == null, "Attempt to inject without a reflector", InjectionExceptionType.NO_REFLECTOR);
+			failIf(Binder == null, "Attempt to inject into Injector without a Binder", InjectionExceptionType.NO_BINDER);
+			failIf(Reflector == null, "Attempt to inject without a reflector", InjectionExceptionType.NO_REFLECTOR);
 			failIf(target == null, "Attempt to inject into null instance", InjectionExceptionType.NULL_TARGET);
 
 			//Some things can't be injected into. Bail out.
@@ -121,7 +128,7 @@ namespace strange.extensions.injector.impl
 				return target;
 			}
 
-			IReflectedClass reflection = reflector.Get (t);
+			IReflectedClass reflection = Reflector.Get (t);
 
 			if (attemptConstructorInjection)
 			{
@@ -130,6 +137,23 @@ namespace strange.extensions.injector.impl
 			performSetterInjection(target, reflection);
 			postInject(target, reflection);
 			return target;
+		}
+
+		public void Uninject(object target)
+		{
+			failIf(Binder == null, "Attempt to inject into Injector without a Binder", InjectionExceptionType.NO_BINDER);
+			failIf(Reflector == null, "Attempt to inject without a reflector", InjectionExceptionType.NO_REFLECTOR);
+			failIf(target == null, "Attempt to inject into null instance", InjectionExceptionType.NULL_TARGET);
+
+			Type t = target.GetType ();
+			if (t.IsPrimitive || t == typeof(Decimal) || t == typeof(string))
+			{
+				return;
+			}
+
+			IReflectedClass reflection = Reflector.Get (t);
+
+			performUninjection (target, reflection);
 		}
 
 		private object performConstructorInjection(object target, IReflectedClass reflection)
@@ -174,7 +198,7 @@ namespace strange.extensions.injector.impl
 
 		private object getValueInjection(Type t, object name, object target)
 		{
-			IInjectionBinding binding = binder.GetBinding (t, name);
+			IInjectionBinding binding = Binder.GetBinding (t, name);
 			failIf(binding == null, "Attempt to Instantiate a null binding.", InjectionExceptionType.NULL_BINDING, t, name, target);
 			if (binding.Type == InjectionBindingType.VALUE)
 			{
@@ -218,6 +242,17 @@ namespace strange.extensions.injector.impl
 				{
 					method.Invoke (target, null);
 				}
+			}
+		}
+
+		//Note that uninjection can only clean publicly settable points
+		private void performUninjection(object target, IReflectedClass reflection)
+		{
+			int aa = reflection.setters.Length;
+			for(int a = 0; a < aa; a++)
+			{
+				KeyValuePair<Type, PropertyInfo> pair = reflection.setters [a];
+				pair.Value.SetValue (target, null, null);
 			}
 		}
 
