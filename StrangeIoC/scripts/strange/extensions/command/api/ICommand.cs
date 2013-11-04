@@ -55,18 +55,36 @@ namespace strange.extensions.command.api
 		/// Inform the Command that further Execution has been terminated
 		void Cancel ();
 
-		/// The property set by `Retain` and `Release` to indicate whether the Command should be cleaned up on completion of the `Execute()` method. 
-		bool retain{ get; }
+		/// Flag to indicate that a pooled Command has been restored to its pristine state.
+		/// The CommandBinder will use this to determine if re-Injection is required.
+		bool IsClean { get; set; }
 
-		/// A payload injected into the Command. Most commonly, this an IEvent.
-		object data{ get; set;}
+		/// The property set by `Retain` and `Release` to indicate whether the Command should be cleaned up on completion of the `Execute()` method. 
+		bool Retained { get; }
 
 		/// The property set to true by a Cancel() call.
 		/// Use cancelled internally to determine if further execution is warranted, especially in
 		/// asynchronous calls.
-		bool cancelled{ get; set;}
+		bool Cancelled { get; set; }
+
+		/// A payload injected into the Command. Most commonly, this an IEvent.
+		object Data { get; set; }
 
 		//The ordered id of this Command, used in sequencing to find the next Command.
+		int SequenceId{ get; set; }
+
+
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		bool retain{ get; }
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		object data{ get; set;}
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		bool cancelled{ get; set;}
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		int sequenceId{ get; set; }
 	}
 }

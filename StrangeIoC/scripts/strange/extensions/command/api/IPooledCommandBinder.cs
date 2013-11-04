@@ -23,8 +23,11 @@ namespace strange.extensions.command.api
 {
 	public interface IPooledCommandBinder
 	{
+		/// Retrieve the Pool of the specified type
+		Pool<T> GetPool<T>();
 
-		Pool getPool<T>();
+		/// Switch to disable pooling for those that don't want to use it.
+		bool UsePooling{ get; set; }
 	}
 }
 

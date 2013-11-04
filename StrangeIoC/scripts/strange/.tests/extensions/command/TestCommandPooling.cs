@@ -9,6 +9,7 @@ using strange.extensions.injector.api;
 using strange.extensions.pool.impl;
 using strange.extensions.pool.api;
 using strange.framework.api;
+using strange.extensions.signal.impl;
 
 namespace strange.unittests
 {
@@ -25,9 +26,9 @@ namespace strange.unittests
 		{
 			injectionBinder = new InjectionBinder ();
 			injectionBinder.Bind<IInjectionBinder>().Bind<IInstanceProvider>().ToValue(injectionBinder);
-			injectionBinder.Bind<ICommandBinder> ().To<CommandBinder> ();
+			injectionBinder.Bind<ICommandBinder> ().To<CommandBinder> ().ToSingleton();
 
-			commandBinder = injectionBinder.GetInstance<ICommandBinder> () as ICommandBinder;
+			commandBinder = injectionBinder.GetInstance<ICommandBinder> ();
 			pooledCommandBinder = commandBinder as IPooledCommandBinder;
 		}
 
@@ -35,11 +36,7 @@ namespace strange.unittests
 		public void TestCommandGetsReused()
 		{
 			commandBinder.Bind (SomeEnum.ONE).To<MarkablePoolCommand> ();
-
-
-			IPool pool = pooledCommandBinder.getPool<MarkablePoolCommand> ();
-			//MarkablePoolCommand cmd = pool.GetInstance () as MarkablePoolCommand;
-			//MarkablePoolCommand cmd = pool.GetInstance () as MarkablePoolCommand;
+			IPool<MarkablePoolCommand> pool = pooledCommandBinder.GetPool<MarkablePoolCommand> ();
 
 			for (int a = 0; a < 10; a++)
 			{
@@ -50,44 +47,87 @@ namespace strange.unittests
 		}
 
 		[Test]
-		public void ttttttt()
+		public void TestCommandBinderHasManyPools()
 		{
-		
-			//var Customer = new { FirstName = "John", LastName = "Doe" };
-			//var customerList = MakeList(Customer);
+			commandBinder.Bind (SomeEnum.ONE).To<MarkablePoolCommand> ();
+			commandBinder.Bind (SomeEnum.TWO).To<CommandWithExecute> ();
+			commandBinder.Bind (SomeEnum.THREE).To<SequenceCommandWithInjection> ();
 
-			//customerList.Add(new { FirstName = "Bill", LastName = "Smith" });
+			IPool firstPool = pooledCommandBinder.GetPool<MarkablePoolCommand> ();
+			IPool secondPool = pooledCommandBinder.GetPool<CommandWithExecute> ();
+			IPool thirdPool = pooledCommandBinder.GetPool<SequenceCommandWithInjection> ();
 
-			var explicitCommand = new MarkablePoolCommand ();
-			var explicitList = MakeList (explicitCommand);
-			explicitList.Add (new MarkablePoolCommand ());
+			Assert.IsNotNull (firstPool);
+			Assert.IsNotNull (secondPool);
+			Assert.IsNotNull (thirdPool);
 
-			Type tc = typeof(MarkablePoolCommand);
-			var cmd = Activator.CreateInstance (tc);
-			var list = MakeList (cmd);
-			   
-
-			list.Add (new MarkablePoolCommand ());
+			Assert.AreNotSame (firstPool, secondPool);
+			Assert.AreNotSame (secondPool, thirdPool);
+			Assert.AreNotSame (thirdPool, firstPool);
 		}
 
-		public static Pool<T> MakeList<T>(T itemOftype)
-		{
-			Pool<T> newList = new Pool<T>();
-			newList.PoolType = itemOftype.GetType ();
-			return newList;
-		}   
-
-
-		/// Issue #33. For Pooling of Commands, Release should null out all injected params.
 		[Test]
-		public void TestReleasesInjections()
+		public void TestCleanupInjections()
 		{
-			ICommand command = new CommandWithInjection ();
-			Assert.IsFalse (command.retain);
-			command.Retain ();
-			Assert.IsTrue (command.retain);
-			command.Release ();
-			Assert.IsFalse (command.retain);
+			injectionBinder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ();
+			commandBinder.Bind (SomeEnum.ONE).To<CommandWithInjection> ();
+
+			commandBinder.ReactTo (SomeEnum.ONE);
+			IPool<CommandWithInjection> pool = pooledCommandBinder.GetPool<CommandWithInjection> ();
+
+			CommandWithInjection cmd = pool.GetInstance () as CommandWithInjection;
+
+			Assert.AreEqual (1, pool.InstanceCount);	//These just assert our expectation that there's one instance
+			Assert.AreEqual (0, pool.Available);		//and we're looking at it.
+
+			Assert.IsNull (cmd.injected);
+		}
+
+		[Test]
+		public void TestCommandWorksSecondTime()
+		{
+			injectionBinder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ();
+			commandBinder.Bind (SomeEnum.ONE).To<CommandWithInjection> ();
+
+			commandBinder.ReactTo (SomeEnum.ONE);
+			IPool<CommandWithInjection> pool = pooledCommandBinder.GetPool<CommandWithInjection> ();
+
+			CommandWithInjection cmd = pool.GetInstance () as CommandWithInjection;
+
+			Assert.AreEqual (1, pool.InstanceCount);	//These just assert our expectation that there's one instance
+			Assert.AreEqual (0, pool.Available);		//and we're looking at it.
+
+			Assert.IsNull (cmd.injected);
+
+			TestDelegate testDelegate = delegate 
+			{
+				commandBinder.ReactTo (SomeEnum.ONE);
+			};
+			Assert.DoesNotThrow (testDelegate);
+		}
+
+		[Test]
+		public void TestFactoryInjectionGivesUniqueInstances()
+		{
+			injectionBinder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ();
+			injectionBinder.Bind<Signal<SimpleInterfaceImplementer>> ().To<Signal<SimpleInterfaceImplementer>> ().ToSingleton ();
+			commandBinder.Bind (SomeEnum.ONE).To<CommandWithInjectionAndSignal> ();
+
+			Signal<SimpleInterfaceImplementer> signal = injectionBinder.GetInstance<Signal<SimpleInterfaceImplementer>>();
+			signal.AddListener (cb);
+
+			commandBinder.ReactTo (SomeEnum.ONE);
+			commandBinder.ReactTo (SomeEnum.ONE);
+
+			Assert.AreEqual (2, instanceList.Count);
+			Assert.AreNotSame (instanceList [0], instanceList [1]);
+
+		}
+
+		private List<SimpleInterfaceImplementer> instanceList = new List<SimpleInterfaceImplementer>();
+		private void cb(SimpleInterfaceImplementer instance)
+		{
+			instanceList.Add (instance);
 		}
 	}
 }

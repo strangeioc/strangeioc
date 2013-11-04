@@ -36,11 +36,11 @@ namespace strange.unittests
 		public void TestRetainRelease ()
 		{
 			ISequenceCommand command = new SequenceCommandWithExecute ();
-			Assert.IsFalse (command.retain);
+			Assert.IsFalse (command.Retained);
 			command.Retain ();
-			Assert.IsTrue (command.retain);
+			Assert.IsTrue (command.Retained);
 			command.Release ();
-			Assert.IsFalse (command.retain);
+			Assert.IsFalse (command.Retained);
 		}
 
 		[Test]
@@ -48,15 +48,15 @@ namespace strange.unittests
 		{
 			ISequenceCommand command = new SequenceCommandWithExecute ();
 			command.Cancel ();
-			Assert.IsTrue (command.cancelled);
+			Assert.IsTrue (command.Cancelled);
 		}
 
 		[Test]
 		public void TestSequenceId()
 		{
 			ISequenceCommand command = new SequenceCommandWithExecute ();
-			command.sequenceId = 42;
-			Assert.AreEqual (42, command.sequenceId);
+			command.SequenceId = 42;
+			Assert.AreEqual (42, command.SequenceId);
 		}
 	}
 }

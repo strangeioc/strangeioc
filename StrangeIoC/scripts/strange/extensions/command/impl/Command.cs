@@ -49,18 +49,21 @@ namespace strange.extensions.command.impl
 
 		/// The InjectionBinder for this Context
 		[Inject]
-		public IInjectionBinder injectionBinder{ get; set;}
+		public IInjectionBinder injectionBinder{ get; set; }
 
-		public object data{ get; set;}
+		public object Data{ get; set; }
 
-		public bool cancelled{ get; set;}
+		public bool Cancelled{ get; set; }
 
-		public int sequenceId{ get; set; }
+		public bool IsClean{ get; set; }
 
-		protected bool _retain = false;
+		public int SequenceId{ get; set; }
+
+		protected bool _retained = false;
 
 		public Command ()
 		{
+			IsClean = false;
 		}
 
 		virtual public void Execute()
@@ -70,21 +73,23 @@ namespace strange.extensions.command.impl
 
 		public void Retain()
 		{
-			_retain = true;
+			_retained = true;
 		}
 
 		public void Release()
 		{
-			_retain = false;
+			_retained = false;
 			if (commandBinder != null)
 			{
 				commandBinder.ReleaseCommand (this);
 			}
 		}
 
-		public void Restore()
+		/// Use/override this method to clean up the Command for recycling
+		virtual public void Restore()
 		{
-			//Use this space to clean up the Command for recycling
+			injectionBinder.Injector.Uninject (this);
+			IsClean = true;
 		}
 
 		public void Fail()
@@ -97,16 +102,25 @@ namespace strange.extensions.command.impl
 
 		public void Cancel()
 		{
-			cancelled = true;
+			Cancelled = true;
 		}
 
-		public bool retain
+		public bool Retained
 		{
 			get
 			{
-				return _retain;
+				return _retained;
 			}
 		}
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		public object data{ get{ return Data; } set { Data = value; }}
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		public bool cancelled{ get{ return Cancelled; } set { Cancelled = value; }}
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		public bool retain{ get { return Retained; } }
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		public int sequenceId{ get{ return SequenceId; } set { SequenceId = value; }}
 	}
 }
 

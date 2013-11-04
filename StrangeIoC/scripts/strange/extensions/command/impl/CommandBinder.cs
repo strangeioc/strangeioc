@@ -77,6 +77,7 @@ namespace strange.extensions.command.impl
 
 		public CommandBinder ()
 		{
+			UsePooling = true;
 		}
 
 		public override IBinding GetRawBinding ()
@@ -94,7 +95,7 @@ namespace strange.extensions.command.impl
 			ICommandBinding binding = GetBinding (trigger) as ICommandBinding;
 			if (binding != null)
 			{
-				if (binding.isSequence)
+				if (binding.IsSequence)
 				{
 					next (binding, data, 0);
 				}
@@ -121,7 +122,7 @@ namespace strange.extensions.command.impl
 			}
 			else
 			{
-				if (binding.isOneOff)
+				if (binding.IsOneOff)
 				{
 					Unbind (binding);
 				}
@@ -131,7 +132,7 @@ namespace strange.extensions.command.impl
 		virtual protected ICommand invokeCommand(Type cmd, ICommandBinding binding, object data, int depth)
 		{
 			ICommand command = createCommand (cmd, data);
-			command.sequenceId = depth;
+			command.SequenceId = depth;
 			trackCommand (command, binding);
 			executeCommand (command);
 			return command;
@@ -139,13 +140,7 @@ namespace strange.extensions.command.impl
 
 		virtual protected ICommand createCommand(object cmd, object data)
 		{
-			//injectionBinder.Bind<ICommand> ().To (cmd);
-			//ICommand command = injectionBinder.GetInstance<ICommand> () as ICommand;
-
-			Type cmdType = cmd as Type;
-			Pool pool = pools [cmdType];
-			ICommand command = pool.GetInstance () as ICommand;
-
+			ICommand command = getCommand (cmd as Type);
 
 			if (command == null)
 			{
@@ -158,16 +153,39 @@ namespace strange.extensions.command.impl
 				throw new CommandException(msg, CommandExceptionType.BAD_CONSTRUCTOR);
 			}
 
-			command.data = data;
-			//injectionBinder.Unbind<ICommand> ();
+			if (!UsePooling)
+				injectionBinder.Unbind<ICommand> ();
+
+			command.Data = data;
 			return command;
+		}
+
+		protected ICommand getCommand(Type type)
+		{
+			if (UsePooling)
+			{
+				Pool pool = pools [type];
+				ICommand command = pool.GetInstance () as ICommand;
+				if (command.IsClean)
+				{
+					injectionBinder.Injector.Inject (command);
+					command.IsClean = false;
+				}
+				return command;
+			}
+			else
+			{
+				injectionBinder.Bind<ICommand> ().To (type);
+				ICommand command = injectionBinder.GetInstance<ICommand> ();
+				return command;
+			}
 		}
 
 		protected void trackCommand (ICommand command, ICommandBinding binding)
 		{
-			if (binding.isSequence)
+			if (binding.IsSequence)
 			{
-				activeSequences [command] = binding;
+				activeSequences.Add(command, binding);
 			}
 			else
 			{
@@ -212,10 +230,10 @@ namespace strange.extensions.command.impl
 
 		public void ReleaseCommand (ICommand command)
 		{
-			if (command.retain == false)
+			if (command.Retained == false)
 			{
 				Type t = command.GetType ();
-				if (pools.ContainsKey (t))
+				if (UsePooling && pools.ContainsKey (t))
 				{
 					pools [t].ReturnInstance (command);
 				}
@@ -226,18 +244,20 @@ namespace strange.extensions.command.impl
 				else if (activeSequences.ContainsKey(command))
 				{
 					ICommandBinding binding = activeSequences [command];
-					object data = command.data;
+					object data = command.Data;
 					activeSequences.Remove (command);
-					next (binding, data, command.sequenceId + 1);
+					next (binding, data, command.SequenceId + 1);
 				}
 			}
 		}
 
-		public Pool getPool<T>()
+		public bool UsePooling { get; set; }
+
+		public Pool<T> GetPool<T>()
 		{
 			Type t = typeof (T);
 			if (pools.ContainsKey(t as Type))
-				return pools[t];
+				return pools[t] as Pool<T>;
 			return null;
 		}
 
@@ -274,15 +294,18 @@ namespace strange.extensions.command.impl
 		override protected void resolver(IBinding binding)
 		{
 			base.resolver (binding);
-			if (binding.Value != null)
+			if (UsePooling)
 			{
-				object[] values = binding.Value as object[];
-				foreach (Type value in values)
+				if (binding.Value != null)
 				{
-					if (pools.ContainsKey (value) == false)
+					object[] values = binding.Value as object[];
+					foreach (Type value in values)
 					{
-						var myPool = makePoolFromType(value);
-						pools [value] = myPool;
+						if (pools.ContainsKey (value) == false)
+						{
+							var myPool = makePoolFromType (value);
+							pools [value] = myPool;
+						}
 					}
 				}
 			}
