@@ -14,24 +14,20 @@
  *		limitations under the License.
  */
 
-/**
-  * Provides an instance of the specified Type
-  * When all you need is a new instance, use this instead of IInjectionBinder.
-  */
-
 using System;
+using System.Collections.Generic;
+using strange.extensions.pool.impl;
+using strange.extensions.command.impl;
 
-namespace strange.framework.api
+namespace strange.extensions.command.api
 {
-	public interface IInstanceProvider
+	public interface IPooledCommandBinder
 	{
-		/// Retrieve an Instance based on the key.
-		/// ex. `injectionBinder.Get<cISomeInterface>();`
-		T GetInstance<T>();
+		/// Retrieve the Pool of the specified type
+		Pool<T> GetPool<T>();
 
-		/// Retrieve an Instance based on the key.
-		/// ex. `injectionBinder.Get(typeof(ISomeInterface));`
-		object GetInstance(Type key);
+		/// Switch to disable pooling for those that don't want to use it.
+		bool UsePooling{ get; set; }
 	}
 }
 

@@ -57,13 +57,27 @@ namespace strange.extensions.injector.api
 		/// Request that the provided target be injected.
 		object Inject(object target, bool attemptConstructorInjection);
 
+		/// Clear the injections from the provided instance.
+		/// Note that Uninject can only clean public properties...therefore only
+		/// setters will be uninjected...not injections provided via constructor injection
+		void Uninject(object target);
+
 		/// Get/set an InjectorFactory.
-		IInjectorFactory factory{ get; set;}
+		IInjectorFactory Factory{ get; set;}
 
 		/// Get/set an InjectionBinder.
-		IInjectionBinder binder{ get; set;}
+		IInjectionBinder Binder{ get; set;}
 
 		/// Get/set a ReflectionBinder.
+		IReflectionBinder Reflector{ get; set;}
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		IInjectorFactory factory{ get; set;}
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		IInjectionBinder binder{ get; set;}
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		IReflectionBinder reflector{ get; set;}
 	}
 }

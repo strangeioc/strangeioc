@@ -14,24 +14,14 @@
  *		limitations under the License.
  */
 
-/**
-  * Provides an instance of the specified Type
-  * When all you need is a new instance, use this instead of IInjectionBinder.
-  */
-
 using System;
 
-namespace strange.framework.api
+namespace strange.extensions.command.api
 {
-	public interface IInstanceProvider
+	public enum CommandKeys
 	{
-		/// Retrieve an Instance based on the key.
-		/// ex. `injectionBinder.Get<cISomeInterface>();`
-		T GetInstance<T>();
-
-		/// Retrieve an Instance based on the key.
-		/// ex. `injectionBinder.Get(typeof(ISomeInterface));`
-		object GetInstance(Type key);
+		/// Temporary marker for any pool instantiated by the CommandBinder
+		COMMAND_POOL
 	}
 }
 

@@ -54,7 +54,7 @@ namespace strange.extensions.command.impl
 				throw new CommandException(msg, CommandExceptionType.BAD_CONSTRUCTOR);
 			}
 
-			command.data = data;
+			command.Data = data;
 			if (data is IEvent)
 			{
 				injectionBinder.Unbind<IEvent>();

@@ -1,68 +1,39 @@
 using System;
-using System.Timers;
 using NUnit.Framework;
 using strange.extensions.command.api;
-using strange.extensions.command.impl;
 using strange.extensions.injector.api;
 using strange.extensions.injector.impl;
-
-using strange.framework.impl;
 using strange.framework.api;
-
+using strange.extensions.command.impl;
+using System.Collections.Generic;
+using strange.extensions.pool.api;
 
 namespace strange.unittests
 {
-	[TestFixture()]
-	public class TestCommandBinder
+	[TestFixture]
+	public class TestCommandBinderWithoutPools
 	{
-		IInjectionBinder injectionBinder;
-		ICommandBinder commandBinder;
+		private ICommandBinder commandBinder;
+		private IInjectionBinder injectionBinder;
+
 
 		[SetUp]
 		public void SetUp()
 		{
-			injectionBinder = new InjectionBinder();
-			injectionBinder.Bind<IInjectionBinder> ().Bind<IInstanceProvider> ().ToValue (injectionBinder);
-			injectionBinder.Bind<ICommandBinder> ().To<CommandBinder> ().ToSingleton ();
+			injectionBinder = new InjectionBinder ();
+			injectionBinder.Bind<IInjectionBinder>().Bind<IInstanceProvider>().ToValue(injectionBinder);
+			injectionBinder.Bind<ICommandBinder> ().To<CommandBinder> ().ToSingleton();
+
 			commandBinder = injectionBinder.GetInstance<ICommandBinder> ();
+			(commandBinder as IPooledCommandBinder).UsePooling = false;
 		}
 
 		[Test]
-		public void TestExecuteInjectionCommand ()
+		public void TestCommandsNotReused()
 		{
-			//CommandWithInjection requires an ISimpleInterface
-			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().ToSingleton();
-
-			//Bind the trigger to the command
-			commandBinder.Bind(SomeEnum.ONE).To<CommandWithInjection>();
-			commandBinder.ReactTo (SomeEnum.ONE);
-
-			//The command should set the value to 100
-			ISimpleInterface instance = injectionBinder.GetInstance<ISimpleInterface>();
-			Assert.AreEqual (100, instance.intValue);
-		}
-
-		[Test]
-		public void TestMultipleCommands ()
-		{
-			//CommandWithInjection requires an ISimpleInterface
-			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().ToSingleton();
-
-			//Bind the trigger to the command
-			commandBinder.Bind(SomeEnum.ONE).To<CommandWithInjection>().To<CommandWithExecute>().To<CommandWithoutExecute>();
-
-			TestDelegate testDelegate = delegate 
-			{
-				commandBinder.ReactTo (SomeEnum.ONE);
-			};
-
-			//That the exception is thrown demonstrates that the last command ran
-			CommandException ex = Assert.Throws<CommandException> (testDelegate);
-			Assert.AreEqual (ex.type, CommandExceptionType.EXECUTE_OVERRIDE);
-
-			//That the value is 100 demonstrates that the first command ran
-			ISimpleInterface instance = injectionBinder.GetInstance<ISimpleInterface>() as ISimpleInterface;
-			Assert.AreEqual (100, instance.intValue);
+			commandBinder.Bind (SomeEnum.ONE).To<MarkablePoolCommand> ();
+			IPool<MarkablePoolCommand> pool = (commandBinder as IPooledCommandBinder).GetPool<MarkablePoolCommand> ();
+			Assert.IsNull (pool);
 		}
 
 		[Test]
@@ -145,19 +116,6 @@ namespace strange.unittests
 			ISimpleInterface instance = injectionBinder.GetInstance<ISimpleInterface>() as ISimpleInterface;
 			Assert.AreEqual (100, instance.intValue);
 		}
-
-		//TODO: figure out how to do async tests
-		/*
-		[Test]
-		public async void TestAsyncCommand()
-		{
-			injectionBinder.Bind<Timer>().To<Timer> ();
-			commandBinder.Bind (SomeEnum.ONE).To<AsynchCommand> ();
-			Task<bool> answer = commandBinder.ReactTo (SomeEnum.ONE);
-
-			//Assert.Throws<Exception> ( await );
-		}
-		*/
 	}
 }
 

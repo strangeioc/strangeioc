@@ -22,7 +22,15 @@ using strange.extensions.pool.api;
 
 namespace strange.extensions.pool.impl
 {
-	public class Pool<T> : IPool<T>, IPoolable
+	public class Pool<T> : Pool, IPool<T>
+	{
+		public Pool() : base()
+		{
+			PoolType = typeof(T);
+		}
+	}
+
+	public class Pool : IPool, IPoolable
 	{
 
 		[Inject]
@@ -38,12 +46,10 @@ namespace strange.extensions.pool.impl
 
 		public Pool () : base()
 		{
-			PoolType = typeof (T);
-
 			Size = 0;
 			constraint = BindingConstraintType.POOL;
 			uniqueValues = true;
-
+			
 			OverflowBehavior = PoolOverflowBehavior.EXCEPTION;
 			InflationType = PoolInflationType.DOUBLE;
 		}
@@ -210,7 +216,7 @@ namespace strange.extensions.pool.impl
 			{
 				if (value is IPoolable)
 				{
-					(value as IPoolable).Release ();
+					(value as IPoolable).Restore ();
 				}
 				instancesInUse.Remove (value);
 				instancesAvailable.Push (value);
@@ -242,7 +248,7 @@ namespace strange.extensions.pool.impl
 
 		#region IPoolable implementation
 
-		public void Release ()
+		public void Restore ()
 		{
 			Clean ();
 			Size = 0;

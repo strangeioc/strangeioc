@@ -343,7 +343,7 @@ namespace strange.unittests
 	{
 		public int someValue = 0;
 
-		public void Release ()
+		public void Restore ()
 		{
 			someValue = 0;
 		}
@@ -351,9 +351,11 @@ namespace strange.unittests
 
 	class TestInstanceProvider : IInstanceProvider
 	{
-		public object GetInstance<T>()
+		public T GetInstance<T>()
 		{
-			return Activator.CreateInstance (typeof (T));
+			object instance = Activator.CreateInstance (typeof (T));
+			T retv = (T) instance;
+			return retv;
 		}
 
 		public object GetInstance(Type key)

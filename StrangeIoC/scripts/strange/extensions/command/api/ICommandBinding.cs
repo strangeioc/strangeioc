@@ -36,7 +36,7 @@ namespace strange.extensions.command.api
 		ICommandBinding Once();
 
 		/// Get/set the property set to `true` by `Once()`
-		bool isOneOff{ get; set;}
+		bool IsOneOff{ get; set;}
 
 		/// Declares that the bound commands will be run in parallel.
 		/// Parallel is the default. There is no need to call this unless you're changing from sequence.
@@ -46,6 +46,11 @@ namespace strange.extensions.command.api
 		ICommandBinding InSequence ();
 
 		/// Get/set the propterty set by InSequence() and InParallel()
+		bool IsSequence{ get; set;}
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		bool isOneOff{ get; set;}
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		bool isSequence{ get; set;}
 
 		new ICommandBinding Bind<T>();

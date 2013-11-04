@@ -160,49 +160,31 @@ namespace strange.unittests
 			InjectionException ex2 = Assert.Throws<InjectionException>(testDelegate2);
 			Assert.That (ex2.type == InjectionExceptionType.NOT_INSTANTIABLE);
 		}
-		/*
+
+		// NOTE: Due to a limitation in the version of C# used by Unity,
+		// IT IS NOT POSSIBLE TO MAP GENERICS ABSTRACTLY!!!!!
+		// Therefore, pools must be mapped to concrete instance types. (Yeah, this blows.)
 		[Test]
 		public void TestGetFromPool()
 		{
-			IInjectionBinding poolBinding = new InjectionBinding (resolver).Bind<InjectableSuperClass> ().To <InjectableDerivedClass> ().ToPool();
-			IPool pool = poolBinding as IPool;
-			pool.InflationType = PoolInflationType.DOUBLE;
-
-
-			InjectableDerivedClass testResult = factory.Get (poolBinding) as InjectableDerivedClass;
-			Assert.IsNotNull (testResult);
-			int defaultValue = testResult.intValue;
-			//Set a value
-			testResult.intValue = 42;
-			//Now get an instance again and ensure it's a different instance
-			InjectableDerivedClass testResult2 = factory.Get (poolBinding) as InjectableDerivedClass;
-			Assert.AreEqual (defaultValue, testResult2.intValue);
-
-			//And a third
-			InjectableDerivedClass testResult3 = factory.Get (poolBinding) as InjectableDerivedClass;
-			Assert.AreEqual (defaultValue, testResult3.intValue);
-
-
-			Assert.AreEqual (1, pool.Available);
-			Assert.AreEqual (0, pool.Size);
-			Assert.AreEqual (4, pool.InstanceCount);
-		}
-		*/
-
-		[Test]
-		public void TestGetFromPool()
-		{
-			IInjectionBinding binding = new InjectionBinding (resolver);
-			binding.Bind<IPool<ClassToBeInjected>> ().To <Pool<ClassToBeInjected>> ();
-
-			Pool<ClassToBeInjected> pool = factory.Get (binding) as Pool<ClassToBeInjected>;
-			Assert.NotNull (pool);
-
+			IPool<ClassToBeInjected> pool = new Pool<ClassToBeInjected> ();
+			// Format the pool
+			pool.Size = 4;
 			pool.InstanceProvider = new TestInstanceProvider ();
 
-			ClassToBeInjected instance = pool.GetInstance () as ClassToBeInjected;
-			Assert.NotNull (instance);
+			IInjectionBinding binding = new InjectionBinding (resolver);
+			binding.Bind<IPool<ClassToBeInjected>> ().To <Pool<ClassToBeInjected>> ().ToValue(pool);
 
+			IPool<ClassToBeInjected> myPool = factory.Get (binding) as Pool<ClassToBeInjected>;
+			Assert.NotNull (myPool);
+
+			ClassToBeInjected instance1 = myPool.GetInstance () as ClassToBeInjected;
+			Assert.NotNull (instance1);
+
+			ClassToBeInjected instance2 = myPool.GetInstance () as ClassToBeInjected;
+			Assert.NotNull (instance2);
+
+			Assert.AreNotSame (instance1, instance2);
 		}
 	}
 }

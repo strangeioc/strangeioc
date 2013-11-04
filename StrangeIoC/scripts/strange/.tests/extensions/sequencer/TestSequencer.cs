@@ -7,6 +7,7 @@ using strange.extensions.injector.impl;
 
 using strange.framework.impl;
 using strange.extensions.command.api;
+using strange.framework.api;
 
 
 namespace strange.unittests
@@ -21,7 +22,7 @@ namespace strange.unittests
 		public void SetUp()
 		{
 			injectionBinder = new InjectionBinder();
-			injectionBinder.Bind<IInjectionBinder> ().ToValue (injectionBinder);
+			injectionBinder.Bind<IInjectionBinder> ().Bind<IInstanceProvider> ().ToValue (injectionBinder);
 			injectionBinder.Bind<ISequencer> ().Bind<ICommandBinder>().To<Sequencer> ().ToSingleton ();
 			sequencer = injectionBinder.GetInstance<ISequencer> () as ISequencer;
 		}

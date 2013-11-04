@@ -6,6 +6,7 @@ using strange.extensions.command.impl;
 using strange.extensions.command.api;
 using strange.extensions.signal.impl;
 using strange.extensions.signal.api;
+using strange.framework.api;
 
 namespace strange.unittests
 {
@@ -21,7 +22,7 @@ namespace strange.unittests
         public void SetUp()
         {
             injectionBinder = new InjectionBinder();
-            injectionBinder.Bind<IInjectionBinder>().ToValue(injectionBinder);
+			injectionBinder.Bind<IInjectionBinder>().Bind<IInstanceProvider>().ToValue(injectionBinder);
             injectionBinder.Bind<ICommandBinder>().To<SignalCommandBinder>().ToSingleton();
             commandBinder = injectionBinder.GetInstance<ICommandBinder>() as ICommandBinder;
             injectionBinder.Bind<TestModel>().ToSingleton();

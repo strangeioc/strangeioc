@@ -64,7 +64,7 @@
       <Properties>
         <Policies>
           <TextStylePolicy TabsToSpaces="False" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/x-csharp" />
-          <CSharpFormattingPolicy SimplePropertyFormatting="ForceNewLine" AutoPropertyFormatting="ForceNewLine" AnonymousMethodBraceStyle="NextLine" PropertyBraceStyle="NextLine" PropertyGetBraceStyle="NextLine" PropertySetBraceStyle="NextLine" SimpleGetBlockFormatting="ForceNewLine" SimpleSetBlockFormatting="ForceNewLine" EventBraceStyle="NextLine" EventAddBraceStyle="NextLine" EventRemoveBraceStyle="NextLine" StatementBraceStyle="NextLine" inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" />
+          <CSharpFormattingPolicy IndentSwitchBody="True" AnonymousMethodBraceStyle="NextLine" PropertyBraceStyle="NextLine" PropertyGetBraceStyle="NextLine" PropertySetBraceStyle="NextLine" SimpleGetBlockFormatting="ForceNewLine" SimpleSetBlockFormatting="ForceNewLine" EventBraceStyle="NextLine" EventAddBraceStyle="NextLine" EventRemoveBraceStyle="NextLine" StatementBraceStyle="NextLine" ElseNewLinePlacement="NewLine" CatchNewLinePlacement="NewLine" FinallyNewLinePlacement="NewLine" WhileNewLinePlacement="NewLine" BeforeSizeOfParentheses="True" BeforeTypeOfParentheses="True" SpacesAfterTypecast="True" inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" />
         </Policies>
       </Properties>
     </MonoDevelop>
@@ -74,7 +74,11 @@
     <Folder Include="StrangeIoC\examples\" />
     <Folder Include="StrangeIoC\scripts\strange\extensions\signal\" />
     <Folder Include="StrangeIoC\scripts\strange\.tests\" />
+    <Folder Include="StrangeIoC\scripts\strange\framework\impl\pool\" />
     <Folder Include="StrangeIoC\scripts\strange\extensions\pool\" />
+    <Folder Include="StrangeIoC\scripts\strange\extensions\pool\api\" />
+    <Folder Include="StrangeIoC\scripts\strange\extensions\pool\impl\" />
+    <Folder Include="StrangeIoC\scripts\strange\.tests\extensions\pool\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StrangeIoC\scripts\strange\extensions\context\api\ContextEvent.cs.meta" />
@@ -310,7 +314,6 @@
     <Compile Include="StrangeIoC\scripts\strange\extensions\command\impl\SignalCommandBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommand.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommandBinder.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommandBinding.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestContextRemoval.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestCrossContext.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\eventdispatcher\TestEventBinding.cs" />
@@ -367,15 +370,21 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectsPostConstructSimple.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\NonpublicInjection.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ConstructorInjectsClassToBeInjected.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\framework\TestPool.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\framework\api\IInstanceProvider.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\framework\api\IManagedList.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\pool\impl\Pool.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\pool\api\IPool.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\pool\impl\PoolException.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\pool\api\IPoolable.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\pool\api\PoolExceptionType.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\pool\api\PoolInflationType.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\pool\api\PoolOverflowBehavior.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\extensions\pool\impl\Pool.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\extensions\pool\impl\PoolException.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\framework\api\IManagedList.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\framework\api\IInstanceProvider.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommandPooling.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\CommandKeys.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\MarkablePoolCommand.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\IPooledCommandBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\pool\TestPool.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommandBinderWithoutPools.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithInjectionAndSignal.cs" />
   </ItemGroup>
 </Project>

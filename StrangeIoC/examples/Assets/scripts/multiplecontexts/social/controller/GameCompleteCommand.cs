@@ -59,7 +59,7 @@ namespace strange.examples.multiplecontexts.social
 			ArrayList list = evt.data as ArrayList;
 			
 			//Save the list as the data for the next item in the sequence
-			data = list;
+			Data = list;
 			Release();
 		}
 	}
