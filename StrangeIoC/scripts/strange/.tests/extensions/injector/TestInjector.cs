@@ -141,6 +141,68 @@ namespace strange.unittests
 			InjectionException ex = Assert.Throws<InjectionException>(testDelegate);
 			Assert.That (ex.type == InjectionExceptionType.CIRCULAR_DEPENDENCY);
 		}
+
+		// ISSUE #45. This is a rather complex test which essentially validates that a Singleton is a Singleton,
+		// whether it's injected via constructor injection or property injection.
+		[Test]
+		public void TestConstructorAndSetterSingletonsAreSame()
+		{
+			binder.Bind<IMapConfig>().ToValue(new MapConfig());
+			binder.Bind<IMap>().To<Map>().ToSingleton();
+			binder.Bind<IRenderer>().To<Renderer>().ToSingleton();
+			binder.Bind<Phred> ().ToSingleton ();
+
+
+			var m = binder.GetInstance<IMap>() as IMap;
+			var r = binder.GetInstance<IRenderer>() as IRenderer;
+			var p = binder.GetInstance<Phred>() as Phred;
+
+			Assert.AreSame (m, p.map);
+			Assert.AreSame (m, r.map);
+		}
+	}
+
+	public interface IMapConfig
+	{}
+
+	public class MapConfig : IMapConfig
+	{}
+
+	public interface IMap
+	{
+	}
+
+	public class Map : IMap
+	{
+		public Map(IMapConfig config)
+		{
+			Console.WriteLine("Test map " + GetHashCode());
+		}
+	}
+
+	public interface IRenderer
+	{
+		IMap map {get;set;}
+	}
+
+	public class Renderer : IRenderer
+	{
+		public IMap map{get;set;} 
+
+		public Renderer(IMap map)
+		{
+			this.map = map;
+		}
+	}
+
+	public class Phred
+	{
+		[Inject]
+		public IMap map{get;set;} 
+
+		public Phred()
+		{
+		}
 	}
 }
 
