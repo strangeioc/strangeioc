@@ -176,18 +176,20 @@ namespace strange.extensions.injector.impl
 		{
 			IInjectionBinding binding = binder.GetBinding (t, name);
 			failIf(binding == null, "Attempt to Instantiate a null binding.", InjectionExceptionType.NULL_BINDING, t, name, target);
-			if (binding.type == InjectionBindingType.VALUE)
-			{
-				if (!binding.toInject)
-				{
+			if (binding.type == InjectionBindingType.VALUE) {
+				if (!binding.toInject) {
 					return binding.value;
-				}
-				else
-				{
-					object retv = Inject(binding.value, false);
+				} else {
+					object retv = Inject (binding.value, false);
 					binding.ToInject (false);
 					return retv;
 				}
+			} 
+			else if (binding.type == InjectionBindingType.SINGLETON)
+			{
+				if (binding.value is Type || binding.value == null)
+					Instantiate (binding);
+				return binding.value;
 			}
 			else
 			{
