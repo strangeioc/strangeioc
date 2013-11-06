@@ -205,13 +205,17 @@ namespace strange.extensions.injector.impl
 				if (!binding.AllowInject)
 				{
 					return binding.value;
-				}
-				else
-				{
-					object retv = Inject(binding.value, false);
+				} else {
+					object retv = Inject (binding.value, false);
 					binding.ToInject (false);
 					return retv;
 				}
+			} 
+			else if (binding.Type == InjectionBindingType.SINGLETON)
+			{
+				if (binding.Value is Type || binding.Value == null)
+					Instantiate (binding);
+				return binding.Value;
 			}
 			else
 			{

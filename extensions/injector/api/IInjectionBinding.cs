@@ -100,7 +100,7 @@ namespace strange.extensions.injector.api
 		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		/// Get and set the InjectionBindingType
 		/// @see InjectionBindingType
-		//InjectionBindingType type{get; set;}
+		InjectionBindingType type{get; set;}
 		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		object key{ get; }
 		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
