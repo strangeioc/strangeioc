@@ -236,7 +236,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			{
 				return false;
 			}
-			return binding.typeForCallback (callback) != EventCallbackType.NOT_FOUND;
+			return binding.TypeForCallback (callback) != EventCallbackType.NOT_FOUND;
 		}
 
 		public bool HasListener(object evt, EmptyCallback callback)
@@ -246,7 +246,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			{
 				return false;
 			}
-			return binding.typeForCallback (callback) != EventCallbackType.NOT_FOUND;
+			return binding.TypeForCallback (callback) != EventCallbackType.NOT_FOUND;
 		}
 
 		public void UpdateListener(bool toAdd, object evt, EventCallback callback)
