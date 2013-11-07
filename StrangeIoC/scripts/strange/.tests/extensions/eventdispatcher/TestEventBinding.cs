@@ -55,23 +55,27 @@ namespace strange.unittests
 
 		private void oneArgumentCallback(IEvent o)
 		{
-			confirmationValue *= (int)o.data;
+			confirmationValue *= (int)o.Data;
 		}
 
 
         class TestEvent : IEvent
         {
-            public object type{ get; set;}
-		    public IEventDispatcher target{ get; set;}
-		    public object data{ get; set;}
+            public object Type{ get; set;}
+		    public IEventDispatcher Target{ get; set;}
+		    public object Data{ get; set;}
 
             
             public TestEvent(object type, IEventDispatcher target, object data)
 		    {
-			    this.type = type;
-			    this.target = target;
-			    this.data = data;
+			    this.Type = type;
+			    this.Target = target;
+			    this.Data = data;
 		    }
+
+			public object type{ get{ return Type;} set{ Type = value; }}
+			public IEventDispatcher target{ get { return Target;} set{ Target = value; }}
+			public object data{ get { return Data;} set{ Data = value; }}
         }
 	}
 }

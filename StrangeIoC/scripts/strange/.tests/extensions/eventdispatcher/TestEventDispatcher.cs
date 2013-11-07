@@ -127,7 +127,7 @@ namespace strange.unittests
 
 		private void removeTriggerClientMethod(IEvent evt)
 		{
-			EventDispatcher target = evt.data as EventDispatcher;
+			EventDispatcher target = evt.Data as EventDispatcher;
 			(dispatcher as ITriggerProvider).RemoveTriggerable (target);
 		}
 
@@ -164,7 +164,7 @@ namespace strange.unittests
 
 		private void oneArgumentMethod(IEvent evt)
 		{
-			int data = (int)evt.data;
+			int data = (int)evt.Data;
 
 			confirmationValue += data;
 		}
