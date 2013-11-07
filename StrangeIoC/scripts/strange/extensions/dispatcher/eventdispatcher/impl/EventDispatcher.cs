@@ -41,6 +41,8 @@ using strange.framework.api;
 using strange.framework.impl;
 using strange.extensions.dispatcher.api;
 using strange.extensions.dispatcher.eventdispatcher.api;
+using strange.extensions.pool.api;
+using strange.extensions.pool.impl;
 
 namespace strange.extensions.dispatcher.eventdispatcher.impl
 {
@@ -51,8 +53,12 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 		protected HashSet<ITriggerable> triggerClientRemovals;
 		protected bool isTriggeringClients;
 
+		protected IPool<TmEvent> eventPool;
+
 		public EventDispatcher ()
 		{
+			eventPool = new Pool<TmEvent> ();
+			eventPool.InstanceProvider = new EventInstanceProvider ();
 		}
 
 		override public IBinding GetRawBinding()
@@ -127,6 +133,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 					(callback as EmptyCallback)();
 				}
 			}
+			eventPool.ReturnInstance (data);
 		}
 
 		virtual protected object conformDataToEvent(object eventType, object data)
@@ -161,7 +168,12 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 
 		virtual protected object createEvent(object eventType, object data)
 		{
-			return new TmEvent(eventType, this, data);
+			TmEvent retv = eventPool.GetInstance();
+			retv.type = eventType;
+			retv.target = this;
+			retv.data = data;
+			return retv;
+
 		}
 
 		virtual protected void invokeEventCallback(object data, EventCallback callback)
@@ -321,6 +333,21 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 		{
 			Dispatch(key, data);
 			return true;
+		}
+	}
+
+	class EventInstanceProvider : IInstanceProvider
+	{
+		public T GetInstance<T>()
+		{
+			object instance = new TmEvent ();
+			T retv = (T) instance;
+			return retv;
+		}
+
+		public object GetInstance(Type key)
+		{
+			return new TmEvent ();
 		}
 	}
 }
