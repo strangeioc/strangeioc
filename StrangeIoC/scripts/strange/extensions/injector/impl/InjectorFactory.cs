@@ -61,11 +61,11 @@ namespace strange.extensions.injector.impl
 		/// Generate a Singleton instance
 		protected object singletonOf(IInjectionBinding binding, object[] args)
 		{
-			if (binding.value != null)
+			if (binding.Value != null)
 			{
-				if (binding.value.GetType().IsInstanceOfType(typeof(Type)))
+				if (binding.Value.GetType().IsInstanceOfType(typeof(Type)))
 				{
-					object o = createFromValue (binding.value, args);
+					object o = createFromValue (binding.Value, args);
 					if (o == null)
 						return null;
 					binding.SetValue(o);
@@ -77,9 +77,9 @@ namespace strange.extensions.injector.impl
 			}
 			else
 			{
-				binding.SetValue(generateImplicit((binding.key as object[])[0], args));
+				binding.SetValue(generateImplicit((binding.Key as object[])[0], args));
 			}
-			return binding.value;
+			return binding.Value;
 		}
 
 		protected object generateImplicit(object key, object[] args)
@@ -95,17 +95,17 @@ namespace strange.extensions.injector.impl
 		/// The binding already has a value. Simply return it.
 		protected object valueOf(IInjectionBinding binding)
 		{
-			return binding.value;
+			return binding.Value;
 		}
 
 		/// Generate a new instance
 		protected object instanceOf(IInjectionBinding binding, object[] args)
 		{
-			if (binding.value != null)
+			if (binding.Value != null)
 			{
-				return createFromValue(binding.value, args);
+				return createFromValue(binding.Value, args);
 			}
-			object value = generateImplicit ((binding.key as object[]) [0], args);
+			object value = generateImplicit ((binding.Key as object[]) [0], args);
 			return createFromValue(value, args);
 		}
 

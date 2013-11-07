@@ -96,7 +96,7 @@ namespace strange.extensions.mediation.impl
 						Trigger (MediationEvent.AWAKE, iView);
 				}
 			}
-			injectionBinder.injector.Inject (mono, false);
+			injectionBinder.Injector.Inject (mono, false);
 		}
 
 		public override IBinding Bind<T> ()
@@ -133,7 +133,7 @@ namespace strange.extensions.mediation.impl
 					if (mediator is IMediator)
 						((IMediator)mediator).PreRegister ();
 					injectionBinder.Bind (viewType).ToValue (view).ToInject(false);
-					injectionBinder.injector.Inject (mediator);
+					injectionBinder.Injector.Inject (mediator);
 					injectionBinder.Unbind(viewType);
 					if (mediator is IMediator)
 						((IMediator)mediator).OnRegister ();

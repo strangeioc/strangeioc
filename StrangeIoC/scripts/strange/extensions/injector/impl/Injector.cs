@@ -81,7 +81,7 @@ namespace strange.extensions.injector.impl
 			//In this case, the following routine attempts to generate based on a preferred constructor
 			if (retv == null)
 			{
-				IReflectedClass reflection = Reflector.Get (binding.value as Type);
+				IReflectedClass reflection = Reflector.Get (binding.Value as Type);
 				Type[] parameters = reflection.constructorParameters;
 				int aa = parameters.Length;
 				object[] args = new object [aa];
@@ -204,9 +204,9 @@ namespace strange.extensions.injector.impl
 			{
 				if (!binding.AllowInject)
 				{
-					return binding.value;
+					return binding.Value;
 				} else {
-					object retv = Inject (binding.value, false);
+					object retv = Inject (binding.Value, false);
 					binding.ToInject (false);
 					return retv;
 				}
