@@ -28,23 +28,23 @@ namespace strange.unittests
 		public void TestConstructorWithNoParameters ()
 		{
 			IReflectedClass reflected = reflector.Get<ClassToBeInjected> ();
-			Assert.AreEqual (0, reflected.constructorParameters.Length);
+			Assert.AreEqual (0, reflected.ConstructorParameters.Length);
 		}
 
 		[Test]
 		public void TestConstructorWithSingleParameter ()
 		{
 			IReflectedClass reflected = reflector.Get<ClassWithConstructorParametersOnlyOneConstructor> ();
-			Assert.AreEqual (1, reflected.constructorParameters.Length);
+			Assert.AreEqual (1, reflected.ConstructorParameters.Length);
 		}
 
 		[Test]
 		public void TestTaggedConstructor ()
 		{
 			IReflectedClass reflected = reflector.Get<ClassWithConstructorParameters> ();
-			Assert.AreEqual (2, reflected.constructorParameters.Length);
+			Assert.AreEqual (2, reflected.ConstructorParameters.Length);
 
-			ConstructorInfo constructor = reflected.constructor;
+			ConstructorInfo constructor = reflected.Constructor;
 			object[] parameters = new object[2];
 			parameters [0] = 42;
 			parameters [1] = "Zaphod";
@@ -58,12 +58,12 @@ namespace strange.unittests
 		public void TestShortestConstructor ()
 		{
 			IReflectedClass reflected = reflector.Get<MultipleConstructorsUntagged> ();
-			Assert.AreEqual (3, reflected.constructorParameters.Length);
+			Assert.AreEqual (3, reflected.ConstructorParameters.Length);
 
 			ISimpleInterface simple = new SimpleInterfaceImplementer ();
 			simple.intValue = 11001001;
 
-			ConstructorInfo constructor = reflected.constructor;
+			ConstructorInfo constructor = reflected.Constructor;
 			object[] parameters = new object[3];
 			parameters [0] = simple;
 			parameters [1] = 42;
@@ -79,32 +79,32 @@ namespace strange.unittests
 		public void TestConstructorWithMultipleParameters ()
 		{
 			IReflectedClass reflected = reflector.Get<ClassWithConstructorParameters> ();
-			Assert.AreEqual (2, reflected.constructorParameters.Length);
+			Assert.AreEqual (2, reflected.ConstructorParameters.Length);
 		}
 
 		[Test]
 		public void TestSinglePostConstruct ()
 		{
 			IReflectedClass reflected = reflector.Get<PostConstructClass> ();
-			Assert.AreEqual (1, reflected.postConstructors.Length);
+			Assert.AreEqual (1, reflected.PostConstructors.Length);
 		}
 
 		[Test]
 		public void TestMultiplePostConstructs ()
 		{
 			IReflectedClass reflected = reflector.Get<PostConstructTwo> ();
-			Assert.AreEqual (2, reflected.postConstructors.Length);
+			Assert.AreEqual (2, reflected.PostConstructors.Length);
 		}
 
 		[Test]
 		public void TestSingleSetter ()
 		{
 			IReflectedClass reflected = reflector.Get<PostConstructTwo> ();
-			Assert.AreEqual (1, reflected.setters.Length);
-			Assert.AreEqual (1, reflected.setterNames.Length);
-			Assert.IsNull (reflected.setterNames[0]);
+			Assert.AreEqual (1, reflected.Setters.Length);
+			Assert.AreEqual (1, reflected.SetterNames.Length);
+			Assert.IsNull (reflected.SetterNames[0]);
 
-			KeyValuePair<Type, PropertyInfo> pair = reflected.setters [0];
+			KeyValuePair<Type, PropertyInfo> pair = reflected.Setters [0];
 			Assert.AreEqual (pair.Key, typeof(float));
 		}
 
@@ -112,14 +112,14 @@ namespace strange.unittests
 		public void TestMultipleSetters ()
 		{
 			IReflectedClass reflected = reflector.Get<HasTwoInjections> ();
-			Assert.AreEqual (2, reflected.setters.Length);
-			Assert.AreEqual (2, reflected.setterNames.Length);
-			Assert.IsNull (reflected.setterNames[0]);
+			Assert.AreEqual (2, reflected.Setters.Length);
+			Assert.AreEqual (2, reflected.SetterNames.Length);
+			Assert.IsNull (reflected.SetterNames[0]);
 
 			bool foundStringType = false;
 			bool foundInjectableSuperClassType = false;
 
-			foreach (KeyValuePair<Type, PropertyInfo> pair in reflected.setters)
+			foreach (KeyValuePair<Type, PropertyInfo> pair in reflected.Setters)
 			{
 				if (pair.Key == typeof(string))
 				{
@@ -140,21 +140,21 @@ namespace strange.unittests
 		public void TestNamedSetters ()
 		{
 			IReflectedClass reflected = reflector.Get<HasNamedInjections> ();
-			Assert.AreEqual (2, reflected.setters.Length);
-			Assert.AreEqual (2, reflected.setterNames.Length);
+			Assert.AreEqual (2, reflected.Setters.Length);
+			Assert.AreEqual (2, reflected.SetterNames.Length);
 
 			int a = 0;
 			int injectableSuperClassCount = 0;
 			bool foundSomeEnum = false;
 			bool foundMarkerClass = false;
 
-			foreach (KeyValuePair<Type, PropertyInfo> pair in reflected.setters)
+			foreach (KeyValuePair<Type, PropertyInfo> pair in reflected.Setters)
 			{
 				if (pair.Key == typeof(InjectableSuperClass))
 				{
 					injectableSuperClassCount ++;
 
-					object name = reflected.setterNames [a];
+					object name = reflected.SetterNames [a];
 					if (name.Equals(SomeEnum.ONE))
 					{
 						Assert.False (foundSomeEnum);
@@ -176,13 +176,13 @@ namespace strange.unittests
 		public void TestSettersOnDerivedClass()
 		{
 			IReflectedClass reflected = reflector.Get<InjectableDerivedClass> ();
-			Assert.AreEqual (2, reflected.setters.Length);
-			Assert.AreEqual (2, reflected.setterNames.Length);
+			Assert.AreEqual (2, reflected.Setters.Length);
+			Assert.AreEqual (2, reflected.SetterNames.Length);
 
 			bool foundIntType = false;
 			bool foundClassToBeInjectedType = false;
 
-			foreach (KeyValuePair<Type, PropertyInfo> pair in reflected.setters)
+			foreach (KeyValuePair<Type, PropertyInfo> pair in reflected.Setters)
 			{
 				if (pair.Key == typeof(int))
 				{
@@ -214,9 +214,9 @@ namespace strange.unittests
 		public void TestReflectionCaching()
 		{
 			IReflectedClass reflected = reflector.Get<HasNamedInjections> ();
-			Assert.False (reflected.preGenerated);
+			Assert.False (reflected.PreGenerated);
 			IReflectedClass reflected2 = reflector.Get<HasNamedInjections> ();
-			Assert.True (reflected2.preGenerated);
+			Assert.True (reflected2.PreGenerated);
 		}
 
 		[Test]
