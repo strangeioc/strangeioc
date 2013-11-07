@@ -99,13 +99,13 @@ namespace strange.extensions.injector.impl
 			else if (binding.AllowInject)
 			{
 				retv = Inject (retv, binding.Type != InjectionBindingType.VALUE);
-				if (binding.Type == InjectionBindingType.SINGLETON || binding.Type == InjectionBindingType.VALUE)
-				{
-					//prevent double-injection
-					binding.ToInject(false);
-				}
 			}
 			infinityLock = null;
+			if (binding.Type == InjectionBindingType.SINGLETON || binding.Type == InjectionBindingType.VALUE)
+			{
+				//prevent double-injection
+				binding.ToInject(false);
+			}
 
 			return retv;
 		}

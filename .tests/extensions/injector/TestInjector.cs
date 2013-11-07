@@ -152,12 +152,13 @@ namespace strange.unittests
 			binder.Bind<IRenderer>().To<Renderer>().ToSingleton();
 			binder.Bind<Phred> ().ToSingleton ();
 
-
 			var m = binder.GetInstance<IMap>() as IMap;
+			var m2 = binder.GetInstance<IMap>() as IMap;
 			var r = binder.GetInstance<IRenderer>() as IRenderer;
 			var p = binder.GetInstance<Phred>() as Phred;
 
 			Assert.AreSame (m, p.map);
+			Assert.AreSame (m, m2);
 			Assert.AreSame (m, r.map);
 		}
 	}
