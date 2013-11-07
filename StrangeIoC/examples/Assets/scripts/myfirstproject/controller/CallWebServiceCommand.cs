@@ -47,8 +47,8 @@ namespace strange.examples.myfirstproject
 			//Remember to clean up. Remove the listener.
 			service.dispatcher.RemoveListener(ExampleEvent.FULFILL_SERVICE_REQUEST, onComplete);
 			
-			model.data = evt.data as string;
-			dispatcher.Dispatch(ExampleEvent.SCORE_CHANGE, evt.data);
+			model.data = evt.Data as string;
+			dispatcher.Dispatch(ExampleEvent.SCORE_CHANGE, evt.Data);
 			
 			//Remember to call release when done.
 			Release ();
