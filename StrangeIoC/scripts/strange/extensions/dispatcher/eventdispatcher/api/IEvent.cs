@@ -27,12 +27,19 @@ namespace strange.extensions.dispatcher.eventdispatcher.api
 	public interface IEvent
 	{
 		/// The Event key
-		object type{ get; set;}
+		object Type{ get; set;}
 
 		/// The IEventDispatcher that sent the event
-		IEventDispatcher target{ get; set;}
+		IEventDispatcher Target{ get; set;}
 
 		/// An arbitrary data payloaf
+		object Data{ get; set;}
+
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		object type{ get; set;}
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		IEventDispatcher target{ get; set;}
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		object data{ get; set;}
 	}
 }

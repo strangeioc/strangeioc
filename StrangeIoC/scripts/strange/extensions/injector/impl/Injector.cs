@@ -81,8 +81,8 @@ namespace strange.extensions.injector.impl
 			//In this case, the following routine attempts to generate based on a preferred constructor
 			if (retv == null)
 			{
-				IReflectedClass reflection = Reflector.Get (binding.value as Type);
-				Type[] parameters = reflection.constructorParameters;
+				IReflectedClass reflection = Reflector.Get (binding.Value as Type);
+				Type[] parameters = reflection.ConstructorParameters;
 				int aa = parameters.Length;
 				object[] args = new object [aa];
 				for (int a = 0; a < aa; a++)
@@ -99,13 +99,13 @@ namespace strange.extensions.injector.impl
 			else if (binding.AllowInject)
 			{
 				retv = Inject (retv, binding.Type != InjectionBindingType.VALUE);
-				if (binding.Type == InjectionBindingType.SINGLETON || binding.Type == InjectionBindingType.VALUE)
-				{
-					//prevent double-injection
-					binding.ToInject(false);
-				}
 			}
 			infinityLock = null;
+			if (binding.Type == InjectionBindingType.SINGLETON || binding.Type == InjectionBindingType.VALUE)
+			{
+				//prevent double-injection
+				binding.ToInject(false);
+			}
 
 			return retv;
 		}
@@ -161,10 +161,10 @@ namespace strange.extensions.injector.impl
 			failIf(target == null, "Attempt to perform constructor injection into a null object", InjectionExceptionType.NULL_TARGET);
 			failIf(reflection == null, "Attempt to perform constructor injection without a reflection", InjectionExceptionType.NULL_REFLECTION);
 
-			ConstructorInfo constructor = reflection.constructor;
+			ConstructorInfo constructor = reflection.Constructor;
 			failIf(constructor == null, "Attempt to construction inject a null constructor", InjectionExceptionType.NULL_CONSTRUCTOR);
 
-			Type[] constructorParameters = reflection.constructorParameters;
+			Type[] constructorParameters = reflection.ConstructorParameters;
 			object[] values = new object[constructorParameters.Length];
 			int i = 0;
 			foreach (Type type in constructorParameters)
@@ -185,13 +185,13 @@ namespace strange.extensions.injector.impl
 		{
 			failIf(target == null, "Attempt to inject into a null object", InjectionExceptionType.NULL_TARGET);
 			failIf(reflection == null, "Attempt to inject without a reflection", InjectionExceptionType.NULL_REFLECTION);
-			failIf(reflection.setters.Length != reflection.setterNames.Length, "Attempt to perform setter injection with mismatched names.\nThere must be exactly as many names as setters.", InjectionExceptionType.SETTER_NAME_MISMATCH);
+			failIf(reflection.Setters.Length != reflection.SetterNames.Length, "Attempt to perform setter injection with mismatched names.\nThere must be exactly as many names as setters.", InjectionExceptionType.SETTER_NAME_MISMATCH);
 
-			int aa = reflection.setters.Length;
+			int aa = reflection.Setters.Length;
 			for(int a = 0; a < aa; a++)
 			{
-				KeyValuePair<Type, PropertyInfo> pair = reflection.setters [a];
-				object value = getValueInjection(pair.Key, reflection.setterNames[a], target);
+				KeyValuePair<Type, PropertyInfo> pair = reflection.Setters [a];
+				object value = getValueInjection(pair.Key, reflection.SetterNames[a], target);
 				injectValueIntoPoint (value, target, pair.Value);
 			}
 		}
@@ -204,14 +204,18 @@ namespace strange.extensions.injector.impl
 			{
 				if (!binding.AllowInject)
 				{
-					return binding.value;
-				}
-				else
-				{
-					object retv = Inject(binding.value, false);
+					return binding.Value;
+				} else {
+					object retv = Inject (binding.Value, false);
 					binding.ToInject (false);
 					return retv;
 				}
+			} 
+			else if (binding.Type == InjectionBindingType.SINGLETON)
+			{
+				if (binding.Value is Type || binding.Value == null)
+					Instantiate (binding);
+				return binding.Value;
 			}
 			else
 			{
@@ -235,7 +239,7 @@ namespace strange.extensions.injector.impl
 			failIf(target == null, "Attempt to PostConstruct a null target", InjectionExceptionType.NULL_TARGET);
 			failIf(reflection == null, "Attempt to PostConstruct without a reflection", InjectionExceptionType.NULL_REFLECTION);
 
-			MethodInfo[] postConstructors = reflection.postConstructors;
+			MethodInfo[] postConstructors = reflection.PostConstructors;
 			if (postConstructors != null)
 			{
 				foreach(MethodInfo method in postConstructors)
@@ -248,10 +252,10 @@ namespace strange.extensions.injector.impl
 		//Note that uninjection can only clean publicly settable points
 		private void performUninjection(object target, IReflectedClass reflection)
 		{
-			int aa = reflection.setters.Length;
+			int aa = reflection.Setters.Length;
 			for(int a = 0; a < aa; a++)
 			{
-				KeyValuePair<Type, PropertyInfo> pair = reflection.setters [a];
+				KeyValuePair<Type, PropertyInfo> pair = reflection.Setters [a];
 				pair.Value.SetValue (target, null, null);
 			}
 		}

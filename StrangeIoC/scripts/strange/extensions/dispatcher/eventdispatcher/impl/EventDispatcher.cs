@@ -41,6 +41,8 @@ using strange.framework.api;
 using strange.framework.impl;
 using strange.extensions.dispatcher.api;
 using strange.extensions.dispatcher.eventdispatcher.api;
+using strange.extensions.pool.api;
+using strange.extensions.pool.impl;
 
 namespace strange.extensions.dispatcher.eventdispatcher.impl
 {
@@ -51,8 +53,12 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 		protected HashSet<ITriggerable> triggerClientRemovals;
 		protected bool isTriggeringClients;
 
+		protected IPool<TmEvent> eventPool;
+
 		public EventDispatcher ()
 		{
+			eventPool = new Pool<TmEvent> ();
+			eventPool.InstanceProvider = new EventInstanceProvider ();
 		}
 
 		override public IBinding GetRawBinding()
@@ -127,6 +133,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 					(callback as EmptyCallback)();
 				}
 			}
+			eventPool.ReturnInstance (data);
 		}
 
 		virtual protected object conformDataToEvent(object eventType, object data)
@@ -139,7 +146,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			{
 				//Client provided a full-formed event
 				data = eventType;
-				eventType = (data as IEvent).type;
+				eventType = (data as IEvent).Type;
 			}
 			else if (data == null)
 			{
@@ -149,7 +156,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			else if (data is IEvent)
 			{
 				//Client provided both an evertType and a full-formed IEvent
-				(data as IEvent).type = eventType;
+				(data as IEvent).Type = eventType;
 			}
 			else
 			{
@@ -161,7 +168,12 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 
 		virtual protected object createEvent(object eventType, object data)
 		{
-			return new TmEvent(eventType, this, data);
+			TmEvent retv = eventPool.GetInstance();
+			retv.Type = eventType;
+			retv.Target = this;
+			retv.Data = data;
+			return retv;
+
 		}
 
 		virtual protected void invokeEventCallback(object data, EventCallback callback)
@@ -224,7 +236,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			{
 				return false;
 			}
-			return binding.typeForCallback (callback) != EventCallbackType.NOT_FOUND;
+			return binding.TypeForCallback (callback) != EventCallbackType.NOT_FOUND;
 		}
 
 		public bool HasListener(object evt, EmptyCallback callback)
@@ -234,7 +246,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			{
 				return false;
 			}
-			return binding.typeForCallback (callback) != EventCallbackType.NOT_FOUND;
+			return binding.TypeForCallback (callback) != EventCallbackType.NOT_FOUND;
 		}
 
 		public void UpdateListener(bool toAdd, object evt, EventCallback callback)
@@ -321,6 +333,21 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 		{
 			Dispatch(key, data);
 			return true;
+		}
+	}
+
+	class EventInstanceProvider : IInstanceProvider
+	{
+		public T GetInstance<T>()
+		{
+			object instance = new TmEvent ();
+			T retv = (T) instance;
+			return retv;
+		}
+
+		public object GetInstance(Type key)
+		{
+			return new TmEvent ();
 		}
 	}
 }

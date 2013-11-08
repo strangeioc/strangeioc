@@ -24,7 +24,7 @@ namespace strange.unittests
 		[Test]
 		public void TestInjectorExists()
 		{
-			Assert.That (binder.injector != null);
+			Assert.That (binder.Injector != null);
 		}
 
 		[Test]
@@ -284,8 +284,8 @@ namespace strange.unittests
 
 			Assert.AreEqual (1, count);
 
-			IReflectedClass reflected = binder.injector.Reflector.Get<PolymorphicClass> ();
-			Assert.True (reflected.preGenerated);
+			IReflectedClass reflected = binder.Injector.Reflector.Get<PolymorphicClass> ();
+			Assert.True (reflected.PreGenerated);
 		}
 
 		[Test]
@@ -308,18 +308,18 @@ namespace strange.unittests
 			int count = binder.Reflect (list);
             Assert.AreEqual(4, count);             //...so list length will not include primitives
 
-			IReflectedClass reflected1 = binder.injector.Reflector.Get<HasNamedInjections> ();
-			Assert.True (reflected1.preGenerated);
+			IReflectedClass reflected1 = binder.Injector.Reflector.Get<HasNamedInjections> ();
+			Assert.True (reflected1.PreGenerated);
 
-			IReflectedClass reflected2 = binder.injector.Reflector.Get<SimpleInterfaceImplementer> ();
-			Assert.True (reflected2.preGenerated);
+			IReflectedClass reflected2 = binder.Injector.Reflector.Get<SimpleInterfaceImplementer> ();
+			Assert.True (reflected2.PreGenerated);
 
-			IReflectedClass reflected3 = binder.injector.Reflector.Get<PolymorphicClass> ();
-			Assert.True (reflected3.preGenerated);
-			Assert.AreNotEqual (reflected2.constructor, reflected3.constructor);
+			IReflectedClass reflected3 = binder.Injector.Reflector.Get<PolymorphicClass> ();
+			Assert.True (reflected3.PreGenerated);
+			Assert.AreNotEqual (reflected2.Constructor, reflected3.Constructor);
 
-			IReflectedClass reflected4 = binder.injector.Reflector.Get<InjectableDerivedClass> ();
-			Assert.True (reflected4.preGenerated);
+			IReflectedClass reflected4 = binder.Injector.Reflector.Get<InjectableDerivedClass> ();
+			Assert.True (reflected4.PreGenerated);
 		}
 
 		[Test]
@@ -338,18 +338,18 @@ namespace strange.unittests
 			ISimpleInterface s = binder.GetInstance<ISimpleInterface> ();
 			Assert.IsTrue (s is PolymorphicClass);
 
-			IReflectedClass reflected1 = binder.injector.Reflector.Get<HasNamedInjections> ();
-			Assert.True (reflected1.preGenerated);
+			IReflectedClass reflected1 = binder.Injector.Reflector.Get<HasNamedInjections> ();
+			Assert.True (reflected1.PreGenerated);
 
-			IReflectedClass reflected2 = binder.injector.Reflector.Get<SimpleInterfaceImplementer> ();
-			Assert.True (reflected2.preGenerated);
+			IReflectedClass reflected2 = binder.Injector.Reflector.Get<SimpleInterfaceImplementer> ();
+			Assert.True (reflected2.PreGenerated);
 
-			IReflectedClass reflected3 = binder.injector.Reflector.Get<PolymorphicClass> ();
-			Assert.True (reflected3.preGenerated);
-			Assert.AreNotEqual (reflected2.constructor, reflected3.constructor);
+			IReflectedClass reflected3 = binder.Injector.Reflector.Get<PolymorphicClass> ();
+			Assert.True (reflected3.PreGenerated);
+			Assert.AreNotEqual (reflected2.Constructor, reflected3.Constructor);
 
-			IReflectedClass reflected4 = binder.injector.Reflector.Get<InjectableDerivedClass> ();
-			Assert.True (reflected4.preGenerated);
+			IReflectedClass reflected4 = binder.Injector.Reflector.Get<InjectableDerivedClass> ();
+			Assert.True (reflected4.PreGenerated);
 
 		}
 

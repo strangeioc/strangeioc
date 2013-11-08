@@ -28,6 +28,11 @@ namespace strange.extensions.pool.impl
 		{
 			PoolType = typeof(T);
 		}
+
+		new public T GetInstance()
+		{
+			return (T)base.GetInstance ();
+		}
 	}
 
 	public class Pool : IPool, IPoolable

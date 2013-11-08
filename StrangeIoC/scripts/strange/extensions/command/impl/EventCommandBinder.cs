@@ -48,7 +48,7 @@ namespace strange.extensions.command.impl
 				if (data is IEvent)
 				{
 					IEvent evt = (IEvent)data;
-					msg += "tied to event " + evt.type;
+					msg += "tied to event " + evt.Type;
 				}
 				msg += " could not be instantiated.\nThis might be caused by a null pointer during instantiation or failing to override Execute (generally you shouldn't have constructor code in Commands).";
 				throw new CommandException(msg, CommandExceptionType.BAD_CONSTRUCTOR);

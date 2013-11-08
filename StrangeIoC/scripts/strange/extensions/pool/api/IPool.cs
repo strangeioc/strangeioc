@@ -19,7 +19,10 @@ using strange.framework.api;
 
 namespace strange.extensions.pool.api
 {
-	public interface IPool<T> : IPool{}
+	public interface IPool<T> : IPool
+	{
+		new T GetInstance ();
+	}
 	public interface IPool : IManagedList
 	{
 		/// A class that provides instances to the pool when it needs them.

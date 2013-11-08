@@ -31,7 +31,7 @@ namespace strange.examples.multiplecontexts.social
 		
 		public override void Execute()
 		{
-			string filepath = evt.data as string;
+			string filepath = evt.Data as string;
 			
 			//Load the component
 			if (String.IsNullOrEmpty(filepath))

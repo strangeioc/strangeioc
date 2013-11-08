@@ -27,7 +27,7 @@ namespace strange.examples.multiplecontexts.game
 		
 		public override void Execute()
 		{
-			int increment = (int)evt.data;
+			int increment = (int)evt.Data;
 			int newScore = scoreKeeper.AddToScore(increment);
 			dispatcher.Dispatch(GameEvent.SCORE_CHANGE, newScore);
 		}
