@@ -46,6 +46,9 @@ namespace strange.unittests
              
 		}
 
+        /// <summary>
+        /// Test binding a concrete class to an interface using the DefaultImpl tag
+        /// </summary>
         [Test]
         public void TestDefaultImplToInterface()
         {
@@ -61,6 +64,9 @@ namespace strange.unittests
         }
 
 
+        /// <summary>
+        /// Test binding a default concrete class to an interface using the ImplementedBy tag (on the interface)
+        /// </summary>
         [Test]
         public void TestImplementedBy()
         {
@@ -137,7 +143,7 @@ namespace strange.unittests
                 context.Start();
             };
 
-            //We should be getting an exception here from binding twice
+            //We should be getting an exception here because the interface is not implemented
             InjectionException ex = Assert.Throws<InjectionException>(testDelegate);
 
             //make sure it's the right exception
@@ -145,7 +151,7 @@ namespace strange.unittests
         }
 
         /// <summary>
-        /// Attempt to bind an ImplementedBy annotation pointing to a Type which does not implement the interface
+        /// Attempt to bind a DefaultImpl annotation pointing to an interface it does not implement
         /// </summary>
         [Test]
         public void TestDoesNotImplementTwo()
@@ -159,7 +165,7 @@ namespace strange.unittests
                 context.Start();
             };
 
-            //We should be getting an exception here from binding twice
+            //We should be getting an exception here because the interface is not implemented
             InjectionException ex = Assert.Throws<InjectionException>(testDelegate);
 
             //make sure it's the right exception
@@ -167,9 +173,9 @@ namespace strange.unittests
         }
 
         /// <summary>
-        /// Test [CrossContextImpl] tag. 
+        /// Test [CrossContextComponent] tag. 
         /// This is not meant to be a test of all crosscontext functionality, just the tag
-        /// The CrossContext tag really just tells a binding to call .CrossContext()
+        /// The CrossContextComponent tag really just tells a binding to call .CrossContext()
         /// See TestCrossContext for tests of CrossContext
         /// </summary>
         [Test]
@@ -210,8 +216,8 @@ namespace strange.unittests
 
 
         /// <summary>
-        /// Test [CrossContextImpl] tag. 
-        /// Child contexts should be able to 'override' CrossContext bindings with local bindings
+        /// Test [CrossContextComponent] tag. 
+        /// Child contexts should be able to 'override' Cross-Context bindings with local bindings
         /// </summary>
         [Test]
         public void TestCrossContextAllowsOverrides()
@@ -295,7 +301,6 @@ namespace strange.unittests.annotated.testDoesntImplement
 
 namespace strange.unittests.annotated.testDoesntImplementTwo
 {
-    [ImplementedBy(typeof(TestClassDoesntImplement))]
     public interface TestInterfaceDoesntImplement { }
 
     [DefaultImpl(typeof(TestInterfaceDoesntImplement))]
