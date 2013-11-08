@@ -25,7 +25,7 @@ namespace strange.unittests
             Context.firstContext = null;
             view = new object();
             Parent = new CrossContext(view, true);
-            ChildOne = new CrossContext(view, true);
+            ChildOne = new CrossContext(view, true); //Ctr will automatically add to Context.firstcontext. No need to call it manually (and you should not).
             ChildTwo = new CrossContext(view, true);
         }
         
