@@ -18,7 +18,7 @@ namespace strange.unittests
 			const string TEST_KEY = "TEST_KEY";
 			Binder.BindingResolver resolver = delegate (IBinding binding)
 			{
-				(binding as IInjectionBinding).Type = InjectionBindingType.DEFAULT;
+				(binding as IInjectionBinding).type = InjectionBindingType.DEFAULT;
 				Assert.That (TEST_KEY == binding.value as string);
 				Assert.That ((binding as InjectionBinding).type == InjectionBindingType.DEFAULT);
 			};
@@ -32,7 +32,7 @@ namespace strange.unittests
 			const string TEST_KEY = "TEST_KEY";
 			Binder.BindingResolver resolver = delegate (IBinding binding)
 			{
-				(binding as IInjectionBinding).Type = InjectionBindingType.SINGLETON;
+				(binding as IInjectionBinding).type = InjectionBindingType.SINGLETON;
 				Assert.That (TEST_KEY == binding.value as string);
 				Assert.That ((binding as InjectionBinding).type == InjectionBindingType.SINGLETON);
 			};
@@ -46,7 +46,7 @@ namespace strange.unittests
 			const string TEST_KEY = "TEST_KEY";
 			Binder.BindingResolver resolver = delegate (IBinding binding)
 			{
-				(binding as IInjectionBinding).Type = InjectionBindingType.VALUE;
+				(binding as IInjectionBinding).type = InjectionBindingType.VALUE;
 				Assert.That (TEST_KEY == binding.value as string);
 				Assert.That ((binding as InjectionBinding).type == InjectionBindingType.VALUE);
 			};

@@ -38,7 +38,7 @@ namespace strange.extensions.injector.impl
 			{
 				throw new InjectionException ("InjectorFactory cannot act on null binding", InjectionExceptionType.NULL_BINDING);
 			}
-			InjectionBindingType type = binding.Type;
+			InjectionBindingType type = binding.type;
 
 			switch (type)
 			{

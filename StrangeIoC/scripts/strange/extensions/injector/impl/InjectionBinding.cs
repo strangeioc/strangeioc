@@ -42,7 +42,7 @@ namespace strange.extensions.injector.impl
 			valueConstraint = BindingConstraintType.ONE;
 		}
 
-		public InjectionBindingType Type
+				public InjectionBindingType type
 		{
 			get
 			{
@@ -207,18 +207,5 @@ namespace strange.extensions.injector.impl
 			return ToPool (0);
 		}
 */
-		/// [Obsolete]
-		public InjectionBindingType type
-		{
-			get
-			{
-				return Type;
-			}
-			set
-			{
-				Type = value;
-			}
-		}
 	}
 }
-

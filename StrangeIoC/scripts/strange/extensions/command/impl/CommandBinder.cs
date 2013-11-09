@@ -296,9 +296,9 @@ namespace strange.extensions.command.impl
 			base.resolver (binding);
 			if (UsePooling)
 			{
-				if (binding.Value != null)
+				if (binding.value != null)
 				{
-					object[] values = binding.Value as object[];
+					object[] values = binding.value as object[];
 					foreach (Type value in values)
 					{
 						if (pools.ContainsKey (value) == false)

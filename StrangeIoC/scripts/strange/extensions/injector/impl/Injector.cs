@@ -98,10 +98,10 @@ namespace strange.extensions.injector.impl
 			}
 			else if (binding.AllowInject)
 			{
-				retv = Inject (retv, binding.Type != InjectionBindingType.VALUE);
+				retv = Inject (retv, binding.type != InjectionBindingType.VALUE);
 			}
 			infinityLock = null;
-			if (binding.Type == InjectionBindingType.SINGLETON || binding.Type == InjectionBindingType.VALUE)
+			if (binding.type == InjectionBindingType.SINGLETON || binding.type == InjectionBindingType.VALUE)
 			{
 				//prevent double-injection
 				binding.ToInject(false);
@@ -200,7 +200,7 @@ namespace strange.extensions.injector.impl
 		{
 			IInjectionBinding binding = Binder.GetBinding (t, name);
 			failIf(binding == null, "Attempt to Instantiate a null binding.", InjectionExceptionType.NULL_BINDING, t, name, target);
-			if (binding.Type == InjectionBindingType.VALUE)
+			if (binding.type == InjectionBindingType.VALUE)
 			{
 				if (!binding.AllowInject)
 				{
@@ -211,11 +211,11 @@ namespace strange.extensions.injector.impl
 					return retv;
 				}
 			} 
-			else if (binding.Type == InjectionBindingType.SINGLETON)
+			else if (binding.type == InjectionBindingType.SINGLETON)
 			{
-				if (binding.Value is Type || binding.Value == null)
+				if (binding.value is Type || binding.value == null)
 					Instantiate (binding);
-				return binding.Value;
+				return binding.value;
 			}
 			else
 			{
