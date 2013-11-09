@@ -31,8 +31,8 @@ namespace strange.framework.impl
 	{
 		protected object[] objectValue;
 
-		public Enum Constraint{ get; set;}
-		public bool UniqueValues{ get; set;}
+		public Enum constraint{ get; set;}
+		public bool uniqueValues{ get; set;}
 
 		public SemiBinding ()
 		{
@@ -108,7 +108,7 @@ namespace strange.framework.impl
 
 			return this;
 		}
-		virtual public object Value
+		virtual public object value
 		{ 
 			get
 			{
@@ -118,12 +118,6 @@ namespace strange.framework.impl
 				}
 				return objectValue;
 			}
-		}
-
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
-		virtual public object value
-		{
-			get { return Value; }
 		}
 
 		#endregion
@@ -145,36 +139,6 @@ namespace strange.framework.impl
 			}
 			objectValue = (newList.Length == 0) ? null : newList;
 		}
-
-
-		#region ISemiBinding implementation
-
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
-		virtual public bool uniqueValues
-		{
-			get
-			{
-				return UniqueValues;
-			}
-			set
-			{
-				UniqueValues = value;
-			}
-		}
-
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
-		virtual public Enum constraint{
-			get
-			{
-				return Constraint;
-			}
-			set
-			{
-				Constraint = value;
-			}
-		}
-		#endregion
-
 	}
 }
 

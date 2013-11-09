@@ -92,49 +92,18 @@ namespace strange.extensions.pool.impl
 			return this;
 		}
 
-		virtual public object Value 
+		virtual public object value 
 		{
 			get 
 			{
 				return GetInstance ();
 			}
 		}
-
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
-		virtual public object value
-		{
-			get { return Value; }
-		}
 		#endregion
 
 		#region ISemiBinding region
-		virtual public bool UniqueValues{get;set;}
-		virtual public Enum Constraint { get; set; }
-
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
-		virtual public bool uniqueValues
-		{
-			get
-			{
-				return UniqueValues;
-			}
-			set
-			{
-				UniqueValues = value;
-			}
-		}
-
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
-		virtual public Enum constraint{
-			get
-			{
-				return Constraint;
-			}
-			set
-			{
-				Constraint = value;
-			}
-		}
+		virtual public bool uniqueValues{get;set;}
+		virtual public Enum constraint { get; set; }
 
 		#endregion
 

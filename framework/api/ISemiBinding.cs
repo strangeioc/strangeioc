@@ -44,17 +44,8 @@ namespace strange.framework.api
 	public interface ISemiBinding : IManagedList
 	{
 		/// Set or get the constraint. 
-		Enum Constraint{ get; set;}
-
-		/// A secondary constraint that ensures that this SemiBinding will never contain multiple values equivalent to each other. 
-		bool UniqueValues{get;set;}
-
-
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
-		/// Set or get the constraint. 
 		Enum constraint{ get; set;}
 
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		/// A secondary constraint that ensures that this SemiBinding will never contain multiple values equivalent to each other. 
 		bool uniqueValues{get;set;}
 	}

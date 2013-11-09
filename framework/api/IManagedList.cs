@@ -35,11 +35,6 @@ namespace strange.framework.api
 		/// Retrieve the value of this List.
 		/// If the constraint is MANY, the value will be an Array.
 		/// If the constraint is POOL, this becomes a synonym for GetInstance().
-		object Value{ get; }
-
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
-		/// Retrieve the value of this List. If the constraint is MANY, the value will be an Array.
-		/// If the constraint is POOL, this becomes a synonym for GetInstance().
 		object value{ get; }
 	}
 }
