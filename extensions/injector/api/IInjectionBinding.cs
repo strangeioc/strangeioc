@@ -74,7 +74,7 @@ namespace strange.extensions.injector.api
 
 		/// Get and set the InjectionBindingType
 		/// @see InjectionBindingType
-		InjectionBindingType Type{get; set;}
+		InjectionBindingType type{get; set;}
 
 		/// Bind is the same as Key, but permits Binder syntax: `Bind<T>().Bind<T>()`
 		IInjectionBinding Bind<T>();
@@ -91,25 +91,10 @@ namespace strange.extensions.injector.api
 		//IInjectionBinding ToPool();
 		//IInjectionBinding ToPool(int value);
 
-		object Key{ get; }
-		object Value { get; }
-		object Name{ get; }
-		Enum KeyConstraint{ get; set;}
-		Enum ValueConstraint{ get; set;}
-
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
-		/// Get and set the InjectionBindingType
-		/// @see InjectionBindingType
-		InjectionBindingType type{get; set;}
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		object key{ get; }
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
-		object value{ get; }
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		object value { get; }
 		object name{ get; }
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		Enum keyConstraint{ get; set;}
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		Enum valueConstraint{ get; set;}
 	}
 }

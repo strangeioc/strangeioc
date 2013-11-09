@@ -68,7 +68,7 @@ namespace strange.framework.impl
 		}
 
 		#region IBinding implementation
-		public object Key
+		public object key
 		{ 
 			get
 			{
@@ -76,7 +76,7 @@ namespace strange.framework.impl
 			}
 		}
 
-		public object Value
+		public object value
 		{ 
 			get
 			{
@@ -84,7 +84,7 @@ namespace strange.framework.impl
 			}
 		}
 
-		public object Name
+		public object name
 		{ 
 			get
 			{
@@ -92,7 +92,7 @@ namespace strange.framework.impl
 			}
 		}
 
-		public Enum KeyConstraint
+		public Enum keyConstraint
 		{ 
 			get
 			{
@@ -104,7 +104,7 @@ namespace strange.framework.impl
 			}
 		}
 
-		public Enum ValueConstraint
+		public Enum valueConstraint
 		{ 
 			get
 			{
@@ -116,7 +116,7 @@ namespace strange.framework.impl
 			}
 		}
 
-		public Enum NameConstraint
+		public Enum nameConstraint
 		{ 
 			get
 			{
@@ -192,72 +192,6 @@ namespace strange.framework.impl
 		virtual public void RemoveName(object o)
 		{
 			_name.Remove (o);
-		}
-
-		/// [Obsolete]
-		public object key
-		{ 
-			get
-			{
-				return Key;
-			}
-		}
-
-		/// [Obsolete]
-		public object value
-		{ 
-			get
-			{
-				return Value;
-			}
-		}
-
-		/// [Obsolete]
-		public object name
-		{ 
-			get
-			{
-				return Name;
-			}
-		}
-
-		/// [Obsolete]
-		public Enum keyConstraint
-		{ 
-			get
-			{
-				return KeyConstraint;
-			}
-			set
-			{
-				KeyConstraint = value;
-			}
-		}
-
-		/// [Obsolete]
-		public Enum valueConstraint
-		{ 
-			get
-			{
-				return ValueConstraint;
-			}
-			set
-			{
-				ValueConstraint = value;
-			}
-		}
-
-		/// [Obsolete]
-		public Enum nameConstraint
-		{ 
-			get
-			{
-				return NameConstraint;
-			}
-			set
-			{
-				NameConstraint = value;
-			}
 		}
 		#endregion
 	}
