@@ -51,13 +51,13 @@ namespace strange.extensions.command.impl
 		[Inject]
 		public IInjectionBinder injectionBinder{ get; set; }
 
-		public object Data{ get; set; }
+		public object data{ get; set; }
 
-		public bool Cancelled{ get; set; }
+		public bool cancelled{ get; set; }
 
 		public bool IsClean{ get; set; }
 
-		public int SequenceId{ get; set; }
+		public int sequenceId{ get; set; }
 
 		protected bool _retained = false;
 
@@ -102,25 +102,16 @@ namespace strange.extensions.command.impl
 
 		public void Cancel()
 		{
-			Cancelled = true;
+			cancelled = true;
 		}
 
-		public bool Retained
+		public bool retain
 		{
 			get
 			{
 				return _retained;
 			}
 		}
-
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
-		public object data{ get{ return Data; } set { Data = value; }}
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
-		public bool cancelled{ get{ return Cancelled; } set { Cancelled = value; }}
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
-		public bool retain{ get { return Retained; } }
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
-		public int sequenceId{ get{ return SequenceId; } set { SequenceId = value; }}
 	}
 }
 
