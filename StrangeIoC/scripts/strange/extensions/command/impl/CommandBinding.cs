@@ -32,15 +32,9 @@ namespace strange.extensions.command.impl
 {
 	public class CommandBinding : Binding, ICommandBinding
 	{
-		public bool IsOneOff{ get; set;}
+		public bool isOneOff{ get; set;}
 
-		public bool IsSequence{ get; set;}
-
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
-		public bool isSequence{ get { return IsSequence; } set { IsSequence = value; }}
-
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
-		public bool isOneOff{ get { return IsOneOff; } set { IsOneOff = value; }}
+		public bool isSequence{ get; set;}
 
 		public CommandBinding() : base()
 		{
@@ -52,19 +46,19 @@ namespace strange.extensions.command.impl
 
 		public ICommandBinding Once()
 		{
-			IsOneOff = true;
+			isOneOff = true;
 			return this;
 		}
 
 		public ICommandBinding InParallel()
 		{
-			IsSequence = false;
+			isSequence = false;
 			return this;
 		}
 
 		public ICommandBinding InSequence()
 		{
-			IsSequence = true;
+			isSequence = true;
 			return this;
 		}
 

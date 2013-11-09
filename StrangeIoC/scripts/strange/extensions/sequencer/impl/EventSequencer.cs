@@ -41,7 +41,7 @@ namespace strange.extensions.sequencer.impl
 				injectionBinder.Bind<IEvent> ().ToValue(data).ToInject(false);;
 			}
 			ISequenceCommand command = injectionBinder.GetInstance<ISequenceCommand> () as ISequenceCommand;
-			command.Data = data;
+			command.data = data;
 			if (data is IEvent)
 			{
 				injectionBinder.Unbind<IEvent> ();

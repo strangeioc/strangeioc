@@ -30,7 +30,7 @@ namespace strange.extensions.sequencer.impl
 {
 	public class SequenceBinding : CommandBinding, ISequenceBinding
 	{
-		new public bool IsOneOff{ get; set;}
+		new public bool isOneOff{ get; set;}
 
 		public SequenceBinding() : base()
 		{
@@ -42,7 +42,7 @@ namespace strange.extensions.sequencer.impl
 
 		new public ISequenceBinding Once()
 		{
-			IsOneOff = true;
+			isOneOff = true;
 			return this;
 		}
 		

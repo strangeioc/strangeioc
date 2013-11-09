@@ -27,7 +27,7 @@ namespace strange.extensions.command.api
 		Pool<T> GetPool<T>();
 
 		/// Switch to disable pooling for those that don't want to use it.
-		bool UsePooling{ get; set; }
+		bool usePooling{ get; set; }
 	}
 }
 

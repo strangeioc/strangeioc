@@ -77,7 +77,7 @@ namespace strange.extensions.command.impl
 
 		public CommandBinder ()
 		{
-			UsePooling = true;
+			usePooling = true;
 		}
 
 		public override IBinding GetRawBinding ()
@@ -95,7 +95,7 @@ namespace strange.extensions.command.impl
 			ICommandBinding binding = GetBinding (trigger) as ICommandBinding;
 			if (binding != null)
 			{
-				if (binding.IsSequence)
+				if (binding.isSequence)
 				{
 					next (binding, data, 0);
 				}
@@ -122,7 +122,7 @@ namespace strange.extensions.command.impl
 			}
 			else
 			{
-				if (binding.IsOneOff)
+				if (binding.isOneOff)
 				{
 					Unbind (binding);
 				}
@@ -132,7 +132,7 @@ namespace strange.extensions.command.impl
 		virtual protected ICommand invokeCommand(Type cmd, ICommandBinding binding, object data, int depth)
 		{
 			ICommand command = createCommand (cmd, data);
-			command.SequenceId = depth;
+			command.sequenceId = depth;
 			trackCommand (command, binding);
 			executeCommand (command);
 			return command;
@@ -153,16 +153,16 @@ namespace strange.extensions.command.impl
 				throw new CommandException(msg, CommandExceptionType.BAD_CONSTRUCTOR);
 			}
 
-			if (!UsePooling)
+			if (!usePooling)
 				injectionBinder.Unbind<ICommand> ();
 
-			command.Data = data;
+			command.data = data;
 			return command;
 		}
 
 		protected ICommand getCommand(Type type)
 		{
-			if (UsePooling)
+			if (usePooling)
 			{
 				Pool pool = pools [type];
 				ICommand command = pool.GetInstance () as ICommand;
@@ -183,7 +183,7 @@ namespace strange.extensions.command.impl
 
 		protected void trackCommand (ICommand command, ICommandBinding binding)
 		{
-			if (binding.IsSequence)
+			if (binding.isSequence)
 			{
 				activeSequences.Add(command, binding);
 			}
@@ -230,10 +230,10 @@ namespace strange.extensions.command.impl
 
 		public void ReleaseCommand (ICommand command)
 		{
-			if (command.Retained == false)
+			if (command.retain == false)
 			{
 				Type t = command.GetType ();
-				if (UsePooling && pools.ContainsKey (t))
+				if (usePooling && pools.ContainsKey (t))
 				{
 					pools [t].ReturnInstance (command);
 				}
@@ -244,14 +244,14 @@ namespace strange.extensions.command.impl
 				else if (activeSequences.ContainsKey(command))
 				{
 					ICommandBinding binding = activeSequences [command];
-					object data = command.Data;
+					object data = command.data;
 					activeSequences.Remove (command);
-					next (binding, data, command.SequenceId + 1);
+					next (binding, data, command.sequenceId + 1);
 				}
 			}
 		}
 
-		public bool UsePooling { get; set; }
+		public bool usePooling { get; set; }
 
 		public Pool<T> GetPool<T>()
 		{
@@ -294,7 +294,7 @@ namespace strange.extensions.command.impl
 		override protected void resolver(IBinding binding)
 		{
 			base.resolver (binding);
-			if (UsePooling)
+			if (usePooling)
 			{
 				if (binding.value != null)
 				{
