@@ -54,7 +54,7 @@ namespace strange.extensions.injector.impl
 			}
 		}
 		
-		public bool AllowInject
+		public bool toInject
 		{
 			get
 			{
