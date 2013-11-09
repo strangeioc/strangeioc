@@ -70,7 +70,7 @@ namespace strange.extensions.injector.api
 		IInjectionBinding ToInject(bool value);
 
 		/// Get the parameter that specifies whether this Binding allows an instance to be injected
-		bool AllowInject{get;}
+		bool toInject{get;}
 
 		/// Get and set the InjectionBindingType
 		/// @see InjectionBindingType

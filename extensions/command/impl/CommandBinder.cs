@@ -168,7 +168,7 @@ namespace strange.extensions.command.impl
 				ICommand command = pool.GetInstance () as ICommand;
 				if (command.IsClean)
 				{
-					injectionBinder.Injector.Inject (command);
+					injectionBinder.injector.Inject (command);
 					command.IsClean = false;
 				}
 				return command;

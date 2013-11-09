@@ -63,21 +63,12 @@ namespace strange.extensions.injector.api
 		void Uninject(object target);
 
 		/// Get/set an InjectorFactory.
-		IInjectorFactory Factory{ get; set;}
-
-		/// Get/set an InjectionBinder.
-		IInjectionBinder Binder{ get; set;}
-
-		/// Get/set a ReflectionBinder.
-		IReflectionBinder Reflector{ get; set;}
-
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		IInjectorFactory factory{ get; set;}
 
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		/// Get/set an InjectionBinder.
 		IInjectionBinder binder{ get; set;}
 
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		/// Get/set a ReflectionBinder.
 		IReflectionBinder reflector{ get; set;}
 	}
 }

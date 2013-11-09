@@ -88,7 +88,7 @@ namespace strange.extensions.command.impl
 		/// Use/override this method to clean up the Command for recycling
 		virtual public void Restore()
 		{
-			injectionBinder.Injector.Uninject (this);
+			injectionBinder.injector.Uninject (this);
 			IsClean = true;
 		}
 
