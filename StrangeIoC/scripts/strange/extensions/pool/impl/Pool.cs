@@ -26,7 +26,7 @@ namespace strange.extensions.pool.impl
 	{
 		public Pool() : base()
 		{
-			PoolType = typeof(T);
+			poolType = typeof(T);
 		}
 
 		new public T GetInstance()
@@ -39,7 +39,7 @@ namespace strange.extensions.pool.impl
 	{
 
 		[Inject]
-		public IInstanceProvider InstanceProvider { get; set; }
+		public IInstanceProvider instanceProvider { get; set; }
 
 		/// Stack of instances still in the Pool.
 		protected Stack instancesAvailable = new Stack ();
@@ -51,19 +51,19 @@ namespace strange.extensions.pool.impl
 
 		public Pool () : base()
 		{
-			Size = 0;
+			size = 0;
 			constraint = BindingConstraintType.POOL;
 			uniqueValues = true;
 			
-			OverflowBehavior = PoolOverflowBehavior.EXCEPTION;
-			InflationType = PoolInflationType.DOUBLE;
+			overflowBehavior = PoolOverflowBehavior.EXCEPTION;
+			inflationType = PoolInflationType.DOUBLE;
 		}
 
 		#region IManagedList implementation
 
 		virtual public IManagedList Add (object value)
 		{
-			failIf(value.GetType () != PoolType, "Pool Type mismatch. Pools must consist of a common concrete type.\n\t\tPool type: " + PoolType.ToString() + "\n\t\tMismatch type: " + value.GetType ().ToString(), PoolExceptionType.TYPE_MISMATCH);
+			failIf(value.GetType () != poolType, "Pool Type mismatch. Pools must consist of a common concrete type.\n\t\tPool type: " + poolType.ToString() + "\n\t\tMismatch type: " + value.GetType ().ToString(), PoolExceptionType.TYPE_MISMATCH);
 			_instanceCount++;
 			instancesAvailable.Push (value);
 			return this;
@@ -111,9 +111,9 @@ namespace strange.extensions.pool.impl
 
 		/// The object Type of the first object added to the pool.
 		/// Pool objects must be of the same concrete type. This property enforces that requirement. 
-		public System.Type PoolType { get; set; }
+		public System.Type poolType { get; set; }
 
-		public int InstanceCount
+		public int instanceCount
 		{
 			get
 			{
@@ -134,23 +134,23 @@ namespace strange.extensions.pool.impl
 			int instancesToCreate = 0;
 
 			//New fixed-size pool. Populate.
-			if (Size > 0)
+			if (size > 0)
 			{
-				if (InstanceCount == 0)
+				if (instanceCount == 0)
 				{
 					//New pool. Add instances.
-					instancesToCreate = Size;
+					instancesToCreate = size;
 				}
 				else
 				{
 					//Illegal overflow. Report and return null
-					failIf (OverflowBehavior == PoolOverflowBehavior.EXCEPTION,
-						"A pool has overflowed its limit.\n\t\tPool type: " + PoolType,
+					failIf (overflowBehavior == PoolOverflowBehavior.EXCEPTION,
+						"A pool has overflowed its limit.\n\t\tPool type: " + poolType,
 						PoolExceptionType.OVERFLOW);
 
-					if (OverflowBehavior == PoolOverflowBehavior.WARNING)
+					if (overflowBehavior == PoolOverflowBehavior.WARNING)
 					{
-						Console.WriteLine ("WARNING: A pool has overflowed its limit.\n\t\tPool type: " + PoolType, PoolExceptionType.OVERFLOW);
+						Console.WriteLine ("WARNING: A pool has overflowed its limit.\n\t\tPool type: " + poolType, PoolExceptionType.OVERFLOW);
 					}
 					return null;
 				}
@@ -158,23 +158,23 @@ namespace strange.extensions.pool.impl
 			else
 			{
 				//Zero-sized pools will expand.
-				if (InstanceCount == 0 || InflationType == PoolInflationType.INCREMENT)
+				if (instanceCount == 0 || inflationType == PoolInflationType.INCREMENT)
 				{
 					instancesToCreate = 1;
 				}
 				else
 				{
-					instancesToCreate = InstanceCount;
+					instancesToCreate = instanceCount;
 				}
 			}
 
 			if (instancesToCreate > 0)
 			{
-				failIf (InstanceProvider == null, "A Pool of type: " + PoolType + " has no instance provider.", PoolExceptionType.NO_INSTANCE_PROVIDER);
+				failIf (instanceProvider == null, "A Pool of type: " + poolType + " has no instance provider.", PoolExceptionType.NO_INSTANCE_PROVIDER);
 
 				for (int a = 0; a < instancesToCreate; a++)
 				{
-					object newInstance = InstanceProvider.GetInstance (PoolType);
+					object newInstance = instanceProvider.GetInstance (poolType);
 					Add (newInstance);
 				}
 				return GetInstance ();
@@ -204,7 +204,7 @@ namespace strange.extensions.pool.impl
 			_instanceCount = 0;
 		}
 
-		virtual public int Available
+		virtual public int available
 		{
 			get
 			{
@@ -212,11 +212,11 @@ namespace strange.extensions.pool.impl
 			}
 		}
 
-		virtual public int Size { get; set; }
+		virtual public int size { get; set; }
 
-		virtual public PoolOverflowBehavior OverflowBehavior { get; set; }
+		virtual public PoolOverflowBehavior overflowBehavior { get; set; }
 
-		virtual public PoolInflationType InflationType { get; set; }
+		virtual public PoolInflationType inflationType { get; set; }
 
 		#endregion
 
@@ -225,7 +225,7 @@ namespace strange.extensions.pool.impl
 		public void Restore ()
 		{
 			Clean ();
-			Size = 0;
+			size = 0;
 		}
 
 		#endregion
@@ -239,7 +239,7 @@ namespace strange.extensions.pool.impl
 		/// <param name="value">An instance to remove permanently from the Pool.</param>
 		virtual protected void removeInstance(object value)
 		{
-			failIf (value.GetType() != PoolType, "Attempt to remove a instance from a pool that is of the wrong Type:\n\t\tPool type: " + PoolType.ToString() + "\n\t\tInstance type: " + value.GetType().ToString(), PoolExceptionType.TYPE_MISMATCH);
+			failIf (value.GetType() != poolType, "Attempt to remove a instance from a pool that is of the wrong Type:\n\t\tPool type: " + poolType.ToString() + "\n\t\tInstance type: " + value.GetType().ToString(), PoolExceptionType.TYPE_MISMATCH);
 			if (instancesInUse.Contains(value))
 			{
 				instancesInUse.Remove (value);

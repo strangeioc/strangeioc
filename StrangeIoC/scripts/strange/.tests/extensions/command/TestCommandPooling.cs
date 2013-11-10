@@ -42,7 +42,7 @@ namespace strange.unittests
 			{
 				commandBinder.ReactTo (SomeEnum.ONE);
 				Assert.AreEqual (a+1, MarkablePoolCommand.incrementValue);
-				Assert.AreEqual (1, pool.InstanceCount);
+				Assert.AreEqual (1, pool.instanceCount);
 			}
 		}
 
@@ -77,8 +77,8 @@ namespace strange.unittests
 
 			CommandWithInjection cmd = pool.GetInstance () as CommandWithInjection;
 
-			Assert.AreEqual (1, pool.InstanceCount);	//These just assert our expectation that there's one instance
-			Assert.AreEqual (0, pool.Available);		//and we're looking at it.
+			Assert.AreEqual (1, pool.instanceCount);	//These just assert our expectation that there's one instance
+			Assert.AreEqual (0, pool.available);		//and we're looking at it.
 
 			Assert.IsNull (cmd.injected);
 		}
@@ -94,8 +94,8 @@ namespace strange.unittests
 
 			CommandWithInjection cmd = pool.GetInstance () as CommandWithInjection;
 
-			Assert.AreEqual (1, pool.InstanceCount);	//These just assert our expectation that there's one instance
-			Assert.AreEqual (0, pool.Available);		//and we're looking at it.
+			Assert.AreEqual (1, pool.instanceCount);	//These just assert our expectation that there's one instance
+			Assert.AreEqual (0, pool.available);		//and we're looking at it.
 
 			Assert.IsNull (cmd.injected);
 
