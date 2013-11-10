@@ -43,7 +43,7 @@ namespace strange.examples.multiplecontexts.social
 		public override void Execute()
 		{
 			Retain ();
-			int score = (int)evt.data;
+			int score = (int)evt.Data;
 			
 			//Set the current score
 			userVO.currentScore = score;
@@ -56,7 +56,7 @@ namespace strange.examples.multiplecontexts.social
 		private void onResponse(IEvent evt)
 		{
 			social.dispatcher.RemoveListener(SocialEvent.FULFILL_FRIENDS_REQUEST, onResponse);
-			ArrayList list = evt.data as ArrayList;
+			ArrayList list = evt.Data as ArrayList;
 			
 			//Save the list as the data for the next item in the sequence
 			data = list;
