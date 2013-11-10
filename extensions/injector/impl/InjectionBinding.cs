@@ -195,17 +195,5 @@ namespace strange.extensions.injector.impl
 		{
 			return base.Named (o) as IInjectionBinding;
 		}
-		/*
-		new public IInjectionBinding ToPool(int value)
-		{
-			Type = InjectionBindingType.POOL;
-			return base.ToPool (value) as IInjectionBinding;
-		}
-
-		new public IInjectionBinding ToPool()
-		{
-			return ToPool (0);
-		}
-*/
 	}
 }
