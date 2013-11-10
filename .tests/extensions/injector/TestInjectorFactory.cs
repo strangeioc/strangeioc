@@ -169,8 +169,8 @@ namespace strange.unittests
 		{
 			IPool<ClassToBeInjected> pool = new Pool<ClassToBeInjected> ();
 			// Format the pool
-			pool.Size = 4;
-			pool.InstanceProvider = new TestInstanceProvider ();
+			pool.size = 4;
+			pool.instanceProvider = new TestInstanceProvider ();
 
 			IInjectionBinding binding = new InjectionBinding (resolver);
 			binding.Bind<IPool<ClassToBeInjected>> ().To <Pool<ClassToBeInjected>> ().ToValue(pool);

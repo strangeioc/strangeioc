@@ -28,11 +28,11 @@ namespace strange.extensions.pool.api
 		/// A class that provides instances to the pool when it needs them.
 		/// This can be the InjectionBinder, or any class you write that satisfies the IInstanceProvider
 		/// interface.
-		IInstanceProvider InstanceProvider { get; set; }
+		IInstanceProvider instanceProvider { get; set; }
 
 		/// The object Type of the first object added to the pool.
 		/// Pool objects must be of the same concrete type. This property enforces that requirement. 
-		Type PoolType { get; set; }
+		Type poolType { get; set; }
 
 		/// <summary>
 		/// Gets an instance from the pool if one is available.
@@ -55,31 +55,31 @@ namespace strange.extensions.pool.api
 		/// <summary>
 		/// Returns the count of non-committed instances
 		/// </summary>
-		int Available { get; }
+		int available { get; }
 
 		/// <summary>
 		/// Gets or sets the size of the pool.
 		/// </summary>
 		/// <value>The pool size. '0' is a special value indicating infinite size. Infinite pools expand as necessary to accomodate requirement.</value>
-		int Size { get; set; }
+		int size { get; set; }
 
 		/// <summary>
 		/// Returns the total number of instances currently managed by this pool.
 		/// </summary>
-		int InstanceCount { get; }
+		int instanceCount { get; }
 
 		/// <summary>
 		/// Gets or sets the overflow behavior of this pool.
 		/// </summary>
 		/// <value>A PoolOverflowBehavior value.</value>
-		PoolOverflowBehavior OverflowBehavior{ get; set; }
+		PoolOverflowBehavior overflowBehavior{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the type of inflation for infinite-sized pools.
 		/// </summary>
 		/// By default, a pool doubles its InstanceCount.
 		/// <value>A PoolInflationType value.</value>
-		PoolInflationType InflationType{ get; set; }
+		PoolInflationType inflationType{ get; set; }
 	}
 }
 
