@@ -84,7 +84,7 @@ namespace strange.extensions.injector.impl
 		{
 			if (binding.isCrossContext && CrossContextBinder != null)
 			{
-				return CrossContextBinder.Injector;
+				return CrossContextBinder.injector;
 			}
 			else
 			{
