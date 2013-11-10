@@ -146,7 +146,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			{
 				//Client provided a full-formed event
 				data = eventType;
-				eventType = (data as IEvent).type;
+				eventType = (data as IEvent).Type;
 			}
 			else if (data == null)
 			{
@@ -156,7 +156,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			else if (data is IEvent)
 			{
 				//Client provided both an evertType and a full-formed IEvent
-				(data as IEvent).type = eventType;
+				(data as IEvent).Type = eventType;
 			}
 			else
 			{
@@ -169,9 +169,9 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 		virtual protected object createEvent(object eventType, object data)
 		{
 			TmEvent retv = eventPool.GetInstance();
-			retv.type = eventType;
-			retv.target = this;
-			retv.data = data;
+			retv.Type = eventType;
+			retv.Target = this;
+			retv.Data = data;
 			return retv;
 
 		}
@@ -236,7 +236,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			{
 				return false;
 			}
-			return binding.typeForCallback (callback) != EventCallbackType.NOT_FOUND;
+			return binding.TypeForCallback (callback) != EventCallbackType.NOT_FOUND;
 		}
 
 		public bool HasListener(object evt, EmptyCallback callback)
@@ -246,7 +246,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			{
 				return false;
 			}
-			return binding.typeForCallback (callback) != EventCallbackType.NOT_FOUND;
+			return binding.TypeForCallback (callback) != EventCallbackType.NOT_FOUND;
 		}
 
 		public void UpdateListener(bool toAdd, object evt, EventCallback callback)

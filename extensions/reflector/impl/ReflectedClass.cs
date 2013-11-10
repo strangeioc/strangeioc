@@ -33,13 +33,20 @@ namespace strange.extensions.reflector.impl
 {
 	public class ReflectedClass : IReflectedClass
 	{
-		public ConstructorInfo constructor{ get; set;}
-		public Type[] constructorParameters{ get; set;}
-		public MethodInfo[] postConstructors{ get; set;}
-		public KeyValuePair<Type, PropertyInfo>[] setters{ get; set;}
-		public object[] setterNames{ get; set;}
+		public ConstructorInfo Constructor{ get; set;}
+		public Type[] ConstructorParameters{ get; set;}
+		public MethodInfo[] PostConstructors{ get; set;}
+		public KeyValuePair<Type, PropertyInfo>[] Setters{ get; set;}
+		public object[] SetterNames{ get; set;}
+		public bool PreGenerated{ get; set;}
 
-		public bool preGenerated{ get; set;}
+		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
+		public ConstructorInfo constructor{ get { return Constructor; } set { Constructor = value; }}
+		public Type[] constructorParameters{ get { return ConstructorParameters; } set { ConstructorParameters = value; }}
+		public MethodInfo[] postConstructors{ get { return PostConstructors; } set { PostConstructors = value; }}
+		public KeyValuePair<Type, PropertyInfo>[] setters{ get { return Setters; } set { Setters = value; }}
+		public object[] setterNames{ get { return SetterNames; } set { SetterNames = value; }}
+		public bool preGenerated{ get { return PreGenerated; } set { PreGenerated = value; }}
 	}
 }
 

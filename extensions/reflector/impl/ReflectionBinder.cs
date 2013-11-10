@@ -56,12 +56,12 @@ namespace strange.extensions.reflector.impl
 				mapSetters (reflected, binding, type);
 				binding.Bind (type).To (reflected);
 				retv = binding.value as IReflectedClass;
-				retv.preGenerated = false;
+				retv.PreGenerated = false;
 			}
 			else
 			{
 				retv = binding.value as IReflectedClass;
-				retv.preGenerated = true;
+				retv.PreGenerated = true;
 			}
 			return retv;
 		}
@@ -91,8 +91,8 @@ namespace strange.extensions.reflector.impl
 				paramList [i] = paramType;
 				i++;
 			}
-			reflected.constructor = constructor;
-			reflected.constructorParameters = paramList;
+			reflected.Constructor = constructor;
+			reflected.ConstructorParameters = paramList;
 		}
 
 		//Look for a constructor in the order:
@@ -148,7 +148,7 @@ namespace strange.extensions.reflector.impl
 					postConstructors [len] = method;
 				}
 			}
-			reflected.postConstructors = postConstructors;
+			reflected.PostConstructors = postConstructors;
 		}
 
 		private void mapSetters(IReflectedClass reflected, IBinding binding, Type type)
@@ -193,8 +193,8 @@ namespace strange.extensions.reflector.impl
 					names = Add (bindingName, names);
 				}
 			}
-			reflected.setters = pairs;
-			reflected.setterNames = names;
+			reflected.Setters = pairs;
+			reflected.SetterNames = names;
 		}
 
 		/**
