@@ -32,6 +32,12 @@ namespace strange.unittests
 			pooledCommandBinder = commandBinder as IPooledCommandBinder;
 		}
 
+		[TearDown]
+		public void TearDown()
+		{
+			MarkablePoolCommand.incrementValue = 0;
+		}
+
 		[Test]
 		public void TestCommandGetsReused()
 		{
