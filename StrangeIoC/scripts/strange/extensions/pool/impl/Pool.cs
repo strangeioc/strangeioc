@@ -14,6 +14,12 @@
  *		limitations under the License.
  */
 
+/**
+* @class strange.extensions.pool.impl.Pool
+*
+* @see strange.extensions.pool.api.IPool
+ */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;

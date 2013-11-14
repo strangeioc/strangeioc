@@ -14,6 +14,39 @@
  *		limitations under the License.
  */
 
+/**
+ * @interface strange.extensions.pool.api.IPool
+ *
+ * A mechanism for storing and reusing instances.
+ *
+ * Unlike much of the rest of Strange, the Pool is not a Binder, per se. Rather,
+ * it holds onto instances created by other parts of your application for use and
+ * reuse. Strange applies Pools in the CommandBinder and EventDispatcher for
+ * the recycling of those instances. But you can employ Pools yourself
+ * by mapping and injecting a Pool for instances you want to reuse.
+ *
+ * Basic instructions for injecting a Pool for use:
+ * Map IPool<SomeClass> in the InjectionBinder:
+
+		injectionBinder.Bind<IPool<MyClass>>().ToSingleton();
+
+* Then inject like so:
+
+		[Inject]
+		public IPool<MyClass> myPool { get; set; }
+ *
+ * A couple of caveats for working with Pools:
+ * 1. A limitation of the version of .NET currently used by Unity forbids using interfaces or abstracts in generics.
+ * so you cannot map and inject IPool<IMyInterface> or IPool<MyAbstractClass>. This is a little confusing in
+ * Strange, since we're used to mapping injections in exactly this fashion (e.g., injectionBinder.Bind<ISomeInterface>).
+ * The reason this doesn't work for Pools has to do with setting properties, rather than the binding itself.
+ * But because it will bite you, we throw an Exception if you attempt to Bind or set anything but a concrete Pool type.
+ * 
+ * 2. Pooling presupposes that when the instance is finished doing what it does it is cleaned up and
+ * returned to the Pool. Use IPool.ReturnInstance() to mark an object as ready for reuse.
+ * @see strange.extensions.pool.api.IPoolable for more on cleaning up.
+ */
+
 using System;
 using strange.framework.api;
 

@@ -14,10 +14,13 @@
  *		limitations under the License.
  */
 
-/**
-  * Provides an instance of the specified Type
-  * When all you need is a new instance, use this instead of IInjectionBinder.
-  */
+
+/** 
+ * @interface strange.framework.api.IInstanceProvider
+ *
+ * Provides an instance of the specified Type
+ * When all you need is a new instance, use this instead of IInjectionBinder.
+ */
 
 using System;
 
