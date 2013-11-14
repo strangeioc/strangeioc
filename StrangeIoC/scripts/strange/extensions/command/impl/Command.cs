@@ -63,6 +63,9 @@ namespace strange.extensions.command.impl
 
 		public Command ()
 		{
+			//Set to false on construction to ensure that it's not double-injected on first use.
+			//The pool will satisfy all injections on first use. The CommandBinder re-injects
+			//every time the Command is recycled.
 			IsClean = false;
 		}
 
