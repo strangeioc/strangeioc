@@ -85,7 +85,7 @@ namespace strange.unittests
 			for (int a = pool.size; a > 0; a--)
 			{
 				Assert.AreEqual (a, pool.available);
-				ClassToBeInjected instance = pool.GetInstance () as ClassToBeInjected;
+				ClassToBeInjected instance = pool.GetInstance ();
 				Assert.IsNotNull (instance);
 				Assert.IsInstanceOf<ClassToBeInjected> (instance);
 				Assert.AreEqual (a - 1, pool.available);
@@ -204,7 +204,7 @@ namespace strange.unittests
 			for (int a = pool.size; a > 0; a--)
 			{
 				Assert.AreEqual (a, pool.available);
-				ClassToBeInjected instance = pool.GetInstance () as ClassToBeInjected;
+				ClassToBeInjected instance = pool.GetInstance ();
 				pool.Remove (instance);
 			}
 
@@ -241,7 +241,7 @@ namespace strange.unittests
 			ClassToBeInjected[] removalList = new ClassToBeInjected[3];
 			for (int a = 0; a < pool.size - 1; a++)
 			{
-				removalList [a] = pool.GetInstance () as ClassToBeInjected;
+				removalList [a] = pool.GetInstance ();
 			}
 			pool.Remove (removalList);
 			Assert.AreEqual (1, pool.available);
@@ -267,7 +267,7 @@ namespace strange.unittests
 
 			anotherPool.size = 4;
 			anotherPool.Add (new PooledInstance ());
-			PooledInstance instance = anotherPool.GetInstance () as PooledInstance;
+			PooledInstance instance = anotherPool.GetInstance ();
 			instance.someValue = 42;
 			Assert.AreEqual (42, instance.someValue);
 			anotherPool.ReturnInstance (instance);
@@ -280,28 +280,28 @@ namespace strange.unittests
 		{
 			pool.instanceProvider = new TestInstanceProvider ();
 
-			ClassToBeInjected instance1 = pool.GetInstance () as ClassToBeInjected;
+			ClassToBeInjected instance1 = pool.GetInstance ();
 			Assert.IsNotNull (instance1);
 			Assert.AreEqual (1, pool.instanceCount);	//First call creates one instance
 			Assert.AreEqual (0, pool.available);		//Nothing available
 
-			ClassToBeInjected instance2 = pool.GetInstance () as ClassToBeInjected;
+			ClassToBeInjected instance2 = pool.GetInstance ();
 			Assert.IsNotNull (instance2);
 			Assert.AreNotSame (instance1, instance2);
 			Assert.AreEqual (2, pool.instanceCount);	//Second call doubles. We have 2
 			Assert.AreEqual (0, pool.available);		//Nothing available
 
-			ClassToBeInjected instance3 = pool.GetInstance () as ClassToBeInjected;
+			ClassToBeInjected instance3 = pool.GetInstance ();
 			Assert.IsNotNull (instance3);
 			Assert.AreEqual (4, pool.instanceCount);	//Third call doubles. We have 4
 			Assert.AreEqual (1, pool.available);		//One allocated. One available.
 
-			ClassToBeInjected instance4 = pool.GetInstance () as ClassToBeInjected;
+			ClassToBeInjected instance4 = pool.GetInstance ();
 			Assert.IsNotNull (instance4);
 			Assert.AreEqual (4, pool.instanceCount);	//Fourth call. No doubling since one was available.
 			Assert.AreEqual (0, pool.available);
 
-			ClassToBeInjected instance5 = pool.GetInstance () as ClassToBeInjected;
+			ClassToBeInjected instance5 = pool.GetInstance ();
 			Assert.IsNotNull (instance5);
 			Assert.AreEqual (8, pool.instanceCount);	//Fifth call. Double to 8.
 			Assert.AreEqual (3, pool.available);		//Three left unallocated.
@@ -320,7 +320,7 @@ namespace strange.unittests
 			//Calls should simply increment. There will never be unallocated
 			for (int a = 0; a < testCount; a++)
 			{
-				ClassToBeInjected instance = pool.GetInstance () as ClassToBeInjected;
+				ClassToBeInjected instance = pool.GetInstance ();
 				Assert.IsNotNull (instance);
 				Assert.AreEqual (a + 1, pool.instanceCount);
 				Assert.AreEqual (0, pool.available);
