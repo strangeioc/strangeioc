@@ -13,6 +13,12 @@
  *		See the License for the specific language governing permissions and
  *		limitations under the License.
  */
+/**
+ *	@interface strange.extensions.command.api.IPooledCommandBinder
+ *
+ *	Interface for a CommandBinder that allows pooling. Pooling allows Commands to
+ *	be recycled, which can be more efficient.
+ */
 
 using System;
 using System.Collections.Generic;

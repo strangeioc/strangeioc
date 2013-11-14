@@ -14,6 +14,13 @@
  *		limitations under the License.
  */
 
+/**
+ * @interface strange.framework.api.IManagedList
+ * 
+ * A common interface for the constituents parts of a Binding, which at present
+ * are either a SemiBinding or a Pool. A ManagedList can have objects added or removed.
+ */
+
 using System;
 
 namespace strange.framework.api
