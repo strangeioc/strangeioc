@@ -58,7 +58,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 		public EventDispatcher ()
 		{
 			eventPool = new Pool<TmEvent> ();
-			eventPool.InstanceProvider = new EventInstanceProvider ();
+			eventPool.instanceProvider = new EventInstanceProvider ();
 		}
 
 		override public IBinding GetRawBinding()

@@ -25,7 +25,7 @@ namespace strange.unittests
 			injectionBinder.Bind<ICommandBinder> ().To<CommandBinder> ().ToSingleton();
 
 			commandBinder = injectionBinder.GetInstance<ICommandBinder> ();
-			(commandBinder as IPooledCommandBinder).UsePooling = false;
+			(commandBinder as IPooledCommandBinder).usePooling = false;
 		}
 
 		[Test]

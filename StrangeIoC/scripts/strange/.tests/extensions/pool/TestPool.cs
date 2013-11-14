@@ -28,121 +28,121 @@ namespace strange.unittests
 		[Test]
 		public void TestSetPoolProperties()
 		{
-			Assert.AreEqual (0, pool.Size);
+			Assert.AreEqual (0, pool.size);
 
-			pool.Size = 100;
-			Assert.AreEqual (100, pool.Size);
+			pool.size = 100;
+			Assert.AreEqual (100, pool.size);
 
-			pool.OverflowBehavior = PoolOverflowBehavior.EXCEPTION;
-			Assert.AreEqual (PoolOverflowBehavior.EXCEPTION, pool.OverflowBehavior);
+			pool.overflowBehavior = PoolOverflowBehavior.EXCEPTION;
+			Assert.AreEqual (PoolOverflowBehavior.EXCEPTION, pool.overflowBehavior);
 
-			pool.OverflowBehavior = PoolOverflowBehavior.WARNING;
-			Assert.AreEqual (PoolOverflowBehavior.WARNING, pool.OverflowBehavior);
+			pool.overflowBehavior = PoolOverflowBehavior.WARNING;
+			Assert.AreEqual (PoolOverflowBehavior.WARNING, pool.overflowBehavior);
 
-			pool.OverflowBehavior = PoolOverflowBehavior.IGNORE;
-			Assert.AreEqual (PoolOverflowBehavior.IGNORE, pool.OverflowBehavior);
+			pool.overflowBehavior = PoolOverflowBehavior.IGNORE;
+			Assert.AreEqual (PoolOverflowBehavior.IGNORE, pool.overflowBehavior);
 
-			pool.InflationType = PoolInflationType.DOUBLE;
-			Assert.AreEqual (PoolInflationType.DOUBLE, pool.InflationType);
+			pool.inflationType = PoolInflationType.DOUBLE;
+			Assert.AreEqual (PoolInflationType.DOUBLE, pool.inflationType);
 
-			pool.InflationType = PoolInflationType.INCREMENT;
-			Assert.AreEqual (PoolInflationType.INCREMENT, pool.InflationType);
+			pool.inflationType = PoolInflationType.INCREMENT;
+			Assert.AreEqual (PoolInflationType.INCREMENT, pool.inflationType);
 		}
 
 		[Test]
 		public void TestAdd()
 		{
-			pool.Size = 4;
-			for (int a = 0; a < pool.Size; a++)
+			pool.size = 4;
+			for (int a = 0; a < pool.size; a++)
 			{
 				pool.Add (new ClassToBeInjected ());
-				Assert.AreEqual (a + 1, pool.Available);
+				Assert.AreEqual (a + 1, pool.available);
 			}
 		}
 
 		[Test]
 		public void TestAddList()
 		{
-			pool.Size = 4;
-			ClassToBeInjected[] list = new ClassToBeInjected[pool.Size];
-			for (int a = 0; a < pool.Size; a++)
+			pool.size = 4;
+			ClassToBeInjected[] list = new ClassToBeInjected[pool.size];
+			for (int a = 0; a < pool.size; a++)
 			{
 				list[a] = new ClassToBeInjected ();
 			}
 			pool.Add (list);
-			Assert.AreEqual (pool.Size, pool.Available);
+			Assert.AreEqual (pool.size, pool.available);
 		}
 
 		[Test]
 		public void TestGetInstance()
 		{
-			pool.Size = 4;
-			for (int a = 0; a < pool.Size; a++)
+			pool.size = 4;
+			for (int a = 0; a < pool.size; a++)
 			{
 				pool.Add (new ClassToBeInjected ());
 			}
 
-			for (int a = pool.Size; a > 0; a--)
+			for (int a = pool.size; a > 0; a--)
 			{
-				Assert.AreEqual (a, pool.Available);
+				Assert.AreEqual (a, pool.available);
 				ClassToBeInjected instance = pool.GetInstance () as ClassToBeInjected;
 				Assert.IsNotNull (instance);
 				Assert.IsInstanceOf<ClassToBeInjected> (instance);
-				Assert.AreEqual (a - 1, pool.Available);
+				Assert.AreEqual (a - 1, pool.available);
 			}
 		}
 
 		[Test]
 		public void TestReturnInstance()
 		{
-			pool.Size = 4;
-			Stack stack = new Stack (pool.Size);
-			for (int a = 0; a < pool.Size; a++)
+			pool.size = 4;
+			Stack stack = new Stack (pool.size);
+			for (int a = 0; a < pool.size; a++)
 			{
 				pool.Add (new ClassToBeInjected ());
 			}
 
-			for (int a = 0; a < pool.Size; a++)
+			for (int a = 0; a < pool.size; a++)
 			{
 				stack.Push(pool.GetInstance ());
 			}
 
-			Assert.AreEqual (pool.Size, stack.Count);
-			Assert.AreEqual (0, pool.Available);
+			Assert.AreEqual (pool.size, stack.Count);
+			Assert.AreEqual (0, pool.available);
 
-			for (int a = 0; a < pool.Size; a++)
+			for (int a = 0; a < pool.size; a++)
 			{
 				pool.ReturnInstance (stack.Pop ());
 			}
 
 			Assert.AreEqual (0, stack.Count);
-			Assert.AreEqual (pool.Size, pool.Available);
+			Assert.AreEqual (pool.size, pool.available);
 		}
 
 		[Test]
 		public void TestClean()
 		{
-			pool.Size = 4;
-			for (int a = 0; a < pool.Size; a++)
+			pool.size = 4;
+			for (int a = 0; a < pool.size; a++)
 			{
 				pool.Add (new ClassToBeInjected ());
 			}
 			pool.Clean ();
-			Assert.AreEqual (0, pool.Available);
+			Assert.AreEqual (0, pool.available);
 		}
 
 		[Test]
 		public void TestPoolOverflowException()
 		{
-			pool.Size = 4;
-			for (int a = 0; a < pool.Size; a++)
+			pool.size = 4;
+			for (int a = 0; a < pool.size; a++)
 			{
 				pool.Add (new ClassToBeInjected ());
 			}
 
-			for (int a = pool.Size; a > 0; a--)
+			for (int a = pool.size; a > 0; a--)
 			{
-				Assert.AreEqual (a, pool.Available);
+				Assert.AreEqual (a, pool.available);
 				pool.GetInstance ();
 			}
 
@@ -157,16 +157,16 @@ namespace strange.unittests
 		[Test]
 		public void TestOverflowWithoutException()
 		{
-			pool.Size = 4;
-			pool.OverflowBehavior = PoolOverflowBehavior.IGNORE;
-			for (int a = 0; a < pool.Size; a++)
+			pool.size = 4;
+			pool.overflowBehavior = PoolOverflowBehavior.IGNORE;
+			for (int a = 0; a < pool.size; a++)
 			{
 				pool.Add (new ClassToBeInjected ());
 			}
 
-			for (int a = pool.Size; a > 0; a--)
+			for (int a = pool.size; a > 0; a--)
 			{
-				Assert.AreEqual (a, pool.Available);
+				Assert.AreEqual (a, pool.available);
 				pool.GetInstance ();
 			}
 
@@ -181,7 +181,7 @@ namespace strange.unittests
 		[Test]
 		public void TestPoolTypeMismatchException()
 		{
-			pool.Size = 4;
+			pool.size = 4;
 			pool.Add (new ClassToBeInjected ());
 
 			TestDelegate testDelegate = delegate()
@@ -195,62 +195,62 @@ namespace strange.unittests
 		[Test]
 		public void TestRemoveFromPool()
 		{
-			pool.Size = 4;
-			for (int a = 0; a < pool.Size; a++)
+			pool.size = 4;
+			for (int a = 0; a < pool.size; a++)
 			{
 				pool.Add (new ClassToBeInjected ());
 			}
 
-			for (int a = pool.Size; a > 0; a--)
+			for (int a = pool.size; a > 0; a--)
 			{
-				Assert.AreEqual (a, pool.Available);
+				Assert.AreEqual (a, pool.available);
 				ClassToBeInjected instance = pool.GetInstance () as ClassToBeInjected;
 				pool.Remove (instance);
 			}
 
-			Assert.AreEqual (0, pool.Available);
+			Assert.AreEqual (0, pool.available);
 		}
 
 		[Test]
 		public void TestRemoveList1()
 		{
-			pool.Size = 4;
-			for (int a = 0; a < pool.Size; a++)
+			pool.size = 4;
+			for (int a = 0; a < pool.size; a++)
 			{
 				pool.Add (new ClassToBeInjected ());
 			}
 
 			ClassToBeInjected[] removalList = new ClassToBeInjected[3];
-			for (int a = 0; a < pool.Size - 1; a++)
+			for (int a = 0; a < pool.size - 1; a++)
 			{
 				removalList [a] = new ClassToBeInjected ();
 			}
 			pool.Remove (removalList);
-			Assert.AreEqual (1, pool.Available);
+			Assert.AreEqual (1, pool.available);
 		}
 
 		[Test]
 		public void TestRemoveList2()
 		{
-			pool.Size = 4;
-			for (int a = 0; a < pool.Size; a++)
+			pool.size = 4;
+			for (int a = 0; a < pool.size; a++)
 			{
 				pool.Add (new ClassToBeInjected ());
 			}
 
 			ClassToBeInjected[] removalList = new ClassToBeInjected[3];
-			for (int a = 0; a < pool.Size - 1; a++)
+			for (int a = 0; a < pool.size - 1; a++)
 			{
 				removalList [a] = pool.GetInstance () as ClassToBeInjected;
 			}
 			pool.Remove (removalList);
-			Assert.AreEqual (1, pool.Available);
+			Assert.AreEqual (1, pool.available);
 		}
 
 		[Test]
 		public void TestRemovalException()
 		{
-			pool.Size = 4;
+			pool.size = 4;
 			pool.Add (new ClassToBeInjected ());
 			TestDelegate testDelegate = delegate()
 			{
@@ -265,7 +265,7 @@ namespace strange.unittests
 		{
 			Pool<PooledInstance> anotherPool = new Pool<PooledInstance>();
 
-			anotherPool.Size = 4;
+			anotherPool.size = 4;
 			anotherPool.Add (new PooledInstance ());
 			PooledInstance instance = anotherPool.GetInstance () as PooledInstance;
 			instance.someValue = 42;
@@ -278,40 +278,40 @@ namespace strange.unittests
 		[Test]
 		public void TestAutoInflationDouble()
 		{
-			pool.InstanceProvider = new TestInstanceProvider ();
+			pool.instanceProvider = new TestInstanceProvider ();
 
 			ClassToBeInjected instance1 = pool.GetInstance () as ClassToBeInjected;
 			Assert.IsNotNull (instance1);
-			Assert.AreEqual (1, pool.InstanceCount);	//First call creates one instance
-			Assert.AreEqual (0, pool.Available);		//Nothing available
+			Assert.AreEqual (1, pool.instanceCount);	//First call creates one instance
+			Assert.AreEqual (0, pool.available);		//Nothing available
 
 			ClassToBeInjected instance2 = pool.GetInstance () as ClassToBeInjected;
 			Assert.IsNotNull (instance2);
 			Assert.AreNotSame (instance1, instance2);
-			Assert.AreEqual (2, pool.InstanceCount);	//Second call doubles. We have 2
-			Assert.AreEqual (0, pool.Available);		//Nothing available
+			Assert.AreEqual (2, pool.instanceCount);	//Second call doubles. We have 2
+			Assert.AreEqual (0, pool.available);		//Nothing available
 
 			ClassToBeInjected instance3 = pool.GetInstance () as ClassToBeInjected;
 			Assert.IsNotNull (instance3);
-			Assert.AreEqual (4, pool.InstanceCount);	//Third call doubles. We have 4
-			Assert.AreEqual (1, pool.Available);		//One allocated. One available.
+			Assert.AreEqual (4, pool.instanceCount);	//Third call doubles. We have 4
+			Assert.AreEqual (1, pool.available);		//One allocated. One available.
 
 			ClassToBeInjected instance4 = pool.GetInstance () as ClassToBeInjected;
 			Assert.IsNotNull (instance4);
-			Assert.AreEqual (4, pool.InstanceCount);	//Fourth call. No doubling since one was available.
-			Assert.AreEqual (0, pool.Available);
+			Assert.AreEqual (4, pool.instanceCount);	//Fourth call. No doubling since one was available.
+			Assert.AreEqual (0, pool.available);
 
 			ClassToBeInjected instance5 = pool.GetInstance () as ClassToBeInjected;
 			Assert.IsNotNull (instance5);
-			Assert.AreEqual (8, pool.InstanceCount);	//Fifth call. Double to 8.
-			Assert.AreEqual (3, pool.Available);		//Three left unallocated.
+			Assert.AreEqual (8, pool.instanceCount);	//Fifth call. Double to 8.
+			Assert.AreEqual (3, pool.available);		//Three left unallocated.
 		}
 
 		[Test]
 		public void TestAutoInflationIncrement()
 		{
-			pool.InstanceProvider = new TestInstanceProvider ();
-			pool.InflationType = PoolInflationType.INCREMENT;
+			pool.instanceProvider = new TestInstanceProvider ();
+			pool.inflationType = PoolInflationType.INCREMENT;
 
 			int testCount = 10;
 
@@ -322,8 +322,8 @@ namespace strange.unittests
 			{
 				ClassToBeInjected instance = pool.GetInstance () as ClassToBeInjected;
 				Assert.IsNotNull (instance);
-				Assert.AreEqual (a + 1, pool.InstanceCount);
-				Assert.AreEqual (0, pool.Available);
+				Assert.AreEqual (a + 1, pool.instanceCount);
+				Assert.AreEqual (0, pool.available);
 				stack.Push (instance);
 			}
 
@@ -333,8 +333,8 @@ namespace strange.unittests
 				ClassToBeInjected instance = stack.Pop () as ClassToBeInjected;
 				pool.ReturnInstance (instance);
 
-				Assert.AreEqual (a + 1, pool.Available, "This one");
-				Assert.AreEqual (testCount, pool.InstanceCount, "Or this one");
+				Assert.AreEqual (a + 1, pool.available, "This one");
+				Assert.AreEqual (testCount, pool.instanceCount, "Or this one");
 			}
 		}
 	}

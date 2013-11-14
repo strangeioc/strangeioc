@@ -37,11 +37,11 @@ namespace strange.unittests
 		public void TestRetainRelease ()
 		{
 			ICommand command = new CommandWithExecute ();
-			Assert.IsFalse (command.Retained);
+			Assert.IsFalse (command.retain);
 			command.Retain ();
-			Assert.IsTrue (command.Retained);
+			Assert.IsTrue (command.retain);
 			command.Release ();
-			Assert.IsFalse (command.Retained);
+			Assert.IsFalse (command.retain);
 		}
 	}
 }
