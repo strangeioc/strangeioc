@@ -21,6 +21,12 @@ namespace strange.unittests
 			binder = new InjectionBinder ();
 		}
 
+		[TearDown]
+		public void TearDown()
+		{
+			PostConstructSimple.PostConstructCount = 0;
+		}
+
 		[Test]
 		public void TestInjectorExists()
 		{
