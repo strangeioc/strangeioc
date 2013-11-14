@@ -74,7 +74,6 @@
     <Folder Include="StrangeIoC\examples\" />
     <Folder Include="StrangeIoC\scripts\strange\extensions\signal\" />
     <Folder Include="StrangeIoC\scripts\strange\.tests\" />
-    <Folder Include="StrangeIoC\scripts\strange\framework\impl\pool\" />
     <Folder Include="StrangeIoC\scripts\strange\extensions\pool\" />
     <Folder Include="StrangeIoC\scripts\strange\extensions\pool\api\" />
     <Folder Include="StrangeIoC\scripts\strange\extensions\pool\impl\" />
