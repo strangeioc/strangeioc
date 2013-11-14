@@ -39,6 +39,19 @@ namespace strange.unittests
 		}
 
 		[Test]
+		public void TestCommandIsInjected()
+		{
+			injectionBinder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ();
+			commandBinder.Bind (SomeEnum.ONE).To<CommandWithInjection> ();
+			TestDelegate testDelegate = delegate 
+			{
+				commandBinder.ReactTo (SomeEnum.ONE);
+			};
+			//If the injected value were not set, this command would throw a Null Pointer Exception
+			Assert.DoesNotThrow (testDelegate);
+		}
+
+		[Test]
 		public void TestCommandGetsReused()
 		{
 			commandBinder.Bind (SomeEnum.ONE).To<MarkablePoolCommand> ();
