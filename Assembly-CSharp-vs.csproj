@@ -85,7 +85,6 @@
     <None Include="StrangeIoC\scripts\strange\extensions\context\api\ContextKeys.cs.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\context\api\IContext.cs.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\context\api\IContextView.cs.meta" />
-    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\.DS_Store" />
     <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\api.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\impl.meta" />
@@ -106,8 +105,6 @@
     <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\impl\EventDispatcherException.cs.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\impl\TmEvent.cs.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\impl\DispatcherException.cs.meta" />
-    <None Include="StrangeIoC\scripts\strange\extensions\entity\api.meta" />
-    <None Include="StrangeIoC\scripts\strange\extensions\injector\.DS_Store" />
     <None Include="StrangeIoC\scripts\strange\extensions\injector\InjectAttribute.cs.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\injector\api.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\injector\impl.meta" />
@@ -122,7 +119,6 @@
     <None Include="StrangeIoC\scripts\strange\extensions\injector\impl\InjectionException.cs.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\injector\impl\Injector.cs.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\injector\impl\InjectorFactory.cs.meta" />
-    <None Include="StrangeIoC\scripts\strange\extensions\mediation\.DS_Store" />
     <None Include="StrangeIoC\scripts\strange\extensions\mediation\api.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\mediation\impl.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\mediation\api\IMediationBinder.cs.meta" />
@@ -138,7 +134,6 @@
     <None Include="StrangeIoC\scripts\strange\extensions\mediation\impl\MediationException.cs.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\mediation\impl\Mediator.cs.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\mediation\impl\View.cs.meta" />
-    <None Include="StrangeIoC\scripts\strange\extensions\reflector\.DS_Store" />
     <None Include="StrangeIoC\scripts\strange\extensions\reflector\api.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\reflector\impl.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\reflector\api\IReflectedClass.cs.meta" />
@@ -147,7 +142,6 @@
     <None Include="StrangeIoC\scripts\strange\extensions\reflector\impl\ReflectedClass.cs.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\reflector\impl\ReflectionBinder.cs.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\reflector\impl\ReflectionException.cs.meta" />
-    <None Include="StrangeIoC\scripts\strange\extensions\sequencer\.DS_Store" />
     <None Include="StrangeIoC\scripts\strange\extensions\sequencer\api.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\sequencer\impl.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\sequencer\api\ISequenceBinding.cs.meta" />
