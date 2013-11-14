@@ -375,19 +375,6 @@ namespace strange.unittests
 			Assert.IsNotNull (instance);
 			Assert.IsNotNull (instance.Instance1);
 			Assert.IsNotNull (instance.Instance2);
-
-
-			/*
-			binder.Bind<HashSet<ISimpleInterface>> ().To<HashSet<SimpleInterfaceImplementer>> ();
-
-
-			//object o = binder.GetInstance<HashSet<ISimpleInterface>> ();
-			object o = new HashSet<SimpleInterfaceImplementer> ();
-
-			HashSet<ISimpleInterface> myset = o as HashSet<ISimpleInterface>;
-
-			Assert.IsNotNull (myset);
-			*/
 		}
 	}
 
