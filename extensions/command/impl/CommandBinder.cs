@@ -294,7 +294,8 @@ namespace strange.extensions.command.impl
 		override protected void resolver(IBinding binding)
 		{
 			base.resolver (binding);
-			if (usePooling)
+			//if (usePooling && (binding as ICommandBinding).isPooled)
+			if(usePooling)
 			{
 				if (binding.value != null)
 				{
