@@ -32,9 +32,11 @@ namespace strange.extensions.command.impl
 {
 	public class CommandBinding : Binding, ICommandBinding
 	{
-		public bool isOneOff{ get; set;}
+		public bool isOneOff{ get; set; }
 
-		public bool isSequence{ get; set;}
+		public bool isSequence{ get; set; }
+
+		public bool isPooled{ get; set; }
 
 		public CommandBinding() : base()
 		{
@@ -59,6 +61,12 @@ namespace strange.extensions.command.impl
 		public ICommandBinding InSequence()
 		{
 			isSequence = true;
+			return this;
+		}
+
+		public ICommandBinding Pooled()
+		{
+			isPooled = true;
 			return this;
 		}
 
