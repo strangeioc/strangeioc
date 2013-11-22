@@ -38,6 +38,9 @@ namespace strange.extensions.mediation.api
 		
 		/// Indicates whether this View  has been registered with a Context
 		bool registeredWithContext{get; set;}
+
+		/// Exposure to code of the registerWithContext (Inspector) boolean. If false, the View won't try to register.
+		bool autoRegisterWithContext{ get; }
 	}
 }
 
