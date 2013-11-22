@@ -48,13 +48,20 @@ namespace strange.extensions.mediation.impl
 			}
 		}
 
+		public bool registerWithContext;
+
+		public bool autoRegisterWithContext
+		{
+			get {return registerWithContext;}
+		}
+
 		public bool registeredWithContext{get; set;}
 
 		/// A MonoBehaviour Awake handler.
 		/// The View will attempt to connect to the Context at this moment.
 		protected virtual void Awake ()
 		{
-			if (!registeredWithContext)
+			if (autoRegisterWithContext && !registeredWithContext)
 				bubbleToContext(this, true, false);
 		}
 
@@ -63,7 +70,7 @@ namespace strange.extensions.mediation.impl
 		/// attempt to connect again at this moment.
 		protected virtual void Start ()
 		{
-			if (!registeredWithContext)
+			if (autoRegisterWithContext && !registeredWithContext)
 				bubbleToContext(this, true, true);
 		}
 

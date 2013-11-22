@@ -87,7 +87,7 @@ namespace strange.extensions.mediation.impl
 				IView iView = views[a] as IView;
 				if (iView != null)
 				{
-					if (iView.registeredWithContext)
+					if (iView.autoRegisterWithContext && iView.registeredWithContext)
 					{
 						continue;
 					}
