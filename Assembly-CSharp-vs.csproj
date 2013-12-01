@@ -366,5 +366,6 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectsPostConstructSimple.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\NonpublicInjection.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ConstructorInjectsClassToBeInjected.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PostConstructSeveralOrdered.cs" />
   </ItemGroup>
 </Project>
