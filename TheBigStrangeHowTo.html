@@ -618,8 +618,8 @@ twoIntSignal.AddListener(twoIntCallback);
 Signal&lt;int, int&gt; twoIntSignal = new Signal&lt;int, int&gt;();
 commandBinder.Bind(twoIntSignal).To&lt;SomeCommand&gt;();</pre>
 <p>Once again, this you can work around this limitation by mapping ValueObjects instead.</p>
-<p>The second caveat: Strange has a handy-dandy, built-in Start event for kicking things off. Unbinding the EventDispatcher turns this off. It is therefore the recommended practice to override your Context's Start method with a custom StartSignal, like so:</p>
-<pre>override public IContext Start()
+<p>The second caveat: Strange has a handy-dandy, built-in START event for kicking things off. Unbinding the EventDispatcher turns this off. It is therefore the recommended practice to override your Context's Launch method with a custom StartSignal, like so:</p>
+<pre>override public IContext Launch()
 <span class="prettyprint"></span>{
 <span class="prettyprint"></span><span class="prettyprint">	</span>base.Start();
 <span class="prettyprint">	</span>//Make sure you mapped this to a StartCommand!
@@ -720,7 +720,7 @@ namespace com.example.spacebattle.view
   <pre class="prettyprint">Assets/scripts/strange</pre>
   <p>and within that the important subdirectories are <code>framework</code> and <code>extensions</code>.</p>
   <h3><a name="h.1lejgr5417su"></a>A scene is set...</h3>
-  <p>When you open the scene in Unity you'll find a GameObject named &ldquo;ContextView&rdquo; and a camera inside of it. ContextView will be the top of your game hierarchy and everything else will go inside it. Although Unity does not require you to have a singular top-level GameObject, Strange works best this way (specifically, when there is more than one context, Strange uses the display hierarchy to determine which Context any given View belongs to). There's also a MonoBehaviour attached called &quot;MyFirstProjectRoot&quot;.</p>
+  <p>When you open the scene in Unity you'll find a GameObject named &ldquo;ViewGO&rdquo; and a camera inside of it. ContextView will be the top of your game hierarchy and everything else will go inside it. Although Unity does not require you to have a singular top-level GameObject, Strange works best this way (specifically, when there is more than one context, Strange uses the display hierarchy to determine which Context any given View belongs to). There's also a MonoBehaviour attached called &quot;MyFirstProjectRoot&quot;.</p>
   <p>Play this simple app and see what it does. See what happens when you click on the rotating text. Nothing spectacular here. We're just demonstrating structure for now.</p>
   <p>In the Property Inspector, double-click MyFirstProjectRoot to launch MonoDevelop.</p>
   <h3><a name="h.dswqz7yvodtv"></a>A ContextView begins...</h3>
@@ -807,7 +807,7 @@ namespace strange.examples.myfirstproject
 		{          
 			GameObject go = new GameObject();          
 			go.name = "ExampleView";          
-			go.AddComponent<ExampleView>();          
+			go.AddComponent<ExampleView>&lt;ExampleView&gt;();          
 			go.transform.parent = contextView.transform;       
 		}    
 	}
