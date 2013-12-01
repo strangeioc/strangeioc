@@ -76,6 +76,16 @@ namespace strange.unittests
 		}
 
 		[Test]
+		public void TestPostConstructOrdering()
+		{
+			binder.Bind<PostConstructSeveralOrdered> ().To<PostConstructSeveralOrdered> ();
+			PostConstructSeveralOrdered instance = binder.GetInstance<PostConstructSeveralOrdered> () as PostConstructSeveralOrdered;
+			Assert.IsNotNull (instance);
+			//Post-Constructs are ordered to spell this word
+			Assert.AreEqual ("ZAPHOD", instance.stringVal);
+		}
+
+		[Test]
 		public void TestNamedInstances ()
 		{
 			InjectableSuperClass testValue = new InjectableSuperClass ();

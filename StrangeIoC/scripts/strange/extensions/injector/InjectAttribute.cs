@@ -46,6 +46,9 @@
  * you to use use a PostConstructor in much the same way as a Constructor,
  * safe in the knowledge that there will be no null pointers on injected
  * dependencies. PostConstructors do not accept arguments.
+ *
+ * You may optionally include a priority int on your PostConstructor. This allows for multiple
+ * PostConstruction methods which will fire in a predictable order.
  * 
  * @class Deconstruct
  * 
@@ -85,6 +88,13 @@ public class Construct: Attribute
 public class PostConstruct: Attribute
 {
 	public PostConstruct(){}
+
+	public PostConstruct(int p)
+	{
+		priority = p;
+	}
+
+	public int priority{get; set;}
 }
 
 [AttributeUsage(AttributeTargets.Method, 
