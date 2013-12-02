@@ -68,31 +68,47 @@ namespace strange.extensions.injector.impl
 
 			armorAgainstInfiniteLoops (binding);
 
-			object retv = factory.Get (binding);
+			object retv;
 
-			//Factory can return null in the case that there are no parameterless constructors.
-			//In this case, the following routine attempts to generate based on a preferred constructor
+			Type reflectionType;
+			if (binding.value is Type)
+			{
+				reflectionType = binding.value as Type;
+			}
+			else if (binding.value == null)
+			{
+				object[] tl = binding.key as object[];
+				reflectionType = tl [0] as Type;
+				if (reflectionType.IsPrimitive || reflectionType == typeof(Decimal) || reflectionType == typeof(string))
+				{
+					return binding.value;
+				}
+			}
+			else
+			{
+				return binding.value;
+			}
+
+			IReflectedClass reflection = reflector.Get (reflectionType);
+
+			Type[] parameters = reflection.constructorParameters;
+			int aa = parameters.Length;
+			object[] args = new object [aa];
+			for (int a = 0; a < aa; a++)
+			{
+				args [a] = getValueInjection (parameters[a] as Type, null, null);
+			}
+			retv = factory.Get (binding, args);
 			if (retv == null)
 			{
-				IReflectedClass reflection = reflector.Get (binding.value as Type);
-				Type[] parameters = reflection.constructorParameters;
-				int aa = parameters.Length;
-				object[] args = new object [aa];
-				for (int a = 0; a < aa; a++)
-				{
-					args [a] = getValueInjection (parameters[a] as Type, null, retv);
-				}
-				retv = factory.Get (binding, args);
-				if (retv == null)
-				{
-					return null;
-				}
+				return null;
+			}
+
+			if (binding.toInject)
+			{
 				retv = Inject (retv, false);
 			}
-			else if (binding.toInject)
-			{
-				retv = Inject (retv, binding.type != InjectionBindingType.VALUE);
-			}
+
 			infinityLock = null;
 			if (binding.type == InjectionBindingType.SINGLETON || binding.type == InjectionBindingType.VALUE)
 			{

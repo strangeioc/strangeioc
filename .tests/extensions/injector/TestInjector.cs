@@ -107,6 +107,22 @@ namespace strange.unittests
 		}
 
 		[Test]
+		public void TestEmptyUntaggedConstructorNeverInvoked()
+		{
+			binder.Bind<int> ().ToValue (42);
+			binder.Bind<string> ().ToValue ("Zaphod");
+			binder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ();
+			binder.Bind<MultipleConstructorsOneThreeFour> ().ToSingleton ();
+
+			TestDelegate testDelegate = delegate()
+			{
+				binder.GetInstance<MultipleConstructorsOneThreeFour>();
+			};
+
+			Assert.DoesNotThrow (testDelegate);
+		}
+
+		[Test]
 		public void TestNamedFactories ()
 		{
 			binder.Bind<int> ().ToValue (20);
