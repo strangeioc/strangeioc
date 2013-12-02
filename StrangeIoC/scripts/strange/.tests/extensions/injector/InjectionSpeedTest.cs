@@ -35,7 +35,7 @@ namespace strange.unittests
 
 			stopwatch.Stop ();
 
-			//Uncomment this if you want to runt he speed test.
+			//Uncomment this if you want to run the speed test.
 			//throw new InjectionException ("The test took " + stopwatch.ElapsedMilliseconds + " ms.", InjectionExceptionType.NO_REFLECTOR);
 		}
 	}
