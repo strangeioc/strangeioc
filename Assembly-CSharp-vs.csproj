@@ -59,16 +59,6 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ProjectExtensions xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <MonoDevelop>
-      <Properties>
-        <Policies>
-          <TextStylePolicy TabsToSpaces="False" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/x-csharp" />
-          <CSharpFormattingPolicy inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" />
-        </Policies>
-      </Properties>
-    </MonoDevelop>
-  </ProjectExtensions>
   <ItemGroup>
     <Folder Include="StrangeIoC\" />
     <Folder Include="StrangeIoC\examples\" />
@@ -367,5 +357,6 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\NonpublicInjection.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ConstructorInjectsClassToBeInjected.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PostConstructSeveralOrdered.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\MultipleConstructorsOneThreeFour.cs" />
   </ItemGroup>
 </Project>
