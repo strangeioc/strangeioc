@@ -153,16 +153,13 @@ namespace strange.extensions.command.impl
 				throw new CommandException(msg, CommandExceptionType.BAD_CONSTRUCTOR);
 			}
 
-			if (!usePooling)
-				injectionBinder.Unbind<ICommand> ();
-
 			command.data = data;
 			return command;
 		}
 
 		protected ICommand getCommand(Type type)
 		{
-			if (usePooling)
+			if (usePooling && pools.ContainsKey(type))
 			{
 				Pool pool = pools [type];
 				ICommand command = pool.GetInstance () as ICommand;
@@ -177,6 +174,7 @@ namespace strange.extensions.command.impl
 			{
 				injectionBinder.Bind<ICommand> ().To (type);
 				ICommand command = injectionBinder.GetInstance<ICommand> ();
+				injectionBinder.Unbind<ICommand> ();
 				return command;
 			}
 		}
@@ -294,8 +292,7 @@ namespace strange.extensions.command.impl
 		override protected void resolver(IBinding binding)
 		{
 			base.resolver (binding);
-			//if (usePooling && (binding as ICommandBinding).isPooled)
-			if(usePooling)
+			if (usePooling && (binding as ICommandBinding).isPooled)
 			{
 				if (binding.value != null)
 				{

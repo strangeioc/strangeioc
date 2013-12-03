@@ -67,6 +67,7 @@ namespace strange.extensions.command.impl
 		public ICommandBinding Pooled()
 		{
 			isPooled = true;
+			resolver (this);
 			return this;
 		}
 
