@@ -42,7 +42,7 @@ namespace strange.unittests
 		public void TestCommandIsInjected()
 		{
 			injectionBinder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ();
-			commandBinder.Bind (SomeEnum.ONE).To<CommandWithInjection> ();
+			commandBinder.Bind (SomeEnum.ONE).To<CommandWithInjection> ().Pooled();
 			TestDelegate testDelegate = delegate 
 			{
 				commandBinder.ReactTo (SomeEnum.ONE);
@@ -54,7 +54,7 @@ namespace strange.unittests
 		[Test]
 		public void TestCommandGetsReused()
 		{
-			commandBinder.Bind (SomeEnum.ONE).To<MarkablePoolCommand> ();
+			commandBinder.Bind (SomeEnum.ONE).To<MarkablePoolCommand> ().Pooled();
 			IPool<MarkablePoolCommand> pool = pooledCommandBinder.GetPool<MarkablePoolCommand> ();
 
 			for (int a = 0; a < 10; a++)
@@ -68,9 +68,9 @@ namespace strange.unittests
 		[Test]
 		public void TestCommandBinderHasManyPools()
 		{
-			commandBinder.Bind (SomeEnum.ONE).To<MarkablePoolCommand> ();
-			commandBinder.Bind (SomeEnum.TWO).To<CommandWithExecute> ();
-			commandBinder.Bind (SomeEnum.THREE).To<SequenceCommandWithInjection> ();
+			commandBinder.Bind (SomeEnum.ONE).To<MarkablePoolCommand> ().Pooled();
+			commandBinder.Bind (SomeEnum.TWO).To<CommandWithExecute> ().Pooled();
+			commandBinder.Bind (SomeEnum.THREE).To<SequenceCommandWithInjection> ().Pooled();
 
 			IPool firstPool = pooledCommandBinder.GetPool<MarkablePoolCommand> ();
 			IPool secondPool = pooledCommandBinder.GetPool<CommandWithExecute> ();
@@ -89,7 +89,7 @@ namespace strange.unittests
 		public void TestCleanupInjections()
 		{
 			injectionBinder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ();
-			commandBinder.Bind (SomeEnum.ONE).To<CommandWithInjection> ();
+			commandBinder.Bind (SomeEnum.ONE).To<CommandWithInjection> ().Pooled();
 
 			commandBinder.ReactTo (SomeEnum.ONE);
 			IPool<CommandWithInjection> pool = pooledCommandBinder.GetPool<CommandWithInjection> ();
@@ -106,7 +106,7 @@ namespace strange.unittests
 		public void TestCommandWorksSecondTime()
 		{
 			injectionBinder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ();
-			commandBinder.Bind (SomeEnum.ONE).To<CommandWithInjection> ();
+			commandBinder.Bind (SomeEnum.ONE).To<CommandWithInjection> ().Pooled();
 
 			commandBinder.ReactTo (SomeEnum.ONE);
 			IPool<CommandWithInjection> pool = pooledCommandBinder.GetPool<CommandWithInjection> ();
@@ -130,7 +130,7 @@ namespace strange.unittests
 		{
 			injectionBinder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ();
 			injectionBinder.Bind<Signal<SimpleInterfaceImplementer>> ().To<Signal<SimpleInterfaceImplementer>> ().ToSingleton ();
-			commandBinder.Bind (SomeEnum.ONE).To<CommandWithInjectionAndSignal> ();
+			commandBinder.Bind (SomeEnum.ONE).To<CommandWithInjectionAndSignal> ().Pooled();
 
 			Signal<SimpleInterfaceImplementer> signal = injectionBinder.GetInstance<Signal<SimpleInterfaceImplementer>>();
 			signal.AddListener (cb);
