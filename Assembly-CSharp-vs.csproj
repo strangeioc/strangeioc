@@ -64,6 +64,7 @@
     <Folder Include="StrangeIoC\examples\" />
     <Folder Include="StrangeIoC\scripts\strange\extensions\signal\" />
     <Folder Include="StrangeIoC\scripts\strange\.tests\" />
+    <Folder Include="StrangeIoC\examples\Assets\scripts\signalsproject\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StrangeIoC\scripts\strange\extensions\context\api\ContextEvent.cs.meta" />
@@ -358,5 +359,22 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ConstructorInjectsClassToBeInjected.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PostConstructSeveralOrdered.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\MultipleConstructorsOneThreeFour.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\context\api\ContextStartupFlags.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestContext.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\SignalsContext.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\SignalsRoot.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\controller\CallWebServiceCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\controller\StartCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\model\ExampleModel.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\model\IExampleModel.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\service\ExampleService.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\service\IExampleService.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\signal\CallWebServiceSignal.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\signal\FulfillWebServiceRequestSignal.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\signal\ScoreChangedSignal.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\signal\StartSignal.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\view\ClickDetector.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\view\ExampleMediator.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\view\ExampleView.cs" />
   </ItemGroup>
 </Project>
