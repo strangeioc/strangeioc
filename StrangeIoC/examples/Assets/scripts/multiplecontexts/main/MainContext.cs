@@ -31,12 +31,12 @@ namespace strange.examples.multiplecontexts.main
 {
 	public class MainContext : MVCSContext
 	{
-		
-		public MainContext () : base()
+
+		public MainContext (MonoBehaviour view) : base(view)
 		{
 		}
-		
-		public MainContext (MonoBehaviour view, bool autoStartup) : base(view, autoStartup)
+
+		public MainContext (MonoBehaviour view, ContextStartupFlags flags) : base(view, flags)
 		{
 		}
 		

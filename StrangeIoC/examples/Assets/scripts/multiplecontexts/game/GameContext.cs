@@ -30,13 +30,12 @@ namespace strange.examples.multiplecontexts.game
 {
 	public class GameContext : MVCSContext
 	{
-		
-		
-		public GameContext () : base()
+
+		public GameContext (MonoBehaviour view) : base(view)
 		{
 		}
-		
-		public GameContext (MonoBehaviour view, bool autoStartup) : base(view, autoStartup)
+
+		public GameContext (MonoBehaviour view, ContextStartupFlags flags) : base(view, flags)
 		{
 		}
 		

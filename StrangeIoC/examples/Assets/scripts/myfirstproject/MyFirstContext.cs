@@ -26,13 +26,11 @@ namespace strange.examples.myfirstproject
 {
 	public class MyFirstContext : MVCSContext
 	{
-		
-		
-		public MyFirstContext () : base()
+		public MyFirstContext (MonoBehaviour view) : base(view)
 		{
 		}
-		
-		public MyFirstContext (MonoBehaviour view, bool autoStartup) : base(view, autoStartup)
+
+		public MyFirstContext (MonoBehaviour view, ContextStartupFlags flags) : base(view, flags)
 		{
 		}
 		

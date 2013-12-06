@@ -18,13 +18,12 @@ namespace strange.examples.signals
 {
 	public class SignalsContext : MVCSContext
 	{
-		
-		
-		public SignalsContext () : base()
+
+		public SignalsContext (MonoBehaviour view) : base(view)
 		{
 		}
-		
-		public SignalsContext (MonoBehaviour view, bool autoStartup) : base(view, autoStartup)
+
+		public SignalsContext (MonoBehaviour view, ContextStartupFlags flags) : base(view, flags)
 		{
 		}
 		
