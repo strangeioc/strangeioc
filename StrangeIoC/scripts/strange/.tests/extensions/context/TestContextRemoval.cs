@@ -10,7 +10,7 @@ namespace strange.unittests
 	{
         object view;
         CrossContext Parent;
-        TestContext Child;
+		TestCrossContextSubclass Child;
 
         [SetUp]
         public void SetUp()
@@ -18,7 +18,7 @@ namespace strange.unittests
             Context.firstContext = null;
             view = new object();
             Parent = new CrossContext(view, true);
-            Child = new TestContext(view, true);
+			Child = new TestCrossContextSubclass(view, true);
         }
 
 		[Test]
@@ -36,12 +36,12 @@ namespace strange.unittests
 	}
 
 
-    public class TestContext : CrossContext
+	public class TestCrossContextSubclass : CrossContext
     {
-        public TestContext() : base()
+		public TestCrossContextSubclass() : base()
 	    {}
 
-        public TestContext(object view, bool autoStartup) : base(view, autoStartup)
+		public TestCrossContextSubclass(object view, bool autoStartup) : base(view, autoStartup)
 	    {}
          
         public override void OnRemove()
