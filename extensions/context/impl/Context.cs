@@ -46,8 +46,8 @@ namespace strange.extensions.context.impl
 		public Context ()
 		{
 		}
-		
-		public Context (object view, bool autoStartup)
+
+		public Context (object view, ContextStartupFlags flags)
 		{
 			//If firstContext was unloaded, the contextView will be null. Assign the new context as firstContext.
 			if (firstContext == null || firstContext.GetContextView() == null)
@@ -58,9 +58,19 @@ namespace strange.extensions.context.impl
 			{
 				firstContext.AddContext(this);
 			}
-			this.autoStartup = autoStartup;
 			SetContextView(view);
 			addCoreComponents();
+			this.autoStartup = (flags & ContextStartupFlags.MANUAL_LAUNCH) != ContextStartupFlags.MANUAL_LAUNCH;
+			if ((flags & ContextStartupFlags.MANUAL_MAPPING) != ContextStartupFlags.MANUAL_MAPPING)
+			{
+				Start();
+			}
+		}
+
+		public Context (object view) : this (view, ContextStartupFlags.AUTOMATIC){}
+		
+		public Context (object view, bool autoMapping) : this(view, (autoMapping) ? ContextStartupFlags.MANUAL_LAUNCH : ContextStartupFlags.MANUAL_LAUNCH | ContextStartupFlags.MANUAL_MAPPING)
+		{
 		}
 		
 		/// Override to add componentry. Or just extend MVCSContext.
@@ -150,7 +160,6 @@ namespace strange.extensions.context.impl
 		{
 			//Override in subclasses
 		}
-
 	}
 }
 

@@ -62,7 +62,15 @@ namespace strange.extensions.context.impl
 		public CrossContext() : base()
 		{}
 
-		public CrossContext(object view, bool autoStartup) : base(view, autoStartup)
+		public CrossContext(object view) : base(view)
+		{
+		}
+
+		public CrossContext(object view, ContextStartupFlags flags) : base(view, flags)
+		{
+		}
+
+		public CrossContext(object view, bool autoMapping) : base(view, autoMapping)
 		{
 		}
 

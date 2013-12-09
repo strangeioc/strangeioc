@@ -76,6 +76,16 @@ namespace strange.unittests
 		}
 
 		[Test]
+		public void TestPostConstructOrdering()
+		{
+			binder.Bind<PostConstructSeveralOrdered> ().To<PostConstructSeveralOrdered> ();
+			PostConstructSeveralOrdered instance = binder.GetInstance<PostConstructSeveralOrdered> () as PostConstructSeveralOrdered;
+			Assert.IsNotNull (instance);
+			//Post-Constructs are ordered to spell this word
+			Assert.AreEqual ("ZAPHOD", instance.stringVal);
+		}
+
+		[Test]
 		public void TestNamedInstances ()
 		{
 			InjectableSuperClass testValue = new InjectableSuperClass ();
@@ -94,6 +104,22 @@ namespace strange.unittests
 			Assert.AreEqual (20, instance.injectionTwo.intValue);
 			Assert.That (instance.injectionOne.floatValue == defaultFloatValue);
 			Assert.That (instance.injectionTwo.floatValue == 3.14f);
+		}
+
+		[Test]
+		public void TestEmptyUntaggedConstructorNeverInvoked()
+		{
+			binder.Bind<int> ().ToValue (42);
+			binder.Bind<string> ().ToValue ("Zaphod");
+			binder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ();
+			binder.Bind<MultipleConstructorsOneThreeFour> ().ToSingleton ();
+
+			TestDelegate testDelegate = delegate()
+			{
+				binder.GetInstance<MultipleConstructorsOneThreeFour>();
+			};
+
+			Assert.DoesNotThrow (testDelegate);
 		}
 
 		[Test]

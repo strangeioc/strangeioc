@@ -48,13 +48,27 @@ namespace strange.extensions.mediation.impl
 			}
 		}
 
+		/// A flag for allowing the View to register with the Context
+		/// In general you can ignore this. But some developers have asked for a way of disabling
+		///  View registration with a checkbox from Unity, so here it is.
+		/// If you want to expose this capability either
+		/// (1) uncomment the commented-out line immediately below, or
+		/// (2) subclass View and override the autoRegisterWithContext method using your own custom (public) field.
+		//[SerializeField]
+		protected bool registerWithContext = true;
+		virtual public bool autoRegisterWithContext
+		{
+			get { return registerWithContext;  }
+			set { registerWithContext = value; }
+		}
+
 		public bool registeredWithContext{get; set;}
 
 		/// A MonoBehaviour Awake handler.
 		/// The View will attempt to connect to the Context at this moment.
 		protected virtual void Awake ()
 		{
-			if (!registeredWithContext)
+			if (autoRegisterWithContext && !registeredWithContext)
 				bubbleToContext(this, true, false);
 		}
 
@@ -63,7 +77,7 @@ namespace strange.extensions.mediation.impl
 		/// attempt to connect again at this moment.
 		protected virtual void Start ()
 		{
-			if (!registeredWithContext)
+			if (autoRegisterWithContext && !registeredWithContext)
 				bubbleToContext(this, true, true);
 		}
 
