@@ -29,6 +29,7 @@ using System.Reflection;
 using strange.extensions.reflector.api;
 using strange.framework.api;
 using strange.framework.impl;
+using System.Collections;
 
 namespace strange.extensions.reflector.impl
 {
@@ -131,23 +132,21 @@ namespace strange.extensions.reflector.impl
 
 		private void mapPostConstructors(IReflectedClass reflected, IBinding binding, Type type)
 		{
-			MethodInfo[] postConstructors = new MethodInfo[0];
 			MethodInfo[] methods = type.GetMethods(BindingFlags.FlattenHierarchy | 
 			                                             BindingFlags.Public | 
 			                                             BindingFlags.Instance |
 			                                             BindingFlags.InvokeMethod);
+			ArrayList methodList = new ArrayList ();
 			foreach (MethodInfo method in methods)
 			{
-				object[] tagged = method.GetCustomAttributes(typeof(PostConstruct), true);
+				object[] tagged = method.GetCustomAttributes (typeof(PostConstruct), true);
 				if (tagged.Length > 0)
 				{
-					MethodInfo[] tempList = postConstructors;
-					int len = tempList.Length;
-					postConstructors = new MethodInfo[len + 1];
-					tempList.CopyTo (postConstructors, 0);
-					postConstructors [len] = method;
+					methodList.Add (method);
 				}
 			}
+			methodList.Sort (new PriorityComparer ());
+			MethodInfo[] postConstructors = (MethodInfo[])methodList.ToArray (typeof(MethodInfo));
 			reflected.postConstructors = postConstructors;
 		}
 
@@ -221,6 +220,25 @@ namespace strange.extensions.reflector.impl
 			tempList.CopyTo (list, 0);
 			list [len] = value;
 			return list;
+		}
+	}
+
+	class PriorityComparer : IComparer
+	{
+		int IComparer.Compare( Object x, Object y )
+		{
+
+			int pX = getPriority (x as MethodInfo);
+			int pY = getPriority (y as MethodInfo);
+
+			return (pX < pY) ? -1 : 1;
+		}
+
+		private int getPriority(MethodInfo methodInfo)
+		{
+			PostConstruct attr = methodInfo.GetCustomAttributes(true) [0] as PostConstruct;
+			int priority = attr.priority;
+			return priority;
 		}
 	}
 }

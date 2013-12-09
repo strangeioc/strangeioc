@@ -1,7 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{73A6FCB0-1653-5503-154C-ECF09B787015}") = "strange", "Assembly-CSharp-vs.csproj", "{EDFB21CB-8A2D-0241-3DBA-DF0E55C41E5A}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-vs", "Assembly-CSharp-vs.csproj", "{EDFB21CB-8A2D-0241-3DBA-DF0E55C41E5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,11 +14,8 @@ Global
 		{EDFB21CB-8A2D-0241-3DBA-DF0E55C41E5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDFB21CB-8A2D-0241-3DBA-DF0E55C41E5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-								GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp-vs.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
 		$1.TabsToSpaces = False
@@ -26,16 +23,26 @@ Global
 		$1.inheritsScope = text/plain
 		$1.scope = text/x-csharp
 		$0.CSharpFormattingPolicy = $2
+		$2.IndentSwitchBody = True
+		$2.AnonymousMethodBraceStyle = NextLine
+		$2.PropertyBraceStyle = NextLine
+		$2.StatementBraceStyle = NextLine
+		$2.ElseNewLinePlacement = NewLine
+		$2.CatchNewLinePlacement = NewLine
+		$2.FinallyNewLinePlacement = NewLine
+		$2.WhileNewLinePlacement = NewLine
 		$2.inheritsSet = Mono
 		$2.inheritsScope = text/x-csharp
 		$2.scope = text/x-csharp
 		$0.TextStylePolicy = $3
 		$3.FileWidth = 120
-		$3.TabWidth = 4
+		$3.TabsToSpaces = False
 		$3.EolMarker = Unix
-		$3.inheritsSet = Mono
+		$3.inheritsSet = VisualStudio
 		$3.inheritsScope = text/plain
 		$3.scope = text/plain
 	EndGlobalSection
-
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 EndGlobal

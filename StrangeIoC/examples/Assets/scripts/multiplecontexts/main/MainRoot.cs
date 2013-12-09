@@ -33,9 +33,8 @@ namespace strange.examples.multiplecontexts.main
 	
 		void Awake()
 		{
-			//Instantiate the context, passing it this instance and a 'true' for autoStartup.
-			context = new MainContext(this, true);
-			context.Start ();
+			//Instantiate the context, passing it this instance.
+			context = new MainContext(this);
 		}
 	}
 }

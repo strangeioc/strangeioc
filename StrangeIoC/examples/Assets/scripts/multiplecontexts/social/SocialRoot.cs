@@ -34,9 +34,8 @@ namespace strange.examples.multiplecontexts.social
 	
 		void Awake()
 		{
-			//Instantiate the context, passing it this instance and a 'true' for autoStartup.
-			context = new SocialContext(this, true);
-			context.Start ();
+			//Instantiate the context, passing it this instance
+			context = new SocialContext(this);
 		}
 	}
 }

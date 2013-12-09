@@ -1,27 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Assembly-CSharp-vs" expanded="True">
-            <Node name="Assets" selected="True" />
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State expanded="True" selected="True" />
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
-      <Pad Id="ConnectionManagerPad">
-        <State selected="True" />
-      </Pad>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
-      </Pad>
-    </Pads>
+  <MonoDevelop.Ide.Workbench ActiveDocument="StrangeIoC/scripts/strange/extensions/injector/InjectAttribute.cs">
+    <Files>
+      <File FileName="StrangeIoC/scripts/strange/extensions/reflector/impl/ReflectionBinder.cs" Line="35" Column="2" />
+      <File FileName="StrangeIoC/scripts/strange/extensions/injector/InjectAttribute.cs" Line="89" Column="2" />
+    </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
