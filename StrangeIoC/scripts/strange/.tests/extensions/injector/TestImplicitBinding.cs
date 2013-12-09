@@ -1,16 +1,15 @@
 ﻿using NUnit.Framework;
 using strange.extensions.context.impl;
-using strange.extensions.context.api;
-using UnityEngine;
-using strange.extensions.mediation.api;
 using strange.extensions.injector.impl;
 using strange.extensions.injector.api;
+using strange.unittests.annotated.namespaceTest.one;
+using strange.unittests.annotated.namespaceTest.three.even.farther;
+using strange.unittests.annotated.namespaceTest.two.far;
 using strange.unittests.annotated.testImplBy;
-using strange.unittests.annotated.testDefaultImpl;
+using strange.unittests.annotated.testImplements;
 using strange.unittests.annotated.testConcrete;
-using strange.unittests.annotated.testCrossContext;
 using strange.unittests.annotated.testCrossContextInterface;
-using System;
+using strange.unittests.annotated.testImplTwo;
 
 namespace strange.unittests
 {
@@ -30,10 +29,10 @@ namespace strange.unittests
         }
 
         /// <summary>
-        /// Tests our DefaultImpl default case, which is a concrete singleton binding
+        /// Tests our Implements default case, which is a concrete singleton binding
         /// </summary>
 		[Test]
-		public void TestDefaultImplConcrete()
+		public void TestImplementsConcrete()
 		{
 
             context.ScannedPackages = new string[]{
@@ -47,13 +46,13 @@ namespace strange.unittests
 		}
 
         /// <summary>
-        /// Test binding a concrete class to an interface using the DefaultImpl tag
+        /// Test binding a concrete class to an interface using the Implements tag
         /// </summary>
         [Test]
-        public void TestDefaultImplToInterface()
+        public void TestImplementsToInterface()
         {
             context.ScannedPackages = new string[]{
-                "strange.unittests.annotated.testDefaultImpl"
+                "strange.unittests.annotated.testImplements"
             };
             context.Start();
 
@@ -83,49 +82,45 @@ namespace strange.unittests
 
 
         /// <summary>
-        /// Attempt to bind the interface and the implementation with annotations, which throws an exception
+        /// Bind via an ImplementedBy tag, followed by an Implements from a different class.
+        /// Implements should override the ImplementedBy tag
         /// </summary>
         [Test]
-        public void TestBindingExistsOne()
+        public void TestImplementsOverridesImplementedBy()
         {
             context.ScannedPackages = new string[]{
-                "strange.unittests.annotated.testImplBy", 
-                "strange.unittests.annotated.testDefaultImpl",
-            };
-            
-            TestDelegate testDelegate = delegate
-            {
-                context.Start();
+                "strange.unittests.annotated.testImplTwo", 
+                "strange.unittests.annotated.testImplBy",
             };
 
-            //We should be getting an exception here from binding twice
-            InjectionException ex = Assert.Throws<InjectionException>(testDelegate);
+            context.Start();
 
-            //make sure it's the right exception
-            Assert.AreEqual(ex.type, InjectionExceptionType.IMPLICIT_BINDING_ALREADY_EXISTS);
+
+            TestInterface testInterface = context.injectionBinder.GetInstance<TestInterface>() as TestInterface;
+            Assert.True(testInterface is TestImplTwo);
         }
 
         /// <summary>
         /// Attempt to bind two classes implicitly to the same interface. Throws exception
         /// </summary>
         [Test]
-        public void TestBindingExistsTwo()
+        public void TestExplicitBindingOverrides()
         {
             context.ScannedPackages = new string[]{
-                "strange.unittests.annotated.testDefaultImpl",
-                "strange.unittests.annotated.testBindingAlreadyExists"
+                "strange.unittests.annotated.testImplements",
             };
 
-            TestDelegate testDelegate = delegate
-            {
-                context.Start();
-            };
+            context.Start();
 
-            //We should be getting an exception here from binding twice
-            InjectionException ex = Assert.Throws<InjectionException>(testDelegate);
 
-            //make sure it's the right exception
-            Assert.AreEqual(ex.type, InjectionExceptionType.IMPLICIT_BINDING_ALREADY_EXISTS);
+            TestInterface testInterfacePre = context.injectionBinder.GetInstance<TestInterface>() as TestInterface;
+            Assert.True(testInterfacePre is TestImpl);
+            //Confirm the previous binding is the implicit binding as expected
+
+            context.injectionBinder.Bind<TestInterface>().To<TestImplTwo>();
+            TestInterface testInterfacePost = context.injectionBinder.GetInstance<TestInterface>() as TestInterface;
+            Assert.True(testInterfacePost is TestImplTwo);
+            //Confirm the new binding is the one we just wrote
         }
 
         /// <summary>
@@ -147,11 +142,12 @@ namespace strange.unittests
             InjectionException ex = Assert.Throws<InjectionException>(testDelegate);
 
             //make sure it's the right exception
-            Assert.AreEqual(ex.type, InjectionExceptionType.IMPLICIT_BINDING_TYPE_DOES_NOT_IMPLEMENT);
+            Assert.AreEqual(ex.type, InjectionExceptionType.IMPLICIT_BINDING_DEFAULT_TYPE_DOES_NOT_IMPLEMENT_INTERFACE);
         }
 
+
         /// <summary>
-        /// Attempt to bind a DefaultImpl annotation pointing to an interface it does not implement
+        /// Attempt to bind an Implements annotation pointing to an interface it does not implement
         /// </summary>
         [Test]
         public void TestDoesNotImplementTwo()
@@ -169,7 +165,7 @@ namespace strange.unittests
             InjectionException ex = Assert.Throws<InjectionException>(testDelegate);
 
             //make sure it's the right exception
-            Assert.AreEqual(ex.type, InjectionExceptionType.IMPLICIT_BINDING_TYPE_DOES_NOT_IMPLEMENT);
+            Assert.AreEqual(ex.type, InjectionExceptionType.IMPLICIT_BINDING_TYPE_DOES_NOT_IMPLEMENT_DEFAULT_INTERFACE);
         }
 
         /// <summary>
@@ -263,13 +259,36 @@ namespace strange.unittests
             Assert.AreEqual(2, parentModel.Value); //cross context model is changed
         }
 
+        /// <summary>
+        /// Test that our assumptions regarding namespace scoping are correct 
+        /// (e.g. company.project.feature will include company.project.feature.signal)
+        /// </summary>
+        [Test]
+        public void TestNamespaces()
+        {
+            context.ScannedPackages = new string[]{
+                "strange.unittests.annotated.namespaceTest"
+            };
+            context.Start();
+
+            //Should bind 3 classes concretely in the 
+            TestNamespaceOne one = context.injectionBinder.GetInstance<TestNamespaceOne>() as TestNamespaceOne;
+            Assert.NotNull(one);
+
+            TestNamespaceTwo two = context.injectionBinder.GetInstance<TestNamespaceTwo>() as TestNamespaceTwo;
+            Assert.NotNull(two);
+
+            TestNamespaceThree three = context.injectionBinder.GetInstance<TestNamespaceThree>() as TestNamespaceThree;
+            Assert.NotNull(three);
+        }
+
 	}
 
 }
 
 namespace strange.unittests.annotated.testConcrete
 {
-    [DefaultImpl]
+    [Implements]
     public class TestConcreteClass { }
 }
 
@@ -279,15 +298,15 @@ namespace strange.unittests.annotated.testImplBy
     public interface TestInterface { }
 }
 
-namespace strange.unittests.annotated.testDefaultImpl
+namespace strange.unittests.annotated.testImplements
 {
-    [DefaultImpl(typeof(TestInterface))]
+    [Implements(typeof(TestInterface))]
     public class TestImpl : TestInterface { }
 }
 
-namespace strange.unittests.annotated.testBindingAlreadyExists
+namespace strange.unittests.annotated.testImplTwo
 {
-    [DefaultImpl(typeof(TestInterface))]
+    [Implements(typeof(TestInterface))]
     public class TestImplTwo : TestInterface { }
 }
 
@@ -303,7 +322,7 @@ namespace strange.unittests.annotated.testDoesntImplementTwo
 {
     public interface TestInterfaceDoesntImplement { }
 
-    [DefaultImpl(typeof(TestInterfaceDoesntImplement))]
+    [Implements(typeof(TestInterfaceDoesntImplement))]
     public class TestClassDoesntImplement { }
 }
 
@@ -316,8 +335,7 @@ namespace strange.unittests.annotated.testCrossContextInterface
 }
 namespace strange.unittests.annotated.testCrossContext
 {
-    [DefaultImpl(typeof(TestCrossContextInterface))]
-    [CrossContextComponent]
+    [Implements(typeof(TestCrossContextInterface), InjectionBindingScope.CROSS_CONTEXT)]
     public class TestConcreteCrossContextClass : TestCrossContextInterface
     {
         public TestConcreteCrossContextClass()
@@ -330,7 +348,7 @@ namespace strange.unittests.annotated.testCrossContext
 
 namespace strange.unittests.annotated.testCrossOverride
 {
-    [DefaultImpl(typeof(TestCrossContextInterface))]
+    [Implements(typeof(TestCrossContextInterface))]
     public class TestConcreteCrossContextClassOverride : TestCrossContextInterface
     {
         public TestConcreteCrossContextClassOverride()
@@ -339,4 +357,22 @@ namespace strange.unittests.annotated.testCrossOverride
         }
         public int Value { get; set; }
     }
+}
+
+namespace strange.unittests.annotated.namespaceTest.one
+{
+    [Implements]
+    public class TestNamespaceOne {}
+}
+
+namespace strange.unittests.annotated.namespaceTest.two.far
+{
+    [Implements]
+    public class TestNamespaceTwo {}
+}
+
+namespace strange.unittests.annotated.namespaceTest.three.even.farther
+{
+    [Implements]
+    public class TestNamespaceThree {}
 }

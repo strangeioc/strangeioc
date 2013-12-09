@@ -1,13 +1,10 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;using Microsoft.VisualStudio.TestTools.UnitTesting;
-using strange.extensions.context.impl;
+﻿using strange.extensions.context.impl;
 using strange.extensions.command.api;
 using strange.extensions.dispatcher.eventdispatcher.api;
+using strange.extensions.implicitBind.api;
+using strange.extensions.implicitBind.impl;
 using strange.extensions.mediation.api;
 using strange.extensions.sequencer.api;
-using System.Reflection;
 using strange.extensions.injector.api;
 using strange.extensions.context.api;
 using strange.extensions.command.impl;
@@ -34,13 +31,15 @@ namespace strange.unittests
 		/// A Binder that maps Events to Sequences
 		public ISequencer sequencer{get;set;}
 
+	    public IImplicitBinder implicitBinder { get; set; }
+
         public MockContext() : base() {}
         public MockContext(object view, bool autoStartup) : base(view, autoStartup) { }
 
         protected override void mapBindings()
         {
             base.mapBindings();
-            ScanForAnnotatedClasses(ScannedPackages, mediationBinder);
+            implicitBinder.ScanForAnnotatedClasses(ScannedPackages);
         }
 
         protected override void addCoreComponents()
@@ -55,6 +54,7 @@ namespace strange.unittests
             injectionBinder.Bind<IEventDispatcher>().To<EventDispatcher>().ToSingleton().ToName(ContextKeys.CONTEXT_DISPATCHER);
             injectionBinder.Bind<IMediationBinder>().To<MediationBinder>().ToSingleton();
             injectionBinder.Bind<ISequencer>().To<EventSequencer>().ToSingleton();
+            injectionBinder.Bind<IImplicitBinder>().To<ImplicitBinder>().ToSingleton();
         }
 
         protected override void instantiateCoreComponents()
@@ -65,6 +65,7 @@ namespace strange.unittests
             dispatcher = injectionBinder.GetInstance<IEventDispatcher>(ContextKeys.CONTEXT_DISPATCHER) as IEventDispatcher;
             mediationBinder = injectionBinder.GetInstance<IMediationBinder>() as IMediationBinder;
             sequencer = injectionBinder.GetInstance<ISequencer>() as ISequencer;
+            implicitBinder = injectionBinder.GetInstance<IImplicitBinder>() as IImplicitBinder;
 
             (dispatcher as ITriggerProvider).AddTriggerable(commandBinder as ITriggerable);
             (dispatcher as ITriggerProvider).AddTriggerable(sequencer as ITriggerable);

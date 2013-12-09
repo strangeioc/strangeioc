@@ -1,61 +1,76 @@
 ﻿using System;
+using strange.extensions.injector.api;
 
 /// <summary>
 /// Tag anything to be injected.
 /// No arguments will bind a concrete class
 /// Passing an Interface will bind to that interface
+/// If an interface defines another defaulttype, this will override 
 /// </summary>
 [AttributeUsage(AttributeTargets.Class, 
                 AllowMultiple = true,
                 Inherited = true)]
-public class DefaultImpl: Attribute
+public class Implements: Attribute
 {
-    public DefaultImpl() {  }
-    public DefaultImpl(object n) { Name = n; }
-    public DefaultImpl(Type t) { DefaultInterface = t; }
-    public DefaultImpl(Type t, object n) { Name = n; }
+    public Implements() {  }
+    public Implements(object name) { Name = name; }
+    public Implements(Type t, InjectionBindingScope scope = InjectionBindingScope.SINGLE_CONTEXT)
+    {
+        DefaultInterface = t;
+        Scope = scope;
+    }
+
+    public Implements(Type t, object name, InjectionBindingScope scope = InjectionBindingScope.SINGLE_CONTEXT)
+    {
+        DefaultInterface = t;
+        Name = name;
+        Scope = scope;
+    }
+    
+    public Implements(InjectionBindingScope scope) { Scope = scope; }
+    public Implements(InjectionBindingScope scope, object name)
+    {
+        Scope = scope;
+        Name = name;
+    }
 	
 	public object Name {get; set;}
     public Type DefaultInterface { get; set; }
+    public InjectionBindingScope Scope { get; set; }
 }
 
 /// <summary>
 /// Tag an Interface with the Default Implementation Type
+/// If an Implements tag exists for this interface, it will override this default
 /// </summary>
 [AttributeUsage(AttributeTargets.Interface,
                 AllowMultiple = false,
                 Inherited = true)]
 public class ImplementedBy : Attribute
 {
-    public ImplementedBy(Type t) { DefaultType = t; }
+    public ImplementedBy(Type t, InjectionBindingScope scope = InjectionBindingScope.SINGLE_CONTEXT)
+    {
+        DefaultType = t;
+        Scope = scope;
+    }
+
     public Type DefaultType { get; set; }
+    public InjectionBindingScope Scope { get; set; }
 }
-
-/// <summary>
-/// Tag an injectable to be a CrossContext Injection
-/// </summary>
-[AttributeUsage(AttributeTargets.Class,
-                AllowMultiple = false,
-                Inherited = true)]
-public class CrossContextComponent : Attribute
-{
-    public CrossContextComponent() { }
-}
-
 
 /// <summary>
 /// Tag a View class with the Mediator type used to mediate
 /// </summary>
 [AttributeUsage(AttributeTargets.Class,
-                AllowMultiple = false,
+                AllowMultiple = true,
                 Inherited = true)]
-public class Mediated : Attribute
+public class MediatedBy : Attribute
 {
     /// <summary>
     /// Tag a View class with the Mediator type used to mediate
     /// </summary>
     /// <param name="t">Mediator Type</param>
-    public Mediated(Type t) { MediatorType = t; }
+    public MediatedBy(Type t) { MediatorType = t; }
 
     public Type MediatorType { get; set; }
 }

@@ -46,10 +46,11 @@
  */
 
 using System;
+using strange.framework.api;
 
 namespace strange.extensions.injector.api
 {
-	public interface IInjectionBinding
+	public interface IInjectionBinding : IBinding
 	{
 		/// Map the Binding to a Singleton so that every `GetInstance()` on the Binder Key returns the same imstance.
 		IInjectionBinding ToSingleton();
@@ -89,6 +90,7 @@ namespace strange.extensions.injector.api
 		IInjectionBinding ToName (object o);
 		IInjectionBinding Named<T>();
 		IInjectionBinding Named(object o);
+
 
 		object key{ get; }
 		object name{ get; }

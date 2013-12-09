@@ -162,5 +162,41 @@ namespace strange.unittests
 			object[] after = binding.value as object[];
 			Assert.IsNull (after);
 		}
+
+	    [Test]
+	    public void TestConflictWithoutWeak()
+	    {
+            IBinding binding = binder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer>();
+
+            TestDelegate testDelegate = delegate
+            {
+                binder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementerTwo>();
+                ISimpleInterface implementor = binder.GetBinding<ISimpleInterface>().value as ISimpleInterface;
+            };
+
+            Assert.Throws<BinderException>(testDelegate); //Because we have a conflict between the two above bindings
+	    }
+	    [Test]
+	    public void TestWeakBindings()
+	    {
+            SimpleInterfaceImplementer one = new SimpleInterfaceImplementer();
+            SimpleInterfaceImplementerTwo two = new SimpleInterfaceImplementerTwo();
+	        IBinding binding = binder.Bind<ISimpleInterface>().To(one).Weak();
+
+	        binding.valueConstraint = BindingConstraintType.ONE;
+	        TestDelegate testDelegate = delegate
+	        {
+	            binder.Bind<ISimpleInterface>().To(two).valueConstraint = BindingConstraintType.ONE;
+	            IBinding retrievedBinding = binder.GetBinding<ISimpleInterface>();
+                Assert.NotNull(retrievedBinding);
+                Assert.NotNull(retrievedBinding.value);
+                Console.WriteLine(retrievedBinding.value);
+                Assert.AreEqual(retrievedBinding.value, two);
+	        };
+            
+            Assert.DoesNotThrow(testDelegate); //Second binding "two" overrides weak binding "one"
+
+	    }
+
 	}
 }
