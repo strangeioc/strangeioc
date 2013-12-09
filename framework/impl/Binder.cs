@@ -32,6 +32,7 @@
  * instantiation of a particular class.
  */
 
+using System;
 using System.Collections.Generic;
 using strange.framework.api;
 
@@ -104,7 +105,7 @@ namespace strange.framework.impl
 			if(bindings.ContainsKey (key))
 			{
 				Dictionary<object, IBinding> dict = bindings [key];
-				name = (name == null) ? BindingConst.NULLOID : name;
+                name = (name == null) ? BindingConst.NULLOID : name;
 				if (dict.ContainsKey(name))
 				{
 					return dict [name];
@@ -254,6 +255,8 @@ namespace strange.framework.impl
 		 */
 		virtual public void ResolveBinding(IBinding binding, object key)
 		{
+
+            //Check for existing conflicts
 			if (conflicts.ContainsKey(key))	//does the current key have any conflicts?
 			{
 				Dictionary<IBinding, object> inConflict = conflicts [key];
@@ -271,7 +274,9 @@ namespace strange.framework.impl
 				}		
 			}
 
-			object bindingName = (binding.name == null) ? BindingConst.NULLOID : binding.name;
+
+            //Check for and assign new conflicts
+            object bindingName = (binding.name == null) ? BindingConst.NULLOID : binding.name;
 			Dictionary<object, IBinding> dict;
 			if ((bindings.ContainsKey(key)))
 			{
@@ -279,13 +284,23 @@ namespace strange.framework.impl
 				//Will my registration create a new conflict?
 				if (dict.ContainsKey(bindingName))
 				{
-					if (dict[bindingName] != binding)
+
+                    //If the existing binding is not this binding, and the existing binding is not weak
+                    //If it IS weak, we will proceed normally and overwrite the binding in the dictionary
+				    IBinding existingBinding = dict[bindingName];
+					if (existingBinding != binding && !existingBinding.isWeak)
 					{
-						//register both conflictees
-						registerNameConflict (key, binding, dict[bindingName]);
-						return;
+                            //register both conflictees
+                            registerNameConflict(key, binding, dict[bindingName]);
+                            return;
 					}
-				}	
+                    
+                    if (existingBinding.isWeak)
+				    {
+                        //Remove the previous binding.
+				        dict.Remove(bindingName);
+				    }
+				}
 			}
 			else
 			{
@@ -293,13 +308,16 @@ namespace strange.framework.impl
 				bindings [key] = dict;
 			}
 
+            //Remove nulloid bindings
 			if (dict.ContainsKey(BindingConst.NULLOID) && dict[BindingConst.NULLOID] == binding)
 			{
 				dict.Remove (BindingConst.NULLOID);
 			}
 
+            //Add (or override) our new binding!
 			if (!dict.ContainsKey(bindingName))
 			{
+//			    dict[bindingName] = binding;
 				dict.Add (bindingName, binding);
 			}
 

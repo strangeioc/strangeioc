@@ -24,7 +24,6 @@
  * - Methods (the ICrossContextCapable API) for adding and removing the hooks between Contexts.
  */
 
-using strange.extensions.context.impl;
 using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.dispatcher.eventdispatcher.impl;
 using strange.extensions.context.api;
@@ -32,12 +31,6 @@ using strange.extensions.dispatcher.api;
 using strange.extensions.injector.api;
 using strange.extensions.injector.impl;
 using strange.framework.api;
-using System.Collections.Generic;
-using System;
-using System.Linq;
-using strange.extensions.mediation.impl;
-using strange.extensions.mediation.api;
-using System.Reflection;
 
 namespace strange.extensions.context.impl
 {
@@ -49,18 +42,8 @@ namespace strange.extensions.context.impl
 		/// A Binder that handles dependency injection binding and instantiation
 		public ICrossContextInjectionBinder injectionBinder
 		{
-			get
-			{
-				if (_injectionBinder == null)
-				{
-					_injectionBinder = new CrossContextInjectionBinder();
-				}
-				return _injectionBinder;
-			}
-			set
-			{
-				_injectionBinder = value;
-			}
+			get { return _injectionBinder ?? (_injectionBinder = new CrossContextInjectionBinder()); }
+		    set { _injectionBinder = value; }
 		}
 
 		/// A specific instance of EventDispatcher that communicates 
@@ -75,8 +58,7 @@ namespace strange.extensions.context.impl
 		/// dispatcher and you'll receive it.
 	    protected IEventDispatcher _crossContextDispatcher;
 
-        //Hold a copy of the assembly so we aren't retrieving this multiple times. 
-        private Assembly assembly;
+        
 		public CrossContext() : base()
 		{}
 
@@ -102,7 +84,6 @@ namespace strange.extensions.context.impl
 
 		protected override void instantiateCoreComponents()
 		{
-            assembly = Assembly.GetExecutingAssembly();
 			base.instantiateCoreComponents();
 
 			IInjectionBinding dispatcherBinding = injectionBinder.GetBinding<IEventDispatcher> (ContextKeys.CONTEXT_DISPATCHER);
@@ -179,136 +160,6 @@ namespace strange.extensions.context.impl
 				_crossContextDispatcher = value as IEventDispatcher;
 			}
 		}
-
-        /// <summary>
-        /// Search through indicated namespaces and scan for all annotated classes.
-        /// Automatically create bindings
-        /// </summary>
-        /// <param name="usingNamespaces">Array of namespaces. Compared using StartsWith. </param>
-
-        protected virtual void ScanForAnnotatedClasses(string[] usingNamespaces, IMediationBinder mediationBinder)
-        {
-
-            IEnumerable<Type> types = assembly.GetExportedTypes();
-
-            List<Type> typesInNamespaces = new List<Type>();
-            int namespacesLength = usingNamespaces.Length;
-            for (int ns = 0; ns < namespacesLength; ns++)
-            {
-                typesInNamespaces.AddRange(types.Where(t => !string.IsNullOrEmpty(t.Namespace) && t.Namespace.StartsWith(usingNamespaces[ns])));
-            }
-
-            foreach (Type type in typesInNamespaces)
-            {
-
-                object[] implements = type.GetCustomAttributes(typeof(DefaultImpl), true);
-                object[] crossContext = type.GetCustomAttributes(typeof(CrossContextComponent), true);
-                object[] implementedBy = type.GetCustomAttributes(typeof(ImplementedBy), true);
-                object[] mediated = type.GetCustomAttributes(typeof(Mediated), true);
-                object[] mediates = type.GetCustomAttributes(typeof(Mediates), true);
-
-
-                #region Concrete and Interface Bindings
-
-                Type bindType = null;
-                Type toType = null;
-                if (implements.Count() > 0)
-                {
-                    DefaultImpl impl = (DefaultImpl)implements.First();
-                    Type[] interfaces = type.GetInterfaces();
-                    int len = interfaces.Count();
-
-                    //Confirm this type implements the type specified
-                    if (impl.DefaultInterface != null)
-                    {
-                        if (interfaces.Contains(impl.DefaultInterface)) //Verify this Type implements the passed interface
-                        {
-                            bindType = impl.DefaultInterface;
-                            toType = type;
-                        }
-                        else
-                        {
-                            throw new InjectionException(type.Name + " does not implement interface " + impl.DefaultInterface.Name,
-                                InjectionExceptionType.IMPLICIT_BINDING_TYPE_DOES_NOT_IMPLEMENT);
-                        }
-                    }
-                    else //Concrete
-                    {
-                        bindType = type;
-                    }
-                }
-                else if (implementedBy.Count() == 1)
-                {
-                    ImplementedBy implBy = (ImplementedBy)implementedBy.First();
-                    if (implBy.DefaultType.GetInterfaces().Contains(type)) //Verify this DefaultType exists and implements the tagged interface
-                    {
-                        bindType = type;
-                        toType = implBy.DefaultType;
-                    }
-                    else
-                    {
-                        throw new InjectionException(implBy.DefaultType.Name + " does not implement interface " + type.Name,
-                            InjectionExceptionType.IMPLICIT_BINDING_TYPE_DOES_NOT_IMPLEMENT);
-                    }
-
-                }
-
-
-                if (bindType != null)
-                {
-                    IInjectionBinding binding = injectionBinder.GetBinding(bindType);
-                    if (binding == null)
-                    {
-
-                        if (toType != null) //To Interface
-                        {
-                            binding = injectionBinder.Bind(bindType).To(toType).ToSingleton();
-                        }
-                        else //Concrete
-                            binding = injectionBinder.Bind(type).ToSingleton();
-
-                        if (crossContext.Count() == 1) //Bind this to the cross context injector
-                        {
-                            binding.CrossContext();
-
-                        }
-                    }
-                    else
-                    {
-                        throw new InjectionException("Cannot implicitly bind to type: " + toType.Name + " because it already has an InjectionBinding.\n" +
-                        " Make sure you have only one DefaultImpl or ImplementedBy pointing to this Type/Interface and are not providing this binding manually in your context.",
-                            InjectionExceptionType.IMPLICIT_BINDING_ALREADY_EXISTS);
-                    }
-                }
-                #endregion
-
-                #region Mediations
-
-                Type mediatorType = null;
-                Type viewType = null;
-                if (mediated.Count() > 0)
-                {
-                    viewType = type;
-                    mediatorType = ((Mediated)mediated.First()).MediatorType;
-
-                    if (mediatorType == null)
-                        throw new MediationException("Cannot implicitly bind view of type: " + type.Name + " due to null MediatorType", MediationExceptionType.MEDIATOR_VIEW_STACK_OVERFLOW);
-                }
-                else if (mediates.Count() > 0)
-                {
-                    mediatorType = type;
-                    viewType = ((Mediates)mediates.First()).ViewType;
-
-                    if (viewType == null)
-                        throw new MediationException("Cannot implicitly bind Mediator of type: " + type.Name + " due to null ViewType", MediationExceptionType.MEDIATOR_VIEW_STACK_OVERFLOW);
-                }
-
-                if (mediationBinder != null && viewType != null && mediatorType != null) //Bind this mediator!
-                    mediationBinder.Bind(viewType).To(mediatorType);
-
-                #endregion
-            }
-        }
 
 	}
 }
