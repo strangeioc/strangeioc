@@ -8,7 +8,6 @@ using strange.extensions.injector.api;
 using strange.extensions.injector.impl;
 using strange.extensions.mediation.api;
 using strange.extensions.mediation.impl;
-using Twitch;
 
 namespace strange.extensions.implicitBind.impl
 {
@@ -52,8 +51,8 @@ namespace strange.extensions.implicitBind.impl
                     typesInNamespaces.AddRange(types.Where(t => !string.IsNullOrEmpty(t.Namespace) && t.Namespace.StartsWith(usingNamespaces[ns])));
                 }
 
-                List<Tuple3<Type,Type, bool> > implementsBindings = new List<Tuple3<Type, Type, bool>>();
-                List<Tuple3<Type, Type, bool>> implementedByBindings = new List<Tuple3<Type, Type, bool>>();
+                List<ImplicitBindingVO> implementsBindings = new List<ImplicitBindingVO>();
+                List<ImplicitBindingVO> implementedByBindings = new List<ImplicitBindingVO>();
 
                 foreach (Type type in typesInNamespaces)
                 {
@@ -73,7 +72,7 @@ namespace strange.extensions.implicitBind.impl
                         ImplementedBy implBy = (ImplementedBy)implementedBy.First();
                         if (implBy.DefaultType.GetInterfaces().Contains(type)) //Verify this DefaultType exists and implements the tagged interface
                         {
-                            implementedByBindings.Add(new Tuple3<Type, Type, bool>(type, implBy.DefaultType, implBy.Scope == InjectionBindingScope.CROSS_CONTEXT));
+                            implementedByBindings.Add(new ImplicitBindingVO(type, implBy.DefaultType, implBy.Scope == InjectionBindingScope.CROSS_CONTEXT));
                         }
                         else
                         {
@@ -93,7 +92,7 @@ namespace strange.extensions.implicitBind.impl
                         {
                             if (interfaces.Contains(impl.DefaultInterface)) //Verify this Type implements the passed interface
                             {
-                                implementsBindings.Add(new Tuple3<Type, Type, bool>(impl.DefaultInterface, type, impl.Scope == InjectionBindingScope.CROSS_CONTEXT));
+                                implementsBindings.Add(new ImplicitBindingVO(impl.DefaultInterface, type, impl.Scope == InjectionBindingScope.CROSS_CONTEXT));
                             }
                             else
                             {
@@ -103,7 +102,7 @@ namespace strange.extensions.implicitBind.impl
                         }
                         else //Concrete
                         {
-                            implementsBindings.Add(new Tuple3<Type, Type, bool>(type, null, impl.Scope == InjectionBindingScope.CROSS_CONTEXT));
+                            implementsBindings.Add(new ImplicitBindingVO(type, null, impl.Scope == InjectionBindingScope.CROSS_CONTEXT));
                         }
                     }
 
@@ -151,18 +150,32 @@ namespace strange.extensions.implicitBind.impl
             }
         }
 
-        private void Bind(Tuple3<Type, Type, bool> toBind)
+        private void Bind(ImplicitBindingVO toBind)
         {
             //We do not check for the existence of a binding. Because implicit bindings are weak bindings, they are overridden automatically by other implicit bindings
             //Therefore, ImplementedBy will be overriden by an Implements to that interface.
-            IInjectionBinding binding = toBind.Second != null ?
-                injectionBinder.Bind(toBind.First).To(toBind.Second).ToSingleton() :
-                injectionBinder.Bind(toBind.First).ToSingleton();
-            if (toBind.Third) //Bind this to the cross context injector
+            IInjectionBinding binding = toBind.ToType != null ?
+                injectionBinder.Bind(toBind.BindType).To(toBind.ToType).ToSingleton() :
+                injectionBinder.Bind(toBind.BindType).ToSingleton();
+            if (toBind.IsCrossContext) //Bind this to the cross context injector
             {
                 binding.CrossContext();
             }
             binding.Weak();
+        }
+
+        private sealed class ImplicitBindingVO
+        {
+            public readonly Type BindType;
+            public readonly Type ToType;
+            public readonly bool IsCrossContext;
+
+            public ImplicitBindingVO(Type bindType, Type toType, bool isCrossContext)
+            {
+                BindType = bindType;
+                ToType = toType;
+                IsCrossContext = isCrossContext;
+            }
         }
     }
 }
