@@ -69,7 +69,7 @@ namespace strange.extensions.context.impl
 
 		public Context (object view) : this (view, ContextStartupFlags.AUTOMATIC){}
 		
-		public Context (object view, bool autoMapping) : this(view, (autoMapping) ? ContextStartupFlags.MANUAL_LAUNCH : ContextStartupFlags.MANUAL_LAUNCH | ContextStartupFlags.MANUAL_MAPPING)
+		public Context (object view, bool autoMapping) : this(view, (autoMapping) ? ContextStartupFlags.MANUAL_MAPPING : ContextStartupFlags.MANUAL_LAUNCH | ContextStartupFlags.MANUAL_MAPPING)
 		{
 		}
 		
