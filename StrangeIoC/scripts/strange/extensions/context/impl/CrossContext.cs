@@ -24,7 +24,6 @@
  * - Methods (the ICrossContextCapable API) for adding and removing the hooks between Contexts.
  */
 
-using strange.extensions.context.impl;
 using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.dispatcher.eventdispatcher.impl;
 using strange.extensions.context.api;
@@ -43,18 +42,8 @@ namespace strange.extensions.context.impl
 		/// A Binder that handles dependency injection binding and instantiation
 		public ICrossContextInjectionBinder injectionBinder
 		{
-			get
-			{
-				if (_injectionBinder == null)
-				{
-					_injectionBinder = new CrossContextInjectionBinder();
-				}
-				return _injectionBinder;
-			}
-			set
-			{
-				_injectionBinder = value;
-			}
+			get { return _injectionBinder ?? (_injectionBinder = new CrossContextInjectionBinder()); }
+		    set { _injectionBinder = value; }
 		}
 
 		/// A specific instance of EventDispatcher that communicates 
@@ -69,6 +58,7 @@ namespace strange.extensions.context.impl
 		/// dispatcher and you'll receive it.
 	    protected IEventDispatcher _crossContextDispatcher;
 
+        
 		public CrossContext() : base()
 		{}
 

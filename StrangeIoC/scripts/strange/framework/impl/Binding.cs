@@ -101,6 +101,15 @@ namespace strange.framework.impl
 			}
 		}
 
+        protected bool _isWeak = false;
+        public bool isWeak
+        {
+            get
+            {
+                return _isWeak;
+            }
+        }
+
 		public Binding(Binder.BindingResolver resolver)
 		{
 			this.resolver = resolver;
@@ -150,7 +159,7 @@ namespace strange.framework.impl
 
 		virtual public IBinding ToName(object o)
 		{
-			object toName = (o == null) ? BindingConst.NULLOID : o;
+            object toName = (o == null) ? BindingConst.NULLOID : o;
 			_name.Add(toName);
 			if (resolver != null)
 				resolver(this);
@@ -164,12 +173,10 @@ namespace strange.framework.impl
 
 		virtual public IBinding Named(object o)
 		{
-			if (_name.value == o)
-				return this;
-			return null;
+		    return _name.value == o ? this : null;
 		}
 
-		virtual public void RemoveKey(object o)
+	    virtual public void RemoveKey(object o)
 		{
 			_key.Remove (o);
 		}
@@ -183,5 +190,11 @@ namespace strange.framework.impl
 		{
 			_name.Remove (o);
 		}
+
+        virtual public IBinding Weak()
+        {
+            _isWeak = true;
+            return this;
+        }
 	}
 }
