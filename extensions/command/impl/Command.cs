@@ -71,7 +71,7 @@ namespace strange.extensions.command.impl
 			_retain = true;
 		}
 
-		public void Release()
+		public virtual void Release()
 		{
 			_retain = false;
 			if (commandBinder != null)
@@ -80,7 +80,7 @@ namespace strange.extensions.command.impl
 			}
 		}
 
-		public void Fail()
+		public virtual void Fail()
 		{
 			if (commandBinder != null)
 			{

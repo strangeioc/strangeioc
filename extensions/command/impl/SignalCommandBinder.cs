@@ -202,5 +202,11 @@ namespace strange.extensions.command.impl
 			}
 			base.Unbind(key, name);
 		}
+        public override ICommandBinding GetBinding<T>()
+        {
+            //This should be a signal, see Bind<T> above
+            T signal = (T)injectionBinder.GetInstance<T>();
+            return base.GetBinding(signal) as ICommandBinding;
+        }
 	}
 }

@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using NUnit.Framework;
 using strange.framework.api;
 using strange.framework.impl;
@@ -128,6 +127,15 @@ namespace strange.unittests
 			//Clean up
 			binding.valueConstraint = BindingConstraintType.MANY;
 		}
+
+	    [Test]
+	    public void TestWeakBinding()
+	    {
+	        binding.Key<int>().To(42);
+            Assert.False(binding.isWeak);
+	        binding.Weak();
+            Assert.True(binding.isWeak);
+	    }
 	}
 }
 

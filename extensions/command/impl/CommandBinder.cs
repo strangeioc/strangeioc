@@ -249,6 +249,10 @@ namespace strange.extensions.command.impl
 		{
 			return base.Bind (value) as ICommandBinding;
 		}
+        new public virtual ICommandBinding GetBinding<T>()
+        {
+            return base.GetBinding<T>() as ICommandBinding;
+        }
 	}
 }
 
