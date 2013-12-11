@@ -163,40 +163,42 @@ namespace strange.unittests
 			Assert.IsNull (after);
 		}
 
-	    [Test]
-	    public void TestConflictWithoutWeak()
-	    {
-            IBinding binding = binder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer>();
+		[Test]
+		public void TestConflictWithoutWeak()
+		{
+			binder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer>();
 
-            TestDelegate testDelegate = delegate
-            {
-                binder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementerTwo>();
-                ISimpleInterface implementor = binder.GetBinding<ISimpleInterface>().value as ISimpleInterface;
-            };
+			TestDelegate testDelegate = delegate
+			{
+				binder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementerTwo>();
+				object instance = binder.GetBinding<ISimpleInterface>().value;
+				Assert.IsNotNull(instance);
+			};
 
-            Assert.Throws<BinderException>(testDelegate); //Because we have a conflict between the two above bindings
-	    }
-	    [Test]
-	    public void TestWeakBindings()
-	    {
-            SimpleInterfaceImplementer one = new SimpleInterfaceImplementer();
-            SimpleInterfaceImplementerTwo two = new SimpleInterfaceImplementerTwo();
-	        IBinding binding = binder.Bind<ISimpleInterface>().To(one).Weak();
+			BinderException ex = Assert.Throws<BinderException>(testDelegate); //Because we have a conflict between the two above bindings
+			Assert.AreEqual (BinderExceptionType.CONFLICT_IN_BINDER, ex.type);
+		}
+		[Test]
+		public void TestWeakBindings()
+		{
+			SimpleInterfaceImplementer one = new SimpleInterfaceImplementer();
+			SimpleInterfaceImplementerTwo two = new SimpleInterfaceImplementerTwo();
+			IBinding binding = binder.Bind<ISimpleInterface>().To(one).Weak();
 
-	        binding.valueConstraint = BindingConstraintType.ONE;
-	        TestDelegate testDelegate = delegate
-	        {
-	            binder.Bind<ISimpleInterface>().To(two).valueConstraint = BindingConstraintType.ONE;
-	            IBinding retrievedBinding = binder.GetBinding<ISimpleInterface>();
-                Assert.NotNull(retrievedBinding);
-                Assert.NotNull(retrievedBinding.value);
-                Console.WriteLine(retrievedBinding.value);
-                Assert.AreEqual(retrievedBinding.value, two);
-	        };
-            
-            Assert.DoesNotThrow(testDelegate); //Second binding "two" overrides weak binding "one"
+			binding.valueConstraint = BindingConstraintType.ONE;
+			TestDelegate testDelegate = delegate
+			{
+				binder.Bind<ISimpleInterface>().To(two).valueConstraint = BindingConstraintType.ONE;
+				IBinding retrievedBinding = binder.GetBinding<ISimpleInterface>();
+				Assert.NotNull(retrievedBinding);
+				Assert.NotNull(retrievedBinding.value);
+				Console.WriteLine(retrievedBinding.value);
+				Assert.AreEqual(retrievedBinding.value, two);
+			};
 
-	    }
+			Assert.DoesNotThrow(testDelegate); //Second binding "two" overrides weak binding "one"
+
+		}
 
 	}
 }

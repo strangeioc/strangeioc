@@ -51,12 +51,12 @@ namespace strange.extensions.injector.api
 		SETTER_NAME_MISMATCH,
 		/// The requested cross-context injector returned null
 		MISSING_CROSS_CONTEXT_INJECTOR,
-        //An implicit type does not fulfill the designated interface
-        IMPLICIT_BINDING_DEFAULT_TYPE_DOES_NOT_IMPLEMENT_INTERFACE,
-        //An implicit type does not fulfill the designated interface
-        IMPLICIT_BINDING_TYPE_DOES_NOT_IMPLEMENT_DEFAULT_INTERFACE,
-        //Assembly object was not retrieved and cached
-	    UNINITIALIZED_ASSEMBLY,
+		//An implicit implementor does not fulfill the designated interface
+		IMPLICIT_BINDING_IMPLEMENTOR_DOES_NOT_IMPLEMENT_INTERFACE,
+		//An implicit type does not implement the designated interface
+		IMPLICIT_BINDING_TYPE_DOES_NOT_IMPLEMENT_DESIGNATED_INTERFACE,
+		//Assembly object was not retrieved and cached
+		UNINITIALIZED_ASSEMBLY,
 	}
 }
 

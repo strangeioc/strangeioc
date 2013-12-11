@@ -41,9 +41,9 @@ namespace strange.extensions.mediation.api
 		NULL_MEDIATOR,
 
 		//The mediator type is null on the attribute tag
-        IMPLICIT_BINDING_MEDIATOR_TYPE_IS_NULL,
-        //The view type is null on the attribute tag
-        IMPLICIT_BINDING_VIEW_TYPE_IS_NULL,
+		IMPLICIT_BINDING_MEDIATOR_TYPE_IS_NULL,
+		//The view type is null on the attribute tag
+		IMPLICIT_BINDING_VIEW_TYPE_IS_NULL,
 	}
 }
 
