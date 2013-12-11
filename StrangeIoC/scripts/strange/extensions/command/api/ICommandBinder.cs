@@ -80,7 +80,7 @@ namespace strange.extensions.command.api
 		/// Bind a trigger Key by value
 		new ICommandBinding Bind(object value);
 
-        new ICommandBinding GetBinding<T>();
+		new ICommandBinding GetBinding<T>();
 	}
 }
 
