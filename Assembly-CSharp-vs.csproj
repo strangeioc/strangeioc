@@ -65,6 +65,7 @@
     <Folder Include="StrangeIoC\scripts\strange\extensions\signal\" />
     <Folder Include="StrangeIoC\scripts\strange\.tests\" />
     <Folder Include="StrangeIoC\examples\Assets\scripts\signalsproject\" />
+    <Folder Include="StrangeIoC\scripts\strange\extensions\implicitBind\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StrangeIoC\scripts\strange\extensions\context\api\ContextEvent.cs.meta" />
@@ -376,5 +377,11 @@
     <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\view\ClickDetector.cs" />
     <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\view\ExampleMediator.cs" />
     <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\view\ExampleView.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\implicitBind\ImplementorAttribute.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\implicitBind\api\IImplicitBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\implicitBind\impl\ImplicitBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\TestImplicitBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\MockContext.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\injector\api\InjectionBindingScope.cs" />
   </ItemGroup>
 </Project>
