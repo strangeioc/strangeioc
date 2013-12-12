@@ -257,6 +257,8 @@ namespace strange.extensions.context.impl
 		{
 			//It's possible for views to fire their Awake before bindings. This catches any early risers and attaches their Mediators.
 			mediateViewCache();
+			//Ensure that all Views underneath the ContextView are triggered
+			mediationBinder.Trigger(MediationEvent.AWAKE, (contextView as GameObject).GetComponent<ContextView>());
 		}
 
 		/// Fires ContextEvent.START
