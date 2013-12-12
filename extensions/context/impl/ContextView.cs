@@ -55,6 +55,16 @@ namespace strange.extensions.context.impl
 			if (context != null)
 				Context.firstContext.RemoveContext(context);
 		}
+
+		#region IView implementation
+
+		public bool requiresContext {get;set;}
+
+		public bool registeredWithContext {get;set;}
+
+		public bool autoRegisterWithContext{ get; set; }
+
+		#endregion
 	}
 }
 

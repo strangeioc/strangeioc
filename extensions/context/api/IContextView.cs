@@ -25,10 +25,11 @@
  */
 
 using System;
+using strange.extensions.mediation.api;
 
 namespace strange.extensions.context.api
 {
-	public interface IContextView
+	public interface IContextView : IView
 	{
 		/// Get and set the Context
 		IContext context{get;set;}
