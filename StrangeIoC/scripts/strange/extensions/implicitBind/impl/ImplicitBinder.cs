@@ -1,7 +1,6 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using strange.extensions.implicitBind.api;
@@ -170,7 +169,6 @@ namespace strange.extensions.implicitBind.impl
 
         private void Bind(ImplicitBindingVO toBind)
         {
-            Console.WriteLine("Binding a class: " + toBind.BindTypes.First() + " to: " + toBind.ToType);
             //We do not check for the existence of a binding. Because implicit bindings are weak bindings, they are overridden automatically by other implicit bindings
             //Therefore, ImplementedBy will be overriden by an Implements to that interface.
 
