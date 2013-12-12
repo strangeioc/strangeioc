@@ -1,11 +1,27 @@
-﻿using System;
+﻿/*
+ * Copyright 2013 ThirdMotion, Inc.
+ *
+ *	Licensed under the Apache License, Version 2.0 (the "License");
+ *	you may not use this file except in compliance with the License.
+ *	You may obtain a copy of the License at
+ *
+ *		http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *		Unless required by applicable law or agreed to in writing, software
+ *		distributed under the License is distributed on an "AS IS" BASIS,
+ *		WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *		See the License for the specific language governing permissions and
+ *		limitations under the License.
+ */
+
+using System;
 using strange.extensions.injector.api;
 
 /// <summary>
-/// Tag anything to be injected.
-/// No arguments will bind a concrete class
-/// Passing an Interface will bind to that interface
-/// If an interface defines another defaulttype, this will override 
+/// Declares a Class to be implicitly bound.
+/// No arguments binds a concrete class to itself
+/// Passing an Interface binds to that interface
+/// Implements overrides ImplementedBy
 /// </summary>
 [AttributeUsage(AttributeTargets.Class, 
                 AllowMultiple = true,
@@ -40,8 +56,8 @@ public class Implements: Attribute
 }
 
 /// <summary>
-/// Tag an Interface with the Default Implementation Type
-/// If an Implements tag exists for this interface, it will override this default
+/// Declares an interface to have an implicit implementor
+/// An Implements tag for the given interface overrides this tag.
 /// </summary>
 [AttributeUsage(AttributeTargets.Interface,
                 AllowMultiple = false,
@@ -59,31 +75,26 @@ public class ImplementedBy : Attribute
 }
 
 /// <summary>
-/// Tag a View class with the Mediator type used to mediate
+/// Declares a View class implicity mediated by one or more named Mediators
 /// </summary>
 [AttributeUsage(AttributeTargets.Class,
                 AllowMultiple = true,
                 Inherited = true)]
 public class MediatedBy : Attribute
 {
-    /// <summary>
-    /// Tag a View class with the Mediator type used to mediate
-    /// </summary>
-    /// <param name="t">Mediator Type</param>
     public MediatedBy(Type t) { MediatorType = t; }
 
     public Type MediatorType { get; set; }
 }
 
+/// <summary>
+/// Declare a Mediator class implicitly bound to a provided View
+/// </summary>
 [AttributeUsage(AttributeTargets.Class,
                 AllowMultiple = false,
                 Inherited = true)]
 public class Mediates : Attribute
 {
-    /// <summary>
-    /// Tag a Mediator class with the View type it will be Mediating
-    /// </summary>
-    /// <param name="t"> View Type</param>
     public Mediates(Type t) { ViewType = t; }
 
     public Type ViewType { get; set; }
