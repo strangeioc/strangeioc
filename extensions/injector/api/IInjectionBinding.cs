@@ -50,7 +50,7 @@ using strange.framework.api;
 
 namespace strange.extensions.injector.api
 {
-	public interface IInjectionBinding
+	public interface IInjectionBinding : IBinding
 	{
 		/// Map the Binding to a Singleton so that every `GetInstance()` on the Binder Key returns the same imstance.
 		IInjectionBinding ToSingleton();
@@ -77,25 +77,25 @@ namespace strange.extensions.injector.api
 		InjectionBindingType type{get; set;}
 
 		/// Bind is the same as Key, but permits Binder syntax: `Bind<T>().Bind<T>()`
-		IInjectionBinding Bind<T>();
+		new IInjectionBinding Bind<T>();
 
 		/// Bind is the same as Key, but permits Binder syntax: `Bind<T>().Bind<T>()`
-		IInjectionBinding Bind(object key);
+		new IInjectionBinding Bind(object key);
 
-		IInjectionBinding To<T>();
-		IInjectionBinding To(object o);
-		IInjectionBinding ToName<T> ();
-		IInjectionBinding ToName (object o);
-		IInjectionBinding Named<T>();
-		IInjectionBinding Named(object o);
-		//IInjectionBinding ToPool();
-		//IInjectionBinding ToPool(int value);
+		new IInjectionBinding To<T>();
+		new IInjectionBinding To(object o);
+		new IInjectionBinding ToName<T> ();
+		new IInjectionBinding ToName (object o);
+		new IInjectionBinding Named<T>();
+		new IInjectionBinding Named(object o);
 
-		object key{ get; }
-		object value { get; }
-		object name{ get; }
-		Enum keyConstraint{ get; set;}
-		Enum valueConstraint{ get; set;}
+
+		new object key{ get; }
+		new object name{ get; }
+		new object value{ get; }
+		new Enum keyConstraint{ get; set;}
+		new Enum valueConstraint{ get; set;}
+
 	}
 }
 

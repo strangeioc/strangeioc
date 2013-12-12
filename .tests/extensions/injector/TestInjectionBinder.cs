@@ -19,6 +19,7 @@ namespace strange.unittests
 		public void SetUp()
 		{
 			binder = new InjectionBinder ();
+            
 		}
 
 		[TearDown]
@@ -207,6 +208,7 @@ namespace strange.unittests
 		[Test]
 		public void TestDoublePostConstruct()
 		{
+            PostConstructSimple.PostConstructCount = 0;
 			PostConstructSimple instance = new PostConstructSimple ();
 			binder.Bind<PostConstructSimple> ().ToValue (instance);
 			binder.Bind<InjectsPostConstructSimple> ().To<InjectsPostConstructSimple>();

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2013 ThirdMotion, Inc.
  *
  *	Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,25 +14,25 @@
  *		limitations under the License.
  */
 
-/**
- * @interface strange.extensions.context.api.IContextView
- * 
- * The ContextView is the entry point to the application.
- * 
- * In a standard MVCSContext setup for Unity3D, it is a MonoBehaviour
- * attached to a GameObject at the very top of of your application.
- * It's most important role is to instantiate and call `Start()` on the Context.
- */
+/*
+* Flags to interrupt the Context startup process.
+*/
 
 using System;
-using strange.extensions.mediation.api;
 
 namespace strange.extensions.context.api
 {
-	public interface IContextView : IView
+	[Flags]
+	public enum ContextStartupFlags
 	{
-		/// Get and set the Context
-		IContext context{get;set;}
+		/// Context will map bindings and launch automatically (default).
+		AUTOMATIC = 0,
+		/// Context startup will halt after Core bindings are mapped, but before instantiation or any custom bindings.
+		/// If this flag is invoked, the developer must call context.Start()
+		MANUAL_MAPPING = 1,
+		/// Context startup will halt after all bindings are mapped, but before firing ContextEvent.START (or the analogous Signal).
+		/// If this flag is invoked, the developer must call context.Launch()
+		MANUAL_LAUNCH = 2,
 	}
 }
 
