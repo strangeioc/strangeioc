@@ -114,11 +114,11 @@ namespace strange.framework.api
 		/// Get or set a MANY or ONE constraint on the Value
 		Enum valueConstraint{ get; set;}
 
-        //Mark a binding as weak, so that any new binding will override it
-	    IBinding Weak();
+		//Mark a binding as weak, so that any new binding will override it
+		IBinding Weak();
 
-        //Get whether or not the binding is weak, default false
-	    bool isWeak { get; }
+		//Get whether or not the binding is weak, default false
+		bool isWeak { get; }
 
 	}
 }

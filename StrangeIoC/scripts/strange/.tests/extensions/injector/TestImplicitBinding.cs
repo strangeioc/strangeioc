@@ -94,7 +94,6 @@ namespace strange.unittests
 			Assert.AreEqual(testImpl.GetType(), typeof(TestImpl)); //Check that its the type we added below
 		}
 
-
 		/// <summary>
 		/// Bind via an ImplementedBy tag, followed by an Implements from a different class.
 		/// Implements should override the ImplementedBy tag
@@ -156,7 +155,7 @@ namespace strange.unittests
 			InjectionException ex = Assert.Throws<InjectionException>(testDelegate);
 
 			//make sure it's the right exception
-			Assert.AreEqual(ex.type, InjectionExceptionType.IMPLICIT_BINDING_DEFAULT_TYPE_DOES_NOT_IMPLEMENT_INTERFACE);
+			Assert.AreEqual(ex.type, InjectionExceptionType.IMPLICIT_BINDING_IMPLEMENTOR_DOES_NOT_IMPLEMENT_INTERFACE);
 		}
 
 
@@ -179,7 +178,7 @@ namespace strange.unittests
 			InjectionException ex = Assert.Throws<InjectionException>(testDelegate);
 
 			//make sure it's the right exception
-			Assert.AreEqual(ex.type, InjectionExceptionType.IMPLICIT_BINDING_TYPE_DOES_NOT_IMPLEMENT_DEFAULT_INTERFACE);
+			Assert.AreEqual(ex.type, InjectionExceptionType.IMPLICIT_BINDING_TYPE_DOES_NOT_IMPLEMENT_DESIGNATED_INTERFACE);
 		}
 
 		/// <summary>
@@ -316,8 +315,6 @@ namespace strange.unittests
 			Assert.AreEqual(one, two);
 			Assert.AreEqual(one, three);
 		}
-
-
 	}
 
 

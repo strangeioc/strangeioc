@@ -71,6 +71,26 @@ namespace strange.unittests
 			context.Launch ();
 			Assert.AreEqual (TestContextSubclass.LAUNCH_VALUE, context.testValue);
 		}
+
+		[Test]
+		public void TestOldStyleInterruptLaunch()
+		{
+			TestContextSubclass context = new TestContextSubclass (view, false);
+			Assert.AreEqual (TestContextSubclass.INIT_VALUE, context.testValue);
+			context.Start ();
+			Assert.AreEqual (TestContextSubclass.MAPPING_VALUE, context.testValue);
+			context.Launch ();
+			Assert.AreEqual (TestContextSubclass.LAUNCH_VALUE, context.testValue);
+		}
+
+		[Test]
+		public void TestOldStyleAutoStartup()
+		{
+			TestContextSubclass context = new TestContextSubclass (view, true);
+			Assert.AreEqual (TestContextSubclass.INIT_VALUE, context.testValue);
+			context.Start ();
+			Assert.AreEqual (TestContextSubclass.LAUNCH_VALUE, context.testValue);
+		}
 	}
 
 	class TestContextSubclass : Context
@@ -86,6 +106,7 @@ namespace strange.unittests
 		}
 
 		public TestContextSubclass (object view) : base(view){}
+		public TestContextSubclass (object view, bool autoMapping) : base(view, autoMapping){}
 		public TestContextSubclass (object view, ContextStartupFlags flags) : base(view, flags){}
 
 
