@@ -25,7 +25,7 @@
  * 
  * The startup sequence looks like this:
 
-  		void Awake()
+		void Awake()
 		{
 			context = new MyContext(this, true);
 			context.Start ();

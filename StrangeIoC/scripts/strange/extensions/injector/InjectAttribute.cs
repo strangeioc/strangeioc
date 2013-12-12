@@ -58,8 +58,8 @@
 using System;
 
 [AttributeUsage(AttributeTargets.Property, 
-                AllowMultiple = false,
-                Inherited = true)]
+		AllowMultiple = false,
+		Inherited = true)]
 public class Inject: Attribute
 {
 	public Inject(){}
@@ -74,8 +74,8 @@ public class Inject: Attribute
 
 //Tag [PostConstruct] to perform post-injection construction actions
 [AttributeUsage(AttributeTargets.Constructor, 
-                AllowMultiple = false,
-                Inherited = true)]
+		AllowMultiple = false,
+		Inherited = true)]
 public class Construct: Attribute
 {
 	public Construct(){}
@@ -83,8 +83,8 @@ public class Construct: Attribute
 
 //Tag [PostConstruct] to perform post-injection construction actions
 [AttributeUsage(AttributeTargets.Method, 
-                AllowMultiple = false,
-                Inherited = true)]
+		AllowMultiple = false,
+		Inherited = true)]
 public class PostConstruct: Attribute
 {
 	public PostConstruct(){}
@@ -98,8 +98,8 @@ public class PostConstruct: Attribute
 }
 
 [AttributeUsage(AttributeTargets.Method, 
-                AllowMultiple = false,
-                Inherited = true)]
+		AllowMultiple = false,
+		Inherited = true)]
 public class Deconstruct: Attribute
 {
 	public Deconstruct(){}
