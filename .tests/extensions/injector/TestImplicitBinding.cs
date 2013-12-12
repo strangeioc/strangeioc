@@ -2,9 +2,11 @@
 using strange.extensions.context.impl;
 using strange.extensions.injector.impl;
 using strange.extensions.injector.api;
+using strange.unittests.annotated.multipleInterfaces;
 using strange.unittests.annotated.namespaceTest.one;
 using strange.unittests.annotated.namespaceTest.three.even.farther;
 using strange.unittests.annotated.namespaceTest.two.far;
+using strange.unittests.annotated.testConcreteNamed;
 using strange.unittests.annotated.testImplBy;
 using strange.unittests.annotated.testImplements;
 using strange.unittests.annotated.testConcrete;
@@ -44,6 +46,18 @@ namespace strange.unittests
             Assert.IsNotNull(testConcreteClass);
              
 		}
+
+        [Test]
+        public void TestImplementsNamedConcrete()
+        {
+            context.ScannedPackages = new string[]{
+                "strange.unittests.annotated.testConcreteNamed"
+            };
+            context.Start();
+
+            TestConcreteNamedClass testConcreteClass = context.injectionBinder.GetInstance<TestConcreteNamedClass>("NAME") as TestConcreteNamedClass;
+            Assert.IsNotNull(testConcreteClass);
+        }
 
         /// <summary>
         /// Test binding a concrete class to an interface using the Implements tag
@@ -101,7 +115,7 @@ namespace strange.unittests
         }
 
         /// <summary>
-        /// Attempt to bind two classes implicitly to the same interface. Throws exception
+        /// Bind implicitly and then overwrite with an explicit binding
         /// </summary>
         [Test]
         public void TestExplicitBindingOverrides()
@@ -282,7 +296,30 @@ namespace strange.unittests
             Assert.NotNull(three);
         }
 
+        [Test]
+        public void TestMultipleImplements()
+        {
+            context.ScannedPackages = new string[]{
+                "strange.unittests.annotated.multipleInterfaces"
+            };
+            context.Start();
+
+            TestInterfaceOne one = context.injectionBinder.GetInstance<TestInterfaceOne>() as TestInterfaceOne;
+            Assert.NotNull(one);
+
+            TestInterfaceTwo two = context.injectionBinder.GetInstance<TestInterfaceTwo>() as TestInterfaceTwo;
+            Assert.NotNull(two);
+
+            TestInterfaceThree three = context.injectionBinder.GetInstance<TestInterfaceThree>() as TestInterfaceThree;
+            Assert.NotNull(three);
+
+            Assert.AreEqual(one, two);
+            Assert.AreEqual(one, three);
+        }
+
+
 	}
+
 
 }
 
@@ -290,6 +327,12 @@ namespace strange.unittests.annotated.testConcrete
 {
     [Implements]
     public class TestConcreteClass { }
+}
+
+namespace strange.unittests.annotated.testConcreteNamed
+{
+    [Implements("NAME")]
+    public class TestConcreteNamedClass { }
 }
 
 namespace strange.unittests.annotated.testImplBy
@@ -375,4 +418,21 @@ namespace strange.unittests.annotated.namespaceTest.three.even.farther
 {
     [Implements]
     public class TestNamespaceThree {}
+}
+
+namespace strange.unittests.annotated.multipleInterfaces
+{
+
+    public interface TestInterfaceOne {}
+    public interface TestInterfaceTwo { }
+    public interface TestInterfaceThree { }
+
+    [Implements(typeof(TestInterfaceOne))]
+    [Implements(typeof(TestInterfaceTwo))]
+    [Implements(typeof(TestInterfaceThree))]
+    public class TestMultipleImplementer : TestInterfaceOne, TestInterfaceTwo, TestInterfaceThree
+    {
+        
+    }
+    
 }
