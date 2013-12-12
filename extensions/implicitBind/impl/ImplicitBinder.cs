@@ -11,206 +11,206 @@ using strange.extensions.mediation.impl;
 
 namespace strange.extensions.implicitBind.impl
 {
-    public class ImplicitBinder : IImplicitBinder
-    {
+	public class ImplicitBinder : IImplicitBinder
+	{
 
-        [Inject]
-        public IInjectionBinder injectionBinder { get; set; }
+		[Inject]
+		public IInjectionBinder injectionBinder { get; set; }
 
-        [Inject]
-        public IMediationBinder mediationBinder { get; set; }
-
-
-        //Hold a copy of the assembly so we aren't retrieving this multiple times. 
-        private Assembly assembly;
+		[Inject]
+		public IMediationBinder mediationBinder { get; set; }
 
 
-        [PostConstruct]
-        public void PostConstruct()
-        {
-            assembly = Assembly.GetExecutingAssembly();
-        }
+		//Hold a copy of the assembly so we aren't retrieving this multiple times. 
+		private Assembly assembly;
 
-        /// <summary>
-        /// Search through indicated namespaces and scan for all annotated classes.
-        /// Automatically create bindings
-        /// </summary>
-        /// <param name="usingNamespaces">Array of namespaces. Compared using StartsWith. </param>
 
-        public virtual void ScanForAnnotatedClasses(string[] usingNamespaces)
-        {
-            if (assembly != null)
-            {
+		[PostConstruct]
+		public void PostConstruct()
+		{
+			assembly = Assembly.GetExecutingAssembly();
+		}
 
-                IEnumerable<Type> types = assembly.GetExportedTypes();
+		/// <summary>
+		/// Search through indicated namespaces and scan for all annotated classes.
+		/// Automatically create bindings
+		/// </summary>
+		/// <param name="usingNamespaces">Array of namespaces. Compared using StartsWith. </param>
 
-                List<Type> typesInNamespaces = new List<Type>();
-                int namespacesLength = usingNamespaces.Length;
-                for (int ns = 0; ns < namespacesLength; ns++)
-                {
-                    typesInNamespaces.AddRange(types.Where(t => !string.IsNullOrEmpty(t.Namespace) && t.Namespace.StartsWith(usingNamespaces[ns])));
-                }
+		public virtual void ScanForAnnotatedClasses(string[] usingNamespaces)
+		{
+			if (assembly != null)
+			{
 
-                List<ImplicitBindingVO> implementsBindings = new List<ImplicitBindingVO>();
-                List<ImplicitBindingVO> implementedByBindings = new List<ImplicitBindingVO>();
+				IEnumerable<Type> types = assembly.GetExportedTypes();
 
-                foreach (Type type in typesInNamespaces)
-                {
-                    object[] implements = type.GetCustomAttributes(typeof (Implements), true);
-                    object[] implementedBy = type.GetCustomAttributes(typeof(ImplementedBy), true);
-                    object[] mediated = type.GetCustomAttributes(typeof(MediatedBy), true);
-                    object[] mediates = type.GetCustomAttributes(typeof(Mediates), true);
+				List<Type> typesInNamespaces = new List<Type>();
+				int namespacesLength = usingNamespaces.Length;
+				for (int ns = 0; ns < namespacesLength; ns++)
+				{
+					typesInNamespaces.AddRange(types.Where(t => !string.IsNullOrEmpty(t.Namespace) && t.Namespace.StartsWith(usingNamespaces[ns])));
+				}
 
-                    #region Concrete and Interface Bindings
+				List<ImplicitBindingVO> implementsBindings = new List<ImplicitBindingVO>();
+				List<ImplicitBindingVO> implementedByBindings = new List<ImplicitBindingVO>();
 
-                    Type bindType = null;
-                    Type toType = null;
-                    //Interfaces first
-                    if (implementedBy.Any())
-                    {
+				foreach (Type type in typesInNamespaces)
+				{
+					object[] implements = type.GetCustomAttributes(typeof (Implements), true);
+					object[] implementedBy = type.GetCustomAttributes(typeof(ImplementedBy), true);
+					object[] mediated = type.GetCustomAttributes(typeof(MediatedBy), true);
+					object[] mediates = type.GetCustomAttributes(typeof(Mediates), true);
 
-                        ImplementedBy implBy = (ImplementedBy)implementedBy.First();
-                        if (implBy.DefaultType.GetInterfaces().Contains(type)) //Verify this DefaultType exists and implements the tagged interface
-                        {
-                            implementedByBindings.Add(new ImplicitBindingVO(type, implBy.DefaultType, implBy.Scope == InjectionBindingScope.CROSS_CONTEXT, null));
-                        }
-                        else
-                        {
-                            throw new InjectionException("Default Type: " + implBy.DefaultType.Name + " does not implement annotated interface " + type.Name,
-                                InjectionExceptionType.IMPLICIT_BINDING_DEFAULT_TYPE_DOES_NOT_IMPLEMENT_INTERFACE);
-                        }
+					#region Concrete and Interface Bindings
 
-                    }
+					Type bindType = null;
+					Type toType = null;
+					//Interfaces first
+					if (implementedBy.Any())
+					{
 
-                    if (implements.Any())
-                    {
+						ImplementedBy implBy = (ImplementedBy)implementedBy.First();
+						if (implBy.DefaultType.GetInterfaces().Contains(type)) //Verify this DefaultType exists and implements the tagged interface
+						{
+							implementedByBindings.Add(new ImplicitBindingVO(type, implBy.DefaultType, implBy.Scope == InjectionBindingScope.CROSS_CONTEXT, null));
+						}
+						else
+						{
+							throw new InjectionException("Default Type: " + implBy.DefaultType.Name + " does not implement annotated interface " + type.Name,
+								InjectionExceptionType.IMPLICIT_BINDING_DEFAULT_TYPE_DOES_NOT_IMPLEMENT_INTERFACE);
+						}
 
-                        Type[] interfaces = type.GetInterfaces();
-                        
-                        object name = null;
-                        bool isCrossContext = false;
-                        List<Type> bindTypes = new List<Type>();
+					}
 
-                        foreach (Implements impl in implements)
-                        {
-                            //Confirm this type implements the type specified
-                            if (impl.DefaultInterface != null)
-                            {
-                                //Verify this Type implements the passed interface
-                                if (interfaces.Contains(impl.DefaultInterface))
-                                {
-                                    bindTypes.Add(impl.DefaultInterface);
-                                }
-                                else
-                                {
-                                    throw new InjectionException(
-                                        "Annotated type " + type.Name + " does not implement Default Interface " +
-                                        impl.DefaultInterface.Name,
-                                        InjectionExceptionType
-                                            .IMPLICIT_BINDING_TYPE_DOES_NOT_IMPLEMENT_DEFAULT_INTERFACE);
-                                }
-                            }
-                            else //Concrete
-                            {
-                                bindTypes.Add(type);
-                            }
-                            isCrossContext = isCrossContext || impl.Scope == InjectionBindingScope.CROSS_CONTEXT;
-                            name = name ?? impl.Name;
-                        }
+					if (implements.Any())
+					{
 
-                        ImplicitBindingVO thisBindingVo = new ImplicitBindingVO(bindTypes, type, isCrossContext, name);
+						Type[] interfaces = type.GetInterfaces();
+						
+						object name = null;
+						bool isCrossContext = false;
+						List<Type> bindTypes = new List<Type>();
 
-                        implementsBindings.Add(thisBindingVo);
-                    }
+						foreach (Implements impl in implements)
+						{
+							//Confirm this type implements the type specified
+							if (impl.DefaultInterface != null)
+							{
+								//Verify this Type implements the passed interface
+								if (interfaces.Contains(impl.DefaultInterface))
+								{
+									bindTypes.Add(impl.DefaultInterface);
+								}
+								else
+								{
+									throw new InjectionException(
+										"Annotated type " + type.Name + " does not implement Default Interface " +
+										impl.DefaultInterface.Name,
+										InjectionExceptionType
+											.IMPLICIT_BINDING_TYPE_DOES_NOT_IMPLEMENT_DEFAULT_INTERFACE);
+								}
+							}
+							else //Concrete
+							{
+								bindTypes.Add(type);
+							}
+							isCrossContext = isCrossContext || impl.Scope == InjectionBindingScope.CROSS_CONTEXT;
+							name = name ?? impl.Name;
+						}
 
-                    #endregion
-                    
-                    //Handle mediations here. We have no need to re-iterate over them to prioritize anything. Not yet, at least.
+						ImplicitBindingVO thisBindingVo = new ImplicitBindingVO(bindTypes, type, isCrossContext, name);
 
-                    #region Mediations
+						implementsBindings.Add(thisBindingVo);
+					}
 
-                    Type mediatorType = null;
-                    Type viewType = null;
-                    if (mediated.Any())
-                    {
-                        viewType = type;
-                        mediatorType = ((MediatedBy)mediated.First()).MediatorType;
+					#endregion
+					
+					//Handle mediations here. We have no need to re-iterate over them to prioritize anything. Not yet, at least.
 
-                        if (mediatorType == null)
-                            throw new MediationException("Cannot implicitly bind view of type: " + type.Name + " due to null MediatorType",
-                                MediationExceptionType.MEDIATOR_VIEW_STACK_OVERFLOW);
-                    }
-                    else if (mediates.Any())
-                    {
-                        mediatorType = type;
-                        viewType = ((Mediates)mediates.First()).ViewType;
+					#region Mediations
 
-                        if (viewType == null)
-                            throw new MediationException("Cannot implicitly bind Mediator of type: " + type.Name + " due to null ViewType",
-                                MediationExceptionType.MEDIATOR_VIEW_STACK_OVERFLOW);
-                    }
+					Type mediatorType = null;
+					Type viewType = null;
+					if (mediated.Any())
+					{
+						viewType = type;
+						mediatorType = ((MediatedBy)mediated.First()).MediatorType;
 
-                    if (mediationBinder != null && viewType != null && mediatorType != null) //Bind this mediator!
-                        mediationBinder.Bind(viewType).To(mediatorType);
+						if (mediatorType == null)
+							throw new MediationException("Cannot implicitly bind view of type: " + type.Name + " due to null MediatorType",
+								MediationExceptionType.MEDIATOR_VIEW_STACK_OVERFLOW);
+					}
+					else if (mediates.Any())
+					{
+						mediatorType = type;
+						viewType = ((Mediates)mediates.First()).ViewType;
 
-                    #endregion
-                }
+						if (viewType == null)
+							throw new MediationException("Cannot implicitly bind Mediator of type: " + type.Name + " due to null ViewType",
+								MediationExceptionType.MEDIATOR_VIEW_STACK_OVERFLOW);
+					}
 
-                //implementedBy/interfaces first, then implements to give them priority (they will overwrite)
-                implementedByBindings.ForEach(Bind);
-                //Next implements tags, which have priority over interfaces
-                implementsBindings.ForEach(Bind);
-            }
-            else
-            {
-                throw new InjectionException("Assembly was not initialized yet for Implicit Bindings!", InjectionExceptionType.UNINITIALIZED_ASSEMBLY);
-            }
-        }
+					if (mediationBinder != null && viewType != null && mediatorType != null) //Bind this mediator!
+						mediationBinder.Bind(viewType).To(mediatorType);
 
-        private void Bind(ImplicitBindingVO toBind)
-        {
-            //We do not check for the existence of a binding. Because implicit bindings are weak bindings, they are overridden automatically by other implicit bindings
-            //Therefore, ImplementedBy will be overriden by an Implements to that interface.
+					#endregion
+				}
 
-            IInjectionBinding binding = injectionBinder.Bind(toBind.BindTypes.First());
+				//implementedBy/interfaces first, then implements to give them priority (they will overwrite)
+				implementedByBindings.ForEach(Bind);
+				//Next implements tags, which have priority over interfaces
+				implementsBindings.ForEach(Bind);
+			}
+			else
+			{
+				throw new InjectionException("Assembly was not initialized yet for Implicit Bindings!", InjectionExceptionType.UNINITIALIZED_ASSEMBLY);
+			}
+		}
 
-            for (int i = 1; i < toBind.BindTypes.Count; i++)
-            {
-                Type bindType = toBind.BindTypes.ElementAt(i);
-                binding.Bind(bindType);
-            }
+		private void Bind(ImplicitBindingVO toBind)
+		{
+			//We do not check for the existence of a binding. Because implicit bindings are weak bindings, they are overridden automatically by other implicit bindings
+			//Therefore, ImplementedBy will be overriden by an Implements to that interface.
 
-            binding = toBind.ToType != null ?
-                binding.To(toBind.ToType).ToName(toBind.Name).ToSingleton() :
-                binding.ToName(toBind.Name).ToSingleton();
+			IInjectionBinding binding = injectionBinder.Bind(toBind.BindTypes.First());
 
-            if (toBind.IsCrossContext) //Bind this to the cross context injector
-                binding.CrossContext();
-            binding.Weak();
-        }
+			for (int i = 1; i < toBind.BindTypes.Count; i++)
+			{
+				Type bindType = toBind.BindTypes.ElementAt(i);
+				binding.Bind(bindType);
+			}
 
-        private sealed class ImplicitBindingVO
-        {
-            public List<Type> BindTypes = new List<Type>();
-            public Type ToType;
-            public bool IsCrossContext;
-            public object Name;
+			binding = toBind.ToType != null ?
+				binding.To(toBind.ToType).ToName(toBind.Name).ToSingleton() :
+				binding.ToName(toBind.Name).ToSingleton();
 
-            public ImplicitBindingVO(Type bindType, Type toType, bool isCrossContext, object name)
-            {
-                BindTypes.Add(bindType);
-                ToType = toType;
-                IsCrossContext = isCrossContext;
-                Name = name;
-            }
+			if (toBind.IsCrossContext) //Bind this to the cross context injector
+				binding.CrossContext();
+			binding.Weak();
+		}
 
-            public ImplicitBindingVO(List<Type> bindTypes, Type toType, bool isCrossContext, object name)
-            {
-                BindTypes = bindTypes;
-                ToType = toType;
-                IsCrossContext = isCrossContext;
-                Name = name;
-            }
-        }
-    }
+		private sealed class ImplicitBindingVO
+		{
+			public List<Type> BindTypes = new List<Type>();
+			public Type ToType;
+			public bool IsCrossContext;
+			public object Name;
+
+			public ImplicitBindingVO(Type bindType, Type toType, bool isCrossContext, object name)
+			{
+				BindTypes.Add(bindType);
+				ToType = toType;
+				IsCrossContext = isCrossContext;
+				Name = name;
+			}
+
+			public ImplicitBindingVO(List<Type> bindTypes, Type toType, bool isCrossContext, object name)
+			{
+				BindTypes = bindTypes;
+				ToType = toType;
+				IsCrossContext = isCrossContext;
+				Name = name;
+			}
+		}
+	}
 }
