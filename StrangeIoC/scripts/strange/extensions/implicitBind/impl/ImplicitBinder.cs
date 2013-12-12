@@ -78,8 +78,6 @@ namespace strange.extensions.implicitBind.impl
 
 					#region Concrete and Interface Bindings
 
-					Type bindType = null;
-					Type toType = null;
 					//Interfaces first
 					if (implementedBy.Any())
 					{
