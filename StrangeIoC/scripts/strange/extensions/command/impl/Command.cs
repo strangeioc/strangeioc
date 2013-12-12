@@ -95,7 +95,7 @@ namespace strange.extensions.command.impl
 			IsClean = true;
 		}
 
-		public void Fail()
+		public virtual void Fail()
 		{
 			if (commandBinder != null)
 			{

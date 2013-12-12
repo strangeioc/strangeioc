@@ -319,6 +319,11 @@ namespace strange.extensions.command.impl
 			injectionBinder.Unbind<Pool> (CommandKeys.COMMAND_POOL);
 			return pool;
 		}
+
+		new public virtual ICommandBinding GetBinding<T>()
+		{
+			return base.GetBinding<T>() as ICommandBinding;
+		}
 	}
 }
 

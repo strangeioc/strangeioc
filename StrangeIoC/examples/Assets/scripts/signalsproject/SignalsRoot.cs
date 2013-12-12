@@ -14,8 +14,7 @@ namespace strange.examples.signals
 	
 		void Awake()
 		{
-			context = new SignalsContext(this, true);
-			context.Start ();
+			context = new SignalsContext(this);
 		}
 	}
 }

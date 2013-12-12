@@ -27,8 +27,8 @@
  * app development using the classic <a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC (Model-View-Controller)</a>
  * design pattern, and adds 'S' (Service) for asynchronous calls outside 
  * the application. Strange is highly modular, so you needn't use
- * MVCSContext if you don't want to (you can extend Context directly)
- * but MVCS is a highly proven design strategy and by far the easiest 
+ * MVCSContext if you don't want to (you can extend Context or CrossContext directly)
+ * but MVCS is a highly proven design strategy and MVCSContext is by far the easiest 
  * way to get familiar with what Strange has to offer.
  * 
  * The parts:
@@ -46,8 +46,7 @@
 	
 			void Awake()
 			{
-				context = new MyContext(this, true); //Extends MVCSContext
-				context.Start ();
+				context = new MyContext(this); //Extends MVCSContext
 			}
 		}
 
@@ -58,7 +57,7 @@
 		[Inject(ContextKeys.CONTEXT_VIEW)]
 		public GameObject contextView{get;set;}
 
- * It is strong advised that the contextView NOT be injected into 
+ * It is strongly advised that the contextView NOT be injected into 
  * Views, Models or Services.
  * 
  * <li>injectionBinder</li>
@@ -156,6 +155,8 @@
  * 
  */
 
+using strange.extensions.implicitBind.api;
+using strange.extensions.implicitBind.impl;
 using UnityEngine;
 using strange.extensions.command.api;
 using strange.extensions.command.impl;
@@ -184,6 +185,9 @@ namespace strange.extensions.context.impl
 		/// A Binder that maps Views to Mediators
 		public IMediationBinder mediationBinder{get;set;}
 
+		//Interprets implicit bindings
+		public IImplicitBinder implicitBinder { get; set; }
+
 		/// A Binder that maps Events to Sequences
 		public ISequencer sequencer{get;set;}
 
@@ -193,8 +197,19 @@ namespace strange.extensions.context.impl
 		
 		public MVCSContext() : base()
 		{}
-		
-		public MVCSContext(MonoBehaviour view, bool autoStartup) : base(view, autoStartup)
+
+		/// The recommended Constructor
+		/// Just pass in the instance of your ContextView. Everything will begin automatically.
+		/// Other constructors offer the option of interrupting startup at useful moments.
+		public MVCSContext(MonoBehaviour view) : base(view)
+		{
+		}
+
+		public MVCSContext(MonoBehaviour view, ContextStartupFlags flags) : base(view, flags)
+		{
+		}
+
+		public MVCSContext(MonoBehaviour view, bool autoMapping) : base(view, autoMapping)
 		{
 		}
 		
@@ -223,6 +238,7 @@ namespace strange.extensions.context.impl
 			injectionBinder.Bind<IEventDispatcher>().To<EventDispatcher>().ToSingleton().ToName(ContextKeys.CONTEXT_DISPATCHER);
 			injectionBinder.Bind<IMediationBinder>().To<MediationBinder>().ToSingleton();
 			injectionBinder.Bind<ISequencer>().To<EventSequencer>().ToSingleton();
+			injectionBinder.Bind<IImplicitBinder>().To<ImplicitBinder>().ToSingleton();
 		}
 		
 		protected override void instantiateCoreComponents()
@@ -238,7 +254,8 @@ namespace strange.extensions.context.impl
 			dispatcher = injectionBinder.GetInstance<IEventDispatcher>(ContextKeys.CONTEXT_DISPATCHER) as IEventDispatcher;
 			mediationBinder = injectionBinder.GetInstance<IMediationBinder>() as IMediationBinder;
 			sequencer = injectionBinder.GetInstance<ISequencer>() as ISequencer;
-			
+			implicitBinder = injectionBinder.GetInstance<IImplicitBinder>() as IImplicitBinder;
+
 			(dispatcher as ITriggerProvider).AddTriggerable(commandBinder as ITriggerable);
 			(dispatcher as ITriggerProvider).AddTriggerable(sequencer as ITriggerable);
 		}
@@ -247,6 +264,8 @@ namespace strange.extensions.context.impl
 		{
 			//It's possible for views to fire their Awake before bindings. This catches any early risers and attaches their Mediators.
 			mediateViewCache();
+			//Ensure that all Views underneath the ContextView are triggered
+			mediationBinder.Trigger(MediationEvent.AWAKE, (contextView as GameObject).GetComponent<ContextView>());
 		}
 
 		/// Fires ContextEvent.START

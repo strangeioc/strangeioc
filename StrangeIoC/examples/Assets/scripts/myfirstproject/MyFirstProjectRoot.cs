@@ -24,12 +24,16 @@ namespace strange.examples.myfirstproject
 	
 		void Awake()
 		{
-			//Instantiate the context, passing it this instance and a 'true' for autoStartup.
-			//You might pass 'false' if you needed to await some kind of asynchronous bootstrapping
-			//before launching the app. In that case, you would have to call Context's Launch()
-			//method manually.
-			context = new MyFirstContext(this, true);
-			context.Start ();
+			//Instantiate the context, passing it this instance.
+			context = new MyFirstContext(this);
+
+			//This is the most basic of startup choices, and probably the most common.
+			//You can also opt to pass in ContextStartFlag options, such as:
+			//
+			//context = new MyFirstContext(this, ContextStartupFlags.MANUAL_MAPPING);
+			//context = new MyFirstContext(this, ContextStartupFlags.MANUAL_MAPPING | ContextStartupFlags.MANUAL_LAUNCH);
+			//
+			//These flags allow you, when necessary, to interrupt the startup sequence.
 		}
 	}
 }

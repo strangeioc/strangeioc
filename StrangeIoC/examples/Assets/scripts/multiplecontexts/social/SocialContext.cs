@@ -31,12 +31,12 @@ namespace strange.examples.multiplecontexts.social
 {
 	public class SocialContext : MVCSContext
 	{
-		
-		public SocialContext () : base()
+
+		public SocialContext (MonoBehaviour view) : base(view)
 		{
 		}
-		
-		public SocialContext (MonoBehaviour view, bool autoStartup) : base(view, autoStartup)
+
+		public SocialContext (MonoBehaviour view, ContextStartupFlags flags) : base(view, flags)
 		{
 		}
 		

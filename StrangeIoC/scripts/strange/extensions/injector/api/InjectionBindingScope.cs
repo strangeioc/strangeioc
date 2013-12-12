@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2013 ThirdMotion, Inc.
  *
  *	Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,25 +14,13 @@
  *		limitations under the License.
  */
 
-/**
- * @interface strange.extensions.context.api.IContextView
- * 
- * The ContextView is the entry point to the application.
- * 
- * In a standard MVCSContext setup for Unity3D, it is a MonoBehaviour
- * attached to a GameObject at the very top of of your application.
- * It's most important role is to instantiate and call `Start()` on the Context.
- */
-
-using System;
-using strange.extensions.mediation.api;
-
-namespace strange.extensions.context.api
+namespace strange.extensions.injector.api
 {
-	public interface IContextView : IView
+	public enum InjectionBindingScope
 	{
-		/// Get and set the Context
-		IContext context{get;set;}
+		/// Scope is limited to the current Context
+        SINGLE_CONTEXT,
+		/// Scope is mapped across all Contexts
+        CROSS_CONTEXT,
 	}
 }
-

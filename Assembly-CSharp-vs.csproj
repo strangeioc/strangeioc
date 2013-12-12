@@ -78,6 +78,8 @@
     <Folder Include="StrangeIoC\scripts\strange\extensions\pool\api\" />
     <Folder Include="StrangeIoC\scripts\strange\extensions\pool\impl\" />
     <Folder Include="StrangeIoC\scripts\strange\.tests\extensions\pool\" />
+    <Folder Include="StrangeIoC\examples\Assets\scripts\signalsproject\" />
+    <Folder Include="StrangeIoC\scripts\strange\extensions\implicitBind\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StrangeIoC\scripts\strange\extensions\context\api\ContextEvent.cs.meta" />
@@ -381,5 +383,28 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithInjectionAndSignal.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\MultipleConstructorsOneThreeFour.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PostConstructSeveralOrdered.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\context\api\ContextStartupFlags.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestContext.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\SignalsContext.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\SignalsRoot.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\controller\CallWebServiceCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\controller\StartCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\model\ExampleModel.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\model\IExampleModel.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\service\ExampleService.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\service\IExampleService.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\signal\CallWebServiceSignal.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\signal\FulfillWebServiceRequestSignal.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\signal\ScoreChangedSignal.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\signal\StartSignal.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\view\ClickDetector.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\view\ExampleMediator.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\view\ExampleView.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\implicitBind\ImplementorAttribute.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\implicitBind\api\IImplicitBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\implicitBind\impl\ImplicitBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\TestImplicitBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\MockContext.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\injector\api\InjectionBindingScope.cs" />
   </ItemGroup>
 </Project>

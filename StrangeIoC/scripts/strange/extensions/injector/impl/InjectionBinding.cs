@@ -33,7 +33,7 @@ namespace strange.extensions.injector.impl
 	{
 		private InjectionBindingType _type = InjectionBindingType.DEFAULT;
 		private bool _toInject = true;
-        private bool _isCrossContext = false;
+		private bool _isCrossContext = false;
 
 		public InjectionBinding (Binder.BindingResolver resolver)
 		{
@@ -42,7 +42,7 @@ namespace strange.extensions.injector.impl
 			valueConstraint = BindingConstraintType.ONE;
 		}
 
-				public InjectionBindingType type
+		public InjectionBindingType type
 		{
 			get
 			{
