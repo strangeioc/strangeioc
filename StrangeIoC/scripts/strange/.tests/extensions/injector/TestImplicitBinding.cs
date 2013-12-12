@@ -15,307 +15,307 @@ using strange.unittests.annotated.testImplTwo;
 
 namespace strange.unittests
 {
-    [TestFixture]
+	[TestFixture]
 	public class TestImplicitBinding
 	{
 
-        private MockContext context;
-        private object contextView;
+		private MockContext context;
+		private object contextView;
 
-        [SetUp]
-        public void setup()
-        {
-            Context.firstContext = null;
-            contextView = new object();
-            context = new MockContext(contextView, true);
-        }
+		[SetUp]
+		public void setup()
+		{
+			Context.firstContext = null;
+			contextView = new object();
+			context = new MockContext(contextView, true);
+		}
 
-        /// <summary>
-        /// Tests our Implements default case, which is a concrete singleton binding
-        /// </summary>
+		/// <summary>
+		/// Tests our Implements default case, which is a concrete singleton binding
+		/// </summary>
 		[Test]
 		public void TestImplementsConcrete()
 		{
 
-            context.ScannedPackages = new string[]{
-                "strange.unittests.annotated.testConcrete"
-            };
-            context.Start();
+			context.ScannedPackages = new string[]{
+				"strange.unittests.annotated.testConcrete"
+			};
+			context.Start();
 
-            TestConcreteClass testConcreteClass = context.injectionBinder.GetInstance<TestConcreteClass>() as TestConcreteClass;
-            Assert.IsNotNull(testConcreteClass);
-             
+			TestConcreteClass testConcreteClass = context.injectionBinder.GetInstance<TestConcreteClass>() as TestConcreteClass;
+			Assert.IsNotNull(testConcreteClass);
+			 
 		}
 
-        [Test]
-        public void TestImplementsNamedConcrete()
-        {
-            context.ScannedPackages = new string[]{
-                "strange.unittests.annotated.testConcreteNamed"
-            };
-            context.Start();
+		[Test]
+		public void TestImplementsNamedConcrete()
+		{
+			context.ScannedPackages = new string[]{
+				"strange.unittests.annotated.testConcreteNamed"
+			};
+			context.Start();
 
-            TestConcreteNamedClass testConcreteClass = context.injectionBinder.GetInstance<TestConcreteNamedClass>("NAME") as TestConcreteNamedClass;
-            Assert.IsNotNull(testConcreteClass);
-        }
+			TestConcreteNamedClass testConcreteClass = context.injectionBinder.GetInstance<TestConcreteNamedClass>("NAME") as TestConcreteNamedClass;
+			Assert.IsNotNull(testConcreteClass);
+		}
 
-        /// <summary>
-        /// Test binding a concrete class to an interface using the Implements tag
-        /// </summary>
-        [Test]
-        public void TestImplementsToInterface()
-        {
-            context.ScannedPackages = new string[]{
-                "strange.unittests.annotated.testImplements"
-            };
-            context.Start();
+		/// <summary>
+		/// Test binding a concrete class to an interface using the Implements tag
+		/// </summary>
+		[Test]
+		public void TestImplementsToInterface()
+		{
+			context.ScannedPackages = new string[]{
+				"strange.unittests.annotated.testImplements"
+			};
+			context.Start();
 
-            TestInterface testImpl = context.injectionBinder.GetInstance<TestInterface>() as TestInterface;
-            Assert.IsNotNull(testImpl);
-            Assert.IsTrue(typeof(TestInterface).IsAssignableFrom(testImpl.GetType())); //Check that this objects type implements test interface.
-            Assert.AreEqual(testImpl.GetType(),typeof(TestImpl)); //Check that its the type we added below
-        }
-
-
-        /// <summary>
-        /// Test binding a default concrete class to an interface using the ImplementedBy tag (on the interface)
-        /// </summary>
-        [Test]
-        public void TestImplementedBy()
-        {
-            context.ScannedPackages = new string[]{
-                "strange.unittests.annotated.testImplBy" //Namespace is the only true difference. Same tests as above for the same action done by a different method
-            };
-            context.Start();
-
-            TestInterface testImpl = context.injectionBinder.GetInstance<TestInterface>() as TestInterface;
-            Assert.IsNotNull(testImpl);
-            Assert.IsTrue(typeof(TestInterface).IsAssignableFrom(testImpl.GetType())); //Check that this objects type implements test interface.
-            Assert.AreEqual(testImpl.GetType(), typeof(TestImpl)); //Check that its the type we added below
-        }
+			TestInterface testImpl = context.injectionBinder.GetInstance<TestInterface>() as TestInterface;
+			Assert.IsNotNull(testImpl);
+			Assert.IsTrue(typeof(TestInterface).IsAssignableFrom(testImpl.GetType())); //Check that this objects type implements test interface.
+			Assert.AreEqual(testImpl.GetType(),typeof(TestImpl)); //Check that its the type we added below
+		}
 
 
-        /// <summary>
-        /// Bind via an ImplementedBy tag, followed by an Implements from a different class.
-        /// Implements should override the ImplementedBy tag
-        /// </summary>
-        [Test]
-        public void TestImplementsOverridesImplementedBy()
-        {
-            context.ScannedPackages = new string[]{
-                "strange.unittests.annotated.testImplTwo", 
-                "strange.unittests.annotated.testImplBy",
-            };
+		/// <summary>
+		/// Test binding a default concrete class to an interface using the ImplementedBy tag (on the interface)
+		/// </summary>
+		[Test]
+		public void TestImplementedBy()
+		{
+			context.ScannedPackages = new string[]{
+				"strange.unittests.annotated.testImplBy" //Namespace is the only true difference. Same tests as above for the same action done by a different method
+			};
+			context.Start();
 
-            context.Start();
-
-
-            TestInterface testInterface = context.injectionBinder.GetInstance<TestInterface>() as TestInterface;
-            Assert.True(testInterface is TestImplTwo);
-        }
-
-        /// <summary>
-        /// Bind implicitly and then overwrite with an explicit binding
-        /// </summary>
-        [Test]
-        public void TestExplicitBindingOverrides()
-        {
-            context.ScannedPackages = new string[]{
-                "strange.unittests.annotated.testImplements",
-            };
-
-            context.Start();
+			TestInterface testImpl = context.injectionBinder.GetInstance<TestInterface>() as TestInterface;
+			Assert.IsNotNull(testImpl);
+			Assert.IsTrue(typeof(TestInterface).IsAssignableFrom(testImpl.GetType())); //Check that this objects type implements test interface.
+			Assert.AreEqual(testImpl.GetType(), typeof(TestImpl)); //Check that its the type we added below
+		}
 
 
-            TestInterface testInterfacePre = context.injectionBinder.GetInstance<TestInterface>() as TestInterface;
-            Assert.True(testInterfacePre is TestImpl);
-            //Confirm the previous binding is the implicit binding as expected
+		/// <summary>
+		/// Bind via an ImplementedBy tag, followed by an Implements from a different class.
+		/// Implements should override the ImplementedBy tag
+		/// </summary>
+		[Test]
+		public void TestImplementsOverridesImplementedBy()
+		{
+			context.ScannedPackages = new string[]{
+				"strange.unittests.annotated.testImplTwo", 
+				"strange.unittests.annotated.testImplBy",
+			};
 
-            context.injectionBinder.Bind<TestInterface>().To<TestImplTwo>();
-            TestInterface testInterfacePost = context.injectionBinder.GetInstance<TestInterface>() as TestInterface;
-            Assert.True(testInterfacePost is TestImplTwo);
-            //Confirm the new binding is the one we just wrote
-        }
-
-        /// <summary>
-        /// Attempt to bind an ImplementedBy annotation pointing to a Type which does not implement the interface
-        /// </summary>
-        [Test]
-        public void TestDoesNotImplement()
-        {
-            context.ScannedPackages = new string[]{
-                "strange.unittests.annotated.testDoesntImplement",
-            };
-
-            TestDelegate testDelegate = delegate
-            {
-                context.Start();
-            };
-
-            //We should be getting an exception here because the interface is not implemented
-            InjectionException ex = Assert.Throws<InjectionException>(testDelegate);
-
-            //make sure it's the right exception
-            Assert.AreEqual(ex.type, InjectionExceptionType.IMPLICIT_BINDING_DEFAULT_TYPE_DOES_NOT_IMPLEMENT_INTERFACE);
-        }
+			context.Start();
 
 
-        /// <summary>
-        /// Attempt to bind an Implements annotation pointing to an interface it does not implement
-        /// </summary>
-        [Test]
-        public void TestDoesNotImplementTwo()
-        {
-            context.ScannedPackages = new string[]{
-                "strange.unittests.annotated.testDoesntImplementTwo",
-            };
+			TestInterface testInterface = context.injectionBinder.GetInstance<TestInterface>() as TestInterface;
+			Assert.True(testInterface is TestImplTwo);
+		}
 
-            TestDelegate testDelegate = delegate
-            {
-                context.Start();
-            };
+		/// <summary>
+		/// Bind implicitly and then overwrite with an explicit binding
+		/// </summary>
+		[Test]
+		public void TestExplicitBindingOverrides()
+		{
+			context.ScannedPackages = new string[]{
+				"strange.unittests.annotated.testImplements",
+			};
 
-            //We should be getting an exception here because the interface is not implemented
-            InjectionException ex = Assert.Throws<InjectionException>(testDelegate);
-
-            //make sure it's the right exception
-            Assert.AreEqual(ex.type, InjectionExceptionType.IMPLICIT_BINDING_TYPE_DOES_NOT_IMPLEMENT_DEFAULT_INTERFACE);
-        }
-
-        /// <summary>
-        /// Test [CrossContextComponent] tag. 
-        /// This is not meant to be a test of all crosscontext functionality, just the tag
-        /// The CrossContextComponent tag really just tells a binding to call .CrossContext()
-        /// See TestCrossContext for tests of CrossContext
-        /// </summary>
-        [Test]
-        public void TestCrossContextImplicit()
-        {
-            object viewParent = new object();
-            object viewChildOne  = new object();
-            object viewChildTwo = new object();
-            MockContext Parent = new MockContext(viewParent, true);
-            MockContext ChildOne = new MockContext(viewChildOne, true); //Ctr will automatically add to Context.firstcontext. No need to call it manually (and you should not).
-            MockContext ChildTwo = new MockContext(viewChildTwo, true);
+			context.Start();
 
 
-            Parent.ScannedPackages = new string[]{
-                "strange.unittests.annotated.testCrossContext"
-            };
+			TestInterface testInterfacePre = context.injectionBinder.GetInstance<TestInterface>() as TestInterface;
+			Assert.True(testInterfacePre is TestImpl);
+			//Confirm the previous binding is the implicit binding as expected
 
-            Parent.Start();
-            ChildOne.Start();
-            ChildTwo.Start();
+			context.injectionBinder.Bind<TestInterface>().To<TestImplTwo>();
+			TestInterface testInterfacePost = context.injectionBinder.GetInstance<TestInterface>() as TestInterface;
+			Assert.True(testInterfacePost is TestImplTwo);
+			//Confirm the new binding is the one we just wrote
+		}
 
-            TestCrossContextInterface parentModel = Parent.injectionBinder.GetInstance<TestCrossContextInterface>() as TestCrossContextInterface;
+		/// <summary>
+		/// Attempt to bind an ImplementedBy annotation pointing to a Type which does not implement the interface
+		/// </summary>
+		[Test]
+		public void TestDoesNotImplement()
+		{
+			context.ScannedPackages = new string[]{
+				"strange.unittests.annotated.testDoesntImplement",
+			};
 
-            TestCrossContextInterface childOneModel = ChildOne.injectionBinder.GetInstance<TestCrossContextInterface>() as TestCrossContextInterface;
-            Assert.IsNotNull(childOneModel);
-            TestCrossContextInterface childTwoModel = ChildTwo.injectionBinder.GetInstance<TestCrossContextInterface>() as TestCrossContextInterface;
-            Assert.IsNotNull(childTwoModel);
-            Assert.AreSame(childOneModel, childTwoModel); //These two should be the same object
+			TestDelegate testDelegate = delegate
+			{
+				context.Start();
+			};
 
-            Assert.AreEqual(0, parentModel.Value); //start at 0, might as well verify.
+			//We should be getting an exception here because the interface is not implemented
+			InjectionException ex = Assert.Throws<InjectionException>(testDelegate);
 
-            parentModel.Value++;
-            Assert.AreEqual(1, childOneModel.Value); //child one is updated
-
-            parentModel.Value++;
-            Assert.AreEqual(2, childTwoModel.Value); //child two is updated
-        }
-
-
-        /// <summary>
-        /// Test [CrossContextComponent] tag. 
-        /// Child contexts should be able to 'override' Cross-Context bindings with local bindings
-        /// </summary>
-        [Test]
-        public void TestCrossContextAllowsOverrides()
-        {
-            object viewParent = new object();
-            object viewChildOne = new object();
-            object viewChildTwo = new object();
-            MockContext Parent = new MockContext(viewParent, true);
-            MockContext ChildOne = new MockContext(viewChildOne, true); //Ctr will automatically add to Context.firstcontext. No need to call it manually (and you should not).
-            MockContext ChildTwo = new MockContext(viewChildTwo, true);
+			//make sure it's the right exception
+			Assert.AreEqual(ex.type, InjectionExceptionType.IMPLICIT_BINDING_DEFAULT_TYPE_DOES_NOT_IMPLEMENT_INTERFACE);
+		}
 
 
-            Parent.ScannedPackages = new string[]{
-                "strange.unittests.annotated.testCrossContext"
-            };
+		/// <summary>
+		/// Attempt to bind an Implements annotation pointing to an interface it does not implement
+		/// </summary>
+		[Test]
+		public void TestDoesNotImplementTwo()
+		{
+			context.ScannedPackages = new string[]{
+				"strange.unittests.annotated.testDoesntImplementTwo",
+			};
 
-            ChildOne.ScannedPackages = new string[]{
-                "strange.unittests.annotated.testCrossOverride"
-            };
-            Parent.Start();
-            ChildOne.Start();
-            ChildTwo.Start();
+			TestDelegate testDelegate = delegate
+			{
+				context.Start();
+			};
 
-            TestCrossContextInterface parentModel = Parent.injectionBinder.GetInstance<TestCrossContextInterface>() as TestCrossContextInterface; 
-            //Get the instance from the parent injector (The cross context binding)
+			//We should be getting an exception here because the interface is not implemented
+			InjectionException ex = Assert.Throws<InjectionException>(testDelegate);
 
-            TestCrossContextInterface childOneModel = ChildOne.injectionBinder.GetInstance<TestCrossContextInterface>() as TestCrossContextInterface;
-            Assert.AreNotSame(childOneModel, parentModel); //The value from getinstance is NOT the same as the cross context value. We have overidden the cross context value locally
+			//make sure it's the right exception
+			Assert.AreEqual(ex.type, InjectionExceptionType.IMPLICIT_BINDING_TYPE_DOES_NOT_IMPLEMENT_DEFAULT_INTERFACE);
+		}
 
-            TestCrossContextInterface childTwoModel = ChildTwo.injectionBinder.GetInstance<TestCrossContextInterface>() as TestCrossContextInterface;
-            Assert.IsNotNull(childTwoModel);
-            Assert.AreNotSame(childOneModel, childTwoModel); //These two are different objects, the childTwoModel being cross context, and childone being the override
-            Assert.AreSame(parentModel, childTwoModel); //Both cross context models are the same
+		/// <summary>
+		/// Test [CrossContextComponent] tag. 
+		/// This is not meant to be a test of all crosscontext functionality, just the tag
+		/// The CrossContextComponent tag really just tells a binding to call .CrossContext()
+		/// See TestCrossContext for tests of CrossContext
+		/// </summary>
+		[Test]
+		public void TestCrossContextImplicit()
+		{
+			object viewParent = new object();
+			object viewChildOne  = new object();
+			object viewChildTwo = new object();
+			MockContext Parent = new MockContext(viewParent, true);
+			MockContext ChildOne = new MockContext(viewChildOne, true); //Ctr will automatically add to Context.firstcontext. No need to call it manually (and you should not).
+			MockContext ChildTwo = new MockContext(viewChildTwo, true);
 
 
-            parentModel.Value++;
-            Assert.AreEqual(1, childTwoModel.Value); //cross context model should be changed
+			Parent.ScannedPackages = new string[]{
+				"strange.unittests.annotated.testCrossContext"
+			};
 
-            parentModel.Value++;
-            Assert.AreEqual(1000, childOneModel.Value); //local model is not changed
+			Parent.Start();
+			ChildOne.Start();
+			ChildTwo.Start();
+
+			TestCrossContextInterface parentModel = Parent.injectionBinder.GetInstance<TestCrossContextInterface>() as TestCrossContextInterface;
+
+			TestCrossContextInterface childOneModel = ChildOne.injectionBinder.GetInstance<TestCrossContextInterface>() as TestCrossContextInterface;
+			Assert.IsNotNull(childOneModel);
+			TestCrossContextInterface childTwoModel = ChildTwo.injectionBinder.GetInstance<TestCrossContextInterface>() as TestCrossContextInterface;
+			Assert.IsNotNull(childTwoModel);
+			Assert.AreSame(childOneModel, childTwoModel); //These two should be the same object
+
+			Assert.AreEqual(0, parentModel.Value); //start at 0, might as well verify.
+
+			parentModel.Value++;
+			Assert.AreEqual(1, childOneModel.Value); //child one is updated
+
+			parentModel.Value++;
+			Assert.AreEqual(2, childTwoModel.Value); //child two is updated
+		}
 
 
-            Assert.AreEqual(2, parentModel.Value); //cross context model is changed
-        }
+		/// <summary>
+		/// Test [CrossContextComponent] tag. 
+		/// Child contexts should be able to 'override' Cross-Context bindings with local bindings
+		/// </summary>
+		[Test]
+		public void TestCrossContextAllowsOverrides()
+		{
+			object viewParent = new object();
+			object viewChildOne = new object();
+			object viewChildTwo = new object();
+			MockContext Parent = new MockContext(viewParent, true);
+			MockContext ChildOne = new MockContext(viewChildOne, true); //Ctr will automatically add to Context.firstcontext. No need to call it manually (and you should not).
+			MockContext ChildTwo = new MockContext(viewChildTwo, true);
 
-        /// <summary>
-        /// Test that our assumptions regarding namespace scoping are correct 
-        /// (e.g. company.project.feature will include company.project.feature.signal)
-        /// </summary>
-        [Test]
-        public void TestNamespaces()
-        {
-            context.ScannedPackages = new string[]{
-                "strange.unittests.annotated.namespaceTest"
-            };
-            context.Start();
 
-            //Should bind 3 classes concretely in the 
-            TestNamespaceOne one = context.injectionBinder.GetInstance<TestNamespaceOne>() as TestNamespaceOne;
-            Assert.NotNull(one);
+			Parent.ScannedPackages = new string[]{
+				"strange.unittests.annotated.testCrossContext"
+			};
 
-            TestNamespaceTwo two = context.injectionBinder.GetInstance<TestNamespaceTwo>() as TestNamespaceTwo;
-            Assert.NotNull(two);
+			ChildOne.ScannedPackages = new string[]{
+				"strange.unittests.annotated.testCrossOverride"
+			};
+			Parent.Start();
+			ChildOne.Start();
+			ChildTwo.Start();
 
-            TestNamespaceThree three = context.injectionBinder.GetInstance<TestNamespaceThree>() as TestNamespaceThree;
-            Assert.NotNull(three);
-        }
+			TestCrossContextInterface parentModel = Parent.injectionBinder.GetInstance<TestCrossContextInterface>() as TestCrossContextInterface; 
+			//Get the instance from the parent injector (The cross context binding)
 
-        [Test]
-        public void TestMultipleImplements()
-        {
-            context.ScannedPackages = new string[]{
-                "strange.unittests.annotated.multipleInterfaces"
-            };
-            context.Start();
+			TestCrossContextInterface childOneModel = ChildOne.injectionBinder.GetInstance<TestCrossContextInterface>() as TestCrossContextInterface;
+			Assert.AreNotSame(childOneModel, parentModel); //The value from getinstance is NOT the same as the cross context value. We have overidden the cross context value locally
 
-            TestInterfaceOne one = context.injectionBinder.GetInstance<TestInterfaceOne>() as TestInterfaceOne;
-            Assert.NotNull(one);
+			TestCrossContextInterface childTwoModel = ChildTwo.injectionBinder.GetInstance<TestCrossContextInterface>() as TestCrossContextInterface;
+			Assert.IsNotNull(childTwoModel);
+			Assert.AreNotSame(childOneModel, childTwoModel); //These two are different objects, the childTwoModel being cross context, and childone being the override
+			Assert.AreSame(parentModel, childTwoModel); //Both cross context models are the same
 
-            TestInterfaceTwo two = context.injectionBinder.GetInstance<TestInterfaceTwo>() as TestInterfaceTwo;
-            Assert.NotNull(two);
 
-            TestInterfaceThree three = context.injectionBinder.GetInstance<TestInterfaceThree>() as TestInterfaceThree;
-            Assert.NotNull(three);
+			parentModel.Value++;
+			Assert.AreEqual(1, childTwoModel.Value); //cross context model should be changed
 
-            Assert.AreEqual(one, two);
-            Assert.AreEqual(one, three);
-        }
+			parentModel.Value++;
+			Assert.AreEqual(1000, childOneModel.Value); //local model is not changed
+
+
+			Assert.AreEqual(2, parentModel.Value); //cross context model is changed
+		}
+
+		/// <summary>
+		/// Test that our assumptions regarding namespace scoping are correct 
+		/// (e.g. company.project.feature will include company.project.feature.signal)
+		/// </summary>
+		[Test]
+		public void TestNamespaces()
+		{
+			context.ScannedPackages = new string[]{
+				"strange.unittests.annotated.namespaceTest"
+			};
+			context.Start();
+
+			//Should bind 3 classes concretely in the 
+			TestNamespaceOne one = context.injectionBinder.GetInstance<TestNamespaceOne>() as TestNamespaceOne;
+			Assert.NotNull(one);
+
+			TestNamespaceTwo two = context.injectionBinder.GetInstance<TestNamespaceTwo>() as TestNamespaceTwo;
+			Assert.NotNull(two);
+
+			TestNamespaceThree three = context.injectionBinder.GetInstance<TestNamespaceThree>() as TestNamespaceThree;
+			Assert.NotNull(three);
+		}
+
+		[Test]
+		public void TestMultipleImplements()
+		{
+			context.ScannedPackages = new string[]{
+				"strange.unittests.annotated.multipleInterfaces"
+			};
+			context.Start();
+
+			TestInterfaceOne one = context.injectionBinder.GetInstance<TestInterfaceOne>() as TestInterfaceOne;
+			Assert.NotNull(one);
+
+			TestInterfaceTwo two = context.injectionBinder.GetInstance<TestInterfaceTwo>() as TestInterfaceTwo;
+			Assert.NotNull(two);
+
+			TestInterfaceThree three = context.injectionBinder.GetInstance<TestInterfaceThree>() as TestInterfaceThree;
+			Assert.NotNull(three);
+
+			Assert.AreEqual(one, two);
+			Assert.AreEqual(one, three);
+		}
 
 
 	}
@@ -325,114 +325,114 @@ namespace strange.unittests
 
 namespace strange.unittests.annotated.testConcrete
 {
-    [Implements]
-    public class TestConcreteClass { }
+	[Implements]
+	public class TestConcreteClass { }
 }
 
 namespace strange.unittests.annotated.testConcreteNamed
 {
-    [Implements("NAME")]
-    public class TestConcreteNamedClass { }
+	[Implements("NAME")]
+	public class TestConcreteNamedClass { }
 }
 
 namespace strange.unittests.annotated.testImplBy
 {
-    [ImplementedBy(typeof(TestImpl))]
-    public interface TestInterface { }
+	[ImplementedBy(typeof(TestImpl))]
+	public interface TestInterface { }
 }
 
 namespace strange.unittests.annotated.testImplements
 {
-    [Implements(typeof(TestInterface))]
-    public class TestImpl : TestInterface { }
+	[Implements(typeof(TestInterface))]
+	public class TestImpl : TestInterface { }
 }
 
 namespace strange.unittests.annotated.testImplTwo
 {
-    [Implements(typeof(TestInterface))]
-    public class TestImplTwo : TestInterface { }
+	[Implements(typeof(TestInterface))]
+	public class TestImplTwo : TestInterface { }
 }
 
 namespace strange.unittests.annotated.testDoesntImplement
 {
-    [ImplementedBy(typeof(TestClassDoesntImplement))]
-    public interface TestInterfaceDoesntImplement { }
+	[ImplementedBy(typeof(TestClassDoesntImplement))]
+	public interface TestInterfaceDoesntImplement { }
 
-    public class TestClassDoesntImplement { }
+	public class TestClassDoesntImplement { }
 }
 
 namespace strange.unittests.annotated.testDoesntImplementTwo
 {
-    public interface TestInterfaceDoesntImplement { }
+	public interface TestInterfaceDoesntImplement { }
 
-    [Implements(typeof(TestInterfaceDoesntImplement))]
-    public class TestClassDoesntImplement { }
+	[Implements(typeof(TestInterfaceDoesntImplement))]
+	public class TestClassDoesntImplement { }
 }
 
 namespace strange.unittests.annotated.testCrossContextInterface
 {
-    public interface TestCrossContextInterface 
-    {
-        int Value { get; set; }
-    }
+	public interface TestCrossContextInterface 
+	{
+		int Value { get; set; }
+	}
 }
 namespace strange.unittests.annotated.testCrossContext
 {
-    [Implements(typeof(TestCrossContextInterface), InjectionBindingScope.CROSS_CONTEXT)]
-    public class TestConcreteCrossContextClass : TestCrossContextInterface
-    {
-        public TestConcreteCrossContextClass()
-        {
-            Value = 0;
-        }
-        public int Value { get; set; }
-    } 
+	[Implements(typeof(TestCrossContextInterface), InjectionBindingScope.CROSS_CONTEXT)]
+	public class TestConcreteCrossContextClass : TestCrossContextInterface
+	{
+		public TestConcreteCrossContextClass()
+		{
+			Value = 0;
+		}
+		public int Value { get; set; }
+	} 
 }
 
 namespace strange.unittests.annotated.testCrossOverride
 {
-    [Implements(typeof(TestCrossContextInterface))]
-    public class TestConcreteCrossContextClassOverride : TestCrossContextInterface
-    {
-        public TestConcreteCrossContextClassOverride()
-        {
-            Value = 1000;
-        }
-        public int Value { get; set; }
-    }
+	[Implements(typeof(TestCrossContextInterface))]
+	public class TestConcreteCrossContextClassOverride : TestCrossContextInterface
+	{
+		public TestConcreteCrossContextClassOverride()
+		{
+			Value = 1000;
+		}
+		public int Value { get; set; }
+	}
 }
 
 namespace strange.unittests.annotated.namespaceTest.one
 {
-    [Implements]
-    public class TestNamespaceOne {}
+	[Implements]
+	public class TestNamespaceOne {}
 }
 
 namespace strange.unittests.annotated.namespaceTest.two.far
 {
-    [Implements]
-    public class TestNamespaceTwo {}
+	[Implements]
+	public class TestNamespaceTwo {}
 }
 
 namespace strange.unittests.annotated.namespaceTest.three.even.farther
 {
-    [Implements]
-    public class TestNamespaceThree {}
+	[Implements]
+	public class TestNamespaceThree {}
 }
 
 namespace strange.unittests.annotated.multipleInterfaces
 {
 
-    public interface TestInterfaceOne {}
-    public interface TestInterfaceTwo { }
-    public interface TestInterfaceThree { }
+	public interface TestInterfaceOne {}
+	public interface TestInterfaceTwo { }
+	public interface TestInterfaceThree { }
 
-    [Implements(typeof(TestInterfaceOne))]
-    [Implements(typeof(TestInterfaceTwo))]
-    [Implements(typeof(TestInterfaceThree))]
-    public class TestMultipleImplementer : TestInterfaceOne, TestInterfaceTwo, TestInterfaceThree
-    {
-        
-    }
-    
+	[Implements(typeof(TestInterfaceOne))]
+	[Implements(typeof(TestInterfaceTwo))]
+	[Implements(typeof(TestInterfaceThree))]
+	public class TestMultipleImplementer : TestInterfaceOne, TestInterfaceTwo, TestInterfaceThree
+	{
+		
+	}
+	
 }
