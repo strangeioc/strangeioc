@@ -47,7 +47,7 @@ namespace strange.examples.myfirstproject
 		private void onScoreChange(IEvent evt)
 		{
 			//float score = (float)evt.data;
-			string score = (string)evt.Data;
+			string score = (string)evt.data;
 			view.updateScore(score);
 		}
 	}

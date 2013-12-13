@@ -57,7 +57,7 @@ namespace strange.examples.multiplecontexts.social
 		
 		private void onReward(IEvent evt)
 		{
-			view.setTest(evt.Data as string);
+			view.setTest(evt.data as string);
 		}
 	}
 }

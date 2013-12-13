@@ -56,13 +56,13 @@ namespace strange.examples.multiplecontexts.game
 		
 		private void onScoreChange(IEvent evt)
 		{
-			string score = SCORE_STRING + (int)evt.Data;
+			string score = SCORE_STRING + (int)evt.data;
 			view.updateScore(score);
 		}
 		
 		private void onLivesChange(IEvent evt)
 		{
-			string lives = LIVES_STRING + (int)evt.Data;
+			string lives = LIVES_STRING + (int)evt.data;
 			view.updateLives(lives);
 		}
 		

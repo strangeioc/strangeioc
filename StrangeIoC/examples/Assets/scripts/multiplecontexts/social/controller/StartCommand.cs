@@ -48,7 +48,7 @@ namespace strange.examples.multiplecontexts.social
 		private void onResponse(IEvent evt)
 		{
 			social.dispatcher.RemoveListener(SocialEvent.FULFILL_CURRENT_USER_REQUEST, onResponse);
-			UserVO vo = evt.Data as UserVO;
+			UserVO vo = evt.data as UserVO;
 			
 			//We're going to Bind this for injection, since we'll need it later when we compare
 			//the user's highscore with his own score and the highscore of others.

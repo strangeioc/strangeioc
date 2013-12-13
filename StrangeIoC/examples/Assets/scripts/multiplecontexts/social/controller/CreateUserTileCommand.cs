@@ -34,7 +34,7 @@ namespace strange.examples.multiplecontexts.social
 		
 		public override void Execute()
 		{
-			UserVO vo = evt.Data as UserVO;
+			UserVO vo = evt.data as UserVO;
 			
 			GameObject go = UnityEngine.Object.Instantiate(Resources.Load("GameTile")) as GameObject;
 			go.transform.parent = contextView.transform;

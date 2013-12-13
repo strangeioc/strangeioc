@@ -34,7 +34,7 @@ namespace strange.examples.multiplecontexts.main
 		
 		public override void Execute()
 		{
-			int score = (int)evt.Data;
+			int score = (int)evt.data;
 			
 			Debug.Log ("MAIN SCENE KNOWS THAT GAME IS OVER. Your score is: " + score);
 		}
