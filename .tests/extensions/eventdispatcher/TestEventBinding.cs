@@ -55,7 +55,7 @@ namespace strange.unittests
 
 		private void oneArgumentCallback(IEvent o)
 		{
-			confirmationValue *= (int)o.Data;
+			confirmationValue *= (int)o.data;
 		}
 
 
