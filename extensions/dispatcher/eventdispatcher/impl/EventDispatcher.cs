@@ -1,41 +1,41 @@
 /*
  * Copyright 2013 ThirdMotion, Inc.
  *
- *	Licensed under the Apache License, Version 2.0 (the "License");
- *	you may not use this file except in compliance with the License.
- *	You may obtain a copy of the License at
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
  *
- *		http://www.apache.org/licenses/LICENSE-2.0
+ *        http://www.apache.org/licenses/LICENSE-2.0
  *
- *		Unless required by applicable law or agreed to in writing, software
- *		distributed under the License is distributed on an "AS IS" BASIS,
- *		WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *		See the License for the specific language governing permissions and
- *		limitations under the License.
+ *        Unless required by applicable law or agreed to in writing, software
+ *        distributed under the License is distributed on an "AS IS" BASIS,
+ *        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *        See the License for the specific language governing permissions and
+ *        limitations under the License.
  */
 
 /**
- * @class strange.extensions.dispatcher.eventdispatcher.impl.EventDispatcher
- * 
- * A Dispatcher that uses IEvent to send messages.
- * 
- * Whenever the Dispatcher executes a `Dispatch()`, observers will be 
- * notified of any event (Key) for which they have registered.
- * 
- * EventDispatcher dispatches TmEvent : IEvent.
- * 
- * The EventDispatcher is the only Dispatcher currently released with Strange
- * (though by separating EventDispatcher from Dispatcher I'm obviously
- * signalling that I don't think it's the only possible one).
- * 
- * EventDispatcher is both an ITriggerProvider and an ITriggerable.
- * 
- * @see strange.extensions.dispatcher.eventdispatcher.api.IEvent
- * @see strange.extensions.dispatcher.api.ITriggerProvider
- * @see strange.extensions.dispatcher.api.ITriggerable
- */
+* @class strange.extensions.dispatcher.eventdispatcher.impl.EventDispatcher
+* 
+* A Dispatcher that uses IEvent to send messages.
+* 
+* Whenever the Dispatcher executes a `Dispatch()`, observers will be 
+* notified of any event (Key) for which they have registered.
+	* 
+	* EventDispatcher dispatches TmEvent : IEvent.
+	* 
+	* The EventDispatcher is the only Dispatcher currently released with Strange
+	* (though by separating EventDispatcher from Dispatcher I'm obviously
+		* signalling that I don't think it's the only possible one).
+	* 
+	* EventDispatcher is both an ITriggerProvider and an ITriggerable.
+	* 
+	* @see strange.extensions.dispatcher.eventdispatcher.api.IEvent
+	* @see strange.extensions.dispatcher.api.ITriggerProvider
+	* @see strange.extensions.dispatcher.api.ITriggerable
+	*/
 
-using System;
+	using System;
 using System.Collections.Generic;
 using strange.framework.api;
 using strange.framework.impl;
@@ -79,7 +79,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 		public void Dispatch (object eventType, object data)
 		{
 			//Scrub the data to make eventType and data conform if possible
-			data = conformDataToEvent (eventType, data);
+			IEvent evt = conformDataToEvent (eventType, data);
 
 			bool continueDispatch = true;
 			if (triggerClients != null)
@@ -87,7 +87,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 				isTriggeringClients = true;
 				foreach (ITriggerable trigger in triggerClients)
 				{
-					if (!trigger.Trigger(eventType, data))
+					if (!trigger.Trigger(eventType, evt))
 					{
 						continueDispatch = false;
 						break;
@@ -126,18 +126,23 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 
 				if (callback is EventCallback)
 				{
-					invokeEventCallback (data, callback as EventCallback);
+					invokeEventCallback (evt, callback as EventCallback);
 				}
 				else if (callback is EmptyCallback)
 				{
 					(callback as EmptyCallback)();
 				}
 			}
-			eventPool.ReturnInstance (data);
+
+			if (System.Object.ReferenceEquals(evt.target, this))
+			{
+				eventPool.ReturnInstance (evt);
+			}
 		}
 
-		virtual protected object conformDataToEvent(object eventType, object data)
+		virtual protected IEvent conformDataToEvent(object eventType, object data)
 		{
+			IEvent retv = null;
 			if (eventType == null)
 			{
 				throw new EventDispatcherException("Attempt to Dispatch to null.\ndata: " + data, EventDispatcherExceptionType.EVENT_KEY_NULL);
@@ -145,30 +150,29 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			else if (eventType is IEvent)
 			{
 				//Client provided a full-formed event
-				data = eventType;
-				eventType = (data as IEvent).type;
+				retv = (IEvent)eventType;
 			}
 			else if (data == null)
 			{
 				//Client provided just an event ID. Create an event for injection
-				data = createEvent (eventType, null);
+				retv = createEvent (eventType, null);
 			}
 			else if (data is IEvent)
 			{
 				//Client provided both an evertType and a full-formed IEvent
-				(data as IEvent).type = eventType;
+				retv = (IEvent)data;
 			}
 			else
 			{
 				//Client provided an eventType and some data which is not a IEvent.
-				data = createEvent (eventType, data);
+				retv = createEvent (eventType, data);
 			}
-			return data;
+			return retv;
 		}
 
-		virtual protected object createEvent(object eventType, object data)
+		virtual protected IEvent createEvent(object eventType, object data)
 		{
-			TmEvent retv = eventPool.GetInstance();
+			IEvent retv = eventPool.GetInstance();
 			retv.type = eventType;
 			retv.target = this;
 			retv.data = data;
@@ -331,7 +335,11 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 
 		public bool Trigger(object key, object data)
 		{
-			Dispatch(key, data);
+			bool allow = ((data is IEvent && System.Object.ReferenceEquals((data as IEvent).target, this) == false) ||
+				(key is IEvent && System.Object.ReferenceEquals((data as IEvent).target, this) == false));
+
+			if (allow)
+				Dispatch(key, data);
 			return true;
 		}
 	}

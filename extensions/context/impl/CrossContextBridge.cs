@@ -84,7 +84,6 @@ namespace strange.extensions.context.impl
 				eventsInProgress.Add (key);
 				crossContextDispatcher.Dispatch (key, data);
 				eventsInProgress.Remove (key);
-				return false;
 			}
 			return true;
 		}
