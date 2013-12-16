@@ -109,7 +109,7 @@ namespace strange.extensions.implicitBind.impl
 							if (impl.DefaultInterface != null)
 							{
 								//Verify this Type implements the passed interface
-								if (interfaces.Contains(impl.DefaultInterface))
+								if (interfaces.Contains(impl.DefaultInterface) || type == impl.DefaultInterface)
 								{
 									bindTypes.Add(impl.DefaultInterface);
 								}
