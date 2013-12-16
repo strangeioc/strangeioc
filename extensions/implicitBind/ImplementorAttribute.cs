@@ -28,26 +28,49 @@ using strange.extensions.injector.api;
                 Inherited = true)]
 public class Implements: Attribute
 {
+    /// <summary>
+    /// Concretely bind to own type
+    /// </summary>
     public Implements() {  }
-    public Implements(object name) { Name = name; }
+
+    /// <summary>
+    /// Concretely bind to own type and specify scope
+    /// </summary>
+    /// <param name="scope"></param>
+    public Implements(InjectionBindingScope scope) { Scope = scope; }
+
+    /// <summary>
+    /// Bind to an interface, specify the scope if necessary
+    /// </summary>
+    /// <param name="t">Interface to bind to</param>
+    /// <param name="scope">Single Context(default) or Cross Context.</param>
     public Implements(Type t, InjectionBindingScope scope = InjectionBindingScope.SINGLE_CONTEXT)
     {
         DefaultInterface = t;
         Scope = scope;
     }
 
-    public Implements(Type t, object name, InjectionBindingScope scope = InjectionBindingScope.SINGLE_CONTEXT)
-    {
-        DefaultInterface = t;
-        Name = name;
-        Scope = scope;
-    }
-    
-    public Implements(InjectionBindingScope scope) { Scope = scope; }
+    /// <summary>
+    /// Bind concretely, specifying a scope and object name
+    /// </summary>
+    /// <param name="scope"></param>
+    /// <param name="name"></param>
     public Implements(InjectionBindingScope scope, object name)
     {
         Scope = scope;
         Name = name;
+    }
+    /// <summary>
+    /// Bind to an interface, specifying a scope and object name
+    /// </summary>
+    /// <param name="t">Interface to bind to</param>
+    /// <param name="scope">Single Context or Cross Context</param>
+    /// <param name="name">Name to bind to</param>
+    public Implements(Type t, InjectionBindingScope scope, object name)
+    {
+        DefaultInterface = t;
+        Name = name;
+        Scope = scope;
     }
 	
 	public object Name {get; set;}
@@ -64,6 +87,11 @@ public class Implements: Attribute
                 Inherited = true)]
 public class ImplementedBy : Attribute
 {
+    /// <summary>
+    /// Bind this interface to a default type t
+    /// </summary>
+    /// <param name="t">Default Type</param>
+    /// <param name="scope">Single Context(default) or Cross Context</param>
     public ImplementedBy(Type t, InjectionBindingScope scope = InjectionBindingScope.SINGLE_CONTEXT)
     {
         DefaultType = t;
@@ -82,6 +110,10 @@ public class ImplementedBy : Attribute
                 Inherited = true)]
 public class MediatedBy : Attribute
 {
+    /// <summary>
+    /// Bind this view to a Mediator
+    /// </summary>
+    /// <param name="t">Mediator Type</param>
     public MediatedBy(Type t) { MediatorType = t; }
 
     public Type MediatorType { get; set; }
@@ -95,6 +127,10 @@ public class MediatedBy : Attribute
                 Inherited = true)]
 public class Mediates : Attribute
 {
+    /// <summary>
+    /// Bind this Mediator to a view
+    /// </summary>
+    /// <param name="t">View Type</param>
     public Mediates(Type t) { ViewType = t; }
 
     public Type ViewType { get; set; }
