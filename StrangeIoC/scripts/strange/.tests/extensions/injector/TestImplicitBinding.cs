@@ -328,7 +328,7 @@ namespace strange.unittests.annotated.testConcrete
 
 namespace strange.unittests.annotated.testConcreteNamed
 {
-	[Implements("NAME")]
+	[Implements(InjectionBindingScope.SINGLE_CONTEXT, "NAME")]
 	public class TestConcreteNamedClass { }
 }
 
