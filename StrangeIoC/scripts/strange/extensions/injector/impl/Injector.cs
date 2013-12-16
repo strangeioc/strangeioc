@@ -39,9 +39,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Reflection;
-using strange.framework.api;
 using strange.extensions.injector.api;
 using strange.extensions.reflector.api;
 
@@ -50,7 +48,7 @@ namespace strange.extensions.injector.impl
 	public class Injector : IInjector
 	{
 		private Dictionary<IInjectionBinding, int> infinityLock;
-	    private const int INFINITY_LIMIT = 10;
+		private const int INFINITY_LIMIT = 10;
 		
 		public Injector ()
 		{
@@ -89,36 +87,36 @@ namespace strange.extensions.injector.impl
 				retv = binding.value;
 			}
 
-		    if (retv == null) //If we don't have an existing value, go ahead and create one.
-		    {
-		        
-			IReflectedClass reflection = reflector.Get (reflectionType);
-
-			Type[] parameters = reflection.constructorParameters;
-			int aa = parameters.Length;
-			object[] args = new object [aa];
-			for (int a = 0; a < aa; a++)
+			if (retv == null) //If we don't have an existing value, go ahead and create one.
 			{
-				args [a] = getValueInjection (parameters[a] as Type, null, null);
-			}
-			retv = factory.Get (binding, args);
+				
+				IReflectedClass reflection = reflector.Get (reflectionType);
 
-                //If the InjectorFactory returns null, just return it. Otherwise inject the retv if it needs it
-                //This could happen if Activator.CreateInstance returns null
-			    if (retv != null) 
-			    {
-			if (binding.toInject)
-			{
-				retv = Inject (retv, false);
-			}
+				Type[] parameters = reflection.constructorParameters;
+				int aa = parameters.Length;
+				object[] args = new object [aa];
+				for (int a = 0; a < aa; a++)
+				{
+					args [a] = getValueInjection (parameters[a] as Type, null, null);
+				}
+				retv = factory.Get (binding, args);
 
-			if (binding.type == InjectionBindingType.SINGLETON || binding.type == InjectionBindingType.VALUE)
-			{
-				//prevent double-injection
-				binding.ToInject(false);
+					//If the InjectorFactory returns null, just return it. Otherwise inject the retv if it needs it
+					//This could happen if Activator.CreateInstance returns null
+				if (retv != null) 
+				{
+					if (binding.toInject)
+					{
+						retv = Inject (retv, false);
+					}
+
+					if (binding.type == InjectionBindingType.SINGLETON || binding.type == InjectionBindingType.VALUE)
+					{
+						//prevent double-injection
+						binding.ToInject(false);
+					}
+				}
 			}
-			    }
-		    }
 			infinityLock = null; //Clear our infinity lock so the next time we instantiate we don't consider this a circular dependency
 
 			return retv;
