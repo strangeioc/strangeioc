@@ -101,8 +101,8 @@ namespace strange.extensions.injector.impl
 				}
 				retv = factory.Get (binding, args);
 
-					//If the InjectorFactory returns null, just return it. Otherwise inject the retv if it needs it
-					//This could happen if Activator.CreateInstance returns null
+				//If the InjectorFactory returns null, just return it. Otherwise inject the retv if it needs it
+				//This could happen if Activator.CreateInstance returns null
 				if (retv != null) 
 				{
 					if (binding.toInject)
