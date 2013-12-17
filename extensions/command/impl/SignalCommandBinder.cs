@@ -102,10 +102,8 @@ namespace strange.extensions.command.impl
 		}
 
 		/// Create a Command and bind its injectable parameters to the Signal types
-		protected ICommand createCommandForSignal(object cmd, object data, List<Type> signalTypes)
+		protected ICommand createCommandForSignal(Type cmd, object data, List<Type> signalTypes)
 		{
-			injectionBinder.Bind<ICommand>().To(cmd);
-			ICommand command = null;
 			if (data != null)
 			{
 
@@ -151,19 +149,13 @@ namespace strange.extensions.command.impl
 							" in Command: " + cmd.GetType() + ". Only the first value of a type will be injected. You may want to place your values in a VO, instead.",
 							SignalExceptionType.COMMAND_VALUE_CONFLICT);
 					}
+				}
 			}
-			command = injectionBinder.GetInstance<ICommand>() as ICommand;
-			command.data = data; //Just to support swapping from EventCommand to SignalCommand more easily. No reason not to.
+			ICommand command = getCommand(cmd);
+			command.data = data;
 
 			foreach (Type typeToRemove in signalTypes) //clean up these bindings
 				injectionBinder.Unbind(typeToRemove);
-			}
-			else
-			{
-				command = injectionBinder.GetInstance<ICommand>() as ICommand;
-				command.data = data; //Just to support swapping from EventCommand to SignalCommand more easily. No reason not to.
-			}
-			injectionBinder.Unbind<ICommand>();
 			return command;
 		}
 
@@ -202,11 +194,11 @@ namespace strange.extensions.command.impl
 			}
 			base.Unbind(key, name);
 		}
-        public override ICommandBinding GetBinding<T>()
-        {
-            //This should be a signal, see Bind<T> above
-            T signal = (T)injectionBinder.GetInstance<T>();
-            return base.GetBinding(signal) as ICommandBinding;
-        }
+		public override ICommandBinding GetBinding<T>()
+		{
+			//This should be a signal, see Bind<T> above
+			T signal = (T)injectionBinder.GetInstance<T>();
+			return base.GetBinding(signal) as ICommandBinding;
+		}
 	}
 }
