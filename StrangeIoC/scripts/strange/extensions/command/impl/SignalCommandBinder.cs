@@ -106,7 +106,6 @@ namespace strange.extensions.command.impl
 		{
 			if (data != null)
 			{
-
 				object[] signalData = (object[])data;
 
 				//Iterate each signal type, in order. 
@@ -194,6 +193,7 @@ namespace strange.extensions.command.impl
 			}
 			base.Unbind(key, name);
 		}
+
 		public override ICommandBinding GetBinding<T>()
 		{
 			//This should be a signal, see Bind<T> above
