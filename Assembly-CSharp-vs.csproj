@@ -406,5 +406,7 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\TestImplicitBinding.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\MockContext.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\injector\api\InjectionBindingScope.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\signal\TestPooledSignalCommands.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithInjectionPlusSignalPayload.cs" />
   </ItemGroup>
 </Project>
