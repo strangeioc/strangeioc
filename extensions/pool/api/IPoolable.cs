@@ -41,6 +41,12 @@ namespace strange.extensions.pool.api
 		/// </summary>
 		/// Release methods should clean up the instance sufficiently to remove prior state.
 		void Restore ();
+
+		/// <summary>
+		/// Will this instance refuse to be released from the pool?
+		/// </summary>
+		/// <value><c>true</c> if retained; otherwise, <c>false</c>.</value>
+		bool retain { get; set; }
 	}
 }
 

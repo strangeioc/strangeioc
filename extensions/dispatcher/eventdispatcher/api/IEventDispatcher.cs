@@ -64,6 +64,9 @@ namespace strange.extensions.dispatcher.eventdispatcher.api
 
 		/// By passing true, an observer with exactly no arguments will be added to this Dispatcher
 		void UpdateListener(bool toAdd, object evt, EmptyCallback callback);
+
+		/// Allow a previously retained event to be returned to its pool
+		void ReleaseEvent(IEvent evt);
 	}
 }
 

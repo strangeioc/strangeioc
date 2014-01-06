@@ -234,6 +234,8 @@ namespace strange.extensions.pool.impl
 			size = 0;
 		}
 
+		public bool retain{ get; set; }
+
 		#endregion
 
 		/// <summary>

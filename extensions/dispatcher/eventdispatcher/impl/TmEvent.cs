@@ -59,6 +59,8 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			this.data = null;
 		}
 
+		public bool retain{ get; set; }
+
 		#endregion
 	}
 }

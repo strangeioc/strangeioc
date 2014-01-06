@@ -134,7 +134,16 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 				}
 			}
 
-			if (System.Object.ReferenceEquals(evt.target, this))
+			if (evt.type.Equals(InternalDispatcherEvent.RETURN_TO_POOL) && evt.data is IEvent)
+			{
+				IEvent retEvt = (IEvent) data;
+				if (System.Object.ReferenceEquals(retEvt.target, this))
+				{
+					eventPool.ReturnInstance (retEvt);
+				}
+			}
+
+			if (System.Object.ReferenceEquals(evt.target, this) && (evt as IPoolable).retain == false)
 			{
 				eventPool.ReturnInstance (evt);
 			}
@@ -341,6 +350,37 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			if (allow)
 				Dispatch(key, data);
 			return true;
+		}
+
+		public void ReleaseEvent(IEvent evt)
+		{
+			if (releaseEvent (evt) == false)
+			{
+				IEvent sendHomeEvt = createEvent(InternalDispatcherEvent.RETURN_TO_POOL, evt);
+				Dispatch (sendHomeEvt);
+			}
+		}
+
+		protected bool releaseEvent(IEvent evt)
+		{
+			bool retv = false;
+			if (evt.target == this)
+			{
+				retv = true;
+				eventPool.ReturnInstance (evt);
+			}
+			return retv;
+		}
+
+		protected bool cleanEvent(IEvent evt, IEventDispatcher target)
+		{
+			bool retv = false;
+			if (evt.target == target)
+			{
+				target.ReleaseEvent (evt);
+				retv = true;
+			}
+			return retv;
 		}
 	}
 
