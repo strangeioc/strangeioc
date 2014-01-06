@@ -74,12 +74,12 @@ namespace strange.extensions.command.impl
 			throw new CommandException ("You must override the Execute method in every Command", CommandExceptionType.EXECUTE_OVERRIDE);
 		}
 
-		public void Retain()
+		public virtual void Retain()
 		{
 			_retained = true;
 		}
 
-		public void Release()
+		public virtual void Release()
 		{
 			_retained = false;
 			if (commandBinder != null)
@@ -113,6 +113,10 @@ namespace strange.extensions.command.impl
 			get
 			{
 				return _retained;
+			}
+			set
+			{
+				_retained = value;
 			}
 		}
 	}

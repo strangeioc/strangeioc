@@ -347,6 +347,8 @@ namespace strange.unittests
 		{
 			someValue = 0;
 		}
+
+		public bool retain { get; set; }
 	}
 
 	class TestInstanceProvider : IInstanceProvider

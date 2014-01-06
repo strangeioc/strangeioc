@@ -390,6 +390,8 @@ namespace strange.unittests
 		{
 			throw new NotImplementedException ();
 		}
+
+		public bool retain{ get; set; }
 	}
 
 	interface IUsesPool

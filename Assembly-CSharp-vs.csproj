@@ -408,5 +408,6 @@
     <Compile Include="StrangeIoC\scripts\strange\extensions\injector\api\InjectionBindingScope.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\signal\TestPooledSignalCommands.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithInjectionPlusSignalPayload.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\api\InternalDispatcherEvent.cs" />
   </ItemGroup>
 </Project>
