@@ -53,12 +53,16 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 		protected HashSet<ITriggerable> triggerClientRemovals;
 		protected bool isTriggeringClients;
 
-		protected IPool<TmEvent> eventPool;
+		/// The eventPool is shared across all EventDispatchers for efficiency
+		protected static IPool<TmEvent> eventPool;
 
 		public EventDispatcher ()
 		{
-			eventPool = new Pool<TmEvent> ();
-			eventPool.instanceProvider = new EventInstanceProvider ();
+			if (eventPool == null)
+			{
+				eventPool = new Pool<TmEvent> ();
+				eventPool.instanceProvider = new EventInstanceProvider ();
+			}
 		}
 
 		override public IBinding GetRawBinding()
@@ -134,18 +138,9 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 				}
 			}
 
-			if (evt.type.Equals(InternalDispatcherEvent.RETURN_TO_POOL) && evt.data is IEvent)
-			{
-				IEvent retEvt = (IEvent) data;
-				if (System.Object.ReferenceEquals(retEvt.target, this))
-				{
-					eventPool.ReturnInstance (retEvt);
-				}
-			}
-
 			if (System.Object.ReferenceEquals(evt.target, this) && (evt as IPoolable).retain == false)
 			{
-				eventPool.ReturnInstance (evt);
+				ReleaseEvent (evt);
 			}
 		}
 
@@ -354,33 +349,18 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 
 		public void ReleaseEvent(IEvent evt)
 		{
-			if (releaseEvent (evt) == false)
+			if ((evt as IPoolable).retain == false)
 			{
-				IEvent sendHomeEvt = createEvent(InternalDispatcherEvent.RETURN_TO_POOL, evt);
-				Dispatch (sendHomeEvt);
-			}
-		}
-
-		protected bool releaseEvent(IEvent evt)
-		{
-			bool retv = false;
-			if (evt.target == this)
-			{
-				retv = true;
+				cleanEvent (evt);
 				eventPool.ReturnInstance (evt);
 			}
-			return retv;
 		}
 
-		protected bool cleanEvent(IEvent evt, IEventDispatcher target)
+		protected void cleanEvent(IEvent evt)
 		{
-			bool retv = false;
-			if (evt.target == target)
-			{
-				target.ReleaseEvent (evt);
-				retv = true;
-			}
-			return retv;
+			evt.target = null;
+			evt.data = null;
+			evt.type = null;
 		}
 	}
 

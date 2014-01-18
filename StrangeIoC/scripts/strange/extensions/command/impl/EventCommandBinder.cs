@@ -23,6 +23,7 @@
 using System;
 using strange.extensions.command.api;
 using strange.extensions.dispatcher.eventdispatcher.api;
+using strange.extensions.pool.api;
 
 namespace strange.extensions.command.impl
 {
@@ -61,6 +62,14 @@ namespace strange.extensions.command.impl
 			}
 			injectionBinder.Unbind<ICommand> ();
 			return command;
+		}
+
+		override protected void disposeOfSequencedData(object data)
+		{
+			if (data is IPoolable)
+			{
+				(data as IPoolable).retain = false;
+			}
 		}
 	}
 }
