@@ -619,9 +619,9 @@ Signal&lt;int, int&gt; twoIntSignal = new Signal&lt;int, int&gt;();
 commandBinder.Bind(twoIntSignal).To&lt;SomeCommand&gt;();</pre>
 <p>Once again, this you can work around this limitation by mapping ValueObjects instead.</p>
 <p>The second caveat: Strange has a handy-dandy, built-in START event for kicking things off. Unbinding the EventDispatcher turns this off. It is therefore the recommended practice to override your Context's Launch method with a custom StartSignal, like so:</p>
-<pre>override public IContext Launch()
+<pre>override public void Launch()
 <span class="prettyprint"></span>{
-<span class="prettyprint"></span><span class="prettyprint">	</span>base.Start();
+<span class="prettyprint"></span><span class="prettyprint">	</span>base.Launch();
 <span class="prettyprint">	</span>//Make sure you've mapped this to a StartCommand!
 <span class="prettyprint"></span><span class="prettyprint">	</span>StartSignal startSignal= (StartSignal)injectionBinder.GetInstance<StartSignal>&lt;StartSignal&gt;();
 <span class="prettyprint"></span><span class="prettyprint">	</span>startSignal.Dispatch();<span class="prettyprint"></span>
