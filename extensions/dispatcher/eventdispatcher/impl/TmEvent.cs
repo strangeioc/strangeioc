@@ -38,6 +38,8 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 		public IEventDispatcher target{ get; set; }
 		public object data{ get; set; }
 
+		private bool _retain;
+
 		public TmEvent()
 		{
 		}
@@ -59,7 +61,20 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			this.data = null;
 		}
 
-		public bool retain{ get; set; }
+		public bool retain{ 
+			get
+			{
+				return _retain;
+			}
+			set
+			{
+				_retain = value;
+				if (!retain)
+				{
+					target.ReleaseEvent (this);
+				}
+			}
+		}
 
 		#endregion
 	}

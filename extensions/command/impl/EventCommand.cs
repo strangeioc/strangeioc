@@ -47,8 +47,6 @@ namespace strange.extensions.command.impl
 
 		public override void Release ()
 		{
-			(evt as IPoolable).retain = false;
-			dispatcher.ReleaseEvent (evt);
 			base.Release ();
 		}
 	}

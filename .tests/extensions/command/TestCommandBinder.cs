@@ -5,10 +5,7 @@ using strange.extensions.command.api;
 using strange.extensions.command.impl;
 using strange.extensions.injector.api;
 using strange.extensions.injector.impl;
-
-using strange.framework.impl;
 using strange.framework.api;
-
 
 namespace strange.unittests
 {
@@ -145,6 +142,7 @@ namespace strange.unittests
 			ISimpleInterface instance = injectionBinder.GetInstance<ISimpleInterface>() as ISimpleInterface;
 			Assert.AreEqual (100, instance.intValue);
 		}
+
 
 		//TODO: figure out how to do async tests
 		/*
