@@ -42,11 +42,11 @@
  <h1>Glossary</h1>
 
  <p>These are  terms that  every engineer working with  StrangeIoC should understand. None of these is peculiar to Strange...they're just general-purpose engineering terms with which you're probably already familiar. But if perchance you run across a term in the docs that you don't know, check here. If you want to go deeper, they're all defined in more detail on Wikipedia.</p>
- <p>I've also made note wherever  we perhaps play a little loosely with that term in StrangeIoC.</p>
+ <p>I've also made note wherever  we perhaps play a little loosely with a term in StrangeIoC.</p>
  <div id="mvc">
    <h2>MVC / MVCS</h2>
  </div>
- <p>Model-View-Controller (MVC) or Model-View-Controller-Servce (MVCS) is a design pattern for implementing user-facing applications. It breaks the application into 3 (or 4) distinct areas: (1)  <em>Models</em> hold application state; (2)  <em>Controllers</em> handle logic; (3)  <em>Views</em> represent everything you see, hear or interact with; and (4)  Services handle anything outside the application (such as communications with a device or the Web).</p>
+ <p>Model-View-Controller (MVC) or Model-View-Controller-Servce (MVCS) is a <a href="#design_pattern">design pattern</a> for implementing user-facing applications. It breaks the application into 3 (or 4) distinct areas: (1)  <em>Models</em> hold application state; (2)  <em>Controllers</em> handle logic; (3)  <em>Views</em> represent everything you see, hear or interact with; and (4)  <em>Services</em> handle anything outside the application (such as communications with a device or the Web).</p>
  <p>In Strange, we recommend using the MVCSContext as a way of setting up the overall application, while the main game  operates within Unity's entity-based Update loop.</p>
  <p><a href="http://en.wikipedia.org/wiki/Model_view_controller">MVC - Wikipedia</a></p>
  <div id="command_pattern">
@@ -63,6 +63,7 @@
    <h2>Controller</h2>
  </div>
  <p>Controller is the 'C' in MVC / MVCS. Controllers send instructions around the application and perform logic. Essentially, Controllers manipulate Models and Services, and return information to Views.</p>
+ <p>Most Controller code in Strange is handled in <a href="#command_pattern">Commands</a>.</p>
  <p><a href="http://en.wikipedia.org/wiki/Model–view–controller">MVC - Wikipedia</a></p>
  <div id="coupling">
    <h2>Coupling</h2>
@@ -83,7 +84,7 @@
  </div>
  <p>Design patterns are a general concept in programming that relates to common problems with well-understood solutions. The patterns are given names which allow engineers to discuss a complex problem and the proposed solution with a simple word or phrase (therefore &quot;Adapter&quot; or &quot;Facade&quot; rather than &quot;this class doesn't conform to our needs quite the way we want to use it, so we'll write a class that includes an instance of the original class, altering and/or combining that class's methods to conform with what we really want&quot;).</p>
  <p>Not every pattern is considered 'good'. Most patterns do a good job of solving a problem, but many solve one problem while creating another (sometimes called an 'anti-pattern').</p>
- <p>All engineers should understand the principle of design patterns as they relate to their own discipline. For example, there are many common design patterns in object-oriented application and game design. In Strange, we talk a lot about specific patterns, including: MVCS, Service Locator, Factory, Command, Singleton, and Observer. Each of these patterns is described briefly in this glossary. For a fuller description or these and other patterns, check Wikipedia.</p>
+ <p>All engineers should understand the principle of design patterns as they relate to their own discipline. For example, there are many common design patterns in object-oriented application and game design. In Strange, we talk a lot about specific patterns, including: MVCS, Service Locator, Factory, Command, Singleton, and Observer. Each of these patterns is described briefly in this glossary. For a fuller description of these and other patterns, check Wikipedia.</p>
  <p><a href="http://en.wikipedia.org/wiki/Design_pattern">Design Pattern - Wikipedia</a></p>
  <div id="entity">
    <h2>Entity / Entity System</h2>
@@ -94,7 +95,7 @@
  <div id="factory_pattern">
    <h2>Factory Pattern</h2>
  </div>
- <p>The Factory is a design pattern that allows a client class to call on a third-party class (the 'factory') to provide instances of some other class. The factory can be fed with particulars that allow it to return any of one or more concrete instances.</p>
+ <p>The Factory is a design pattern that allows a client class to call on a third-party class (the 'factory') to provide instances of some other class. The factory can be fed with particulars that allow it to return any of one or more concrete instances. For example, by Gamefield class needs a new Enemy. I can hand the Factory some details and it can spit me out something that satisfies an IEnemy interface. This allows Gamefield to have dependencies only on IEnemy and the Factory, rather than know anything about the many Enemy subclasses (Minion, Predator, Boss) that might populate the game.</p>
  <p>In Strange, the Factory pattern is mostly managed through the Injector: you bind an Interface to the concrete class and anyone injecting will receive it.</p>
  <p>If your factory  requires more logic than just identifying the interface, however, it may be useful to think in terms of Factory Commands. See <a href="#command_pattern">Command Pattern</a> above for details, and imagine that the logic for deciding what instance will be generated will live inside the Command.</p>
  <p><a href="http://en.wikipedia.org/wiki/Factory_pattern">Factory Method Pattern - Wikipedia</a></p>
@@ -151,7 +152,7 @@ class FacebookService : ISocialService
  <div id="polymorphism">
    <h2>Polymorphism</h2>
  </div>
- <p>From the Greek meaning &quot;many shapes&quot;, polymorphism refers to the ability of a class to represent more than one type of Interface. Some languages support multiple inheritance. In languages that only support single inheritance, like C#, polymorphism is achieved by implementing multiple interfaces.</p>
+ <p>From the Greek meaning &quot;many shapes&quot;, polymorphism refers to the ability of a class to represent more than one type of class or Interface. Some languages support multiple inheritance. In languages that only support single inheritance, like C#, polymorphism is achieved by implementing multiple interfaces.</p>
  <p>For example, I can have a class like this:</p>
  <pre class="prettyprint">class Spaceship : IVehicle, IWeapon
 {
@@ -159,6 +160,12 @@ class FacebookService : ISocialService
 } </pre>
  <p>The Spaceship above is polymorphic because at any given moment it can represent  either a vehicle or a weapon. This allows extra flexibility and decoupling when writing code that interacts with the Spaceship.</p>
  <p><a href="http://en.wikipedia.org/wiki/Polymorphism_(computer_science)">Polymorphism - Wikipedia</a></p>
+ <div id="pools">
+   <h2>Pools / Pooling</h2>
+ </div>
+ <p>Pools are a design implementation for adding efficiency to a programming runtime. Instead of creating/destroying objects as an application requires them, a pool handles created objects and recycles them. Object creation can be expensive in terms of both memory use and performance. Object pooling can minimize these negative effects.</p>
+ <p>In Strange v0.7 we added an object pooling feature. Mostly this was added for internal efficiency, but a happy side-effect is that the pooling mechanism is available to you for whatever use you may have.</p>
+ <p><a href="http://en.wikipedia.org/wiki/Object_pool_pattern">Object Pool Pattern - Wikipedia</a></p>
  <div id="service">
    <h2>Service</h2>
  </div>
@@ -170,7 +177,7 @@ class FacebookService : ISocialService
    <h2>Service Locator Pattern</h2>
  </div>
  <p>(No relation to Service, described above)</p>
- <p>This design pattern allows one class to locate another class via a central registry. In Strange, the central registry is the Injector. When a class injects the interface/superclass or class associated with the desired injection, the Injector &quot;locates the service&quot; to provide runtime coupling. This avoids direct coupling and thereby makes code more flexible.</p>
+ <p>This design pattern allows one class to locate another class via a central registry. In Strange, the central registry is the Injector. When a class injects the interface, superclass or concrete class associated with the desired injection, the Injector &quot;locates the service&quot; to provide runtime coupling. This avoids direct coupling and thereby makes code more flexible.</p>
  <p><a href="http://en.wikipedia.org/wiki/Service_locator_pattern">Service Locator Pattern - Wikipedia</a></p>
  <div id="singleton">
    <h2>Singleton Pattern</h2>
@@ -179,7 +186,7 @@ class FacebookService : ISocialService
  <pre class="prettyprint">MySingleton.Get().DoAThing();</pre>
  <p>...creates dependency coupling that make refactoring complicated.</p>
  <p>In Strange, instead of writing a Singleton, we map a Singleton. This means that neither the class that is the Singleton, nor the class that consumes it knows it's intended to be used that way. This gives us the 'service locator' advantage of a simple MySingleton.Get() without the concrete dependency of the specific class.</p>
- <p>One thing Strange doesn't give you (that the Singleton pattern does) is 'Singleton enforcement'. Enforcement is the part of the pattern that armors the Singleton to ensure that no one can ever get more than one. We look at this as a good thing. Just because a class was first assumed to be a Singleton (as with a Player class) doesn't mean it will never want to be reused differently (as when your game becomes multiplayer). Indeed, Strange gives us the capability using named instances to have multiple so-called Singletons.</p>
+ <p>One thing Strange doesn't give you (that the Singleton pattern does) is 'Singleton enforcement'. Enforcement is the part of the pattern that armors the Singleton to ensure that no one can ever get more than one. We look at this as a good thing. Just because a class was first assumed to be a Singleton (as with a Player class) doesn't mean it will never want to be reused differently (as when your game becomes multiplayer). Indeed, Strange gives us the capability to use named instances to have multiple so-called Singletons.</p>
  <p><a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton Pattern - Wikipedia</a></p>
  <div id="view">
    <h2>View</h2>
