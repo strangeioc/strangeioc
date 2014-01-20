@@ -59,7 +59,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ProjectExtensions xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ProjectExtensions >
     <MonoDevelop>
       <Properties>
         <Policies>
