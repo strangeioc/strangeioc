@@ -59,6 +59,7 @@ using strange.extensions.injector.api;
 using strange.extensions.pool.impl;
 using strange.framework.api;
 using strange.framework.impl;
+using strange.extensions.pool.api;
 
 namespace strange.extensions.command.impl
 {
@@ -92,6 +93,10 @@ namespace strange.extensions.command.impl
 		
 		virtual public void ReactTo(object trigger, object data)
 		{
+			if (data is IPoolable)
+			{
+				(data as IPoolable).Retain ();
+			}
 			ICommandBinding binding = GetBinding (trigger) as ICommandBinding;
 			if (binding != null)
 			{

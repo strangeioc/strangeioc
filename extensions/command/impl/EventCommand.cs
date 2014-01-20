@@ -41,7 +41,6 @@ namespace strange.extensions.command.impl
 
 		public override void Retain ()
 		{
-			(evt as IPoolable).retain = true;
 			base.Retain ();
 		}
 

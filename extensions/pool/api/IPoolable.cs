@@ -37,16 +37,27 @@ namespace strange.extensions.pool.api
 	public interface IPoolable
 	{
 		/// <summary>
-		/// Release this instance back to the pool.
+		/// Clean up this instance for reuse.
 		/// </summary>
-		/// Release methods should clean up the instance sufficiently to remove prior state.
+		/// Restore methods should clean up the instance sufficiently to remove prior state.
 		void Restore ();
 
 		/// <summary>
-		/// Will this instance refuse to be released from the pool?
+		/// Keep this instance from being returned to the pool 
+		/// </summary>
+		void Retain ();
+
+		/// <summary>
+		/// Release this instance back to the pool.
+		/// </summary>
+		/// Release methods should clean up the instance sufficiently to remove prior state.
+		void Release();
+
+		/// <summary>
+		/// Is this instance retained?
 		/// </summary>
 		/// <value><c>true</c> if retained; otherwise, <c>false</c>.</value>
-		bool retain { get; set; }
+		bool retain { get; }
 	}
 }
 

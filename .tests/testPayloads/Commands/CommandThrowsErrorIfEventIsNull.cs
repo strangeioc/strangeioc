@@ -7,6 +7,8 @@ namespace strange.unittests
 	{
 		public static int timesExecuted = 0;
 
+		public static int result;
+
 		public override void Execute ()
 		{
 			if (evt == null)
@@ -14,7 +16,9 @@ namespace strange.unittests
 				throw new Exception ("CommandThrowsErrorIfEventIsNull had a null event");
 			}
 			timesExecuted++;
-			System.Console.WriteLine ("Execute: " + timesExecuted);
+
+			int evtData = (int) evt.data;
+			result = evtData * 2;
 		}
 	}
 }
