@@ -38,7 +38,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 		public IEventDispatcher target{ get; set; }
 		public object data{ get; set; }
 
-		private bool _retain;
+		protected int retainCount;
 
 		public TmEvent()
 		{
@@ -61,18 +61,26 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			this.data = null;
 		}
 
+		public void Retain()
+		{
+			retainCount++;
+			System.Console.WriteLine ("Retain: " + retainCount);
+		}
+
+		public void Release()
+		{
+			retainCount--;
+			System.Console.WriteLine ("Release: " + retainCount);
+			if (retainCount == 0)
+			{
+				target.ReleaseEvent (this);
+			}
+		}
+
 		public bool retain{ 
 			get
 			{
-				return _retain;
-			}
-			set
-			{
-				_retain = value;
-				if (!retain)
-				{
-					target.ReleaseEvent (this);
-				}
+				return retainCount > 0;
 			}
 		}
 

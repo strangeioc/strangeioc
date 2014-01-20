@@ -234,6 +234,17 @@ namespace strange.extensions.pool.impl
 			size = 0;
 		}
 
+		public void Retain()
+		{
+			retain = true;
+		}
+
+		public void Release()
+		{
+			retain = false;
+		}
+
+
 		public bool retain{ get; set; }
 
 		#endregion

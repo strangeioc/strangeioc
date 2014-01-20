@@ -68,7 +68,7 @@ namespace strange.extensions.command.impl
 		{
 			if (data is IPoolable)
 			{
-				(data as IPoolable).retain = false;
+				(data as IPoolable).Release();
 			}
 		}
 	}

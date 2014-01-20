@@ -16,9 +16,13 @@ namespace strange.unittests
 		CrossContext ChildOne;
 		CrossContext ChildTwo;
 
+		private int testValue;
+
 		[SetUp]
 		public void SetUp()
 		{
+			testValue = 0;
+
 			Context.firstContext = null;
 			view = new object();
 			Parent = new CrossContextTestClass(view, true);
@@ -52,14 +56,20 @@ namespace strange.unittests
 			IEventDispatcher childDispatcher = ChildOne.injectionBinder.GetInstance<IEventDispatcher> (ContextKeys.CONTEXT_DISPATCHER) as IEventDispatcher;
 			childDispatcher.AddListener (SomeEnum.ONE, testCallback);
 
-			TestDelegate testDelegate = delegate() {
-				parentDispatcher.Dispatch (SomeEnum.ONE);
-			};
+			int sentValue1 = 42;
+			int sentValue2 = 43;
 
-			Assert.Throws<CCBTestPassedException> (testDelegate);
+			parentDispatcher.Dispatch (SomeEnum.ONE, sentValue1);
+			Assert.AreEqual (sentValue1, testValue);
 
 			Parent.crossContextBridge.Unbind (SomeEnum.ONE);
-			Assert.DoesNotThrow (testDelegate);
+
+			parentDispatcher.Dispatch (SomeEnum.ONE, sentValue2);
+			Assert.AreEqual (sentValue1, testValue);	//didn't change
+
+			//Unit-test wise, this is a bit of a cheat, but it assures me that
+			//all Events are returned to the EventDispatcher pool
+			Assert.AreEqual (0, EventDispatcher.eventPool.instanceCount - EventDispatcher.eventPool.available);
 		}
 
 		[Test]
@@ -71,14 +81,20 @@ namespace strange.unittests
 			IEventDispatcher parentDispatcher = Parent.injectionBinder.GetInstance<IEventDispatcher> (ContextKeys.CONTEXT_DISPATCHER) as IEventDispatcher;
 			parentDispatcher.AddListener (SomeEnum.ONE, testCallback);
 
-			TestDelegate testDelegate = delegate() {
-				childDispatcher.Dispatch (SomeEnum.ONE);
-			};
+			int sentValue1 = 42;
+			int sentValue2 = 43;
 
-			Assert.Throws<CCBTestPassedException> (testDelegate);
+			childDispatcher.Dispatch (SomeEnum.ONE, sentValue1);
+			Assert.AreEqual (sentValue1, testValue);
 
 			ChildOne.crossContextBridge.Unbind (SomeEnum.ONE);
-			Assert.DoesNotThrow (testDelegate);
+
+			childDispatcher.Dispatch (SomeEnum.ONE, sentValue2);
+			Assert.AreEqual (sentValue1, testValue);
+
+			//Unit-test wise, this is a bit of a cheat, but it assures me that
+			//all Events are returned to the EventDispatcher pool
+			Assert.AreEqual (0, EventDispatcher.eventPool.instanceCount - EventDispatcher.eventPool.available);
 		}
 
 		[Test]
@@ -90,25 +106,26 @@ namespace strange.unittests
 			IEventDispatcher childTwoDispatcher = ChildTwo.injectionBinder.GetInstance<IEventDispatcher> (ContextKeys.CONTEXT_DISPATCHER) as IEventDispatcher;
 			childTwoDispatcher.AddListener (SomeEnum.ONE, testCallback);
 
-			TestDelegate testDelegate = delegate() {
-				childOneDispatcher.Dispatch (SomeEnum.ONE);
-			};
+			int sentValue1 = 42;
+			int sentValue2 = 43;
 
-			Assert.Throws<CCBTestPassedException> (testDelegate);
+			childOneDispatcher.Dispatch (SomeEnum.ONE, sentValue1);
+			Assert.AreEqual (sentValue1, testValue);
 
 			ChildOne.crossContextBridge.Unbind (SomeEnum.ONE);	//...unbinding in another
-			Assert.DoesNotThrow (testDelegate);
+
+			childOneDispatcher.Dispatch (SomeEnum.ONE, sentValue2);
+			Assert.AreEqual (sentValue1, testValue);
+
+			//Unit-test wise, this is a bit of a cheat, but it assures me that
+			//all Events are returned to the EventDispatcher pool
+			Assert.AreEqual (0, EventDispatcher.eventPool.instanceCount - EventDispatcher.eventPool.available);
 		}
 
-		private void testCallback()
+		private void testCallback(IEvent evt)
 		{
-			throw new CCBTestPassedException ("Test Passed");
+			testValue = (int) evt.data;
 		}
-	}
-
-	class CCBTestPassedException : Exception
-	{
-		public CCBTestPassedException(string str) : base(str) { }
 	}
 
 	class CrossContextTestClass : CrossContext

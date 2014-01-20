@@ -348,6 +348,14 @@ namespace strange.unittests
 			someValue = 0;
 		}
 
+		public void Retain()
+		{
+		}
+
+		public void Release()
+		{
+		}
+
 		public bool retain { get; set; }
 	}
 

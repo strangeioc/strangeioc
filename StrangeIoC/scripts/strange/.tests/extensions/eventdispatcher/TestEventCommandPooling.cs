@@ -22,6 +22,9 @@ namespace strange.unittests
 		[SetUp]
 		public void SetUp()
 		{
+			CommandThrowsErrorIfEventIsNull.result = 0;
+			CommandThrowsErrorIfEventIsNull.timesExecuted = 0;
+
 			injectionBinder = new InjectionBinder();
 			injectionBinder.Bind<IInjectionBinder> ().Bind<IInstanceProvider> ().ToValue (injectionBinder);
 			injectionBinder.Bind<ICommandBinder> ().To<EventCommandBinder> ().ToSingleton ();
@@ -38,9 +41,15 @@ namespace strange.unittests
 		public void TestEventPoolingInCommandSequence()
 		{
 			commandBinder.Bind(SomeEnum.ONE).To<CommandThrowsErrorIfEventIsNull>().To<CommandThrowsErrorIfEventIsNull2>().To<CommandThrowsErrorIfEventIsNull3>().InSequence();
-			dispatcher.Dispatch (SomeEnum.ONE);
+			dispatcher.Dispatch (SomeEnum.ONE, 100);
 
 			Assert.AreEqual (3, CommandThrowsErrorIfEventIsNull.timesExecuted);
+			Assert.AreEqual (100 * 2, CommandThrowsErrorIfEventIsNull.result);
+
+			//Events should have been returned to pool
+			int itemsDedicated = EventDispatcher.eventPool.instanceCount - EventDispatcher.eventPool.available;
+
+			Assert.AreEqual (0, itemsDedicated);
 		}
 	}
 }
