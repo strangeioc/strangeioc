@@ -182,6 +182,7 @@ namespace strange.extensions.implicitBind.impl
 			//Therefore, ImplementedBy will be overriden by an Implements to that interface.
 
 			IInjectionBinding binding = injectionBinder.Bind(toBind.BindTypes.First());
+			binding.Weak();//SDM2014-0120: added as part of cross-context implicit binding fix (moved from below)
 
 			for (int i = 1; i < toBind.BindTypes.Count; i++)
 			{
@@ -195,7 +196,8 @@ namespace strange.extensions.implicitBind.impl
 
 			if (toBind.IsCrossContext) //Bind this to the cross context injector
 				binding.CrossContext();
-			binding.Weak();
+
+			//binding.Weak();//SDM2014-0120: removed as part of cross-context implicit binding fix (moved up higher)
 		}
 
 		private sealed class ImplicitBindingVO

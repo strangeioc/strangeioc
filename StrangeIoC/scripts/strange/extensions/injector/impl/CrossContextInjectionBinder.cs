@@ -37,10 +37,25 @@ namespace strange.extensions.injector.impl
 		{
 		}
 
+		//SDM2014-0120: this function was already here, but the 2 overloads below were added as part of the cross-context implicit binding fix (thus this function was the clue to what
 		public override IInjectionBinding GetBinding<T>()
 		{
 			return GetBinding(typeof(T), null);
 		}
+
+
+		//SDM2014-0120: added as part of cross-Context implicit binding fix
+		public override IInjectionBinding GetBinding<T>(object name)//without this override Binder.GetBinding(object,object) gets called instead of CrossContextInjectionBinder.GetBind
+		{
+			return GetBinding(typeof(T), name);
+		}
+
+		//SDM2014-0120: added as part of cross-Context implicit binding fix
+		public override IInjectionBinding GetBinding(object key)//without this override Binder.GetBinding(object,object) gets called instead of CrossContextInjectionBinder.GetBinding(
+		{
+			return GetBinding(key,null);
+		}
+
 
 		public override IInjectionBinding GetBinding(object key, object name)
 		{
@@ -48,9 +63,9 @@ namespace strange.extensions.injector.impl
 			if (binding == null) //Attempt to get this from the cross context. Cross context is always SECOND PRIORITY. Local injections always override
 			{
 				if (CrossContextBinder != null)
-			{
-				binding = CrossContextBinder.GetBinding(key, name) as IInjectionBinding;
-			}
+				{
+					binding = CrossContextBinder.GetBinding(key, name) as IInjectionBinding;
+				}
 			}
 			return binding;
 		}
