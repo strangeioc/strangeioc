@@ -82,7 +82,7 @@ namespace strange.extensions.mediation.impl
 			Component[] views = mono.GetComponentsInChildren(typeof(IView), true) as Component[];
 			
 			int aa = views.Length;
-			for (int a = 0; a < aa; a++)
+			for (int a = aa - 1; a > -1; a--)
 			{
 				IView iView = views[a] as IView;
 				if (iView != null)
