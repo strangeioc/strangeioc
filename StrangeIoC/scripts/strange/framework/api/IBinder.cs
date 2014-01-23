@@ -98,6 +98,9 @@ namespace strange.framework.api
 		/// Conflicts in the course of fluent binding are expected, but GetBinding
 		/// will throw an error if there are any unresolved conflicts.
 		void ResolveBinding(IBinding binding, object key);
+
+		// PRC: Added to do binding inheritance.
+		void SetParent(IBinder parent);
 	}
 }
 

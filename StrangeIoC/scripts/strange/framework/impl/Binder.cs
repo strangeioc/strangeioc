@@ -39,6 +39,14 @@ namespace strange.framework.impl
 {
 	public class Binder : IBinder
 	{
+#if STRANGE_DEBUG
+		public int id;
+		private static int _nextId = 1;
+#endif
+		
+		// Parent binder: allows us to "inherit" bindings to an extent.
+		protected IBinder _parentBinder;
+		
 		/// Dictionary of all bindings
 		/// Two-layer keys. First key to individual Binding keys,
 		/// then to Binding names. (This wouldn't be required if
@@ -52,8 +60,17 @@ namespace strange.framework.impl
 
 		public Binder ()
 		{
+#if STRANGE_DEBUG
+			id = _nextId++;
+#endif
+			
 			bindings = new Dictionary <object, Dictionary<object, IBinding>> ();
 			conflicts = new Dictionary <object, Dictionary<IBinding, object>> ();
+		}
+				
+		virtual public void SetParent(IBinder parent)
+		{
+			_parentBinder = parent;
 		}
 
 		virtual public IBinding Bind<T>()
@@ -65,6 +82,9 @@ namespace strange.framework.impl
 		{
 			IBinding binding;
 			binding = GetRawBinding ();
+#if STRANGE_DEBUG
+			((Binding) binding).binder = this;
+#endif
 			binding.Key(key);
 			return binding;
 		}
@@ -109,6 +129,10 @@ namespace strange.framework.impl
 				{
 					return dict [name];
 				}
+			}
+			else if (null != _parentBinder)
+			{
+				return _parentBinder.GetBinding(key, name);
 			}
 			return null;
 		}
