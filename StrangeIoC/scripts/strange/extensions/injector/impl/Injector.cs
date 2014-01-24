@@ -44,6 +44,7 @@ using System.Reflection;
 using strange.framework.api;
 using strange.extensions.injector.api;
 using strange.extensions.reflector.api;
+using strange.framework.impl;
 
 namespace strange.extensions.injector.impl
 {
@@ -91,12 +92,16 @@ namespace strange.extensions.injector.impl
 			}
 			else if (binding.toInject)
 			{
-				retv = Inject (retv, binding.type != InjectionBindingType.VALUE);
+				// PRC : I think it may be a bug to do the injection before clearing the binding flag, 
+				// so I moved it below.  It needs to be confirmed in a test app.
+				//retv = Inject (retv, binding.type != InjectionBindingType.VALUE);
 				if (binding.type == InjectionBindingType.SINGLETON || binding.type == InjectionBindingType.VALUE)
 				{
 					//prevent double-injection
 					binding.ToInject(false);
 				}
+				
+				retv = Inject (retv, binding.type != InjectionBindingType.VALUE);
 			}
 			infinityLock = null;
 
@@ -109,7 +114,7 @@ namespace strange.extensions.injector.impl
 		}
 
 		public object Inject(object target, bool attemptConstructorInjection)
-		{
+		{							
 			failIf(binder == null, "Attempt to inject into Injector without a Binder", InjectionExceptionType.NO_BINDER);
 			failIf(reflector == null, "Attempt to inject without a reflector", InjectionExceptionType.NO_REFLECTOR);
 			failIf(target == null, "Attempt to inject into null instance", InjectionExceptionType.NULL_TARGET);
@@ -120,7 +125,11 @@ namespace strange.extensions.injector.impl
 			{
 				return target;
 			}
-
+			
+#if STRANGE_DEBUG_PROF
+			SimpleProfiler.StartInjection("INJ "+t.ToString());
+#endif
+			
 			IReflectedClass reflection = reflector.Get (t);
 
 			if (attemptConstructorInjection)
@@ -129,6 +138,11 @@ namespace strange.extensions.injector.impl
 			}
 			performSetterInjection(target, reflection);
 			postInject(target, reflection);
+			
+#if STRANGE_DEBUG_PROF
+			SimpleProfiler.StopInjection("INJ "+t.ToString());
+#endif
+			
 			return target;
 		}
 
@@ -173,8 +187,9 @@ namespace strange.extensions.injector.impl
 		}
 
 		private object getValueInjection(Type t, object name, object target)
-		{
+		{		
 			IInjectionBinding binding = binder.GetBinding (t, name);
+
 			failIf(binding == null, "Attempt to Instantiate a null binding.", InjectionExceptionType.NULL_BINDING, t, name, target);
 			if (binding.type == InjectionBindingType.VALUE)
 			{
@@ -183,10 +198,8 @@ namespace strange.extensions.injector.impl
 					return binding.value;
 				}
 				else
-				{
-					object retv = Inject(binding.value, false);
-					binding.ToInject (false);
-					return retv;
+				{	
+					return Inject(binding.value, false);
 				}
 			}
 			else

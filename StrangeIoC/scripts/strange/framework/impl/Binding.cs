@@ -40,6 +40,12 @@ namespace strange.framework.impl
 {
 	public class Binding : IBinding
 	{
+#if STRANGE_DEBUG
+		private static int _nextId = 1;
+		public int id;
+		public Binder binder;
+#endif
+		
 		public Binder.BindingResolver resolver;
 
 		protected ISemiBinding _key;
@@ -103,6 +109,9 @@ namespace strange.framework.impl
 
 		public Binding(Binder.BindingResolver resolver)
 		{
+#if STRANGE_DEBUG
+			id = _nextId++;
+#endif		
 			this.resolver = resolver;
 
 			_key = new SemiBinding ();

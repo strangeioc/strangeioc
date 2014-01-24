@@ -30,7 +30,8 @@ using strange.extensions.dispatcher.api;
 
 namespace strange.extensions.context.api
 {
-	public interface IContext : IBinder
+	// PRC: Removed IBinding parent.
+	public interface IContext /*: IBinder*/
 	{
 		/// Kick the context into action
 		IContext Start();
@@ -49,7 +50,9 @@ namespace strange.extensions.context.api
 		
 		/// Get the ContextView
 		object GetContextView();
-
+		
+		// PRC: Used to come from IBinder.
+		void OnRemove();
 	}
 }
 

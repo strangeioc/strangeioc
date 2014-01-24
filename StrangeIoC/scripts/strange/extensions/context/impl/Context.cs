@@ -31,7 +31,9 @@ using strange.framework.impl;
 
 namespace strange.extensions.context.impl
 {
-	public class Context : Binder, IContext
+	// PRC: Removed Binder parent--wasn't really being used, just added OnRemove function
+	// and that's all it took.
+	public class Context : /*Binder,*/ IContext
 	{
 		/// The top of the View hierarchy.
 		/// In MVCSContext, this is your top-level GameObject
@@ -150,7 +152,10 @@ namespace strange.extensions.context.impl
 		{
 			//Override in subclasses
 		}
-
+		
+		virtual public void OnRemove()
+		{
+		}
 	}
 }
 
