@@ -132,8 +132,16 @@ namespace strange.extensions.context.impl
 		/// Remove a context from this one.
 		virtual public IContext RemoveContext(IContext context)
 		{
-			context.OnRemove();
-			return this;
+            //If we're removing firstContext, set firstContext to null
+		    if (context == firstContext)
+		    {
+		    	firstContext = null;
+		    }
+		    else
+		    {
+		    	context.OnRemove();
+		    }
+		    return this;
 		}
 
 		/// Retrieve a component from this Context by generic type
