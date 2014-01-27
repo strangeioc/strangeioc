@@ -34,6 +34,7 @@ namespace strange.unittests
 		public IImplicitBinder implicitBinder { get; set; }
 
 		public MockContext() : base() {}
+		public MockContext(object view) : base(view) { }
 		public MockContext(object view, bool autoStartup) : base(view, autoStartup) { }
 
 		protected override void mapBindings()
