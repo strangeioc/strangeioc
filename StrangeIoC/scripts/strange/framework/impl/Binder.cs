@@ -287,7 +287,9 @@ namespace strange.framework.impl
 					//If the existing binding is not this binding, and the existing binding is not weak
 					//If it IS weak, we will proceed normally and overwrite the binding in the dictionary
 					IBinding existingBinding = dict[bindingName];
-					if (existingBinding != binding && !existingBinding.isWeak)
+					//if (existingBinding != binding && !existingBinding.isWeak)
+					//SDM2014-01-20: as part of cross-context implicit bindings fix, attempts by a weak binding to replace a non-weak binding are ignored instead of being 
+					if (existingBinding != binding && !existingBinding.isWeak && !binding.isWeak)
 					{
 						//register both conflictees
 						registerNameConflict(key, binding, dict[bindingName]);
@@ -296,8 +298,15 @@ namespace strange.framework.impl
 
 					if (existingBinding.isWeak)
 					{
-						//Remove the previous binding.
-						dict.Remove(bindingName);
+						//SDM2014-01-20: (in relation to the cross-context implicit bindings fix)
+						// 1) if the previous binding is weak and the new binding is not weak, then the new binding replaces the previous;
+						// 2) but if the new binding is also weak, then it only replaces the previous weak binding if the previous binding
+						// has not already been instantiated:
+						if (existingBinding != binding && existingBinding.isWeak && ( !binding.isWeak || existingBinding.value==null || existingBinding.value is System.Type))
+						{
+							//Remove the previous binding.
+							dict.Remove(bindingName);
+						}
 					}
 				}
 			}
