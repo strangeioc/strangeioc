@@ -2,7 +2,7 @@ strange-core
 ============
 
 StrangeIoC.
-v0.6.0
+v0.7.0
 Just the code.
 
 The full StrangeIoC repo is at:
