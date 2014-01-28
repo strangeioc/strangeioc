@@ -1,6 +1,6 @@
 ## Strange: the IoC framework for `Unity3D` and `C#`
 
-Current version: v0.6.0
+Current version: v0.7.0
 
 > Strange attractors create predictable patterns, often in chaotic systems.
 
