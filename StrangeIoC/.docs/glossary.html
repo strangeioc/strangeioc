@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Glossary - StrangeIoC by ThirdMotion</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+    
+      <header>
+      <h1><a href="./index.html">StrangeIoC</a></h1>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/thirdmotion/strangeioc">View the Project on GitHub <small>thirdmotion/strangeioc</small></a></p>
+        <ul>
+          <li><a href="https://github.com/thirdmotion/strangeioc/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="http://u3d.as/content/third-motion-inc-/strange-io-c/4Xj">Get from <strong>Unity Store</strong></a></li>
+          <li><a href="https://github.com/thirdmotion/strangeioc">View on <strong>GitHub</strong></a></li>
+        </ul>
+        <p class="view"><a href="./exec.html">Overview</a> (why you want to get Strange)</p>
+        <p class="view"><a href="./docs/html/index.html">Docs</a> (Doxygen-generated)</p>
+        <p class="view"><a href="./TheBigStrangeHowTo.html">The Big, Strange How-To</a> (developer manual)</p>
+        <p class="view"><a href="./faq.html">FAQ</a></p>
+        <p class="view">Use Robotlegs? <a href="./rl.html">This is for you</a>!</p>
+        <p class="view"><a href="http://github.com/thirdmotion/strangeioc/wiki">Strange Wiki</a></p>
+        <p><br/>Follow StrangeIoC on</p>
+<p class="view"><a href="http://www.facebook.com/strangeioc">Facebook</a></p>
+        <p class="view"><a href="https://twitter.com/StrangeIoC">Twitter</a></p>
+        <p class="view"><a href="https://groups.google.com/forum/#!forum/strangeioc">Google Groups</a></p>
+      </header>
+      <section>
+       
+<img src="img/logo.png" alt="StrangeIoC" />
+ <h1>Glossary</h1>
+
+ <p>These are  terms that  every engineer working with  StrangeIoC should understand. None of these is peculiar to Strange...they're just general-purpose engineering terms with which you're probably already familiar. But if perchance you run across a term in the docs that you don't know, check here. If you want to go deeper, they're all defined in more detail on Wikipedia.</p>
+ <p>I've also made note wherever  we perhaps play a little loosely with a term in StrangeIoC.</p>
+ <div id="mvc">
+   <h2>MVC / MVCS</h2>
+ </div>
+ <p>Model-View-Controller (MVC) or Model-View-Controller-Servce (MVCS) is a <a href="#design_pattern">design pattern</a> for implementing user-facing applications. It breaks the application into 3 (or 4) distinct areas: (1)  <em>Models</em> hold application state; (2)  <em>Controllers</em> handle logic; (3)  <em>Views</em> represent everything you see, hear or interact with; and (4)  <em>Services</em> handle anything outside the application (such as communications with a device or the Web).</p>
+ <p>In Strange, we recommend using the MVCSContext as a way of setting up the overall application, while the main game  operates within Unity's entity-based Update loop.</p>
+ <p><a href="http://en.wikipedia.org/wiki/Model_view_controller">MVC - Wikipedia</a></p>
+ <div id="command_pattern">
+   <h2>Command Pattern</h2>
+ </div>
+ <p>The Command Pattern is a design pattern in which an invoking class triggers a result that performs a specific task. Strange uses Commands in a very literal way: fired events or Signals result in creation of a Command instance that performs the requested task. Strange allows you to bind an event or Signal to one Command or many, so that work is done in a highly abstract and reusable fashion. Commands largely represent the 'Controller' aspect of the MVCS pattern.</p>
+ <p><a href="http://en.wikipedia.org/wiki/Command_pattern">Command Pattern - Wikipedia</a></p>
+ <div class="composition">
+   <h2>Composition</h2>
+ </div>
+ <p>Composition is simply the process of joining  parts into a useful whole. Both Entity systems (like Unity) and Injection systems (like Strange)  allow you to build highly complex instances out of relatively simple building blocks. </p>
+ <p><a href="http://en.wikipedia.org/wiki/Object_composition">Object Composition - Wikipedia</a></p>
+ <div id="controller">
+   <h2>Controller</h2>
+ </div>
+ <p>Controller is the 'C' in MVC / MVCS. Controllers send instructions around the application and perform logic. Essentially, Controllers manipulate Models and Services, and return information to Views.</p>
+ <p>Most Controller code in Strange is handled in <a href="#command_pattern">Commands</a>.</p>
+ <p><a href="http://en.wikipedia.org/wiki/Model–view–controller">MVC - Wikipedia</a></p>
+ <div id="coupling">
+   <h2>Coupling</h2>
+ </div>
+ <p>See <a href="#dependency">Dependency</a></p>
+ <div id="dependency">
+     <h2>Dependency</h2>
+ </div>
+ <p>Dependency (or coupling) is the degree to which one class cannot function without the assistance of another. Tightly coupled systems tend to be inflexible and to break easily. Minimizing dependencies makes code more robust, and is the central goal of StrangeIoC.</p>
+ <p><a href="http://en.wikipedia.org/wiki/Dependency_(computer_science)">Dependency/Coupling - Wikipedia</a></p>
+ <div id="dependency_injection">
+   <h2>Dependency Injection</h2>
+ </div>
+ <p>In Object-Oriented Programming, Dependency Injection is a strategy  for providing an Object's required dependencies with a minimum of entangling complications. It is closely related to the Service Locator and Factory design patterns. In dependency injection, a central agency (the Injector) provides a client class' internal dependencies at runtime. The client defines its dependencies as broadly as possible. This enables flexibility, because the dependency can be swapped out for any other dependency that satisfies that broad definition. It encourages testability, since broadly-defined dependencies can be replaced by 'mocks' for unit testing, and well-tested code is less apt to break unexpectedly.</p>
+ <p><a href="http://en.wikipedia.org/wiki/Dependency_injection">Dependency Injection - Wikipedia</a></p>
+ <div id="design_pattern">
+   <h2>Design Pattern</h2>
+ </div>
+ <p>Design patterns are a general concept in programming that relates to common problems with well-understood solutions. The patterns are given names which allow engineers to discuss a complex problem and the proposed solution with a simple word or phrase (therefore &quot;Adapter&quot; or &quot;Facade&quot; rather than &quot;this class doesn't conform to our needs quite the way we want to use it, so we'll write a class that includes an instance of the original class, altering and/or combining that class's methods to conform with what we really want&quot;).</p>
+ <p>Not every pattern is considered 'good'. Most patterns do a good job of solving a problem, but many solve one problem while creating another (sometimes called an 'anti-pattern').</p>
+ <p>All engineers should understand the principle of design patterns as they relate to their own discipline. For example, there are many common design patterns in object-oriented application and game design. In Strange, we talk a lot about specific patterns, including: MVCS, Service Locator, Factory, Command, Singleton, and Observer. Each of these patterns is described briefly in this glossary. For a fuller description of these and other patterns, check Wikipedia.</p>
+ <p><a href="http://en.wikipedia.org/wiki/Design_pattern">Design Pattern - Wikipedia</a></p>
+ <div id="entity">
+   <h2>Entity / Entity System</h2>
+ </div>
+ <p>Entity systems are extremely composition-oriented programming structures. An entity itself is nothing but a container and an identifier, but it can be added to such that it begins to have useful behavior. In Unity, the GameObject may (nearly) be thought of as such an entity. By default, all GameObjects get a Transform...so it's not quite 'nothing'...but the analogy works in that the developer starts attaching Monobehaviours to compose more and more unique functionality onto each GameObject. The result tends to be highly efficient, and therefore well-suited to a main game loop. It is also quite flexible, in that adding and removing (Mono)behaviors is simple.</p>
+ <p>In Strange, we tend to layer View and Mediator classes onto the entity for orchestration and management...but bear in mind that MVC systems, including firing Commands and accessing Services and Models, are NOT as efficient as Entity systems. Your main game loop — things that happen every frame — are probably best managed by the Entity System, whereas discrete events such as player/enemy destruction/creation, point totalling, HUD updates and so on, are properly the province of Strange.</p>
+ <p><a href="http://en.wikipedia.org/wiki/Entity_component_system">Entity Component System - Wikipedia</a></p>
+ <div id="factory_pattern">
+   <h2>Factory Pattern</h2>
+ </div>
+ <p>The Factory is a design pattern that allows a client class to call on a third-party class (the 'factory') to provide instances of some other class. The factory can be fed with particulars that allow it to return any of one or more concrete instances. For example, by Gamefield class needs a new Enemy. I can hand the Factory some details and it can spit me out something that satisfies an IEnemy interface. This allows Gamefield to have dependencies only on IEnemy and the Factory, rather than know anything about the many Enemy subclasses (Minion, Predator, Boss) that might populate the game.</p>
+ <p>In Strange, the Factory pattern is mostly managed through the Injector: you bind an Interface to the concrete class and anyone injecting will receive it.</p>
+ <p>If your factory  requires more logic than just identifying the interface, however, it may be useful to think in terms of Factory Commands. See <a href="#command_pattern">Command Pattern</a> above for details, and imagine that the logic for deciding what instance will be generated will live inside the Command.</p>
+ <p><a href="http://en.wikipedia.org/wiki/Factory_pattern">Factory Method Pattern - Wikipedia</a></p>
+ <div id="injection">
+   <h2>Injection</h2>
+ </div>
+ <p>see <a href="#dependency_injection">Dependency Injection</a>)</p>
+ <div id="inheritance">
+   <h2>Inheritance</h2>
+ </div>
+ <p>Inheritance is the principle whereby one class (the subclass) may 'extend' another (the superclass). The inheriting class essentially becomes an instance of the superclass, plus whatever new behavior the subclass adds into the mix. The inheriting subclass may also choose to override some behaviors of the superclass.</p>
+ <p>In Strange, you may bind any superclass to its subclass. Thus if a client injects the superclass, they'll receive an instance of the subclass. It is generally considered preferable to inject an interface, instead of a superclass.</p>
+ <p><a href="http://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)">Inheritance - Wikipedia</a></p>
+ <div id="interface">
+   <h2>Interface </h2>
+ </div>
+ <p>An interface is a description of what a class's inputs and outputs look like, without any actual implementation of those methods.</p>
+ <p>Example:</p>
+ <pre class="prettyprint">
+//The interface just describes what a class might do
+interface ISocialService
+{
+    void PostToFeed(string message);
+    HashSet&lt;Friend&gt; GetFriends();
+}
+
+//The implementing class does the actual work
+class FacebookService : ISocialService
+{
+    public void PostToFeed(string message)
+    {
+        //work here to post the message
+    }
+
+    public HashSet&lt;Friend&gt; GetFriends()
+    {
+        //work here to get the friends list
+        return friendSet;
+    }
+} </pre>
+ <p>In Strange, we can bind and inject interfaces, rather than concrete classes. Doing so allows greater flexibility. In the provided example, you could inject ISocialService anywhere you need it. If you decided later to change from Facebook to Twitter or G+, you could do so without needing to make changes throughout your application.</p>
+ <p><a href="http://en.wikipedia.org/wiki/Interface_(object-oriented_programming)">Interface - Wikipedia</a></p>
+ <div id="model">
+   <h2>Model</h2>
+ </div>
+ <p>The 'M' in MVCS. Models are objects that hold data. Basically, they keep and maintain state, usually without any logic regarding what to do with that state.</p>
+ <p>Strange has no 'Model' class. Indeed, it's best if your models have no knowledge of Strange at all. They just hold data. That's it. Finito.</p>
+ <p><a href="http://en.wikipedia.org/wiki/Model–view–controller">MVC - Wikipedia</a></p>
+ <div class="observer_pattern">
+   <h2>Observer Pattern</h2>
+ </div>
+ <p>A simple design pattern in which one class (the observer) watches another class (the subject) waiting for 'a thing' to happen. If the subject does that thing, the observer reacts. This is the basis of both Strange's EventDispatcher and its Signals communications systems.</p>
+ <p><a href="http://en.wikipedia.org/wiki/Observer_pattern">Observer pattern - WIkipedia</a></p>
+ <div id="polymorphism">
+   <h2>Polymorphism</h2>
+ </div>
+ <p>From the Greek meaning &quot;many shapes&quot;, polymorphism refers to the ability of a class to represent more than one type of class or Interface. Some languages support multiple inheritance. In languages that only support single inheritance, like C#, polymorphism is achieved by implementing multiple interfaces.</p>
+ <p>For example, I can have a class like this:</p>
+ <pre class="prettyprint">class Spaceship : IVehicle, IWeapon
+{
+    //implement it here
+} </pre>
+ <p>The Spaceship above is polymorphic because at any given moment it can represent  either a vehicle or a weapon. This allows extra flexibility and decoupling when writing code that interacts with the Spaceship.</p>
+ <p><a href="http://en.wikipedia.org/wiki/Polymorphism_(computer_science)">Polymorphism - Wikipedia</a></p>
+ <div id="pools">
+   <h2>Pools / Pooling</h2>
+ </div>
+ <p>Pools are a design implementation for adding efficiency to a programming runtime. Instead of creating/destroying objects as an application requires them, a pool handles created objects and recycles them. Object creation can be expensive in terms of both memory use and performance. Object pooling can minimize these negative effects.</p>
+ <p>In Strange v0.7 we added an object pooling feature. Mostly this was added for internal efficiency, but a happy side-effect is that the pooling mechanism is available to you for whatever use you may have.</p>
+ <p><a href="http://en.wikipedia.org/wiki/Object_pool_pattern">Object Pool Pattern - Wikipedia</a></p>
+ <div id="service">
+   <h2>Service</h2>
+ </div>
+ <p>(Not to be confused with Service Locator))</p>
+ <p>Service is the 'S' in MVCS. Services represent any part of your application that handles communication outside the application itself. Calls to servers, the web, a device's native layer, a disk drive...these are all services.</p>
+ <p>Strange has no explicit 'Service' class. We use the term contextually to express the important concept of anything that reaches beyond the border of the game/app itself.</p>
+ <p>(I couldn't find a specific Wikipedia entry covering this use of 'Service' in MVCS...though there are many articles around the Internet that do so.)</p>
+ <div id="service_locator">
+   <h2>Service Locator Pattern</h2>
+ </div>
+ <p>(No relation to Service, described above)</p>
+ <p>This design pattern allows one class to locate another class via a central registry. In Strange, the central registry is the Injector. When a class injects the interface, superclass or concrete class associated with the desired injection, the Injector &quot;locates the service&quot; to provide runtime coupling. This avoids direct coupling and thereby makes code more flexible.</p>
+ <p><a href="http://en.wikipedia.org/wiki/Service_locator_pattern">Service Locator Pattern - Wikipedia</a></p>
+ <div id="singleton">
+   <h2>Singleton Pattern</h2>
+ </div>
+ <p>Singleton is a design pattern that ensures the creation of one and only one instance of a given class. It's a useful pattern in that many classes in a game or application require only a single instance. For example, you may have only one player or one communicator to your game server. But Singleton also has a number of downsides/anti-patterns associated with it: what happens if your single-player game becomes two-player? What if you change game servers or decide the split the responsibilities of the server communicator? In these and many other cases, the typical Singleton pattern of...</p>
+ <pre class="prettyprint">MySingleton.Get().DoAThing();</pre>
+ <p>...creates dependency coupling that make refactoring complicated.</p>
+ <p>In Strange, instead of writing a Singleton, we map a Singleton. This means that neither the class that is the Singleton, nor the class that consumes it knows it's intended to be used that way. This gives us the 'service locator' advantage of a simple MySingleton.Get() without the concrete dependency of the specific class.</p>
+ <p>One thing Strange doesn't give you (that the Singleton pattern does) is 'Singleton enforcement'. Enforcement is the part of the pattern that armors the Singleton to ensure that no one can ever get more than one. We look at this as a good thing. Just because a class was first assumed to be a Singleton (as with a Player class) doesn't mean it will never want to be reused differently (as when your game becomes multiplayer). Indeed, Strange gives us the capability to use named instances to have multiple so-called Singletons.</p>
+ <p><a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton Pattern - Wikipedia</a></p>
+ <div id="view">
+   <h2>View</h2>
+ </div>
+ <p>Views are the 'V' in MVC / MVCS. Views represent anything you can see or hear, tap or click, in an application. In Unity, these are MonoBehaviours/GameObjects. Strange has a 'View' class which you can extend to allow your View to be mediated (see the Big Strange How-To section on <a href="./TheBigStrangeHowTo.html#h.sjblqrdytark">Mediation</a>).</p>
+ <p><a href="http://en.wikipedia.org/wiki/Model–view–controller">MVC - Wikipedia</a></p>
+      </section>
+      <footer>
+      	<p><small>StrangeIoC is a project by <a href="http://thirdmotion.com">ThirdMotion, Inc</a>.</small></p>
+        <p><small>&copy; 2013. Third Motion, Inc.</small></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+  </body>
+</html>
