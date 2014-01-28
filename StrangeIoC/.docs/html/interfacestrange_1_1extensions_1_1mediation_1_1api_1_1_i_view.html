@@ -105,8 +105,10 @@ Inheritance diagram for strange.extensions.mediation.api.IView:</div>
  <div class="center">
   <img src="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.png" usemap="#strange.extensions.mediation.api.IView_map" alt=""/>
   <map id="strange.extensions.mediation.api.IView_map" name="strange.extensions.mediation.api.IView_map">
-<area href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html" title="Parent class for all your Views. " alt="strange.extensions.mediation.impl.View" shape="rect" coords="0,56,264,80"/>
-<area href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_event_view.html" title="Injects a local event bus into this View. " alt="strange.extensions.mediation.impl.EventView" shape="rect" coords="0,112,264,136"/>
+<area href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context_view.html" title="The ContextView is the entry point to the application. " alt="strange.extensions.context.api.IContextView" shape="rect" coords="0,56,264,80"/>
+<area href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html" title="Parent class for all your Views. " alt="strange.extensions.mediation.impl.View" shape="rect" coords="274,56,538,80"/>
+<area href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context_view.html" title="The Root View of a Context hierarchy. " alt="strange.extensions.context.impl.ContextView" shape="rect" coords="0,112,264,136"/>
+<area href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_event_view.html" title="Injects a local event bus into this View. " alt="strange.extensions.mediation.impl.EventView" shape="rect" coords="274,112,538,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -119,6 +121,10 @@ Properties</h2></td></tr>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html#ac6eca04af420be4cb7ad637df4c8ff9c">registeredWithContext</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:ac6eca04af420be4cb7ad637df4c8ff9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether this View has been registered with a Context. <br/></td></tr>
 <tr class="separator:ac6eca04af420be4cb7ad637df4c8ff9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a245fba8e916c754e8cee754ce683b846"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a245fba8e916c754e8cee754ce683b846"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html#a245fba8e916c754e8cee754ce683b846">autoRegisterWithContext</a><code> [get]</code></td></tr>
+<tr class="memdesc:a245fba8e916c754e8cee754ce683b846"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exposure to code of the registerWithContext (Inspector) boolean. If false, the View won't try to register. <br/></td></tr>
+<tr class="separator:a245fba8e916c754e8cee754ce683b846"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Monobehaviours must implement this interface in order to be injectable. </p>
@@ -153,7 +159,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 12 2013 11:15:53 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 28 2014 13:07:05 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

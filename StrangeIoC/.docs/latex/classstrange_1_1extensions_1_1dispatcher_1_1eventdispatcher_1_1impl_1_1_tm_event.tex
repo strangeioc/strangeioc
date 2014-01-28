@@ -9,7 +9,7 @@ The standard Event object for I\-Event\-Dispatcher.
 Inheritance diagram for strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Tm\-Event\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event}
+\includegraphics[height=1.555556cm]{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -17,7 +17,19 @@ Inheritance diagram for strange.\-extensions.\-dispatcher.\-eventdispatcher.\-im
 \item 
 \hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_a606af8e7c4e19a2c4223e493e3b35987}{\hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_a606af8e7c4e19a2c4223e493e3b35987}{Tm\-Event} (object type, \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher}{I\-Event\-Dispatcher} target, object data)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_a606af8e7c4e19a2c4223e493e3b35987}
 
-\begin{DoxyCompactList}\small\item\em \hyperlink{class_construct}{Construct} a \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event}{Tm\-Event}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_construct}{Construct} a \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event}{Tm\-Event}. \end{DoxyCompactList}\item 
+void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_aa20d15da3bdbddf1f29d923cdc58a1e6}{Restore} ()
+\begin{DoxyCompactList}\small\item\em Clean up this instance for reuse. \end{DoxyCompactList}\item 
+void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_aacd0c47bb3adedb6e4934b7cbea6cab0}{Retain} ()
+\begin{DoxyCompactList}\small\item\em Keep this instance from being returned to the pool \end{DoxyCompactList}\item 
+void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_a7a386063d3c752a4d586ecb5c4bd8f6d}{Release} ()
+\begin{DoxyCompactList}\small\item\em Release this instance back to the pool. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_abd968ace85be8d2ed1209926dc03a73c}{int {\bfseries retain\-Count}}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_abd968ace85be8d2ed1209926dc03a73c}
+
+\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
@@ -28,6 +40,9 @@ Inheritance diagram for strange.\-extensions.\-dispatcher.\-eventdispatcher.\-im
 
 \item 
 \hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_a2a7919deb2f3212dd0bcbf2ce86624fb}{object {\bfseries data}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_a2a7919deb2f3212dd0bcbf2ce86624fb}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_a045d66330311bed8fd8a256479cab8f9}{bool {\bfseries retain}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_a045d66330311bed8fd8a256479cab8f9}
 
 \end{DoxyCompactItemize}
 
@@ -41,6 +56,54 @@ The \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1im
 \item target -\/ The Dispatcher that fired the event 
 \item data -\/ An arbitrary payload 
 \end{DoxyItemize}
+
+\subsection{Member Function Documentation}
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_a7a386063d3c752a4d586ecb5c4bd8f6d}{\index{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Tm\-Event@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Tm\-Event}!Release@{Release}}
+\index{Release@{Release}!strange::extensions::dispatcher::eventdispatcher::impl::TmEvent@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Tm\-Event}}
+\subsubsection[{Release}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Tm\-Event.\-Release (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_a7a386063d3c752a4d586ecb5c4bd8f6d}
+
+
+Release this instance back to the pool. 
+
+Release methods should clean up the instance sufficiently to remove prior state. 
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_afdea864987f51cfc9d83e9158dfcaa33}{strange.\-extensions.\-pool.\-api.\-I\-Poolable}.
+
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_aa20d15da3bdbddf1f29d923cdc58a1e6}{\index{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Tm\-Event@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Tm\-Event}!Restore@{Restore}}
+\index{Restore@{Restore}!strange::extensions::dispatcher::eventdispatcher::impl::TmEvent@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Tm\-Event}}
+\subsubsection[{Restore}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Tm\-Event.\-Restore (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_aa20d15da3bdbddf1f29d923cdc58a1e6}
+
+
+Clean up this instance for reuse. 
+
+Restore methods should clean up the instance sufficiently to remove prior state. 
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_a3eb6437f37f1e87b92c55a32689a0ef5}{strange.\-extensions.\-pool.\-api.\-I\-Poolable}.
+
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_aacd0c47bb3adedb6e4934b7cbea6cab0}{\index{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Tm\-Event@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Tm\-Event}!Retain@{Retain}}
+\index{Retain@{Retain}!strange::extensions::dispatcher::eventdispatcher::impl::TmEvent@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Tm\-Event}}
+\subsubsection[{Retain}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Tm\-Event.\-Retain (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_aacd0c47bb3adedb6e4934b7cbea6cab0}
+
+
+Keep this instance from being returned to the pool 
+
+
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_ad51f2499e20163c58147a886e5fd5692}{strange.\-extensions.\-pool.\-api.\-I\-Poolable}.
+
+
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 

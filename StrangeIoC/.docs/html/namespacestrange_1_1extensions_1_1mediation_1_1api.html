@@ -101,7 +101,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for the Binder which maps Views to Mediators.  <a href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binding.html">IMediationBinding</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for MediationBIndings.  <a href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binding.html#details">More...</a><br/></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for MediationBindings.  <a href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binding.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator.html">IMediator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Look at <a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder.html" title="Interface for the Binder which maps Views to Mediators. ">strange.extensions.mediation.api.IMediationBinder</a>, where I explain the purpose of Mediation in detail.  <a href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator.html#details">More...</a><br/></td></tr>
@@ -118,8 +118,14 @@ Enumerations</h2></td></tr>
 <a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#ae5a81bb1edf9fca1d2aca9f4fada72a8a055c1a591abb0e8cd86dc969727bcc0b">MediationEvent.DISABLED</a>
  }</td></tr>
 <tr class="separator:ae5a81bb1edf9fca1d2aca9f4fada72a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef97993ec02a40c5f887dbfaf4f06e4a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#aef97993ec02a40c5f887dbfaf4f06e4a">MediationExceptionType</a> { <a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#aef97993ec02a40c5f887dbfaf4f06e4aac89f949bb64ae5754bb687bf056de559">MediationExceptionType.NO_CONTEXT</a>, 
-<a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#aef97993ec02a40c5f887dbfaf4f06e4aa46ff5442e205aeec7c75b331260f5a49">MediationExceptionType.MEDIATOR_VIEW_STACK_OVERFLOW</a>
+<tr class="memitem:aef97993ec02a40c5f887dbfaf4f06e4a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#aef97993ec02a40c5f887dbfaf4f06e4a">MediationExceptionType</a> { <br/>
+&#160;&#160;<a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#aef97993ec02a40c5f887dbfaf4f06e4aac89f949bb64ae5754bb687bf056de559">MediationExceptionType.NO_CONTEXT</a>, 
+<a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#aef97993ec02a40c5f887dbfaf4f06e4aa46ff5442e205aeec7c75b331260f5a49">MediationExceptionType.MEDIATOR_VIEW_STACK_OVERFLOW</a>, 
+<a class="el" href="namespacestrange_1_1extensions_1_1mediation_1_1api.html#aef97993ec02a40c5f887dbfaf4f06e4aa51ed2efc0906076d4f2a50f028249d82">MediationExceptionType.NULL_MEDIATOR</a>, 
+<b>IMPLICIT_BINDING_MEDIATOR_TYPE_IS_NULL</b>, 
+<br/>
+&#160;&#160;<b>IMPLICIT_BINDING_VIEW_TYPE_IS_NULL</b>
+<br/>
  }</td></tr>
 <tr class="separator:aef97993ec02a40c5f887dbfaf4f06e4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -169,6 +175,10 @@ Enumerations</h2></td></tr>
 <p>Exception raised when a View is mapped to itself. </p>
 <p>If a View is accidentally mapped to itself, the result will be an infinite loop of Mediation creation. </p>
 </td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="aef97993ec02a40c5f887dbfaf4f06e4aa51ed2efc0906076d4f2a50f028249d82"></a>NULL_MEDIATOR</em>&nbsp;</td><td class="fielddoc">
+<p>Exception raised when AddComponent results in a null Mediator. </p>
+<p>This probably means that the mapped "mediator" wasn't a MonoBehaviour. </p>
+</td></tr>
 </table>
 
 </div>
@@ -176,7 +186,7 @@ Enumerations</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 12 2013 11:15:53 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 28 2014 13:07:05 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

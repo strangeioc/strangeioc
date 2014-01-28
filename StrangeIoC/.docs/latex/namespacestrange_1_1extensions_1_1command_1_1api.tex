@@ -9,13 +9,18 @@ interface \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_comm
 interface \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder}{I\-Command\-Binder}
 \begin{DoxyCompactList}\small\item\em Interface for a Binder that triggers the instantiation of Commands. \end{DoxyCompactList}\item 
 interface \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding}
-\begin{DoxyCompactList}\small\item\em Defines the form of a Binding for use with the Command\-Binder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Defines the form of a Binding for use with the Command\-Binder. \end{DoxyCompactList}\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_pooled_command_binder}{I\-Pooled\-Command\-Binder}
+\begin{DoxyCompactList}\small\item\em Interface for a Command\-Binder that allows pooling. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
 enum \hyperlink{namespacestrange_1_1extensions_1_1command_1_1api_a27c9226cc8d55624f3294319d48879e3}{Command\-Exception\-Type} \{ \hyperlink{namespacestrange_1_1extensions_1_1command_1_1api_a27c9226cc8d55624f3294319d48879e3a649c27d7db043238f4e8ee0d1c8c52fc}{Command\-Exception\-Type.\-E\-X\-E\-C\-U\-T\-E\-\_\-\-O\-V\-E\-R\-R\-I\-D\-E}, 
 \hyperlink{namespacestrange_1_1extensions_1_1command_1_1api_a27c9226cc8d55624f3294319d48879e3a35310c46c16e400ec14d3f312e93ec71}{Command\-Exception\-Type.\-N\-U\-L\-L\-\_\-\-B\-I\-N\-D\-I\-N\-G}, 
 \hyperlink{namespacestrange_1_1extensions_1_1command_1_1api_a27c9226cc8d55624f3294319d48879e3a4ca656dfba09ff902c42fee01c7c8405}{Command\-Exception\-Type.\-B\-A\-D\-\_\-\-C\-O\-N\-S\-T\-R\-U\-C\-T\-O\-R}
+ \}
+\item 
+enum \hyperlink{namespacestrange_1_1extensions_1_1command_1_1api_a1c85c3b8ce0d2754e546c4811a778bf2}{Command\-Keys} \{ \hyperlink{namespacestrange_1_1extensions_1_1command_1_1api_a1c85c3b8ce0d2754e546c4811a778bf2a11560d716ee1c95a45a26442ac42c974}{Command\-Keys.\-C\-O\-M\-M\-A\-N\-D\-\_\-\-P\-O\-O\-L}
  \}
 \end{DoxyCompactItemize}
 
@@ -34,4 +39,14 @@ enum \hyperlink{namespacestrange_1_1extensions_1_1command_1_1api_a27c9226cc8d556
 }]Binding wasn't found. \index{B\-A\-D\-\_\-\-C\-O\-N\-S\-T\-R\-U\-C\-T\-O\-R@{B\-A\-D\-\_\-\-C\-O\-N\-S\-T\-R\-U\-C\-T\-O\-R}!strange\-::extensions\-::command\-::api@{strange\-::extensions\-::command\-::api}}\index{strange\-::extensions\-::command\-::api@{strange\-::extensions\-::command\-::api}!B\-A\-D\-\_\-\-C\-O\-N\-S\-T\-R\-U\-C\-T\-O\-R@{B\-A\-D\-\_\-\-C\-O\-N\-S\-T\-R\-U\-C\-T\-O\-R}}\item[{\em 
 \hypertarget{namespacestrange_1_1extensions_1_1command_1_1api_a27c9226cc8d55624f3294319d48879e3a4ca656dfba09ff902c42fee01c7c8405}{B\-A\-D\-\_\-\-C\-O\-N\-S\-T\-R\-U\-C\-T\-O\-R}\label{namespacestrange_1_1extensions_1_1command_1_1api_a27c9226cc8d55624f3294319d48879e3a4ca656dfba09ff902c42fee01c7c8405}
 }]Something went wrong during construction, so the Command resolved to null. \end{description}
+\end{Desc}
+\hypertarget{namespacestrange_1_1extensions_1_1command_1_1api_a1c85c3b8ce0d2754e546c4811a778bf2}{\index{strange\-::extensions\-::command\-::api@{strange\-::extensions\-::command\-::api}!Command\-Keys@{Command\-Keys}}
+\index{Command\-Keys@{Command\-Keys}!strange::extensions::command::api@{strange\-::extensions\-::command\-::api}}
+\subsubsection[{Command\-Keys}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf strange.\-extensions.\-command.\-api.\-Command\-Keys}}}\label{namespacestrange_1_1extensions_1_1command_1_1api_a1c85c3b8ce0d2754e546c4811a778bf2}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{C\-O\-M\-M\-A\-N\-D\-\_\-\-P\-O\-O\-L@{C\-O\-M\-M\-A\-N\-D\-\_\-\-P\-O\-O\-L}!strange\-::extensions\-::command\-::api@{strange\-::extensions\-::command\-::api}}\index{strange\-::extensions\-::command\-::api@{strange\-::extensions\-::command\-::api}!C\-O\-M\-M\-A\-N\-D\-\_\-\-P\-O\-O\-L@{C\-O\-M\-M\-A\-N\-D\-\_\-\-P\-O\-O\-L}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1command_1_1api_a1c85c3b8ce0d2754e546c4811a778bf2a11560d716ee1c95a45a26442ac42c974}{C\-O\-M\-M\-A\-N\-D\-\_\-\-P\-O\-O\-L}\label{namespacestrange_1_1extensions_1_1command_1_1api_a1c85c3b8ce0d2754e546c4811a778bf2a11560d716ee1c95a45a26442ac42c974}
+}]Temporary marker for any pool instantiated by the Command\-Binder. \end{description}
 \end{Desc}

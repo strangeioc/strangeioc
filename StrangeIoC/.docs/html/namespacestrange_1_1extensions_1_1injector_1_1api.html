@@ -117,6 +117,10 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:ab0f6d151014ae36671ff9f98e77fbf58"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#ab0f6d151014ae36671ff9f98e77fbf58">InjectionBindingScope</a> { <a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#ab0f6d151014ae36671ff9f98e77fbf58a5efb0d7efb9ed38fdfc18f50c75570a4">InjectionBindingScope.SINGLE_CONTEXT</a>, 
+<a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#ab0f6d151014ae36671ff9f98e77fbf58a6c804354e5821aaa248a65dd6b80cd54">InjectionBindingScope.CROSS_CONTEXT</a>
+ }</td></tr>
+<tr class="separator:ab0f6d151014ae36671ff9f98e77fbf58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf5414484d7eccb5c502984bd70549ae"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#aaf5414484d7eccb5c502984bd70549ae">InjectionBindingType</a> { <a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#aaf5414484d7eccb5c502984bd70549aea5b39c8b553c821e7cddc6da64b5bd2ee">InjectionBindingType.DEFAULT</a>, 
 <a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#aaf5414484d7eccb5c502984bd70549aeaecf2a6aabcb0538532ba2a7d0d281557">InjectionBindingType.SINGLETON</a>, 
 <a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#aaf5414484d7eccb5c502984bd70549aeaecc2e9c313faddb07e7da223c1dc5c3f">InjectionBindingType.VALUE</a>
@@ -139,12 +143,36 @@ Enumerations</h2></td></tr>
 <a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#a465caee64cba80e952ad7dd9a050e6c3ab91f1fd5e0526d191cf6d1d871b77685">InjectionExceptionType.NULL_VALUE_INJECTION</a>, 
 <br/>
 &#160;&#160;<a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#a465caee64cba80e952ad7dd9a050e6c3aa2bdd50d3a2f2f510f0209f648f0c0b6">InjectionExceptionType.SETTER_NAME_MISMATCH</a>, 
-<a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#a465caee64cba80e952ad7dd9a050e6c3a24f92bc48507459616449c4f27267560">InjectionExceptionType.MISSING_CROSS_CONTEXT_INJECTOR</a>
+<a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#a465caee64cba80e952ad7dd9a050e6c3a24f92bc48507459616449c4f27267560">InjectionExceptionType.MISSING_CROSS_CONTEXT_INJECTOR</a>, 
+<b>IMPLICIT_BINDING_IMPLEMENTOR_DOES_NOT_IMPLEMENT_INTERFACE</b>, 
+<b>IMPLICIT_BINDING_TYPE_DOES_NOT_IMPLEMENT_DESIGNATED_INTERFACE</b>, 
+<br/>
+&#160;&#160;<b>UNINITIALIZED_ASSEMBLY</b>
 <br/>
  }</td></tr>
 <tr class="separator:a465caee64cba80e952ad7dd9a050e6c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="ab0f6d151014ae36671ff9f98e77fbf58"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#ab0f6d151014ae36671ff9f98e77fbf58">strange.extensions.injector.api.InjectionBindingScope</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="ab0f6d151014ae36671ff9f98e77fbf58a5efb0d7efb9ed38fdfc18f50c75570a4"></a>SINGLE_CONTEXT</em>&nbsp;</td><td class="fielddoc">
+<p>Scope is limited to the current Context. </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ab0f6d151014ae36671ff9f98e77fbf58a6c804354e5821aaa248a65dd6b80cd54"></a>CROSS_CONTEXT</em>&nbsp;</td><td class="fielddoc">
+<p>Scope is mapped across all Contexts. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <a class="anchor" id="aaf5414484d7eccb5c502984bd70549ae"></a>
 <div class="memitem">
 <div class="memproto">
@@ -229,7 +257,7 @@ Enumerations</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 12 2013 11:15:52 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 28 2014 13:07:05 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

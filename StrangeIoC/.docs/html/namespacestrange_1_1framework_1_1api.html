@@ -103,6 +103,12 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds a key SemiBinding to a vlaue Semibinding.  <a href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_instance_provider.html">IInstanceProvider</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides an instance of the specified Type When all you need is a new instance, use this instead of IInjectionBinder.  <a href="interfacestrange_1_1framework_1_1api_1_1_i_instance_provider.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_managed_list.html">IManagedList</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A common interface for the constituents parts of a Binding, which at present are either a SemiBinding or a Pool.  <a href="interfacestrange_1_1framework_1_1api_1_1_i_managed_list.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_semi_binding.html">ISemiBinding</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A managed list of values.  <a href="interfacestrange_1_1framework_1_1api_1_1_i_semi_binding.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -116,7 +122,8 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="separator:adcc058ca6ff0fe013ffdbf63ada74a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9819c5ab6d03a2cbce2d3dddf5264e42"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestrange_1_1framework_1_1api.html#a9819c5ab6d03a2cbce2d3dddf5264e42">BindingConstraintType</a> { <a class="el" href="namespacestrange_1_1framework_1_1api.html#a9819c5ab6d03a2cbce2d3dddf5264e42abc21e6484530fc9d0313cb816b733396">BindingConstraintType.ONE</a>, 
-<a class="el" href="namespacestrange_1_1framework_1_1api.html#a9819c5ab6d03a2cbce2d3dddf5264e42a914afc10e7ea496e240a80be1bc01d09">BindingConstraintType.MANY</a>
+<a class="el" href="namespacestrange_1_1framework_1_1api.html#a9819c5ab6d03a2cbce2d3dddf5264e42a914afc10e7ea496e240a80be1bc01d09">BindingConstraintType.MANY</a>, 
+<a class="el" href="namespacestrange_1_1framework_1_1api.html#a9819c5ab6d03a2cbce2d3dddf5264e42a3225d08271bdcb752dd48b2a836c8998">BindingConstraintType.POOL</a>
  }</td></tr>
 <tr class="separator:a9819c5ab6d03a2cbce2d3dddf5264e42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -171,6 +178,9 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="a9819c5ab6d03a2cbce2d3dddf5264e42a914afc10e7ea496e240a80be1bc01d09"></a>MANY</em>&nbsp;</td><td class="fielddoc">
 <p>Constrains a SemiBinding to carry a list of items in its Value. </p>
 </td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a9819c5ab6d03a2cbce2d3dddf5264e42a3225d08271bdcb752dd48b2a836c8998"></a>POOL</em>&nbsp;</td><td class="fielddoc">
+<p>Instructs the Binding to apply a Pool instead of a SemiBinding. </p>
+</td></tr>
 </table>
 
 </div>
@@ -178,7 +188,7 @@ Enumerations</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 12 2013 11:15:53 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 28 2014 13:07:05 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

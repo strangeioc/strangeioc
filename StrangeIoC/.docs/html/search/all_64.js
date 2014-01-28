@@ -10,5 +10,6 @@ var searchData=
   ['dispatcher',['dispatcher',['../classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context.html#a007607f0cf13edd1ddeb0a7c47808bd3',1,'strange.extensions.context.impl.MVCSContext.dispatcher()'],['../classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_event_sequence_command.html#a3b0bd45295ae480feb228090153e4aa4',1,'strange.extensions.sequencer.impl.EventSequenceCommand.dispatcher()']]],
   ['dispatcherexception',['DispatcherException',['../classstrange_1_1extensions_1_1dispatcher_1_1impl_1_1_dispatcher_exception.html',1,'strange::extensions::dispatcher::impl']]],
   ['dispatcherexception',['DispatcherException',['../classstrange_1_1extensions_1_1dispatcher_1_1impl_1_1_dispatcher_exception.html#a4e1966d8a7ae6caf398689c29fd06b98',1,'strange::extensions::dispatcher::impl::DispatcherException']]],
-  ['dispatcherexceptiontype',['DispatcherExceptionType',['../namespacestrange_1_1extensions_1_1dispatcher_1_1api.html#a03ba459ad62cc042c88405d9419eb4c6',1,'strange::extensions::dispatcher::api']]]
+  ['dispatcherexceptiontype',['DispatcherExceptionType',['../namespacestrange_1_1extensions_1_1dispatcher_1_1api.html#a03ba459ad62cc042c88405d9419eb4c6',1,'strange::extensions::dispatcher::api']]],
+  ['double',['DOUBLE',['../namespacestrange_1_1extensions_1_1pool_1_1api.html#ac2dc67ad647400c4637d72c282028180afd3e4ece78a7d422280d5ed379482229',1,'strange::extensions::pool::api']]]
 ];

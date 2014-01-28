@@ -175,6 +175,7 @@ boxfont setfont
 1 boundaspect scale
 (strange.extensions.command.impl.Command) cw
 (strange.extensions.command.api.ICommand) cw
+(strange.extensions.pool.api.IPoolable) cw
 (strange.extensions.command.impl.EventCommand) cw
 (strange.extensions.sequencer.impl.SequenceCommand) cw
 (strange.extensions.sequencer.impl.EventSequenceCommand) cw
@@ -190,7 +191,8 @@ boundx scalefactor div boundy scalefactor div scale
 % ----- classes -----
 
  (strange.extensions.command.impl.Command) 0.500000 2.000000 box
- (strange.extensions.command.api.ICommand) 0.500000 3.000000 box
+ (strange.extensions.command.api.ICommand) 0.000000 3.000000 box
+ (strange.extensions.pool.api.IPoolable) 1.000000 3.000000 box
  (strange.extensions.command.impl.EventCommand) 0.000000 1.000000 box
  (strange.extensions.sequencer.impl.SequenceCommand) 1.000000 1.000000 box
  (strange.extensions.sequencer.impl.EventSequenceCommand) 1.000000 0.000000 box
@@ -200,7 +202,11 @@ boundx scalefactor div boundy scalefactor div scale
 solid
 0 0.500000 2.000000 out
 solid
-1 0.500000 3.000000 in
+0.000000 1.000000 3.000000 conn
+solid
+1 0.000000 3.000000 in
+solid
+1 1.000000 3.000000 in
 solid
 1 0.500000 1.250000 out
 solid

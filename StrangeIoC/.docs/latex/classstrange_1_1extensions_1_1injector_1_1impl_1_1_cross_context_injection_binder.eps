@@ -180,6 +180,8 @@ boxfont setfont
 (strange.extensions.injector.api.IInjectionBinder) cw
 (strange.extensions.injector.api.IInjectionBinder) cw
 (strange.framework.api.IBinder) cw
+(strange.framework.api.IInstanceProvider) cw
+(strange.framework.api.IInstanceProvider) cw
 /boxwidth boxwidth marginwidth 2 mul add def
 /xspacing boxwidth distx add def
 /yspacing boxheight disty add def
@@ -198,6 +200,8 @@ boundx scalefactor div boundy scalefactor div scale
  (strange.extensions.injector.api.IInjectionBinder) 1.000000 2.000000 box
  (strange.extensions.injector.api.IInjectionBinder) 2.000000 2.000000 box
  (strange.framework.api.IBinder) 0.000000 3.000000 box
+ (strange.framework.api.IInstanceProvider) 1.000000 3.000000 box
+ (strange.framework.api.IInstanceProvider) 2.000000 3.000000 box
 
 % ----- relations -----
 
@@ -222,6 +226,14 @@ solid
 solid
 1 1.000000 2.000000 in
 solid
+0 1.000000 2.000000 out
+solid
 1 2.000000 2.000000 in
 solid
+0 2.000000 2.000000 out
+solid
 1 0.000000 3.000000 in
+solid
+1 1.000000 3.000000 in
+solid
+1 2.000000 3.000000 in

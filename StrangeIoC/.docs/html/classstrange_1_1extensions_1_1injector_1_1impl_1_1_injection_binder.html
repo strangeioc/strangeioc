@@ -110,6 +110,7 @@ Inheritance diagram for strange.extensions.injector.impl.InjectionBinder:</div>
 <area href="classstrange_1_1framework_1_1impl_1_1_binder.html" title="Collection class for bindings. " alt="strange.framework.impl.Binder" shape="rect" coords="0,56,352,80"/>
 <area href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder.html" title="A Binder that implements Dependency Injection in StrangeIoC. " alt="strange.extensions.injector.api.IInjectionBinder" shape="rect" coords="362,56,714,80"/>
 <area href="interfacestrange_1_1framework_1_1api_1_1_i_binder.html" title="Collection class for bindings. " alt="strange.framework.api.IBinder" shape="rect" coords="0,0,352,24"/>
+<area href="interfacestrange_1_1framework_1_1api_1_1_i_instance_provider.html" title="Provides an instance of the specified Type When all you need is a new instance, use this instead of I..." alt="strange.framework.api.IInstanceProvider" shape="rect" coords="362,0,714,24"/>
 <area href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_cross_context_injection_binder.html" title="A special version of InjectionBinder that allows shared injections across multiple Contexts..." alt="strange.extensions.injector.impl.CrossContextInjectionBinder" shape="rect" coords="181,168,533,192"/>
 </map>
  </div></div>
@@ -122,12 +123,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af695f0c65ded51228d02afc0374bacd5"><td class="memItemLeft" align="right" valign="top">virtual object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder.html#af695f0c65ded51228d02afc0374bacd5">GetInstance</a> (Type key, object name)</td></tr>
 <tr class="memdesc:af695f0c65ded51228d02afc0374bacd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve an Instance based on a key/name combo.  <a href="#af695f0c65ded51228d02afc0374bacd5">More...</a><br/></td></tr>
 <tr class="separator:af695f0c65ded51228d02afc0374bacd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab0163fc0ce29c87ce23e05b33941550"><td class="memItemLeft" align="right" valign="top">object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder.html#aab0163fc0ce29c87ce23e05b33941550">GetInstance&lt; T &gt;</a> ()</td></tr>
-<tr class="memdesc:aab0163fc0ce29c87ce23e05b33941550"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve an Instance based on the key.  <a href="#aab0163fc0ce29c87ce23e05b33941550">More...</a><br/></td></tr>
-<tr class="separator:aab0163fc0ce29c87ce23e05b33941550"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cd9b99f05837f13f0dbc2e47e603faa"><td class="memItemLeft" align="right" valign="top">object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder.html#a1cd9b99f05837f13f0dbc2e47e603faa">GetInstance&lt; T &gt;</a> (object name)</td></tr>
-<tr class="memdesc:a1cd9b99f05837f13f0dbc2e47e603faa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve an Instance based on a key/name combo.  <a href="#a1cd9b99f05837f13f0dbc2e47e603faa">More...</a><br/></td></tr>
-<tr class="separator:a1cd9b99f05837f13f0dbc2e47e603faa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6935985cf687fc03af25385781caf01e"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder.html#a6935985cf687fc03af25385781caf01e">GetInstance&lt; T &gt;</a> ()</td></tr>
+<tr class="memdesc:a6935985cf687fc03af25385781caf01e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve an Instance based on the key.  <a href="#a6935985cf687fc03af25385781caf01e">More...</a><br/></td></tr>
+<tr class="separator:a6935985cf687fc03af25385781caf01e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39f1604a085f9d386adff244a7ad4e69"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder.html#a39f1604a085f9d386adff244a7ad4e69">GetInstance&lt; T &gt;</a> (object name)</td></tr>
+<tr class="memdesc:a39f1604a085f9d386adff244a7ad4e69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve an Instance based on a key/name combo.  <a href="#a39f1604a085f9d386adff244a7ad4e69">More...</a><br/></td></tr>
+<tr class="separator:a39f1604a085f9d386adff244a7ad4e69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06ef3bfc85a8c3cb79a115a7b9247c3e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a06ef3bfc85a8c3cb79a115a7b9247c3e"></a>
 override <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder.html#a06ef3bfc85a8c3cb79a115a7b9247c3e">GetRawBinding</a> ()</td></tr>
 <tr class="memdesc:a06ef3bfc85a8c3cb79a115a7b9247c3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an unpopulated IBinding in whatever concrete form the Binder dictates. <br/></td></tr>
@@ -141,12 +142,12 @@ new <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_
 <tr class="memitem:af8be8acb4ee2c3e324ce743132a01193"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8be8acb4ee2c3e324ce743132a01193"></a>
 virtual new <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetBinding&lt; T &gt;</b> ()</td></tr>
 <tr class="separator:af8be8acb4ee2c3e324ce743132a01193"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac94c158e0b2c5b619f666c73103c3242"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac94c158e0b2c5b619f666c73103c3242"></a>
-new <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetBinding&lt; T &gt;</b> (object name)</td></tr>
-<tr class="separator:ac94c158e0b2c5b619f666c73103c3242"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a089423f2b77cddaae0a40861193fe728"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a089423f2b77cddaae0a40861193fe728"></a>
-new <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetBinding</b> (object key)</td></tr>
-<tr class="separator:a089423f2b77cddaae0a40861193fe728"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0df1391f88fe8030376e563ffb8b997"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0df1391f88fe8030376e563ffb8b997"></a>
+virtual new <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetBinding&lt; T &gt;</b> (object name)</td></tr>
+<tr class="separator:ab0df1391f88fe8030376e563ffb8b997"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a365c53881521da1886f6a196ba2f3d18"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a365c53881521da1886f6a196ba2f3d18"></a>
+virtual new <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetBinding</b> (object key)</td></tr>
+<tr class="separator:a365c53881521da1886f6a196ba2f3d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeab9a27d06488aa24601a9a0d9a014fb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeab9a27d06488aa24601a9a0d9a014fb"></a>
 virtual new <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetBinding</b> (object key, object name)</td></tr>
 <tr class="separator:aeab9a27d06488aa24601a9a0d9a014fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -310,7 +311,7 @@ Dictionary&lt; object, Dictionary<br class="typebreak"/>
 <p>Retrieve an Instance based on the key. </p>
 <p>ex. <code>injectionBinder.Get(typeof(ISomeInterface));</code> </p>
 
-<p>Implements <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder.html#a08359dc92534704919a0e9b89375db18">strange.extensions.injector.api.IInjectionBinder</a>.</p>
+<p>Implements <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_instance_provider.html#a6e9b3f0300c397c2005204211647a653">strange.framework.api.IInstanceProvider</a>.</p>
 
 </div>
 </div>
@@ -353,7 +354,7 @@ Dictionary&lt; object, Dictionary<br class="typebreak"/>
 
 </div>
 </div>
-<a class="anchor" id="aab0163fc0ce29c87ce23e05b33941550"></a>
+<a class="anchor" id="a6935985cf687fc03af25385781caf01e"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -361,7 +362,7 @@ Dictionary&lt; object, Dictionary<br class="typebreak"/>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">object <a class="el" href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder.html#a30a3ddff299d4a86a26e3fd58b4ca68e">strange.extensions.injector.impl.InjectionBinder.GetInstance</a>&lt; T &gt; </td>
+          <td class="memname">T <a class="el" href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder.html#a30a3ddff299d4a86a26e3fd58b4ca68e">strange.extensions.injector.impl.InjectionBinder.GetInstance</a>&lt; T &gt; </td>
           <td>(</td>
           <td class="paramname">)</td><td></td>
           <td></td>
@@ -377,11 +378,11 @@ Dictionary&lt; object, Dictionary<br class="typebreak"/>
 <p>Retrieve an Instance based on the key. </p>
 <p>ex. <code>injectionBinder.Get&lt;cISomeInterface&gt;();</code> </p>
 
-<p>Implements <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder.html#a20bcbae77a818103c60eb063e75fd956">strange.extensions.injector.api.IInjectionBinder</a>.</p>
+<p>Implements <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_instance_provider.html#a0bec917157343a46d675ad3a8b6ad65c">strange.framework.api.IInstanceProvider</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a1cd9b99f05837f13f0dbc2e47e603faa"></a>
+<a class="anchor" id="a39f1604a085f9d386adff244a7ad4e69"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -389,7 +390,7 @@ Dictionary&lt; object, Dictionary<br class="typebreak"/>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">object <a class="el" href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder.html#a30a3ddff299d4a86a26e3fd58b4ca68e">strange.extensions.injector.impl.InjectionBinder.GetInstance</a>&lt; T &gt; </td>
+          <td class="memname">T <a class="el" href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder.html#a30a3ddff299d4a86a26e3fd58b4ca68e">strange.extensions.injector.impl.InjectionBinder.GetInstance</a>&lt; T &gt; </td>
           <td>(</td>
           <td class="paramtype">object&#160;</td>
           <td class="paramname"><em>name</em>)</td><td></td>
@@ -406,7 +407,7 @@ Dictionary&lt; object, Dictionary<br class="typebreak"/>
 <p>Retrieve an Instance based on a key/name combo. </p>
 <p>ex. <code>injectionBinder.Get&lt;cISomeInterface&gt;(SomeEnum.MY_ENUM);</code> </p>
 
-<p>Implements <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder.html#a26f141d072f219bb70513f5e21af6bbf">strange.extensions.injector.api.IInjectionBinder</a>.</p>
+<p>Implements <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder.html#ae9edea5e4babff105ec4767d84c6b716">strange.extensions.injector.api.IInjectionBinder</a>.</p>
 
 </div>
 </div>
@@ -443,7 +444,7 @@ Dictionary&lt; object, Dictionary<br class="typebreak"/>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 12 2013 11:15:53 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 28 2014 13:07:05 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

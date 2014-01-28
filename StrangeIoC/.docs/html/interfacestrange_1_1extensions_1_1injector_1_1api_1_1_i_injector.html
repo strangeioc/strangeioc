@@ -123,6 +123,9 @@ object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="in
 object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector.html#a82ddabe54623ed3caed1ad607b679ad1">Inject</a> (object target, bool attemptConstructorInjection)</td></tr>
 <tr class="memdesc:a82ddabe54623ed3caed1ad607b679ad1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request that the provided target be injected. <br/></td></tr>
 <tr class="separator:a82ddabe54623ed3caed1ad607b679ad1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97ed5ca85ac9043a53ae49122a5dc3ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector.html#a97ed5ca85ac9043a53ae49122a5dc3ca">Uninject</a> (object target)</td></tr>
+<tr class="memdesc:a97ed5ca85ac9043a53ae49122a5dc3ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the injections from the provided instance.  <a href="#a97ed5ca85ac9043a53ae49122a5dc3ca">More...</a><br/></td></tr>
+<tr class="separator:a97ed5ca85ac9043a53ae49122a5dc3ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -178,13 +181,34 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a97ed5ca85ac9043a53ae49122a5dc3ca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void strange.extensions.injector.api.IInjector.Uninject </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>target</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clear the injections from the provided instance. </p>
+<p>Note that Uninject can only clean public properties...therefore only setters will be uninjected...not injections provided via constructor injection </p>
+
+<p>Implemented in <a class="el" href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injector.html#aadbd3054a566efbcef0fb1cdc3dc3e23">strange.extensions.injector.impl.Injector</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this interface was generated from the following file:<ul>
 <li>StrangeIoC/scripts/strange/extensions/injector/api/IInjector.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 12 2013 11:15:52 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 28 2014 13:07:05 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

@@ -105,7 +105,8 @@ Inheritance diagram for strange.extensions.context.api.IContextView:</div>
  <div class="center">
   <img src="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context_view.png" usemap="#strange.extensions.context.api.IContextView_map" alt=""/>
   <map id="strange.extensions.context.api.IContextView_map" name="strange.extensions.context.api.IContextView_map">
-<area href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context_view.html" title="The Root View of a Context hierarchy. " alt="strange.extensions.context.impl.ContextView" shape="rect" coords="0,56,261,80"/>
+<area href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html" title="Monobehaviours must implement this interface in order to be injectable. " alt="strange.extensions.mediation.api.IView" shape="rect" coords="0,0,261,24"/>
+<area href="classstrange_1_1extensions_1_1context_1_1impl_1_1_context_view.html" title="The Root View of a Context hierarchy. " alt="strange.extensions.context.impl.ContextView" shape="rect" coords="0,112,261,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -115,6 +116,18 @@ Properties</h2></td></tr>
 <a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context.html">IContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context_view.html#a9b4c1082416793d613439d6934958cce">context</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a9b4c1082416793d613439d6934958cce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get and set the Context. <br/></td></tr>
 <tr class="separator:a9b4c1082416793d613439d6934958cce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td colspan="2" onclick="javascript:toggleInherit('properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html">strange.extensions.mediation.api.IView</a></td></tr>
+<tr class="memitem:a0d9c314f274cd64133a8c97116ba9332 inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html#a0d9c314f274cd64133a8c97116ba9332">requiresContext</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a0d9c314f274cd64133a8c97116ba9332 inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the View can work absent a context.  <a href="#a0d9c314f274cd64133a8c97116ba9332">More...</a><br/></td></tr>
+<tr class="separator:a0d9c314f274cd64133a8c97116ba9332 inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6eca04af420be4cb7ad637df4c8ff9c inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac6eca04af420be4cb7ad637df4c8ff9c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html#ac6eca04af420be4cb7ad637df4c8ff9c">registeredWithContext</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ac6eca04af420be4cb7ad637df4c8ff9c inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether this View has been registered with a Context. <br/></td></tr>
+<tr class="separator:ac6eca04af420be4cb7ad637df4c8ff9c inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a245fba8e916c754e8cee754ce683b846 inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a245fba8e916c754e8cee754ce683b846"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html#a245fba8e916c754e8cee754ce683b846">autoRegisterWithContext</a><code> [get]</code></td></tr>
+<tr class="memdesc:a245fba8e916c754e8cee754ce683b846 inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exposure to code of the registerWithContext (Inspector) boolean. If false, the View won't try to register. <br/></td></tr>
+<tr class="separator:a245fba8e916c754e8cee754ce683b846 inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The ContextView is the entry point to the application. </p>
@@ -125,7 +138,7 @@ Properties</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 12 2013 11:15:52 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 28 2014 13:07:04 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

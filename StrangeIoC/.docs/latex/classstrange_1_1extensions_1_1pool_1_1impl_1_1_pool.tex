@@ -1,0 +1,233 @@
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool}{\section{strange.\-extensions.\-pool.\-impl.\-Pool Class Reference}
+\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool}\index{strange.\-extensions.\-pool.\-impl.\-Pool@{strange.\-extensions.\-pool.\-impl.\-Pool}}
+}
+Inheritance diagram for strange.\-extensions.\-pool.\-impl.\-Pool\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_aa85b5b028318a994373745e63c27a697}{virtual \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_managed_list}{I\-Managed\-List} \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_aa85b5b028318a994373745e63c27a697}{Add} (object value)}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_aa85b5b028318a994373745e63c27a697}
+
+\begin{DoxyCompactList}\small\item\em Add a value to this List. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_aedafa80e33428458eab05e6d33ddce48}{virtual \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_managed_list}{I\-Managed\-List} \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_aedafa80e33428458eab05e6d33ddce48}{Add} (object\mbox{[}$\,$\mbox{]} list)}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_aedafa80e33428458eab05e6d33ddce48}
+
+\begin{DoxyCompactList}\small\item\em Add a set of values to this List. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ad04ffd8b97c64900e7e5f6eeb92afbdd}{virtual \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_managed_list}{I\-Managed\-List} \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ad04ffd8b97c64900e7e5f6eeb92afbdd}{Remove} (object value)}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ad04ffd8b97c64900e7e5f6eeb92afbdd}
+
+\begin{DoxyCompactList}\small\item\em Remove a value from this List. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ad39a1c92db74c3d1b065405b0bac9812}{virtual \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_managed_list}{I\-Managed\-List} \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ad39a1c92db74c3d1b065405b0bac9812}{Remove} (object\mbox{[}$\,$\mbox{]} list)}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ad39a1c92db74c3d1b065405b0bac9812}
+
+\begin{DoxyCompactList}\small\item\em Remove a set of values from this List. \end{DoxyCompactList}\item 
+virtual object \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ab09cbaa24c308da83a2a923e1aaf6010}{Get\-Instance} ()
+\begin{DoxyCompactList}\small\item\em Gets an instance from the pool if one is available. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a0b9746cdab600d749994dfa3de604fc2}{Return\-Instance} (object value)
+\begin{DoxyCompactList}\small\item\em Returns an instance to the pool. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_af4a9b202649b74935b2d02721b4c29a7}{Clean} ()
+\begin{DoxyCompactList}\small\item\em Remove all instance references from the \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool}{Pool}. \end{DoxyCompactList}\item 
+void \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a5a936efde1ae47310598a1b54c68db44}{Restore} ()
+\begin{DoxyCompactList}\small\item\em Clean up this instance for reuse. \end{DoxyCompactList}\item 
+void \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a31dd0baa23e31b9fe079783acdbbef4b}{Retain} ()
+\begin{DoxyCompactList}\small\item\em Keep this instance from being returned to the pool \end{DoxyCompactList}\item 
+void \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_added3d6c62335be5ee0dd2e88c1b9f66}{Release} ()
+\begin{DoxyCompactList}\small\item\em Release this instance back to the pool. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ac687dc8474a5e46b1cff3819aea2672d}{remove\-Instance} (object value)
+\begin{DoxyCompactList}\small\item\em Permanently removes an instance from the \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool}{Pool} \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a35f11933a6148a85562e16fe564d8281}{void {\bfseries fail\-If} (bool condition, string message, \hyperlink{namespacestrange_1_1extensions_1_1pool_1_1api_a93ccdd4d6e731ba8a31a774428edec32}{Pool\-Exception\-Type} type)}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a35f11933a6148a85562e16fe564d8281}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ad7b384df284bdd25b3ee158ec8e4b110}{Stack \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ad7b384df284bdd25b3ee158ec8e4b110}{instances\-Available} = new Stack ()}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ad7b384df284bdd25b3ee158ec8e4b110}
+
+\begin{DoxyCompactList}\small\item\em Stack of instances still in the \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool}{Pool}. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a05948789a396a039296ad34b7c40b164}{Hash\-Set$<$ object $>$ \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a05948789a396a039296ad34b7c40b164}{instances\-In\-Use} = new Hash\-Set$<$object$>$ ()}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a05948789a396a039296ad34b7c40b164}
+
+\begin{DoxyCompactList}\small\item\em A Hash\-Set of the objects checked out of the \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool}{Pool}. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_adb85eb9451c096c5e89e0f067c9a0a04}{int {\bfseries \-\_\-instance\-Count}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_adb85eb9451c096c5e89e0f067c9a0a04}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_aa92fcb0df613f244078ac3b9bbea4c44}{\hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_instance_provider}{I\-Instance\-Provider} {\bfseries instance\-Provider}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_aa92fcb0df613f244078ac3b9bbea4c44}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_aa550cf065bdb9336d92e7161d81d1bb0}{virtual object {\bfseries value}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_aa550cf065bdb9336d92e7161d81d1bb0}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_aeba1ffc6a5d99663ac73d4b63bf9949c}{virtual bool {\bfseries unique\-Values}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_aeba1ffc6a5d99663ac73d4b63bf9949c}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a7d0c42c432697e1605d97c63c7000302}{virtual Enum {\bfseries constraint}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a7d0c42c432697e1605d97c63c7000302}
+
+\item 
+System.\-Type \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ac2babef4f2b79df84b13576ca2447643}{pool\-Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The object Type of the first object added to the pool. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ae374753b490c0fe6824c4b7a1eceab98}{int {\bfseries instance\-Count}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ae374753b490c0fe6824c4b7a1eceab98}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ab781eb9ef122c6b4e3de72a76a14231a}{virtual int {\bfseries available}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ab781eb9ef122c6b4e3de72a76a14231a}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ad761e333a92ea5ef7647eaa06bbfc388}{virtual int {\bfseries size}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ad761e333a92ea5ef7647eaa06bbfc388}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a703f20f6e2e51ba1ca40974a572272a2}{virtual \hyperlink{namespacestrange_1_1extensions_1_1pool_1_1api_afb1f831222aa94de2fcb447a88146ad0}{Pool\-Overflow\-Behavior} {\bfseries overflow\-Behavior}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a703f20f6e2e51ba1ca40974a572272a2}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a6cc764bd656e3b6a1b903738e4656b4e}{virtual \hyperlink{namespacestrange_1_1extensions_1_1pool_1_1api_ac2dc67ad647400c4637d72c282028180}{Pool\-Inflation\-Type} {\bfseries inflation\-Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a6cc764bd656e3b6a1b903738e4656b4e}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_aa38c939cfdeb3e55df7c09f082c7039d}{bool {\bfseries retain}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_aa38c939cfdeb3e55df7c09f082c7039d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool}{strange.\-extensions.\-pool.\-api.\-I\-Pool} 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_af4a9b202649b74935b2d02721b4c29a7}{\index{strange\-::extensions\-::pool\-::impl\-::\-Pool@{strange\-::extensions\-::pool\-::impl\-::\-Pool}!Clean@{Clean}}
+\index{Clean@{Clean}!strange::extensions::pool::impl::Pool@{strange\-::extensions\-::pool\-::impl\-::\-Pool}}
+\subsubsection[{Clean}]{\setlength{\rightskip}{0pt plus 5cm}virtual void strange.\-extensions.\-pool.\-impl.\-Pool.\-Clean (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_af4a9b202649b74935b2d02721b4c29a7}
+
+
+Remove all instance references from the \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool}{Pool}. 
+
+
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a4cbaa845454117ccec8389a27642a9b0}{strange.\-extensions.\-pool.\-api.\-I\-Pool}.
+
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ab09cbaa24c308da83a2a923e1aaf6010}{\index{strange\-::extensions\-::pool\-::impl\-::\-Pool@{strange\-::extensions\-::pool\-::impl\-::\-Pool}!Get\-Instance@{Get\-Instance}}
+\index{Get\-Instance@{Get\-Instance}!strange::extensions::pool::impl::Pool@{strange\-::extensions\-::pool\-::impl\-::\-Pool}}
+\subsubsection[{Get\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}virtual object strange.\-extensions.\-pool.\-impl.\-Pool.\-Get\-Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ab09cbaa24c308da83a2a923e1aaf6010}
+
+
+Gets an instance from the pool if one is available. 
+
+\begin{DoxyReturn}{Returns}
+The instance.
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a07042ef56c57b6a5569de6360196ab11}{strange.\-extensions.\-pool.\-api.\-I\-Pool}.
+
+
+
+Reimplemented in \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_3_01_t_01_4_a56a306d7432fb57b113889acd8f2dd63}{strange.\-extensions.\-pool.\-impl.\-Pool$<$ T $>$}.
+
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_added3d6c62335be5ee0dd2e88c1b9f66}{\index{strange\-::extensions\-::pool\-::impl\-::\-Pool@{strange\-::extensions\-::pool\-::impl\-::\-Pool}!Release@{Release}}
+\index{Release@{Release}!strange::extensions::pool::impl::Pool@{strange\-::extensions\-::pool\-::impl\-::\-Pool}}
+\subsubsection[{Release}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-pool.\-impl.\-Pool.\-Release (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_added3d6c62335be5ee0dd2e88c1b9f66}
+
+
+Release this instance back to the pool. 
+
+Release methods should clean up the instance sufficiently to remove prior state. 
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_afdea864987f51cfc9d83e9158dfcaa33}{strange.\-extensions.\-pool.\-api.\-I\-Poolable}.
+
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ac687dc8474a5e46b1cff3819aea2672d}{\index{strange\-::extensions\-::pool\-::impl\-::\-Pool@{strange\-::extensions\-::pool\-::impl\-::\-Pool}!remove\-Instance@{remove\-Instance}}
+\index{remove\-Instance@{remove\-Instance}!strange::extensions::pool::impl::Pool@{strange\-::extensions\-::pool\-::impl\-::\-Pool}}
+\subsubsection[{remove\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}virtual void strange.\-extensions.\-pool.\-impl.\-Pool.\-remove\-Instance (
+\begin{DoxyParamCaption}
+\item[{object}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ac687dc8474a5e46b1cff3819aea2672d}
+
+
+Permanently removes an instance from the \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool}{Pool} 
+
+In the event that the removed Instance is in use, it is removed from instances\-In\-Use. Otherwise, it is presumed inactive, and the next available object is popped from instances\-Available. 
+\begin{DoxyParams}{Parameters}
+{\em value} & An instance to remove permanently from the \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool}{Pool}.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a5a936efde1ae47310598a1b54c68db44}{\index{strange\-::extensions\-::pool\-::impl\-::\-Pool@{strange\-::extensions\-::pool\-::impl\-::\-Pool}!Restore@{Restore}}
+\index{Restore@{Restore}!strange::extensions::pool::impl::Pool@{strange\-::extensions\-::pool\-::impl\-::\-Pool}}
+\subsubsection[{Restore}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-pool.\-impl.\-Pool.\-Restore (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a5a936efde1ae47310598a1b54c68db44}
+
+
+Clean up this instance for reuse. 
+
+Restore methods should clean up the instance sufficiently to remove prior state. 
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_a3eb6437f37f1e87b92c55a32689a0ef5}{strange.\-extensions.\-pool.\-api.\-I\-Poolable}.
+
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a31dd0baa23e31b9fe079783acdbbef4b}{\index{strange\-::extensions\-::pool\-::impl\-::\-Pool@{strange\-::extensions\-::pool\-::impl\-::\-Pool}!Retain@{Retain}}
+\index{Retain@{Retain}!strange::extensions::pool::impl::Pool@{strange\-::extensions\-::pool\-::impl\-::\-Pool}}
+\subsubsection[{Retain}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-pool.\-impl.\-Pool.\-Retain (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a31dd0baa23e31b9fe079783acdbbef4b}
+
+
+Keep this instance from being returned to the pool 
+
+
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_ad51f2499e20163c58147a886e5fd5692}{strange.\-extensions.\-pool.\-api.\-I\-Poolable}.
+
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a0b9746cdab600d749994dfa3de604fc2}{\index{strange\-::extensions\-::pool\-::impl\-::\-Pool@{strange\-::extensions\-::pool\-::impl\-::\-Pool}!Return\-Instance@{Return\-Instance}}
+\index{Return\-Instance@{Return\-Instance}!strange::extensions::pool::impl::Pool@{strange\-::extensions\-::pool\-::impl\-::\-Pool}}
+\subsubsection[{Return\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}virtual void strange.\-extensions.\-pool.\-impl.\-Pool.\-Return\-Instance (
+\begin{DoxyParamCaption}
+\item[{object}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a0b9746cdab600d749994dfa3de604fc2}
+
+
+Returns an instance to the pool. 
+
+If the instance being released implements I\-Poolable, the \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_added3d6c62335be5ee0dd2e88c1b9f66}{Release()} method will be called. 
+\begin{DoxyParams}{Parameters}
+{\em value} & The instance to be return to the pool.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a00d776e7b4f1735e7da8026c7ec7386c}{strange.\-extensions.\-pool.\-api.\-I\-Pool}.
+
+
+
+\subsection{Property Documentation}
+\hypertarget{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ac2babef4f2b79df84b13576ca2447643}{\index{strange\-::extensions\-::pool\-::impl\-::\-Pool@{strange\-::extensions\-::pool\-::impl\-::\-Pool}!pool\-Type@{pool\-Type}}
+\index{pool\-Type@{pool\-Type}!strange::extensions::pool::impl::Pool@{strange\-::extensions\-::pool\-::impl\-::\-Pool}}
+\subsubsection[{pool\-Type}]{\setlength{\rightskip}{0pt plus 5cm}System.\-Type strange.\-extensions.\-pool.\-impl.\-Pool.\-pool\-Type\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ac2babef4f2b79df84b13576ca2447643}
+
+
+The object Type of the first object added to the pool. 
+
+\hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool}{Pool} objects must be of the same concrete type. This property enforces that requirement. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Strange\-Io\-C/scripts/strange/extensions/pool/impl/Pool.\-cs\end{DoxyCompactItemize}

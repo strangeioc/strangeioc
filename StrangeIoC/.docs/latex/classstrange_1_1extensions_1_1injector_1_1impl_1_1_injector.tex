@@ -22,7 +22,9 @@ object \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injector_af
 \begin{DoxyCompactList}\small\item\em Request that the provided target be injected. \end{DoxyCompactList}\item 
 \hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injector_ae6df3d7fb5fc7d18a2ca9c2c8e754783}{object \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injector_ae6df3d7fb5fc7d18a2ca9c2c8e754783}{Inject} (object target, bool attempt\-Constructor\-Injection)}\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injector_ae6df3d7fb5fc7d18a2ca9c2c8e754783}
 
-\begin{DoxyCompactList}\small\item\em Request that the provided target be injected. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Request that the provided target be injected. \end{DoxyCompactList}\item 
+void \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injector_aadbd3054a566efbcef0fb1cdc3dc3e23}{Uninject} (object target)
+\begin{DoxyCompactList}\small\item\em Clear the injections from the provided instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
@@ -68,6 +70,21 @@ Request an instantiation based on the given binding.
 This request is made to the \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injector}{Injector}, but it's really the \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injector_factory}{Injector\-Factory} that does the instantiation. 
 
 Implements \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_ab6c185a183b27708e38c4954195fe591}{strange.\-extensions.\-injector.\-api.\-I\-Injector}.
+
+\hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injector_aadbd3054a566efbcef0fb1cdc3dc3e23}{\index{strange\-::extensions\-::injector\-::impl\-::\-Injector@{strange\-::extensions\-::injector\-::impl\-::\-Injector}!Uninject@{Uninject}}
+\index{Uninject@{Uninject}!strange::extensions::injector::impl::Injector@{strange\-::extensions\-::injector\-::impl\-::\-Injector}}
+\subsubsection[{Uninject}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-injector.\-impl.\-Injector.\-Uninject (
+\begin{DoxyParamCaption}
+\item[{object}]{target}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injector_aadbd3054a566efbcef0fb1cdc3dc3e23}
+
+
+Clear the injections from the provided instance. 
+
+Note that Uninject can only clean public properties...therefore only setters will be uninjected...not injections provided via constructor injection 
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injector_a97ed5ca85ac9043a53ae49122a5dc3ca}{strange.\-extensions.\-injector.\-api.\-I\-Injector}.
 
 
 
