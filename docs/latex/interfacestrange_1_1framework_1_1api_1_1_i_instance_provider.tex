@@ -1,0 +1,62 @@
+\hypertarget{interfacestrange_1_1framework_1_1api_1_1_i_instance_provider}{\section{strange.\-framework.\-api.\-I\-Instance\-Provider Interface Reference}
+\label{interfacestrange_1_1framework_1_1api_1_1_i_instance_provider}\index{strange.\-framework.\-api.\-I\-Instance\-Provider@{strange.\-framework.\-api.\-I\-Instance\-Provider}}
+}
+
+
+Provides an instance of the specified Type When all you need is a new instance, use this instead of I\-Injection\-Binder.  
+
+
+Inheritance diagram for strange.\-framework.\-api.\-I\-Instance\-Provider\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.696970cm]{interfacestrange_1_1framework_1_1api_1_1_i_instance_provider}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+T \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_instance_provider_a0bec917157343a46d675ad3a8b6ad65c}{Get\-Instance$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Retrieve an Instance based on the key. \end{DoxyCompactList}\item 
+object \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_instance_provider_a6e9b3f0300c397c2005204211647a653}{Get\-Instance} (Type key)
+\begin{DoxyCompactList}\small\item\em Retrieve an Instance based on the key. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Provides an instance of the specified Type When all you need is a new instance, use this instead of I\-Injection\-Binder. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interfacestrange_1_1framework_1_1api_1_1_i_instance_provider_a6e9b3f0300c397c2005204211647a653}{\index{strange\-::framework\-::api\-::\-I\-Instance\-Provider@{strange\-::framework\-::api\-::\-I\-Instance\-Provider}!Get\-Instance@{Get\-Instance}}
+\index{Get\-Instance@{Get\-Instance}!strange::framework::api::IInstanceProvider@{strange\-::framework\-::api\-::\-I\-Instance\-Provider}}
+\subsubsection[{Get\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}object strange.\-framework.\-api.\-I\-Instance\-Provider.\-Get\-Instance (
+\begin{DoxyParamCaption}
+\item[{Type}]{key}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1framework_1_1api_1_1_i_instance_provider_a6e9b3f0300c397c2005204211647a653}
+
+
+Retrieve an Instance based on the key. 
+
+ex. {\ttfamily injection\-Binder.\-Get(typeof(\-I\-Some\-Interface));} 
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_instance_provider_a97615ec61f13f35a6ab9127f9c4f888c}{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Event\-Instance\-Provider}, and \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a30a3ddff299d4a86a26e3fd58b4ca68e}{strange.\-extensions.\-injector.\-impl.\-Injection\-Binder}.
+
+\hypertarget{interfacestrange_1_1framework_1_1api_1_1_i_instance_provider_a0bec917157343a46d675ad3a8b6ad65c}{\index{strange\-::framework\-::api\-::\-I\-Instance\-Provider@{strange\-::framework\-::api\-::\-I\-Instance\-Provider}!Get\-Instance$<$ T $>$@{Get\-Instance$<$ T $>$}}
+\index{Get\-Instance$<$ T $>$@{Get\-Instance$<$ T $>$}!strange::framework::api::IInstanceProvider@{strange\-::framework\-::api\-::\-I\-Instance\-Provider}}
+\subsubsection[{Get\-Instance$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}T {\bf strange.\-framework.\-api.\-I\-Instance\-Provider.\-Get\-Instance}$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1framework_1_1api_1_1_i_instance_provider_a0bec917157343a46d675ad3a8b6ad65c}
+
+
+Retrieve an Instance based on the key. 
+
+ex. {\ttfamily injection\-Binder.\-Get$<$c\-I\-Some\-Interface$>$();} 
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_instance_provider_a0495fd565e76da8d0262359643c40084}{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Event\-Instance\-Provider}, and \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a6935985cf687fc03af25385781caf01e}{strange.\-extensions.\-injector.\-impl.\-Injection\-Binder}.
+
+
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Strange\-Io\-C/scripts/strange/framework/api/I\-Instance\-Provider.\-cs\end{DoxyCompactItemize}

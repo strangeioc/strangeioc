@@ -86,6 +86,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#properties">Properties</a> &#124;
 <a href="class_post_construct-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">PostConstruct Class Reference</div>  </div>
@@ -102,16 +104,30 @@ Inheritance diagram for PostConstruct:</div>
   <map id="PostConstruct_map" name="PostConstruct_map">
 </map>
  </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:af60fdf7855d5e3e26d79922454c72414"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af60fdf7855d5e3e26d79922454c72414"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PostConstruct</b> (int p)</td></tr>
+<tr class="separator:af60fdf7855d5e3e26d79922454c72414"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:aeaedba1eb582bd7c4e023404ed1c8611"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeaedba1eb582bd7c4e023404ed1c8611"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>priority</b><code> [get, set]</code></td></tr>
+<tr class="separator:aeaedba1eb582bd7c4e023404ed1c8611"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>[<a class="el" href="class_post_construct.html" title="The [PostConstruct] attribute marks one or more methods as PostConstructors. ">PostConstruct</a>]</code> attribute marks one or more methods as PostConstructors. </p>
-<p>A PostConstructor is triggered immediately after injection. This allows you to use use a PostConstructor in much the same way as a Constructor, safe in the knowledge that there will be no null pointers on injected dependencies. PostConstructors do not accept arguments. </p>
+<p>A PostConstructor is triggered immediately after injection. This allows you to use use a PostConstructor in much the same way as a Constructor, safe in the knowledge that there will be no null pointers on injected dependencies. PostConstructors do not accept arguments.</p>
+<p>You may optionally include a priority int on your PostConstructor. This allows for multiple PostConstruction methods which will fire in a predictable order. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>StrangeIoC/scripts/strange/extensions/injector/InjectAttribute.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 12 2013 11:15:52 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 28 2014 13:07:04 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

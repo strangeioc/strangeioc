@@ -18,24 +18,21 @@ Inheritance diagram for strange.\-extensions.\-command.\-impl.\-Command\-:\begin
 \hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a4a1155270428842c342482c6885b2652}{virtual void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a4a1155270428842c342482c6885b2652}{Execute} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a4a1155270428842c342482c6885b2652}
 
 \begin{DoxyCompactList}\small\item\em Override this! {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a4a1155270428842c342482c6885b2652}{Execute()}} is where you place the logic for your \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command}. \end{DoxyCompactList}\item 
-\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a1525def9650d4b6ed6ed6cef2936d892}{void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a1525def9650d4b6ed6ed6cef2936d892}{Retain} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a1525def9650d4b6ed6ed6cef2936d892}
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_ae1fd4be633a9619861930197b51ad6ea}{virtual void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_ae1fd4be633a9619861930197b51ad6ea}{Retain} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_ae1fd4be633a9619861930197b51ad6ea}
 
-\begin{DoxyCompactList}\small\item\em Keeps the \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} in memory. Use only in conjunction with {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a783b532e62f1c5c7789ae1a5791c75c7}{Release()}} \end{DoxyCompactList}\item 
-\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a783b532e62f1c5c7789ae1a5791c75c7}{void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a783b532e62f1c5c7789ae1a5791c75c7}{Release} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a783b532e62f1c5c7789ae1a5791c75c7}
+\begin{DoxyCompactList}\small\item\em Keeps the \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} in memory. Use only in conjunction with {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a41896e346d95419f179c8af2ccb5696d}{Release()}} \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a41896e346d95419f179c8af2ccb5696d}{virtual void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a41896e346d95419f179c8af2ccb5696d}{Release} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a41896e346d95419f179c8af2ccb5696d}
 
 \begin{DoxyCompactList}\small\item\em Allows a previous Retained \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} to be disposed. \end{DoxyCompactList}\item 
-\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_aa91c0b75c21945fdf87105d806d3ba79}{void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_aa91c0b75c21945fdf87105d806d3ba79}{Fail} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_aa91c0b75c21945fdf87105d806d3ba79}
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a150a8abf7136daecc1a991836feda470}{virtual void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a150a8abf7136daecc1a991836feda470}{Restore} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a150a8abf7136daecc1a991836feda470}
+
+\begin{DoxyCompactList}\small\item\em Use/override this method to clean up the \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} for recycling. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a09ff0edefacd05382f9f978bab8195ff}{virtual void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a09ff0edefacd05382f9f978bab8195ff}{Fail} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a09ff0edefacd05382f9f978bab8195ff}
 
 \begin{DoxyCompactList}\small\item\em Inidcates that the \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} failed Used in sequential command groups to terminate the sequence. \end{DoxyCompactList}\item 
 \hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a500dacf34f897fec9ad6930a24ec3332}{void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a500dacf34f897fec9ad6930a24ec3332}{Cancel} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a500dacf34f897fec9ad6930a24ec3332}
 
 \begin{DoxyCompactList}\small\item\em Inform the \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} that further Execution has been terminated. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Protected Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a5af3d1e83f6f702ee7d4ca069efd348f}{bool {\bfseries \-\_\-retain} = false}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a5af3d1e83f6f702ee7d4ca069efd348f}
-
-\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
@@ -51,10 +48,13 @@ Inheritance diagram for strange.\-extensions.\-command.\-impl.\-Command\-:\begin
 \hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a6cf80e414ea49add9026d441466c119a}{bool {\bfseries cancelled}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a6cf80e414ea49add9026d441466c119a}
 
 \item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a4086381430cb62a0e575c295f2c86354}{bool {\bfseries Is\-Clean}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a4086381430cb62a0e575c295f2c86354}
+
+\item 
 \hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_aa73766a45e3f739d77662fb2e909ee1e}{int {\bfseries sequence\-Id}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_aa73766a45e3f739d77662fb2e909ee1e}
 
 \item 
-\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_adf51b3ae205b21b57e76ba3aad11bc74}{bool {\bfseries retain}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_adf51b3ae205b21b57e76ba3aad11bc74}
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_adf51b3ae205b21b57e76ba3aad11bc74}{bool {\bfseries retain}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_adf51b3ae205b21b57e76ba3aad11bc74}
 
 \end{DoxyCompactItemize}
 
@@ -64,9 +64,9 @@ Commands are where you place your business logic.
 
 In the M\-V\-C\-S\-Context setup, commands are mapped to I\-Events. The firing of a specific event on the global event bus triggers the instantiation, injection and execution of any Command(s) bound to that event.
 
-By default, commands are cleaned up immediately on completion of the {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a4a1155270428842c342482c6885b2652}{Execute()}} method. For asynchronous Commands (e.\-g., calling a service and awaiting a response), call {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a1525def9650d4b6ed6ed6cef2936d892}{Retain()}} at the top of your {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a4a1155270428842c342482c6885b2652}{Execute()}} method, which will prevent premature cleanup. But remember, having done so it is your responsipility to call {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a783b532e62f1c5c7789ae1a5791c75c7}{Release()}} once the \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} is complete.
+By default, commands are cleaned up immediately on completion of the {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a4a1155270428842c342482c6885b2652}{Execute()}} method. For asynchronous Commands (e.\-g., calling a service and awaiting a response), call {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_ae1fd4be633a9619861930197b51ad6ea}{Retain()}} at the top of your {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a4a1155270428842c342482c6885b2652}{Execute()}} method, which will prevent premature cleanup. But remember, having done so it is your responsipility to call {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a41896e346d95419f179c8af2ccb5696d}{Release()}} once the \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} is complete.
 
-Calling {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_aa91c0b75c21945fdf87105d806d3ba79}{Fail()}} will terminate any sequence in which the \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} is operating, but has no effect on Commands operating in parallel. 
+Calling {\ttfamily \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a09ff0edefacd05382f9f978bab8195ff}{Fail()}} will terminate any sequence in which the \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} is operating, but has no effect on Commands operating in parallel. 
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 

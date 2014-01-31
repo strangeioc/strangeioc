@@ -55,16 +55,38 @@ void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1i
 \hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a805d419bf0bad3be1cba8961575e70d7}{void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a805d419bf0bad3be1cba8961575e70d7}{Remove\-Triggerable} (\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{I\-Triggerable} target)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a805d419bf0bad3be1cba8961575e70d7}
 
 \begin{DoxyCompactList}\small\item\em Remove a previously registered Triggerable client from this provider. \end{DoxyCompactList}\item 
-\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a00aa67359048450f440195fcb6303279}{void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a00aa67359048450f440195fcb6303279}{Trigger$<$ T $>$} (object data)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a00aa67359048450f440195fcb6303279}
-
+bool \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_adc98ad9f12cf02c0e6c68bdc0b73f133}{Trigger$<$ T $>$} (object data)
 \begin{DoxyCompactList}\small\item\em Cause this I\-Triggerable to access any provided Key in its Binder by the provided generic and data. \end{DoxyCompactList}\item 
-\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a0360965a7abcec6aaf0d0d139cdba649}{void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a0360965a7abcec6aaf0d0d139cdba649}{Trigger} (object key, object data)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a0360965a7abcec6aaf0d0d139cdba649}
+bool \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a2e3ea9487bb6d0d659e8cb7d47e4e05b}{Trigger} (object key, object data)
+\begin{DoxyCompactList}\small\item\em Cause this I\-Triggerable to access any provided Key in its Binder by the provided key and data. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_ad92badae76b6061f992564eea11fd4f4}{void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_ad92badae76b6061f992564eea11fd4f4}{Release\-Event} (\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event}{I\-Event} evt)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_ad92badae76b6061f992564eea11fd4f4}
 
-\begin{DoxyCompactList}\small\item\em Cause this I\-Triggerable to access any provided Key in its Binder by the provided key and data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Allow a previously retained event to be returned to its pool. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_afd112427b16a6385d90688abbc352174}{static \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool}{I\-Pool}$<$ \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event}{Tm\-Event} $>$ \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_afd112427b16a6385d90688abbc352174}{event\-Pool}}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_afd112427b16a6385d90688abbc352174}
+
+\begin{DoxyCompactList}\small\item\em The event\-Pool is shared across all Event\-Dispatchers for efficiency. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a51322390bec0b998115fcd1e66efa6b4}{virtual \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event}{I\-Event} {\bfseries conform\-Data\-To\-Event} (object event\-Type, object data)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a51322390bec0b998115fcd1e66efa6b4}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a7be09b8e1bf3f9e9347850834f197d2c}{virtual \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event}{I\-Event} {\bfseries create\-Event} (object event\-Type, object data)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a7be09b8e1bf3f9e9347850834f197d2c}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a1d3dd1dc9ecc1b4b429b67a6cdb930b3}{virtual void {\bfseries invoke\-Event\-Callback} (object data, Event\-Callback callback)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a1d3dd1dc9ecc1b4b429b67a6cdb930b3}
+
+\item 
 \hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_acb8980bb7635d1ffeb0e589e6200872c}{void {\bfseries flush\-Removals} ()}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_acb8980bb7635d1ffeb0e589e6200872c}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_afcc9dec3c71924aca5ff4761b67da2ca}{void {\bfseries internal\-Release\-Event} (\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event}{I\-Event} evt)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_afcc9dec3c71924aca5ff4761b67da2ca}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_ac3aa573412f996bf7fa0d92e3ef5acaa}{void {\bfseries clean\-Event} (\hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event}{I\-Event} evt)}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_ac3aa573412f996bf7fa0d92e3ef5acaa}
 
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
@@ -90,13 +112,15 @@ void \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1i
 \subsection{Detailed Description}
 A Dispatcher that uses I\-Event to send messages. 
 
-Whenever the Dispatcher executes a {\ttfamily \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a70d8d7740798e10f960c866e03c4639b}{Dispatch()}}, observers will be notified of any event (Key) for which they have registered.
+Whenever the Dispatcher executes a {\ttfamily \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a70d8d7740798e10f960c866e03c4639b}{Dispatch()}}, observers will be notified of any event (Key) for which they have registered. \begin{DoxyVerb}EventDispatcher dispatches TmEvent : IEvent.
 
-\hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher}{Event\-Dispatcher} dispatches \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event}{Tm\-Event} \-: I\-Event.
+The EventDispatcher is the only Dispatcher currently released with Strange
+(though by separating EventDispatcher from Dispatcher I'm obviously
+    signalling that I don't think it's the only possible one).
 
-The \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher}{Event\-Dispatcher} is the only Dispatcher currently released with Strange (though by separating \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher}{Event\-Dispatcher} from Dispatcher I'm obviously signalling that I don't think it's the only possible one).
+EventDispatcher is both an ITriggerProvider and an ITriggerable.
+\end{DoxyVerb}
 
-\hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher}{Event\-Dispatcher} is both an I\-Trigger\-Provider and an I\-Triggerable.
 
 \begin{DoxySeeAlso}{See Also}
 \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event}{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-api.\-I\-Event} 
@@ -138,6 +162,43 @@ Send a notification of type event\-Type and the provided data payload.
 In M\-V\-C\-S\-Context this dispatches an I\-Event. 
 
 Implements \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_dispatcher_a71f605859b2507f1248190fe37d96eed}{strange.\-extensions.\-dispatcher.\-api.\-I\-Dispatcher}.
+
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a2e3ea9487bb6d0d659e8cb7d47e4e05b}{\index{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Event\-Dispatcher@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Event\-Dispatcher}!Trigger@{Trigger}}
+\index{Trigger@{Trigger}!strange::extensions::dispatcher::eventdispatcher::impl::EventDispatcher@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Event\-Dispatcher}}
+\subsubsection[{Trigger}]{\setlength{\rightskip}{0pt plus 5cm}bool strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Event\-Dispatcher.\-Trigger (
+\begin{DoxyParamCaption}
+\item[{object}]{key, }
+\item[{object}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a2e3ea9487bb6d0d659e8cb7d47e4e05b}
+
+
+Cause this I\-Triggerable to access any provided Key in its Binder by the provided key and data. 
+
+\begin{DoxyReturn}{Returns}
+false if the originator should abort dispatch
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_a07af18f0259e869bd981b81edb58c28f}{strange.\-extensions.\-dispatcher.\-api.\-I\-Triggerable}.
+
+\hypertarget{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_adc98ad9f12cf02c0e6c68bdc0b73f133}{\index{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Event\-Dispatcher@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Event\-Dispatcher}!Trigger$<$ T $>$@{Trigger$<$ T $>$}}
+\index{Trigger$<$ T $>$@{Trigger$<$ T $>$}!strange::extensions::dispatcher::eventdispatcher::impl::EventDispatcher@{strange\-::extensions\-::dispatcher\-::eventdispatcher\-::impl\-::\-Event\-Dispatcher}}
+\subsubsection[{Trigger$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Event\-Dispatcher.\-Trigger}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{object}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_adc98ad9f12cf02c0e6c68bdc0b73f133}
+
+
+Cause this I\-Triggerable to access any provided Key in its Binder by the provided generic and data. 
+
+\begin{DoxyReturn}{Returns}
+false if the originator should abort dispatch
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_ab51a637635cbd1819f5d33f00831c8d5}{strange.\-extensions.\-dispatcher.\-api.\-I\-Triggerable}.
 
 
 

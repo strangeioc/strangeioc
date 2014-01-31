@@ -18,10 +18,10 @@ Inheritance diagram for strange.\-framework.\-impl.\-Binding\-:\begin{figure}[H]
 \hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a50906fc241f67a1b588eebec8266a50e}{{\bfseries Binding} (\hyperlink{classstrange_1_1framework_1_1impl_1_1_binder_aa4e977fc31063ca4d0b029b1abe39dad}{Binder.\-Binding\-Resolver} resolver)}\label{classstrange_1_1framework_1_1impl_1_1_binding_a50906fc241f67a1b588eebec8266a50e}
 
 \item 
-\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a6134684a8e35cac5fb78a50dfd69f67f}{virtual \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding_a6134684a8e35cac5fb78a50dfd69f67f}{Key$<$ T $>$} ()}\label{classstrange_1_1framework_1_1impl_1_1_binding_a6134684a8e35cac5fb78a50dfd69f67f}
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_ac8340be8eb6c057832469724292a17cd}{virtual \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding_ac8340be8eb6c057832469724292a17cd}{Bind$<$ T $>$} ()}\label{classstrange_1_1framework_1_1impl_1_1_binding_ac8340be8eb6c057832469724292a17cd}
 
 \begin{DoxyCompactList}\small\item\em Tie this binding to a Type key. \end{DoxyCompactList}\item 
-\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a371a89d365ef6c2ca6dceb8c170bbcd0}{virtual \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding_a371a89d365ef6c2ca6dceb8c170bbcd0}{Key} (object o)}\label{classstrange_1_1framework_1_1impl_1_1_binding_a371a89d365ef6c2ca6dceb8c170bbcd0}
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a08278e2afe72ad137cacf72ff71d4858}{virtual \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding_a08278e2afe72ad137cacf72ff71d4858}{Bind} (object o)}\label{classstrange_1_1framework_1_1impl_1_1_binding_a08278e2afe72ad137cacf72ff71d4858}
 
 \begin{DoxyCompactList}\small\item\em Tie this binding to a value key, such as a string or class instance. \end{DoxyCompactList}\item 
 \hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_af98b1180c87ab8f34268eb0916c7ba84}{virtual \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding_af98b1180c87ab8f34268eb0916c7ba84}{To$<$ T $>$} ()}\label{classstrange_1_1framework_1_1impl_1_1_binding_af98b1180c87ab8f34268eb0916c7ba84}
@@ -50,7 +50,10 @@ Inheritance diagram for strange.\-framework.\-impl.\-Binding\-:\begin{figure}[H]
 \begin{DoxyCompactList}\small\item\em Remove a specific value from the binding. \end{DoxyCompactList}\item 
 \hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a5c8d21d0817375050735c39727126cf7}{virtual void \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding_a5c8d21d0817375050735c39727126cf7}{Remove\-Name} (object o)}\label{classstrange_1_1framework_1_1impl_1_1_binding_a5c8d21d0817375050735c39727126cf7}
 
-\begin{DoxyCompactList}\small\item\em Remove a name from the binding. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Remove a name from the binding. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_af5dc4c853e083759d39947b15cf7c218}{virtual \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} {\bfseries Weak} ()}\label{classstrange_1_1framework_1_1impl_1_1_binding_af5dc4c853e083759d39947b15cf7c218}
+
+\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -67,6 +70,9 @@ Inheritance diagram for strange.\-framework.\-impl.\-Binding\-:\begin{figure}[H]
 
 \item 
 \hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a36fe28dedcfe0d5c4d5264d30a9a3e33}{\hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding}{I\-Semi\-Binding} {\bfseries \-\_\-name}}\label{classstrange_1_1framework_1_1impl_1_1_binding_a36fe28dedcfe0d5c4d5264d30a9a3e33}
+
+\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a15b073f99cf5f45bba18ca3f42d03e8f}{bool {\bfseries \-\_\-is\-Weak} = false}\label{classstrange_1_1framework_1_1impl_1_1_binding_a15b073f99cf5f45bba18ca3f42d03e8f}
 
 \end{DoxyCompactItemize}
 \subsection*{Properties}
@@ -89,6 +95,9 @@ Inheritance diagram for strange.\-framework.\-impl.\-Binding\-:\begin{figure}[H]
 \item 
 \hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_aa06777def57895952df95f457a44ea93}{Enum {\bfseries name\-Constraint}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1framework_1_1impl_1_1_binding_aa06777def57895952df95f457a44ea93}
 
+\item 
+\hypertarget{classstrange_1_1framework_1_1impl_1_1_binding_a6d7938fd6de02989bb9fe04effbbe04f}{bool {\bfseries is\-Weak}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{classstrange_1_1framework_1_1impl_1_1_binding_a6d7938fd6de02989bb9fe04effbbe04f}
+
 \end{DoxyCompactItemize}
 
 
@@ -106,8 +115,12 @@ Resolver
 
 The resolver method (type \hyperlink{classstrange_1_1framework_1_1impl_1_1_binder_aa4e977fc31063ca4d0b029b1abe39dad}{Binder.\-Binding\-Resolver}) is a callback passed in to resolve instantiation chains.
 
+Strange v0.\-7 adds Pools as an alternative form of \hyperlink{classstrange_1_1framework_1_1impl_1_1_semi_binding}{Semi\-Binding}. Pools can recycle groups of instances. \hyperlink{classstrange_1_1framework_1_1impl_1_1_binding}{Binding} implements I\-Pool to act as a facade on any Pool \hyperlink{classstrange_1_1framework_1_1impl_1_1_semi_binding}{Semi\-Binding}.
+
 \begin{DoxySeeAlso}{See Also}
-\hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{strange.\-framework.\-api.\-I\-Binding} 
+\hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{strange.\-framework.\-api.\-I\-Binding}; 
+
+strange.\-framework.\-api.\-I\-Pool; 
 
 \hyperlink{classstrange_1_1framework_1_1impl_1_1_binder}{strange.\-framework.\-impl.\-Binder}; 
 \end{DoxySeeAlso}

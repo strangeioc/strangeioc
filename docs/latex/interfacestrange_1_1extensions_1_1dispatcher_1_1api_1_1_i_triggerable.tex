@@ -15,11 +15,9 @@ Inheritance diagram for strange.\-extensions.\-dispatcher.\-api.\-I\-Triggerable
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_af2d6a85b1e00a06bab56f21add189549}{void \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_af2d6a85b1e00a06bab56f21add189549}{Trigger$<$ T $>$} (object data)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_af2d6a85b1e00a06bab56f21add189549}
-
+bool \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_ab51a637635cbd1819f5d33f00831c8d5}{Trigger$<$ T $>$} (object data)
 \begin{DoxyCompactList}\small\item\em Cause this \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{I\-Triggerable} to access any provided Key in its Binder by the provided generic and data. \end{DoxyCompactList}\item 
-\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_a361da017a6fcf4462bf05089cbfa6304}{void \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_a361da017a6fcf4462bf05089cbfa6304}{Trigger} (object key, object data)}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_a361da017a6fcf4462bf05089cbfa6304}
-
+bool \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_a07af18f0259e869bd981b81edb58c28f}{Trigger} (object key, object data)
 \begin{DoxyCompactList}\small\item\em Cause this \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{I\-Triggerable} to access any provided Key in its Binder by the provided key and data. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -31,6 +29,46 @@ Objects implementing \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1
 \begin{DoxySeeAlso}{See Also}
 \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_trigger_provider}{strange.\-extensions.\-dispatcher.\-api.\-I\-Trigger\-Provider} 
 \end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_a07af18f0259e869bd981b81edb58c28f}{\index{strange\-::extensions\-::dispatcher\-::api\-::\-I\-Triggerable@{strange\-::extensions\-::dispatcher\-::api\-::\-I\-Triggerable}!Trigger@{Trigger}}
+\index{Trigger@{Trigger}!strange::extensions::dispatcher::api::ITriggerable@{strange\-::extensions\-::dispatcher\-::api\-::\-I\-Triggerable}}
+\subsubsection[{Trigger}]{\setlength{\rightskip}{0pt plus 5cm}bool strange.\-extensions.\-dispatcher.\-api.\-I\-Triggerable.\-Trigger (
+\begin{DoxyParamCaption}
+\item[{object}]{key, }
+\item[{object}]{data}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_a07af18f0259e869bd981b81edb58c28f}
+
+
+Cause this \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{I\-Triggerable} to access any provided Key in its Binder by the provided key and data. 
+
+\begin{DoxyReturn}{Returns}
+false if the originator should abort dispatch
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_a2e3ea9487bb6d0d659e8cb7d47e4e05b}{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Event\-Dispatcher}, \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a89b307b59946a314b5eaf6cbe4a83dc2}{strange.\-extensions.\-command.\-impl.\-Command\-Binder}, and \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_a003f8e51924275ecc81f591be5d12fa3}{strange.\-extensions.\-context.\-impl.\-Cross\-Context\-Bridge}.
+
+\hypertarget{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_ab51a637635cbd1819f5d33f00831c8d5}{\index{strange\-::extensions\-::dispatcher\-::api\-::\-I\-Triggerable@{strange\-::extensions\-::dispatcher\-::api\-::\-I\-Triggerable}!Trigger$<$ T $>$@{Trigger$<$ T $>$}}
+\index{Trigger$<$ T $>$@{Trigger$<$ T $>$}!strange::extensions::dispatcher::api::ITriggerable@{strange\-::extensions\-::dispatcher\-::api\-::\-I\-Triggerable}}
+\subsubsection[{Trigger$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf strange.\-extensions.\-dispatcher.\-api.\-I\-Triggerable.\-Trigger}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{object}]{data}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_ab51a637635cbd1819f5d33f00831c8d5}
+
+
+Cause this \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable}{I\-Triggerable} to access any provided Key in its Binder by the provided generic and data. 
+
+\begin{DoxyReturn}{Returns}
+false if the originator should abort dispatch
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_event_dispatcher_adc98ad9f12cf02c0e6c68bdc0b73f133}{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Event\-Dispatcher}, \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_ad36f925e5e11f3407531b66c27d78d14}{strange.\-extensions.\-command.\-impl.\-Command\-Binder}, and \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_a157f6eacffbd81778369ac28b5bd9bcb}{strange.\-extensions.\-context.\-impl.\-Cross\-Context\-Bridge}.
+
 
 
 The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}

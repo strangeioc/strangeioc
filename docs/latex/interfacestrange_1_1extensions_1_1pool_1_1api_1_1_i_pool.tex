@@ -1,0 +1,178 @@
+\hypertarget{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool}{\section{strange.\-extensions.\-pool.\-api.\-I\-Pool Interface Reference}
+\label{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool}\index{strange.\-extensions.\-pool.\-api.\-I\-Pool@{strange.\-extensions.\-pool.\-api.\-I\-Pool}}
+}
+
+
+A mechanism for storing and reusing instances.  
+
+
+Inheritance diagram for strange.\-extensions.\-pool.\-api.\-I\-Pool\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+object \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a07042ef56c57b6a5569de6360196ab11}{Get\-Instance} ()
+\begin{DoxyCompactList}\small\item\em Gets an instance from the pool if one is available. \end{DoxyCompactList}\item 
+void \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a00d776e7b4f1735e7da8026c7ec7386c}{Return\-Instance} (object \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_managed_list_a563724c81cc8fe5ec08025fe94e9f351}{value})
+\begin{DoxyCompactList}\small\item\em Returns an instance to the pool. \end{DoxyCompactList}\item 
+void \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a4cbaa845454117ccec8389a27642a9b0}{Clean} ()
+\begin{DoxyCompactList}\small\item\em Remove all instance references from the Pool. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_instance_provider}{I\-Instance\-Provider} \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_ada91aed79f4e553ceca25ef52427782c}{instance\-Provider}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em A class that provides instances to the pool when it needs them. \end{DoxyCompactList}\item 
+Type \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_ab967eecf4fc76c5716cad1493d74d295}{pool\-Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The object Type of the first object added to the pool. \end{DoxyCompactList}\item 
+int \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a0ad2b0ade39b7af713a0dfc3ddaec7bf}{available}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Returns the count of non-\/committed instances \end{DoxyCompactList}\item 
+int \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a89338069d9bf986689ceec24341fab3a}{size}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the size of the pool. \end{DoxyCompactList}\item 
+int \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a64c22a4f15d41fe5f4109ac5f6d2df58}{instance\-Count}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Returns the total number of instances currently managed by this pool. \end{DoxyCompactList}\item 
+\hyperlink{namespacestrange_1_1extensions_1_1pool_1_1api_afb1f831222aa94de2fcb447a88146ad0}{Pool\-Overflow\-Behavior} \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a2883441f5785470a7d1359c99c7adf41}{overflow\-Behavior}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the overflow behavior of this pool. \end{DoxyCompactList}\item 
+\hyperlink{namespacestrange_1_1extensions_1_1pool_1_1api_ac2dc67ad647400c4637d72c282028180}{Pool\-Inflation\-Type} \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_aec2e1287c8eb3d188f70e0b121614d26}{inflation\-Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the type of inflation for infinite-\/sized pools. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A mechanism for storing and reusing instances. 
+
+Unlike much of the rest of Strange, the Pool is not a Binder, per se. Rather, it holds onto instances created by other parts of your application for use and reuse. Strange applies Pools in the Command\-Binder and Event\-Dispatcher for the recycling of those instances. But you can employ Pools yourself by mapping and injecting a Pool for instances you want to reuse.
+
+Basic instructions for injecting a Pool for use\-: Map I\-Pool$<$\-Some\-Class$>$ in the Injection\-Binder\-:
+
+injection\-Binder.\-Bind$<$I\-Pool$<$\-My\-Class$>$$>$().To\-Singleton();
+
+Then inject like so\-: \begin{DoxyVerb}[Inject]
+public IPool<MyClass> myPool { get; set; }
+\end{DoxyVerb}
+
+
+A couple of caveats for working with Pools\-:
+\begin{DoxyEnumerate}
+\item A limitation of the version of .N\-E\-T currently used by Unity forbids using interfaces or abstracts in generics. so you cannot map and inject I\-Pool$<$\-I\-My\-Interface$>$ or I\-Pool$<$\-My\-Abstract\-Class$>$. This is a little confusing in Strange, since we're used to mapping injections in exactly this fashion (e.\-g., injection\-Binder.\-Bind$<$\-I\-Some\-Interface$>$). The reason this doesn't work for Pools has to do with setting properties, rather than the binding itself. But because it will bite you, we throw an Exception if you attempt to Bind or set anything but a concrete Pool type.
+\item Pooling presupposes that when the instance is finished doing what it does it is cleaned up and returned to the Pool. Use \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a00d776e7b4f1735e7da8026c7ec7386c}{I\-Pool.\-Return\-Instance()} to mark an object as ready for reuse. \begin{DoxySeeAlso}{See Also}
+\hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable}{strange.\-extensions.\-pool.\-api.\-I\-Poolable} for more on cleaning up. 
+\end{DoxySeeAlso}
+
+\end{DoxyEnumerate}
+
+\subsection{Member Function Documentation}
+\hypertarget{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a4cbaa845454117ccec8389a27642a9b0}{\index{strange\-::extensions\-::pool\-::api\-::\-I\-Pool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}!Clean@{Clean}}
+\index{Clean@{Clean}!strange::extensions::pool::api::IPool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}}
+\subsubsection[{Clean}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-pool.\-api.\-I\-Pool.\-Clean (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a4cbaa845454117ccec8389a27642a9b0}
+
+
+Remove all instance references from the Pool. 
+
+
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_af4a9b202649b74935b2d02721b4c29a7}{strange.\-extensions.\-pool.\-impl.\-Pool}.
+
+\hypertarget{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a07042ef56c57b6a5569de6360196ab11}{\index{strange\-::extensions\-::pool\-::api\-::\-I\-Pool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}!Get\-Instance@{Get\-Instance}}
+\index{Get\-Instance@{Get\-Instance}!strange::extensions::pool::api::IPool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}}
+\subsubsection[{Get\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}object strange.\-extensions.\-pool.\-api.\-I\-Pool.\-Get\-Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a07042ef56c57b6a5569de6360196ab11}
+
+
+Gets an instance from the pool if one is available. 
+
+\begin{DoxyReturn}{Returns}
+The instance.
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_ab09cbaa24c308da83a2a923e1aaf6010}{strange.\-extensions.\-pool.\-impl.\-Pool}, \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_3_01_t_01_4_abcfc75098a95cf8ad7fdca472a0fb623}{strange.\-extensions.\-pool.\-api.\-I\-Pool$<$ T $>$}, and \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_3_01_t_01_4_a56a306d7432fb57b113889acd8f2dd63}{strange.\-extensions.\-pool.\-impl.\-Pool$<$ T $>$}.
+
+\hypertarget{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a00d776e7b4f1735e7da8026c7ec7386c}{\index{strange\-::extensions\-::pool\-::api\-::\-I\-Pool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}!Return\-Instance@{Return\-Instance}}
+\index{Return\-Instance@{Return\-Instance}!strange::extensions::pool::api::IPool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}}
+\subsubsection[{Return\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-pool.\-api.\-I\-Pool.\-Return\-Instance (
+\begin{DoxyParamCaption}
+\item[{object}]{value}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a00d776e7b4f1735e7da8026c7ec7386c}
+
+
+Returns an instance to the pool. 
+
+If the instance being released implements \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable}{I\-Poolable}, the Release() method will be called. 
+\begin{DoxyParams}{Parameters}
+{\em value} & The instance to be return to the pool.\\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a0b9746cdab600d749994dfa3de604fc2}{strange.\-extensions.\-pool.\-impl.\-Pool}.
+
+
+
+\subsection{Property Documentation}
+\hypertarget{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a0ad2b0ade39b7af713a0dfc3ddaec7bf}{\index{strange\-::extensions\-::pool\-::api\-::\-I\-Pool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}!available@{available}}
+\index{available@{available}!strange::extensions::pool::api::IPool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}}
+\subsubsection[{available}]{\setlength{\rightskip}{0pt plus 5cm}int strange.\-extensions.\-pool.\-api.\-I\-Pool.\-available\hspace{0.3cm}{\ttfamily [get]}}}\label{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a0ad2b0ade39b7af713a0dfc3ddaec7bf}
+
+
+Returns the count of non-\/committed instances 
+
+\hypertarget{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_aec2e1287c8eb3d188f70e0b121614d26}{\index{strange\-::extensions\-::pool\-::api\-::\-I\-Pool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}!inflation\-Type@{inflation\-Type}}
+\index{inflation\-Type@{inflation\-Type}!strange::extensions::pool::api::IPool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}}
+\subsubsection[{inflation\-Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pool\-Inflation\-Type} strange.\-extensions.\-pool.\-api.\-I\-Pool.\-inflation\-Type\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_aec2e1287c8eb3d188f70e0b121614d26}
+
+
+Gets or sets the type of inflation for infinite-\/sized pools. 
+
+By default, a pool doubles its Instance\-Count. 
+
+A Pool\-Inflation\-Type value.\hypertarget{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a64c22a4f15d41fe5f4109ac5f6d2df58}{\index{strange\-::extensions\-::pool\-::api\-::\-I\-Pool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}!instance\-Count@{instance\-Count}}
+\index{instance\-Count@{instance\-Count}!strange::extensions::pool::api::IPool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}}
+\subsubsection[{instance\-Count}]{\setlength{\rightskip}{0pt plus 5cm}int strange.\-extensions.\-pool.\-api.\-I\-Pool.\-instance\-Count\hspace{0.3cm}{\ttfamily [get]}}}\label{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a64c22a4f15d41fe5f4109ac5f6d2df58}
+
+
+Returns the total number of instances currently managed by this pool. 
+
+\hypertarget{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_ada91aed79f4e553ceca25ef52427782c}{\index{strange\-::extensions\-::pool\-::api\-::\-I\-Pool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}!instance\-Provider@{instance\-Provider}}
+\index{instance\-Provider@{instance\-Provider}!strange::extensions::pool::api::IPool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}}
+\subsubsection[{instance\-Provider}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\-Instance\-Provider} strange.\-extensions.\-pool.\-api.\-I\-Pool.\-instance\-Provider\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_ada91aed79f4e553ceca25ef52427782c}
+
+
+A class that provides instances to the pool when it needs them. 
+
+This can be the Injection\-Binder, or any class you write that satisfies the I\-Instance\-Provider interface. \hypertarget{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a2883441f5785470a7d1359c99c7adf41}{\index{strange\-::extensions\-::pool\-::api\-::\-I\-Pool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}!overflow\-Behavior@{overflow\-Behavior}}
+\index{overflow\-Behavior@{overflow\-Behavior}!strange::extensions::pool::api::IPool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}}
+\subsubsection[{overflow\-Behavior}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pool\-Overflow\-Behavior} strange.\-extensions.\-pool.\-api.\-I\-Pool.\-overflow\-Behavior\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a2883441f5785470a7d1359c99c7adf41}
+
+
+Gets or sets the overflow behavior of this pool. 
+
+A Pool\-Overflow\-Behavior value.\hypertarget{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_ab967eecf4fc76c5716cad1493d74d295}{\index{strange\-::extensions\-::pool\-::api\-::\-I\-Pool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}!pool\-Type@{pool\-Type}}
+\index{pool\-Type@{pool\-Type}!strange::extensions::pool::api::IPool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}}
+\subsubsection[{pool\-Type}]{\setlength{\rightskip}{0pt plus 5cm}Type strange.\-extensions.\-pool.\-api.\-I\-Pool.\-pool\-Type\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_ab967eecf4fc76c5716cad1493d74d295}
+
+
+The object Type of the first object added to the pool. 
+
+Pool objects must be of the same concrete type. This property enforces that requirement. \hypertarget{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a89338069d9bf986689ceec24341fab3a}{\index{strange\-::extensions\-::pool\-::api\-::\-I\-Pool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}!size@{size}}
+\index{size@{size}!strange::extensions::pool::api::IPool@{strange\-::extensions\-::pool\-::api\-::\-I\-Pool}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}int strange.\-extensions.\-pool.\-api.\-I\-Pool.\-size\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_a89338069d9bf986689ceec24341fab3a}
+
+
+Gets or sets the size of the pool. 
+
+The pool size. '0' is a special value indicating infinite size. Infinite pools expand as necessary to accomodate requirement.
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Strange\-Io\-C/scripts/strange/extensions/pool/api/I\-Pool.\-cs\end{DoxyCompactItemize}

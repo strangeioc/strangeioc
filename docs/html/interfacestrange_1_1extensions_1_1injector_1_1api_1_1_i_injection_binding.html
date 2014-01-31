@@ -106,7 +106,8 @@ Inheritance diagram for strange.extensions.injector.api.IInjectionBinding:</div>
  <div class="center">
   <img src="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.png" usemap="#strange.extensions.injector.api.IInjectionBinding_map" alt=""/>
   <map id="strange.extensions.injector.api.IInjectionBinding_map" name="strange.extensions.injector.api.IInjectionBinding_map">
-<area href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binding.html" title="The Binding for Injections. " alt="strange.extensions.injector.impl.InjectionBinding" shape="rect" coords="0,56,282,80"/>
+<area href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html" title="Binds a key SemiBinding to a vlaue Semibinding. " alt="strange.framework.api.IBinding" shape="rect" coords="0,0,282,24"/>
+<area href="classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binding.html" title="The Binding for Injections. " alt="strange.extensions.injector.impl.InjectionBinding" shape="rect" coords="0,112,282,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -132,38 +133,54 @@ Public Member Functions</h2></td></tr>
 <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html#a372558a435574953af1cb6118306117d">ToInject</a> (bool value)</td></tr>
 <tr class="memdesc:a372558a435574953af1cb6118306117d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boolean setter to optionally override injection. If false, the instance will not be injected after instantiation. <br/></td></tr>
 <tr class="separator:a372558a435574953af1cb6118306117d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69d11f853421b478500e51a1f49ce189"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69d11f853421b478500e51a1f49ce189"></a>
-<a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html#a69d11f853421b478500e51a1f49ce189">Bind&lt; T &gt;</a> ()</td></tr>
-<tr class="memdesc:a69d11f853421b478500e51a1f49ce189"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind is the same as Key, but permits Binder syntax: <code>Bind&lt;T&gt;().Bind&lt;T&gt;()</code> <br/></td></tr>
-<tr class="separator:a69d11f853421b478500e51a1f49ce189"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a156db878da329196cb7db46768db3326"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a156db878da329196cb7db46768db3326"></a>
-<a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html#a156db878da329196cb7db46768db3326">Bind</a> (object key)</td></tr>
-<tr class="memdesc:a156db878da329196cb7db46768db3326"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind is the same as Key, but permits Binder syntax: <code>Bind&lt;T&gt;().Bind&lt;T&gt;()</code> <br/></td></tr>
-<tr class="separator:a156db878da329196cb7db46768db3326"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ba440297e1fb241be2a5977aef2acf0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ba440297e1fb241be2a5977aef2acf0"></a>
-<a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Key&lt; T &gt;</b> ()</td></tr>
-<tr class="separator:a2ba440297e1fb241be2a5977aef2acf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50a6cad1805b486cdbc1bfadff2494eb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a50a6cad1805b486cdbc1bfadff2494eb"></a>
-<a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Key</b> (object key)</td></tr>
-<tr class="separator:a50a6cad1805b486cdbc1bfadff2494eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfb689e47ea59142e78ddcc42531e49d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adfb689e47ea59142e78ddcc42531e49d"></a>
-<a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>To&lt; T &gt;</b> ()</td></tr>
-<tr class="separator:adfb689e47ea59142e78ddcc42531e49d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae47d6a358929057d50116bb55ffd9c1a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae47d6a358929057d50116bb55ffd9c1a"></a>
-<a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>To</b> (object o)</td></tr>
-<tr class="separator:ae47d6a358929057d50116bb55ffd9c1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a091106e735b6b63321acc6cd072b574b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a091106e735b6b63321acc6cd072b574b"></a>
-<a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ToName&lt; T &gt;</b> ()</td></tr>
-<tr class="separator:a091106e735b6b63321acc6cd072b574b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99c1be56f6de25926a601df885c35d71"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a99c1be56f6de25926a601df885c35d71"></a>
-<a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ToName</b> (object o)</td></tr>
-<tr class="separator:a99c1be56f6de25926a601df885c35d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b8fe0d662eccf9e061cdb30b961cc43"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b8fe0d662eccf9e061cdb30b961cc43"></a>
-<a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Named&lt; T &gt;</b> ()</td></tr>
-<tr class="separator:a7b8fe0d662eccf9e061cdb30b961cc43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade15c6b5ce9babb4d4eebdd718e9bc80"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade15c6b5ce9babb4d4eebdd718e9bc80"></a>
-<a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Named</b> (object o)</td></tr>
-<tr class="separator:ade15c6b5ce9babb4d4eebdd718e9bc80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc3be9225936c2385ae3dccdcd4847df"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acc3be9225936c2385ae3dccdcd4847df"></a>
+new <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html#acc3be9225936c2385ae3dccdcd4847df">Bind&lt; T &gt;</a> ()</td></tr>
+<tr class="memdesc:acc3be9225936c2385ae3dccdcd4847df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind is the same as Key, but permits Binder syntax: <code>Bind&lt;T&gt;().Bind&lt;T&gt;()</code> <br/></td></tr>
+<tr class="separator:acc3be9225936c2385ae3dccdcd4847df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15283f40aea160b30baa758ce6d48688"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15283f40aea160b30baa758ce6d48688"></a>
+new <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html#a15283f40aea160b30baa758ce6d48688">Bind</a> (object key)</td></tr>
+<tr class="memdesc:a15283f40aea160b30baa758ce6d48688"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind is the same as Key, but permits Binder syntax: <code>Bind&lt;T&gt;().Bind&lt;T&gt;()</code> <br/></td></tr>
+<tr class="separator:a15283f40aea160b30baa758ce6d48688"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a8f13fe155f789666ea077617b590e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a8f13fe155f789666ea077617b590e5"></a>
+new <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html#a2a8f13fe155f789666ea077617b590e5">To&lt; T &gt;</a> ()</td></tr>
+<tr class="memdesc:a2a8f13fe155f789666ea077617b590e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Binding's value to a Type. <br/></td></tr>
+<tr class="separator:a2a8f13fe155f789666ea077617b590e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2830a784e57d14faf352312906fd7e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2830a784e57d14faf352312906fd7e5"></a>
+new <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html#aa2830a784e57d14faf352312906fd7e5">To</a> (object o)</td></tr>
+<tr class="memdesc:aa2830a784e57d14faf352312906fd7e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Binding's value to a value, such as a string or class instance. <br/></td></tr>
+<tr class="separator:aa2830a784e57d14faf352312906fd7e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4763a32616ef321b606457b12685fcf4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4763a32616ef321b606457b12685fcf4"></a>
+new <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html#a4763a32616ef321b606457b12685fcf4">ToName&lt; T &gt;</a> ()</td></tr>
+<tr class="memdesc:a4763a32616ef321b606457b12685fcf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Qualify a binding using a marker type. <br/></td></tr>
+<tr class="separator:a4763a32616ef321b606457b12685fcf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a019ab752b601346bd745792dca542383"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a019ab752b601346bd745792dca542383"></a>
+new <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html#a019ab752b601346bd745792dca542383">ToName</a> (object o)</td></tr>
+<tr class="memdesc:a019ab752b601346bd745792dca542383"><td class="mdescLeft">&#160;</td><td class="mdescRight">Qualify a binding using a value, such as a string or class instance. <br/></td></tr>
+<tr class="separator:a019ab752b601346bd745792dca542383"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c80bd12ffe349ec4668159a0d2cffab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7c80bd12ffe349ec4668159a0d2cffab"></a>
+new <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html#a7c80bd12ffe349ec4668159a0d2cffab">Named&lt; T &gt;</a> ()</td></tr>
+<tr class="memdesc:a7c80bd12ffe349ec4668159a0d2cffab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a binding if the supplied name matches, by Type. <br/></td></tr>
+<tr class="separator:a7c80bd12ffe349ec4668159a0d2cffab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a5941179f9bc3e3c05edf728367a8ff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4a5941179f9bc3e3c05edf728367a8ff"></a>
+new <a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html">IInjectionBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html#a4a5941179f9bc3e3c05edf728367a8ff">Named</a> (object o)</td></tr>
+<tr class="memdesc:a4a5941179f9bc3e3c05edf728367a8ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a binding if the supplied name matches, by value. <br/></td></tr>
+<tr class="separator:a4a5941179f9bc3e3c05edf728367a8ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binding')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">strange.framework.api.IBinding</a></td></tr>
+<tr class="memitem:a45170158a551821a12300ec498107b93 inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45170158a551821a12300ec498107b93"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html#a45170158a551821a12300ec498107b93">RemoveKey</a> (object o)</td></tr>
+<tr class="memdesc:a45170158a551821a12300ec498107b93 inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a specific key from the binding. <br/></td></tr>
+<tr class="separator:a45170158a551821a12300ec498107b93 inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae74c9abff54a85859979aae0a0b5770a inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae74c9abff54a85859979aae0a0b5770a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html#ae74c9abff54a85859979aae0a0b5770a">RemoveValue</a> (object o)</td></tr>
+<tr class="memdesc:ae74c9abff54a85859979aae0a0b5770a inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a specific value from the binding. <br/></td></tr>
+<tr class="separator:ae74c9abff54a85859979aae0a0b5770a inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addc5600176d59f33a7a5553db5ed33b7 inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="addc5600176d59f33a7a5553db5ed33b7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html#addc5600176d59f33a7a5553db5ed33b7">RemoveName</a> (object o)</td></tr>
+<tr class="memdesc:addc5600176d59f33a7a5553db5ed33b7 inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a name from the binding. <br/></td></tr>
+<tr class="separator:addc5600176d59f33a7a5553db5ed33b7 inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7491e99b7d906b7982cdfcac0c4288be inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7491e99b7d906b7982cdfcac0c4288be"></a>
+<a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">IBinding</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Weak</b> ()</td></tr>
+<tr class="separator:a7491e99b7d906b7982cdfcac0c4288be inherit pub_methods_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -177,21 +194,45 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 <tr class="memitem:ab79532f96a6a17f831559143066fed78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacestrange_1_1extensions_1_1injector_1_1api.html#aaf5414484d7eccb5c502984bd70549ae">InjectionBindingType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding.html#ab79532f96a6a17f831559143066fed78">type</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:ab79532f96a6a17f831559143066fed78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get and set the InjectionBindingType.  <a href="#ab79532f96a6a17f831559143066fed78">More...</a><br/></td></tr>
 <tr class="separator:ab79532f96a6a17f831559143066fed78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44a79fe00fa37f91656098210db62d31"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a44a79fe00fa37f91656098210db62d31"></a>
-object&#160;</td><td class="memItemRight" valign="bottom"><b>key</b><code> [get]</code></td></tr>
-<tr class="separator:a44a79fe00fa37f91656098210db62d31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa327532938e26bccb3d4c2ce8b5c15fb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa327532938e26bccb3d4c2ce8b5c15fb"></a>
-object&#160;</td><td class="memItemRight" valign="bottom"><b>name</b><code> [get]</code></td></tr>
-<tr class="separator:aa327532938e26bccb3d4c2ce8b5c15fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d64e731e4732f1acd876a76d1b1a33b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1d64e731e4732f1acd876a76d1b1a33b"></a>
-object&#160;</td><td class="memItemRight" valign="bottom"><b>value</b><code> [get]</code></td></tr>
-<tr class="separator:a1d64e731e4732f1acd876a76d1b1a33b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af62e792e40a882f5d2c52a372e0746b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af62e792e40a882f5d2c52a372e0746b0"></a>
-Enum&#160;</td><td class="memItemRight" valign="bottom"><b>keyConstraint</b><code> [get, set]</code></td></tr>
-<tr class="separator:af62e792e40a882f5d2c52a372e0746b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ee8175bec67b2f20e2bd6162b45eb8c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ee8175bec67b2f20e2bd6162b45eb8c"></a>
-Enum&#160;</td><td class="memItemRight" valign="bottom"><b>valueConstraint</b><code> [get, set]</code></td></tr>
-<tr class="separator:a9ee8175bec67b2f20e2bd6162b45eb8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01ff81e5c63698bd7e9614927dd05b8e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01ff81e5c63698bd7e9614927dd05b8e"></a>
+new object&#160;</td><td class="memItemRight" valign="bottom"><b>key</b><code> [get]</code></td></tr>
+<tr class="separator:a01ff81e5c63698bd7e9614927dd05b8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab66dc9cb77e7b5926a365f5e1baec1ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab66dc9cb77e7b5926a365f5e1baec1ae"></a>
+new object&#160;</td><td class="memItemRight" valign="bottom"><b>name</b><code> [get]</code></td></tr>
+<tr class="separator:ab66dc9cb77e7b5926a365f5e1baec1ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80844fa673a551d4c2efc878e248620f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a80844fa673a551d4c2efc878e248620f"></a>
+new object&#160;</td><td class="memItemRight" valign="bottom"><b>value</b><code> [get]</code></td></tr>
+<tr class="separator:a80844fa673a551d4c2efc878e248620f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f0003461d50b55cd513b86a4c2de1b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6f0003461d50b55cd513b86a4c2de1b1"></a>
+new Enum&#160;</td><td class="memItemRight" valign="bottom"><b>keyConstraint</b><code> [get, set]</code></td></tr>
+<tr class="separator:a6f0003461d50b55cd513b86a4c2de1b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0799df8c8f2e3f35ca4d45b31becba03"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0799df8c8f2e3f35ca4d45b31becba03"></a>
+new Enum&#160;</td><td class="memItemRight" valign="bottom"><b>valueConstraint</b><code> [get, set]</code></td></tr>
+<tr class="separator:a0799df8c8f2e3f35ca4d45b31becba03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td colspan="2" onclick="javascript:toggleInherit('properties_interfacestrange_1_1framework_1_1api_1_1_i_binding')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html">strange.framework.api.IBinding</a></td></tr>
+<tr class="memitem:acec8686208598f9f4a952ffd05449c4d inherit properties_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acec8686208598f9f4a952ffd05449c4d"></a>
+object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html#acec8686208598f9f4a952ffd05449c4d">key</a><code> [get]</code></td></tr>
+<tr class="memdesc:acec8686208598f9f4a952ffd05449c4d inherit properties_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the binding''s key. <br/></td></tr>
+<tr class="separator:acec8686208598f9f4a952ffd05449c4d inherit properties_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03b67204b0ec13c3632ec6c02d4c021f inherit properties_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a03b67204b0ec13c3632ec6c02d4c021f"></a>
+object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html#a03b67204b0ec13c3632ec6c02d4c021f">name</a><code> [get]</code></td></tr>
+<tr class="memdesc:a03b67204b0ec13c3632ec6c02d4c021f inherit properties_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the binding's name. <br/></td></tr>
+<tr class="separator:a03b67204b0ec13c3632ec6c02d4c021f inherit properties_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a146e78723b1110a34bd36f93defb5d50 inherit properties_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a146e78723b1110a34bd36f93defb5d50"></a>
+object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html#a146e78723b1110a34bd36f93defb5d50">value</a><code> [get]</code></td></tr>
+<tr class="memdesc:a146e78723b1110a34bd36f93defb5d50 inherit properties_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the binding's value. <br/></td></tr>
+<tr class="separator:a146e78723b1110a34bd36f93defb5d50 inherit properties_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8019cd2da170db8a99f4d162aab04cc3 inherit properties_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8019cd2da170db8a99f4d162aab04cc3"></a>
+Enum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html#a8019cd2da170db8a99f4d162aab04cc3">keyConstraint</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a8019cd2da170db8a99f4d162aab04cc3 inherit properties_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get or set a MANY or ONE constraint on the Key. <br/></td></tr>
+<tr class="separator:a8019cd2da170db8a99f4d162aab04cc3 inherit properties_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83c99f79ce6adda2811ff2e9c4fb2ff2 inherit properties_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83c99f79ce6adda2811ff2e9c4fb2ff2"></a>
+Enum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1framework_1_1api_1_1_i_binding.html#a83c99f79ce6adda2811ff2e9c4fb2ff2">valueConstraint</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a83c99f79ce6adda2811ff2e9c4fb2ff2 inherit properties_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get or set a MANY or ONE constraint on the Value. <br/></td></tr>
+<tr class="separator:a83c99f79ce6adda2811ff2e9c4fb2ff2 inherit properties_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dd8b72892ce51a3ae49774695769f6f inherit properties_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4dd8b72892ce51a3ae49774695769f6f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>isWeak</b><code> [get]</code></td></tr>
+<tr class="separator:a4dd8b72892ce51a3ae49774695769f6f inherit properties_interfacestrange_1_1framework_1_1api_1_1_i_binding"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The Binding form for the Injection system. </p>
@@ -241,7 +282,7 @@ ToValue: every <code>GetInstance()</code> on the Binder Key returns the provided
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 12 2013 11:15:52 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 28 2014 13:07:05 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

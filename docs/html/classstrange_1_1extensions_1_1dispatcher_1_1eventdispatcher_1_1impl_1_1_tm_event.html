@@ -91,6 +91,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -107,6 +108,7 @@ Inheritance diagram for strange.extensions.dispatcher.eventdispatcher.impl.TmEve
   <img src="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event.png" usemap="#strange.extensions.dispatcher.eventdispatcher.impl.TmEvent_map" alt=""/>
   <map id="strange.extensions.dispatcher.eventdispatcher.impl.TmEvent_map" name="strange.extensions.dispatcher.eventdispatcher.impl.TmEvent_map">
 <area href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event.html" title="The interface for an event sent by the EventDispatcher. " alt="strange.extensions.dispatcher.eventdispatcher.api.IEvent" shape="rect" coords="0,0,352,24"/>
+<area href="interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable.html" title="Interface for items that belong to a Pool. " alt="strange.extensions.pool.api.IPoolable" shape="rect" coords="362,0,714,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -116,6 +118,21 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event.html#a606af8e7c4e19a2c4223e493e3b35987">TmEvent</a> (object type, <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event_dispatcher.html">IEventDispatcher</a> target, object data)</td></tr>
 <tr class="memdesc:a606af8e7c4e19a2c4223e493e3b35987"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_construct.html" title="The [Construct] attribute marks a preferred Constructor. ">Construct</a> a <a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event.html" title="The standard Event object for IEventDispatcher. ">TmEvent</a>. <br/></td></tr>
 <tr class="separator:a606af8e7c4e19a2c4223e493e3b35987"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa20d15da3bdbddf1f29d923cdc58a1e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event.html#aa20d15da3bdbddf1f29d923cdc58a1e6">Restore</a> ()</td></tr>
+<tr class="memdesc:aa20d15da3bdbddf1f29d923cdc58a1e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clean up this instance for reuse.  <a href="#aa20d15da3bdbddf1f29d923cdc58a1e6">More...</a><br/></td></tr>
+<tr class="separator:aa20d15da3bdbddf1f29d923cdc58a1e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacd0c47bb3adedb6e4934b7cbea6cab0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event.html#aacd0c47bb3adedb6e4934b7cbea6cab0">Retain</a> ()</td></tr>
+<tr class="memdesc:aacd0c47bb3adedb6e4934b7cbea6cab0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Keep this instance from being returned to the pool  <a href="#aacd0c47bb3adedb6e4934b7cbea6cab0">More...</a><br/></td></tr>
+<tr class="separator:aacd0c47bb3adedb6e4934b7cbea6cab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a386063d3c752a4d586ecb5c4bd8f6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event.html#a7a386063d3c752a4d586ecb5c4bd8f6d">Release</a> ()</td></tr>
+<tr class="memdesc:a7a386063d3c752a4d586ecb5c4bd8f6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release this instance back to the pool.  <a href="#a7a386063d3c752a4d586ecb5c4bd8f6d">More...</a><br/></td></tr>
+<tr class="separator:a7a386063d3c752a4d586ecb5c4bd8f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:abd968ace85be8d2ed1209926dc03a73c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd968ace85be8d2ed1209926dc03a73c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>retainCount</b></td></tr>
+<tr class="separator:abd968ace85be8d2ed1209926dc03a73c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -128,6 +145,9 @@ object&#160;</td><td class="memItemRight" valign="bottom"><b>type</b><code> [get
 <tr class="memitem:a2a7919deb2f3212dd0bcbf2ce86624fb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a7919deb2f3212dd0bcbf2ce86624fb"></a>
 object&#160;</td><td class="memItemRight" valign="bottom"><b>data</b><code> [get, set]</code></td></tr>
 <tr class="separator:a2a7919deb2f3212dd0bcbf2ce86624fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a045d66330311bed8fd8a256479cab8f9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a045d66330311bed8fd8a256479cab8f9"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>retain</b><code> [get]</code></td></tr>
+<tr class="separator:a045d66330311bed8fd8a256479cab8f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event"><td colspan="2" onclick="javascript:toggleInherit('properties_interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event.html">strange.extensions.dispatcher.eventdispatcher.api.IEvent</a></td></tr>
 <tr class="memitem:ac3d4968b408f476398646da1a0988ee8 inherit properties_interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3d4968b408f476398646da1a0988ee8"></a>
 object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event.html#ac3d4968b408f476398646da1a0988ee8">type</a><code> [get, set]</code></td></tr>
@@ -139,8 +159,12 @@ object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="in
 <tr class="separator:af86c122f0282348d1be988a119a630a5 inherit properties_interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69c2909a491579676e4a3ec0a9fe9764 inherit properties_interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69c2909a491579676e4a3ec0a9fe9764"></a>
 object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event.html#a69c2909a491579676e4a3ec0a9fe9764">data</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a69c2909a491579676e4a3ec0a9fe9764 inherit properties_interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event"><td class="mdescLeft">&#160;</td><td class="mdescRight">An arbitrary data payloaf. <br/></td></tr>
+<tr class="memdesc:a69c2909a491579676e4a3ec0a9fe9764 inherit properties_interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event"><td class="mdescLeft">&#160;</td><td class="mdescRight">An arbitrary data payload. <br/></td></tr>
 <tr class="separator:a69c2909a491579676e4a3ec0a9fe9764 inherit properties_interfacestrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1api_1_1_i_event"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable"><td colspan="2" onclick="javascript:toggleInherit('properties_interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable.html">strange.extensions.pool.api.IPoolable</a></td></tr>
+<tr class="memitem:a5765129c59b95f61b7ffcd707e1296d2 inherit properties_interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable.html#a5765129c59b95f61b7ffcd707e1296d2">retain</a><code> [get]</code></td></tr>
+<tr class="memdesc:a5765129c59b95f61b7ffcd707e1296d2 inherit properties_interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is this instance retained?  <a href="#a5765129c59b95f61b7ffcd707e1296d2">More...</a><br/></td></tr>
+<tr class="separator:a5765129c59b95f61b7ffcd707e1296d2 inherit properties_interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The standard Event object for IEventDispatcher. </p>
@@ -153,13 +177,97 @@ target - The Dispatcher that fired the event </li>
 <li>
 data - An arbitrary payload </li>
 </ul>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a7a386063d3c752a4d586ecb5c4bd8f6d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void strange.extensions.dispatcher.eventdispatcher.impl.TmEvent.Release </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Release this instance back to the pool. </p>
+<p>Release methods should clean up the instance sufficiently to remove prior state. </p>
+
+<p>Implements <a class="el" href="interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable.html#afdea864987f51cfc9d83e9158dfcaa33">strange.extensions.pool.api.IPoolable</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa20d15da3bdbddf1f29d923cdc58a1e6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void strange.extensions.dispatcher.eventdispatcher.impl.TmEvent.Restore </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Clean up this instance for reuse. </p>
+<p>Restore methods should clean up the instance sufficiently to remove prior state. </p>
+
+<p>Implements <a class="el" href="interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable.html#a3eb6437f37f1e87b92c55a32689a0ef5">strange.extensions.pool.api.IPoolable</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aacd0c47bb3adedb6e4934b7cbea6cab0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void strange.extensions.dispatcher.eventdispatcher.impl.TmEvent.Retain </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Keep this instance from being returned to the pool </p>
+
+<p>Implements <a class="el" href="interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable.html#ad51f2499e20163c58147a886e5fd5692">strange.extensions.pool.api.IPoolable</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>StrangeIoC/scripts/strange/extensions/dispatcher/eventdispatcher/impl/TmEvent.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 12 2013 11:15:52 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 28 2014 13:07:04 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

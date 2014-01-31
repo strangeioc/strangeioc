@@ -33,14 +33,16 @@ Inheritance diagram for strange.\-extensions.\-command.\-api.\-I\-Command\-:\beg
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
+bool \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a66e999177d73a0681d307d0b250cb338}{Is\-Clean}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Flag to indicate that a pooled Command has been restored to its pristine state. \end{DoxyCompactList}\item 
 \hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_ac69e1fd7542d521e9e04c24bc47791bb}{bool \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_ac69e1fd7542d521e9e04c24bc47791bb}{retain}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_ac69e1fd7542d521e9e04c24bc47791bb}
 
 \begin{DoxyCompactList}\small\item\em The property set by {\ttfamily Retain} and {\ttfamily Release} to indicate whether the Command should be cleaned up on completion of the {\ttfamily \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a49ddf3bbaf19624534fa99fa4725feca}{Execute()}} method. \end{DoxyCompactList}\item 
+bool \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a213e1477e49f74dbbaa9a85887af4b5b}{cancelled}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The property set to true by a \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_afe6c708912de7fe65dbe44d1ba83b547}{Cancel()} call. \end{DoxyCompactList}\item 
 \hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_afa2693fc9c9747093acde1dcab858570}{object \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_afa2693fc9c9747093acde1dcab858570}{data}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_afa2693fc9c9747093acde1dcab858570}
 
 \begin{DoxyCompactList}\small\item\em A payload injected into the Command. Most commonly, this an I\-Event. \end{DoxyCompactList}\item 
-bool \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a213e1477e49f74dbbaa9a85887af4b5b}{cancelled}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\begin{DoxyCompactList}\small\item\em The property set to true by a \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_afe6c708912de7fe65dbe44d1ba83b547}{Cancel()} call. \end{DoxyCompactList}\item 
 \hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_aaf31811d9547a0c45cc143f5ca828dbe}{int {\bfseries sequence\-Id}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_aaf31811d9547a0c45cc143f5ca828dbe}
 
 \end{DoxyCompactItemize}
@@ -63,7 +65,14 @@ Calling {\ttfamily \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1
 
 The property set to true by a \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_afe6c708912de7fe65dbe44d1ba83b547}{Cancel()} call. 
 
-Use cancelled internally to determine if further execution is warranted, especially in asynchronous calls. 
+Use cancelled internally to determine if further execution is warranted, especially in asynchronous calls. \hypertarget{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a66e999177d73a0681d307d0b250cb338}{\index{strange\-::extensions\-::command\-::api\-::\-I\-Command@{strange\-::extensions\-::command\-::api\-::\-I\-Command}!Is\-Clean@{Is\-Clean}}
+\index{Is\-Clean@{Is\-Clean}!strange::extensions::command::api::ICommand@{strange\-::extensions\-::command\-::api\-::\-I\-Command}}
+\subsubsection[{Is\-Clean}]{\setlength{\rightskip}{0pt plus 5cm}bool strange.\-extensions.\-command.\-api.\-I\-Command.\-Is\-Clean\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_a66e999177d73a0681d307d0b250cb338}
+
+
+Flag to indicate that a pooled Command has been restored to its pristine state. 
+
+The Command\-Binder will use this to determine if re-\/\-Injection is required. 
 
 The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 

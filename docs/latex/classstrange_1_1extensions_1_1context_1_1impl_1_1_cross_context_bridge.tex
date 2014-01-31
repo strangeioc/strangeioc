@@ -18,11 +18,9 @@ Inheritance diagram for strange.\-extensions.\-context.\-impl.\-Cross\-Context\-
 \hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_aa7e3dbb298fa06272710bab69d790809}{override \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_aa7e3dbb298fa06272710bab69d790809}{Bind} (object key)}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_aa7e3dbb298fa06272710bab69d790809}
 
 \begin{DoxyCompactList}\small\item\em Bind a Binding Key to a value. \end{DoxyCompactList}\item 
-\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_ae51d7fa46c044427cd0c023d7324a292}{void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_ae51d7fa46c044427cd0c023d7324a292}{Trigger$<$ T $>$} (object data)}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_ae51d7fa46c044427cd0c023d7324a292}
-
+bool \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_a157f6eacffbd81778369ac28b5bd9bcb}{Trigger$<$ T $>$} (object data)
 \begin{DoxyCompactList}\small\item\em Cause this I\-Triggerable to access any provided Key in its Binder by the provided generic and data. \end{DoxyCompactList}\item 
-\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_aff66cf10f02ef93bedd0f353c45b054a}{void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_aff66cf10f02ef93bedd0f353c45b054a}{Trigger} (object key, object data)}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_aff66cf10f02ef93bedd0f353c45b054a}
-
+bool \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_a003f8e51924275ecc81f591be5d12fa3}{Trigger} (object key, object data)
 \begin{DoxyCompactList}\small\item\em Cause this I\-Triggerable to access any provided Key in its Binder by the provided key and data. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -53,6 +51,46 @@ Example\-:
 cross\-Context\-Bridge.\-Bind(Game\-Event.\-M\-I\-S\-S\-I\-L\-E\-\_\-\-H\-I\-T);
 
 By doing this from any \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context} in your app, any \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context} Dispatcher that fires {\ttfamily Game\-Event.\-M\-I\-S\-S\-I\-L\-E\-\_\-\-H\-I\-T} will relay that Event to other Contexts. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_a003f8e51924275ecc81f591be5d12fa3}{\index{strange\-::extensions\-::context\-::impl\-::\-Cross\-Context\-Bridge@{strange\-::extensions\-::context\-::impl\-::\-Cross\-Context\-Bridge}!Trigger@{Trigger}}
+\index{Trigger@{Trigger}!strange::extensions::context::impl::CrossContextBridge@{strange\-::extensions\-::context\-::impl\-::\-Cross\-Context\-Bridge}}
+\subsubsection[{Trigger}]{\setlength{\rightskip}{0pt plus 5cm}bool strange.\-extensions.\-context.\-impl.\-Cross\-Context\-Bridge.\-Trigger (
+\begin{DoxyParamCaption}
+\item[{object}]{key, }
+\item[{object}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_a003f8e51924275ecc81f591be5d12fa3}
+
+
+Cause this I\-Triggerable to access any provided Key in its Binder by the provided key and data. 
+
+\begin{DoxyReturn}{Returns}
+false if the originator should abort dispatch
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_a07af18f0259e869bd981b81edb58c28f}{strange.\-extensions.\-dispatcher.\-api.\-I\-Triggerable}.
+
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_a157f6eacffbd81778369ac28b5bd9bcb}{\index{strange\-::extensions\-::context\-::impl\-::\-Cross\-Context\-Bridge@{strange\-::extensions\-::context\-::impl\-::\-Cross\-Context\-Bridge}!Trigger$<$ T $>$@{Trigger$<$ T $>$}}
+\index{Trigger$<$ T $>$@{Trigger$<$ T $>$}!strange::extensions::context::impl::CrossContextBridge@{strange\-::extensions\-::context\-::impl\-::\-Cross\-Context\-Bridge}}
+\subsubsection[{Trigger$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf strange.\-extensions.\-context.\-impl.\-Cross\-Context\-Bridge.\-Trigger}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{object}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context_bridge_a157f6eacffbd81778369ac28b5bd9bcb}
+
+
+Cause this I\-Triggerable to access any provided Key in its Binder by the provided generic and data. 
+
+\begin{DoxyReturn}{Returns}
+false if the originator should abort dispatch
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_ab51a637635cbd1819f5d33f00831c8d5}{strange.\-extensions.\-dispatcher.\-api.\-I\-Triggerable}.
+
+
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 

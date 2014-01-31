@@ -15,7 +15,12 @@ Inheritance diagram for strange.\-extensions.\-context.\-impl.\-M\-V\-C\-S\-Cont
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a5b6f18989a63526311d714ee84a96afc}{{\bfseries M\-V\-C\-S\-Context} (Mono\-Behaviour view, bool \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_a3386ea2967ba720218b89eaefac77d56}{auto\-Startup})}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a5b6f18989a63526311d714ee84a96afc}
+\hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a0da858110e2cfbc9e9888bc49c5552e9}{M\-V\-C\-S\-Context} (Mono\-Behaviour view)
+\begin{DoxyCompactList}\small\item\em The recommended Constructor Just pass in the instance of your \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_view}{Context\-View}. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_aedb7fa6e8b6aa4c1626d8894c3f44212}{{\bfseries M\-V\-C\-S\-Context} (Mono\-Behaviour view, \hyperlink{namespacestrange_1_1extensions_1_1context_1_1api_a6e67a548377c1491bddc3a81c0f312c5}{Context\-Startup\-Flags} flags)}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_aedb7fa6e8b6aa4c1626d8894c3f44212}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a69268030fc2426e14ac535771c1a746b}{{\bfseries M\-V\-C\-S\-Context} (Mono\-Behaviour view, bool auto\-Mapping)}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a69268030fc2426e14ac535771c1a746b}
 
 \item 
 override \hyperlink{interfacestrange_1_1extensions_1_1context_1_1api_1_1_i_context}{I\-Context} \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_aecc258bb5f3d3edd1a3f93ca33a2ce4e}{Set\-Context\-View} (object view)
@@ -69,6 +74,9 @@ virtual void \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_
 \hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a26f0f5ff179b97d74164985b4b188069}{\hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder}{I\-Mediation\-Binder} \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a26f0f5ff179b97d74164985b4b188069}{mediation\-Binder}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a26f0f5ff179b97d74164985b4b188069}
 
 \begin{DoxyCompactList}\small\item\em A Binder that maps Views to Mediators. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a033e3dc0771282fb405b3e070741fe6a}{\hyperlink{interfacestrange_1_1extensions_1_1implicit_bind_1_1api_1_1_i_implicit_binder}{I\-Implicit\-Binder} {\bfseries implicit\-Binder}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a033e3dc0771282fb405b3e070741fe6a}
+
+\item 
 \hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_af18bbe60ff223bebf24d0643c07c1c6f}{\hyperlink{interfacestrange_1_1extensions_1_1sequencer_1_1api_1_1_i_sequencer}{I\-Sequencer} \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_af18bbe60ff223bebf24d0643c07c1c6f}{sequencer}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_af18bbe60ff223bebf24d0643c07c1c6f}
 
 \begin{DoxyCompactList}\small\item\em A Binder that maps Events to Sequences. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -80,7 +88,7 @@ The recommended \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_con
 
 By extending this \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context}, you get the entire all-\/singing/all-\/dancing version of Strange, as it was shipped from the warehouse and ready for you to map your dependencies.
 
-As the name suggests, \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context}{M\-V\-C\-S\-Context} provides structure for app development using the classic \href{http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller}{\tt M\-V\-C (Model-\/\-View-\/\-Controller)} design pattern, and adds 'S' (Service) for asynchronous calls outside the application. Strange is highly modular, so you needn't use \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context}{M\-V\-C\-S\-Context} if you don't want to (you can extend \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context} directly) but M\-V\-C\-S is a highly proven design strategy and by far the easiest way to get familiar with what Strange has to offer.
+As the name suggests, \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context}{M\-V\-C\-S\-Context} provides structure for app development using the classic \href{http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller}{\tt M\-V\-C (Model-\/\-View-\/\-Controller)} design pattern, and adds 'S' (Service) for asynchronous calls outside the application. Strange is highly modular, so you needn't use \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context}{M\-V\-C\-S\-Context} if you don't want to (you can extend \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context}{Context} or \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_cross_context}{Cross\-Context} directly) but M\-V\-C\-S is a highly proven design strategy and \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context}{M\-V\-C\-S\-Context} is by far the easiest way to get familiar with what Strange has to offer.
 
 The parts\-: 
 \begin{DoxyItemize}
@@ -93,8 +101,7 @@ Example\-: \begin{DoxyVerb}public class MyProjectRoot : ContextView
 
     void Awake()
     {
-        context = new MyContext(this, true); //Extends MVCSContext
-        context.Start ();
+        context = new MyContext(this); //Extends MVCSContext
     }
 }
 \end{DoxyVerb}
@@ -105,7 +112,7 @@ public GameObject contextView{get;set;}
 \end{DoxyVerb}
 
 
-It is strong advised that the context\-View N\-O\-T be injected into Views, Models or Services.
+It is strongly advised that the context\-View N\-O\-T be injected into Views, Models or Services.
 
 
 \item injection\-Binder
@@ -186,6 +193,20 @@ Example\-: \begin{DoxyVerb}mediationBinder.Bind<RobotView>().To<RobotMediator>()
 \item 
 \end{DoxyItemize}
 \end{DoxyItemize}
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a0da858110e2cfbc9e9888bc49c5552e9}{\index{strange\-::extensions\-::context\-::impl\-::\-M\-V\-C\-S\-Context@{strange\-::extensions\-::context\-::impl\-::\-M\-V\-C\-S\-Context}!M\-V\-C\-S\-Context@{M\-V\-C\-S\-Context}}
+\index{M\-V\-C\-S\-Context@{M\-V\-C\-S\-Context}!strange::extensions::context::impl::MVCSContext@{strange\-::extensions\-::context\-::impl\-::\-M\-V\-C\-S\-Context}}
+\subsubsection[{M\-V\-C\-S\-Context}]{\setlength{\rightskip}{0pt plus 5cm}strange.\-extensions.\-context.\-impl.\-M\-V\-C\-S\-Context.\-M\-V\-C\-S\-Context (
+\begin{DoxyParamCaption}
+\item[{Mono\-Behaviour}]{view}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_a0da858110e2cfbc9e9888bc49c5552e9}
+
+
+The recommended Constructor Just pass in the instance of your \hyperlink{classstrange_1_1extensions_1_1context_1_1impl_1_1_context_view}{Context\-View}. 
+
+Everything will begin automatically. Other constructors offer the option of interrupting startup at useful moments. 
 
 \subsection{Member Function Documentation}
 \hypertarget{classstrange_1_1extensions_1_1context_1_1impl_1_1_m_v_c_s_context_aad55996545681bce820c04f1b8ba7b04}{\index{strange\-::extensions\-::context\-::impl\-::\-M\-V\-C\-S\-Context@{strange\-::extensions\-::context\-::impl\-::\-M\-V\-C\-S\-Context}!add\-Core\-Components@{add\-Core\-Components}}

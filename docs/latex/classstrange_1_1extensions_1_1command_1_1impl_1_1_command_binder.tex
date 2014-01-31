@@ -9,7 +9,7 @@ A Binder that triggers the instantiation of Commands.
 Inheritance diagram for strange.\-extensions.\-command.\-impl.\-Command\-Binder\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.753196cm]{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder}
+\includegraphics[height=2.052786cm]{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -27,22 +27,32 @@ Inheritance diagram for strange.\-extensions.\-command.\-impl.\-Command\-Binder\
 \hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a3e7ec542cbdfec1a78ce0583451b1565}{virtual void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a3e7ec542cbdfec1a78ce0583451b1565}{Stop} (object key)}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a3e7ec542cbdfec1a78ce0583451b1565}
 
 \begin{DoxyCompactList}\small\item\em Called to halt execution of a currently running command group. \end{DoxyCompactList}\item 
-void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a582e06f6f4dc8c94237e2e2c0d5e098c}{Release\-Command} (\hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} command)
+virtual void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a09d4317fb2d40a84fe7979ed7296c803}{Release\-Command} (\hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} command)
 \begin{DoxyCompactList}\small\item\em Release a previously retained \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command}. \end{DoxyCompactList}\item 
-\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a4e5f412df2d54ffd94571acadf6bf862}{void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a4e5f412df2d54ffd94571acadf6bf862}{Trigger$<$ T $>$} (object data)}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a4e5f412df2d54ffd94571acadf6bf862}
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a3a548ce87ab1beb018fea94f52f065ad}{\hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool}{Pool}$<$ T $>$ \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a3a548ce87ab1beb018fea94f52f065ad}{Get\-Pool$<$ T $>$} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a3a548ce87ab1beb018fea94f52f065ad}
 
+\begin{DoxyCompactList}\small\item\em Retrieve the Pool of the specified type. \end{DoxyCompactList}\item 
+bool \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_ad36f925e5e11f3407531b66c27d78d14}{Trigger$<$ T $>$} (object data)
 \begin{DoxyCompactList}\small\item\em Cause this I\-Triggerable to access any provided Key in its Binder by the provided generic and data. \end{DoxyCompactList}\item 
-\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_af5ad5b130439533dda9731f857b33ab6}{void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_af5ad5b130439533dda9731f857b33ab6}{Trigger} (object key, object data)}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_af5ad5b130439533dda9731f857b33ab6}
-
+bool \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a89b307b59946a314b5eaf6cbe4a83dc2}{Trigger} (object key, object data)
 \begin{DoxyCompactList}\small\item\em Cause this I\-Triggerable to access any provided Key in its Binder by the provided key and data. \end{DoxyCompactList}\item 
 \hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a2ebf06f8c2b143f7af5475c851173808}{new virtual \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a2ebf06f8c2b143f7af5475c851173808}{Bind$<$ T $>$} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a2ebf06f8c2b143f7af5475c851173808}
 
 \begin{DoxyCompactList}\small\item\em Bind a trigger Key by generic Type. \end{DoxyCompactList}\item 
 \hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a63849fed5502d91b346caab1e0fe9a43}{new virtual \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a63849fed5502d91b346caab1e0fe9a43}{Bind} (object value)}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a63849fed5502d91b346caab1e0fe9a43}
 
-\begin{DoxyCompactList}\small\item\em Bind a trigger Key by value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Bind a trigger Key by value. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_aebfd6c091951d7b13731b4d83665ee47}{new virtual \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_aebfd6c091951d7b13731b4d83665ee47}{Get\-Binding$<$ T $>$} ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_aebfd6c091951d7b13731b4d83665ee47}
+
+\begin{DoxyCompactList}\small\item\em Retrieve a binding based on the provided Type. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a31efd303e2d431a7aa6654c8598a2ae1}{void {\bfseries next} (\hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} binding, object data, int depth)}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a31efd303e2d431a7aa6654c8598a2ae1}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a9037b836c71a9332fe7eb2e0fcb748e4}{virtual void {\bfseries dispose\-Of\-Sequenced\-Data} (object data)}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a9037b836c71a9332fe7eb2e0fcb748e4}
+
 \item 
 \hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a6ac0eaf086a6425a54492846f858703d}{virtual \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} {\bfseries invoke\-Command} (Type cmd, \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} binding, object data, int depth)}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a6ac0eaf086a6425a54492846f858703d}
 
@@ -50,14 +60,26 @@ void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder
 \hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_afcde1b363255b70ed9f84c7f90d139d4}{virtual \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} {\bfseries create\-Command} (object cmd, object data)}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_afcde1b363255b70ed9f84c7f90d139d4}
 
 \item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a2900c118bf394b4b6138832e010c1df6}{\hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} {\bfseries get\-Command} (Type type)}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a2900c118bf394b4b6138832e010c1df6}
+
+\item 
 \hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_ac72e98df4d7b5c47d4f6514fd515f4ec}{void {\bfseries track\-Command} (\hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} command, \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binding}{I\-Command\-Binding} binding)}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_ac72e98df4d7b5c47d4f6514fd515f4ec}
 
 \item 
 \hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a31a0b6d3b5de1d9a8029ab8461fd46ee}{void {\bfseries execute\-Command} (\hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} command)}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a31a0b6d3b5de1d9a8029ab8461fd46ee}
 
+\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a4ebf044dad407ce0757b2118d7373a80}{override void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a4ebf044dad407ce0757b2118d7373a80}{resolver} (\hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} binding)}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a4ebf044dad407ce0757b2118d7373a80}
+
+\begin{DoxyCompactList}\small\item\em The default handler for resolving bindings during chained commands. \end{DoxyCompactList}\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a54a7f7e25b5b9dbebd9f61c484a5f289}{virtual \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool}{Pool} {\bfseries make\-Pool\-From\-Type} (Type type)}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a54a7f7e25b5b9dbebd9f61c484a5f289}
+
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_ab3bddee94cadd3048189e1e5cd59ead9}{Dictionary$<$ Type, \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool}{Pool} $>$ {\bfseries pools} = new Dictionary$<$Type, \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool}{Pool}$>$ ()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_ab3bddee94cadd3048189e1e5cd59ead9}
+
 \item 
 \hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a8b6b770089f105b017000c9957aa7125}{Hash\-Set$<$ \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command} $>$ \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a8b6b770089f105b017000c9957aa7125}{active\-Commands} = new Hash\-Set$<$\hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command}{I\-Command}$>$()}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a8b6b770089f105b017000c9957aa7125}
 
@@ -70,6 +92,9 @@ void \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder
 \begin{DoxyCompactItemize}
 \item 
 \hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a011d8c52fdd8fdfffbc3d61089d3ff19}{\hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder}{I\-Injection\-Binder} {\bfseries injection\-Binder}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a011d8c52fdd8fdfffbc3d61089d3ff19}
+
+\item 
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a1093c0bcae55cef2bb0f211714d070c5}{bool {\bfseries use\-Pooling}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a1093c0bcae55cef2bb0f211714d070c5}
 
 \end{DoxyCompactItemize}
 
@@ -96,13 +121,13 @@ Bind(EventMap.END_GAME_EVENT).To<FirstCommand>().To<SecondCommand>().To<ThirdGCo
 See \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} for details on asynchronous Commands and cancelling sequences. 
 
 \subsection{Member Function Documentation}
-\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a582e06f6f4dc8c94237e2e2c0d5e098c}{\index{strange\-::extensions\-::command\-::impl\-::\-Command\-Binder@{strange\-::extensions\-::command\-::impl\-::\-Command\-Binder}!Release\-Command@{Release\-Command}}
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a09d4317fb2d40a84fe7979ed7296c803}{\index{strange\-::extensions\-::command\-::impl\-::\-Command\-Binder@{strange\-::extensions\-::command\-::impl\-::\-Command\-Binder}!Release\-Command@{Release\-Command}}
 \index{Release\-Command@{Release\-Command}!strange::extensions::command::impl::CommandBinder@{strange\-::extensions\-::command\-::impl\-::\-Command\-Binder}}
-\subsubsection[{Release\-Command}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-command.\-impl.\-Command\-Binder.\-Release\-Command (
+\subsubsection[{Release\-Command}]{\setlength{\rightskip}{0pt plus 5cm}virtual void strange.\-extensions.\-command.\-impl.\-Command\-Binder.\-Release\-Command (
 \begin{DoxyParamCaption}
 \item[{{\bf I\-Command}}]{command}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a582e06f6f4dc8c94237e2e2c0d5e098c}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a09d4317fb2d40a84fe7979ed7296c803}
 
 
 Release a previously retained \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command}. 
@@ -110,6 +135,43 @@ Release a previously retained \hyperlink{classstrange_1_1extensions_1_1command_1
 By default, a \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} is garbage collected at the end of its {\ttfamily Execute()} method. But the \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command}{Command} can be retained for asynchronous calls. 
 
 Implements \hyperlink{interfacestrange_1_1extensions_1_1command_1_1api_1_1_i_command_binder_ae063357e7694fe0e107a53cc77e8e112}{strange.\-extensions.\-command.\-api.\-I\-Command\-Binder}.
+
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a89b307b59946a314b5eaf6cbe4a83dc2}{\index{strange\-::extensions\-::command\-::impl\-::\-Command\-Binder@{strange\-::extensions\-::command\-::impl\-::\-Command\-Binder}!Trigger@{Trigger}}
+\index{Trigger@{Trigger}!strange::extensions::command::impl::CommandBinder@{strange\-::extensions\-::command\-::impl\-::\-Command\-Binder}}
+\subsubsection[{Trigger}]{\setlength{\rightskip}{0pt plus 5cm}bool strange.\-extensions.\-command.\-impl.\-Command\-Binder.\-Trigger (
+\begin{DoxyParamCaption}
+\item[{object}]{key, }
+\item[{object}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_a89b307b59946a314b5eaf6cbe4a83dc2}
+
+
+Cause this I\-Triggerable to access any provided Key in its Binder by the provided key and data. 
+
+\begin{DoxyReturn}{Returns}
+false if the originator should abort dispatch
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_a07af18f0259e869bd981b81edb58c28f}{strange.\-extensions.\-dispatcher.\-api.\-I\-Triggerable}.
+
+\hypertarget{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_ad36f925e5e11f3407531b66c27d78d14}{\index{strange\-::extensions\-::command\-::impl\-::\-Command\-Binder@{strange\-::extensions\-::command\-::impl\-::\-Command\-Binder}!Trigger$<$ T $>$@{Trigger$<$ T $>$}}
+\index{Trigger$<$ T $>$@{Trigger$<$ T $>$}!strange::extensions::command::impl::CommandBinder@{strange\-::extensions\-::command\-::impl\-::\-Command\-Binder}}
+\subsubsection[{Trigger$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf strange.\-extensions.\-command.\-impl.\-Command\-Binder.\-Trigger}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{object}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_binder_ad36f925e5e11f3407531b66c27d78d14}
+
+
+Cause this I\-Triggerable to access any provided Key in its Binder by the provided generic and data. 
+
+\begin{DoxyReturn}{Returns}
+false if the originator should abort dispatch
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfacestrange_1_1extensions_1_1dispatcher_1_1api_1_1_i_triggerable_ab51a637635cbd1819f5d33f00831c8d5}{strange.\-extensions.\-dispatcher.\-api.\-I\-Triggerable}.
 
 
 

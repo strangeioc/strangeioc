@@ -91,6 +91,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -126,11 +127,20 @@ Protected Member Functions</h2></td></tr>
 <tr class="memdesc:a77b15b992a40cf3bfbf6d17c6f933a9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recurses through Transform.parent to find the GameObject to which ContextView is attached Has a loop limit of 100 levels.  <a href="#a77b15b992a40cf3bfbf6d17c6f933a9c">More...</a><br/></td></tr>
 <tr class="separator:a77b15b992a40cf3bfbf6d17c6f933a9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:ad18a42c98cf565dcfae8f7444213fd71"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html#ad18a42c98cf565dcfae8f7444213fd71">registerWithContext</a> = true</td></tr>
+<tr class="memdesc:ad18a42c98cf565dcfae8f7444213fd71"><td class="mdescLeft">&#160;</td><td class="mdescRight">A flag for allowing the <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html" title="Parent class for all your Views. ">View</a> to register with the Context In general you can ignore this.  <a href="#ad18a42c98cf565dcfae8f7444213fd71">More...</a><br/></td></tr>
+<tr class="separator:ad18a42c98cf565dcfae8f7444213fd71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:ad830e5b03b04691f18ea3fe83a6b2a6d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad830e5b03b04691f18ea3fe83a6b2a6d"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>requiresContext</b><code> [get, set]</code></td></tr>
 <tr class="separator:ad830e5b03b04691f18ea3fe83a6b2a6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d4caa8347d951f066e01626fa837a57"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d4caa8347d951f066e01626fa837a57"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>autoRegisterWithContext</b><code> [get, set]</code></td></tr>
+<tr class="separator:a4d4caa8347d951f066e01626fa837a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08f38be9f2708de9af4eaabf6c7dcb4c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a08f38be9f2708de9af4eaabf6c7dcb4c"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>registeredWithContext</b><code> [get, set]</code></td></tr>
 <tr class="separator:a08f38be9f2708de9af4eaabf6c7dcb4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,6 +152,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>registeredWithContext
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html#ac6eca04af420be4cb7ad637df4c8ff9c">registeredWithContext</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:ac6eca04af420be4cb7ad637df4c8ff9c inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether this View has been registered with a Context. <br/></td></tr>
 <tr class="separator:ac6eca04af420be4cb7ad637df4c8ff9c inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a245fba8e916c754e8cee754ce683b846 inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a245fba8e916c754e8cee754ce683b846"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view.html#a245fba8e916c754e8cee754ce683b846">autoRegisterWithContext</a><code> [get]</code></td></tr>
+<tr class="memdesc:a245fba8e916c754e8cee754ce683b846 inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exposure to code of the registerWithContext (Inspector) boolean. If false, the View won't try to register. <br/></td></tr>
+<tr class="separator:a245fba8e916c754e8cee754ce683b846 inherit properties_interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Parent class for all your Views. </p>
@@ -266,13 +280,37 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ad18a42c98cf565dcfae8f7444213fd71"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool strange.extensions.mediation.impl.View.registerWithContext = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A flag for allowing the <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html" title="Parent class for all your Views. ">View</a> to register with the Context In general you can ignore this. </p>
+<p>But some developers have asked for a way of disabling <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html" title="Parent class for all your Views. ">View</a> registration with a checkbox from Unity, so here it is. If you want to expose this capability either (1) uncomment the commented-out line immediately below, or (2) subclass <a class="el" href="classstrange_1_1extensions_1_1mediation_1_1impl_1_1_view.html" title="Parent class for all your Views. ">View</a> and override the autoRegisterWithContext method using your own custom (public) field. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>StrangeIoC/scripts/strange/extensions/mediation/impl/View.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 12 2013 11:15:53 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 28 2014 13:07:05 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

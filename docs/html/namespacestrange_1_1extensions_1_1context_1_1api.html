@@ -122,6 +122,11 @@ Enumerations</h2></td></tr>
 <a class="el" href="namespacestrange_1_1extensions_1_1context_1_1api.html#a64d630fc6451680225841051a568f4d6a500faa82c964b0f9d1fd9b236b7e8901">ContextKeys.CROSS_CONTEXT_DISPATCHER</a>
  }</td></tr>
 <tr class="separator:a64d630fc6451680225841051a568f4d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e67a548377c1491bddc3a81c0f312c5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestrange_1_1extensions_1_1context_1_1api.html#a6e67a548377c1491bddc3a81c0f312c5">ContextStartupFlags</a> { <a class="el" href="namespacestrange_1_1extensions_1_1context_1_1api.html#a6e67a548377c1491bddc3a81c0f312c5a008f6cdd0c190839e9885cf9f9e2a652">ContextStartupFlags.AUTOMATIC</a> = 0, 
+<a class="el" href="namespacestrange_1_1extensions_1_1context_1_1api.html#a6e67a548377c1491bddc3a81c0f312c5a0655aa3c508789a8f33bd843480bdcd6">ContextStartupFlags.MANUAL_MAPPING</a> = 1, 
+<a class="el" href="namespacestrange_1_1extensions_1_1context_1_1api.html#a6e67a548377c1491bddc3a81c0f312c5ac0b394b3f25a79cf770ae19192343bcd">ContextStartupFlags.MANUAL_LAUNCH</a> = 2
+ }</td></tr>
+<tr class="separator:a6e67a548377c1491bddc3a81c0f312c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a class="anchor" id="a92a831a11b0bd5ee051b35745b33791a"></a>
@@ -187,10 +192,35 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a6e67a548377c1491bddc3a81c0f312c5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacestrange_1_1extensions_1_1context_1_1api.html#a6e67a548377c1491bddc3a81c0f312c5">strange.extensions.context.api.ContextStartupFlags</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a6e67a548377c1491bddc3a81c0f312c5a008f6cdd0c190839e9885cf9f9e2a652"></a>AUTOMATIC</em>&nbsp;</td><td class="fielddoc">
+<p>Context will map bindings and launch automatically (default). </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a6e67a548377c1491bddc3a81c0f312c5a0655aa3c508789a8f33bd843480bdcd6"></a>MANUAL_MAPPING</em>&nbsp;</td><td class="fielddoc">
+<p>Context startup will halt after Core bindings are mapped, but before instantiation or any custom bindings. </p>
+<p>If this flag is invoked, the developer must call context.Start() </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a6e67a548377c1491bddc3a81c0f312c5ac0b394b3f25a79cf770ae19192343bcd"></a>MANUAL_LAUNCH</em>&nbsp;</td><td class="fielddoc">
+<p>Context startup will halt after all bindings are mapped, but before firing ContextEvent.START (or the analogous Signal). </p>
+<p>If this flag is invoked, the developer must call context.Launch() </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 12 2013 11:15:52 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 28 2014 13:07:04 for StrangeIoC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

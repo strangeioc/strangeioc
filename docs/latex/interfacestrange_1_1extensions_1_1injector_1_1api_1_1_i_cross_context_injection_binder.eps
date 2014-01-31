@@ -5,7 +5,7 @@
 %%For: 
 %Magnification: 1.00
 %%Orientation: Portrait
-%%BoundingBox: 0 0 500 166.666667
+%%BoundingBox: 0 0 500 222.222222
 %%Pages: 0
 %%BeginSetup
 %%EndSetup
@@ -19,12 +19,12 @@
 /marginwidth 10 def
 /distx 20 def
 /disty 40 def
-/boundaspect 3.000000 def  % aspect ratio of the BoundingBox (width/height)
+/boundaspect 2.250000 def  % aspect ratio of the BoundingBox (width/height)
 /boundx 500 def
 /boundy boundx boundaspect div def
 /xspacing 0 def
 /yspacing 0 def
-/rows 3 def
+/rows 4 def
 /cols 1 def
 /scalefactor 0 def
 /boxfont /Times-Roman findfont fontheight scalefont def
@@ -175,6 +175,7 @@ boxfont setfont
 1 boundaspect scale
 (strange.extensions.injector.api.ICrossContextInjectionBinder) cw
 (strange.extensions.injector.api.IInjectionBinder) cw
+(strange.framework.api.IInstanceProvider) cw
 (strange.extensions.injector.impl.CrossContextInjectionBinder) cw
 /boxwidth boxwidth marginwidth 2 mul add def
 /xspacing boxwidth distx add def
@@ -189,6 +190,7 @@ boundx scalefactor div boundy scalefactor div scale
 
  (strange.extensions.injector.api.ICrossContextInjectionBinder) 0.000000 1.000000 box
  (strange.extensions.injector.api.IInjectionBinder) 0.000000 2.000000 box
+ (strange.framework.api.IInstanceProvider) 0.000000 3.000000 box
  (strange.extensions.injector.impl.CrossContextInjectionBinder) 0.000000 0.000000 box
 
 % ----- relations -----
@@ -197,6 +199,10 @@ solid
 0 0.000000 1.000000 out
 solid
 1 0.000000 2.000000 in
+solid
+0 0.000000 2.000000 out
+solid
+1 0.000000 3.000000 in
 solid
 1 0.000000 0.250000 out
 solid

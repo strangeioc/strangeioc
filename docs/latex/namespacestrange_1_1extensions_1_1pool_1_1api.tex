@@ -1,0 +1,72 @@
+\hypertarget{namespacestrange_1_1extensions_1_1pool_1_1api}{\section{Package strange.\-extensions.\-pool.\-api}
+\label{namespacestrange_1_1extensions_1_1pool_1_1api}\index{strange.\-extensions.\-pool.\-api@{strange.\-extensions.\-pool.\-api}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool_3_01_t_01_4}{I\-Pool$<$ T $>$}
+\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_pool}{I\-Pool}
+\begin{DoxyCompactList}\small\item\em A mechanism for storing and reusing instances. \end{DoxyCompactList}\item 
+interface \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable}{I\-Poolable}
+\begin{DoxyCompactList}\small\item\em Interface for items that belong to a Pool. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespacestrange_1_1extensions_1_1pool_1_1api_a93ccdd4d6e731ba8a31a774428edec32}{Pool\-Exception\-Type} \{ \hyperlink{namespacestrange_1_1extensions_1_1pool_1_1api_a93ccdd4d6e731ba8a31a774428edec32a0134b04a942cbc5336958c8cd09b82f3}{Pool\-Exception\-Type.\-O\-V\-E\-R\-F\-L\-O\-W}, 
+\hyperlink{namespacestrange_1_1extensions_1_1pool_1_1api_a93ccdd4d6e731ba8a31a774428edec32a2f93918ef99e03b7b8e7230b2a28fb52}{Pool\-Exception\-Type.\-T\-Y\-P\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}, 
+\hyperlink{namespacestrange_1_1extensions_1_1pool_1_1api_a93ccdd4d6e731ba8a31a774428edec32a1cfa5c66f7d5e22144ab76bb67d94a1d}{Pool\-Exception\-Type.\-N\-O\-\_\-\-I\-N\-S\-T\-A\-N\-C\-E\-\_\-\-P\-R\-O\-V\-I\-D\-E\-R}
+ \}
+\item 
+enum \hyperlink{namespacestrange_1_1extensions_1_1pool_1_1api_ac2dc67ad647400c4637d72c282028180}{Pool\-Inflation\-Type} \{ \hyperlink{namespacestrange_1_1extensions_1_1pool_1_1api_ac2dc67ad647400c4637d72c282028180a90cf1f5206b348a822cc1a453a587534}{Pool\-Inflation\-Type.\-I\-N\-C\-R\-E\-M\-E\-N\-T}, 
+\hyperlink{namespacestrange_1_1extensions_1_1pool_1_1api_ac2dc67ad647400c4637d72c282028180afd3e4ece78a7d422280d5ed379482229}{Pool\-Inflation\-Type.\-D\-O\-U\-B\-L\-E}
+ \}
+\item 
+enum \hyperlink{namespacestrange_1_1extensions_1_1pool_1_1api_afb1f831222aa94de2fcb447a88146ad0}{Pool\-Overflow\-Behavior} \{ \hyperlink{namespacestrange_1_1extensions_1_1pool_1_1api_afb1f831222aa94de2fcb447a88146ad0acccc265b14c17af799a1834f4fbbe7cf}{Pool\-Overflow\-Behavior.\-E\-X\-C\-E\-P\-T\-I\-O\-N}, 
+\hyperlink{namespacestrange_1_1extensions_1_1pool_1_1api_afb1f831222aa94de2fcb447a88146ad0a059e9861e0400dfbe05c98a841f3f96b}{Pool\-Overflow\-Behavior.\-W\-A\-R\-N\-I\-N\-G}, 
+\hyperlink{namespacestrange_1_1extensions_1_1pool_1_1api_afb1f831222aa94de2fcb447a88146ad0aa2e843feab94ef623fea888f07c28696}{Pool\-Overflow\-Behavior.\-I\-G\-N\-O\-R\-E}
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{namespacestrange_1_1extensions_1_1pool_1_1api_a93ccdd4d6e731ba8a31a774428edec32}{\index{strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}!Pool\-Exception\-Type@{Pool\-Exception\-Type}}
+\index{Pool\-Exception\-Type@{Pool\-Exception\-Type}!strange::extensions::pool::api@{strange\-::extensions\-::pool\-::api}}
+\subsubsection[{Pool\-Exception\-Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf strange.\-extensions.\-pool.\-api.\-Pool\-Exception\-Type}}}\label{namespacestrange_1_1extensions_1_1pool_1_1api_a93ccdd4d6e731ba8a31a774428edec32}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{O\-V\-E\-R\-F\-L\-O\-W@{O\-V\-E\-R\-F\-L\-O\-W}!strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}}\index{strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}!O\-V\-E\-R\-F\-L\-O\-W@{O\-V\-E\-R\-F\-L\-O\-W}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1pool_1_1api_a93ccdd4d6e731ba8a31a774428edec32a0134b04a942cbc5336958c8cd09b82f3}{O\-V\-E\-R\-F\-L\-O\-W}\label{namespacestrange_1_1extensions_1_1pool_1_1api_a93ccdd4d6e731ba8a31a774428edec32a0134b04a942cbc5336958c8cd09b82f3}
+}]P\-O\-O\-L H\-A\-S O\-V\-E\-R\-F\-L\-O\-W\-E\-D I\-T\-S L\-I\-M\-I\-T. \index{T\-Y\-P\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H@{T\-Y\-P\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}!strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}}\index{strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}!T\-Y\-P\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H@{T\-Y\-P\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1pool_1_1api_a93ccdd4d6e731ba8a31a774428edec32a2f93918ef99e03b7b8e7230b2a28fb52}{T\-Y\-P\-E\-\_\-\-M\-I\-S\-M\-A\-T\-C\-H}\label{namespacestrange_1_1extensions_1_1pool_1_1api_a93ccdd4d6e731ba8a31a774428edec32a2f93918ef99e03b7b8e7230b2a28fb52}
+}]A\-T\-T\-E\-M\-P\-T T\-O A\-D\-D A\-N I\-N\-S\-T\-A\-N\-C\-E O\-F D\-I\-F\-F\-E\-R\-E\-N\-T T\-Y\-P\-E T\-O A P\-O\-O\-L. \index{N\-O\-\_\-\-I\-N\-S\-T\-A\-N\-C\-E\-\_\-\-P\-R\-O\-V\-I\-D\-E\-R@{N\-O\-\_\-\-I\-N\-S\-T\-A\-N\-C\-E\-\_\-\-P\-R\-O\-V\-I\-D\-E\-R}!strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}}\index{strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}!N\-O\-\_\-\-I\-N\-S\-T\-A\-N\-C\-E\-\_\-\-P\-R\-O\-V\-I\-D\-E\-R@{N\-O\-\_\-\-I\-N\-S\-T\-A\-N\-C\-E\-\_\-\-P\-R\-O\-V\-I\-D\-E\-R}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1pool_1_1api_a93ccdd4d6e731ba8a31a774428edec32a1cfa5c66f7d5e22144ab76bb67d94a1d}{N\-O\-\_\-\-I\-N\-S\-T\-A\-N\-C\-E\-\_\-\-P\-R\-O\-V\-I\-D\-E\-R}\label{namespacestrange_1_1extensions_1_1pool_1_1api_a93ccdd4d6e731ba8a31a774428edec32a1cfa5c66f7d5e22144ab76bb67d94a1d}
+}]A P\-O\-O\-L H\-A\-S N\-O I\-N\-S\-T\-A\-N\-C\-E P\-R\-O\-V\-I\-D\-E\-R. \end{description}
+\end{Desc}
+\hypertarget{namespacestrange_1_1extensions_1_1pool_1_1api_ac2dc67ad647400c4637d72c282028180}{\index{strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}!Pool\-Inflation\-Type@{Pool\-Inflation\-Type}}
+\index{Pool\-Inflation\-Type@{Pool\-Inflation\-Type}!strange::extensions::pool::api@{strange\-::extensions\-::pool\-::api}}
+\subsubsection[{Pool\-Inflation\-Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf strange.\-extensions.\-pool.\-api.\-Pool\-Inflation\-Type}}}\label{namespacestrange_1_1extensions_1_1pool_1_1api_ac2dc67ad647400c4637d72c282028180}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{I\-N\-C\-R\-E\-M\-E\-N\-T@{I\-N\-C\-R\-E\-M\-E\-N\-T}!strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}}\index{strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}!I\-N\-C\-R\-E\-M\-E\-N\-T@{I\-N\-C\-R\-E\-M\-E\-N\-T}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1pool_1_1api_ac2dc67ad647400c4637d72c282028180a90cf1f5206b348a822cc1a453a587534}{I\-N\-C\-R\-E\-M\-E\-N\-T}\label{namespacestrange_1_1extensions_1_1pool_1_1api_ac2dc67ad647400c4637d72c282028180a90cf1f5206b348a822cc1a453a587534}
+}]When a dynamic pool inflates, add one to the pool. \index{D\-O\-U\-B\-L\-E@{D\-O\-U\-B\-L\-E}!strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}}\index{strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}!D\-O\-U\-B\-L\-E@{D\-O\-U\-B\-L\-E}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1pool_1_1api_ac2dc67ad647400c4637d72c282028180afd3e4ece78a7d422280d5ed379482229}{D\-O\-U\-B\-L\-E}\label{namespacestrange_1_1extensions_1_1pool_1_1api_ac2dc67ad647400c4637d72c282028180afd3e4ece78a7d422280d5ed379482229}
+}]When a dynamic pool inflates, double the size of the pool. \end{description}
+\end{Desc}
+\hypertarget{namespacestrange_1_1extensions_1_1pool_1_1api_afb1f831222aa94de2fcb447a88146ad0}{\index{strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}!Pool\-Overflow\-Behavior@{Pool\-Overflow\-Behavior}}
+\index{Pool\-Overflow\-Behavior@{Pool\-Overflow\-Behavior}!strange::extensions::pool::api@{strange\-::extensions\-::pool\-::api}}
+\subsubsection[{Pool\-Overflow\-Behavior}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf strange.\-extensions.\-pool.\-api.\-Pool\-Overflow\-Behavior}}}\label{namespacestrange_1_1extensions_1_1pool_1_1api_afb1f831222aa94de2fcb447a88146ad0}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{E\-X\-C\-E\-P\-T\-I\-O\-N@{E\-X\-C\-E\-P\-T\-I\-O\-N}!strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}}\index{strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}!E\-X\-C\-E\-P\-T\-I\-O\-N@{E\-X\-C\-E\-P\-T\-I\-O\-N}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1pool_1_1api_afb1f831222aa94de2fcb447a88146ad0acccc265b14c17af799a1834f4fbbe7cf}{E\-X\-C\-E\-P\-T\-I\-O\-N}\label{namespacestrange_1_1extensions_1_1pool_1_1api_afb1f831222aa94de2fcb447a88146ad0acccc265b14c17af799a1834f4fbbe7cf}
+}]Requesting more than the fixed size will throw an exception. \index{W\-A\-R\-N\-I\-N\-G@{W\-A\-R\-N\-I\-N\-G}!strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}}\index{strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}!W\-A\-R\-N\-I\-N\-G@{W\-A\-R\-N\-I\-N\-G}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1pool_1_1api_afb1f831222aa94de2fcb447a88146ad0a059e9861e0400dfbe05c98a841f3f96b}{W\-A\-R\-N\-I\-N\-G}\label{namespacestrange_1_1extensions_1_1pool_1_1api_afb1f831222aa94de2fcb447a88146ad0a059e9861e0400dfbe05c98a841f3f96b}
+}]Requesting more than the fixed size will throw a warning. \index{I\-G\-N\-O\-R\-E@{I\-G\-N\-O\-R\-E}!strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}}\index{strange\-::extensions\-::pool\-::api@{strange\-::extensions\-::pool\-::api}!I\-G\-N\-O\-R\-E@{I\-G\-N\-O\-R\-E}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1pool_1_1api_afb1f831222aa94de2fcb447a88146ad0aa2e843feab94ef623fea888f07c28696}{I\-G\-N\-O\-R\-E}\label{namespacestrange_1_1extensions_1_1pool_1_1api_afb1f831222aa94de2fcb447a88146ad0aa2e843feab94ef623fea888f07c28696}
+}]Requesting more than the fixed size will return null and not throw an error. \end{description}
+\end{Desc}

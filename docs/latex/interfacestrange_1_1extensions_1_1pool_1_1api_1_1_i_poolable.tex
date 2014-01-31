@@ -1,0 +1,98 @@
+\hypertarget{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable}{\section{strange.\-extensions.\-pool.\-api.\-I\-Poolable Interface Reference}
+\label{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable}\index{strange.\-extensions.\-pool.\-api.\-I\-Poolable@{strange.\-extensions.\-pool.\-api.\-I\-Poolable}}
+}
+
+
+Interface for items that belong to a Pool.  
+
+
+Inheritance diagram for strange.\-extensions.\-pool.\-api.\-I\-Poolable\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.551247cm]{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_a3eb6437f37f1e87b92c55a32689a0ef5}{Restore} ()
+\begin{DoxyCompactList}\small\item\em Clean up this instance for reuse. \end{DoxyCompactList}\item 
+void \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_ad51f2499e20163c58147a886e5fd5692}{Retain} ()
+\begin{DoxyCompactList}\small\item\em Keep this instance from being returned to the pool \end{DoxyCompactList}\item 
+void \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_afdea864987f51cfc9d83e9158dfcaa33}{Release} ()
+\begin{DoxyCompactList}\small\item\em Release this instance back to the pool. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_a5765129c59b95f61b7ffcd707e1296d2}{retain}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Is this instance retained? \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface for items that belong to a Pool. 
+
+Instances that belong to a Pool usually need to be cleaned up for later reuse. This is both an aspect of careful instance wrangling and of memory management, since you want to release any memory references possibly attached to the poolable items. If your instances implement \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable}{I\-Poolable}, place all cleanup code inside \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_a3eb6437f37f1e87b92c55a32689a0ef5}{Restore()}, and the cleanup will occur automatically when the instance is returned to the Pool.
+
+If you cannot or do not wish to implement \hyperlink{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable}{I\-Poolable}, that's entirely allowable, but know that it will be your responsibility to clean up an instance B\-E\-F\-O\-R\-E returning it to the Pool. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_afdea864987f51cfc9d83e9158dfcaa33}{\index{strange\-::extensions\-::pool\-::api\-::\-I\-Poolable@{strange\-::extensions\-::pool\-::api\-::\-I\-Poolable}!Release@{Release}}
+\index{Release@{Release}!strange::extensions::pool::api::IPoolable@{strange\-::extensions\-::pool\-::api\-::\-I\-Poolable}}
+\subsubsection[{Release}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-pool.\-api.\-I\-Poolable.\-Release (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_afdea864987f51cfc9d83e9158dfcaa33}
+
+
+Release this instance back to the pool. 
+
+Release methods should clean up the instance sufficiently to remove prior state. 
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_added3d6c62335be5ee0dd2e88c1b9f66}{strange.\-extensions.\-pool.\-impl.\-Pool}, \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a41896e346d95419f179c8af2ccb5696d}{strange.\-extensions.\-command.\-impl.\-Command}, \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_a7a386063d3c752a4d586ecb5c4bd8f6d}{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Tm\-Event}, \hyperlink{classstrange_1_1extensions_1_1sequencer_1_1impl_1_1_sequence_command_a3701cfea169824248179b71f4117c791}{strange.\-extensions.\-sequencer.\-impl.\-Sequence\-Command}, and \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_event_command_a9abf01833e08403f97f631615f1fcc42}{strange.\-extensions.\-command.\-impl.\-Event\-Command}.
+
+\hypertarget{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_a3eb6437f37f1e87b92c55a32689a0ef5}{\index{strange\-::extensions\-::pool\-::api\-::\-I\-Poolable@{strange\-::extensions\-::pool\-::api\-::\-I\-Poolable}!Restore@{Restore}}
+\index{Restore@{Restore}!strange::extensions::pool::api::IPoolable@{strange\-::extensions\-::pool\-::api\-::\-I\-Poolable}}
+\subsubsection[{Restore}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-pool.\-api.\-I\-Poolable.\-Restore (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_a3eb6437f37f1e87b92c55a32689a0ef5}
+
+
+Clean up this instance for reuse. 
+
+Restore methods should clean up the instance sufficiently to remove prior state. 
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a5a936efde1ae47310598a1b54c68db44}{strange.\-extensions.\-pool.\-impl.\-Pool}, \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_a150a8abf7136daecc1a991836feda470}{strange.\-extensions.\-command.\-impl.\-Command}, and \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_aa20d15da3bdbddf1f29d923cdc58a1e6}{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Tm\-Event}.
+
+\hypertarget{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_ad51f2499e20163c58147a886e5fd5692}{\index{strange\-::extensions\-::pool\-::api\-::\-I\-Poolable@{strange\-::extensions\-::pool\-::api\-::\-I\-Poolable}!Retain@{Retain}}
+\index{Retain@{Retain}!strange::extensions::pool::api::IPoolable@{strange\-::extensions\-::pool\-::api\-::\-I\-Poolable}}
+\subsubsection[{Retain}]{\setlength{\rightskip}{0pt plus 5cm}void strange.\-extensions.\-pool.\-api.\-I\-Poolable.\-Retain (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_ad51f2499e20163c58147a886e5fd5692}
+
+
+Keep this instance from being returned to the pool 
+
+
+
+Implemented in \hyperlink{classstrange_1_1extensions_1_1pool_1_1impl_1_1_pool_a31dd0baa23e31b9fe079783acdbbef4b}{strange.\-extensions.\-pool.\-impl.\-Pool}, \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_command_ae1fd4be633a9619861930197b51ad6ea}{strange.\-extensions.\-command.\-impl.\-Command}, \hyperlink{classstrange_1_1extensions_1_1dispatcher_1_1eventdispatcher_1_1impl_1_1_tm_event_aacd0c47bb3adedb6e4934b7cbea6cab0}{strange.\-extensions.\-dispatcher.\-eventdispatcher.\-impl.\-Tm\-Event}, and \hyperlink{classstrange_1_1extensions_1_1command_1_1impl_1_1_event_command_a49705cc9260bd79ba51606523700330f}{strange.\-extensions.\-command.\-impl.\-Event\-Command}.
+
+
+
+\subsection{Property Documentation}
+\hypertarget{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_a5765129c59b95f61b7ffcd707e1296d2}{\index{strange\-::extensions\-::pool\-::api\-::\-I\-Poolable@{strange\-::extensions\-::pool\-::api\-::\-I\-Poolable}!retain@{retain}}
+\index{retain@{retain}!strange::extensions::pool::api::IPoolable@{strange\-::extensions\-::pool\-::api\-::\-I\-Poolable}}
+\subsubsection[{retain}]{\setlength{\rightskip}{0pt plus 5cm}bool strange.\-extensions.\-pool.\-api.\-I\-Poolable.\-retain\hspace{0.3cm}{\ttfamily [get]}}}\label{interfacestrange_1_1extensions_1_1pool_1_1api_1_1_i_poolable_a5765129c59b95f61b7ffcd707e1296d2}
+
+
+Is this instance retained? 
+
+{\ttfamily true} if retained; otherwise, {\ttfamily false}.
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Strange\-Io\-C/scripts/strange/extensions/pool/api/I\-Poolable.\-cs\end{DoxyCompactItemize}

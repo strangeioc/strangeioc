@@ -12,12 +12,26 @@ Inheritance diagram for Post\-Construct\-:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{class_post_construct}
 \end{center}
 \end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_post_construct_af60fdf7855d5e3e26d79922454c72414}{{\bfseries Post\-Construct} (int p)}\label{class_post_construct_af60fdf7855d5e3e26d79922454c72414}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_post_construct_aeaedba1eb582bd7c4e023404ed1c8611}{int {\bfseries priority}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{class_post_construct_aeaedba1eb582bd7c4e023404ed1c8611}
+
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 The {\ttfamily \mbox{[}\hyperlink{class_post_construct}{Post\-Construct}\mbox{]}} attribute marks one or more methods as Post\-Constructors. 
 
-A Post\-Constructor is triggered immediately after injection. This allows you to use use a Post\-Constructor in much the same way as a Constructor, safe in the knowledge that there will be no null pointers on injected dependencies. Post\-Constructors do not accept arguments. 
+A Post\-Constructor is triggered immediately after injection. This allows you to use use a Post\-Constructor in much the same way as a Constructor, safe in the knowledge that there will be no null pointers on injected dependencies. Post\-Constructors do not accept arguments.
+
+You may optionally include a priority int on your Post\-Constructor. This allows for multiple Post\-Construction methods which will fire in a predictable order. 
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 

@@ -8,6 +8,10 @@ interface \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binder}{I\-Binde
 \begin{DoxyCompactList}\small\item\em Collection class for bindings. \end{DoxyCompactList}\item 
 interface \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding}
 \begin{DoxyCompactList}\small\item\em Binds a key Semi\-Binding to a vlaue Semibinding. \end{DoxyCompactList}\item 
+interface \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_instance_provider}{I\-Instance\-Provider}
+\begin{DoxyCompactList}\small\item\em Provides an instance of the specified Type When all you need is a new instance, use this instead of I\-Injection\-Binder. \end{DoxyCompactList}\item 
+interface \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_managed_list}{I\-Managed\-List}
+\begin{DoxyCompactList}\small\item\em A common interface for the constituents parts of a Binding, which at present are either a Semi\-Binding or a Pool. \end{DoxyCompactList}\item 
 interface \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_semi_binding}{I\-Semi\-Binding}
 \begin{DoxyCompactList}\small\item\em A managed list of values. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
@@ -20,7 +24,8 @@ enum \hyperlink{namespacestrange_1_1framework_1_1api_adcc058ca6ff0fe013ffdbf63ad
  \}
 \item 
 enum \hyperlink{namespacestrange_1_1framework_1_1api_a9819c5ab6d03a2cbce2d3dddf5264e42}{Binding\-Constraint\-Type} \{ \hyperlink{namespacestrange_1_1framework_1_1api_a9819c5ab6d03a2cbce2d3dddf5264e42abc21e6484530fc9d0313cb816b733396}{Binding\-Constraint\-Type.\-O\-N\-E}, 
-\hyperlink{namespacestrange_1_1framework_1_1api_a9819c5ab6d03a2cbce2d3dddf5264e42a914afc10e7ea496e240a80be1bc01d09}{Binding\-Constraint\-Type.\-M\-A\-N\-Y}
+\hyperlink{namespacestrange_1_1framework_1_1api_a9819c5ab6d03a2cbce2d3dddf5264e42a914afc10e7ea496e240a80be1bc01d09}{Binding\-Constraint\-Type.\-M\-A\-N\-Y}, 
+\hyperlink{namespacestrange_1_1framework_1_1api_a9819c5ab6d03a2cbce2d3dddf5264e42a3225d08271bdcb752dd48b2a836c8998}{Binding\-Constraint\-Type.\-P\-O\-O\-L}
  \}
 \end{DoxyCompactItemize}
 
@@ -56,5 +61,7 @@ enum \hyperlink{namespacestrange_1_1framework_1_1api_a9819c5ab6d03a2cbce2d3dddf5
 \hypertarget{namespacestrange_1_1framework_1_1api_a9819c5ab6d03a2cbce2d3dddf5264e42abc21e6484530fc9d0313cb816b733396}{O\-N\-E}\label{namespacestrange_1_1framework_1_1api_a9819c5ab6d03a2cbce2d3dddf5264e42abc21e6484530fc9d0313cb816b733396}
 }]Constrains a Semi\-Binding to carry no more than one item in its Value. \index{M\-A\-N\-Y@{M\-A\-N\-Y}!strange\-::framework\-::api@{strange\-::framework\-::api}}\index{strange\-::framework\-::api@{strange\-::framework\-::api}!M\-A\-N\-Y@{M\-A\-N\-Y}}\item[{\em 
 \hypertarget{namespacestrange_1_1framework_1_1api_a9819c5ab6d03a2cbce2d3dddf5264e42a914afc10e7ea496e240a80be1bc01d09}{M\-A\-N\-Y}\label{namespacestrange_1_1framework_1_1api_a9819c5ab6d03a2cbce2d3dddf5264e42a914afc10e7ea496e240a80be1bc01d09}
-}]Constrains a Semi\-Binding to carry a list of items in its Value. \end{description}
+}]Constrains a Semi\-Binding to carry a list of items in its Value. \index{P\-O\-O\-L@{P\-O\-O\-L}!strange\-::framework\-::api@{strange\-::framework\-::api}}\index{strange\-::framework\-::api@{strange\-::framework\-::api}!P\-O\-O\-L@{P\-O\-O\-L}}\item[{\em 
+\hypertarget{namespacestrange_1_1framework_1_1api_a9819c5ab6d03a2cbce2d3dddf5264e42a3225d08271bdcb752dd48b2a836c8998}{P\-O\-O\-L}\label{namespacestrange_1_1framework_1_1api_a9819c5ab6d03a2cbce2d3dddf5264e42a3225d08271bdcb752dd48b2a836c8998}
+}]Instructs the Binding to apply a Pool instead of a Semi\-Binding. \end{description}
 \end{Desc}

@@ -7,7 +7,7 @@
 interface \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder}{I\-Mediation\-Binder}
 \begin{DoxyCompactList}\small\item\em Interface for the Binder which maps Views to Mediators. \end{DoxyCompactList}\item 
 interface \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binding}{I\-Mediation\-Binding}
-\begin{DoxyCompactList}\small\item\em Interface for Mediation\-B\-Indings. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Interface for Mediation\-Bindings. \end{DoxyCompactList}\item 
 interface \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediator}{I\-Mediator}
 \begin{DoxyCompactList}\small\item\em Look at \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_mediation_binder}{strange.\-extensions.\-mediation.\-api.\-I\-Mediation\-Binder}, where I explain the purpose of Mediation in detail. \end{DoxyCompactList}\item 
 class \hyperlink{interfacestrange_1_1extensions_1_1mediation_1_1api_1_1_i_view}{I\-View}
@@ -21,8 +21,13 @@ enum \hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9
 \hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_ae5a81bb1edf9fca1d2aca9f4fada72a8a055c1a591abb0e8cd86dc969727bcc0b}{Mediation\-Event.\-D\-I\-S\-A\-B\-L\-E\-D}
  \}
 \item 
-enum \hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4a}{Mediation\-Exception\-Type} \{ \hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aac89f949bb64ae5754bb687bf056de559}{Mediation\-Exception\-Type.\-N\-O\-\_\-\-C\-O\-N\-T\-E\-X\-T}, 
-\hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aa46ff5442e205aeec7c75b331260f5a49}{Mediation\-Exception\-Type.\-M\-E\-D\-I\-A\-T\-O\-R\-\_\-\-V\-I\-E\-W\-\_\-\-S\-T\-A\-C\-K\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W}
+enum \hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4a}{Mediation\-Exception\-Type} \{ \\*
+\hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aac89f949bb64ae5754bb687bf056de559}{Mediation\-Exception\-Type.\-N\-O\-\_\-\-C\-O\-N\-T\-E\-X\-T}, 
+\hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aa46ff5442e205aeec7c75b331260f5a49}{Mediation\-Exception\-Type.\-M\-E\-D\-I\-A\-T\-O\-R\-\_\-\-V\-I\-E\-W\-\_\-\-S\-T\-A\-C\-K\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W}, 
+\hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aa51ed2efc0906076d4f2a50f028249d82}{Mediation\-Exception\-Type.\-N\-U\-L\-L\-\_\-\-M\-E\-D\-I\-A\-T\-O\-R}, 
+{\bfseries I\-M\-P\-L\-I\-C\-I\-T\-\_\-\-B\-I\-N\-D\-I\-N\-G\-\_\-\-M\-E\-D\-I\-A\-T\-O\-R\-\_\-\-T\-Y\-P\-E\-\_\-\-I\-S\-\_\-\-N\-U\-L\-L}, 
+\\*
+{\bfseries I\-M\-P\-L\-I\-C\-I\-T\-\_\-\-B\-I\-N\-D\-I\-N\-G\-\_\-\-V\-I\-E\-W\-\_\-\-T\-Y\-P\-E\-\_\-\-I\-S\-\_\-\-N\-U\-L\-L}
  \}
 \end{DoxyCompactItemize}
 
@@ -56,5 +61,7 @@ enum \hyperlink{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a
 
 Note\-: to avoid infinite looping, there is a bubbling limit of 100 layers. If your View needs to be more than 100 transforms deep, that might signal a design problem. \index{M\-E\-D\-I\-A\-T\-O\-R\-\_\-\-V\-I\-E\-W\-\_\-\-S\-T\-A\-C\-K\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W@{M\-E\-D\-I\-A\-T\-O\-R\-\_\-\-V\-I\-E\-W\-\_\-\-S\-T\-A\-C\-K\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W}!strange\-::extensions\-::mediation\-::api@{strange\-::extensions\-::mediation\-::api}}\index{strange\-::extensions\-::mediation\-::api@{strange\-::extensions\-::mediation\-::api}!M\-E\-D\-I\-A\-T\-O\-R\-\_\-\-V\-I\-E\-W\-\_\-\-S\-T\-A\-C\-K\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W@{M\-E\-D\-I\-A\-T\-O\-R\-\_\-\-V\-I\-E\-W\-\_\-\-S\-T\-A\-C\-K\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W}}\item[{\em 
 \hypertarget{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aa46ff5442e205aeec7c75b331260f5a49}{M\-E\-D\-I\-A\-T\-O\-R\-\_\-\-V\-I\-E\-W\-\_\-\-S\-T\-A\-C\-K\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W}\label{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aa46ff5442e205aeec7c75b331260f5a49}
-}]Exception raised when a View is mapped to itself. If a View is accidentally mapped to itself, the result will be an infinite loop of Mediation creation. \end{description}
+}]Exception raised when a View is mapped to itself. If a View is accidentally mapped to itself, the result will be an infinite loop of Mediation creation. \index{N\-U\-L\-L\-\_\-\-M\-E\-D\-I\-A\-T\-O\-R@{N\-U\-L\-L\-\_\-\-M\-E\-D\-I\-A\-T\-O\-R}!strange\-::extensions\-::mediation\-::api@{strange\-::extensions\-::mediation\-::api}}\index{strange\-::extensions\-::mediation\-::api@{strange\-::extensions\-::mediation\-::api}!N\-U\-L\-L\-\_\-\-M\-E\-D\-I\-A\-T\-O\-R@{N\-U\-L\-L\-\_\-\-M\-E\-D\-I\-A\-T\-O\-R}}\item[{\em 
+\hypertarget{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aa51ed2efc0906076d4f2a50f028249d82}{N\-U\-L\-L\-\_\-\-M\-E\-D\-I\-A\-T\-O\-R}\label{namespacestrange_1_1extensions_1_1mediation_1_1api_aef97993ec02a40c5f887dbfaf4f06e4aa51ed2efc0906076d4f2a50f028249d82}
+}]Exception raised when Add\-Component results in a null Mediator. This probably means that the mapped \char`\"{}mediator\char`\"{} wasn't a Mono\-Behaviour. \end{description}
 \end{Desc}

@@ -19,9 +19,9 @@ object \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_b
 \begin{DoxyCompactList}\small\item\em Retrieve an Instance based on the key. \end{DoxyCompactList}\item 
 virtual object \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_af695f0c65ded51228d02afc0374bacd5}{Get\-Instance} (Type key, object name)
 \begin{DoxyCompactList}\small\item\em Retrieve an Instance based on a key/name combo. \end{DoxyCompactList}\item 
-object \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_aab0163fc0ce29c87ce23e05b33941550}{Get\-Instance$<$ T $>$} ()
+T \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a6935985cf687fc03af25385781caf01e}{Get\-Instance$<$ T $>$} ()
 \begin{DoxyCompactList}\small\item\em Retrieve an Instance based on the key. \end{DoxyCompactList}\item 
-object \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a1cd9b99f05837f13f0dbc2e47e603faa}{Get\-Instance$<$ T $>$} (object name)
+T \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a39f1604a085f9d386adff244a7ad4e69}{Get\-Instance$<$ T $>$} (object name)
 \begin{DoxyCompactList}\small\item\em Retrieve an Instance based on a key/name combo. \end{DoxyCompactList}\item 
 \hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a06ef3bfc85a8c3cb79a115a7b9247c3e}{override \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_binding}{I\-Binding} \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a06ef3bfc85a8c3cb79a115a7b9247c3e}{Get\-Raw\-Binding} ()}\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a06ef3bfc85a8c3cb79a115a7b9247c3e}
 
@@ -35,10 +35,10 @@ object \hyperlink{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_b
 \hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_af8be8acb4ee2c3e324ce743132a01193}{virtual new \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries Get\-Binding$<$ T $>$} ()}\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_af8be8acb4ee2c3e324ce743132a01193}
 
 \item 
-\hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_ac94c158e0b2c5b619f666c73103c3242}{new \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries Get\-Binding$<$ T $>$} (object name)}\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_ac94c158e0b2c5b619f666c73103c3242}
+\hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_ab0df1391f88fe8030376e563ffb8b997}{virtual new \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries Get\-Binding$<$ T $>$} (object name)}\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_ab0df1391f88fe8030376e563ffb8b997}
 
 \item 
-\hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a089423f2b77cddaae0a40861193fe728}{new \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries Get\-Binding} (object key)}\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a089423f2b77cddaae0a40861193fe728}
+\hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a365c53881521da1886f6a196ba2f3d18}{virtual new \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries Get\-Binding} (object key)}\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a365c53881521da1886f6a196ba2f3d18}
 
 \item 
 \hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_aeab9a27d06488aa24601a9a0d9a014fb}{virtual new \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binding}{I\-Injection\-Binding} {\bfseries Get\-Binding} (object key, object name)}\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_aeab9a27d06488aa24601a9a0d9a014fb}
@@ -88,7 +88,7 @@ Retrieve an Instance based on the key.
 
 ex. {\ttfamily injection\-Binder.\-Get(typeof(\-I\-Some\-Interface));} 
 
-Implements \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a08359dc92534704919a0e9b89375db18}{strange.\-extensions.\-injector.\-api.\-I\-Injection\-Binder}.
+Implements \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_instance_provider_a6e9b3f0300c397c2005204211647a653}{strange.\-framework.\-api.\-I\-Instance\-Provider}.
 
 \hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_af695f0c65ded51228d02afc0374bacd5}{\index{strange\-::extensions\-::injector\-::impl\-::\-Injection\-Binder@{strange\-::extensions\-::injector\-::impl\-::\-Injection\-Binder}!Get\-Instance@{Get\-Instance}}
 \index{Get\-Instance@{Get\-Instance}!strange::extensions::injector::impl::InjectionBinder@{strange\-::extensions\-::injector\-::impl\-::\-Injection\-Binder}}
@@ -106,35 +106,35 @@ ex. {\ttfamily injection\-Binder.\-Get(typeof(\-I\-Some\-Interface), Some\-Enum.
 
 Implements \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_aac899bd51070e8565fabab3a248cf3a5}{strange.\-extensions.\-injector.\-api.\-I\-Injection\-Binder}.
 
-\hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_aab0163fc0ce29c87ce23e05b33941550}{\index{strange\-::extensions\-::injector\-::impl\-::\-Injection\-Binder@{strange\-::extensions\-::injector\-::impl\-::\-Injection\-Binder}!Get\-Instance$<$ T $>$@{Get\-Instance$<$ T $>$}}
+\hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a6935985cf687fc03af25385781caf01e}{\index{strange\-::extensions\-::injector\-::impl\-::\-Injection\-Binder@{strange\-::extensions\-::injector\-::impl\-::\-Injection\-Binder}!Get\-Instance$<$ T $>$@{Get\-Instance$<$ T $>$}}
 \index{Get\-Instance$<$ T $>$@{Get\-Instance$<$ T $>$}!strange::extensions::injector::impl::InjectionBinder@{strange\-::extensions\-::injector\-::impl\-::\-Injection\-Binder}}
-\subsubsection[{Get\-Instance$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}object {\bf strange.\-extensions.\-injector.\-impl.\-Injection\-Binder.\-Get\-Instance}$<$ T $>$ (
+\subsubsection[{Get\-Instance$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}T {\bf strange.\-extensions.\-injector.\-impl.\-Injection\-Binder.\-Get\-Instance}$<$ T $>$ (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_aab0163fc0ce29c87ce23e05b33941550}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a6935985cf687fc03af25385781caf01e}
 
 
 Retrieve an Instance based on the key. 
 
 ex. {\ttfamily injection\-Binder.\-Get$<$c\-I\-Some\-Interface$>$();} 
 
-Implements \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a20bcbae77a818103c60eb063e75fd956}{strange.\-extensions.\-injector.\-api.\-I\-Injection\-Binder}.
+Implements \hyperlink{interfacestrange_1_1framework_1_1api_1_1_i_instance_provider_a0bec917157343a46d675ad3a8b6ad65c}{strange.\-framework.\-api.\-I\-Instance\-Provider}.
 
-\hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a1cd9b99f05837f13f0dbc2e47e603faa}{\index{strange\-::extensions\-::injector\-::impl\-::\-Injection\-Binder@{strange\-::extensions\-::injector\-::impl\-::\-Injection\-Binder}!Get\-Instance$<$ T $>$@{Get\-Instance$<$ T $>$}}
+\hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a39f1604a085f9d386adff244a7ad4e69}{\index{strange\-::extensions\-::injector\-::impl\-::\-Injection\-Binder@{strange\-::extensions\-::injector\-::impl\-::\-Injection\-Binder}!Get\-Instance$<$ T $>$@{Get\-Instance$<$ T $>$}}
 \index{Get\-Instance$<$ T $>$@{Get\-Instance$<$ T $>$}!strange::extensions::injector::impl::InjectionBinder@{strange\-::extensions\-::injector\-::impl\-::\-Injection\-Binder}}
-\subsubsection[{Get\-Instance$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}object {\bf strange.\-extensions.\-injector.\-impl.\-Injection\-Binder.\-Get\-Instance}$<$ T $>$ (
+\subsubsection[{Get\-Instance$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}T {\bf strange.\-extensions.\-injector.\-impl.\-Injection\-Binder.\-Get\-Instance}$<$ T $>$ (
 \begin{DoxyParamCaption}
 \item[{object}]{name}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a1cd9b99f05837f13f0dbc2e47e603faa}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a39f1604a085f9d386adff244a7ad4e69}
 
 
 Retrieve an Instance based on a key/name combo. 
 
 ex. {\ttfamily injection\-Binder.\-Get$<$c\-I\-Some\-Interface$>$(Some\-Enum.\-M\-Y\-\_\-\-E\-N\-U\-M);} 
 
-Implements \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_a26f141d072f219bb70513f5e21af6bbf}{strange.\-extensions.\-injector.\-api.\-I\-Injection\-Binder}.
+Implements \hyperlink{interfacestrange_1_1extensions_1_1injector_1_1api_1_1_i_injection_binder_ae9edea5e4babff105ec4767d84c6b716}{strange.\-extensions.\-injector.\-api.\-I\-Injection\-Binder}.
 
 \hypertarget{classstrange_1_1extensions_1_1injector_1_1impl_1_1_injection_binder_a5a03e345237a56af33953e215852526b}{\index{strange\-::extensions\-::injector\-::impl\-::\-Injection\-Binder@{strange\-::extensions\-::injector\-::impl\-::\-Injection\-Binder}!Reflect\-All@{Reflect\-All}}
 \index{Reflect\-All@{Reflect\-All}!strange::extensions::injector::impl::InjectionBinder@{strange\-::extensions\-::injector\-::impl\-::\-Injection\-Binder}}
