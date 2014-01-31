@@ -2,16 +2,19 @@
 
 Current version: v0.7.0
 
+###Note: StrangeIoC will now be hosted from this location
+
+
 > Strange attractors create predictable patterns, often in chaotic systems.
 
 Strange is a super-lightweight and highly extensible Inversion-of-Control (IoC) framework, written specifically for C# and Unity. We've validated Strange on web, standalone, and iOS. We're not currently developing for Android, but we're fairly certain it'll run just fine there, too (er, please let us know!!!).
 
-* [Overview](http://thirdmotion.github.com/strangeioc/exec.html)
-* [StrangeIoC documentation](http://thirdmotion.github.com/strangeioc/docs/html/index.html)
-* [The Big, Strange How-To](http://thirdmotion.github.com/strangeioc/TheBigStrangeHowTo.html)
-* [Do you use RobotLegs? You're in luck! This Strange page is for you!](http://thirdmotion.github.com/strangeioc/rl.html)
-* [FAQ](http://thirdmotion.github.com/strangeioc/faq.html)
-* [Feature requests/Bug reports](https://github.com/thirdmotion/strangeioc/issues)
+* [Overview](http://strangeioc.github.com/strangeioc/exec.html)
+* [StrangeIoC documentation](http://strangeioc.github.com/strangeioc/docs/html/index.html)
+* [The Big, Strange How-To](http://strangeioc.github.com/strangeioc/TheBigStrangeHowTo.html)
+* [Do you use RobotLegs? You're in luck! This Strange page is for you!](http://strangeioc.github.com/strangeioc/rl.html)
+* [FAQ](http://strangeioc.github.com/strangeioc/faq.html)
+* [Feature requests/Bug reports](https://github.com/strangeioc/strangeioc/issues)
 
 It contains the following features, most of which are optional:
 
@@ -57,7 +60,7 @@ In addition to organizing your project into a sensible structure, Strange offers
 # Acknowledgements
 It is hard to adequately credit the creators of the open source Actionscript framework RobotLegs for their influence on the creation of StrangeIoC. While Strange is not a port of RobotLegs, the ensigns of that library are copiously reflected throughout this one. For their great service to my professional development, I offer that team my sincerest thanks. And a donut. Seriously, if you're ever in town, let me buy you a donut.
 
-Kudos to Will Corwin for picking up a thrown-down gauntlet and writing the Signals implementation.
+Kudos to Will Corwin for picking up a thrown-down gauntlet and writing the Signals and Implicit Bindings implementations.
 
 I also need to thank and congratulate the folks at [ThirdMotion](http://www.thirdmotion.com) who inexplicably gave me time to build Strange and license to open source it.
 
