@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>FAQ - StrangeIoC by ThirdMotion</title>
+    <title>FAQ - StrangeIoC</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -19,18 +19,18 @@
       <h1><a href="./index.html">StrangeIoC</a></h1>
         <p></p>
 
-        <p class="view"><a href="https://github.com/thirdmotion/strangeioc">View the Project on GitHub <small>thirdmotion/strangeioc</small></a></p>
+        <p class="view"><a href="https://github.com/strangeioc/strangeioc">View the Project on GitHub <small>strangeioc/strangeioc</small></a></p>
         <ul>
-          <li><a href="https://github.com/thirdmotion/strangeioc/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/strangeioc/strangeioc/zipball/master">Download <strong>ZIP File</strong></a></li>
           <li><a href="http://u3d.as/content/third-motion-inc-/strange-io-c/4Xj">Get from <strong>Unity Store</strong></a></li>
-          <li><a href="https://github.com/thirdmotion/strangeioc">View on <strong>GitHub</strong></a></li>
+          <li><a href="https://github.com/strangeioc/strangeioc">View on <strong>GitHub</strong></a></li>
         </ul>
         <p class="view"><a href="./exec.html">Overview</a> (why you want to get Strange)</p>
         <p class="view"><a href="./docs/html/index.html">Docs</a> (Doxygen-generated)</p>
         <p class="view"><a href="./TheBigStrangeHowTo.html">The Big, Strange How-To</a> (developer manual)</p>
         <p class="view"><a href="./faq.html">FAQ</a></p>
         <p class="view">Use Robotlegs? <a href="./rl.html">This is for you</a>!</p>
-        <p class="view"><a href="http://github.com/thirdmotion/strangeioc/wiki">Strange Wiki</a></p>
+        <p class="view"><a href="http://github.com/strangeioc/strangeioc/wiki">Strange Wiki</a></p>
         <p><br/>Follow StrangeIoC on</p>
 <p class="view"><a href="http://www.facebook.com/strangeioc">Facebook</a></p>
         <p class="view"><a href="https://twitter.com/StrangeIoC">Twitter</a></p>
@@ -44,7 +44,7 @@
  <h2><a name="whats-strange" href="#whats-strange"></a>What is Strange? What is StrangeIoC? Is there a difference?</h2>
  <p><strong>StrangeIoC</strong> is an Inversion-of-Control library written for C# and specifically with Unity3D in mind. It features Dependency Injection, a common event bus and an optional MVCS structure which is great for building games and apps from something quite simple up to the very, very complex. <strong>Strange</strong> is just another (colloquial) name for StrangeIoC.</p>
  <h2><a name="current-version" href="#current-version"></a>What's the current version?</h2>
- <p>See <a href="https://github.com/thirdmotion/strangeioc/blob/master/StrangeIoC/scripts/strange/README.md">here.</a></p>
+ <p>See <a href="https://github.com/strangeioc/strangeioc/blob/master/StrangeIoC/scripts/strange/README.md">here.</a></p>
  <h2><a name="whats-mvcs" href="#whats-mvcs"></a>What's MVCS?</h2>
  <p><a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">Model-View-Controller</a> (MVC) is a standard architecture/design pattern for designing applications. The 'S' in MVCS refers to services, which suggests that MVC doesn't entirely cover the aspect of architecture that involves communicating with resources outside the application itself.</p>
  <h2><a name="whats-ioc-di" href="whats-ioc-di"></a>What's Inversion-of-Control? What's Dependency Injection?</h2>
@@ -87,11 +87,11 @@ public class SomeService : ISomeService
 <p>Our ContextView therefore has a list of MonoBehaviours attached to it, i.e., all the "global" MonoBehaviour-based services.</p>
 <p>This is far from perfect, since the Controller/Model/Service is now dependent on Unity and therefore no longer unit testable. But we don't like to treat a Model/Service like a View, just because Unity shoehorns it in that way. Also, note that the MonoBehaviour is now isolated inside the Service. If you someday find a better solution, perhaps one that doesn't require a MonoBehaviour, you have just this one class in which to refactor that change.</p>
  <h2><a name="how-much" href="#how-much"></a>OK. I'm interested! How much does it cost?</h2>
- <p>Totally free! And Open Source under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2</a>. You can download it from any of the buttons on the left, pull it from <a href="https://github.com/thirdmotion/strangeioc">github</a>, or else get it for free from the <a href="http://unity3d.com/asset-store/">Unity Store</a>.</p>
+ <p>Totally free! And Open Source under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2</a>. You can download it from any of the buttons on the left, pull it from <a href="https://github.com/strangeioc/strangeioc">github</a>, or else get it for free from the <a href="http://unity3d.com/asset-store/">Unity Store</a>.</p>
  <h2><a name="feature-ideas" href="#feature-ideas"></a>I have a feature idea. Where does that...?</h2>
- <p>Way ahead of you. Add it <a href="https://github.com/thirdmotion/strangeioc/issues">here</a></p>
+ <p>Way ahead of you. Add it <a href="https://github.com/strangeioc/strangeioc/issues">here</a></p>
  <h2><a name="bugs" href="#bugs"></a>I've found a bug. How do I...?</h2>
- <p>Right <a href="https://github.com/thirdmotion/strangeioc/issues">here</a> cowboy.</p>
+ <p>Right <a href="https://github.com/strangeioc/strangeioc/issues">here</a> cowboy.</p>
  <h2><a name="pull-request" href="#pull-request"></a>I've fixed a bug/added a feature to StrangeIoC and would like to contribute.</h2>
  <p>We'd love to review it and consider it for inclusion. Send us a pull request via GitHub. Please note that in order for any contribution to StrangeIoC to be considered,  the author must agree to contribute under the same Apache 2 license that governs StrangeIoC itself.</p>
  <h2><a name="support" href="#support"></a>Do you provide support?</h2>
