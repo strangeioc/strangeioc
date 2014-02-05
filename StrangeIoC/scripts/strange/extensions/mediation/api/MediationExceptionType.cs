@@ -40,10 +40,13 @@ namespace strange.extensions.mediation.api
 		/// This probably means that the mapped "mediator" wasn't a MonoBehaviour.
 		NULL_MEDIATOR,
 
-		//The mediator type is null on the attribute tag
+		/// The mediator type is null on the attribute tag
 		IMPLICIT_BINDING_MEDIATOR_TYPE_IS_NULL,
-		//The view type is null on the attribute tag
+		/// The view type is null on the attribute tag
 		IMPLICIT_BINDING_VIEW_TYPE_IS_NULL,
+
+		/// View bound to abstraction that View doesn't actually extend/implement
+		VIEW_NOT_ASSIGNABLE,
 	}
 }
 
