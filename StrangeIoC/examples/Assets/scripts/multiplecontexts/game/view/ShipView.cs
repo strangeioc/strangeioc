@@ -33,10 +33,18 @@ namespace strange.examples.multiplecontexts.game
 		public float edx_WobbleSize = .1f;
 		public float edx_WobbleIncrement = .1f;
 		
+		private ClickDetector clicker;
+
 		internal void init()
 		{
 			gameObject.AddComponent<ClickDetector>();
-			ClickDetector clicker = gameObject.GetComponent<ClickDetector>();
+			clicker = gameObject.GetComponent<ClickDetector>();
+			StartCoroutine (addClicker ());
+		}
+
+		private IEnumerator addClicker()
+		{
+			yield return null;
 			clicker.dispatcher.AddListener(ClickDetector.CLICK, onClick);
 		}
 		
