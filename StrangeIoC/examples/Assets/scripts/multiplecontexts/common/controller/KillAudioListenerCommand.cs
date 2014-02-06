@@ -30,15 +30,10 @@ namespace strange.examples.multiplecontexts.common
 
 		public override void Execute()
 		{
-			Debug.LogWarning ("KillAudioListenerCommand: " + contextView.name);
-
-
 			AudioListener[] audioListeners = contextView.GetComponentsInChildren<AudioListener> ();
 			int aa = audioListeners.Length;
 			for (int a = 0; a < aa; a++)
 			{
-				Debug.LogWarning ("Removing: " + a);
-
 				audioListeners[a].enabled = false;
 			}
 		}
