@@ -76,6 +76,8 @@
     <Folder Include="StrangeIoC\scripts\strange\extensions\implicitBind\" />
     <Folder Include="StrangeIoC\examples\Assets\scripts\justtests\" />
     <Folder Include="StrangeIoC\examples\Assets\scripts\justtests\view\" />
+    <Folder Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\common\" />
+    <Folder Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\common\controller\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StrangeIoC\scripts\strange\extensions\context\api\ContextEvent.cs.meta" />
@@ -413,5 +415,6 @@
     <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\TesterView.cs" />
     <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\TesterMediator.cs" />
     <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\ITesterView.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\common\controller\KillAudioListenerCommand.cs" />
   </ItemGroup>
 </Project>
