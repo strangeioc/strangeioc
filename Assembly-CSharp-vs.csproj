@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.20506</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EDFB21CB-8A2D-0241-3DBA-DF0E55C41E5A}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -41,15 +41,9 @@
       <HintPath>..\..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
-    <Reference Include="nunit.core, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="nunit.core.interfaces, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <Private>False</Private>
-    </Reference>
+    <Reference Include="nunit.core, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
+    <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
+    <Reference Include="nunit.core.interfaces, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -59,7 +53,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ProjectExtensions >
+  <ProjectExtensions>
     <MonoDevelop>
       <Properties>
         <Policies>
@@ -80,6 +74,8 @@
     <Folder Include="StrangeIoC\scripts\strange\.tests\extensions\pool\" />
     <Folder Include="StrangeIoC\examples\Assets\scripts\signalsproject\" />
     <Folder Include="StrangeIoC\scripts\strange\extensions\implicitBind\" />
+    <Folder Include="StrangeIoC\examples\Assets\scripts\justtests\" />
+    <Folder Include="StrangeIoC\examples\Assets\scripts\justtests\view\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StrangeIoC\scripts\strange\extensions\context\api\ContextEvent.cs.meta" />
@@ -412,5 +408,10 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\eventdispatcher\TestEventCommandPooling.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandThrowsErrorIfEventIsNull2.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandThrowsErrorIfEventIsNull3.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\TesterContextView.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\TesterContext.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\TesterView.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\TesterMediator.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\ITesterView.cs" />
   </ItemGroup>
 </Project>
