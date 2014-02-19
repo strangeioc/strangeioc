@@ -89,6 +89,16 @@ namespace strange.unittests
 		}
 
 		[Test]
+		public void TestDispatchIEventArg()
+		{
+			// James
+			confirmationValue = INIT_VALUE;
+			dispatcher.AddListener(EventClass.Type.EVENT_A, oneArgumentMethod);
+			dispatcher.Dispatch(new EventClass(EventClass.Type.EVENT_A, PAYLOAD));
+			Assert.AreEqual (INIT_VALUE + PAYLOAD, confirmationValue);
+		}
+
+		[Test]
 		public void TestMultipleListeners()
 		{
 			confirmationValue = INIT_VALUE;
@@ -179,6 +189,21 @@ namespace strange.unittests
 		private void interruptMethod()
 		{
 			dispatcher.RemoveListener (SomeEnum.ONE, noArgumentsMethod);
+		}
+		
+		public class EventClass : TmEvent
+		{
+			public enum Type
+			{
+				EVENT_A,
+				EVENT_B,
+				EVENT_C
+			}
+
+			public EventClass(object type, int data) : base(type, null, data)
+			{
+
+			}
 		}
 	}
 }
