@@ -25,6 +25,9 @@ namespace strange.extensions.reflector.api
 
 		/// The reflector is not allowed to inject into private/protected setters.
 		CANNOT_INJECT_INTO_NONPUBLIC_SETTER,
+
+		//The type being reflected in to has dynamic injections but does not implement the proper interface
+		HAS_DYNAMIC_INJECTIONS_BUT_DOESNT_IMPLEMENT_IDYNAMICALLYINJECTED,
 	}
 }
 
