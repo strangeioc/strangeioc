@@ -28,7 +28,7 @@ namespace strange.tests.extensions.dynamic
 		[Test]
 		public void TestDynamic()
 		{
-			String shipId = Guid.NewGuid().ToString();
+			Guid shipId = Guid.NewGuid();
 
 			IShip ship = new Ship();
 			ship.ShipId = shipId;
@@ -50,7 +50,26 @@ namespace strange.tests.extensions.dynamic
 		[Test]
 		public void TestNormalInjectionCheckedForDynamicId()
 		{
-			Assert.Fail("NYI");
+			Guid shipId = Guid.NewGuid();
+
+			IShip ship = new Ship();
+			ship.ShipId = shipId;
+
+			IWeapon weapon = new Weapon();
+			weapon.ShipId = shipId;
+
+			MyIdModel idModel = new MyIdModel();
+			idModel.Id = shipId;
+
+			injectionBinder.Bind<MyIdModel>().To(idModel);
+			injectionBinder.Bind<IShip>().To(ship).ToName(shipId);
+			injectionBinder.Bind<IWeapon>().To(weapon).ToName(shipId);
+
+			DynamicallyInjectedNeedsInjectionForId instance = new DynamicallyInjectedNeedsInjectionForId();
+			injectionBinder.injector.Inject(instance);
+
+			Assert.AreEqual(instance.ship.ShipId, shipId);
+			Assert.AreEqual(instance.weapon.ShipId, shipId);
 		}
 
 
@@ -63,31 +82,53 @@ namespace strange.tests.extensions.dynamic
 			[DynamicInject] 
 			public IWeapon weapon { get; set; }
 
-			public string Id { get; set; }
+			public Guid Id { get; set; }
 			public object getDynamicInjectId()
 			{
 				return Id;
 			}
 		}
 
+		class DynamicallyInjectedNeedsInjectionForId : IDynamicallyInjected
+		{
+			[Inject]
+			public MyIdModel MyIdModel { get; set; }
+
+			[DynamicInject] 
+			public IShip ship { get; set; }
+
+			[DynamicInject] 
+			public IWeapon weapon { get; set; }
+
+			public object getDynamicInjectId()
+			{
+				return MyIdModel.Id;
+			}
+		}
+
+		class MyIdModel
+		{
+			public Guid Id;
+		}
+
 		interface IShip
 		{
-			string ShipId { get; set; }
+			Guid ShipId { get; set; }
 		}
 
 		interface IWeapon
 		{
-			string ShipId { get; set; }
+			Guid ShipId { get; set; }
 		}
 
 		class Ship : IShip
 		{
-			public string ShipId { get; set; }
+			public Guid ShipId { get; set; }
 		}
 
 		class Weapon : IWeapon
 		{
-			public string ShipId { get; set; }
+			public Guid ShipId { get; set; }
 		}
 
 

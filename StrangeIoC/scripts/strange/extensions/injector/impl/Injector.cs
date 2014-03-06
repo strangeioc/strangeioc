@@ -212,7 +212,7 @@ namespace strange.extensions.injector.impl
 			for(int a = 0; a < aa; a++)
 			{
 				object name = reflection.setterNames[a];
-				if (name.Equals(DynamicInject.DefaultId))
+				if (name != null && name.Equals(DynamicInject.DefaultId))
 				{
 					//We want to split this up in to two parts. So we can inject and the object can potentially get a value from the normal injections.
 					//I'm sure in some cases the component will look at its GO for the answer, which of course will always work
