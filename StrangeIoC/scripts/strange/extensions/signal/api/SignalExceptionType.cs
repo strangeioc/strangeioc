@@ -30,5 +30,8 @@ namespace strange.extensions.signal.api
 
 		/// SignalCommandBinder attempted to bind a null value from a signal to a Command
 		COMMAND_NULL_INJECTION,
+
+		//Multiple assignable inject properties were found
+		AMBIGUOUS_VALUE_BINDING,
 	}
 }
