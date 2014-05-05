@@ -65,7 +65,9 @@
  */
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace strange.extensions.signal.impl
 {
@@ -74,8 +76,16 @@ namespace strange.extensions.signal.impl
 	{
 		public event Action Listener = delegate { };
 		public event Action OnceListener = delegate { };
-		public void AddListener(Action callback) { Listener += callback; }
-		public void AddOnce(Action callback) { OnceListener += callback; }
+
+	    public void AddListener(Action callback)
+	    {
+            if (!Listener.GetInvocationList().Contains(callback))
+            {
+                Listener += callback;
+            }
+	    }
+
+	    public void AddOnce(Action callback) { OnceListener += callback; }
 		public void RemoveListener(Action callback) { Listener -= callback; }
 		public override List<Type> GetTypes()
 		{
@@ -94,8 +104,15 @@ namespace strange.extensions.signal.impl
 	public class Signal<T> : BaseSignal
 	{
 		public event Action<T> Listener = delegate { };
-		public event Action<T> OnceListener = delegate { };
-		public void AddListener(Action<T> callback) { Listener += callback; }
+		public event Action<T> OnceListener = delegate { };	    
+
+	    public void AddListener(Action<T> callback)
+	    {
+	        if (!Listener.GetInvocationList().Contains(callback))
+	        {
+	            Listener += callback;
+	        }
+	    }
 		public void AddOnce(Action<T> callback) { OnceListener += callback; }
 		public void RemoveListener(Action<T> callback) { Listener -= callback; }
 		public override  List<Type> GetTypes() 
@@ -119,7 +136,14 @@ namespace strange.extensions.signal.impl
 	{
 		public event Action<T, U> Listener = delegate { };
 		public event Action<T, U> OnceListener = delegate { };
-		public void AddListener(Action<T, U> callback) { Listener += callback; }
+
+	    public void AddListener(Action<T, U> callback)
+	    {
+            if (!Listener.GetInvocationList().Contains(callback))
+            {
+                Listener += callback;
+            }
+        }
 		public void AddOnce(Action<T, U> callback) { OnceListener += callback; }
 		public void RemoveListener(Action<T, U> callback) { Listener -= callback; }
 		public override List<Type> GetTypes()
@@ -144,7 +168,14 @@ namespace strange.extensions.signal.impl
 	{
 		public event Action<T, U, V> Listener = delegate { };
 		public event Action<T, U, V> OnceListener = delegate { };
-		public void AddListener(Action<T, U, V> callback) { Listener += callback; }
+
+	    public void AddListener(Action<T, U, V> callback)
+	    {
+            if (!Listener.GetInvocationList().Contains(callback))
+            {
+                Listener += callback;
+            }
+	    }
 		public void AddOnce(Action<T, U, V> callback) { OnceListener += callback; }
 		public void RemoveListener(Action<T, U, V> callback) { Listener -= callback; }
 		public override List<Type> GetTypes()
@@ -170,7 +201,14 @@ namespace strange.extensions.signal.impl
 	{
 		public event Action<T, U, V, W> Listener = delegate { };
 		public event Action<T, U, V, W> OnceListener = delegate { };
-		public void AddListener(Action<T, U, V, W> callback) { Listener += callback; }
+
+	    public void AddListener(Action<T, U, V, W> callback)
+	    {
+            if (!Listener.GetInvocationList().Contains(callback))
+            {
+                Listener += callback;
+            }
+	    }
 		public void AddOnce(Action<T, U, V, W> callback) { OnceListener += callback; }
 		public void RemoveListener(Action<T, U, V, W> callback) { Listener -= callback; }
 		public override List<Type> GetTypes()

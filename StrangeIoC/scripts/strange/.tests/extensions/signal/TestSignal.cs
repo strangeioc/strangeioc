@@ -138,6 +138,107 @@ namespace strange.unittests
         }
 
         [Test]
+        public void AddListener_SignalWithNoTypeGivenSameCallbackMultipleTimes_ExpectsDelegateCalledOnlyOnce()
+        {
+            Signal signal = new Signal();
+            simpleInt = 0;
+
+            signal.AddListener(SimpleSignalCallback);
+            signal.AddListener(SimpleSignalCallback);
+
+            signal.Dispatch();
+
+            Assert.AreEqual(1, simpleInt);
+        }
+
+        private int simpleInt;
+        private void SimpleSignalCallback()
+        {
+            simpleInt++;
+        }
+
+        [Test]
+        public void AddListener_SignalWithOneTypeGivenSameCallbackMultipleTimes_ExpectsDelegateCalledOnlyOnce()
+        {
+            Signal<int> signal = new Signal<int>();
+            simpleInt = 1;
+
+            signal.AddListener(OneArgSignalCallback);
+            signal.AddListener(OneArgSignalCallback);
+
+            signal.Dispatch(simpleInt);
+
+            Assert.AreEqual(1, testValue);
+        }
+
+        [Test]
+        public void AddListener_SignalWithTwoTypesGivenSameCallbackMultipleTimes_ExpectsDelegateCalledOnlyOnce()
+        {
+            Signal<int,int> signal = new Signal<int,int>();
+            int firstInt = 1;
+            int secondInt = 2;
+
+            signal.AddListener(TwoArgCallback);
+            signal.AddListener(TwoArgCallback);
+
+            signal.Dispatch(firstInt, secondInt);
+            int expected = firstInt + secondInt;
+            Assert.AreEqual(expected, this.testValue);
+        }
+
+        private void TwoArgCallback(int arg1, int arg2)
+        {
+            this.testValue += arg1 + arg2;
+        }
+
+        [Test]
+        public void AddListener_SignalWithThreeTypesGivenSameCallbackMultipleTimes_ExpectsDelegateCalledOnlyOnce()
+        {
+            Signal<int,int,int> signal = new Signal<int, int, int>();
+            int firstInt = 1;
+            int secondInt = 2;
+            int thirdInt = 3;
+
+            signal.AddListener(ThreeArgCallback);
+            signal.AddListener(ThreeArgCallback);
+
+            signal.Dispatch(firstInt, secondInt, thirdInt);
+            int expected = firstInt + secondInt + thirdInt;
+
+            Assert.AreEqual(expected, this.testValue);
+
+        }
+
+        private void ThreeArgCallback(int arg1, int arg2, int arg3)
+        {
+            this.testValue += arg1 + arg2 + arg3;
+        }
+
+        [Test]
+        public void AddListener_SignalWithFourTypesGivenSameCallbackMultipleTimes_ExpectsDelegateCalledOnlyOnce()
+        {
+            Signal<int, int, int, int> signal = new Signal<int, int, int, int>();
+            int firstInt = 1;
+            int secondInt = 2;
+            int thirdInt = 3;
+            int fourthInt = 4;
+
+            signal.AddListener(FourArgCallback);
+            signal.AddListener(FourArgCallback);
+
+            signal.Dispatch(firstInt, secondInt, thirdInt, fourthInt);
+            int expected = firstInt + secondInt + thirdInt + fourthInt;
+
+            Assert.AreEqual(expected, this.testValue);
+
+        }
+
+        private void FourArgCallback(int arg1, int arg2, int arg3, int arg4)
+        {
+            this.testValue += arg1 + arg2 + arg3 + arg4;
+        }
+
+        [Test]
         public void TestRemoveListener()
         {
             Signal<int> signal = new Signal<int>();
