@@ -31,6 +31,7 @@ namespace strange.extensions.signal.impl
 {
 	public class BaseSignal : IBaseSignal
 	{
+        
 		/// The delegate for repeating listeners
 		public event Action<IBaseSignal, object[]> BaseListener = delegate { };
 
@@ -66,11 +67,13 @@ namespace strange.extensions.signal.impl
 				if (callback.Equals(action)) //If this callback exists already, ignore this addlistener
 					return;
 			}
+
 			OnceBaseListener += callback;
 		}
 
 		public void RemoveListener(Action<IBaseSignal, object[]> callback) { BaseListener -= callback; }
 
+	   
 	}
 }
 
