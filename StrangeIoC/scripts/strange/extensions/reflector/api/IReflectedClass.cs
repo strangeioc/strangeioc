@@ -37,10 +37,12 @@ namespace strange.extensions.reflector.api
 
 		/// Get/set the preferred constructor's list of parameters
 		Type[] ConstructorParameters{ get; set;}
+		object[] ConstructorParameterNames { get; set; }
 
 		/// Get/set the pseudo-construtor, if there is one.  This includes inherited pseudo-constructors.
 		MethodInfo PseudoConstructor { get; set; }
 		Type[] PseudoConstructorParameters { get; set; }
+		object[] PseudoConstructorParameterNames { get; set; }
 
 		/// Get/set any PostConstructors. This includes inherited PostConstructors.
 		MethodInfo[] PostConstructors{ get; set;}

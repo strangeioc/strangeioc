@@ -87,15 +87,23 @@ namespace strange.extensions.reflector.impl
 
 
 			Type[] paramList = new Type[parameters.Length];
+			object[] names = new object[parameters.Length];
 			int i = 0;
 			foreach (ParameterInfo param in parameters)
 			{
 				Type paramType = param.ParameterType;
 				paramList [i] = paramType;
+
+				object[] attributes = param.GetCustomAttributes(typeof(Name), false);
+				if (attributes.Length > 0) 
+				{
+					names[i] = ( (Name)attributes[0]).name;
+				}
 				i++;
 			}
 			reflected.Constructor = constructor;
 			reflected.ConstructorParameters = paramList;
+			reflected.ConstructorParameterNames = names;
 		}
 
 		//Look for a constructor in the order:
@@ -153,6 +161,24 @@ namespace strange.extensions.reflector.impl
 			{
 				reflected.PseudoConstructor = pseudoConstructor;
 				reflected.PseudoConstructorParameters = pseudoConstructor.GetParameters().Select(x => x.ParameterType).ToArray();
+
+				//get the names of the parameters
+				int nameCount = reflected.PseudoConstructorParameters.Length;
+				object[] names = new object[nameCount];
+				
+				int i = 0;
+				foreach (ParameterInfo parameter in pseudoConstructor.GetParameters() ) 
+				{
+					object[] attributes = parameter.GetCustomAttributes(typeof(Name), false);
+					if (attributes.Length > 0) 
+					{
+						names[i] = ( (Name)attributes[0]).name;
+					}
+					
+					++i;
+				}
+				
+				reflected.PseudoConstructorParameterNames = names;
 			}
 		}
 
