@@ -29,6 +29,7 @@
  * <ul>
  *  <li>[Inject] - Use this metatag on any setter you wish to have supplied by injection.</li>
  *  <li>[Construct] - Use this metatag on the specific Constructor you wish to inject into when using Constructor injection. If you omit this tag, the Constructor with the shortest list of dependencies will be selected automatically.</li>
+ *  <li>[PseudoConstruct] - Use this metatag on the public method you want to inject into when using pseudo-constructor injection.
  *  <li>[PostConstruct] - Use this metatag on any method(s) you wish to fire directly after dependencies are supplied</li>
  * </ul>
  * 
@@ -146,6 +147,7 @@ namespace strange.extensions.injector.impl
 			{
 				target = performConstructorInjection(target, reflection);
 			}
+			performPseudoConstructorInjection(target, reflection);
 			performSetterInjection(target, reflection);
 			postInject(target, reflection);
 			return target;
@@ -191,6 +193,30 @@ namespace strange.extensions.injector.impl
 
 			object constructedObj = constructor.Invoke (values);
 			return (constructedObj == null) ? target : constructedObj;
+		}
+
+		private void performPseudoConstructorInjection(object target, IReflectedClass reflection)
+		{
+			if (reflection.PseudoConstructor == null)
+			{
+				return;
+			}
+			
+			failIf(target == null, "Attempt to perform pseudo-constructor injection into a null object", InjectionExceptionType.NULL_TARGET);
+			failIf(reflection == null, "Attempt to perform pseudo-constructor injection without a reflection", InjectionExceptionType.NULL_REFLECTION);
+			
+			MethodInfo pseudoConstructor = reflection.PseudoConstructor;
+			Type[] pseudoConstructorParameters = reflection.PseudoConstructorParameters;
+			
+			object[] values = new object[pseudoConstructorParameters.Length];
+			int i = 0;
+			foreach (Type type in pseudoConstructorParameters)
+			{
+				values[i] = getValueInjection(type, null, target);
+				++i;
+			}
+			
+			pseudoConstructor.Invoke(target, values);
 		}
 
 		private void performSetterInjection(object target, IReflectedClass reflection)

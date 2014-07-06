@@ -24,12 +24,13 @@
  */
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Linq;
 using strange.extensions.reflector.api;
 using strange.framework.api;
 using strange.framework.impl;
-using System.Collections;
 
 namespace strange.extensions.reflector.impl
 {
@@ -53,6 +54,7 @@ namespace strange.extensions.reflector.impl
 				binding = GetRawBinding ();
 				IReflectedClass reflected = new ReflectedClass ();
 				mapPreferredConstructor (reflected, binding, type);
+				mapPseudoConstructor(reflected, binding, type);
 				mapPostConstructors (reflected, binding, type);
 				mapSetters (reflected, binding, type);
 				binding.Bind (type).To (reflected);
@@ -128,6 +130,27 @@ namespace strange.extensions.reflector.impl
 				}
 			}
 			return shortestConstructor;
+		}
+
+		private void mapPseudoConstructor(IReflectedClass reflected, IBinding binding, Type type) {
+			MethodInfo[] methods = type.GetMethods(BindingFlags.FlattenHierarchy |
+			                                       BindingFlags.Public |
+			                                       BindingFlags.Instance |
+			                                       BindingFlags.InvokeMethod);
+			
+			MethodInfo pseudoConstructor = null;
+			foreach (MethodInfo method in methods) {
+				object[] tagged = method.GetCustomAttributes(typeof(PseudoConstruct), true);
+				if (tagged.Length > 0) {
+					pseudoConstructor = method;
+					break;
+				}
+			}
+			
+			if (pseudoConstructor != null) {
+				reflected.PseudoConstructor = pseudoConstructor;
+				reflected.PseudoConstructorParameters = pseudoConstructor.GetParameters().Select(x => x.ParameterType).ToArray();
+			}
 		}
 
 		private void mapPostConstructors(IReflectedClass reflected, IBinding binding, Type type)

@@ -39,6 +39,13 @@
  * Constructor. Obviously, if there only one constructor, this tag
  * is not requried.
  * 
+ * @class PseudoConstruct
+ * 
+ * The `[PseudoConstruct]` attribute marks a single method as the pseudo-constructor / initializer.
+ * A pseudo-constructor is triggered after construction and before post-construction. Unlike 
+ * '[PostConstruct]', '[PseudoConstruct]' accepts arguments, thus allowing you to inject 
+ * dependencies into classes that prohibit constructor injection (e.g. MonoBehaviours).
+ * 
  * @class PostConstruct
  * 
  * The `[PostConstruct]` attribute marks one or more methods as PostConstructors.
@@ -72,13 +79,18 @@ public class Inject: Attribute
 	public object name{get; set;}
 }
 
-//Tag [PostConstruct] to perform post-injection construction actions
+//Tag [Construct] to perform construction injection
 [AttributeUsage(AttributeTargets.Constructor, 
 		AllowMultiple = false,
 		Inherited = true)]
 public class Construct: Attribute
 {
 	public Construct(){}
+}
+
+//Tag [PseudoConstruct] to perform pseudo-constructor / initializer injection
+public class PseudoConstruct : Attribute {
+	public PseudoConstruct() {}
 }
 
 //Tag [PostConstruct] to perform post-injection construction actions
