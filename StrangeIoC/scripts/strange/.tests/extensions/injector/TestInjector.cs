@@ -43,6 +43,28 @@ namespace strange.unittests
 		}
 
 		[Test]
+		public void TestPseudoConstructNoParameters()
+		{
+			binder.Bind<PseudoConstructNoParameters>().To<PseudoConstructNoParameters>();
+			var instance = binder.GetInstance<PseudoConstructNoParameters>() as PseudoConstructNoParameters;
+
+			Assert.That(instance != null);
+			Assert.That(instance.PseudoConstructed == true);
+		}
+
+		[Test]
+		public void TestPseudoConstructOneParameter() 
+		{
+			binder.Bind<PseudoConstructOneParameter>().To<PseudoConstructOneParameter>();
+			binder.Bind<ClassToBeInjected>().To<ClassToBeInjected>();
+			var instance = binder.GetInstance<PseudoConstructOneParameter>() as PseudoConstructOneParameter;
+
+			Assert.That(instance != null);
+			Assert.That(instance.PseudoConstructed == true);
+			Assert.That(instance.InjectedClass.GetType() == typeof(ClassToBeInjected) );
+		}
+
+		[Test]
 		public void TestPostConstruct ()
 		{
 			binder.Bind<PostConstructClass> ().To<PostConstructClass> ();
