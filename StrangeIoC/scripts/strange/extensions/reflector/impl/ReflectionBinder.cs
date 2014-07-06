@@ -132,7 +132,8 @@ namespace strange.extensions.reflector.impl
 			return shortestConstructor;
 		}
 
-		private void mapPseudoConstructor(IReflectedClass reflected, IBinding binding, Type type) {
+		private void mapPseudoConstructor(IReflectedClass reflected, IBinding binding, Type type)
+		{
 			MethodInfo[] methods = type.GetMethods(BindingFlags.FlattenHierarchy |
 			                                       BindingFlags.Public |
 			                                       BindingFlags.Instance |
@@ -141,13 +142,15 @@ namespace strange.extensions.reflector.impl
 			MethodInfo pseudoConstructor = null;
 			foreach (MethodInfo method in methods) {
 				object[] tagged = method.GetCustomAttributes(typeof(PseudoConstruct), true);
-				if (tagged.Length > 0) {
+				if (tagged.Length > 0)
+				{
 					pseudoConstructor = method;
 					break;
 				}
 			}
 			
-			if (pseudoConstructor != null) {
+			if (pseudoConstructor != null)
+			{
 				reflected.PseudoConstructor = pseudoConstructor;
 				reflected.PseudoConstructorParameters = pseudoConstructor.GetParameters().Select(x => x.ParameterType).ToArray();
 			}
