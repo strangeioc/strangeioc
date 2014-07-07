@@ -51,21 +51,21 @@ namespace strange.unittests
 			binder.Bind<ClassToBeInjected>().To(class1).ToName("First");
 			binder.Bind<ClassToBeInjected>().To(class2).ToName("Second");
 			binder.Bind<ConstructorNamedInjection>().To<ConstructorNamedInjection>();
-			var injectedClass = binder.GetInstance<ConstructorNamedInjection>() as ConstructorNamedInjection;
+			var instance = binder.GetInstance<ConstructorNamedInjection>() as ConstructorNamedInjection;
 			
-			Assert.That(injectedClass.instance1.GetType() == typeof(ClassToBeInjected) );
-			Assert.That(injectedClass.instance2.GetType() == typeof(ClassToBeInjected) );
-			Assert.That(injectedClass.instance1 != injectedClass.instance2);
+			Assert.That(instance.first.GetType() == typeof(ClassToBeInjected) );
+			Assert.That(instance.second.GetType() == typeof(ClassToBeInjected) );
+			Assert.That(instance.first != instance.second);
 		}
 
 		[Test]
 		public void TestPseudoConstructNoParameters()
 		{
 			binder.Bind<PseudoConstructNoParameters>().To<PseudoConstructNoParameters>();
-			var injectedClass = binder.GetInstance<PseudoConstructNoParameters>() as PseudoConstructNoParameters;
+			var instance = binder.GetInstance<PseudoConstructNoParameters>() as PseudoConstructNoParameters;
 
-			Assert.That(injectedClass != null);
-			Assert.That(injectedClass.PseudoConstructed == true);
+			Assert.That(instance != null);
+			Assert.That(instance.PseudoConstructed == true);
 		}
 
 		[Test]
@@ -73,11 +73,11 @@ namespace strange.unittests
 		{
 			binder.Bind<PseudoConstructOneParameter>().To<PseudoConstructOneParameter>();
 			binder.Bind<ClassToBeInjected>().To<ClassToBeInjected>();
-			var injectedClass = binder.GetInstance<PseudoConstructOneParameter>() as PseudoConstructOneParameter;
+			var instance = binder.GetInstance<PseudoConstructOneParameter>() as PseudoConstructOneParameter;
 
-			Assert.That(injectedClass != null);
-			Assert.That(injectedClass.PseudoConstructed == true);
-			Assert.That(injectedClass.InjectedClass.GetType() == typeof(ClassToBeInjected) );
+			Assert.That(instance != null);
+			Assert.That(instance.PseudoConstructed == true);
+			Assert.That(instance.InjectedClass.GetType() == typeof(ClassToBeInjected) );
 		}
 
 		[Test]
@@ -89,11 +89,11 @@ namespace strange.unittests
 			binder.Bind<ClassToBeInjected>().To(class1).ToName("First");
 			binder.Bind<ClassToBeInjected>().To(class2).ToName("Second");
 			binder.Bind<PseudoConstructorNamedInjection>().To<PseudoConstructorNamedInjection>();
-			var injectedClass = binder.GetInstance<PseudoConstructorNamedInjection>() as PseudoConstructorNamedInjection;
+			var instance = binder.GetInstance<PseudoConstructorNamedInjection>() as PseudoConstructorNamedInjection;
 
-			Assert.That(injectedClass.instance1.GetType() == typeof(ClassToBeInjected) );
-			Assert.That(injectedClass.instance2.GetType() == typeof(ClassToBeInjected) );
-			Assert.That(injectedClass.instance1 != injectedClass.instance2);
+			Assert.That(instance.first.GetType() == typeof(ClassToBeInjected) );
+			Assert.That(instance.second.GetType() == typeof(ClassToBeInjected) );
+			Assert.That(instance.first != instance.second);
 		}
 
 		[Test]

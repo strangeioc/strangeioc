@@ -4,8 +4,8 @@ namespace strange.unittests
 {
 	public class PseudoConstructorNamedInjection
 	{
-		public ClassToBeInjected instance1;
-		public ClassToBeInjected instance2;
+		public ClassToBeInjected first;
+		public ClassToBeInjected second;
 
 		public PseudoConstructorNamedInjection ()
 		{
@@ -13,11 +13,11 @@ namespace strange.unittests
 
 		[PseudoConstruct]
 		public void PseudoConstruct(
-			[Name("First")] ClassToBeInjected instance1,
-			[Name("Second")] ClassToBeInjected instance2) 
+			[Name("First")] ClassToBeInjected first,
+			[Name("Second")] ClassToBeInjected second) 
 		{
-			this.instance1 = instance1;
-			this.instance2 = instance2;
+			this.first = first;
+			this.second = second;
 		}
 	}
 }
