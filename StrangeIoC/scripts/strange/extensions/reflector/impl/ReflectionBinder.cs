@@ -284,7 +284,7 @@ namespace strange.extensions.reflector.impl
 			int pX = getPriority (x as MethodInfo);
 			int pY = getPriority (y as MethodInfo);
 
-			return (pX < pY) ? -1 : 1;
+			return (pX == pY) ? 0 : (pX < pY) ? -1 : 1;
 		}
 
 		private int getPriority(MethodInfo methodInfo)
