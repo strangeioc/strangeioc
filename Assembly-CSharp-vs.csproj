@@ -414,5 +414,7 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandThrowsErrorIfEventIsNull3.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PseudoConstructNoParameters.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PseudoConstructOneParameter.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ConstructorNamedInjection.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PseudoConstructorNamedInjection.cs" />
   </ItemGroup>
 </Project>
