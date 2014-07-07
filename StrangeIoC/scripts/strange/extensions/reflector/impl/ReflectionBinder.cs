@@ -198,8 +198,8 @@ namespace strange.extensions.reflector.impl
 				}
 			}
 
+			methodList.Sort (new PriorityComparer ());
 			MethodInfo[] postConstructors = (MethodInfo[])methodList.ToArray (typeof(MethodInfo));
-			postConstructors = postConstructors.OrderBy(x => (x.GetCustomAttributes(true)[0] as PostConstruct).priority).ToArray();
 			reflected.postConstructors = postConstructors;
 		}
 
@@ -273,6 +273,25 @@ namespace strange.extensions.reflector.impl
 			tempList.CopyTo (list, 0);
 			list [len] = value;
 			return list;
+		}
+	}
+
+	class PriorityComparer : IComparer
+	{
+		int IComparer.Compare( Object x, Object y )
+		{
+
+			int pX = getPriority (x as MethodInfo);
+			int pY = getPriority (y as MethodInfo);
+
+			return (pX < pY) ? -1 : 1;
+		}
+
+		private int getPriority(MethodInfo methodInfo)
+		{
+			PostConstruct attr = methodInfo.GetCustomAttributes(true) [0] as PostConstruct;
+			int priority = attr.priority;
+			return priority;
 		}
 	}
 }
