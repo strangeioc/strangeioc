@@ -83,6 +83,15 @@ namespace strange.unittests
 		}
 
 		[Test]
+		public void TestConstructNamedInjection() 
+		{
+			IReflectedClass reflected = reflector.Get<ConstructorNamedInjection>();
+
+			Assert.That(reflected.ConstructorParameters.Length == 2);
+			Assert.That(reflected.ConstructorParameterNames.Length == 2);
+		}
+
+		[Test]
 		public void TestPseudoConstructNoParameters()
 		{
 			IReflectedClass reflected = reflector.Get<PseudoConstructNoParameters>();
@@ -96,6 +105,15 @@ namespace strange.unittests
 			IReflectedClass reflected = reflector.Get<PseudoConstructOneParameter>();
 			Assert.That(reflected.PseudoConstructor != null);
 			Assert.That(reflected.PseudoConstructorParameters.Length == 1);
+		}
+
+		[Test]
+		public void TestPseudoConstructNamedInjection() 
+		{
+			IReflectedClass reflected = reflector.Get<PseudoConstructorNamedInjection>();
+
+			Assert.That(reflected.PseudoConstructorParameters.Length == 2);
+			Assert.That(reflected.PseudoConstructorParameterNames.Length == 2);
 		}
 
 		[Test]
