@@ -54,6 +54,15 @@ namespace strange.extensions.mediation.impl
 		{
 		}
 
+        /**
+		 * Fires just before OnRemove
+		 *
+		 * Override and place your cleanup code here
+		 */
+        virtual public void OnPreRemove()
+        {
+        }
+
 		/**
 		 * Fires on removal of view.
 		 *
@@ -61,7 +70,7 @@ namespace strange.extensions.mediation.impl
 		 */
 		virtual public void OnRemove()
 		{
-		}
+		}        
 	}
 }
 

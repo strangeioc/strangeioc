@@ -157,6 +157,7 @@ namespace strange.extensions.mediation.impl
 					IMediator mediator = mono.GetComponent(mediatorType) as IMediator;
 					if (mediator != null)
 					{
+                        mediator.OnPreRemove();
 						mediator.OnRemove();
 					}
 				}

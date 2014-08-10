@@ -41,6 +41,10 @@ namespace strange.extensions.mediation.api
 		/// Override to perform the actions you might normally perform in a constructor.
 		void OnRegister();
 
+        /// This method fires just before OnRemove, mediator base classes can use it do do any cleaning up without worrying that
+        /// implementing classes will override it and things wont get cleaned up
+        void OnPreRemove();
+
 		/// This method fires just before a GameObject will be destroyed.
 		/// Override to clean up any listeners, or anything else that might keep the View/Mediator pair from being garbage collected.
 		void OnRemove();
