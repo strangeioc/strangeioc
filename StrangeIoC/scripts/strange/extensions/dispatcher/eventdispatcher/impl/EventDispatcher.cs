@@ -96,7 +96,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 				isTriggeringClients = true;
 				foreach (ITriggerable trigger in triggerClients)
 				{
-					if (!trigger.Trigger(eventType, evt))
+					if (!trigger.Trigger(evt.type, evt))
 					{
 						continueDispatch = false;
 						break;
@@ -115,7 +115,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 				return;
 			}
 
-			IEventBinding binding = GetBinding (eventType) as IEventBinding;
+			IEventBinding binding = GetBinding (evt.type) as IEventBinding;
 			if (binding == null)
 			{
 				internalReleaseEvent (evt);
