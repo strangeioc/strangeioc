@@ -54,14 +54,16 @@
  * See Command for details on asynchronous Commands and cancelling sequences.
  */
 
-using System;
-using System.Collections.Generic;
 using strange.extensions.command.api;
 using strange.extensions.injector.api;
-using strange.framework.api;
 using strange.extensions.injector.impl;
-using strange.extensions.signal.impl;
+using strange.extensions.reflector.api;
 using strange.extensions.signal.api;
+using strange.extensions.signal.impl;
+using strange.framework.api;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace strange.extensions.command.impl
 {
@@ -104,6 +106,7 @@ namespace strange.extensions.command.impl
 		/// Create a Command and bind its injectable parameters to the Signal types
 		protected ICommand createCommandForSignal(Type cmd, object data, List<Type> signalTypes)
 		{
+			HashSet<Type> injectedTypes = new HashSet<Type>();
 			if (data != null)
 			{
 				object[] signalData = (object[])data;
@@ -111,7 +114,7 @@ namespace strange.extensions.command.impl
 				//Iterate each signal type, in order. 
 				//Iterate values and find a match
 				//If we cannot find a match, throw an error
-				HashSet<Type> injectedTypes = new HashSet<Type>();
+				
 				List<object> values = new List<object>(signalData);
 
 				foreach (Type type in signalTypes)
@@ -123,10 +126,22 @@ namespace strange.extensions.command.impl
 						{
 							if (value != null)
 							{
-								if (type.IsAssignableFrom(value.GetType())) //IsAssignableFrom lets us test interfaces as well
+								if (type.IsInstanceOfType(value)) //Test that we can assign this value to this type
 								{
-									injectionBinder.Bind(type).ToValue(value).ToInject(false);
-									injectedTypes.Add(type);
+									//Find all injectable properties of our command which are assignable from this type (interfaces which could be implemented by this type)
+									IReflectedClass commandClass = injectionBinder.injector.reflector.Get(cmd);
+
+									List<Type> assignables = GetAssignableInterfaceProperties(type, commandClass);
+
+									Type injectedType = type;
+									if (assignables.Count == 1)
+										injectedType = assignables[0];
+									else if (assignables.Count > 1)
+										//In this case we are ambiguous. It could work, but I highly suggest being more concrete with your declarations
+										throw new SignalException("Found " + assignables.Count + " potentially assignable properties on command: " + cmd + " for a binding of type: " + type, SignalExceptionType.AMBIGUOUS_VALUE_BINDING);
+
+									injectionBinder.Bind(injectedType).ToValue(value).ToInject(false);
+									injectedTypes.Add(injectedType);
 									values.Remove(value);
 									foundValue = true;
 									break;
@@ -134,18 +149,18 @@ namespace strange.extensions.command.impl
 							}
 							else //Do not allow null injections
 							{
-								throw new SignalException("SignalCommandBinder attempted to bind a null value from a signal to Command: " + cmd.GetType() + " to type: " + type, SignalExceptionType.COMMAND_NULL_INJECTION);
+								throw new SignalException("SignalCommandBinder attempted to bind a null value from a signal to Command: " + cmd + " to type: " + type, SignalExceptionType.COMMAND_NULL_INJECTION);
 							}
 						}
 						if (!foundValue)
 						{
-							throw new SignalException("Could not find an unused injectable value to inject in to Command: " + cmd.GetType() + " for Type: " + type, SignalExceptionType.COMMAND_VALUE_NOT_FOUND);
+							throw new SignalException("Could not find an unused injectable value to inject in to Command: " + cmd + " for Type: " + type, SignalExceptionType.COMMAND_VALUE_NOT_FOUND);
 						}
 					}
 					else
 					{
 						throw new SignalException("SignalCommandBinder: You have attempted to map more than one value of type: " + type +
-							" in Command: " + cmd.GetType() + ". Only the first value of a type will be injected. You may want to place your values in a VO, instead.",
+							" in Command: " + cmd + ". Only the first value of a type will be injected. You may want to place your values in a VO, instead.",
 							SignalExceptionType.COMMAND_VALUE_CONFLICT);
 					}
 				}
@@ -153,9 +168,31 @@ namespace strange.extensions.command.impl
 			ICommand command = getCommand(cmd);
 			command.data = data;
 
-			foreach (Type typeToRemove in signalTypes) //clean up these bindings
+			foreach (Type typeToRemove in injectedTypes) //clean up these bindings
 				injectionBinder.Unbind(typeToRemove);
 			return command;
+		}
+
+		private List<Type> GetAssignableInterfaceProperties(Type signalType, IReflectedClass cmd)
+		{
+			List<Type> retv = new List<Type>();
+			//Do not bother with complex interface assignability/reflection for primitives. It'll asplode!
+			if (!signalType.IsPrimitive)
+			{
+				KeyValuePair<Type, PropertyInfo>[] propertyInfos = cmd.Setters;
+
+				int aa = cmd.setters.Length;
+				for (int a = 0; a < aa; a++)
+				{
+					if (cmd.setterNames[a] == null) //Only check unnamed injections
+					{
+						Type propertyType = cmd.setters[a].Key;
+						if (propertyType.IsAssignableFrom(signalType))
+							retv.Add(propertyType);
+					}
+				}
+			}
+			return retv;
 		}
 
 		override public ICommandBinding Bind<T>()
