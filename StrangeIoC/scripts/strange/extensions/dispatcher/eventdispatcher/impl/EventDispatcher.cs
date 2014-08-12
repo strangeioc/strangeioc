@@ -163,7 +163,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			else if (eventType is IEvent)
 			{
 				//Client provided a full-formed event
-				retv = (IEvent)eventType;
+				retv = convertEvent(eventType);
 			}
 			else if (data == null)
 			{
@@ -173,13 +173,20 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			else if (data is IEvent)
 			{
 				//Client provided both an evertType and a full-formed IEvent
-				retv = (IEvent)data;
+				retv = convertEvent(data);
 			}
 			else
 			{
 				//Client provided an eventType and some data which is not a IEvent.
 				retv = createEvent (eventType, data);
 			}
+			return retv;
+		}
+
+		virtual protected IEvent convertEvent(object eventObject)
+		{
+			IEvent retv = (IEvent) eventObject;
+			if(retv.target == null) retv.target = this;
 			return retv;
 		}
 
