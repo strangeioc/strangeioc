@@ -411,6 +411,9 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\eventdispatcher\TestEventCommandPooling.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandThrowsErrorIfEventIsNull2.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandThrowsErrorIfEventIsNull3.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\BaseInheritanceOverride.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ExtendedInheritanceOveride.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\IExtendedInterface.cs" />
     <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\TesterContextView.cs" />
     <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\TesterContext.cs" />
     <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\TesterView.cs" />

@@ -25,6 +25,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using strange.extensions.reflector.api;
 using strange.framework.api;
@@ -103,9 +104,9 @@ namespace strange.extensions.reflector.impl
 		private ConstructorInfo findPreferredConstructor(Type type)
 		{
 			ConstructorInfo[] constructors = type.GetConstructors(BindingFlags.FlattenHierarchy | 
-			                                                            BindingFlags.Public | 
-			                                                            BindingFlags.Instance |
-			                                                            BindingFlags.InvokeMethod);
+																		BindingFlags.Public | 
+																		BindingFlags.Instance |
+																		BindingFlags.InvokeMethod);
 			if (constructors.Length == 1)
 			{
 				return constructors [0];
@@ -133,9 +134,9 @@ namespace strange.extensions.reflector.impl
 		private void mapPostConstructors(IReflectedClass reflected, IBinding binding, Type type)
 		{
 			MethodInfo[] methods = type.GetMethods(BindingFlags.FlattenHierarchy | 
-			                                             BindingFlags.Public | 
-			                                             BindingFlags.Instance |
-			                                             BindingFlags.InvokeMethod);
+														 BindingFlags.Public | 
+														 BindingFlags.Instance |
+														 BindingFlags.InvokeMethod);
 			ArrayList methodList = new ArrayList ();
 			foreach (MethodInfo method in methods)
 			{
@@ -153,15 +154,12 @@ namespace strange.extensions.reflector.impl
 
 		private void mapSetters(IReflectedClass reflected, IBinding binding, Type type)
 		{
-			KeyValuePair<Type, PropertyInfo>[] pairs = new KeyValuePair<Type, PropertyInfo>[0];
-			object[] names = new object[0];
-
 			MemberInfo[] privateMembers = type.FindMembers(MemberTypes.Property,
-			                                        BindingFlags.FlattenHierarchy | 
-			                                        BindingFlags.SetProperty | 
-			                                        BindingFlags.NonPublic | 
-			                                        BindingFlags.Instance, 
-			                                        null, null);
+													BindingFlags.FlattenHierarchy | 
+													BindingFlags.SetProperty | 
+													BindingFlags.NonPublic | 
+													BindingFlags.Instance, 
+													null, null);
 			foreach (MemberInfo member in privateMembers)
 			{
 				object[] injections = member.GetCustomAttributes(typeof(Inject), true);
@@ -172,12 +170,15 @@ namespace strange.extensions.reflector.impl
 			}
 
 			MemberInfo[] members = type.FindMembers(MemberTypes.Property,
-			                                              BindingFlags.FlattenHierarchy | 
-			                                              BindingFlags.SetProperty | 
-			                                              BindingFlags.Public | 
-			                                              BindingFlags.Instance, 
-			                                              null, null);
+														  BindingFlags.FlattenHierarchy | 
+														  BindingFlags.SetProperty | 
+														  BindingFlags.Public | 
+														  BindingFlags.Instance, 
+														  null, null);
 
+			//propertyinfo.name to reflectedattribute
+			//This is to test for 'hidden' or overridden injections.
+			Dictionary<String, ReflectedAttribute> namedAttributes = new Dictionary<string, ReflectedAttribute>();
 			foreach (MemberInfo member in members)
 			{
 				object[] injections = member.GetCustomAttributes(typeof(Inject), true);
@@ -185,42 +186,26 @@ namespace strange.extensions.reflector.impl
 				{
 					Inject attr = injections [0] as Inject;
 					PropertyInfo point = member as PropertyInfo;
-					Type pointType = point.PropertyType;
-					KeyValuePair<Type, PropertyInfo> pair = new KeyValuePair<Type, PropertyInfo> (pointType, point);
-					pairs = AddKV (pair, pairs);
 
-					object bindingName = attr.name;
-					names = Add (bindingName, names);
+					Type pointType = point.PropertyType;
+
+					Type baseType = member.DeclaringType.BaseType;
+					PropertyInfo basePoint = baseType != null ? baseType.GetProperty(point.Name) : null;
+					bool thisPointShouldOverrideBase = basePoint != null;
+					bool toAddOrOverride = true; //add or override by default
+
+
+					//if we have an overriding value, we need to know whether to override or leave it out.
+					//We leave out the base if it's hidden
+					//And we add if its overriding.
+					if (namedAttributes.ContainsKey(point.Name)) //
+						toAddOrOverride = !thisPointShouldOverrideBase; //if this attribute has been 'hidden' by a new or override keyword, we should not add this.
+
+					if (toAddOrOverride)
+						namedAttributes[point.Name] = new ReflectedAttribute(pointType, point, attr.name);
 				}
 			}
-			reflected.Setters = pairs;
-			reflected.SetterNames = names;
-		}
-
-		/**
-		 * Add an item to a list
-		 */
-		private object[] Add(object value, object[] list)
-		{
-			object[] tempList = list;
-			int len = tempList.Length;
-			list = new object[len + 1];
-			tempList.CopyTo (list, 0);
-			list [len] = value;
-			return list;
-		}
-
-		/**
-		 * Add an item to a list
-		 */
-		private  KeyValuePair<Type,PropertyInfo>[] AddKV(KeyValuePair<Type,PropertyInfo> value, KeyValuePair<Type,PropertyInfo>[] list)
-		{
-			KeyValuePair<Type,PropertyInfo>[] tempList = list;
-			int len = tempList.Length;
-			list = new KeyValuePair<Type,PropertyInfo>[len + 1];
-			tempList.CopyTo (list, 0);
-			list [len] = value;
-			return list;
+			reflected.Setters = namedAttributes.Values.ToArray();
 		}
 	}
 
