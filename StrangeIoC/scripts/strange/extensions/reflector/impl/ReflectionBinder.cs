@@ -186,23 +186,18 @@ namespace strange.extensions.reflector.impl
 				{
 					Inject attr = injections [0] as Inject;
 					PropertyInfo point = member as PropertyInfo;
-
-					Type pointType = point.PropertyType;
-
 					Type baseType = member.DeclaringType.BaseType;
 					PropertyInfo basePoint = baseType != null ? baseType.GetProperty(point.Name) : null;
-					bool thisPointShouldOverrideBase = basePoint != null;
 					bool toAddOrOverride = true; //add or override by default
-
 
 					//if we have an overriding value, we need to know whether to override or leave it out.
 					//We leave out the base if it's hidden
 					//And we add if its overriding.
-					if (namedAttributes.ContainsKey(point.Name)) //
-						toAddOrOverride = !thisPointShouldOverrideBase; //if this attribute has been 'hidden' by a new or override keyword, we should not add this.
+				    if (namedAttributes.ContainsKey(point.Name))
+						toAddOrOverride = basePoint != null; //if this attribute has been 'hidden' by a new or override keyword, we should not add this.
 
-					if (toAddOrOverride)
-						namedAttributes[point.Name] = new ReflectedAttribute(pointType, point, attr.name);
+				    if (toAddOrOverride)
+						namedAttributes[point.Name] = new ReflectedAttribute(point.PropertyType, point, attr.name);
 				}
 			}
 			reflected.Setters = namedAttributes.Values.ToArray();

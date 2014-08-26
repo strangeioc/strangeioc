@@ -106,13 +106,32 @@ namespace strange.unittests
 		}
 
 		[Test]
-		public void InheritedInjectionHiding()
+		public void TestInheritedInjectionHiding()
 		{
 			IReflectedClass overrideBase = reflector.Get<BaseInheritanceOverride>();
 			IReflectedClass overrideExtended = reflector.Get<ExtendedInheritanceOveride>();
 
 			Assert.AreEqual(1, overrideBase.Setters.Length);
 			Assert.AreEqual(1, overrideExtended.Setters.Length);
+		}
+
+		[Test]
+		public void TestVirtualOverrideInjection()
+		{
+			IReflectedClass overrideBase = reflector.Get<BaseInheritanceOverride>();
+			IReflectedClass overrideExtended = reflector.Get<ExtendedInheritanceImplied>();
+
+			Assert.AreEqual(1, overrideBase.Setters.Length);
+			Assert.AreEqual(1, overrideExtended.Setters.Length);
+		}
+
+		[Test]
+		public void TestInjectedTypeForOverrideIsCorrect()
+		{
+			IReflectedClass overrideBase = reflector.Get<BaseInheritanceOverride>();
+			IReflectedClass overrideExtended = reflector.Get<ExtendedInheritanceOveride>();
+
+			Assert.AreEqual(overrideExtended.Setters[0].type, typeof(IExtendedInterface));
 		}
 
 		[Test]

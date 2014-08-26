@@ -19,7 +19,7 @@ namespace strange.unittests
 		public void SetUp()
 		{
 			binder = new InjectionBinder ();
-            
+			
 		}
 
 		[TearDown]
@@ -208,7 +208,7 @@ namespace strange.unittests
 		[Test]
 		public void TestDoublePostConstruct()
 		{
-            PostConstructSimple.PostConstructCount = 0;
+			PostConstructSimple.PostConstructCount = 0;
 			PostConstructSimple instance = new PostConstructSimple ();
 			binder.Bind<PostConstructSimple> ().ToValue (instance);
 			binder.Bind<InjectsPostConstructSimple> ().To<InjectsPostConstructSimple>();
@@ -303,18 +303,18 @@ namespace strange.unittests
 			binder.Bind<ISimpleInterface> ().To<SimpleInterfaceImplementer> ().ToName(SomeEnum.ONE);
 			binder.Bind<ISimpleInterface> ().To<PolymorphicClass> ();
 			binder.Bind<InjectableSuperClass> ().To<InjectableDerivedClass> ();
-            binder.Bind<int>().ToValue(42);
-            binder.Bind<string>().ToValue("zaphod"); //primitives won't get reflected...
+			binder.Bind<int>().ToValue(42);
+			binder.Bind<string>().ToValue("zaphod"); //primitives won't get reflected...
 
 			System.Collections.Generic.List<Type> list = new System.Collections.Generic.List<Type> ();
 			list.Add (typeof(HasNamedInjections));
 			list.Add (typeof(SimpleInterfaceImplementer));
 			list.Add (typeof(PolymorphicClass));
 			list.Add (typeof(InjectableDerivedClass));
-            list.Add(typeof(int));
+			list.Add(typeof(int));
 
 			int count = binder.Reflect (list);
-            Assert.AreEqual(4, count);             //...so list length will not include primitives
+			Assert.AreEqual(4, count);             //...so list length will not include primitives
 
 			IReflectedClass reflected1 = binder.injector.reflector.Get<HasNamedInjections> ();
 			Assert.True (reflected1.preGenerated);
@@ -378,6 +378,22 @@ namespace strange.unittests
 			Assert.IsNotNull (instance.Instance1);
 			Assert.IsNotNull (instance.Instance2);
 		}
+
+		[Test]
+		public void TestOverrideInjections()
+		{
+			binder.Bind<ExtendedInheritanceOveride>().ToSingleton();
+
+			ISimpleInterface simple = new SimpleInterfaceImplementer();
+			IExtendedInterface extended = new ExtendedInterfaceImplementer();
+			binder.Bind<ISimpleInterface>().ToValue(simple);
+			binder.Bind<IExtendedInterface>().ToValue(extended);
+
+			ExtendedInheritanceOveride overridingInjectable = binder.GetInstance<ExtendedInheritanceOveride>();
+			Assert.NotNull(overridingInjectable);
+			Assert.NotNull(overridingInjectable.MyInterface);
+			Assert.AreEqual(overridingInjectable.MyInterface, extended);
+		}
 	}
 
 	interface ITestPooled : IPoolable
@@ -423,6 +439,15 @@ namespace strange.unittests
 		{
 			Instance1 = pool.GetInstance () as ISimpleInterface;
 			Instance2 = pool.GetInstance () as ISimpleInterface;
+		}
+	}
+
+	class ExtendedInterfaceImplementer : IExtendedInterface
+	{
+		public int intValue { get; set; }
+		public bool Extended()
+		{
+			return true;
 		}
 	}
 }
