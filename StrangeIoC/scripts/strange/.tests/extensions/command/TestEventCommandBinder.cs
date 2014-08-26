@@ -1,6 +1,8 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using strange.extensions.command.api;
 using strange.extensions.command.impl;
+using strange.extensions.context.api;
 using strange.extensions.dispatcher.api;
 using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.dispatcher.eventdispatcher.impl;
@@ -20,14 +22,22 @@ namespace strange.unittests
         [SetUp]
         public void SetUp()
         {
+            
             injectionBinder = new InjectionBinder();
             injectionBinder.Bind<IInjectionBinder>().Bind<IInstanceProvider>().ToValue(injectionBinder);
-            injectionBinder.Bind<IEventDispatcher>().To<EventDispatcher>().ToSingleton();
+            injectionBinder.Bind<IEventDispatcher>().To<EventDispatcher>().ToSingleton().ToName(ContextKeys.CONTEXT_DISPATCHER);
             injectionBinder.Bind<ICommandBinder>().To<EventCommandBinder>().ToSingleton();
             commandBinder = injectionBinder.GetInstance<ICommandBinder>();
-            eventDispatcher = injectionBinder.GetInstance<IEventDispatcher>();
+            eventDispatcher = injectionBinder.GetInstance<IEventDispatcher>(ContextKeys.CONTEXT_DISPATCHER);
             (eventDispatcher as ITriggerProvider).AddTriggerable(commandBinder as ITriggerable);
             BadCommand.TestValue = 0;
+
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            EventDispatcher.eventPool.Clean();
         }
 
         [Test] public void TestBadConstructorCleanup()
@@ -47,6 +57,7 @@ namespace strange.unittests
             {
                 eventDispatcher.Dispatch(TestEvent.TEST);
             });
+
         }
 
         class TestEvent : IEvent
