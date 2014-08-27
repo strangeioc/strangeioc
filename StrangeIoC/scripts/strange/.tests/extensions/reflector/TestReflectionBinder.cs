@@ -109,7 +109,7 @@ namespace strange.unittests
 		public void TestInheritedInjectionHiding()
 		{
 			IReflectedClass overrideBase = reflector.Get<BaseInheritanceOverride>();
-			IReflectedClass overrideExtended = reflector.Get<ExtendedInheritanceOveride>();
+			IReflectedClass overrideExtended = reflector.Get<ExtendedInheritanceOverride>();
 
 			Assert.AreEqual(1, overrideBase.Setters.Length);
 			Assert.AreEqual(1, overrideExtended.Setters.Length);
@@ -129,9 +129,21 @@ namespace strange.unittests
 		public void TestInjectedTypeForOverrideIsCorrect()
 		{
 			IReflectedClass overrideBase = reflector.Get<BaseInheritanceOverride>();
-			IReflectedClass overrideExtended = reflector.Get<ExtendedInheritanceOveride>();
+			IReflectedClass overrideExtended = reflector.Get<ExtendedInheritanceOverride>();
 
 			Assert.AreEqual(overrideExtended.Setters[0].type, typeof(IExtendedInterface));
+		}
+
+		[Test]
+		public void TestMultipleLevelsOfInheritance()
+		{
+			IReflectedClass overrideBase = reflector.Get<BaseInheritanceOverride>();
+			IReflectedClass overrideExtended = reflector.Get<ExtendedInheritanceOverride>();
+			IReflectedClass overrideExtendedTwo = reflector.Get<ExtendedInheritanceOverrideTwo>();
+
+			Assert.AreEqual(1, overrideBase.Setters.Length);
+			Assert.AreEqual(1, overrideExtended.Setters.Length);
+			Assert.AreEqual(1, overrideExtendedTwo.Setters.Length);
 		}
 
 		[Test]

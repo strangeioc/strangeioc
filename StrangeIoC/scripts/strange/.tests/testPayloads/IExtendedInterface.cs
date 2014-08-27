@@ -4,4 +4,9 @@
     {
         bool Extended();
     }
+
+    public interface IExtendedInterfaceTwo : IExtendedInterface
+    {
+        bool ExtendedTwo();
+    }
 }

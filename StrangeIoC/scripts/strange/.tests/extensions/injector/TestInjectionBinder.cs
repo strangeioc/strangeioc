@@ -382,18 +382,44 @@ namespace strange.unittests
 		[Test]
 		public void TestOverrideInjections()
 		{
-			binder.Bind<ExtendedInheritanceOveride>().ToSingleton();
+			binder.Bind<ExtendedInheritanceOverride>().ToSingleton();
 
 			ISimpleInterface simple = new SimpleInterfaceImplementer();
 			IExtendedInterface extended = new ExtendedInterfaceImplementer();
 			binder.Bind<ISimpleInterface>().ToValue(simple);
 			binder.Bind<IExtendedInterface>().ToValue(extended);
 
-			ExtendedInheritanceOveride overridingInjectable = binder.GetInstance<ExtendedInheritanceOveride>();
+			ExtendedInheritanceOverride overridingInjectable = binder.GetInstance<ExtendedInheritanceOverride>();
 			Assert.NotNull(overridingInjectable);
 			Assert.NotNull(overridingInjectable.MyInterface);
 			Assert.AreEqual(overridingInjectable.MyInterface, extended);
 		}
+
+        /// <summary>
+        /// Test that you will properly inherit values that you aren't overriding
+        /// </summary>
+        [Test]
+        public void TestInheritedInjectionHidingDoesntHappenWithoutHiding()
+        {
+            binder.Bind<ExtendedInheritanceOverride>().ToSingleton();
+            binder.Bind<ExtendedInheritanceNoHide>().ToSingleton();
+
+            ISimpleInterface simple = new SimpleInterfaceImplementer();
+            IExtendedInterface extended = new ExtendedInterfaceImplementer();
+
+            binder.Bind<ISimpleInterface>().ToValue(simple);
+            binder.Bind<IExtendedInterface>().ToValue(extended);
+
+            ExtendedInheritanceOverride overridingInjectable = binder.GetInstance<ExtendedInheritanceOverride>();
+            Assert.NotNull(overridingInjectable);
+            Assert.NotNull(overridingInjectable.MyInterface);
+            Assert.AreEqual(overridingInjectable.MyInterface, extended);
+
+            ExtendedInheritanceNoHide noHide = binder.GetInstance<ExtendedInheritanceNoHide>();
+            Assert.NotNull(noHide);
+            Assert.NotNull(noHide.MyInterface);
+            Assert.AreEqual(noHide.MyInterface, simple);
+        }
 	}
 
 	interface ITestPooled : IPoolable

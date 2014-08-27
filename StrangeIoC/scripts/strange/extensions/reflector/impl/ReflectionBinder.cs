@@ -23,14 +23,13 @@
  * and caches the result, meaning that Reflection is performed only once per class.
  */
 
+using strange.extensions.reflector.api;
+using strange.framework.api;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using strange.extensions.reflector.api;
-using strange.framework.api;
-using strange.framework.impl;
-using System.Collections;
 
 namespace strange.extensions.reflector.impl
 {
@@ -187,16 +186,16 @@ namespace strange.extensions.reflector.impl
 					Inject attr = injections [0] as Inject;
 					PropertyInfo point = member as PropertyInfo;
 					Type baseType = member.DeclaringType.BaseType;
-					PropertyInfo basePoint = baseType != null ? baseType.GetProperty(point.Name) : null;
+					bool hasInheritedProperty = baseType != null ? baseType.GetProperties().Any(p => p.Name == point.Name) : false;
 					bool toAddOrOverride = true; //add or override by default
 
 					//if we have an overriding value, we need to know whether to override or leave it out.
 					//We leave out the base if it's hidden
 					//And we add if its overriding.
-				    if (namedAttributes.ContainsKey(point.Name))
-						toAddOrOverride = basePoint != null; //if this attribute has been 'hidden' by a new or override keyword, we should not add this.
+					if (namedAttributes.ContainsKey(point.Name))
+						toAddOrOverride = hasInheritedProperty; //if this attribute has been 'hidden' by a new or override keyword, we should not add this.
 
-				    if (toAddOrOverride)
+					if (toAddOrOverride)
 						namedAttributes[point.Name] = new ReflectedAttribute(point.PropertyType, point, attr.name);
 				}
 			}
