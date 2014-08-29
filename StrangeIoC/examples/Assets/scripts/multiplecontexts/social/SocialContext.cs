@@ -26,6 +26,7 @@ using strange.extensions.context.api;
 using strange.extensions.context.impl;
 using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.dispatcher.eventdispatcher.impl;
+using strange.examples.multiplecontexts.common;
 
 namespace strange.examples.multiplecontexts.social
 {
@@ -42,12 +43,25 @@ namespace strange.examples.multiplecontexts.social
 		
 		protected override void mapBindings()
 		{
-			commandBinder.Bind(ContextEvent.START).To<StartCommand>().Once();
+
 			commandBinder.Bind(SocialEvent.FULFILL_CURRENT_USER_REQUEST).To<CreateUserTileCommand>();
-				
-			commandBinder.Bind(MainEvent.GAME_COMPLETE).InSequence()
-				.To<GameCompleteCommand>()
-				.To<CreateFriendListCommand>();
+			commandBinder.Bind (MainEvent.GAME_COMPLETE).InSequence ()
+				.To<GameCompleteCommand> ()
+				.To<CreateFriendListCommand> ();
+
+			//We can do different things depending on whether or not this is the first context to instantiate
+			//In this case, when we're operating within a larger context we want to kill the AudioListener
+			if (this == Context.firstContext)
+			{
+				commandBinder.Bind(ContextEvent.START).To<StartCommand>().Once();
+			}
+			else
+			{
+				commandBinder.Bind(ContextEvent.START)
+					.To<KillAudioListenerCommand>()
+					.To<StartCommand>()
+					.Once();
+			}
 			
 			commandBinder.Bind (MainEvent.REMOVE_SOCIAL_CONTEXT).To<RemoveContextCommand>();
 			

@@ -44,9 +44,12 @@ namespace strange.examples.multiplecontexts.social
 			//Stylistically I think this is fine during instantiation. Your team might decide differently.
 			UserTileView view = go.GetComponent<UserTileView>() as UserTileView;
 			view.setUser(vo);
-			
-			Vector3 bottomLeft = new Vector3(.1f, .1f, (Camera.main.farClipPlane - Camera.main.nearClipPlane)/2f);
-			Vector3 dest = Camera.main.ViewportToWorldPoint(bottomLeft);
+
+			Camera cam = Camera.FindObjectOfType<Camera>();
+
+			Vector3 bottomLeft = new Vector3(.1f, .1f, (cam.farClipPlane - cam.nearClipPlane)/2f);
+			Vector3 dest = cam.ViewportToWorldPoint(bottomLeft);
+
 			view.SetTilePosition(dest);
 		}
 	}

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.20506</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EDFB21CB-8A2D-0241-3DBA-DF0E55C41E5A}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -13,9 +13,9 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>True</DebugSymbols>
+    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>False</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_OSX;ENABLE_MICROPHONE;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PHYSICS;ENABLE_TERRAIN;ENABLE_CACHING;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_CLOTH;ENABLE_GAMECENTER;ENABLE_MOVIES;ENABLE_AUDIO;ENABLE_WWW;ENABLE_SHADOWS;ENABLE_DUCK_TYPING;UNITY_4_1_4;UNITY_4_1;ENABLE_PROFILER;UNITY_EDITOR</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -24,7 +24,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>True</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>Temp\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -35,21 +35,15 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.dll</HintPath>
+      <HintPath>..\..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
-    <Reference Include="nunit.core, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="nunit.core.interfaces, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <Private>False</Private>
-    </Reference>
+    <Reference Include="nunit.core, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
+    <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
+    <Reference Include="nunit.core.interfaces, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -64,7 +58,7 @@
       <Properties>
         <Policies>
           <TextStylePolicy TabsToSpaces="False" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/x-csharp" />
-          <CSharpFormattingPolicy IndentSwitchBody="True" AnonymousMethodBraceStyle="NextLine" PropertyBraceStyle="NextLine" PropertyGetBraceStyle="NextLine" PropertySetBraceStyle="NextLine" EventBraceStyle="NextLine" EventAddBraceStyle="NextLine" EventRemoveBraceStyle="NextLine" StatementBraceStyle="NextLine" ElseNewLinePlacement="NewLine" CatchNewLinePlacement="NewLine" FinallyNewLinePlacement="NewLine" WhileNewLinePlacement="NewLine" BeforeSizeOfParentheses="True" BeforeTypeOfParentheses="True" SpacesAfterTypecast="True" inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" />
+          <CSharpFormattingPolicy IndentSwitchBody="True" AnonymousMethodBraceStyle="NextLine" PropertyBraceStyle="NextLine" PropertyGetBraceStyle="NextLine" PropertySetBraceStyle="NextLine" SimpleGetBlockFormatting="ForceNewLine" SimpleSetBlockFormatting="ForceNewLine" EventBraceStyle="NextLine" EventAddBraceStyle="NextLine" EventRemoveBraceStyle="NextLine" StatementBraceStyle="NextLine" ElseNewLinePlacement="NewLine" CatchNewLinePlacement="NewLine" FinallyNewLinePlacement="NewLine" WhileNewLinePlacement="NewLine" BeforeSizeOfParentheses="True" BeforeTypeOfParentheses="True" SpacesAfterTypecast="True" inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" />
         </Policies>
       </Properties>
     </MonoDevelop>
@@ -80,6 +74,10 @@
     <Folder Include="StrangeIoC\scripts\strange\.tests\extensions\pool\" />
     <Folder Include="StrangeIoC\examples\Assets\scripts\signalsproject\" />
     <Folder Include="StrangeIoC\scripts\strange\extensions\implicitBind\" />
+    <Folder Include="StrangeIoC\examples\Assets\scripts\justtests\" />
+    <Folder Include="StrangeIoC\examples\Assets\scripts\justtests\view\" />
+    <Folder Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\common\" />
+    <Folder Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\common\controller\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StrangeIoC\scripts\strange\extensions\context\api\ContextEvent.cs.meta" />
@@ -309,6 +307,7 @@
     <Compile Include="StrangeIoC\scripts\strange\extensions\command\impl\SignalCommandBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommand.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommandBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestEventCommandBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestContextRemoval.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestCrossContext.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\eventdispatcher\TestEventBinding.cs" />
@@ -412,9 +411,11 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\eventdispatcher\TestEventCommandPooling.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandThrowsErrorIfEventIsNull2.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandThrowsErrorIfEventIsNull3.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PseudoConstructNoParameters.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PseudoConstructOneParameter.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ConstructorNamedInjection.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PseudoConstructorNamedInjection.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\TesterContextView.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\TesterContext.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\TesterView.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\TesterMediator.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\ITesterView.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\common\controller\KillAudioListenerCommand.cs" />
   </ItemGroup>
 </Project>
