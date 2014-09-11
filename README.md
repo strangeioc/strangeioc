@@ -7,7 +7,7 @@ Current version: v0.7.0
 
 > Strange attractors create predictable patterns, often in chaotic systems.
 
-Strange is a super-lightweight and highly extensible Inversion-of-Control (IoC) framework, written specifically for C# and Unity. We've validated Strange on web, standalone, and iOS. We're not currently developing for Android, but we're fairly certain it'll run just fine there, too (er, please let us know!!!).
+Strange is a super-lightweight and highly extensible Inversion-of-Control (IoC) framework, written specifically for C# and Unity. We've validated Strange on web, standalone, and iOS, and Android.
 
 * [Overview](http://strangeioc.github.com/strangeioc/exec.html)
 * [StrangeIoC documentation](http://strangeioc.github.com/strangeioc/docs/html/index.html)
