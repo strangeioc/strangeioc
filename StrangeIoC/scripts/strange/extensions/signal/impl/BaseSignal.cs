@@ -41,8 +41,9 @@ namespace strange.extensions.signal.impl
 		public void Dispatch(object[] args) 
 		{ 
 			BaseListener(this, args);
-			OnceBaseListener(this, args);
+			var onceBaseDelegates = OnceBaseListener;
 			OnceBaseListener = delegate { };
+			onceBaseDelegates(this, args);
 		}
 
 		public virtual List<Type> GetTypes() { return new List<Type>(); }

@@ -369,6 +369,108 @@ namespace strange.unittests
             this.testValue += arg1 + arg2 + arg3 + arg4;
         }
 
+		
+		private Signal addOnceZeroArgSignal;
+		[Test]
+        public void AddOnce_SignalWithNoTypeGivenCallbackThatAddsItselfAgain_ExpectsDelegateCalledTwice()
+        {
+			addOnceZeroArgSignal = new Signal();
+            intToIncrement = 0;
+			addOnceZeroArgSignal.AddOnce(ZeroArgCallbackTriggeringAddOnceAgain);
+
+			addOnceZeroArgSignal.Dispatch();
+			addOnceZeroArgSignal.Dispatch();
+
+            Assert.AreEqual(2, intToIncrement);
+        }
+		private void ZeroArgCallbackTriggeringAddOnceAgain()
+		{
+			intToIncrement++;
+			addOnceZeroArgSignal.AddOnce(ZeroArgCallbackTriggeringAddOnceAgain);
+		}
+
+		private Signal<int> addOnceOneArgSignal;
+		[Test]
+        public void AddOnce_SignalWithOneTypeGivenCallbackThatAddsItselfAgain_ExpectsDelegateCalledTwice()
+        {
+			addOnceOneArgSignal = new Signal<int>();
+			addOnceOneArgSignal.AddOnce(OneArgCallbackTriggeringAddOnceAgain);
+
+			CreateOneInt();
+
+			addOnceOneArgSignal.Dispatch(testInt);
+			addOnceOneArgSignal.Dispatch(testInt);
+
+            Assert.AreEqual(2*testInt, testValue);
+        }
+		private void OneArgCallbackTriggeringAddOnceAgain(int testInt)
+		{
+			testValue += testInt;
+			addOnceOneArgSignal.AddOnce(OneArgCallbackTriggeringAddOnceAgain);
+		}
+
+		private Signal<int,int> addOnceTwoArgSignal;
+		[Test]
+        public void AddOnce_SignalWithTwoTypesGivenCallbackThatAddsItselfAgain_ExpectsDelegateCalledTwice()
+        {
+			addOnceTwoArgSignal = new Signal<int, int>();
+			addOnceTwoArgSignal.AddOnce(TwoArgCallbackTriggeringAddOnceAgain);
+
+			CreateTwoInts();
+
+			addOnceTwoArgSignal.Dispatch(testInt, testIntTwo);
+			addOnceTwoArgSignal.Dispatch(testInt, testIntTwo);
+
+            Assert.AreEqual(2*(testInt+testIntTwo), testValue);
+        }
+		private void TwoArgCallbackTriggeringAddOnceAgain(int testInt, int testIntTwo)
+		{
+			testValue += testInt + testIntTwo;
+			addOnceTwoArgSignal.AddOnce(TwoArgCallbackTriggeringAddOnceAgain);
+		}
+
+		private Signal<int,int,int> addOnceThreeArgSignal;
+		[Test]
+        public void AddOnce_SignalWithThreeTypesGivenCallbackThatAddsItselfAgain_ExpectsDelegateCalledTwice()
+        {
+			addOnceThreeArgSignal = new Signal<int, int, int>();
+			addOnceThreeArgSignal.AddOnce(ThreeArgCallbackTriggeringAddOnceAgain);
+
+			CreateThreeInts();
+
+			addOnceThreeArgSignal.Dispatch(testInt, testIntTwo, testIntThree);
+			Console.WriteLine ("1." + testValue);
+			addOnceThreeArgSignal.Dispatch(testInt, testIntTwo, testIntThree);
+
+			Assert.AreEqual(2*(testInt+testIntTwo+testIntThree), testValue);
+        }
+		private void ThreeArgCallbackTriggeringAddOnceAgain(int testInt, int testIntTwo, int testIntThree)
+		{
+			testValue += (testInt + testIntTwo + testIntThree);
+			Console.WriteLine ("?? " + testValue);
+			addOnceThreeArgSignal.AddOnce(ThreeArgCallbackTriggeringAddOnceAgain);
+		}
+
+		private Signal<int,int,int,int> addOnceFourArgSignal;
+		[Test]
+        public void AddOnce_SignalWithFourTypesGivenCallbackThatAddsItselfAgain_ExpectsDelegateCalledTwice()
+        {
+			addOnceFourArgSignal = new Signal<int, int, int, int>();
+			addOnceFourArgSignal.AddOnce(FourArgCallbackTriggeringAddOnceAgain);
+
+			CreateFourInts();
+
+			addOnceFourArgSignal.Dispatch(testInt, testIntTwo, testIntThree, testIntFour);
+			addOnceFourArgSignal.Dispatch(testInt, testIntTwo, testIntThree, testIntFour);
+
+			Assert.AreEqual(2*(testInt+testIntTwo+testIntThree+testIntFour), testValue);
+        }
+		private void FourArgCallbackTriggeringAddOnceAgain(int testInt, int testIntTwo, int testIntThree, int testIntFour)
+		{
+			testValue += testInt + testIntTwo + testIntThree + testIntFour;
+			addOnceFourArgSignal.AddOnce(FourArgCallbackTriggeringAddOnceAgain);
+		}
+
         [Test]
         public void TestRemoveListener()
         {
