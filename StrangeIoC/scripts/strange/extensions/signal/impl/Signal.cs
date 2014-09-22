@@ -93,11 +93,9 @@ namespace strange.extensions.signal.impl
         public void Dispatch()
         {
             Listener();
-            OnceListener();
-            OnceListener = delegate { };
+            CallAndClearOnceListener();
             base.Dispatch(null);
         }
-
         private Action AddUnique(Action listeners, Action callback)
         {
             if (!listeners.GetInvocationList().Contains(callback))
@@ -106,6 +104,12 @@ namespace strange.extensions.signal.impl
             }
             return listeners;
         }
+		private void CallAndClearOnceListener ()
+		{
+			var onceListener = OnceListener;
+			OnceListener = delegate { };			
+			onceListener();
+		}        
     }
 
     /// Base concrete form for a Signal with one parameter
@@ -134,8 +138,7 @@ namespace strange.extensions.signal.impl
         public void Dispatch(T type1)
         {
             Listener(type1);
-            OnceListener(type1);
-            OnceListener = delegate { };
+            CallAndClearOnceListener(type1);
             object[] outv = { type1 };
             base.Dispatch(outv);
         }
@@ -148,6 +151,12 @@ namespace strange.extensions.signal.impl
             }
             return listeners;
         }
+		private void CallAndClearOnceListener (T type1)
+		{
+			var onceListener = OnceListener;
+			OnceListener = delegate { };			
+			onceListener(type1);
+		}
     }
 
     /// Base concrete form for a Signal with two parameters
@@ -177,8 +186,7 @@ namespace strange.extensions.signal.impl
         public void Dispatch(T type1, U type2)
         {
             Listener(type1, type2);
-            OnceListener(type1, type2);
-            OnceListener = delegate { };
+            CallAndClearOnceListener(type1, type2);
             object[] outv = { type1, type2 };
             base.Dispatch(outv);
         }
@@ -190,6 +198,12 @@ namespace strange.extensions.signal.impl
             }
             return listeners;
         }
+		private void CallAndClearOnceListener (T type1, U type2)
+		{
+			var onceListener = OnceListener;
+			OnceListener = delegate { };			
+			onceListener(type1, type2);
+		}        
     }
 
     /// Base concrete form for a Signal with three parameters
@@ -220,8 +234,7 @@ namespace strange.extensions.signal.impl
         public void Dispatch(T type1, U type2, V type3)
         {
             Listener(type1, type2, type3);
-            OnceListener(type1, type2, type3);
-            OnceListener = delegate { };
+            CallAndClearOnceListener(type1, type2, type3);
             object[] outv = { type1, type2, type3 };
             base.Dispatch(outv);
         }
@@ -232,7 +245,13 @@ namespace strange.extensions.signal.impl
                 listeners += callback;
             }
             return listeners;
-        }
+        }		
+		private void CallAndClearOnceListener (T type1, U type2, V type3)
+		{
+			var onceListener = OnceListener;
+			OnceListener = delegate { };			
+			onceListener(type1, type2, type3);
+		}                
     }
 
     /// Base concrete form for a Signal with four parameters
@@ -264,8 +283,7 @@ namespace strange.extensions.signal.impl
         public void Dispatch(T type1, U type2, V type3, W type4)
         {
             Listener(type1, type2, type3, type4);
-            OnceListener(type1, type2, type3, type4);
-            OnceListener = delegate { };
+			CallAndClearOnceListener(type1, type2, type3, type4);
             object[] outv = { type1, type2, type3, type4 };
             base.Dispatch(outv);
         }
@@ -278,6 +296,14 @@ namespace strange.extensions.signal.impl
             }
             return listeners;
         }
+        
+		
+		private void CallAndClearOnceListener (T type1, U type2, V type3, W type4)
+		{
+			var onceListener = OnceListener;
+			OnceListener = delegate { };			
+			onceListener(type1, type2, type3, type4);
+		}                
     }
 
 }
