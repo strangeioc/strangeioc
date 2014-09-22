@@ -24,12 +24,13 @@
  */
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Linq;
 using strange.extensions.reflector.api;
 using strange.framework.api;
 using strange.framework.impl;
-using System.Collections;
 
 namespace strange.extensions.reflector.impl
 {
@@ -53,6 +54,7 @@ namespace strange.extensions.reflector.impl
 				binding = GetRawBinding ();
 				IReflectedClass reflected = new ReflectedClass ();
 				mapPreferredConstructor (reflected, binding, type);
+				mapPseudoConstructor(reflected, binding, type);
 				mapPostConstructors (reflected, binding, type);
 				mapSetters (reflected, binding, type);
 				binding.Bind (type).To (reflected);
@@ -85,15 +87,23 @@ namespace strange.extensions.reflector.impl
 
 
 			Type[] paramList = new Type[parameters.Length];
+			object[] names = new object[parameters.Length];
 			int i = 0;
 			foreach (ParameterInfo param in parameters)
 			{
 				Type paramType = param.ParameterType;
 				paramList [i] = paramType;
+
+				object[] attributes = param.GetCustomAttributes(typeof(Name), false);
+				if (attributes.Length > 0) 
+				{
+					names[i] = ( (Name)attributes[0]).name;
+				}
 				i++;
 			}
 			reflected.Constructor = constructor;
 			reflected.ConstructorParameters = paramList;
+			reflected.ConstructorParameterNames = names;
 		}
 
 		//Look for a constructor in the order:
@@ -128,6 +138,48 @@ namespace strange.extensions.reflector.impl
 				}
 			}
 			return shortestConstructor;
+		}
+
+		private void mapPseudoConstructor(IReflectedClass reflected, IBinding binding, Type type)
+		{
+			MethodInfo[] methods = type.GetMethods(BindingFlags.FlattenHierarchy |
+			                                       BindingFlags.Public |
+			                                       BindingFlags.Instance |
+			                                       BindingFlags.InvokeMethod);
+			
+			MethodInfo pseudoConstructor = null;
+			foreach (MethodInfo method in methods) {
+				object[] tagged = method.GetCustomAttributes(typeof(PseudoConstruct), true);
+				if (tagged.Length > 0)
+				{
+					pseudoConstructor = method;
+					break;
+				}
+			}
+			
+			if (pseudoConstructor != null)
+			{
+				reflected.PseudoConstructor = pseudoConstructor;
+				reflected.PseudoConstructorParameters = pseudoConstructor.GetParameters().Select(x => x.ParameterType).ToArray();
+
+				//get the names of the parameters
+				int nameCount = reflected.PseudoConstructorParameters.Length;
+				object[] names = new object[nameCount];
+				
+				int i = 0;
+				foreach (ParameterInfo parameter in pseudoConstructor.GetParameters() ) 
+				{
+					object[] attributes = parameter.GetCustomAttributes(typeof(Name), false);
+					if (attributes.Length > 0) 
+					{
+						names[i] = ( (Name)attributes[0]).name;
+					}
+					
+					++i;
+				}
+				
+				reflected.PseudoConstructorParameterNames = names;
+			}
 		}
 
 		private void mapPostConstructors(IReflectedClass reflected, IBinding binding, Type type)
@@ -232,7 +284,7 @@ namespace strange.extensions.reflector.impl
 			int pX = getPriority (x as MethodInfo);
 			int pY = getPriority (y as MethodInfo);
 
-			return (pX < pY) ? -1 : 1;
+			return (pX == pY) ? 0 : (pX < pY) ? -1 : 1;
 		}
 
 		private int getPriority(MethodInfo methodInfo)

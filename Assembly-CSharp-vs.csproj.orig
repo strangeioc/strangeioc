@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EDFB21CB-8A2D-0241-3DBA-DF0E55C41E5A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_OSX;ENABLE_MICROPHONE;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PHYSICS;ENABLE_TERRAIN;ENABLE_CACHING;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_CLOTH;ENABLE_GAMECENTER;ENABLE_MOVIES;ENABLE_AUDIO;ENABLE_WWW;ENABLE_SHADOWS;ENABLE_DUCK_TYPING;UNITY_4_1_4;UNITY_4_1;ENABLE_PROFILER;UNITY_EDITOR</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="nunit.core, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
+    <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
+    <Reference Include="nunit.core.interfaces, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <TextStylePolicy TabsToSpaces="False" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/x-csharp" />
+          <CSharpFormattingPolicy IndentSwitchBody="True" AnonymousMethodBraceStyle="NextLine" PropertyBraceStyle="NextLine" PropertyGetBraceStyle="NextLine" PropertySetBraceStyle="NextLine" EventBraceStyle="NextLine" EventAddBraceStyle="NextLine" EventRemoveBraceStyle="NextLine" StatementBraceStyle="NextLine" ElseNewLinePlacement="NewLine" CatchNewLinePlacement="NewLine" FinallyNewLinePlacement="NewLine" WhileNewLinePlacement="NewLine" BeforeSizeOfParentheses="True" BeforeTypeOfParentheses="True" SpacesAfterTypecast="True" inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <ItemGroup>
+    <Folder Include="StrangeIoC\" />
+    <Folder Include="StrangeIoC\examples\" />
+    <Folder Include="StrangeIoC\scripts\strange\extensions\signal\" />
+    <Folder Include="StrangeIoC\scripts\strange\.tests\" />
+    <Folder Include="StrangeIoC\scripts\strange\extensions\pool\" />
+    <Folder Include="StrangeIoC\scripts\strange\extensions\pool\api\" />
+    <Folder Include="StrangeIoC\scripts\strange\extensions\pool\impl\" />
+    <Folder Include="StrangeIoC\scripts\strange\.tests\extensions\pool\" />
+    <Folder Include="StrangeIoC\examples\Assets\scripts\signalsproject\" />
+    <Folder Include="StrangeIoC\scripts\strange\extensions\implicitBind\" />
+    <Folder Include="StrangeIoC\examples\Assets\scripts\justtests\" />
+    <Folder Include="StrangeIoC\examples\Assets\scripts\justtests\view\" />
+    <Folder Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\common\" />
+    <Folder Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\common\controller\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StrangeIoC\scripts\strange\extensions\context\api\ContextEvent.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\context\api\ContextExceptionType.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\context\api\ContextKeys.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\context\api\IContext.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\context\api\IContextView.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\api.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\impl.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\api\DispatcherExceptionType.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\api\IDispatcher.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\api\ITriggerProvider.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\api\ITriggerable.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\.DS_Store" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\api.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\impl.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\api\EventCallbackType.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\api\EventDispatcherExceptionType.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\api\IEvent.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\api\IEventBinding.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\api\IEventDispatcher.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\impl\EventBinding.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\impl\EventDispatcher.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\impl\EventDispatcherException.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\impl\TmEvent.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\dispatcher\impl\DispatcherException.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\injector\InjectAttribute.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\injector\api.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\injector\impl.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\injector\api\IInjectionBinder.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\injector\api\IInjectionBinding.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\injector\api\IInjector.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\injector\api\IInjectorFactory.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\injector\api\InjectionBindingType.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\injector\api\InjectionExceptionType.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\injector\impl\InjectionBinder.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\injector\impl\InjectionBinding.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\injector\impl\InjectionException.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\injector\impl\Injector.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\injector\impl\InjectorFactory.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\mediation\api.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\mediation\impl.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\mediation\api\IMediationBinder.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\mediation\api\IMediationBinding.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\mediation\api\IMediator.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\mediation\api\IView.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\mediation\api\MediationEvent.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\mediation\api\MediationExceptionType.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\mediation\impl\EventMediator.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\mediation\impl\EventView.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\mediation\impl\MediationBinder.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\mediation\impl\MediationBinding.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\mediation\impl\MediationException.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\mediation\impl\Mediator.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\mediation\impl\View.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\reflector\api.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\reflector\impl.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\reflector\api\IReflectedClass.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\reflector\api\IReflectionBinder.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\reflector\api\ReflectionExceptionType.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\reflector\impl\ReflectedClass.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\reflector\impl\ReflectionBinder.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\reflector\impl\ReflectionException.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\sequencer\api.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\sequencer\impl.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\sequencer\api\ISequenceBinding.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\sequencer\api\ISequenceCommand.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\sequencer\api\ISequencer.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\sequencer\api\SequencerExceptionType.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\sequencer\impl\EventSequenceCommand.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\sequencer\impl\EventSequencer.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\sequencer\impl\SequenceBinding.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\sequencer\impl\SequenceCommand.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\sequencer\impl\Sequencer.cs.meta" />
+    <None Include="StrangeIoC\scripts\strange\extensions\sequencer\impl\SequencerException.cs.meta" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\CommandExceptionType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\ICommand.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\ICommandBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\ICommandBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\command\impl\Command.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\command\impl\CommandBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\command\impl\CommandBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\command\impl\CommandException.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\command\impl\EventCommand.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\command\impl\EventCommandBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\context\api\ContextEvent.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\context\api\ContextExceptionType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\context\api\ContextKeys.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\context\api\IContext.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\context\api\IContextView.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\context\impl\Context.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\context\impl\ContextException.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\context\impl\ContextView.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\context\impl\MVCSContext.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\api\DispatcherExceptionType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\api\IDispatcher.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\api\ITriggerProvider.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\api\ITriggerable.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\api\EventCallbackType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\api\EventDispatcherExceptionType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\api\IEvent.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\api\IEventBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\api\IEventDispatcher.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\impl\EventBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\impl\EventDispatcher.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\impl\EventDispatcherException.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\impl\TmEvent.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\impl\DispatcherException.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\injector\InjectAttribute.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\injector\api\IInjectionBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\injector\api\IInjectionBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\injector\api\IInjector.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\injector\api\IInjectorFactory.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\injector\api\InjectionBindingType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\injector\api\InjectionExceptionType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\injector\impl\InjectionBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\injector\impl\InjectionBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\injector\impl\InjectionException.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\injector\impl\Injector.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\injector\impl\InjectorFactory.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\api\IMediationBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\api\IMediationBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\api\IMediator.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\api\IView.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\api\MediationEvent.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\api\MediationExceptionType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\EventMediator.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\EventView.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\MediationBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\MediationBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\MediationException.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\Mediator.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\View.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\reflector\api\IReflectedClass.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\reflector\api\IReflectionBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\reflector\api\ReflectionExceptionType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\reflector\impl\ReflectedClass.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\reflector\impl\ReflectionBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\reflector\impl\ReflectionException.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\sequencer\api\ISequenceBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\sequencer\api\ISequenceCommand.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\sequencer\api\ISequencer.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\sequencer\api\SequencerExceptionType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\sequencer\impl\EventSequenceCommand.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\sequencer\impl\EventSequencer.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\sequencer\impl\SequenceBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\sequencer\impl\SequenceCommand.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\sequencer\impl\Sequencer.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\sequencer\impl\SequencerException.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\framework\api\BinderExceptionType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\framework\api\BindingConst.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\framework\api\BindingConstraintType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\framework\api\IBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\framework\api\IBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\framework\api\ISemiBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\framework\impl\Binder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\framework\impl\BinderException.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\framework\impl\Binding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\framework\impl\SemiBinding.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\GameContext.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\GameRoot.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\controller\GameEvent.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\controller\GameOverCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\controller\ReplayGameCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\controller\ShipDestroyedCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\controller\UpdateScoreCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\controller\startupSequence\StartAppCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\controller\startupSequence\StartGameCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\model\IScore.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\model\ScoreModel.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\util\GameLoop.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\util\IGameTimer.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\view\ClickDetector.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\view\EnemyMediator.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\view\EnemyView.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\view\ScoreboardMediator.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\view\ScoreboardView.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\view\ShipMediator.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\view\ShipView.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\main\MainContext.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\main\MainRoot.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\main\controller\GameCompleteCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\main\controller\LoadSceneCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\main\controller\MainEvent.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\main\controller\StartCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\SocialContext.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\SocialRoot.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\controller\CreateFriendListCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\controller\CreateUserTileCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\controller\GameCompleteCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\controller\LoadSceneCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\controller\SocialEvent.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\controller\StartCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\service\FacebookService.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\service\GoogleService.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\service\ISocialService.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\service\UserVO.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\view\AwardView.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\view\AwardViewMediator.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\view\UserTileMediator.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\view\UserTileView.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\MyFirstContext.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\MyFirstProjectRoot.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\controller\CallWebServiceCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\controller\ExampleEvent.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\controller\StartCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\model\ExampleModel.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\model\IExampleModel.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\service\ExampleService.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\service\IExampleService.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\view\ClickDetector.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\view\ExampleMediator.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\view\ExampleView.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\controller\RemoveSocialContextCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\controller\RemoveContextCommand.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\signal\api\IBaseSignal.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\signal\impl\BaseSignal.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\signal\impl\Signal.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\signal\impl\SignalException.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\context\api\ICrossContextCapable.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\context\impl\CrossContext.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\injector\api\ICrossContextInjectionBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\injector\impl\CrossContextInjectionBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\command\impl\SignalCommandBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommand.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommandBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestEventCommandBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestContextRemoval.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestCrossContext.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\eventdispatcher\TestEventBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\eventdispatcher\TestEventCommand.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\eventdispatcher\TestEventDispatcher.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\InjectionSpeedTest.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\TestInjectionBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\TestInjectionBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\TestInjector.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\TestInjectorFactory.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\reflector\TestReflectionBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\sequencer\TestSequenceCommand.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\sequencer\TestSequencer.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\signal\TestSignal.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\signal\TestSignalCommandBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\framework\TestBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\framework\TestBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\framework\TestSemiBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\AbstractClass.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\CircularDependencyOne.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\CircularDependencyTwo.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ClassToBeInjected.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ClassWithConstructorParameters.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ClassWithConstructorParametersOnlyOneConstructor.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\GuaranteedUniqueInstances.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\HasNamedInjections.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\HasTwoInjections.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\IAnotherSimpleInterface.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ISimpleInterface.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectableDerivedClass.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectableSuperClass.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\MarkerClass.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\MultipleConstructorsUntagged.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PolymorphicClass.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PostConstructClass.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PostConstructTwo.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SimpleInterfaceImplementer.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SomeEnum.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\TestException.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\AsynchCommand.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithExecute.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithInjection.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithoutExecute.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\FailCommand.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceCommandWithExecute.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceCommandWithInjection.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceCommandWithoutExecute.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceInterruptingCommand.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\signal\api\SignalExceptionType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SimpleInterfaceImplementerTwo.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\context\impl\CrossContextBridge.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestCrossContextBridge.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PostConstructSimple.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectsPostConstructSimple.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\NonpublicInjection.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ConstructorInjectsClassToBeInjected.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\framework\api\IManagedList.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\pool\impl\Pool.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\pool\api\IPool.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\pool\impl\PoolException.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\pool\api\IPoolable.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\pool\api\PoolExceptionType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\pool\api\PoolInflationType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\pool\api\PoolOverflowBehavior.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\framework\api\IInstanceProvider.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommandPooling.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\CommandKeys.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\MarkablePoolCommand.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\IPooledCommandBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\pool\TestPool.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommandBinderWithoutPools.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithInjectionAndSignal.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\MultipleConstructorsOneThreeFour.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PostConstructSeveralOrdered.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\context\api\ContextStartupFlags.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestContext.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\SignalsContext.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\SignalsRoot.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\controller\CallWebServiceCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\controller\StartCommand.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\model\ExampleModel.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\model\IExampleModel.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\service\ExampleService.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\service\IExampleService.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\signal\CallWebServiceSignal.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\signal\FulfillWebServiceRequestSignal.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\signal\ScoreChangedSignal.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\signal\StartSignal.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\view\ClickDetector.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\view\ExampleMediator.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\view\ExampleView.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\implicitBind\ImplementorAttribute.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\implicitBind\api\IImplicitBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\implicitBind\impl\ImplicitBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\TestImplicitBinding.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\MockContext.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\injector\api\InjectionBindingScope.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\signal\TestPooledSignalCommands.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithInjectionPlusSignalPayload.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandThrowsErrorIfEventIsNull.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\eventdispatcher\TestEventCommandPooling.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandThrowsErrorIfEventIsNull2.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandThrowsErrorIfEventIsNull3.cs" />
+<<<<<<< HEAD
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PseudoConstructNoParameters.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PseudoConstructOneParameter.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ConstructorNamedInjection.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PseudoConstructorNamedInjection.cs" />
+=======
+    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\TesterContextView.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\TesterContext.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\TesterView.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\TesterMediator.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\ITesterView.cs" />
+    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\common\controller\KillAudioListenerCommand.cs" />
+>>>>>>> upstream/master
+  </ItemGroup>
+</Project>

@@ -32,12 +32,26 @@
  		public IMyInterface myInstance{get;set;}
 
 
+ * @class Name
+ *  
+ * When a parameter of a constructor or pseudo-constructor is tagged with [Name], 
+ * the injector can discriminate between different classes that satisfy the same interface.  
+ * This means that constructors and pseudo-constructors can used named injection just like 
+ * setter injection.
+ * 
  * @class Construct
  * 
  * The `[Construct]` attribute marks a preferred Constructor. If omitted,
  * the Reflector will mark as Constructor the shortest available
  * Constructor. Obviously, if there only one constructor, this tag
  * is not requried.
+ * 
+ * @class PseudoConstruct
+ * 
+ * The `[PseudoConstruct]` attribute marks a single method as the pseudo-constructor / initializer.
+ * A pseudo-constructor is triggered after construction and before post-construction. Unlike 
+ * '[PostConstruct]', '[PseudoConstruct]' accepts arguments, thus allowing you to inject 
+ * dependencies into classes that prohibit constructor injection (e.g. MonoBehaviours).
  * 
  * @class PostConstruct
  * 
@@ -72,13 +86,36 @@ public class Inject: Attribute
 	public object name{get; set;}
 }
 
-//Tag [PostConstruct] to perform post-injection construction actions
+//Tag [Name] to perform named injection in constructors and pseudo-constructors
+[AttributeUsage(AttributeTargets.Parameter,
+        AllowMultiple = false,
+        Inherited = false)]
+public class Name : Attribute 
+{
+	public Name(object n) 
+	{
+		name = n;
+	}
+
+	public object name { get; set; }
+}
+
+//Tag [Construct] to perform construction injection
 [AttributeUsage(AttributeTargets.Constructor, 
 		AllowMultiple = false,
 		Inherited = true)]
 public class Construct: Attribute
 {
 	public Construct(){}
+}
+
+//Tag [PseudoConstruct] to perform pseudo-constructor / initializer injection
+[AttributeUsage(AttributeTargets.Method,
+        AllowMultiple = false,
+        Inherited = true)]
+public class PseudoConstruct : Attribute 
+{
+	public PseudoConstruct() {}
 }
 
 //Tag [PostConstruct] to perform post-injection construction actions
