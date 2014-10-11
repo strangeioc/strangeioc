@@ -101,36 +101,38 @@ namespace strange.extensions.mediation.impl
 			{
 				loopLimiter ++;
 				trans = trans.parent;
-				if (trans.gameObject.GetComponent<ContextView>() != null)
+				
+				//Not using generics here will allow for inheritance.
+				var contextView = trans.gameObject.GetComponent(typeof(ContextView)) as ContextView;
+				
+				if (contextView != null && contextView.context != null)
 				{
-					ContextView contextView = trans.gameObject.GetComponent<ContextView>() as ContextView;
-					if (contextView.context != null)
+					IContext context = contextView.context;
+					if (toAdd)
 					{
-						IContext context = contextView.context;
-						if (toAdd)
-						{
-							context.AddView(view);
-							registeredWithContext = true;
-							return;
-						}
-						else
-						{
-							context.RemoveView(view);
-							return;
-						}
+						context.AddView(view);
+						registeredWithContext = true;
+						return;
+					}
+					else
+					{
+						context.RemoveView(view);
+						return;
 					}
 				}
 			}
-			if (requiresContext && finalTry)
+			if (requiresContext)
 			{
-				//last ditch. If there's a Context anywhere, we'll use it!
-				if (Context.firstContext != null)
+				if(finalTry)
 				{
-					Context.firstContext.AddView (view);
-					registeredWithContext = true;
-					return;
+					//last ditch. If there's a Context anywhere, we'll use it!
+					if (Context.firstContext != null)
+					{
+						Context.firstContext.AddView (view);
+						registeredWithContext = true;
+						return;
+					}
 				}
-
 				
 				string msg = (loopLimiter == LOOP_MAX) ?
 					msg = "A view couldn't find a context. Loop limit reached." :
