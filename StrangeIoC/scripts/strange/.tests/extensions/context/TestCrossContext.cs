@@ -179,6 +179,54 @@ namespace strange.unittests
 
         }
 
+        [Test]
+        public void TestSingletonUnbind()
+        {
+            Parent.injectionBinder.Bind<TestModel>().ToSingleton().CrossContext(); //bind it once here and it should be accessible everywhere
+
+            TestModel parentModel = Parent.injectionBinder.GetInstance<TestModel>() as TestModel;
+            Assert.IsNotNull(parentModel);
+
+            TestModel childOneModel = ChildOne.injectionBinder.GetInstance<TestModel>() as TestModel;
+            Assert.IsNotNull(childOneModel);
+            TestModel childTwoModel = ChildTwo.injectionBinder.GetInstance<TestModel>() as TestModel;
+            Assert.IsNotNull(childTwoModel);
+
+            Assert.AreSame(parentModel, childOneModel);
+            Assert.AreSame(parentModel, childTwoModel);
+            Assert.AreSame(childOneModel, childTwoModel);
+
+            IInjectionBinding binding = Parent.injectionBinder.GetBinding<TestModel>();
+            Assert.IsNotNull(binding);
+            Assert.IsTrue(binding.isCrossContext);
+
+            IInjectionBinding childBinding = ChildOne.injectionBinder.GetBinding<TestModel>();
+            Assert.IsNotNull(childBinding);
+            Assert.IsTrue(childBinding.isCrossContext);
+
+
+            Assert.AreEqual(0, parentModel.Value);
+
+            parentModel.Value++;
+            Assert.AreEqual(1, childOneModel.Value);
+
+            parentModel.Value++;
+            Assert.AreEqual(2, childTwoModel.Value);
+
+
+
+            Parent.injectionBinder.Unbind<TestModel>();
+
+            binding = Parent.injectionBinder.GetBinding<TestModel>();
+            Assert.IsNull(binding);
+
+
+            childBinding = ChildOne.injectionBinder.GetBinding<TestModel>();
+            Assert.IsNull(childBinding);
+            childBinding = ChildTwo.injectionBinder.GetBinding<TestModel>();
+            Assert.IsNull(childBinding);
+        }
+
 	}
 
 

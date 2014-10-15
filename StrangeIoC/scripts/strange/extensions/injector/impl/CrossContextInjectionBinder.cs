@@ -23,6 +23,7 @@
  * @see strange.extensions.injector.api.ICrossContextInjectionBinder
  */
 
+using System;
 using strange.extensions.injector.impl;
 using strange.extensions.injector.api;
 using strange.framework.api;
@@ -105,6 +106,20 @@ namespace strange.extensions.injector.impl
 			{
 				return injector;
 			}
+		}
+
+		public override void Unbind(object key, object name)
+		{
+            IInjectionBinding binding = GetBinding(key, name);
+
+            if (binding != null && 
+                binding.isCrossContext && 
+                CrossContextBinder != null)
+            {
+                CrossContextBinder.Unbind(key, name);
+            }
+
+            base.Unbind(key, name);
 		}
 	}
 }
