@@ -35,6 +35,7 @@ namespace strange.extensions.reflector.impl
 	{
 		public ConstructorInfo Constructor{ get; set;}
 		public Type[] ConstructorParameters{ get; set;}
+		public object[] ConstructorParameterNames { get; set; }
 		public MethodInfo[] PostConstructors{ get; set;}
 		public KeyValuePair<Type, PropertyInfo>[] Setters{ get; set;}
 		public object[] SetterNames{ get; set;}
