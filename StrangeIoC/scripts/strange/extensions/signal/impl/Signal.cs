@@ -83,7 +83,7 @@ namespace strange.extensions.signal.impl
 
         public void AddOnce(Action callback)
         {
-            OnceListener = this.AddUnique(Listener, callback);
+            OnceListener = this.AddUnique(OnceListener, callback);
         }
         public void RemoveListener(Action callback) { Listener -= callback; }
         public override List<Type> GetTypes()
@@ -121,7 +121,7 @@ namespace strange.extensions.signal.impl
 
         public void AddOnce(Action<T> callback)
         {
-            OnceListener = this.AddUnique(Listener, callback);
+            OnceListener = this.AddUnique(OnceListener, callback);
         }
 
         public void RemoveListener(Action<T> callback) { Listener -= callback; }
@@ -163,7 +163,7 @@ namespace strange.extensions.signal.impl
 
         public void AddOnce(Action<T, U> callback)
         {
-            OnceListener = this.AddUnique(Listener, callback);
+            OnceListener = this.AddUnique(OnceListener, callback);
         }
 
         public void RemoveListener(Action<T, U> callback) { Listener -= callback; }
