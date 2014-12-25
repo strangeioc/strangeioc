@@ -26,6 +26,7 @@
 using System;
 using strange.extensions.signal.api;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace strange.extensions.signal.impl
 {
@@ -36,38 +37,38 @@ namespace strange.extensions.signal.impl
 		public event Action<IBaseSignal, object[]> BaseListener = delegate { };
 
 		/// The delegate for one-off listeners
-		public event Action<IBaseSignal, object[]> OnceBaseListener = delegate { };
+		public event Action<IBaseSignal, object[]> OnceBaseListener;
 
 		public void Dispatch(object[] args) 
 		{ 
 			BaseListener(this, args);
-			var onceBaseDelegates = OnceBaseListener;
-			OnceBaseListener = delegate { };
-			onceBaseDelegates(this, args);
+
+			if(null != OnceBaseListener)
+			{
+				var onceBaseDelegates = OnceBaseListener;
+				OnceBaseListener = null;
+				onceBaseDelegates(this, args);
+			}
 		}
 
 		public virtual List<Type> GetTypes() { return new List<Type>(); }
 
 		public void AddListener(Action<IBaseSignal, object[]> callback) 
 		{
-			foreach (Delegate del in BaseListener.GetInvocationList())
-			{
-				Action<IBaseSignal, object[]> action = (Action<IBaseSignal, object[]>)del;
-				if (callback.Equals(action)) //If this callback exists already, ignore this addlistener
-					return;
-			}
+			if (BaseListener.GetInvocationList().Contains(callback))
+				return;
 
 			BaseListener += callback;
 		}
 
 		public void AddOnce(Action<IBaseSignal, object[]> callback)
 		{
-			foreach (Delegate del in OnceBaseListener.GetInvocationList())
-			{
-				Action<IBaseSignal, object[]> action = (Action<IBaseSignal, object[]>)del;
-				if (callback.Equals(action)) //If this callback exists already, ignore this addlistener
-					return;
-			}
+			// Check if the delegate is not yet created
+			if (null == OnceBaseListener)
+				OnceBaseListener = delegate { };
+			// Well, it was, so make sure the callback is unique
+			else if (OnceBaseListener.GetInvocationList().Contains(callback))
+				return;
 
 			OnceBaseListener += callback;
 		}
