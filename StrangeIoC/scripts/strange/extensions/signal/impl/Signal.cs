@@ -74,7 +74,7 @@ namespace strange.extensions.signal.impl
     public class Signal : BaseSignal
     {
         public event Action Listener = delegate { };
-        public event Action OnceListener = delegate { };
+        public event Action OnceListener;
 
         public void AddListener(Action callback)
         {
@@ -98,17 +98,26 @@ namespace strange.extensions.signal.impl
         }
         private Action AddUnique(Action listeners, Action callback)
         {
+			if (null == listeners)
+			{
+				listeners = delegate { };
+			}
+
             if (!listeners.GetInvocationList().Contains(callback))
             {
                 listeners += callback;
             }
+
             return listeners;
         }
 		private void CallAndClearOnceListener ()
 		{
-			var onceListener = OnceListener;
-			OnceListener = delegate { };			
-			onceListener();
+			if(null != OnceListener)
+			{
+				var onceListener = OnceListener;
+				OnceListener = null;
+				onceListener();
+			}
 		}        
     }
 
@@ -116,7 +125,7 @@ namespace strange.extensions.signal.impl
     public class Signal<T> : BaseSignal
     {
         public event Action<T> Listener = delegate { };
-        public event Action<T> OnceListener = delegate { };
+        public event Action<T> OnceListener;
 
         public void AddListener(Action<T> callback)
         {
@@ -129,12 +138,14 @@ namespace strange.extensions.signal.impl
         }
 
         public void RemoveListener(Action<T> callback) { Listener -= callback; }
+
         public override List<Type> GetTypes()
         {
             List<Type> retv = new List<Type>();
             retv.Add(typeof(T));
             return retv;
         }
+
         public void Dispatch(T type1)
         {
             Listener(type1);
@@ -145,17 +156,26 @@ namespace strange.extensions.signal.impl
 
         private Action<T> AddUnique(Action<T> listeners, Action<T> callback)
         {
+			if (null == listeners)
+			{
+				listeners = delegate { };
+			}
+
             if (!listeners.GetInvocationList().Contains(callback))
             {
                 listeners += callback;
             }
-            return listeners;
+            
+			return listeners;
         }
 		private void CallAndClearOnceListener (T type1)
 		{
-			var onceListener = OnceListener;
-			OnceListener = delegate { };			
-			onceListener(type1);
+			if(null != OnceListener)
+			{
+				var onceListener = OnceListener;
+				OnceListener = null;
+				onceListener(type1);
+			}
 		}
     }
 
@@ -163,7 +183,7 @@ namespace strange.extensions.signal.impl
     public class Signal<T, U> : BaseSignal
     {
         public event Action<T, U> Listener = delegate { };
-        public event Action<T, U> OnceListener = delegate { };
+		public event Action<T, U> OnceListener;
 
         public void AddListener(Action<T, U> callback)
         {
@@ -176,6 +196,7 @@ namespace strange.extensions.signal.impl
         }
 
         public void RemoveListener(Action<T, U> callback) { Listener -= callback; }
+
         public override List<Type> GetTypes()
         {
             List<Type> retv = new List<Type>();
@@ -192,17 +213,26 @@ namespace strange.extensions.signal.impl
         }
         private Action<T, U> AddUnique(Action<T, U> listeners, Action<T, U> callback)
         {
+			if (null == listeners)
+			{
+				listeners = delegate { };
+			}
+
             if (!listeners.GetInvocationList().Contains(callback))
             {
                 listeners += callback;
             }
-            return listeners;
+            
+			return listeners;
         }
 		private void CallAndClearOnceListener (T type1, U type2)
 		{
-			var onceListener = OnceListener;
-			OnceListener = delegate { };			
-			onceListener(type1, type2);
+			if(null != OnceListener)
+			{
+				var onceListener = OnceListener;
+				OnceListener = delegate { };
+				onceListener(type1, type2);
+			}
 		}        
     }
 
@@ -210,7 +240,7 @@ namespace strange.extensions.signal.impl
     public class Signal<T, U, V> : BaseSignal
     {
         public event Action<T, U, V> Listener = delegate { };
-        public event Action<T, U, V> OnceListener = delegate { };
+        public event Action<T, U, V> OnceListener;
 
         public void AddListener(Action<T, U, V> callback)
         {
@@ -223,6 +253,7 @@ namespace strange.extensions.signal.impl
         }
 
         public void RemoveListener(Action<T, U, V> callback) { Listener -= callback; }
+
         public override List<Type> GetTypes()
         {
             List<Type> retv = new List<Type>();
@@ -240,17 +271,26 @@ namespace strange.extensions.signal.impl
         }
         private Action<T, U, V> AddUnique(Action<T, U, V> listeners, Action<T, U, V> callback)
         {
+			if (null == listeners)
+			{
+				listeners = delegate { };
+			}
+
             if (!listeners.GetInvocationList().Contains(callback))
             {
                 listeners += callback;
             }
-            return listeners;
+            
+			return listeners;
         }		
 		private void CallAndClearOnceListener (T type1, U type2, V type3)
 		{
-			var onceListener = OnceListener;
-			OnceListener = delegate { };			
-			onceListener(type1, type2, type3);
+			if(null != OnceListener)
+			{
+				var onceListener = OnceListener;
+				OnceListener = null;
+				onceListener(type1, type2, type3);
+			}
 		}                
     }
 
@@ -258,7 +298,7 @@ namespace strange.extensions.signal.impl
     public class Signal<T, U, V, W> : BaseSignal
     {
         public event Action<T, U, V, W> Listener = delegate { };
-        public event Action<T, U, V, W> OnceListener = delegate { };
+        public event Action<T, U, V, W> OnceListener;
 
         public void AddListener(Action<T, U, V, W> callback)
         {
@@ -290,19 +330,28 @@ namespace strange.extensions.signal.impl
 
         private Action<T, U, V, W> AddUnique(Action<T, U, V, W> listeners, Action<T, U, V, W> callback)
         {
+			if (null == listeners)
+			{
+				listeners = delegate { };
+			}
+
             if (!listeners.GetInvocationList().Contains(callback))
             {
                 listeners += callback;
             }
-            return listeners;
+            
+			return listeners;
         }
         
 		
 		private void CallAndClearOnceListener (T type1, U type2, V type3, W type4)
 		{
-			var onceListener = OnceListener;
-			OnceListener = delegate { };			
-			onceListener(type1, type2, type3, type4);
+			if(null != OnceListener)
+			{
+				var onceListener = OnceListener;
+				OnceListener = delegate { };
+				onceListener(type1, type2, type3, type4);
+			}
 		}                
     }
 
