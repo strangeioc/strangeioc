@@ -94,7 +94,9 @@ namespace strange.extensions.signal.impl
         {
             Listener();
             CallAndClearOnceListener();
-            base.Dispatch(null);
+
+			if(base.NonEmpty)
+				base.Dispatch(null);
         }
         private Action AddUnique(Action listeners, Action callback)
         {
@@ -150,8 +152,12 @@ namespace strange.extensions.signal.impl
         {
             Listener(type1);
             CallAndClearOnceListener(type1);
-            object[] outv = { type1 };
-            base.Dispatch(outv);
+
+			if(base.NonEmpty)
+			{
+				object[] outv = { type1 };
+				base.Dispatch(outv);
+			}
         }
 
         private Action<T> AddUnique(Action<T> listeners, Action<T> callback)
@@ -208,8 +214,12 @@ namespace strange.extensions.signal.impl
         {
             Listener(type1, type2);
             CallAndClearOnceListener(type1, type2);
-            object[] outv = { type1, type2 };
-            base.Dispatch(outv);
+
+			if(base.NonEmpty)
+			{
+				object[] outv = { type1, type2 };
+				base.Dispatch(outv);
+			}
         }
         private Action<T, U> AddUnique(Action<T, U> listeners, Action<T, U> callback)
         {
@@ -266,8 +276,12 @@ namespace strange.extensions.signal.impl
         {
             Listener(type1, type2, type3);
             CallAndClearOnceListener(type1, type2, type3);
-            object[] outv = { type1, type2, type3 };
-            base.Dispatch(outv);
+
+			if(base.NonEmpty)
+			{
+				object[] outv = { type1, type2, type3 };
+				base.Dispatch(outv);
+			}
         }
         private Action<T, U, V> AddUnique(Action<T, U, V> listeners, Action<T, U, V> callback)
         {
@@ -324,8 +338,12 @@ namespace strange.extensions.signal.impl
         {
             Listener(type1, type2, type3, type4);
 			CallAndClearOnceListener(type1, type2, type3, type4);
-            object[] outv = { type1, type2, type3, type4 };
-            base.Dispatch(outv);
+
+			if(base.NonEmpty)
+			{
+				object[] outv = { type1, type2, type3, type4 };
+				base.Dispatch(outv);
+			}
         }
 
         private Action<T, U, V, W> AddUnique(Action<T, U, V, W> listeners, Action<T, U, V, W> callback)

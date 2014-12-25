@@ -34,10 +34,16 @@ namespace strange.extensions.signal.impl
 	{
         
 		/// The delegate for repeating listeners
-		public event Action<IBaseSignal, object[]> BaseListener = delegate { };
+		private event Action<IBaseSignal, object[]> BaseListener = delegate { };
+		private int BaseListenerSubsrcibersCount = 0;
 
 		/// The delegate for one-off listeners
-		public event Action<IBaseSignal, object[]> OnceBaseListener;
+		private event Action<IBaseSignal, object[]> OnceBaseListener;
+
+		public bool NonEmpty
+		{
+			get { return null != OnceBaseListener || BaseListenerSubsrcibersCount > 0;  }
+		}
 
 		public void Dispatch(object[] args) 
 		{ 
@@ -59,6 +65,7 @@ namespace strange.extensions.signal.impl
 				return;
 
 			BaseListener += callback;
+			++BaseListenerSubsrcibersCount;
 		}
 
 		public void AddOnce(Action<IBaseSignal, object[]> callback)
@@ -73,7 +80,14 @@ namespace strange.extensions.signal.impl
 			OnceBaseListener += callback;
 		}
 
-		public void RemoveListener(Action<IBaseSignal, object[]> callback) { BaseListener -= callback; }
+		public void RemoveListener(Action<IBaseSignal, object[]> callback) 
+		{
+			var listeners = BaseListener;
+			BaseListener -= callback;
+
+			if (Object.ReferenceEquals(BaseListener, listeners))
+				--BaseListenerSubsrcibersCount;
+		}
 
 	   
 	}
