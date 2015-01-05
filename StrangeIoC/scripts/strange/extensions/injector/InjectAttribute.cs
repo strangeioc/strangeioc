@@ -28,8 +28,8 @@
  * Inject tags can also specify a name:
  * 
 
- 		[Inject(SomeEnum.VALUE)]
- 		public IMyInterface myInstance{get;set;}
+		[Inject(SomeEnum.VALUE)]
+		public IMyInterface myInstance{get;set;}
 
 
  * @class Construct
@@ -70,6 +70,19 @@ public class Inject: Attribute
 	}
 	
 	public object name{get; set;}
+}
+
+[AttributeUsage(AttributeTargets.Property,
+		AllowMultiple = false,
+		Inherited = true)]
+public class DynamicInject : Inject
+{
+	public DynamicInject()
+	{
+		name = DefaultId;
+	}
+
+	public const string DefaultId = "DYNAMIC_INJECTION_ID_REQUIRED";
 }
 
 //Tag [PostConstruct] to perform post-injection construction actions

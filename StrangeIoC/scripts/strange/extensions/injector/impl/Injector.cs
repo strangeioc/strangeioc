@@ -40,7 +40,9 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using NUnit.Core;
 using strange.extensions.injector.api;
+using strange.extensions.localInject;
 using strange.extensions.reflector.api;
 
 namespace strange.extensions.injector.impl
@@ -199,13 +201,50 @@ namespace strange.extensions.injector.impl
 			failIf(reflection == null, "Attempt to inject without a reflection", InjectionExceptionType.NULL_REFLECTION);
 			failIf(reflection.setters.Length != reflection.setterNames.Length, "Attempt to perform setter injection with mismatched names.\nThere must be exactly as many names as setters.", InjectionExceptionType.SETTER_NAME_MISMATCH);
 
+			IDynamicallyInjected dynamicTarget = null;
+			if (target is IDynamicallyInjected)
+				dynamicTarget = (IDynamicallyInjected) target;
+
+
+			List<int> dynamicIndices = new List<int>();
+
 			int aa = reflection.setters.Length;
 			for(int a = 0; a < aa; a++)
 			{
-				KeyValuePair<Type, PropertyInfo> pair = reflection.setters [a];
-				object value = getValueInjection(pair.Key, reflection.setterNames[a], target);
-				injectValueIntoPoint (value, target, pair.Value);
+				object name = reflection.setterNames[a];
+				if (name != null && name.Equals(DynamicInject.DefaultId))
+				{
+					//We want to split this up in to two parts. So we can inject and the object can potentially get a value from the normal injections.
+					//I'm sure in some cases the component will look at its GO for the answer, which of course will always work
+					//The case for this not working is mediator->view where the view knows the id, or generally any time we check an injection for the answer
+					//So we'll delay these setters until after these ones are done. Just hold the indices
+
+					dynamicIndices.Add(a);
+				}
+				else
+				{
+					injectIntoSetter(target, reflection, name, a);
+				}
 			}
+
+			//Run the dynamic setters second
+			if (dynamicIndices.Count > 0)
+			{
+				if (dynamicTarget == null)
+						throw new InjectionException("Found dynamic injections but target did not implement interface IDynamicallyInjected", InjectionExceptionType.DYNAMIC_INJECTION_ERROR);
+	
+				foreach (int dynamicIndex in dynamicIndices)
+				{
+					injectIntoSetter(target, reflection, dynamicTarget.getDynamicInjectId(), dynamicIndex);
+				}
+			}
+		}
+
+		private void injectIntoSetter(object target, IReflectedClass reflection, object name, int index)
+		{
+			KeyValuePair<Type, PropertyInfo> pair = reflection.setters[index];
+			object value = getValueInjection(pair.Key, name, target);
+			injectValueIntoPoint(value, target, pair.Value);
 		}
 
 		private object getValueInjection(Type t, object name, object target)

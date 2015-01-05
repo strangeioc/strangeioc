@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2013 ThirdMotion, Inc.
  *
  *	Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,10 +25,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using strange.extensions.localInject;
 using strange.extensions.reflector.api;
 using strange.framework.api;
-using strange.framework.impl;
 using System.Collections;
 
 namespace strange.extensions.reflector.impl
@@ -103,9 +104,9 @@ namespace strange.extensions.reflector.impl
 		private ConstructorInfo findPreferredConstructor(Type type)
 		{
 			ConstructorInfo[] constructors = type.GetConstructors(BindingFlags.FlattenHierarchy | 
-			                                                            BindingFlags.Public | 
-			                                                            BindingFlags.Instance |
-			                                                            BindingFlags.InvokeMethod);
+																		BindingFlags.Public | 
+																		BindingFlags.Instance |
+																		BindingFlags.InvokeMethod);
 			if (constructors.Length == 1)
 			{
 				return constructors [0];
@@ -133,9 +134,9 @@ namespace strange.extensions.reflector.impl
 		private void mapPostConstructors(IReflectedClass reflected, IBinding binding, Type type)
 		{
 			MethodInfo[] methods = type.GetMethods(BindingFlags.FlattenHierarchy | 
-			                                             BindingFlags.Public | 
-			                                             BindingFlags.Instance |
-			                                             BindingFlags.InvokeMethod);
+														BindingFlags.Public | 
+														BindingFlags.Instance |
+														BindingFlags.InvokeMethod);
 			ArrayList methodList = new ArrayList ();
 			foreach (MethodInfo method in methods)
 			{
@@ -157,11 +158,11 @@ namespace strange.extensions.reflector.impl
 			object[] names = new object[0];
 
 			MemberInfo[] privateMembers = type.FindMembers(MemberTypes.Property,
-			                                        BindingFlags.FlattenHierarchy | 
-			                                        BindingFlags.SetProperty | 
-			                                        BindingFlags.NonPublic | 
-			                                        BindingFlags.Instance, 
-			                                        null, null);
+													BindingFlags.FlattenHierarchy | 
+													BindingFlags.SetProperty | 
+													BindingFlags.NonPublic | 
+													BindingFlags.Instance, 
+													null, null);
 			foreach (MemberInfo member in privateMembers)
 			{
 				object[] injections = member.GetCustomAttributes(typeof(Inject), true);
@@ -172,14 +173,24 @@ namespace strange.extensions.reflector.impl
 			}
 
 			MemberInfo[] members = type.FindMembers(MemberTypes.Property,
-			                                              BindingFlags.FlattenHierarchy | 
-			                                              BindingFlags.SetProperty | 
-			                                              BindingFlags.Public | 
-			                                              BindingFlags.Instance, 
-			                                              null, null);
+													BindingFlags.FlattenHierarchy | 
+													BindingFlags.SetProperty | 
+													BindingFlags.Public | 
+													BindingFlags.Instance, 
+													null, null);
 
 			foreach (MemberInfo member in members)
 			{
+
+				object[] dynamicInjections = member.GetCustomAttributes(typeof (DynamicInject), true);
+				if (dynamicInjections.Length > 0)
+				{
+					if (!type.GetInterfaces().Contains(typeof(IDynamicallyInjected)))
+					{
+						throw new ReflectionException(" The class " + type.Name + " has DynamicInjections but does not implement IDynamicallyInjected.", ReflectionExceptionType.HAS_DYNAMIC_INJECTIONS_BUT_DOESNT_IMPLEMENT_IDYNAMICALLYINJECTED);
+					}
+				}
+
 				object[] injections = member.GetCustomAttributes(typeof(Inject), true);
 				if (injections.Length > 0)
 				{

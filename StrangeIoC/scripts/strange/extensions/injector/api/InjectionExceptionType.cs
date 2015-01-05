@@ -57,6 +57,8 @@ namespace strange.extensions.injector.api
 		IMPLICIT_BINDING_TYPE_DOES_NOT_IMPLEMENT_DESIGNATED_INTERFACE,
 		//Assembly object was not retrieved and cached
 		UNINITIALIZED_ASSEMBLY,
+		//Dynamic injection failed
+		DYNAMIC_INJECTION_ERROR,
 	}
 }
 
