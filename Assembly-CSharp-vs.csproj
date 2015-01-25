@@ -417,5 +417,6 @@
     <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\TesterMediator.cs" />
     <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\ITesterView.cs" />
     <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\common\controller\KillAudioListenerCommand.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ConstructorNamedInjection.cs" />
   </ItemGroup>
 </Project>
