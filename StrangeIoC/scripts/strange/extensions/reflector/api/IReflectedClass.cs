@@ -61,6 +61,8 @@ namespace strange.extensions.reflector.api
 		object[] setterNames{ get; set;}
 		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		bool preGenerated{ get; set;}
+
+	    bool hasSetterFor(Type type);
 	}
 }
 

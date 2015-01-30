@@ -53,8 +53,8 @@ namespace strange.extensions.reflector.impl
 				binding = GetRawBinding ();
 				IReflectedClass reflected = new ReflectedClass ();
 				mapPreferredConstructor (reflected, binding, type);
-				mapPostConstructors (reflected, binding, type);
-				mapSetters (reflected, binding, type);
+				mapSetters (reflected, binding, type); //map setters before mapping methods
+				mapMethods (reflected, binding, type); //methods with listensto attr need injections for integrity check!
 				binding.Bind (type).To (reflected);
 				retv = binding.value as IReflectedClass;
 				retv.PreGenerated = false;
@@ -130,7 +130,7 @@ namespace strange.extensions.reflector.impl
 			return shortestConstructor;
 		}
 
-		private void mapPostConstructors(IReflectedClass reflected, IBinding binding, Type type)
+		private void mapMethods(IReflectedClass reflected, IBinding binding, Type type)
 		{
 			MethodInfo[] methods = type.GetMethods(BindingFlags.FlattenHierarchy | 
 			                                             BindingFlags.Public | 
@@ -144,6 +144,23 @@ namespace strange.extensions.reflector.impl
 				{
 					methodList.Add (method);
 				}
+			    object[] listensToAttr = method.GetCustomAttributes(typeof (ListensTo), true);
+			    if (listensToAttr.Length > 0)
+			    {
+			        ListensTo attr = listensToAttr[0] as ListensTo;
+			        Type injectedSignalType = attr.type;
+
+			        //ensure our type is injected
+			        if (!reflected.hasSetterFor(injectedSignalType))
+			        {
+                        throw new ReflectionException("The ListensTo attribute in type: " + reflected.GetType() + "must be accompanied by a matching Inject tag for type: " + injectedSignalType, ReflectionExceptionType.LISTENS_TO_MUST_HAVE_INJECTION);
+			        }
+
+
+
+
+
+			    }
 			}
 
 			methodList.Sort (new PriorityComparer ());

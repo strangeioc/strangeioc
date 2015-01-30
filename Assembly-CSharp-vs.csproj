@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -63,22 +63,7 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
-  <ItemGroup>
-    <Folder Include="StrangeIoC\" />
-    <Folder Include="StrangeIoC\examples\" />
-    <Folder Include="StrangeIoC\scripts\strange\extensions\signal\" />
-    <Folder Include="StrangeIoC\scripts\strange\.tests\" />
-    <Folder Include="StrangeIoC\scripts\strange\extensions\pool\" />
-    <Folder Include="StrangeIoC\scripts\strange\extensions\pool\api\" />
-    <Folder Include="StrangeIoC\scripts\strange\extensions\pool\impl\" />
-    <Folder Include="StrangeIoC\scripts\strange\.tests\extensions\pool\" />
-    <Folder Include="StrangeIoC\examples\Assets\scripts\signalsproject\" />
-    <Folder Include="StrangeIoC\scripts\strange\extensions\implicitBind\" />
-    <Folder Include="StrangeIoC\examples\Assets\scripts\justtests\" />
-    <Folder Include="StrangeIoC\examples\Assets\scripts\justtests\view\" />
-    <Folder Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\common\" />
-    <Folder Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\common\controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="StrangeIoC\scripts\strange\extensions\context\api\ContextEvent.cs.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\context\api\ContextExceptionType.cs.meta" />
@@ -214,6 +199,7 @@
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\MediationException.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\Mediator.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\View.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\ListensTo.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\reflector\api\IReflectedClass.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\reflector\api\IReflectionBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\reflector\api\ReflectionExceptionType.cs" />

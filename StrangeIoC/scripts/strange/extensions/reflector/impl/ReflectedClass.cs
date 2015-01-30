@@ -47,6 +47,18 @@ namespace strange.extensions.reflector.impl
 		public KeyValuePair<Type, PropertyInfo>[] setters{ get { return Setters; } set { Setters = value; }}
 		public object[] setterNames{ get { return SetterNames; } set { SetterNames = value; }}
 		public bool preGenerated{ get { return PreGenerated; } set { PreGenerated = value; }}
+
+	    public bool hasSetterFor(Type type)
+	    {
+	        foreach (KeyValuePair<Type, PropertyInfo> setterType in setters)
+	        {
+	            if (setterType.Key == type)
+	            {
+	                return true;
+	            }
+	        }
+	        return false;
+	    }
 	}
 }
 
