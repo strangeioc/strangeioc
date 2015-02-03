@@ -25,6 +25,7 @@
  */
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -55,6 +56,11 @@ namespace strange.extensions.reflector.api
 		Type[] constructorParameters{ get; set;}
 		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		MethodInfo[] postConstructors{ get; set;}
+
+		/// MethodInfo to Attribute
+		/// Any attributed method is in this collection, including postconstructs
+		KeyValuePair<MethodInfo, Attribute>[] attrMethods { get; set; }
+
 		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		KeyValuePair<Type, PropertyInfo>[] setters{ get; set;}
 		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
@@ -62,7 +68,8 @@ namespace strange.extensions.reflector.api
 		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		bool preGenerated{ get; set;}
 
-	    bool hasSetterFor(Type type);
+
+		bool hasSetterFor(Type type);
 	}
 }
 

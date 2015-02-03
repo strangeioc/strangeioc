@@ -200,6 +200,7 @@
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\Mediator.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\View.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\ListensTo.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\SignalMediationBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\reflector\api\IReflectedClass.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\reflector\api\IReflectionBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\reflector\api\ReflectionExceptionType.cs" />

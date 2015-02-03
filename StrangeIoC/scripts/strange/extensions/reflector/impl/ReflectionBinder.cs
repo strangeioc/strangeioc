@@ -54,7 +54,7 @@ namespace strange.extensions.reflector.impl
 				IReflectedClass reflected = new ReflectedClass ();
 				mapPreferredConstructor (reflected, binding, type);
 				mapSetters (reflected, binding, type); //map setters before mapping methods
-				mapMethods (reflected, binding, type); //methods with listensto attr need injections for integrity check!
+				mapMethods (reflected, binding, type); 
 				binding.Bind (type).To (reflected);
 				retv = binding.value as IReflectedClass;
 				retv.PreGenerated = false;
@@ -103,9 +103,9 @@ namespace strange.extensions.reflector.impl
 		private ConstructorInfo findPreferredConstructor(Type type)
 		{
 			ConstructorInfo[] constructors = type.GetConstructors(BindingFlags.FlattenHierarchy | 
-			                                                            BindingFlags.Public | 
-			                                                            BindingFlags.Instance |
-			                                                            BindingFlags.InvokeMethod);
+																		BindingFlags.Public | 
+																		BindingFlags.Instance |
+																		BindingFlags.InvokeMethod);
 			if (constructors.Length == 1)
 			{
 				return constructors [0];
@@ -133,39 +133,34 @@ namespace strange.extensions.reflector.impl
 		private void mapMethods(IReflectedClass reflected, IBinding binding, Type type)
 		{
 			MethodInfo[] methods = type.GetMethods(BindingFlags.FlattenHierarchy | 
-			                                             BindingFlags.Public | 
-			                                             BindingFlags.Instance |
-			                                             BindingFlags.InvokeMethod);
+														 BindingFlags.Public | 
+														 BindingFlags.Instance |
+														 BindingFlags.InvokeMethod);
 			ArrayList methodList = new ArrayList ();
+			List<KeyValuePair<MethodInfo, Attribute>> attrMethods = new List<KeyValuePair<MethodInfo, Attribute>>();
 			foreach (MethodInfo method in methods)
 			{
+				
 				object[] tagged = method.GetCustomAttributes (typeof(PostConstruct), true);
 				if (tagged.Length > 0)
 				{
 					methodList.Add (method);
+					attrMethods.Add(new KeyValuePair<MethodInfo, Attribute>(method, (Attribute) tagged[0]));
 				}
-			    object[] listensToAttr = method.GetCustomAttributes(typeof (ListensTo), true);
-			    if (listensToAttr.Length > 0)
-			    {
-			        ListensTo attr = listensToAttr[0] as ListensTo;
-			        Type injectedSignalType = attr.type;
+				object[] listensToAttr = method.GetCustomAttributes(typeof (ListensTo), true);
+				if (listensToAttr.Length > 0)
+				{
 
-			        //ensure our type is injected
-			        if (!reflected.hasSetterFor(injectedSignalType))
-			        {
-                        throw new ReflectionException("The ListensTo attribute in type: " + reflected.GetType() + "must be accompanied by a matching Inject tag for type: " + injectedSignalType, ReflectionExceptionType.LISTENS_TO_MUST_HAVE_INJECTION);
-			        }
-
-
-
-
-
-			    }
+					for (int i = 0; i < listensToAttr.Length; i++)
+					{
+						attrMethods.Add(new KeyValuePair<MethodInfo, Attribute>(method, (ListensTo) listensToAttr[i]));
+					}
+				}
 			}
 
 			methodList.Sort (new PriorityComparer ());
-			MethodInfo[] postConstructors = (MethodInfo[])methodList.ToArray (typeof(MethodInfo));
-			reflected.postConstructors = postConstructors;
+			reflected.postConstructors = (MethodInfo[])methodList.ToArray(typeof(MethodInfo));
+		    reflected.attrMethods = attrMethods.ToArray();
 		}
 
 		private void mapSetters(IReflectedClass reflected, IBinding binding, Type type)
@@ -174,11 +169,11 @@ namespace strange.extensions.reflector.impl
 			object[] names = new object[0];
 
 			MemberInfo[] privateMembers = type.FindMembers(MemberTypes.Property,
-			                                        BindingFlags.FlattenHierarchy | 
-			                                        BindingFlags.SetProperty | 
-			                                        BindingFlags.NonPublic | 
-			                                        BindingFlags.Instance, 
-			                                        null, null);
+													BindingFlags.FlattenHierarchy | 
+													BindingFlags.SetProperty | 
+													BindingFlags.NonPublic | 
+													BindingFlags.Instance, 
+													null, null);
 			foreach (MemberInfo member in privateMembers)
 			{
 				object[] injections = member.GetCustomAttributes(typeof(Inject), true);
@@ -189,11 +184,11 @@ namespace strange.extensions.reflector.impl
 			}
 
 			MemberInfo[] members = type.FindMembers(MemberTypes.Property,
-			                                              BindingFlags.FlattenHierarchy | 
-			                                              BindingFlags.SetProperty | 
-			                                              BindingFlags.Public | 
-			                                              BindingFlags.Instance, 
-			                                              null, null);
+														  BindingFlags.FlattenHierarchy | 
+														  BindingFlags.SetProperty | 
+														  BindingFlags.Public | 
+														  BindingFlags.Instance, 
+														  null, null);
 
 			foreach (MemberInfo member in members)
 			{
