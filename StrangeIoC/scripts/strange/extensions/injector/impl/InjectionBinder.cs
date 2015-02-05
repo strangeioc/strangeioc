@@ -42,7 +42,6 @@ namespace strange.extensions.injector.impl
 			injector = new Injector ();
 			injector.binder = this;
 			injector.reflector = new ReflectionBinder();
-			Bind<IReflectionBinder>().ToValue(injector.reflector);
 		}
 
 		public object GetInstance(Type key)

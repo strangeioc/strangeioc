@@ -10,8 +10,6 @@ namespace strange.extensions.mediation
 {
     public class SignalMediationBinder : MediationBinder
     {
-        [Inject]
-        public IReflectionBinder reflectionBinder { get; set; }
 
         protected override MonoBehaviour createMediator(MonoBehaviour mono, Type mediatorType)
         {
@@ -25,7 +23,7 @@ namespace strange.extensions.mediation
 
         private void HandleDelegates(MonoBehaviour mono, Type mediatorType, bool toAdd)
         {
-            IReflectedClass reflectedClass = reflectionBinder.Get(mediatorType);
+            IReflectedClass reflectedClass = injectionBinder.injector.reflector.Get(mediatorType);
 
             //Let's GetInstance some Signals and add listeners
 
