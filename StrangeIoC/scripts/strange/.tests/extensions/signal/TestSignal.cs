@@ -383,6 +383,23 @@ namespace strange.unittests
             signal.Dispatch(testInt);
             Assert.AreEqual(testInt, testValue);
         }
+        
+        [Test]
+        public void TestRemoveAllListeners() {
+            Signal<int> signal = new Signal<int>();
+
+            signal.AddListener(OneArgSignalCallback);
+            signal.AddListener(OneArgSignalCallback);
+            signal.AddListener(OneArgSignalCallback);
+            signal.AddListener(OneArgSignalCallback);
+
+            signal.Dispatch(testInt);
+            Assert.AreEqual(testValue, testIntFour);
+
+            signal.RemoveAllListeners();
+            signal.Dispatch(testValue);
+            Assert.AreEqual(testValue, testIntFour);
+        }
 
         [Test]
         public void RemoveListener_NoType_ExpectsListenerRemoved()
