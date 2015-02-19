@@ -32,11 +32,13 @@ namespace strange.extensions.injector.impl
 	public class InjectionBinding : Binding, IInjectionBinding
 	{
 		private InjectionBindingType _type = InjectionBindingType.DEFAULT;
+	    private IInjectionBinder _injectionBinder;
 		private bool _toInject = true;
 		private bool _isCrossContext = false;
 
-		public InjectionBinding (Binder.BindingResolver resolver)
+		public InjectionBinding (IInjectionBinder injectionBinder, Binder.BindingResolver resolver)
 		{
+		    _injectionBinder = injectionBinder;
 			this.resolver = resolver;
 			keyConstraint = BindingConstraintType.MANY;
 			valueConstraint = BindingConstraintType.ONE;
@@ -168,6 +170,11 @@ namespace strange.extensions.injector.impl
 
 		new public IInjectionBinding To<T>()
 		{
+		    if (typeof (T).IsInterface)
+		    {
+		        return _injectionBinder.GetBinding<T>();
+		    }
+
 			return base.To<T> () as IInjectionBinding;
 		}
 
