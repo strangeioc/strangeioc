@@ -42,6 +42,7 @@ using System;
 using System.Collections.Generic;
 using strange.extensions.reflector.api;
 using strange.framework.api;
+using strange.extensions.listBind.api;
 
 namespace strange.extensions.injector.api
 {
@@ -67,7 +68,8 @@ namespace strange.extensions.injector.api
 
 		/// Get/set an InjectionBinder.
 		IInjectionBinder binder{ get; set;}
-
+        /// Get/set an ListBinder.
+        IListBinder listBinder { get; set; }
 		/// Get/set a ReflectionBinder.
 		IReflectionBinder reflector{ get; set;}
 	}
