@@ -30,6 +30,7 @@ using strange.extensions.reflector.api;
 using strange.framework.api;
 using strange.framework.impl;
 using System.Collections;
+using System.Diagnostics;
 
 namespace strange.extensions.reflector.impl
 {
@@ -155,6 +156,7 @@ namespace strange.extensions.reflector.impl
 			}
 
 			methodList.Sort (new PriorityComparer ());
+
 			MethodInfo[] postConstructors = (MethodInfo[])methodList.ToArray (typeof(MethodInfo));
 			reflected.postConstructors = postConstructors;
 		}
@@ -240,7 +242,7 @@ namespace strange.extensions.reflector.impl
 			int pX = getPriority (x as MethodInfo);
 			int pY = getPriority (y as MethodInfo);
 
-			return (pX < pY) ? -1 : 1;
+			return (pX < pY) ? -1 : (pX == pY) ? 0 : 1;
 		}
 
 		private int getPriority(MethodInfo methodInfo)
