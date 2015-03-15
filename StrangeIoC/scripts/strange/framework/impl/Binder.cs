@@ -35,6 +35,7 @@
 using System;
 using System.Collections.Generic;
 using strange.framework.api;
+using MiniJSON;
 
 namespace strange.framework.impl
 {
@@ -47,6 +48,8 @@ namespace strange.framework.impl
 		protected Dictionary <object, Dictionary<object, IBinding>> bindings;
 
 		protected Dictionary <object, Dictionary<IBinding, object>> conflicts;
+
+		protected List<object> bindingWhitelist;
 
 		/// A handler for resolving the nature of a binding during chained commands
 		public delegate void BindingResolver(IBinding binding);
@@ -327,7 +330,154 @@ namespace strange.framework.impl
 			{
 				dict.Add (bindingName, binding);
 			}
+		}
 
+		/// <summary>
+		/// For consumed bindings, provide a secure whitelist of legal bindings.
+		/// </summary>
+		/// <param name="list"> A List of fully-qualified classnames eligible to be consumed during dynamic runtime binding.</param>
+		virtual public void WhitelistBindings(List<object> list)
+		{
+			bindingWhitelist = list;
+		}
+
+		/// <summary>
+		/// Provide the Binder with JSON data to perform runtime binding
+		/// </summary>
+		/// <param name="jsonString">A json-parsable string containing the bindings.</param>
+		virtual public void ConsumeBindings(string jsonString)
+		{
+			List<object> list = Json.Deserialize(jsonString) as List<object>;
+			IBinding testBinding = GetRawBinding ();
+			int bindConstraints = (testBinding.keyConstraint == BindingConstraintType.ONE) ? 0 : 1;
+			bindConstraints |= (testBinding.valueConstraint == BindingConstraintType.ONE) ? 0 : 2;
+
+			for (int a=0, aa=list.Count; a < aa; a++)
+			{
+				Dictionary<string, object> item = list[a] as Dictionary<string, object>;
+				List<object> keyList;
+				List<object> valueList;
+				IBinding binding = null;
+
+				// Check that Bind exists
+				if (!item.ContainsKey("Bind"))
+				{
+					throw new BinderException ("Attempted to consume a binding without a bind key.", BinderExceptionType.RUNTIME_NO_BIND);
+				}
+				else
+				{
+					keyList = conformRuntimeToList(item["Bind"]);
+				}
+				// Check that key counts match the binding constraint
+				if (keyList.Count > 1 && (bindConstraints & 1) == 0)
+				{
+					throw new BinderException ("Binder " + this.ToString () + " supports only a single binding key. A runtime binding key including " + keyList[0].ToString() + " is trying to add more.", BinderExceptionType.RUNTIME_TOO_MANY_KEYS);
+				}
+
+				if (!item.ContainsKey("To"))
+				{
+					valueList = keyList;
+				}
+				else
+				{
+					valueList = conformRuntimeToList(item["To"]);
+				}
+				// Check that value counts match the binding constraint
+				if (valueList.Count > 1 && (bindConstraints & 2) == 0)
+				{
+					throw new BinderException ("Binder " + this.ToString () + " supports only a single binding value. A runtime binding value including " + valueList[0].ToString() + " is trying to add more.", BinderExceptionType.RUNTIME_TOO_MANY_VALUES);
+				}
+
+				// Check Whitelist if it exists
+				if (bindingWhitelist != null)
+				{
+					foreach (object value in valueList)
+					{
+						if (bindingWhitelist.IndexOf(value) == -1)
+						{
+							throw new BinderException ("Value " + value.ToString () + " not found on whitelist for " + this.ToString() + ".", BinderExceptionType.RUNTIME_FAILED_WHITELIST_CHECK);
+						}
+					}
+				}
+
+				binding = performKeyValueBindings (keyList, valueList);
+
+				// Optionally look for ToName
+				if (item.ContainsKey("ToName"))
+				{
+					binding = binding.ToName (item["ToName"]);
+				}
+
+				// Add runtime options
+				if (item.ContainsKey("Options"))
+				{
+					List<object> optionsList = conformRuntimeToList(item["Options"]);
+					addRuntimeOptions(binding, optionsList);
+				}
+			}
+		}
+
+		virtual protected IBinding performKeyValueBindings(List<object> keyList, List<object> valueList)
+		{
+			IBinding binding = null;
+
+			// Bind in order
+			foreach (object key in keyList)
+			{
+				binding = Bind (key);
+			}
+			foreach (object value in valueList)
+			{
+				binding = binding.To (value);
+			}
+
+			return binding;
+		}
+
+		/// Default options: Weak
+		virtual protected IBinding addRuntimeOptions(IBinding binding, List<object> options)
+		{
+			if (options.IndexOf ("Weak") > -1)
+			{
+				binding.Weak();
+			}
+			return binding;
+		}
+
+		/// <summary>
+		/// Convert the object to List<object>
+		/// </summary>
+		/// <returns>If a List, returns the original object, typed to List<object>. If a value, creates a List and adds the value to it.</returns>
+		/// <param name="bindObject">The object on which we're operating.</param>
+		protected List<object> conformRuntimeToList(object bindObject)
+		{
+			List<object> conformed = new List<object> ();
+
+			string t = bindObject.GetType().ToString ();
+			if (t.IndexOf ("System.Collections.Generic.List") > -1)
+			{
+				return bindObject as List<object>;
+			}
+
+			// Conform strings to Lists
+			switch (t)
+			{
+				case "System.String":
+					string stringValue = bindObject as string;
+					conformed.Add(stringValue);
+					break;
+				case "System.Int64":
+					int intValue = (int)bindObject;
+					conformed.Add(intValue);
+					break;
+				case "System.Double":
+					float floatValue = (float)bindObject;
+					conformed.Add(floatValue);
+					break;
+				default:
+					throw new BinderException ("Runtime binding keys (Bind) must be strings or numbers.\nBinding detected of type " + t, BinderExceptionType.RUNTIME_TYPE_UNKNOWN);
+			}
+			return conformed;
 		}
 
 		/// Take note of bindings that are in conflict.
