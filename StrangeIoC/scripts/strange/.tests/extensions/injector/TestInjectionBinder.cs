@@ -7,6 +7,7 @@ using strange.extensions.pool.api;
 using strange.extensions.pool.impl;
 using strange.framework.api;
 using System.Collections.Generic;
+using strange.framework.impl;
 
 namespace strange.unittests
 {
@@ -377,6 +378,130 @@ namespace strange.unittests
 			Assert.IsNotNull (instance);
 			Assert.IsNotNull (instance.Instance1);
 			Assert.IsNotNull (instance.Instance2);
+		}
+
+		[Test]
+		public void TestSimpleRuntimeInjection()
+		{
+			string jsonString = "[{\"Bind\":\"strange.unittests.ISimpleInterface\",\"To\":\"strange.unittests.SimpleInterfaceImplementer\"}]";
+
+			binder.ConsumeBindings (jsonString);
+
+			IBinding binding = binder.GetBinding<ISimpleInterface> ();
+			Assert.NotNull (binding);
+			Assert.AreEqual ((binding as IInjectionBinding).type, InjectionBindingType.DEFAULT);
+
+			ISimpleInterface instance = binder.GetInstance (typeof(ISimpleInterface)) as ISimpleInterface;
+			Assert.IsInstanceOf<SimpleInterfaceImplementer> (instance);
+		}
+
+		[Test]
+		public void TestNamedRuntimeInjection()
+		{
+			string jsonString = "[{\"Bind\":\"strange.unittests.ISimpleInterface\",\"To\":\"strange.unittests.SimpleInterfaceImplementer\",\"ToName\":\"Test1\",\"Options\":\"ToSingleton\"}, {\"Bind\":\"strange.unittests.ISimpleInterface\",\"To\":\"strange.unittests.SimpleInterfaceImplementer\",\"ToName\":\"Test2\",\"Options\":\"ToSingleton\"}]";
+
+			binder.ConsumeBindings (jsonString);
+
+			IBinding binding = binder.GetBinding<ISimpleInterface> ("Test1");
+			Assert.NotNull (binding);
+
+			ISimpleInterface instance = binder.GetInstance (typeof(ISimpleInterface), "Test1") as ISimpleInterface;
+			Assert.IsInstanceOf<SimpleInterfaceImplementer> (instance);
+
+			IBinding binding2 = binder.GetBinding<ISimpleInterface> ("Test2");
+			Assert.NotNull (binding2);
+
+			ISimpleInterface instance2 = binder.GetInstance (typeof(ISimpleInterface), "Test2") as ISimpleInterface;
+			Assert.IsInstanceOf<SimpleInterfaceImplementer> (instance2);
+
+			Assert.AreNotSame (instance, instance2);
+		}
+
+		[Test]
+		public void TestRuntimeInjectionBindToSelf()
+		{
+			string jsonString = "[{\"Bind\":\"strange.unittests.SimpleInterfaceImplementer\"}]";
+
+			binder.ConsumeBindings (jsonString);
+
+			IBinding binding = binder.GetBinding<SimpleInterfaceImplementer> ();
+			Assert.NotNull (binding);
+			Assert.AreEqual ((binding as IInjectionBinding).type, InjectionBindingType.DEFAULT);
+
+			SimpleInterfaceImplementer instance = binder.GetInstance (typeof(SimpleInterfaceImplementer)) as SimpleInterfaceImplementer;
+			Assert.IsInstanceOf<SimpleInterfaceImplementer> (instance);
+
+			ISimpleInterface instance2 = binder.GetInstance (typeof(SimpleInterfaceImplementer)) as ISimpleInterface;
+			Assert.AreNotSame (instance, instance2);
+		}
+
+		[Test]
+		public void TestRuntimeInjectionSingleton()
+		{
+			string jsonString = "[{\"Bind\":\"strange.unittests.ISimpleInterface\",\"To\":\"strange.unittests.SimpleInterfaceImplementer\", \"Options\":\"ToSingleton\"}]";
+
+			binder.ConsumeBindings (jsonString);
+
+			IBinding binding = binder.GetBinding<ISimpleInterface> ();
+			Assert.NotNull (binding);
+			Assert.AreEqual ((binding as IInjectionBinding).type, InjectionBindingType.SINGLETON);
+
+			ISimpleInterface instance = binder.GetInstance (typeof(ISimpleInterface)) as ISimpleInterface;
+			Assert.IsInstanceOf<SimpleInterfaceImplementer> (instance);
+
+			ISimpleInterface instance2 = binder.GetInstance (typeof(ISimpleInterface)) as ISimpleInterface;
+			Assert.AreSame (instance, instance2);
+		}
+
+		[Test]
+		public void TestRuntimeInjectionCrossContext()
+		{
+			string jsonString = "[{\"Bind\":\"strange.unittests.ISimpleInterface\",\"To\":\"strange.unittests.SimpleInterfaceImplementer\", \"Options\":[\"ToSingleton\",\"Weak\",\"CrossContext\"]}]";
+
+			binder.ConsumeBindings (jsonString);
+
+			IBinding binding = binder.GetBinding<ISimpleInterface> ();
+			Assert.NotNull (binding);
+			Assert.IsTrue ((binding as IInjectionBinding).isCrossContext);
+			Assert.IsTrue (binding.isWeak);
+			Assert.AreEqual ((binding as IInjectionBinding).type, InjectionBindingType.SINGLETON);
+
+			ISimpleInterface instance = binder.GetInstance (typeof(ISimpleInterface)) as ISimpleInterface;
+			Assert.IsInstanceOf<SimpleInterfaceImplementer> (instance);
+		}
+
+		[Test]
+		public void TestRuntimePolymorphism()
+		{
+			string jsonString = "[{\"Bind\":[\"strange.unittests.ISimpleInterface\",\"strange.unittests.IAnotherSimpleInterface\"],\"To\":\"strange.unittests.PolymorphicClass\"}]";
+
+			binder.ConsumeBindings (jsonString);
+
+			IBinding binding = binder.GetBinding<ISimpleInterface> ();
+			Assert.NotNull (binding);
+
+			ISimpleInterface instance = binder.GetInstance (typeof(ISimpleInterface)) as ISimpleInterface;
+			Assert.IsInstanceOf<PolymorphicClass> (instance);
+
+			IBinding binding2 = binder.GetBinding<IAnotherSimpleInterface> ();
+			Assert.NotNull (binding2);
+
+			IAnotherSimpleInterface instance2 = binder.GetInstance (typeof(IAnotherSimpleInterface)) as IAnotherSimpleInterface;
+			Assert.IsInstanceOf<PolymorphicClass> (instance2);
+		}
+
+		[Test]
+		public void TestRuntimeExceptionTooManyValues()
+		{
+			string jsonString = "[{\"Bind\":\"strange.unittests.ISimpleInterface\",\"To\":[\"strange.unittests.SimpleInterfaceImplementer\",\"strange.unittests.PolymorphicClass\"]}]";
+
+			TestDelegate testDelegate = delegate
+			{
+				binder.ConsumeBindings(jsonString);
+			};
+			BinderException ex = Assert.Throws<BinderException>(testDelegate); //Because we have two values in a Binder that only supports one
+			Assert.AreEqual (BinderExceptionType.RUNTIME_TOO_MANY_VALUES, ex.type);
+
 		}
 	}
 

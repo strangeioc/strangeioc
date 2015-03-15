@@ -107,6 +107,12 @@ namespace strange.extensions.injector.api
 		void Unbind (object key);
 		void Unbind (object key, object name);
 		void Unbind (IBinding binding);
+
+		/// For consumed bindings, provide a secure whitelist of legal bindings
+		void WhitelistBindings(List<object> list);
+
+		/// Provide the Binder with JSON data to perform dynamic runtime binding
+		void ConsumeBindings(string jsonString);
 	}
 }
 

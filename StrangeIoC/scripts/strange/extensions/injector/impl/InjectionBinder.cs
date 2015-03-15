@@ -166,6 +166,47 @@ namespace strange.extensions.injector.impl
 			}
 			return count;
 		}
+
+		override protected IBinding performKeyValueBindings(List<object> keyList, List<object> valueList)
+		{
+			IBinding binding = null;
+
+			// Bind in order
+			foreach (object key in keyList)
+			{
+				if (binding == null)
+				{
+					binding = Bind (Type.GetType (key as string));
+				}
+				else
+				{
+					binding = binding.Bind (Type.GetType (key as string));
+				}
+			}
+			foreach (object value in valueList)
+			{
+				binding = binding.To (Type.GetType (value as string));
+			}
+
+			return binding;
+		}
+
+		/// Default options: Weak
+		override protected IBinding addRuntimeOptions(IBinding b, List<object> options)
+		{
+			base.addRuntimeOptions (b, options);
+			IInjectionBinding binding = b as IInjectionBinding;
+			if (options.IndexOf ("ToSingleton") > -1)
+			{
+				binding.ToSingleton ();
+			}
+			if (options.IndexOf ("CrossContext") > -1)
+			{
+				binding.CrossContext ();
+			}
+
+			return binding;
+		}
 	}
 }
 

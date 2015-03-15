@@ -93,8 +93,8 @@ namespace strange.extensions.injector.api
 		new object key{ get; }
 		new object name{ get; }
 		new object value{ get; }
-		new Enum keyConstraint{ get; set;}
-		new Enum valueConstraint{ get; set;}
+		new BindingConstraintType keyConstraint{ get; set;}
+		new BindingConstraintType valueConstraint{ get; set;}
 
 	}
 }
