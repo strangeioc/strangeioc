@@ -24,6 +24,9 @@ namespace strange.framework.api
 		/// The binder is being used while one or more Bindings are in conflict
 		CONFLICT_IN_BINDER,
 
+		/// A runtime class resolved to null. Usually caused when a class can't be resolved.
+		RUNTIME_NULL_VALUE,
+
 		/// A runtime binding was attempted with no 'Bind'
 		RUNTIME_NO_BIND,
 

@@ -501,7 +501,30 @@ namespace strange.unittests
 			};
 			BinderException ex = Assert.Throws<BinderException>(testDelegate); //Because we have two values in a Binder that only supports one
 			Assert.AreEqual (BinderExceptionType.RUNTIME_TOO_MANY_VALUES, ex.type);
+		}
 
+		[Test]
+		public void TestRuntimeExceptionUnqualifiedKeyException()
+		{
+			string jsonString = "[{\"Bind\":\"ISimpleInterface\",\"To\":\"strange.unittests.SimpleInterfaceImplementer\"}]";
+			TestDelegate testDelegate = delegate
+			{
+				binder.ConsumeBindings(jsonString);
+			};
+			BinderException ex = Assert.Throws<BinderException>(testDelegate); //Because we haven't fully qualified the key
+			Assert.AreEqual (BinderExceptionType.RUNTIME_NULL_VALUE, ex.type);
+		}
+
+		[Test]
+		public void TestRuntimeExceptionUnqualifiedValueException()
+		{
+			string jsonString = "[{\"Bind\":\"strange.unittests.ISimpleInterface\",\"To\":\"SimpleInterfaceImplementer\"}]";
+			TestDelegate testDelegate = delegate
+			{
+				binder.ConsumeBindings(jsonString);
+			};
+			BinderException ex = Assert.Throws<BinderException>(testDelegate); //Because we haven't fully qualified the value
+			Assert.AreEqual (BinderExceptionType.RUNTIME_NULL_VALUE, ex.type);
 		}
 	}
 

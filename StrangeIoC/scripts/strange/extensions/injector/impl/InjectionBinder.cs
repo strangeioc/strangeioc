@@ -174,24 +174,34 @@ namespace strange.extensions.injector.impl
 			// Bind in order
 			foreach (object key in keyList)
 			{
+				Type keyType = Type.GetType (key as string);
+				if (keyType == null)
+				{
+					throw new BinderException ("A runtime Injection Binding has resolved to null. Did you forget to register its fully-qualified name?\n Key:" + key, BinderExceptionType.RUNTIME_NULL_VALUE);
+				}
 				if (binding == null)
 				{
-					binding = Bind (Type.GetType (key as string));
+					binding = Bind (keyType);
 				}
 				else
 				{
-					binding = binding.Bind (Type.GetType (key as string));
+					binding = binding.Bind (keyType);
 				}
 			}
 			foreach (object value in valueList)
 			{
-				binding = binding.To (Type.GetType (value as string));
+				Type valueType = Type.GetType (value as string);
+				if (valueType == null)
+				{
+					throw new BinderException ("A runtime Injection Binding has resolved to null. Did you forget to register its fully-qualified name?\n Value:" + value, BinderExceptionType.RUNTIME_NULL_VALUE);
+				}
+				binding = binding.To (valueType);
 			}
 
 			return binding;
 		}
 
-		/// Default options: Weak
+		/// Additional options: ToSingleton, CrossContext
 		override protected IBinding addRuntimeOptions(IBinding b, List<object> options)
 		{
 			base.addRuntimeOptions (b, options);
