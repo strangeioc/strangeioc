@@ -30,6 +30,7 @@ using strange.extensions.injector.api;
 using strange.extensions.mediation.api;
 using strange.framework.api;
 using strange.framework.impl;
+using System.Collections.Generic;
 
 namespace strange.extensions.mediation.impl
 {
@@ -73,6 +74,40 @@ namespace strange.extensions.mediation.impl
 				//Even if not mapped, Views (and their children) have potential to be injected
 				injectViewAndChildren(view);
 			}
+		}
+
+		override protected IBinding performKeyValueBindings(List<object> keyList, List<object> valueList)
+		{
+			IBinding binding = null;
+
+			// Bind in order
+			foreach (object key in keyList)
+			{
+				Type keyType = Type.GetType (key as string);
+				if (keyType == null)
+				{
+					throw new BinderException ("A runtime Mediation Binding has resolved to null. Did you forget to register its fully-qualified name?\n View:" + key, BinderExceptionType.RUNTIME_NULL_VALUE);
+				}
+				if (binding == null)
+				{
+					binding = Bind (keyType);
+				}
+				else
+				{
+					binding = binding.Bind (keyType);
+				}
+			}
+			foreach (object value in valueList)
+			{
+				Type valueType = Type.GetType (value as string);
+				if (valueType == null)
+				{
+					throw new BinderException ("A runtime Mediation Binding has resolved to null. Did you forget to register its fully-qualified name?\n Mediator:" + value, BinderExceptionType.RUNTIME_NULL_VALUE);
+				}
+				binding = binding.To (valueType);
+			}
+
+			return binding;
 		}
 		
 		/// Initialize all IViews within this view
