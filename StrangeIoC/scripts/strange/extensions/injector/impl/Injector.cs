@@ -214,7 +214,13 @@ namespace strange.extensions.injector.impl
 
 		private object getValueInjection(Type t, object name, object target)
 		{
-			IInjectionBinding binding = binder.GetBinding (t, name);
+			IInjectionBinding suppliedBinding = null;
+			if (target != null)
+			{
+				suppliedBinding = binder.GetSupplier (t, target.GetType ());
+			}
+
+			IInjectionBinding binding = (suppliedBinding == null) ? binder.GetBinding (t, name) : suppliedBinding;
 			failIf(binding == null, "Attempt to Instantiate a null binding.", InjectionExceptionType.NULL_BINDING, t, name, target);
 			if (binding.type == InjectionBindingType.VALUE)
 			{

@@ -35,6 +35,7 @@ namespace strange.extensions.injector.impl
 	public class InjectionBinder : Binder, IInjectionBinder
 	{
 		private IInjector _injector;
+		protected Dictionary<Type, Dictionary<Type, IInjectionBinding>> suppliers = new Dictionary<Type, Dictionary<Type, IInjectionBinding>>();
 
 		public InjectionBinder ()
 		{
@@ -165,6 +166,62 @@ namespace strange.extensions.injector.impl
 				injector.reflector.Get (t);
 			}
 			return count;
+		}
+
+		public IInjectionBinding GetSupplier(Type injectionType, Type targetType)
+		{
+			if (suppliers.ContainsKey(targetType))
+			{
+				if (suppliers [targetType].ContainsKey(injectionType))
+				{
+					return suppliers [targetType][injectionType];
+				}
+			}
+			return null;
+		}
+		
+		public void Unsupply(Type injectionType, Type targetType)
+		{
+			IInjectionBinding binding = GetSupplier(injectionType, targetType);
+			if (binding != null)
+			{
+				suppliers [targetType].Remove(injectionType);
+				binding.Unsupply(targetType);
+			}
+		}
+		
+		public void Unsupply<T, U>()
+		{
+			Unsupply(typeof(T), typeof(U));
+		}
+
+		override protected void resolver(IBinding binding)
+		{
+			IInjectionBinding iBinding = binding as IInjectionBinding;
+			object [] supply = iBinding.GetSupply ();
+
+			if (supply != null)
+			{
+				foreach (object a in supply)
+				{
+					Type aType = a as Type;
+					if (suppliers.ContainsKey(aType) == false)
+					{
+						suppliers[aType] = new Dictionary<Type, IInjectionBinding>();
+					}
+					object[] keys = iBinding.key as object[];
+					foreach (object key in keys)
+					{
+						Type keyType = key as Type;
+						if (suppliers[aType].ContainsKey(keyType as Type) == false)
+						{
+							suppliers[aType][keyType] = iBinding;
+						}
+					}
+				}
+			}
+
+			base.resolver (binding);
 		}
 	}
 }

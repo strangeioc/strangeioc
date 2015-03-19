@@ -378,6 +378,32 @@ namespace strange.unittests
 			Assert.IsNotNull (instance.Instance1);
 			Assert.IsNotNull (instance.Instance2);
 		}
+
+		[Test]
+		public void TestSupplyBinding()
+		{
+
+			binder.Bind<ClassToBeInjected> ().To<ClassToBeInjected> ().ToName(SomeEnum.ONE);
+			binder.Bind<ClassToBeInjected>().To<ExtendsClassToBeInjected>()
+				.SupplyTo<HasANamedInjection> ()
+				.SupplyTo<ConstructorInjectsClassToBeInjected>();
+			binder.Bind<HasANamedInjection>().To<HasANamedInjection> ();
+			binder.Bind<HasANamedInjection2>().To<HasANamedInjection2> ();
+			binder.Bind<ConstructorInjectsClassToBeInjected>().To<ConstructorInjectsClassToBeInjected> ();
+
+			HasANamedInjection instance = binder.GetInstance<HasANamedInjection> ();
+			ConstructorInjectsClassToBeInjected instance2 = binder.GetInstance<ConstructorInjectsClassToBeInjected> ();
+			HasANamedInjection2 instance3 = binder.GetInstance<HasANamedInjection2> ();
+
+			Assert.IsInstanceOf<ExtendsClassToBeInjected> (instance.injected);
+			Assert.IsInstanceOf<ExtendsClassToBeInjected> (instance2.injected);
+			Assert.IsNotInstanceOf<ExtendsClassToBeInjected> (instance3.injected);
+
+			binder.Unsupply<ClassToBeInjected, HasANamedInjection> ();
+
+			HasANamedInjection instance4 = binder.GetInstance<HasANamedInjection> ();
+			Assert.IsNotInstanceOf<ExtendsClassToBeInjected> (instance4.injected);
+		}
 	}
 
 	interface ITestPooled : IPoolable
