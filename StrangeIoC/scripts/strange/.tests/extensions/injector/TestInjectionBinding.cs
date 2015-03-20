@@ -102,6 +102,20 @@ namespace strange.unittests
 				Assert.Throws<InjectionException> (testDelegate);
 			Assert.That (ex.type == InjectionExceptionType.ILLEGAL_BINDING_VALUE);
 		}
+
+		[Test]
+		public void TestSimpleSupplyBinding()
+		{
+			const string TEST_KEY = "TEST_KEY";
+
+			Binder.BindingResolver resolver = delegate (IBinding bound)
+			{
+				object[] value = (bound as IInjectionBinding).GetSupply();
+				Assert.AreEqual(value[0], typeof(HasANamedInjection));
+			};
+			InjectionBinding binding = new InjectionBinding (resolver);
+			binding.SupplyTo<HasANamedInjection> ();
+		}
 	}
 }
 
