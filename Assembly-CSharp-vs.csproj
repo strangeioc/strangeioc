@@ -419,5 +419,6 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SimpleInterfaceImplementerTwo.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SomeEnum.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\TestException.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectsClassToBeInjected.cs" />
   </ItemGroup>
 </Project>
