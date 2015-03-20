@@ -380,9 +380,101 @@ namespace strange.unittests
 		}
 
 		[Test]
-		public void TestSupplyBinding()
+		public void TestSimpleSupplyBinding()
 		{
+			binder.Bind<ClassToBeInjected> ().To<ClassToBeInjected> ();
+			binder.Bind<ClassToBeInjected> ().To<ExtendsClassToBeInjected> ().ToName(1)
+				.SupplyTo<ConstructorInjectsClassToBeInjected>();
 
+			binder.Bind<InjectsClassToBeInjected> ().To<InjectsClassToBeInjected> ();
+			binder.Bind<ConstructorInjectsClassToBeInjected> ().To<ConstructorInjectsClassToBeInjected> ();
+
+			InjectsClassToBeInjected instance1 = binder.GetInstance<InjectsClassToBeInjected> ();
+			ConstructorInjectsClassToBeInjected instance2 = binder.GetInstance<ConstructorInjectsClassToBeInjected> ();
+
+			Assert.IsInstanceOf<ClassToBeInjected> (instance1.injected);
+			Assert.IsInstanceOf<ClassToBeInjected> (instance2.injected);
+
+			Assert.IsNotInstanceOf<ExtendsClassToBeInjected> (instance1.injected);
+			Assert.IsInstanceOf<ExtendsClassToBeInjected> (instance2.injected);
+		}
+
+		[Test]
+		public void TestSupplyOverridesName()
+		{
+			binder.Bind<ClassToBeInjected> ().To<ClassToBeInjected> ().SupplyTo<HasANamedInjection> ();
+			binder.Bind<ClassToBeInjected> ().To<ClassToBeInjected> ().ToName("CapnJack").SupplyTo<HasANamedInjection2> ();
+			binder.Bind<HasANamedInjection>().To<HasANamedInjection> ();
+			binder.Bind<HasANamedInjection2>().To<HasANamedInjection2> ();
+
+			HasANamedInjection instance = binder.GetInstance<HasANamedInjection> ();
+			Assert.IsInstanceOf<ClassToBeInjected> (instance.injected);
+
+			HasANamedInjection2 instance2 = binder.GetInstance<HasANamedInjection2> ();
+			Assert.IsInstanceOf<ClassToBeInjected> (instance2.injected);
+		}
+
+		[Test]
+		public void TestChainedSupplyBinding()
+		{
+			binder.Bind<ClassToBeInjected>().To<ExtendsClassToBeInjected>()
+				.SupplyTo<HasANamedInjection> ()
+				.SupplyTo<ConstructorInjectsClassToBeInjected>()
+				.SupplyTo<InjectsClassToBeInjected>();
+
+			binder.Bind<HasANamedInjection>().To<HasANamedInjection> ();
+			binder.Bind<ConstructorInjectsClassToBeInjected>().To<ConstructorInjectsClassToBeInjected> ();
+			binder.Bind<InjectsClassToBeInjected>().To<InjectsClassToBeInjected> ();
+
+			HasANamedInjection instance = binder.GetInstance<HasANamedInjection> ();
+			ConstructorInjectsClassToBeInjected instance2 = binder.GetInstance<ConstructorInjectsClassToBeInjected> ();
+			InjectsClassToBeInjected instance3 = binder.GetInstance<InjectsClassToBeInjected> ();
+
+			Assert.IsInstanceOf<ClassToBeInjected> (instance.injected);
+			Assert.IsInstanceOf<ClassToBeInjected> (instance2.injected);
+			Assert.IsInstanceOf<ClassToBeInjected> (instance3.injected);
+		}
+
+		[Test]
+		public void TestUnsupplyBinding()
+		{
+			binder.Bind<ClassToBeInjected> ().To<ExtendsClassToBeInjected> ()
+				.ToName("Supplier")
+				.SupplyTo<InjectsClassToBeInjected> ();
+
+			binder.Bind<ClassToBeInjected> ().To<ClassToBeInjected> ();
+			
+			binder.Bind<InjectsClassToBeInjected>().To<InjectsClassToBeInjected> ();
+
+			InjectsClassToBeInjected instance = binder.GetInstance<InjectsClassToBeInjected> ();
+			Assert.IsInstanceOf<ClassToBeInjected> (instance.injected);
+			Assert.IsInstanceOf<ExtendsClassToBeInjected> (instance.injected);
+
+			binder.Unsupply<ClassToBeInjected, InjectsClassToBeInjected> ();
+
+			InjectsClassToBeInjected instance2 = binder.GetInstance<InjectsClassToBeInjected> ();
+			Assert.IsInstanceOf<ClassToBeInjected> (instance2.injected);
+			Assert.IsNotInstanceOf<ExtendsClassToBeInjected> (instance2.injected);
+		}
+
+		[Test]
+		public void TestGetSupplier()
+		{
+			binder.Bind<ClassToBeInjected> ().To<ExtendsClassToBeInjected> ()
+				.ToName("Supplier")
+				.SupplyTo<InjectsClassToBeInjected> ();
+
+			IInjectionBinding binding = binder.GetSupplier (typeof(ClassToBeInjected), typeof(InjectsClassToBeInjected));
+
+			Assert.IsNotNull (binding);
+			Assert.AreEqual (typeof (ClassToBeInjected), (binding.key as object[]) [0]);
+			Assert.AreEqual (typeof (ExtendsClassToBeInjected), binding.value);
+			Assert.AreEqual (typeof (InjectsClassToBeInjected), binding.GetSupply () [0]);
+		}
+
+		[Test]
+		public void TestComplexSupplyBinding()
+		{
 			binder.Bind<ClassToBeInjected> ().To<ClassToBeInjected> ().ToName(SomeEnum.ONE);
 			binder.Bind<ClassToBeInjected>().To<ExtendsClassToBeInjected>()
 				.SupplyTo<HasANamedInjection> ()
