@@ -1,0 +1,12 @@
+{
+  "name": "closure-compiler",
+  "_cacheHeaders": {
+    "Last-Modified": "Mon, 03 Jun 2013 19:09:21 GMT",
+    "Content-Length": "5774904",
+    "Content-Type": "application/zip; charset=binary",
+    "Content-Disposition": "attachment; filename=\"compiler-20130603.zip\""
+  },
+  "_source": "https://closure-compiler.googlecode.com/files/compiler-20130603.zip",
+  "_target": "*",
+  "_originalSource": "https://closure-compiler.googlecode.com/files/compiler-20130603.zip"
+}

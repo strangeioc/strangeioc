@@ -1,61 +1,60 @@
-<!doctype html>
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>FAQ - StrangeIoC</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>StrangeIoC - FAQ</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-    
-      <header>
-      <h1><a href="./index.html">StrangeIoC</a></h1>
-        <p></p>
 
-        <p class="view"><a href="https://github.com/strangeioc/strangeioc">View the Project on GitHub <small>strangeioc/strangeioc</small></a></p>
-        <ul>
-          <li><a href="https://github.com/strangeioc/strangeioc/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="http://u3d.as/content/third-motion-inc-/strange-io-c/4Xj">Get from <strong>Unity Store</strong></a></li>
-          <li><a href="https://github.com/strangeioc/strangeioc">View on <strong>GitHub</strong></a></li>
-        </ul>
-        <p class="view"><a href="./exec.html">Overview</a> (why you want to get Strange)</p>
-        <p class="view"><a href="./docs/html/index.html">Docs</a> (Doxygen-generated)</p>
-        <p class="view"><a href="./TheBigStrangeHowTo.html">The Big, Strange How-To</a> (developer manual)</p>
-        <p class="view"><a href="./faq.html">FAQ</a></p>
-        <p class="view">Use Robotlegs? <a href="./rl.html">This is for you</a>!</p>
-        <p class="view"><a href="http://github.com/strangeioc/strangeioc/wiki">Strange Wiki</a></p>
-        <p><br/>Follow StrangeIoC on</p>
-<p class="view"><a href="http://www.facebook.com/strangeioc">Facebook</a></p>
-        <p class="view"><a href="https://twitter.com/StrangeIoC">Twitter</a></p>
-        <p class="view"><a href="https://groups.google.com/forum/#!forum/strangeioc">Google Groups</a></p>
-      </header>
-      <section>
-       
-<img src="img/logo.png" alt="StrangeIoC" />
- <h3>FAQ</h3>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/collapse.js"></script>
+    <script src="js/transition.js"></script>
+    <script src="js/init_menu.js"></script>
+    <script src="js/open_section.js"></script>
+    <script type="text/javascript" src="stylesheets/prettify/prettify.js"></script>
+    <link rel="stylesheet" href="stylesheets/prettify/prettify.css" type="text/css" />
+</head>
+<body  onload="prettyPrint();openSection('Two')">
+    <div class="col-md-1"></div>
+    <div class="col-md-2">
+        <div id="menu"></div>
+    </div>
 
- <h2><a name="whats-strange" href="#whats-strange"></a>What is Strange? What is StrangeIoC? Is there a difference?</h2>
+    <div class="col-md-8 main-content">
+
+    <a href="index.html"><img src="img/logo.png" alt="StrangeIoC" /></a>
+ <h2>FAQ</h2>
+
+ <h3><a name="whats-strange" href="#whats-strange"></a>What is Strange? What is StrangeIoC? Is there a difference?</h3>
  <p><strong>StrangeIoC</strong> is an Inversion-of-Control library written for C# and specifically with Unity3D in mind. It features Dependency Injection, a common event bus and an optional MVCS structure which is great for building games and apps from something quite simple up to the very, very complex. <strong>Strange</strong> is just another (colloquial) name for StrangeIoC.</p>
- <h2><a name="current-version" href="#current-version"></a>What's the current version?</h2>
+ <h3><a name="current-version" href="#current-version"></a>What's the current version?</h3>
  <p>See <a href="https://github.com/strangeioc/strangeioc/blob/master/StrangeIoC/scripts/strange/README.md">here.</a></p>
- <h2><a name="whats-mvcs" href="#whats-mvcs"></a>What's MVCS?</h2>
+ <h3><a name="whats-mvcs" href="#whats-mvcs"></a>What's MVCS?</h3>
  <p><a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">Model-View-Controller</a> (MVC) is a standard architecture/design pattern for designing applications. The 'S' in MVCS refers to services, which suggests that MVC doesn't entirely cover the aspect of architecture that involves communicating with resources outside the application itself.</p>
- <h2><a name="whats-ioc-di" href="whats-ioc-di"></a>What's Inversion-of-Control? What's Dependency Injection?</h2>
+ <h3><a name="whats-ioc-di" href="whats-ioc-di"></a>What's Inversion-of-Control? What's Dependency Injection?</h3>
  <p><a href="http://en.wikipedia.org/wiki/Inversion_of_control">Inversion-of-Control</a> (IoC) and <a href="http://en.wikipedia.org/wiki/Dependency_injection">Dependency Injection</a> (DI) are design patterns in which classes declare dependencies only in an abstract form, for example, by naming an Interface or a superclass, rather than the specific class they need. It is up to some other actor in the system to supply a concrete class to fulfill those dependencies. There are many forms of DI.</p>
  <p>This &ldquo;inversion&rdquo; expresses the idea that, instead of a class declaring &ldquo;I need a thing&rdquo;, some other actor tells it &ldquo;here is what you need.&rdquo; Dependency Injection is the process by which a special class (the Injector) provides the things that the other classes need.</p>
  <p>Strange fulfills DI with a runtime Reflector that analyzes each class (using System.Reflection). An Injector class then fulfills the dependencies based on the Reflector's analysis.</p>
- <h2><a name="ioc-different" href="#ioc-different"></a>I already use Interfaces. That's basic OO. How is IoC any different?</h2>
+ <h3><a name="ioc-different" href="#ioc-different"></a>I already use Interfaces. That's basic OO. How is IoC any different?</h3>
  <p>"Uncle" Bob Martin explains this better than I can <a href="http://www.objectmentor.com/resources/articles/dip.pdf">in this paper</a>. The gist is that IoC is an extension of OO principles that refer not so much to how you <em>structure your classes</em> as to how you <em>fulfill their dependencies</em>. IoC structures your <em>system</em> so that your classes are truly Object-Oriented.</p>
- <h2><a name="slow-reflection" href="#slow-reflection"></a>I've heard that System.Reflection is slow. Is that true?</h2>
+ <h3><a name="slow-reflection" href="#slow-reflection"></a>I've heard that System.Reflection is slow. Is that true?</h3>
  <p>Yes, it is slow. Strange handles this problem by caching each reflection. So no class is ever reflected more than once. We've also added two "pre-reflection" methods, which  allow you to send as many reflections as you like to the reflector at a moment of your choosing (say, while the user is looking at some UI).</p>
- <h2><a name="why-mediator" href="#why-mediator"></a>What's the Mediator for? Why do I need one? Why can't I just listen with a View?</h2>
+ <h3><a name="why-mediator" href="#why-mediator"></a>What's the Mediator for? Why do I need one? Why can't I just listen with a View?</h3>
  <p>Mediation is usually the most difficult part of this type of system to grok. The short answer of "why do I need a Mediator?" is "You don't." Like most parts of Strange, its use is optional. But the answer to "why isn't that functionality performed by the View?" has a better - if longer - answer.</p>
 <p>Let's consider two common View use cases, both of which you've probably dealt with at some point:</p>
 <ul><li><strong>Case 1</strong>: Big deadline, no time.</li>
@@ -63,11 +62,11 @@
 <p>The first case is what many/most of us experience day-to-day in any busy studio. The clock is ticking. Priorities are shifting. Carefully written design documents are thrown out the window as we struggle to meet an unrealistic schedule. In the midst of this turmoil, what part of the app is most in flux? The answer is usually the View. Change the user flow. Make this thing bigger or smaller. Move that button over there and stick in a challenge. In this scenario, Mediation serves as a layer of insulation between the View and the rest of the application.<em> The View isn't listening for/responding to changing events from the app. Neither is the View dispatching events to the rest of the app. It carries on a private conversation with the Mediator.</em> Chaos in the View <strong>remains</strong> in the View and tends not to infect the rest of your application. So long as your View carries on firing its events and fulfilling its API, the remainder of the app is undisturbed.</p>
 <p>In case two, the View is not in chaos. It is, in fact, a solid, well-tested piece of code that you want to reuse over and over again (perhaps even multiple times within the same app). So imagine an Alert component with just two Events: Alert.OK and Alert.CANCEL. If you map Alert.OK and Alert.CANCEL to specific commands, your component isn't really very flexible, is it? Either these events only do one thing each within your app, or else the mapped command needs to understand the context of OK/CANCEL in order to know what to do. And you certainly don't want to keep changing the events fired by the Alert component. That wouldn't be at all flexible. But if the Alert component has a Mediator, then the Mediator can take care of the specific context. In the case of a LoginAlert, the Mediator catches OK/CANCEL events and sends MyEvent.LOGIN or MyEvent.DONT_LOGIN. In the case of an AllianceChallengeAlert, the Mediator converts OK/CANCEL to JOIN_ALLIANCE/DONT_JOIN_ALLIANCE. In this way, a component needn't know anything about the larger app. It becomes appropriately flexible and reusable.</p>
 <p>In short, the Mediator is <strong>throwaway code.</strong> It knows about the View. It knows about the app. It keeps the View concerned solely with itself and allows greater flexibility.</p>
- <h2><a name="other-features" href="#other-features"></a>What other features does Strange provide?</h2>
+ <h3><a name="other-features" href="#other-features"></a>What other features does Strange provide?</h3>
  <p>Strange has a big feature set for such a small library. The full feature set is on our <a href="./index.html">home</a> page.</p>
- <h2><a name="binding-framework" href="#binding-framework"></a>You've explained IoC, but I've heard you say that Strange is also a Binding framework. What's that mean?</h2>
+ <h3><a name="binding-framework" href="#binding-framework"></a>You've explained IoC, but I've heard you say that Strange is also a Binding framework. What's that mean?</h3>
  <p>Strange is built on top of a very simple class called "Binder", which is a Collection (just like Array or Dictionary). The Binder basically attaches any item - or a set of items - to any other item or set. The 'Key' items are triggers, while the 'Value' items are results. So, in DI for example, an Interface "key" could trigger a concrete class "value". But the uses of Binder go way past DI. Strange has an EventDispatcher which is a Binder. An event triggers one or more callbacks. There's a CommandBinder in which an event triggers a command, a batch of commands or a sequence of Commands. If you think in terms of a Binder being a collection of actions/reactions, the uses are endless.</p>
- <h2><a name="binding-framework" href="#monobehaviours"></a>Part of my app is a Controller/Model/Service, but relies on a MonoBehaviour. How do I make this work in Strange?</h2>
+ <h3><a name="monobehaviours" href="#monobehaviours"></a>Part of my app is a Controller/Model/Service, but relies on a MonoBehaviour. How do I make this work in Strange?</h3>
 <p>This is a standard problem with Unity and anyone wanting to practice MVC (or similar) patterns. Everything MonoBehaviour is necessarily a View in some respect, since it needs to be attached to a GameObject. We don't have a definitive "best practice", but here's how we handle this in-house.</p>
 <p>Our practice is to create hybrid solutions that inject a GameObject — for example, the ContextView — into our Controller/Model/Service, and then attach the necessary MonoBehaviour.
 <pre class="prettyprint">
@@ -86,30 +85,25 @@ public class SomeService : ISomeService
 </pre>
 <p>Our ContextView therefore has a list of MonoBehaviours attached to it, i.e., all the "global" MonoBehaviour-based services.</p>
 <p>This is far from perfect, since the Controller/Model/Service is now dependent on Unity and therefore no longer unit testable. But we don't like to treat a Model/Service like a View, just because Unity shoehorns it in that way. Also, note that the MonoBehaviour is now isolated inside the Service. If you someday find a better solution, perhaps one that doesn't require a MonoBehaviour, you have just this one class in which to refactor that change.</p>
- <h2><a name="how-much" href="#how-much"></a>OK. I'm interested! How much does it cost?</h2>
- <p>Totally free! And Open Source under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2</a>. You can download it from any of the buttons on the left, pull it from <a href="https://github.com/strangeioc/strangeioc">github</a>, or else get it for free from the <a href="http://unity3d.com/asset-store/">Unity Store</a>.</p>
- <h2><a name="feature-ideas" href="#feature-ideas"></a>I have a feature idea. Where does that...?</h2>
+ <h3><a name="how-much" href="#how-much"></a>OK. I'm interested! How much does it cost?</h3>
+ <p>Totally free! And Open Source under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2</a>. You can download it from any of the buttons on the left, pull it from <a href="https://github.com/strangeioc/strangeioc">GitHub</a>, or else get it for free from the <a href="https://www.assetstore.unity3d.com/en/#!/content/9267">Unity Store</a>.</p>
+ <h3><a name="feature-ideas" href="#feature-ideas"></a>I have a feature idea. Where does that...?</h3>
  <p>Way ahead of you. Add it <a href="https://github.com/strangeioc/strangeioc/issues">here</a></p>
- <h2><a name="bugs" href="#bugs"></a>I've found a bug. How do I...?</h2>
+ <h3><a name="bugs" href="#bugs"></a>I've found a bug. How do I...?</h3>
  <p>Right <a href="https://github.com/strangeioc/strangeioc/issues">here</a> cowboy.</p>
- <h2><a name="pull-request" href="#pull-request"></a>I've fixed a bug/added a feature to StrangeIoC and would like to contribute.</h2>
+ <h3><a name="pull-request" href="#pull-request"></a>I've fixed a bug/added a feature to StrangeIoC and would like to contribute.</h3>
  <p>We'd love to review it and consider it for inclusion. Send us a pull request via GitHub. Please note that in order for any contribution to StrangeIoC to be considered,  the author must agree to contribute under the same Apache 2 license that governs StrangeIoC itself.</p>
- <h2><a name="support" href="#support"></a>Do you provide support?</h2>
+ <h3><a name="support" href="#support"></a>Do you provide support?</h3>
  <p>Strange is one of those "provided as-is" things. I'm very keen to hear your reactions and will try to make fixes. And of course you can fork the repo and send me pull requests. I hope a community will spring up around this framework and others will assist in providing mutual support. But I've got a job and unfortunately can't field requests day-to-day.</p>
- <h2><a name="strange-is-a-strange-name" href="#strange-is-a-strange-name"></a>"Strange" is a strange name.</h2>
+ <h3><a name="strange-is-a-strange-name" href="#strange-is-a-strange-name"></a>"Strange" is a strange name.</h3>
  <p>That's not a question.</p>
- <h2><a name="name-strange" href="#name-strange"></a>OK, why did you name your framework "Strange?"</h2>
+ <h3><a name="name-strange" href="#name-strange"></a>OK, why did you name your framework "Strange?"</h3>
  <p>Ah! The idea came from the mathematical notion of "<a href="http://en.wikipedia.org/wiki/Attractor#Strange_attractor">strange attractors</a>" which, as best I understand them, are meant to create orderly patterns, mostly in the context of chaotic systems. I thought this was a great metaphor for what I'm doing. Plus, it's kind of funny. Don't you think it's funny?</p>
- <h2><a name="look-im-the-one" href="#look-im-the-one"></a>Look, I'm the one who's supposed to be asking the questions.</h2>
+ <h3><a name="look-im-the-one" href="#look-im-the-one"></a>Look, I'm the one who's supposed to be asking the questions.</h3>
  <p>Oh yeah. Sorry.</p>
  <p>&nbsp;</p>
-      </section>
-      <footer>
-      	<p><small>StrangeIoC is a project by <a href="http://thirdmotion.com">ThirdMotion, Inc</a>.</small></p>
-        <p><small>&copy; 2013. Third Motion, Inc.</small></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+    <script src="js/scale.fix.js"></script>
   </body>
 </html>
