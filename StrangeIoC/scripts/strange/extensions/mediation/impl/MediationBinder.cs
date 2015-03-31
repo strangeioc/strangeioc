@@ -132,6 +132,7 @@ namespace strange.extensions.mediation.impl
 				}
 			}
 			injectionBinder.injector.Inject (mono, false);
+
 		}
 
 		new public IMediationBinding Bind<T> ()
@@ -162,7 +163,7 @@ namespace strange.extensions.mediation.impl
 					{
 						throw new MediationException(viewType + "mapped to itself. The result would be a stack overflow.", MediationExceptionType.MEDIATOR_VIEW_STACK_OVERFLOW);
 					}
-					MonoBehaviour mediator = mono.gameObject.AddComponent(mediatorType) as MonoBehaviour;
+					MonoBehaviour mediator = createMediator(mono, mediatorType);
 					if (mediator == null)
 						throw new MediationException ("The view: " + viewType.ToString() + " is mapped to mediator: " + mediatorType.ToString() + ". AddComponent resulted in null, which probably means " + mediatorType.ToString().Substring(mediatorType.ToString().LastIndexOf(".")+1) + " is not a MonoBehaviour.", MediationExceptionType.NULL_MEDIATOR);
 					if (mediator is IMediator)
@@ -174,8 +175,20 @@ namespace strange.extensions.mediation.impl
 					injectionBinder.Unbind(typeToInject);
 					if (mediator is IMediator)
 						((IMediator)mediator).OnRegister ();
+
+
 				}
 			}
+		}
+
+		virtual protected MonoBehaviour createMediator(MonoBehaviour mono, Type mediatorType)
+		{
+			return mono.gameObject.AddComponent(mediatorType) as MonoBehaviour;
+		}
+
+		virtual protected void removeMediator(IMediator mediator)
+		{
+			mediator.OnRemove();
 		}
 
 		/// Removes a mediator when its view is destroyed
@@ -194,7 +207,7 @@ namespace strange.extensions.mediation.impl
 					IMediator mediator = mono.GetComponent(mediatorType) as IMediator;
 					if (mediator != null)
 					{
-						mediator.OnRemove();
+						removeMediator(mediator);
 					}
 				}
 			}

@@ -25,6 +25,7 @@
 
 using System;
 using System.Collections.Generic;
+using strange.extensions.reflector.api;
 using strange.framework.api;
 using strange.extensions.injector.api;
 using strange.extensions.reflector.impl;
@@ -41,7 +42,7 @@ namespace strange.extensions.injector.impl
 		{
 			injector = new Injector ();
 			injector.binder = this;
-			injector.reflector = new ReflectionBinder ();
+			injector.reflector = new ReflectionBinder();
 		}
 
 		public object GetInstance(Type key)

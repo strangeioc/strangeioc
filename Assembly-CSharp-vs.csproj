@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -80,6 +80,7 @@
     <Folder Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\common\controller\" />
     <Folder Include="StrangeIoC\scripts\strange\lib\" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="StrangeIoC\scripts\strange\extensions\context\api\ContextEvent.cs.meta" />
     <None Include="StrangeIoC\scripts\strange\extensions\context\api\ContextExceptionType.cs.meta" />
@@ -216,6 +217,8 @@
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\MediationException.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\Mediator.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\View.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\ListensTo.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\SignalMediationBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\reflector\api\IReflectedClass.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\reflector\api\IReflectionBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\reflector\api\ReflectionExceptionType.cs" />
