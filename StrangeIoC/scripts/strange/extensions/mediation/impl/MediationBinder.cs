@@ -163,20 +163,24 @@ namespace strange.extensions.mediation.impl
 					{
 						throw new MediationException(viewType + "mapped to itself. The result would be a stack overflow.", MediationExceptionType.MEDIATOR_VIEW_STACK_OVERFLOW);
 					}
-					MonoBehaviour mediator = createMediator(mono, mediatorType);
-					if (mediator == null)
-						throw new MediationException ("The view: " + viewType.ToString() + " is mapped to mediator: " + mediatorType.ToString() + ". AddComponent resulted in null, which probably means " + mediatorType.ToString().Substring(mediatorType.ToString().LastIndexOf(".")+1) + " is not a MonoBehaviour.", MediationExceptionType.NULL_MEDIATOR);
-					if (mediator is IMediator)
-						((IMediator)mediator).PreRegister ();
+					bool isTrueMediator = mediatorType.IsAssignableFrom (typeof(IMediator));
+					if (!isTrueMediator || (isTrueMediator && mono.GetComponent (mediatorType) == null))
+					{
+						MonoBehaviour mediator = createMediator(mono, mediatorType);
+						if (mediator == null)
+							throw new MediationException ("The view: " + viewType.ToString() + " is mapped to mediator: " + mediatorType.ToString() + ". AddComponent resulted in null, which probably means " + mediatorType.ToString().Substring(mediatorType.ToString().LastIndexOf(".")+1) + " is not a MonoBehaviour.", MediationExceptionType.NULL_MEDIATOR);
+						if (isTrueMediator)
+							((IMediator)mediator).PreRegister ();
 
-					Type typeToInject = (binding.abstraction == null || binding.abstraction.Equals(BindingConst.NULLOID)) ? viewType : binding.abstraction as Type;
-					injectionBinder.Bind (typeToInject).ToValue (view).ToInject(false);
-					injectionBinder.injector.Inject (mediator);
-					injectionBinder.Unbind(typeToInject);
-					if (mediator is IMediator)
-						((IMediator)mediator).OnRegister ();
-
-
+						Type typeToInject = (binding.abstraction == null || binding.abstraction.Equals(BindingConst.NULLOID)) ? viewType : binding.abstraction as Type;
+						injectionBinder.Bind (typeToInject).ToValue (view).ToInject(false);
+						injectionBinder.injector.Inject (mediator);
+						injectionBinder.Unbind(typeToInject);
+						if (isTrueMediator)
+						{
+							((IMediator) mediator).OnRegister ();
+						}
+					}
 				}
 			}
 		}
