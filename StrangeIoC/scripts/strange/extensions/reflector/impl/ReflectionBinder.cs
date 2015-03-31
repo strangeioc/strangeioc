@@ -112,9 +112,9 @@ namespace strange.extensions.reflector.impl
 		private ConstructorInfo findPreferredConstructor(Type type)
 		{
 			ConstructorInfo[] constructors = type.GetConstructors(BindingFlags.FlattenHierarchy | 
-																		BindingFlags.Public | 
-																		BindingFlags.Instance |
-																		BindingFlags.InvokeMethod);
+																	BindingFlags.Public | 
+																	BindingFlags.Instance |
+																	BindingFlags.InvokeMethod);
 			if (constructors.Length == 1)
 			{
 				return constructors [0];
@@ -149,7 +149,6 @@ namespace strange.extensions.reflector.impl
 			List<KeyValuePair<MethodInfo, Attribute>> attrMethods = new List<KeyValuePair<MethodInfo, Attribute>>();
 			foreach (MethodInfo method in methods)
 			{
-				
 				object[] tagged = method.GetCustomAttributes (typeof(PostConstruct), true);
 				if (tagged.Length > 0)
 				{
@@ -178,10 +177,10 @@ namespace strange.extensions.reflector.impl
 			object[] names = new object[0];
 
 			MemberInfo[] privateMembers = type.FindMembers(MemberTypes.Property,
-													BindingFlags.FlattenHierarchy | 
-													BindingFlags.SetProperty | 
-													BindingFlags.NonPublic | 
-													BindingFlags.Instance, 
+													BindingFlags.FlattenHierarchy |
+													BindingFlags.SetProperty |
+													BindingFlags.NonPublic |
+													BindingFlags.Instance,
 													null, null);
 			foreach (MemberInfo member in privateMembers)
 			{
@@ -193,10 +192,10 @@ namespace strange.extensions.reflector.impl
 			}
 
 			MemberInfo[] members = type.FindMembers(MemberTypes.Property,
-														  BindingFlags.FlattenHierarchy | 
-														  BindingFlags.SetProperty | 
-														  BindingFlags.Public | 
-														  BindingFlags.Instance, 
+														  BindingFlags.FlattenHierarchy |
+														  BindingFlags.SetProperty |
+														  BindingFlags.Public |
+														  BindingFlags.Instance,
 														  null, null);
 
 			foreach (MemberInfo member in members)
