@@ -35,7 +35,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\Program Files\Unity5rc4\Editor\Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>..\..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.dll</HintPath>
@@ -44,7 +44,7 @@
     <Reference Include="nunit.core, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
     <Reference Include="nunit.core.interfaces, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
     <Reference Include="nunit.framework">
-      <HintPath>packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <HintPath>..\..\..\..\Program Files\Unity5rc4\Editor\Data\Managed\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -71,6 +71,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\signal\TestPromise.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\CommandExceptionType.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\ICommand.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\ICommandBinder.cs" />
@@ -146,6 +147,7 @@
     <Compile Include="StrangeIoC\scripts\strange\extensions\sequencer\impl\SequenceCommand.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\sequencer\impl\Sequencer.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\sequencer\impl\SequencerException.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\signal\impl\Promise.cs" />
     <Compile Include="StrangeIoC\scripts\strange\framework\api\BinderExceptionType.cs" />
     <Compile Include="StrangeIoC\scripts\strange\framework\api\BindingConst.cs" />
     <Compile Include="StrangeIoC\scripts\strange\framework\api\BindingConstraintType.cs" />
