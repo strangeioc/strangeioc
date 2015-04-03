@@ -140,7 +140,109 @@ namespace strange.unittests
             Assert.AreEqual(testInt + 1, testValue);
         }
 
-        [Test]
+		[Test]
+		public void TestRemoveListener()
+		{
+			Signal<int> signal = new Signal<int>();
+
+			signal.AddListener(OneArgSignalCallback);
+
+			signal.Dispatch(testInt);
+			Assert.AreEqual(testInt, testValue);
+
+			signal.RemoveListener(OneArgSignalCallback);
+			signal.Dispatch(testInt);
+			Assert.AreEqual(testInt, testValue);
+		}
+
+		[Test]
+		public void RemoveListener_NoType_ExpectsListenerRemoved()
+		{
+			Signal signal = new Signal();
+
+			signal.AddListener(NoArgSignalCallback);
+
+			signal.Dispatch();
+			Assert.AreEqual(1, testValue);
+
+			signal.RemoveListener(NoArgSignalCallback);
+			signal.Dispatch();
+			Assert.AreEqual(1, testValue);
+		}
+
+#region RemoveAllListeners
+
+		[Test]
+	    public void TestRemoveAllListeners()
+	    {
+		    Signal signal = new Signal();
+
+			signal.AddListener(NoArgSignalCallback);
+			signal.AddListener(NoArgSignalCallbackTwo);
+
+			signal.RemoveAllListeners();
+			signal.Dispatch();
+
+			Assert.AreEqual(0, testValue);
+	    }
+		[Test]
+		public void TestRemoveAllListenersOne()
+		{
+			Signal<int> signal = new Signal<int>();
+
+			signal.AddListener(OneArgSignalCallback);
+			signal.AddListener(OneArgSignalCallbackTwo);
+
+			signal.RemoveAllListeners();
+			signal.Dispatch(testInt);
+
+			Assert.AreEqual(0, testValue);
+		}
+		[Test]
+		public void TestRemoveAllListenersTwo()
+		{
+			Signal<int, int> signal = new Signal<int, int>();
+
+			signal.AddListener(TwoArgSignalCallback);
+			signal.AddListener(TwoArgSignalCallbackTwo);
+
+			signal.RemoveAllListeners();
+			signal.Dispatch(testInt, testIntTwo);
+
+			Assert.AreEqual(0, testValue);
+		}
+		[Test]
+		public void TestRemoveAllListenersThree()
+		{
+			Signal<int, int, int> signal = new Signal<int, int, int>();
+
+			signal.AddListener(ThreeArgSignalCallback);
+			signal.AddListener(ThreeArgSignalCallbackTwo);
+
+			signal.RemoveAllListeners();
+			signal.Dispatch(testInt, testIntTwo, testIntThree);
+
+			Assert.AreEqual(0, testValue);
+		}
+		[Test]
+		public void TestRemoveAllListenersFour()
+		{
+			Signal<int, int, int, int> signal = new Signal<int, int, int, int>();
+
+			signal.AddListener(FourArgSignalCallback);
+			signal.AddListener(FourArgSignalCallbackTwo);
+
+			signal.RemoveAllListeners();
+			signal.Dispatch(testInt, testIntTwo, testIntThree, testIntFour);
+
+			Assert.AreEqual(0, testValue);
+		}
+
+#endregion
+
+#region GetTypes
+
+		[Test]
         public void GetTypes_ThreeType_ExpectsTypesReturnedInList()
         {
             Signal<int, string, float> signal = new Signal<int, string, float>();
@@ -171,8 +273,10 @@ namespace strange.unittests
             expected.Add(typeof(Signal));
             Assert.AreEqual(expected, actual);
         }
+#endregion
 
-        [Test]
+#region NoCallbackDuplication
+		[Test]
         public void AddListener_SignalWithNoTypeGivenSameCallbackMultipleTimes_ExpectsDelegateCalledOnlyOnce()
         {
             Signal signal = new Signal();
@@ -196,11 +300,6 @@ namespace strange.unittests
             signal.Dispatch();
 
             Assert.AreEqual(1, intToIncrement);
-        }
-
-        private void SimpleSignalCallback()
-        {
-            intToIncrement++;
         }
 
         [Test]
@@ -257,16 +356,6 @@ namespace strange.unittests
             Assert.AreEqual(expected, this.testValue);
         }
 
-        private int GetTwoIntExpected()
-        {
-            return testInt + testIntTwo;
-        }
-
-        private void TwoArgCallback(int arg1, int arg2)
-        {
-            this.testValue += arg1 + arg2;
-        }
-
         [Test]
         public void AddListener_SignalWithThreeTypesGivenSameCallbackMultipleTimes_ExpectsDelegateCalledOnlyOnce()
         {
@@ -279,7 +368,6 @@ namespace strange.unittests
 
             int expected = this.GetThreeIntExpected();
             Assert.AreEqual(expected, this.testValue);
-
         }
 
         [Test]
@@ -294,17 +382,6 @@ namespace strange.unittests
 
             int expected = this.GetThreeIntExpected();
             Assert.AreEqual(expected, this.testValue);
-
-        }
-
-        private void ThreeArgCallback(int arg1, int arg2, int arg3)
-        {
-            this.testValue += arg1 + arg2 + arg3;
-        }
-
-        private int GetThreeIntExpected()
-        {
-            return this.GetTwoIntExpected() + testIntThree;
         }
 
         [Test]
@@ -333,77 +410,21 @@ namespace strange.unittests
 
             int expected = this.GetFourIntExpected();
             Assert.AreEqual(expected, this.testValue);
-
         }
 
-        private int GetFourIntExpected()
-        {
-            return this.GetThreeIntExpected() + testIntFour;
-        }
+#endregion
 
-        private void CreateFourInts()
-        {
-            this.CreateThreeInts();
-            this.testIntFour = 4;
-        }
+#region callback
 
-        private void CreateThreeInts()
-        {
-            this.CreateTwoInts();
-            this.testIntThree = 3;
-        }
-
-        private void CreateTwoInts()
-        {
-            this.CreateOneInt();
-            this.testIntTwo = 2;
-        }
-
-        private void CreateOneInt()
-        {
-            this.testInt = 1;
-        }
-
-        private void FourArgCallback(int arg1, int arg2, int arg3, int arg4)
-        {
-            this.testValue += arg1 + arg2 + arg3 + arg4;
-        }
-
-        [Test]
-        public void TestRemoveListener()
-        {
-            Signal<int> signal = new Signal<int>();
-
-            signal.AddListener(OneArgSignalCallback);
-
-            signal.Dispatch(testInt);
-            Assert.AreEqual(testInt, testValue);
-
-            signal.RemoveListener(OneArgSignalCallback);
-            signal.Dispatch(testInt);
-            Assert.AreEqual(testInt, testValue);
-        }
-
-        [Test]
-        public void RemoveListener_NoType_ExpectsListenerRemoved()
-        {
-            Signal signal = new Signal();
-
-            signal.AddListener(NoArgSignalCallback);
-
-            signal.Dispatch();
-            Assert.AreEqual(1, testValue);
-
-            signal.RemoveListener(NoArgSignalCallback);
-            signal.Dispatch();
-            Assert.AreEqual(1, testValue);
-        }
-
-        //callbacks
-        private void NoArgSignalCallback()
+		private void NoArgSignalCallback()
         {
             testValue++;
         }
+
+	    private void NoArgSignalCallbackTwo()
+	    {
+		    testValue += 10;
+	    }
 
         private void OneArgSignalCallback(int argInt)
         {
@@ -420,12 +441,24 @@ namespace strange.unittests
             testValue += two;
         }
 
+		private void TwoArgSignalCallbackTwo(int one, int two)
+		{
+			testValue *= one;
+			testValue *= two;
+		}
+
         private void ThreeArgSignalCallback(int one, int two, int three)
         {
             testValue += one;
             testValue += two;
             testValue *= three;
         }
+		private void ThreeArgSignalCallbackTwo(int one, int two, int three)
+		{
+			testValue *= one;
+			testValue *= two;
+			testValue *= three;
+		}
 
         private void FourArgSignalCallback(int one, int two, int three, int four)
         {
@@ -434,5 +467,73 @@ namespace strange.unittests
             testValue *= three;
             testValue -= four;
         }
-    }
+		private void FourArgSignalCallbackTwo(int one, int two, int three, int four)
+		{
+			testValue *= one;
+			testValue *= two;
+			testValue *= three;
+			testValue *= four;
+		}
+
+		private void SimpleSignalCallback()
+		{
+			intToIncrement++;
+		}
+
+		private int GetTwoIntExpected()
+		{
+			return testInt + testIntTwo;
+		}
+
+		private void TwoArgCallback(int arg1, int arg2)
+		{
+			this.testValue += arg1 + arg2;
+		}
+
+		private void ThreeArgCallback(int arg1, int arg2, int arg3)
+		{
+			this.testValue += arg1 + arg2 + arg3;
+		}
+
+		private int GetThreeIntExpected()
+		{
+			return this.GetTwoIntExpected() + testIntThree;
+		}
+
+		private int GetFourIntExpected()
+		{
+			return this.GetThreeIntExpected() + testIntFour;
+		}
+
+		private void CreateFourInts()
+		{
+			this.CreateThreeInts();
+			this.testIntFour = 4;
+		}
+
+		private void CreateThreeInts()
+		{
+			this.CreateTwoInts();
+			this.testIntThree = 3;
+		}
+
+		private void CreateTwoInts()
+		{
+			this.CreateOneInt();
+			this.testIntTwo = 2;
+		}
+
+		private void CreateOneInt()
+		{
+			this.testInt = 1;
+		}
+
+		private void FourArgCallback(int arg1, int arg2, int arg3, int arg4)
+		{
+			this.testValue += arg1 + arg2 + arg3 + arg4;
+		}
+#endregion
+
+
+	}
 }

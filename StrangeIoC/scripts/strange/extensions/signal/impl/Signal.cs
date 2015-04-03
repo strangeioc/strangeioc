@@ -73,6 +73,7 @@ namespace strange.extensions.signal.impl
     public interface ISignal
     {
         Delegate listener { get; set; }
+	    void RemoveAllListeners();
     }
     /// Base concrete form for a Signal with no parameters
     public class Signal : BaseSignal, ISignal
@@ -110,6 +111,13 @@ namespace strange.extensions.signal.impl
             }
             return listeners;
         }
+
+	    public override void RemoveAllListeners()
+	    {
+			Listener = delegate { };
+		    OnceListener = delegate { };
+		    base.RemoveAllListeners();
+	    }
 
         public Delegate listener { get { return Listener; } set { Listener = (Action) value; }}
     }
@@ -155,6 +163,13 @@ namespace strange.extensions.signal.impl
             return listeners;
         }
 
+		public override void RemoveAllListeners()
+		{
+			Listener = delegate { };
+			OnceListener = delegate { };
+			base.RemoveAllListeners();
+		}
+
         public Delegate listener { get { return Listener; } set { Listener = (Action<T>) value; } }
     }
 
@@ -199,6 +214,12 @@ namespace strange.extensions.signal.impl
             return listeners;
         }
 
+		public override void RemoveAllListeners()
+		{
+			Listener = delegate { };
+			OnceListener = delegate { };
+			base.RemoveAllListeners();
+		}
         public Delegate listener { get { return Listener; } set { Listener = (Action<T, U>) value; } }
     }
 
@@ -243,7 +264,12 @@ namespace strange.extensions.signal.impl
             }
             return listeners;
         }
-
+		public override void RemoveAllListeners()
+		{
+			Listener = delegate { };
+			OnceListener = delegate { };
+			base.RemoveAllListeners();
+		}
         public Delegate listener { get { return Listener; } set { Listener = (Action<T, U, V>) value; } }
     }
 
@@ -290,7 +316,12 @@ namespace strange.extensions.signal.impl
             }
             return listeners;
         }
-
+		public override void RemoveAllListeners()
+		{
+			Listener = delegate { };
+			OnceListener = delegate { };
+			base.RemoveAllListeners();
+		}
         public Delegate listener { get { return Listener; } set { Listener = (Action<T, U, V, W>) value; } }
     }
 
