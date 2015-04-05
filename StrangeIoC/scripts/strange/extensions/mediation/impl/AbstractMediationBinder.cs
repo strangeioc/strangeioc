@@ -38,11 +38,6 @@ namespace strange.extensions.mediation.impl
 		[Inject]
 		public IInjectionBinder injectionBinder{ get; set;}
 
-		public AbstractMediationBinder ()
-		{
-		}
-
-
 		public override IBinding GetRawBinding ()
 		{
 			return new MediationBinding (resolver) as IBinding;

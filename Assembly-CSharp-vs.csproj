@@ -79,6 +79,7 @@
     <Folder Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\common\" />
     <Folder Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\common\controller\" />
     <Folder Include="StrangeIoC\scripts\strange\lib\" />
+    <Folder Include="StrangeIoC\scripts\strange\.tests\extensions\mediation\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -355,5 +356,6 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectsClassToBeInjected.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\MediationBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\AbstractMediationBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\mediation\TestAbstractMediationBinder.cs" />
   </ItemGroup>
 </Project>
