@@ -354,5 +354,6 @@
     <Compile Include="StrangeIoC\scripts\strange\lib\MiniJSON.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectsClassToBeInjected.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\MediationBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\AbstractMediationBinder.cs" />
   </ItemGroup>
 </Project>
