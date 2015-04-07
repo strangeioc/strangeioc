@@ -104,6 +104,30 @@ namespace strange.unittests
 			MediationException ex = Assert.Throws<MediationException>(testDelegate); //Because we've mapped view to self
 			Assert.AreEqual (MediationExceptionType.MEDIATOR_VIEW_STACK_OVERFLOW, ex.type);
 		}
+
+		[Test]
+		public void TestInjectViews()
+		{
+			injectionBinder.Bind<ClassToBeInjected>().To<ClassToBeInjected>();
+			object mono = new object();
+			IView one = new TestView();
+			IView two = new TestView();
+			IView three = new TestView();
+
+			IView[] views =
+			{
+				one,
+				two,
+				three
+			};
+
+			mediationBinder.TestInjectViews(mono, views);
+
+			Assert.AreEqual(true, one.registeredWithContext);
+			Assert.AreEqual(true, two.registeredWithContext);
+			Assert.AreEqual(true, three.registeredWithContext);
+
+		}
 	}
 
 
@@ -122,6 +146,11 @@ namespace strange.unittests
 			IMediator mediator = new TestMediator ();
 			mediators.Add (view, mediator);
 			return mediator;
+		}
+
+		public void TestInjectViews(object mono, IView[] views)
+		{
+			InjectViews(mono, views);
 		}
 
 		override protected object DestroyMediator(IView view, Type mediatorType)

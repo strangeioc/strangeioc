@@ -69,6 +69,26 @@ namespace strange.extensions.mediation.impl
 			}
 		}
 
+		protected virtual void InjectViews(object mono, IView[] views)
+		{
+			int aa = views.Length;
+			for (int a = aa - 1; a > -1; a--)
+			{
+				IView iView = views[a] as IView;
+				if (iView != null)
+				{
+					if (iView.autoRegisterWithContext && iView.registeredWithContext)
+					{
+						continue;
+					}
+					iView.registeredWithContext = true;
+					if (iView.Equals(mono) == false)
+						Trigger(MediationEvent.AWAKE, iView);
+				}
+			}
+			injectionBinder.injector.Inject(mono, false);
+		}
+
 		override protected IBinding performKeyValueBindings(List<object> keyList, List<object> valueList)
 		{
 			IBinding binding = null;

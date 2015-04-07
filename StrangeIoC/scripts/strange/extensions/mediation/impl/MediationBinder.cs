@@ -43,25 +43,9 @@ namespace strange.extensions.mediation.impl
 		protected override void InjectViewAndChildren(IView view)
 		{
 			MonoBehaviour mono = view as MonoBehaviour;
-			Component[] views = mono.GetComponentsInChildren(typeof(IView), true) as Component[];
+			IView[] views = mono.GetComponentsInChildren(typeof(IView), true) as IView[];
 			
-			int aa = views.Length;
-			for (int a = aa - 1; a > -1; a--)
-			{
-				IView iView = views[a] as IView;
-				if (iView != null)
-				{
-					if (iView.autoRegisterWithContext && iView.registeredWithContext)
-					{
-						continue;
-					}
-					iView.registeredWithContext = true;
-					if (iView.Equals(mono) == false)
-						Trigger (MediationEvent.AWAKE, iView);
-				}
-			}
-			injectionBinder.injector.Inject (mono, false);
-
+			InjectViews(mono, views);
 		}
 
 		/// Add a Mediator to a View. If the mediator is a "true" Mediator (i.e., it
