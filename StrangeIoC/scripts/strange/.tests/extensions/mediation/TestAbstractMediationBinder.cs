@@ -201,6 +201,35 @@ namespace strange.unittests
 		}
 
 		[Test]
+		public void TestBindToAbstraction()
+		{
+			string jsonString = "[{\"Bind\":\"strange.unittests.TestView2\",\"To\":\"strange.unittests.TestMediator\",\"ToAbstraction\":\"strange.unittests.TestView\"}]";
+
+			mediationBinder.ConsumeBindings (jsonString);
+			injectionBinder.Bind<ClassToBeInjected> ().To<ClassToBeInjected> ();
+
+
+			IBinding binding = mediationBinder.GetBinding<TestView2> ();
+			Assert.NotNull (binding);
+			Assert.AreEqual ((binding as IMediationBinding).key, typeof(TestView2));
+
+			object[] value = (binding as IMediationBinding).value as object[];
+			Assert.Contains (typeof(TestMediator), value);
+
+			TestView2 view = new TestView2 ();
+			mediationBinder.Trigger (MediationEvent.AWAKE, view);
+
+
+			Assert.IsTrue (view.registeredWithContext);
+			Assert.IsNotNull (view.testInjection);
+			TestMediator mediator = mediationBinder.mediators [view] as TestMediator;
+			Assert.AreEqual (1, mediationBinder.mediators.Count);
+			Assert.IsNotNull (mediator);
+			Assert.IsInstanceOf<TestMediator> (mediator);
+			Assert.IsInstanceOf<TestView2> (mediator.view);
+		}
+
+		[Test]
 		public void TestThrowsErrorOnUnresolvedView()
 		{
 			string jsonString = "[{\"Bind\":\"TestView\",\"To\":\"strange.unittests.TestMediator\"}]";
@@ -225,6 +254,20 @@ namespace strange.unittests
 			};
 
 			BinderException ex = Assert.Throws<BinderException>(testDelegate); //Because the To value isn't fully qualified
+			Assert.AreEqual (BinderExceptionType.RUNTIME_NULL_VALUE, ex.type);
+		}
+
+		[Test]
+		public void TestThrowsErrorOnUnresolvedAbstraction()
+		{
+			string jsonString = "[{\"Bind\":\"strange.unittests.TestView2\",\"To\":\"strange.unittests.TestMediator\",\"ToAbstraction\":\"TestView\"}]";
+
+			TestDelegate testDelegate = delegate
+			{
+				mediationBinder.ConsumeBindings (jsonString);
+			};
+
+			BinderException ex = Assert.Throws<BinderException>(testDelegate); //Because the Abstraction value isn't fully qualified
 			Assert.AreEqual (BinderExceptionType.RUNTIME_NULL_VALUE, ex.type);
 		}
 	}
@@ -341,6 +384,10 @@ namespace strange.unittests
 
 	class TestMediator : IMediator
 	{
+
+		[Inject]
+		public TestView view{ get; set; }
+
 		public bool preregistered = false;
 		public bool registered = false;
 		public bool removed = false;

@@ -183,6 +183,31 @@ namespace strange.extensions.mediation.impl
 			return dictionary;
 		}
 
+		override protected IBinding ConsumeItem(Dictionary<string, object> item, IBinding testBinding)
+		{
+			IBinding binding = base.ConsumeItem(item, testBinding);
+
+			foreach (var i in item)
+			{
+				if (i.Key == "ToAbstraction")
+				{
+					Type abstractionType = Type.GetType (i.Value as string);
+					IMediationBinding mediationBinding = (binding as IMediationBinding);
+					if (abstractionType == null)
+					{
+						throw new BinderException ("A runtime abstraction in the MediationBinder returned a null Type. " + i.ToString(), BinderExceptionType.RUNTIME_NULL_VALUE);
+					}
+					if (mediationBinding == null)
+					{
+						throw new MediationException ("During an attempt at runtime abstraction a MediationBinding could not be found. " + i.ToString(), MediationExceptionType.BINDING_RESOLVED_TO_NULL);
+					}
+
+					mediationBinding.ToAbstraction (abstractionType);
+				}
+			}
+			return binding;
+		}
+
 		new public IMediationBinding Bind<T> ()
 		{
 			return base.Bind<T> () as IMediationBinding;

@@ -349,44 +349,51 @@ namespace strange.framework.impl
 		{
 			List<object> list = Json.Deserialize(jsonString) as List<object>;
 			IBinding testBinding = GetRawBinding ();
-			int bindConstraints = (testBinding.keyConstraint == BindingConstraintType.ONE) ? 0 : 1;
-			bindConstraints |= (testBinding.valueConstraint == BindingConstraintType.ONE) ? 0 : 2;
 
 			for (int a=0, aa=list.Count; a < aa; a++)
 			{
-				Dictionary<string, object> item = list[a] as Dictionary<string, object>;
-				item = ConformRuntimeItem (item);
-				List<object> keyList;
-				List<object> valueList;
-				IBinding binding = null;
+				ConsumeItem(list[a] as Dictionary<string, object>, testBinding);
+			}
+		}
 
+		virtual protected IBinding ConsumeItem(Dictionary<string, object> item, IBinding testBinding)
+		{
+			int bindConstraints = (testBinding.keyConstraint == BindingConstraintType.ONE) ? 0 : 1;
+			bindConstraints |= (testBinding.valueConstraint == BindingConstraintType.ONE) ? 0 : 2;
+			IBinding binding = null;
+			List<object> keyList;
+			List<object> valueList;
+
+			if (item != null)
+			{
+				item = ConformRuntimeItem (item);
 				// Check that Bind exists
-				if (!item.ContainsKey("Bind"))
+				if (!item.ContainsKey ("Bind"))
 				{
 					throw new BinderException ("Attempted to consume a binding without a bind key.", BinderExceptionType.RUNTIME_NO_BIND);
 				}
 				else
 				{
-					keyList = conformRuntimeToList(item["Bind"]);
+					keyList = conformRuntimeToList (item ["Bind"]);
 				}
 				// Check that key counts match the binding constraint
 				if (keyList.Count > 1 && (bindConstraints & 1) == 0)
 				{
-					throw new BinderException ("Binder " + this.ToString () + " supports only a single binding key. A runtime binding key including " + keyList[0].ToString() + " is trying to add more.", BinderExceptionType.RUNTIME_TOO_MANY_KEYS);
+					throw new BinderException ("Binder " + this.ToString () + " supports only a single binding key. A runtime binding key including " + keyList [0].ToString () + " is trying to add more.", BinderExceptionType.RUNTIME_TOO_MANY_KEYS);
 				}
 
-				if (!item.ContainsKey("To"))
+				if (!item.ContainsKey ("To"))
 				{
 					valueList = keyList;
 				}
 				else
 				{
-					valueList = conformRuntimeToList(item["To"]);
+					valueList = conformRuntimeToList (item ["To"]);
 				}
 				// Check that value counts match the binding constraint
 				if (valueList.Count > 1 && (bindConstraints & 2) == 0)
 				{
-					throw new BinderException ("Binder " + this.ToString () + " supports only a single binding value. A runtime binding value including " + valueList[0].ToString() + " is trying to add more.", BinderExceptionType.RUNTIME_TOO_MANY_VALUES);
+					throw new BinderException ("Binder " + this.ToString () + " supports only a single binding value. A runtime binding value including " + valueList [0].ToString () + " is trying to add more.", BinderExceptionType.RUNTIME_TOO_MANY_VALUES);
 				}
 
 				// Check Whitelist if it exists
@@ -394,9 +401,9 @@ namespace strange.framework.impl
 				{
 					foreach (object value in valueList)
 					{
-						if (bindingWhitelist.IndexOf(value) == -1)
+						if (bindingWhitelist.IndexOf (value) == -1)
 						{
-							throw new BinderException ("Value " + value.ToString () + " not found on whitelist for " + this.ToString() + ".", BinderExceptionType.RUNTIME_FAILED_WHITELIST_CHECK);
+							throw new BinderException ("Value " + value.ToString () + " not found on whitelist for " + this.ToString () + ".", BinderExceptionType.RUNTIME_FAILED_WHITELIST_CHECK);
 						}
 					}
 				}
@@ -404,18 +411,19 @@ namespace strange.framework.impl
 				binding = performKeyValueBindings (keyList, valueList);
 
 				// Optionally look for ToName
-				if (item.ContainsKey("ToName"))
+				if (item.ContainsKey ("ToName"))
 				{
-					binding = binding.ToName (item["ToName"]);
+					binding = binding.ToName (item ["ToName"]);
 				}
 
 				// Add runtime options
-				if (item.ContainsKey("Options"))
+				if (item.ContainsKey ("Options"))
 				{
-					List<object> optionsList = conformRuntimeToList(item["Options"]);
-					addRuntimeOptions(binding, optionsList);
+					List<object> optionsList = conformRuntimeToList (item ["Options"]);
+					addRuntimeOptions (binding, optionsList);
 				}
 			}
+			return binding;
 		}
 
 		virtual protected Dictionary<string, object> ConformRuntimeItem(Dictionary<string, object> dictionary)
