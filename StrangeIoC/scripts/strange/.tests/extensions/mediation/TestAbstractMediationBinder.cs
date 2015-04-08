@@ -5,6 +5,7 @@ using strange.extensions.injector.impl;
 using strange.extensions.mediation.impl;
 using strange.extensions.mediation.api;
 using System.Collections.Generic;
+using strange.framework.impl;
 
 
 namespace strange.unittests
@@ -129,6 +130,87 @@ namespace strange.unittests
 			Assert.AreEqual(true, three.registeredWithContext);
 
 		}
+
+		[Test]
+		public void TestSimpleRuntimeBinding()
+		{
+			string jsonString = "[{\"Bind\":\"strange.unittests.TestView\",\"To\":\"strange.unittests.TestMediator\"}]";
+
+			mediationBinder.ConsumeBindings (jsonString);
+
+			IBinding binding = mediationBinder.GetBinding<TestView> ();
+			Assert.NotNull (binding);
+			Assert.AreEqual ((binding as IMediationBinding).key, typeof(TestView));
+
+			object[] value = (binding as IMediationBinding).value as object[];
+			Assert.AreEqual (value[0], typeof(TestMediator));
+		}
+
+		[Test]
+		public void TestMultipleRuntimeBindings()
+		{
+			string jsonString = "[{\"Bind\":\"strange.unittests.TestView\",\"To\":\"strange.unittests.TestMediator\"}, {\"Bind\":\"strange.unittests.TestView2\",\"To\":\"strange.unittests.TestMediator2\"}]";
+
+			mediationBinder.ConsumeBindings (jsonString);
+
+			IBinding binding = mediationBinder.GetBinding<TestView> ();
+			Assert.NotNull (binding);
+			Assert.AreEqual ((binding as IMediationBinding).key, typeof(TestView));
+
+			object[] value = (binding as IMediationBinding).value as object[];
+			Assert.AreEqual (value[0], typeof(TestMediator));
+
+			IBinding binding2 = mediationBinder.GetBinding<TestView2> ();
+			Assert.NotNull (binding2);
+			Assert.AreEqual ((binding2 as IMediationBinding).key, typeof(TestView2));
+
+			object[] value2 = (binding2 as IMediationBinding).value as object[];
+			Assert.AreEqual (value2[0], typeof(TestMediator2));
+		}
+
+		[Test]
+		public void TestBindOneViewToManyMediators()
+		{
+			string jsonString = "[{\"Bind\":\"strange.unittests.TestView\",\"To\":[\"strange.unittests.TestMediator\",\"strange.unittests.TestMediator2\"]}]";
+
+			mediationBinder.ConsumeBindings (jsonString);
+
+			IBinding binding = mediationBinder.GetBinding<TestView> ();
+			Assert.NotNull (binding);
+			Assert.AreEqual ((binding as IMediationBinding).key, typeof(TestView));
+
+			object[] value = (binding as IMediationBinding).value as object[];
+			Assert.Contains (typeof(TestMediator), value);
+			Assert.Contains (typeof(TestMediator2), value);
+		}
+
+		[Test]
+		public void TestThrowsErrorOnUnresolvedView()
+		{
+			string jsonString = "[{\"Bind\":\"TestView\",\"To\":\"strange.unittests.TestMediator\"}]";
+
+			TestDelegate testDelegate = delegate
+			{
+				mediationBinder.ConsumeBindings (jsonString);
+			};
+
+			BinderException ex = Assert.Throws<BinderException>(testDelegate); //Because the Bind value isn't fully qualified
+			Assert.AreEqual (BinderExceptionType.RUNTIME_NULL_VALUE, ex.type);
+		}
+
+		[Test]
+		public void TestThrowsErrorOnUnresolvedMediator()
+		{
+			string jsonString = "[{\"Bind\":\"strange.unittests.TestView\",\"To\":\"TestMediator\"}]";
+
+			TestDelegate testDelegate = delegate
+			{
+				mediationBinder.ConsumeBindings (jsonString);
+			};
+
+			BinderException ex = Assert.Throws<BinderException>(testDelegate); //Because the To value isn't fully qualified
+			Assert.AreEqual (BinderExceptionType.RUNTIME_NULL_VALUE, ex.type);
+		}
 	}
 
 
@@ -176,6 +258,11 @@ namespace strange.unittests
 		public void TestInjectViewAndChildren(IView view)
 		{
 			InjectViewAndChildren(view);
+		}
+
+		public void TestPerformKeyValueBindings(List<object> keyList, List<object> valueList)
+		{
+			performKeyValueBindings(keyList, valueList);
 		}
 	}
 
@@ -234,6 +321,7 @@ namespace strange.unittests
 
 		#endregion
 	}
+	class TestView2 : TestView{}
 
 	class TestMediator : IMediator
 	{
@@ -272,5 +360,6 @@ namespace strange.unittests
 
 		#endregion
 	}
+	class TestMediator2 : TestMediator{}
 }
 
