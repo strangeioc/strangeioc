@@ -185,6 +185,22 @@ namespace strange.unittests
 		}
 
 		[Test]
+		public void TestBindViewToMediatorSyntax()
+		{
+			string jsonString = "[{\"BindView\":\"strange.unittests.TestView\",\"ToMediator\":[\"strange.unittests.TestMediator\",\"strange.unittests.TestMediator2\"]}]";
+
+			mediationBinder.ConsumeBindings (jsonString);
+
+			IBinding binding = mediationBinder.GetBinding<TestView> ();
+			Assert.NotNull (binding);
+			Assert.AreEqual ((binding as IMediationBinding).key, typeof(TestView));
+
+			object[] value = (binding as IMediationBinding).value as object[];
+			Assert.Contains (typeof(TestMediator), value);
+			Assert.Contains (typeof(TestMediator2), value);
+		}
+
+		[Test]
 		public void TestThrowsErrorOnUnresolvedView()
 		{
 			string jsonString = "[{\"Bind\":\"TestView\",\"To\":\"strange.unittests.TestMediator\"}]";

@@ -355,6 +355,7 @@ namespace strange.framework.impl
 			for (int a=0, aa=list.Count; a < aa; a++)
 			{
 				Dictionary<string, object> item = list[a] as Dictionary<string, object>;
+				item = ConformRuntimeItem (item);
 				List<object> keyList;
 				List<object> valueList;
 				IBinding binding = null;
@@ -415,6 +416,11 @@ namespace strange.framework.impl
 					addRuntimeOptions(binding, optionsList);
 				}
 			}
+		}
+
+		virtual protected Dictionary<string, object> ConformRuntimeItem(Dictionary<string, object> dictionary)
+		{
+			return dictionary;
 		}
 
 		virtual protected IBinding performKeyValueBindings(List<object> keyList, List<object> valueList)

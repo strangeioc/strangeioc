@@ -158,6 +158,31 @@ namespace strange.extensions.mediation.impl
 			return binding;
 		}
 
+		override protected Dictionary<string, object> ConformRuntimeItem(Dictionary<string, object> dictionary)
+		{
+			Dictionary<string, object> bindItems = new Dictionary<string, object> ();
+			Dictionary<string, object> toItems = new Dictionary<string, object> ();
+			foreach (var item in dictionary) {
+				if (item.Key == "BindView")
+				{
+					bindItems.Add ("Bind", item.Value);
+				}
+				else if (item.Key == "ToMediator")
+				{
+					toItems.Add ("To", item.Value);
+				}
+			}
+			foreach (var item in bindItems) {
+				dictionary.Remove ("BindView");
+				dictionary.Add ("Bind", item.Value);
+			}
+			foreach (var item in toItems) {
+				dictionary.Remove ("ToMediator");
+				dictionary.Add ("To", item.Value);
+			}
+			return dictionary;
+		}
+
 		new public IMediationBinding Bind<T> ()
 		{
 			return base.Bind<T> () as IMediationBinding;
