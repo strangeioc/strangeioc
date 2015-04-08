@@ -1,9 +1,6 @@
 using System;
-using System.Diagnostics;
 using NUnit.Framework;
 using strange.framework.api;
-using strange.framework.impl;
-using strange.extensions.injector.api;
 using strange.extensions.injector.impl;
 using strange.extensions.mediation.impl;
 using strange.extensions.mediation.api;
@@ -110,18 +107,22 @@ namespace strange.unittests
 		{
 			injectionBinder.Bind<ClassToBeInjected>().To<ClassToBeInjected>();
 			object mono = new object();
+			TestView view = new TestView();
 			IView one = new TestView();
 			IView two = new TestView();
 			IView three = new TestView();
 
 			IView[] views =
 			{
+				view,
 				one,
 				two,
 				three
 			};
 
-			mediationBinder.TestInjectViews(mono, views);
+			view.Views = views;
+
+			mediationBinder.TestInjectViewAndChildren(view);
 
 			Assert.AreEqual(true, one.registeredWithContext);
 			Assert.AreEqual(true, two.registeredWithContext);
@@ -136,9 +137,16 @@ namespace strange.unittests
 
 		public Dictionary<IView, IMediator> mediators = new Dictionary<IView, IMediator>();
 		
-		override protected void InjectViewAndChildren(IView view)
+		protected override IView[] GetViews(IView view)
 		{
-			injectionBinder.injector.Inject (view);
+			TestView testView = view as TestView;
+			return testView.Views;
+		}
+
+		protected override bool HasMediator(IView view, Type mediatorType)
+		{
+			TestView testView = view as TestView;
+			return testView.HasMediator;
 		}
 
 		override protected object CreateMediator(IView view, Type mediatorType)
@@ -146,11 +154,6 @@ namespace strange.unittests
 			IMediator mediator = new TestMediator ();
 			mediators.Add (view, mediator);
 			return mediator;
-		}
-
-		public void TestInjectViews(object mono, IView[] views)
-		{
-			InjectViews(mono, views);
 		}
 
 		override protected object DestroyMediator(IView view, Type mediatorType)
@@ -165,13 +168,9 @@ namespace strange.unittests
 			return mediator;
 		}
 
-		override protected void ApplyMediationToView(IMediationBinding binding, IView view, Type mediatorType)
+		public void TestInjectViewAndChildren(IView view)
 		{
-			IMediator mediator = CreateMediator (view, mediatorType) as IMediator;
-			mediator.PreRegister ();
-			injectionBinder.injector.Inject (mediator);
-			mediator.OnRegister ();
-			view.registeredWithContext = true;
+			InjectViewAndChildren(view);
 		}
 	}
 
@@ -180,10 +179,21 @@ namespace strange.unittests
 		[Inject]
 		public ClassToBeInjected testInjection { get; set; }
 
+		public TestView()
+		{
+			Views = new IView[]
+			{
+				this
+			};
+		}
+
 		#region IView implementation
 
 		private bool _requiresContext;
 		private bool _registeredWithContext;
+
+		public IView[] Views = {};
+		public bool HasMediator = false;
 
 		public bool requiresContext
 		{

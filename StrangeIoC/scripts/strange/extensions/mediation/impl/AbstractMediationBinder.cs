@@ -69,8 +69,37 @@ namespace strange.extensions.mediation.impl
 			}
 		}
 
-		protected virtual void InjectViews(object mono, IView[] views)
+		/// Add a Mediator to a View. If the mediator is a "true" Mediator (i.e., it
+		/// implements IMediator, perform PreRegister and OnRegister.
+		protected virtual void ApplyMediationToView(IMediationBinding binding, IView view, Type mediatorType)
 		{
+			bool isTrueMediator = IsTrueMediator(mediatorType);
+			if (!isTrueMediator || !HasMediator(view, mediatorType))
+			{
+				Type viewType = view.GetType();
+				object mediator = CreateMediator(view, mediatorType);
+				if (mediator == null)
+					throw new MediationException("The view: " + viewType.ToString() + " is mapped to mediator: " + mediatorType.ToString() + ". AddComponent resulted in null, which probably means " + mediatorType.ToString().Substring(mediatorType.ToString().LastIndexOf(".") + 1) + " is not a MonoBehaviour.", MediationExceptionType.NULL_MEDIATOR);
+				if (isTrueMediator)
+					((IMediator)mediator).PreRegister();
+
+				Type typeToInject = (binding.abstraction == null || binding.abstraction.Equals(BindingConst.NULLOID)) ? viewType : binding.abstraction as Type;
+				injectionBinder.Bind(typeToInject).ToValue(view).ToInject(false);
+				injectionBinder.injector.Inject(mediator);
+				injectionBinder.Unbind(typeToInject);
+				if (isTrueMediator)
+				{
+					((IMediator)mediator).OnRegister();
+				}
+			}
+		}
+
+		/// Add Mediators to Views. We make this virtual to allow for different concrete
+		/// behaviors for different View/Mediation Types (e.g., MonoBehaviours require 
+		/// different handling than EditorWindows)
+		protected virtual void InjectViewAndChildren(IView view)
+		{
+			IView[] views = GetViews(view);
 			int aa = views.Length;
 			for (int a = aa - 1; a > -1; a--)
 			{
@@ -82,13 +111,18 @@ namespace strange.extensions.mediation.impl
 						continue;
 					}
 					iView.registeredWithContext = true;
-					if (iView.Equals(mono) == false)
+					if (iView.Equals(view) == false)
 						Trigger(MediationEvent.AWAKE, iView);
 				}
 			}
-			injectionBinder.injector.Inject(mono, false);
+			injectionBinder.injector.Inject(view, false);
+		}
+		protected virtual bool IsTrueMediator(Type mediatorType)
+		{
+			return typeof(IMediator).IsAssignableFrom(mediatorType);
 		}
 
+		
 		override protected IBinding performKeyValueBindings(List<object> keyList, List<object> valueList)
 		{
 			IBinding binding = null;
@@ -173,7 +207,6 @@ namespace strange.extensions.mediation.impl
 		}
 
 		/// Initialize all IViews within this view
-		abstract protected void InjectViewAndChildren(IView view);
 
 		/// Create a new Mediator object based on the mediatorType on the provided view
 		abstract protected object CreateMediator(IView view, Type mediatorType);
@@ -181,10 +214,13 @@ namespace strange.extensions.mediation.impl
 		/// Destroy the Mediator on the provided view object based on the mediatorType
 		abstract protected object DestroyMediator(IView view, Type mediatorType);
 
-		/// Add Mediators to Views. We make this abstract to allow for different concrete
-		/// behaviors for different View/Mediation Types (e.g., MonoBehaviours require 
-		/// different handling than EditorWindows)
-		abstract protected void ApplyMediationToView(IMediationBinding binding, IView view, Type mediatorType);
+		/// Retrieve all views including children for this view
+		protected abstract IView[] GetViews(IView view);
+
+		/// Whether or not an instantiated Mediator of this type exists
+		protected abstract bool HasMediator(IView view, Type mediatorType);
+
+		
 	}
 }
 

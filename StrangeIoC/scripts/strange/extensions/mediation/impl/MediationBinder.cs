@@ -27,7 +27,6 @@
 using System;
 using UnityEngine;
 using strange.extensions.mediation.api;
-using strange.framework.api;
 
 namespace strange.extensions.mediation.impl
 {
@@ -38,40 +37,16 @@ namespace strange.extensions.mediation.impl
 		{
 		}
 
-		
-		/// Initialize all IViews within this view
-		protected override void InjectViewAndChildren(IView view)
+		protected override IView[] GetViews(IView view)
 		{
 			MonoBehaviour mono = view as MonoBehaviour;
-			IView[] views = mono.GetComponentsInChildren(typeof(IView), true) as IView[];
-			
-			InjectViews(mono, views);
+			return mono.GetComponentsInChildren(typeof(IView), true) as IView[];
 		}
 
-		/// Add a Mediator to a View. If the mediator is a "true" Mediator (i.e., it
-		/// implements IMediator, perform PreRegister and OnRegister.
-		protected override void ApplyMediationToView(IMediationBinding binding, IView view, Type mediatorType)
+		protected override bool HasMediator(IView view, Type mediatorType)
 		{
-			bool isTrueMediator = mediatorType.IsAssignableFrom (typeof(IMediator));
 			MonoBehaviour mono = view as MonoBehaviour;
-			if (!isTrueMediator || mono.GetComponent (mediatorType) == null)
-			{
-				Type viewType = view.GetType();
-				MonoBehaviour mediator = CreateMediator(view, mediatorType) as MonoBehaviour;
-				if (mediator == null)
-					throw new MediationException ("The view: " + viewType.ToString() + " is mapped to mediator: " + mediatorType.ToString() + ". AddComponent resulted in null, which probably means " + mediatorType.ToString().Substring(mediatorType.ToString().LastIndexOf(".")+1) + " is not a MonoBehaviour.", MediationExceptionType.NULL_MEDIATOR);
-				if (isTrueMediator)
-					((IMediator)mediator).PreRegister ();
-
-				Type typeToInject = (binding.abstraction == null || binding.abstraction.Equals(BindingConst.NULLOID)) ? viewType : binding.abstraction as Type;
-				injectionBinder.Bind (typeToInject).ToValue (view).ToInject(false);
-				injectionBinder.injector.Inject (mediator);
-				injectionBinder.Unbind(typeToInject);
-				if (isTrueMediator)
-				{
-					((IMediator) mediator).OnRegister ();
-				}
-			}
+			return mono.GetComponent(mediatorType) != null;
 		}
 
 		/// Create a new Mediator object based on the mediatorType on the provided view
