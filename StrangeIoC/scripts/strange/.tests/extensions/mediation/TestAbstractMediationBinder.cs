@@ -106,7 +106,7 @@ namespace strange.unittests
 		public void TestInjectViews()
 		{
 			injectionBinder.Bind<ClassToBeInjected>().To<ClassToBeInjected>();
-			object mono = new object();
+
 			TestView view = new TestView();
 			IView one = new TestView();
 			IView two = new TestView();
@@ -166,6 +166,11 @@ namespace strange.unittests
 				mediator.OnRemove ();
 			}
 			return mediator;
+		}
+
+		protected override void ThrowNullMediatorError (Type viewType, Type mediatorType)
+		{
+			throw new MediationException("The view: " + viewType.ToString() + " is mapped to mediator: " + mediatorType.ToString() + ". AddComponent resulted in null, which probably means " + mediatorType.ToString().Substring(mediatorType.ToString().LastIndexOf(".") + 1) + " is not a MonoBehaviour.", MediationExceptionType.NULL_MEDIATOR);
 		}
 
 		public void TestInjectViewAndChildren(IView view)

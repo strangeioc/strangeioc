@@ -61,11 +61,7 @@ namespace strange.extensions.mediation.impl
 		{
 			MonoBehaviour mono = view as MonoBehaviour;
 			IMediator mediator = mono.GetComponent(mediatorType) as IMediator;
-			if (mediator != null)
-			{
-				DestroyMediator (mediator);
-			}
-			return DestroyMediator (mediator);
+			return (mediator != null) ? DestroyMediator (mediator) : null;
 		}
 
 		/// Destroy the provided Mediator
@@ -73,6 +69,11 @@ namespace strange.extensions.mediation.impl
 		{
 			mediator.OnRemove();
 			return mediator;
+		}
+
+		protected override void ThrowNullMediatorError (Type viewType, Type mediatorType)
+		{
+			throw new MediationException("The view: " + viewType.ToString() + " is mapped to mediator: " + mediatorType.ToString() + ". AddComponent resulted in null, which probably means " + mediatorType.ToString().Substring(mediatorType.ToString().LastIndexOf(".") + 1) + " is not a MonoBehaviour.", MediationExceptionType.NULL_MEDIATOR);
 		}
 	}
 }
