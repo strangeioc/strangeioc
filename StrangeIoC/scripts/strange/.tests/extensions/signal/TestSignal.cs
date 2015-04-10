@@ -238,6 +238,19 @@ namespace strange.unittests
 			Assert.AreEqual(0, testValue);
 		}
 
+	    [Test]
+	    public void TestRemoveAllRemovesOnce()
+	    {
+		    Signal signal = new Signal();
+			signal.AddOnce(NoArgSignalCallback);
+			signal.AddOnce(NoArgSignalCallbackTwo);
+
+			signal.RemoveAllListeners();
+			signal.Dispatch();
+
+			Assert.AreEqual(0, testValue);
+	    }
+
 #endregion
 
 #region GetTypes
