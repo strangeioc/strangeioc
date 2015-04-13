@@ -53,16 +53,7 @@ namespace strange.extensions.mediation.impl
 
 		IMediationBinding IMediationBinding.ToAbstraction<T> ()
 		{
-			Type t = typeof (T);
-			Type abstractionType = t;
-			if (key != null)
-			{
-				Type keyType = key as Type;
-				if (abstractionType.IsAssignableFrom(keyType) == false)
-					throw new MediationException ("The View " + key.ToString() + " has been bound to the abstraction " + t.ToString() + " which the View neither extends nor implements. " , MediationExceptionType.VIEW_NOT_ASSIGNABLE);
-			}
-			_abstraction.Add (abstractionType);
-			return this;
+			return ((IMediationBinding)this).ToAbstraction(typeof (T));
 		}
 
 		IMediationBinding IMediationBinding.ToAbstraction (Type t)
