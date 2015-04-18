@@ -356,6 +356,13 @@ namespace strange.framework.impl
 			}
 		}
 
+		/// <summary>
+		/// Consumes an individual JSON element and returns the Binding that element represents 
+		/// </summary>
+		/// <returns>The Binding represented the provided JSON</returns>
+		/// <param name="item">A Dictionary of definitions for the individual binding parameters</param>
+		/// <param name="testBinding">An example binding for the current Binder. This method uses the 
+		/// binding constraints of the example to raise errors if asked to parse illegally</param>
 		virtual protected IBinding ConsumeItem(Dictionary<string, object> item, IBinding testBinding)
 		{
 			int bindConstraints = (testBinding.keyConstraint == BindingConstraintType.ONE) ? 0 : 1;
@@ -426,11 +433,25 @@ namespace strange.framework.impl
 			return binding;
 		}
 
+		/// <summary>
+		/// Override this method in subclasses to add special-case SYNTACTICAL SUGAR for Runtime JSON bindings.
+		/// For example, if your Binder needs a special JSON tag BindView, such that BindView is simply
+		/// another way of expressing 'Bind', override this method conform the sugar to
+		/// match the base definition (BindView becomes Bind).
+		/// </summary>
+		/// <returns>The conformed Dictionary.</returns>
+		/// <param name="dictionary">A Dictionary representing the options for a Binding.</param>
 		virtual protected Dictionary<string, object> ConformRuntimeItem(Dictionary<string, object> dictionary)
 		{
 			return dictionary;
 		}
 
+		/// <summary>
+		/// Performs the key value bindings for a JSON runtime binding.
+		/// </summary>
+		/// <returns>A Binding.</returns>
+		/// <param name="keyList">A list of things to Bind.</param>
+		/// <param name="valueList">A list of the things to which we're binding.</param>
 		virtual protected IBinding performKeyValueBindings(List<object> keyList, List<object> valueList)
 		{
 			IBinding binding = null;
@@ -448,7 +469,16 @@ namespace strange.framework.impl
 			return binding;
 		}
 
-		/// Default options: Weak
+		/// <summary>
+		/// Override this method to decorate subclasses with further runtime capabilities.
+		/// For example, InjectionBinder adds ToSingleton and CrossContext capabilities so that
+		/// these can be specified in JSON.
+		/// 
+		/// By default, the Binder supports 'Weak' as a runtime option.
+		/// </summary>
+		/// <returns>The provided Binding.</returns>
+		/// <param name="binding">A Binding to have capabilities added.</param>
+		/// <param name="options">The list of runtime options for this Binding.</param>
 		virtual protected IBinding addRuntimeOptions(IBinding binding, List<object> options)
 		{
 			if (options.IndexOf ("Weak") > -1)
