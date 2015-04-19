@@ -73,6 +73,10 @@ namespace strange.extensions.signal.impl
 
 		public void RemoveListener(Action<IBaseSignal, object[]> callback) { BaseListener -= callback; }
 
+		public virtual void RemoveAllListeners()
+		{
+			BaseListener = delegate { };
+		}
 	   
 	}
 }
