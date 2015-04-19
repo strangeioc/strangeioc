@@ -61,7 +61,7 @@
 		signal.RemoveListener(callbackWithParamsIntAndString);
  * 
  * @see strange.extensions.signal.api.IBaseSignal
- * @see strange.extensions.signal.impl.BasrSignal
+ * @see strange.extensions.signal.impl.BaseSignal
  */
 
 using System;
