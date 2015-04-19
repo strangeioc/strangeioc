@@ -136,14 +136,7 @@ namespace strange.extensions.mediation.impl
 				{
 					throw new BinderException ("A runtime Mediation Binding has resolved to null. Did you forget to register its fully-qualified name?\n View:" + key, BinderExceptionType.RUNTIME_NULL_VALUE);
 				}
-				if (binding == null)
-				{
-					binding = Bind (keyType);
-				}
-				else
-				{
-					binding = binding.Bind (keyType);
-				}
+				binding = Bind (keyType);
 			}
 			foreach (object value in valueList)
 			{
