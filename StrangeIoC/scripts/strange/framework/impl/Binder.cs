@@ -30,6 +30,86 @@
  * and reactions. If the Key action happens, it triggers the Value
  * action. So, for example, an Event may be the Key that triggers
  * instantiation of a particular class.
+ *
+ * <h2>Runtime Bindings</h2>
+ * As of V1.0, Strange supports runtime bindings via JSON. This allows you to 
+ * instruct Strange to create its bindings by using loaded data, for example via
+ * a downloaded .json file, or a server response.
+ *
+ * binder.ConsumeBindings(stringOfLoadedJson);
+ *
+ * Below are examples for basic runtime
+ * binding options for Binder. The complete set of JSON runtime bindings for all
+ * officially supported binders can be found in The Big, Strange How-To:
+ * (http://strangeioc.github.io/strangeioc/TheBigStrangeHowTo.html)
+ *
+ * <h3>Example: basic binding via JSON</h3>
+ * The simplest possible binding is an array of objects. We bind "This" to "That"
+ *
+ * [
+ * 	{
+ * 		"Bind":"This",
+ * 		"To":"That"
+ * 	}
+ * ]
+ *
+ * You can of course load as many bindings as you like in your array:
+ *
+ * [
+ *	{
+ *		"Bind":"This",
+ *		"To":"That"
+ *	},
+ *	{
+ *		"Bind":"Han",
+ *		"To":"Leia"
+ *	},
+ *	{
+ *		"Bind":"Greedo",
+ *		"To":"Table"
+ *	}
+ *]
+ *
+ * You can name bindings as you would expect:
+ *
+ * [
+ *	{
+ *		"Bind":"Battle",
+ *		"To":"Planet",
+ *		"ToName":"Endor" 
+ *	}
+ * ]
+ *
+ * If you need more than a single item in a "Bind" or "To" statement, use an array.
+ *
+ * [
+ *	{
+ *		"Bind":["Luke", "Han", "Wedge", "Biggs"],
+ *		"To":"Pilot"
+ *	}
+ * ]
+ *
+ * There is also an "Options" array for special behaviors required by
+ * individual Binders. The core Binder supports "Weak".
+ *
+ * [
+ *	{
+ *		"Bind":"X-Wing",
+ *		"To":"Ship",
+ *		"Options":["Weak"]
+ *	}
+ * ]
+ *
+ * Other Binders support other Options. Here's a case from the InjectionBinder. Note
+ * how Options can be either a string or an array.
+ *
+ * [
+ *	{
+ *		"Bind":"strange.unittests.ISimpleInterface",
+ *		"To":"strange.unittests.SimpleInterfaceImplementer",
+ *		"Options":"ToSingleton"
+ *	}
+ * ]
  */
 
 using System;
