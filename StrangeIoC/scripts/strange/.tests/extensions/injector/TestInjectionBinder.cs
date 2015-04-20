@@ -20,7 +20,6 @@ namespace strange.unittests
 		public void SetUp()
 		{
 			binder = new InjectionBinder ();
-            
 		}
 
 		[TearDown]
@@ -380,6 +379,13 @@ namespace strange.unittests
 			Assert.IsNotNull (instance.Instance2);
 		}
 
+//		Supplied JSON
+//		[
+//			{
+//				"Bind": "strange.unittests.ISimpleInterface",
+//				"To": "strange.unittests.SimpleInterfaceImplementer"
+//			}
+//		]
 		[Test]
 		public void TestSimpleRuntimeInjection()
 		{
@@ -395,6 +401,21 @@ namespace strange.unittests
 			Assert.IsInstanceOf<SimpleInterfaceImplementer> (instance);
 		}
 
+//		Supplied JSON
+//		[
+//			{
+//				"Bind": "strange.unittests.ISimpleInterface",
+//				"To": "strange.unittests.SimpleInterfaceImplementer",
+//				"ToName": "Test1",
+//				"Options": "ToSingleton"
+//			},
+//			{
+//				"Bind": "strange.unittests.ISimpleInterface",
+//				"To": "strange.unittests.SimpleInterfaceImplementer",
+//				"ToName": "Test2",
+//				"Options": "ToSingleton"
+//			}
+//		]
 		[Test]
 		public void TestNamedRuntimeInjection()
 		{
@@ -417,6 +438,12 @@ namespace strange.unittests
 			Assert.AreNotSame (instance, instance2);
 		}
 
+//		Supplied JSON
+//		[
+//			{
+//				"Bind": "strange.unittests.SimpleInterfaceImplementer"
+//			}
+//		]
 		[Test]
 		public void TestRuntimeInjectionBindToSelf()
 		{
@@ -435,6 +462,14 @@ namespace strange.unittests
 			Assert.AreNotSame (instance, instance2);
 		}
 
+//		Supplied JSON
+//		[
+//			{
+//				"Bind": "strange.unittests.ISimpleInterface",
+//				"To": "strange.unittests.SimpleInterfaceImplementer",
+//				"Options": "ToSingleton"
+//			}
+//		]
 		[Test]
 		public void TestRuntimeInjectionSingleton()
 		{
@@ -453,6 +488,18 @@ namespace strange.unittests
 			Assert.AreSame (instance, instance2);
 		}
 
+//		Supplied JSON
+//		[
+//			{
+//				"Bind": "strange.unittests.ISimpleInterface",
+//				"To": "strange.unittests.SimpleInterfaceImplementer",
+//				"Options": [
+//					"ToSingleton",
+//					"Weak",
+//					"CrossContext"
+//				]
+//			}
+//		]
 		[Test]
 		public void TestRuntimeInjectionCrossContext()
 		{
@@ -470,6 +517,16 @@ namespace strange.unittests
 			Assert.IsInstanceOf<SimpleInterfaceImplementer> (instance);
 		}
 
+//		Supplied JSON
+//		[
+//			{
+//				"Bind": [
+//					"strange.unittests.ISimpleInterface",
+//					"strange.unittests.IAnotherSimpleInterface"
+//				],
+//				"To": "strange.unittests.PolymorphicClass"
+//			}
+//		]
 		[Test]
 		public void TestRuntimePolymorphism()
 		{
@@ -490,6 +547,16 @@ namespace strange.unittests
 			Assert.IsInstanceOf<PolymorphicClass> (instance2);
 		}
 
+//		Supplied JSON
+//		[
+//			{
+//				"Bind": "strange.unittests.ISimpleInterface",
+//				"To": [
+//					"strange.unittests.SimpleInterfaceImplementer",
+//					"strange.unittests.PolymorphicClass"
+//				]
+//			}
+//		]
 		[Test]
 		public void TestRuntimeExceptionTooManyValues()
 		{
@@ -503,6 +570,13 @@ namespace strange.unittests
 			Assert.AreEqual (BinderExceptionType.RUNTIME_TOO_MANY_VALUES, ex.type);
 		}
 
+//		Supplied JSON
+//		[
+//			{
+//				"Bind": "ISimpleInterface",
+//				"To": "strange.unittests.SimpleInterfaceImplementer"
+//			}
+//		]
 		[Test]
 		public void TestRuntimeExceptionUnqualifiedKeyException()
 		{
@@ -525,6 +599,100 @@ namespace strange.unittests
 			};
 			BinderException ex = Assert.Throws<BinderException>(testDelegate); //Because we haven't fully qualified the value
 			Assert.AreEqual (BinderExceptionType.RUNTIME_NULL_VALUE, ex.type);
+		}
+
+//		Supplied JSON
+//		[
+//			{
+//				"Bind": "strange.unittests.ClassToBeInjected",
+//				"To": "strange.unittests.ClassToBeInjected"
+//			},
+//			{
+//				"Bind": "strange.unittests.ClassToBeInjected",
+//				"To": "strange.unittests.ExtendsClassToBeInjected",
+//				"ToName": 1,
+//				"Options": [
+//					{
+//						"SupplyTo": "strange.unittests.ConstructorInjectsClassToBeInjected"
+//					}
+//				]
+//			},
+//			{
+//				"Bind": "strange.unittests.ClassToBeInjected",
+//				"To": "strange.unittests.ClassToBeInjected"
+//			},
+//			{
+//				"Bind": "strange.unittests.ConstructorInjectsClassToBeInjected",
+//				"To": "strange.unittests.ConstructorInjectsClassToBeInjected"
+//			}
+//		]
+		[Test]
+		public void TestRuntimeSimpleSupplyBinding()
+		{
+			string jsonString = "[{\"Bind\":\"strange.unittests.ClassToBeInjected\",\"To\":\"strange.unittests.ClassToBeInjected\"},";
+			jsonString += "{\"Bind\":\"strange.unittests.ClassToBeInjected\",\"To\":\"strange.unittests.ExtendsClassToBeInjected\",\"ToName\": 1,\"Options\": [{\"SupplyTo\": \"strange.unittests.ConstructorInjectsClassToBeInjected\"}]},";
+			jsonString += "{\"Bind\":\"strange.unittests.InjectsClassToBeInjected\",\"To\": \"strange.unittests.InjectsClassToBeInjected\"},";
+			jsonString += "{\"Bind\":\"strange.unittests.ConstructorInjectsClassToBeInjected\",\"To\": \"strange.unittests.ConstructorInjectsClassToBeInjected\"}]";
+
+			binder.ConsumeBindings (jsonString);
+
+			InjectsClassToBeInjected instance1 = binder.GetInstance<InjectsClassToBeInjected> ();
+			ConstructorInjectsClassToBeInjected instance2 = binder.GetInstance<ConstructorInjectsClassToBeInjected> ();
+
+			Assert.IsInstanceOf<ClassToBeInjected> (instance1.injected);
+			Assert.IsInstanceOf<ClassToBeInjected> (instance2.injected);
+
+			Assert.IsNotInstanceOf<ExtendsClassToBeInjected> (instance1.injected);
+			Assert.IsInstanceOf<ExtendsClassToBeInjected> (instance2.injected);
+		}
+
+//		Supplied JSON
+//		[
+//			{
+//				"Bind": "strange.unittests.ClassToBeInjected",
+//				"To": "strange.unittests.ExtendsClassToBeInjected",
+//				"Options": [
+//					"ToSingleton",
+//					{
+//						"SupplyTo": [
+//							"strange.unittests.HasANamedInjection",
+//							"strange.unittests.ConstructorInjectsClassToBeInjected",
+//							"strange.unittests.InjectsClassToBeInjected"
+//						]
+//					}
+//				]
+//			},
+//			{
+//				"Bind": "strange.unittests.HasANamedInjection",
+//				"To": "strange.unittests.HasANamedInjection"
+//			},
+//			{
+//				"Bind": "strange.unittests.ConstructorInjectsClassToBeInjected",
+//				"To": "strange.unittests.ConstructorInjectsClassToBeInjected"
+//			},
+//			{
+//				"Bind": "strange.unittests.InjectsClassToBeInjected",
+//				"To": "strange.unittests.InjectsClassToBeInjected"
+//			}
+//		]
+		[Test]
+		public void TestRuntimeSupplyBindingWithArray()
+		{
+			string jsonString = "[{\"Bind\":\"strange.unittests.ClassToBeInjected\",\"To\":\"strange.unittests.ExtendsClassToBeInjected\",";
+			jsonString += "\"Options\": [\"ToSingleton\",{\"SupplyTo\": [\"strange.unittests.HasANamedInjection\",\"strange.unittests.ConstructorInjectsClassToBeInjected\",\"strange.unittests.InjectsClassToBeInjected\"]}]},";
+			jsonString += "{\"Bind\":\"strange.unittests.HasANamedInjection\",\"To\":\"strange.unittests.HasANamedInjection\"},";
+			jsonString += "{\"Bind\":\"strange.unittests.ConstructorInjectsClassToBeInjected\",\"To\":\"strange.unittests.ConstructorInjectsClassToBeInjected\"},";
+			jsonString += "{\"Bind\":\"strange.unittests.InjectsClassToBeInjected\",\"To\":\"strange.unittests.InjectsClassToBeInjected\"}]";
+
+			binder.ConsumeBindings (jsonString);
+
+			HasANamedInjection instance = binder.GetInstance<HasANamedInjection> ();
+			ConstructorInjectsClassToBeInjected instance2 = binder.GetInstance<ConstructorInjectsClassToBeInjected> ();
+			InjectsClassToBeInjected instance3 = binder.GetInstance<InjectsClassToBeInjected> ();
+
+			Assert.IsInstanceOf<ClassToBeInjected> (instance.injected);
+			Assert.IsInstanceOf<ClassToBeInjected> (instance2.injected);
+			Assert.IsInstanceOf<ClassToBeInjected> (instance3.injected);
 		}
 
 		public void TestSimpleSupplyBinding()
