@@ -35,7 +35,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\Program Files\Unity5rc4\Editor\Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>..\..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.dll</HintPath>
@@ -44,7 +44,7 @@
     <Reference Include="nunit.core, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
     <Reference Include="nunit.core.interfaces, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
     <Reference Include="nunit.framework">
-      <HintPath>..\..\..\..\Program Files\Unity5rc4\Editor\Data\Managed\nunit.framework.dll</HintPath>
+      <HintPath>packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -71,7 +71,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\promise\TestPromise.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\CommandExceptionType.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\ICommand.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\ICommandBinder.cs" />
@@ -131,9 +130,6 @@
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\View.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\ListensTo.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\SignalMediationBinder.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\extensions\promise\api\IPromise.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\extensions\promise\impl\BasePromise.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\extensions\promise\impl\Promise.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\reflector\api\IReflectedClass.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\reflector\api\IReflectionBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\reflector\api\ReflectionExceptionType.cs" />
@@ -344,5 +340,14 @@
     <Compile Include="StrangeIoC\scripts\strange\lib\MiniJSON.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectsClassToBeInjected.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\MediationBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\promise\api\IPromise.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\promise\impl\BasePromise.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\promise\impl\Promise.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\promise\TestPromise.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="StrangeIoC\.tests\" />
+    <Folder Include="StrangeIoC\scripts\strange\extensions\promise\" />
+    <Folder Include="StrangeIoC\scripts\strange\.tests\extensions\promise\" />
   </ItemGroup>
 </Project>
