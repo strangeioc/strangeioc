@@ -1,11 +1,38 @@
-﻿using System;
+﻿/*
+ * Copyright 2015 StrangeIoC
+ *
+ *	Licensed under the Apache License, Version 2.0 (the "License");
+ *	you may not use this file except in compliance with the License.
+ *	You may obtain a copy of the License at
+ *
+ *		http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *		Unless required by applicable law or agreed to in writing, software
+ *		distributed under the License is distributed on an "AS IS" BASIS,
+ *		WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *		See the License for the specific language governing permissions and
+ *		limitations under the License.
+ */
+
+
+/**
+* @class strange.extensions.promise.impl.Promise
+*
+* @see strange.extensions.promise.api.IPromise
+*/
+
+using System;
 using System.Linq;
 
-namespace strange.extensions.signal.impl
+namespace strange.extensions.promise.impl
 {
 	public class Promise : BasePromise
 	{
 		protected event Action Listener = null;
+
+		/// <summary>
+		/// Trigger completion callbacks to all listeners.
+		/// </summary>
 		public void Dispatch()
 		{
 			if (Fulfill())
@@ -13,6 +40,10 @@ namespace strange.extensions.signal.impl
 			Finally();
 		}
 
+		/// <summary>
+		/// Handle a callback when the Promise completes successfully.
+		/// </summary>
+		/// <param name="action">The callback (no arguments).</param>
 		public Promise Then(Action action)
 		{
 			if (Fulfilled)
@@ -56,6 +87,11 @@ namespace strange.extensions.signal.impl
 		private T t;
 
 		protected event Action<T> Listener = null;
+
+		/// <summary>
+		/// Trigger completion callbacks to all listeners
+		/// </summary>
+		/// <param name="t">First param.</param>
 		public void Dispatch(T t)
 		{
 			if (Fulfill())
@@ -66,6 +102,10 @@ namespace strange.extensions.signal.impl
 			}
 		}
 
+		/// <summary>
+		/// Handle a callback when the Promise completes successfully.
+		/// </summary>
+		/// <param name="action">The callback (one argument).</param>
 		public Promise<T> Then(Action<T> action)
 		{
 			if (Fulfilled)
@@ -108,6 +148,12 @@ namespace strange.extensions.signal.impl
 		private U u;
 
 		protected event Action<T,U> Listener = null;
+
+		/// <summary>
+		/// Trigger completion callbacks to all listeners
+		/// </summary>
+		/// <param name="t">First param.</param>
+		/// <param name="u">Second param.</param>
 		public void Dispatch(T t, U u)
 		{
 			if (Fulfill())
@@ -119,6 +165,10 @@ namespace strange.extensions.signal.impl
 			}
 		}
 
+		/// <summary>
+		/// Handle a callback when the Promise completes successfully.
+		/// </summary>
+		/// <param name="action">The callback (two arguments).</param>
 		public Promise<T,U> Then(Action<T,U> action)
 		{
 			if (Fulfilled)
@@ -170,6 +220,13 @@ namespace strange.extensions.signal.impl
 		private V v;
 
 		protected event Action<T, U, V> Listener = null;
+
+		/// <summary>
+		/// Trigger completion callbacks to all listeners
+		/// </summary>
+		/// <param name="t">First param.</param>
+		/// <param name="u">Second param.</param>
+		/// <param name="v">Third param.</param>
 		public void Dispatch(T t, U u, V v)
 		{
 			if (Fulfill())
@@ -182,6 +239,10 @@ namespace strange.extensions.signal.impl
 			}
 		}
 
+		/// <summary>
+		/// Handle a callback when the Promise completes successfully.
+		/// </summary>
+		/// <param name="action">The callback (three arguments).</param>
 		public Promise<T,U,V> Then(Action<T, U, V> action)
 		{
 			if (Fulfilled)
@@ -234,6 +295,14 @@ namespace strange.extensions.signal.impl
 		private W w;
 
 		protected event Action<T, U, V, W> Listener = null;
+
+		/// <summary>
+		/// Trigger completion callbacks to all listeners
+		/// </summary>
+		/// <param name="t">First param.</param>
+		/// <param name="u">Second param.</param>
+		/// <param name="v">Third param.</param>
+		/// <param name="w">Fourth param.</param>
 		public void Dispatch(T t, U u, V v, W w)
 		{
 			if (Fulfill())
@@ -247,6 +316,10 @@ namespace strange.extensions.signal.impl
 			}
 		}
 
+		/// <summary>
+		/// Handle a callback when the Promise completes successfully.
+		/// </summary>
+		/// <param name="action">The callback (four arguments).</param>
 		public Promise<T, U, V,W> Then(Action<T, U, V, W> action)
 		{
 			if (Fulfilled)

@@ -1,6 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
-using strange.extensions.signal.impl;
+using strange.extensions.promise.impl;
 
 namespace strange.unittests
 {
