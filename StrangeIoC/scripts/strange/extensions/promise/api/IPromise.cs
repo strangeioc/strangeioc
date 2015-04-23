@@ -99,5 +99,33 @@ namespace strange.extensions.promise.api
         int ListenerCount();
 
         BasePromise.PromiseState State { get; }
-    }
+
+		IPromise Then(Action action);
+		void Dispatch();
+		void RemoveListener(Action action);
+	}
+
+	public interface IPromise<T> : IPromise {
+		IPromise<T> Then(Action<T> action);
+		void Dispatch(T t);
+		void RemoveListener(Action<T> action);
+	}
+
+	public interface IPromise<T, U> : IPromise {
+		IPromise<T, U> Then(Action<T, U> action);
+		void Dispatch(T t, U u);
+		void RemoveListener(Action<T, U> action);
+	}
+
+	public interface IPromise<T, U, V> : IPromise {
+		IPromise<T, U, V> Then(Action<T, U, V> action);
+		void Dispatch(T t, U u, V v);
+		void RemoveListener(Action<T, U, V> action);
+	}
+
+	public interface IPromise<T, U, V, W> : IPromise {
+		IPromise<T, U, V, W> Then(Action<T, U, V, W> action);
+		void Dispatch(T t, U u, V v, W w);
+		void RemoveListener(Action<T, U, V, W> action);
+	}
 }

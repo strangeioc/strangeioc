@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using strange.extensions.promise.api;
 using strange.extensions.promise.impl;
 
 namespace strange.unittests
@@ -21,11 +22,11 @@ namespace strange.unittests
 		private float currentProgress = 0.0f;
 		private Exception currentException = null;
 
-		private Promise promise;
-		private Promise<int> promiseOneArg;
-		private Promise<int, int> promiseTwoArg;
-		private Promise<int, int, int> promiseThreeArg;
-		private Promise<int, int, int, int> promiseFourArg;
+		private IPromise promise;
+		private IPromise<int> promiseOneArg;
+		private IPromise<int, int> promiseTwoArg;
+		private IPromise<int, int, int> promiseThreeArg;
+		private IPromise<int, int, int, int> promiseFourArg;
 
 		[SetUp]
 		public void setup()
@@ -173,8 +174,7 @@ namespace strange.unittests
 		[Test]
 		public void TestRemoveOnlyRemovesThatListener()
 		{
-			promiseOneArg.Then(OneArgCallback);
-			promiseOneArg.Then(OneArgCallbackTwo);
+			promiseOneArg.Then(OneArgCallback).Then(OneArgCallbackTwo);
 			promiseOneArg.RemoveListener(OneArgCallback);
 
 			promiseOneArg.Dispatch(add);
@@ -530,6 +530,36 @@ namespace strange.unittests
 			Assert.IsNull(currentException);
 		}
 
+		[Test]
+		public void TestMockServiceSync() {
+			MockService service = new MockService ();
+			Assert.IsNull (service.CurrentLevel);
+
+			service.CurrentLevel = "Zathras";
+
+			MockCommand command = new MockCommand ();
+			command.service = service;
+			command.Execute ();
+
+			Assert.AreEqual ("Zathras", service.CurrentLevel);
+			Assert.AreEqual (command.LevelName, service.CurrentLevel);
+		}
+
+		[Test]
+		public void TestMockServiceAsync() {
+			MockService service = new MockService ();
+			Assert.IsNull (service.CurrentLevel);
+
+			MockCommand command = new MockCommand ();
+			command.service = service;
+			command.Execute ();
+
+			Assert.IsNull (command.LevelName);
+			service.CurrentLevel = "Beeblebrox";
+			Assert.AreEqual ("Beeblebrox", service.CurrentLevel);
+			Assert.AreEqual (command.LevelName, service.CurrentLevel);
+		}
+
 
 #region Callbacks
 		
@@ -601,8 +631,52 @@ namespace strange.unittests
 		{
 			value += ProgressTwoValue;
 		}
-
-#endregion
-
+		#endregion
 	}
+
+	#region mockService
+	class MockService
+	{
+		private string currentLevel;
+		public string CurrentLevel
+		{
+			get
+			{
+				return currentLevel;
+			}
+			set
+			{
+				currentLevel = value;
+				promise.Dispatch (CurrentLevel);
+			}
+		}
+		private readonly IPromise<string> promise = new Promise<string>();
+		public IPromise<string> FetchLevelName()
+		{
+			if (CurrentLevel != null)
+			{
+				promise.Dispatch(CurrentLevel);
+			}
+			return promise;
+		}
+	}
+	#endregion
+
+	#region mockCommand
+	class MockCommand
+	{
+		public string LevelName;
+		public MockService service;
+
+		public void Execute()
+		{
+			service.FetchLevelName().Then(OnName);
+		}
+
+		private void OnName(string name)
+		{
+			LevelName = name;
+		}
+	}
+	#endregion
 }

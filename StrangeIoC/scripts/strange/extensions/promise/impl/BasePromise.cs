@@ -148,6 +148,20 @@ namespace strange.extensions.promise.impl
         protected bool Fulfilled { get { return State == PromiseState.Fulfilled; } }
         protected bool Failed { get { return State == PromiseState.Failed; } }
 
-        public abstract int ListenerCount();
-    }
+		public abstract int ListenerCount();
+
+		/// <summary>
+		/// Handle a callback when the Promise completes successfully.
+		/// </summary>
+		/// <param name="action">The callback (no arguments).</param>
+		virtual public IPromise Then(Action action) {
+			throw new Exception ("Override in subclass");
+		}
+		virtual public void Dispatch() {
+			throw new Exception ("Override in subclass");
+		}
+		virtual public void RemoveListener(Action action) {
+			throw new Exception ("Override in subclass");
+		}
+	}
 }
