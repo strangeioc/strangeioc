@@ -25,6 +25,7 @@
  */
 
 using System;
+using System.Linq;
 using UnityEngine;
 using strange.extensions.mediation.api;
 
@@ -40,7 +41,9 @@ namespace strange.extensions.mediation.impl
 		protected override IView[] GetViews(IView view)
 		{
 			MonoBehaviour mono = view as MonoBehaviour;
-			return mono.GetComponentsInChildren(typeof(IView), true) as IView[];
+			Component[] components = mono.GetComponentsInChildren (typeof(IView), true);
+			IView[] views = components.Cast<IView>().ToArray();
+			return views;
 		}
 
 		protected override bool HasMediator(IView view, Type mediatorType)
