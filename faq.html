@@ -44,6 +44,53 @@
  <p><strong>StrangeIoC</strong> is an Inversion-of-Control library written for C# and specifically with Unity3D in mind. It features Dependency Injection, a common event bus and an optional MVCS structure which is great for building games and apps from something quite simple up to the very, very complex. <strong>Strange</strong> is just another (colloquial) name for StrangeIoC.</p>
  <h3><a name="current-version" href="#current-version"></a>What's the current version?</h3>
  <p>See <a href="https://github.com/strangeioc/strangeioc/blob/master/StrangeIoC/scripts/strange/README.md">here.</a></p>
+ <h3><a name="current-version" href="#supported-platforms"></a>What versions of Unity does Strange work with? What platforms can I deploy to?</h3>
+ <p>Strange works with all versions of Unity from 3.5 and up.</p>
+ <p>Supported platforms can be something of a shifting target, since Unity supports so many. Here's a list of
+     platforms where we know Strange works, where we know it doesn't, and we're we're not entirely certain.</p>
+         <h4><strong>Strange is known to run on these.</strong></h4>
+         <ul>
+             <li>Android</li>
+             <li>Gear VR <i class="text-warning">*</i></li>
+             <li>iOS</li>
+             <li>Linux Standalone</li>
+             <li>Mac Standalone</li>
+             <li>Oculus Rift <i class="text-warning">*</i></li>
+             <li>Steam <i class="text-warning">*</i></li>
+             <li>Unity Editor <i class="text-info">&dagger;</i></li>
+             <li>WebGL</li>
+             <li>WebPlayer</li>
+             <li>Windows Phone 8.0</li>
+             <li>Windows Standalone</li>
+         </ul>
+        <h4><strong>Strange is known NOT to run on these.</strong></h4>
+        <ul>
+            <li>Playstation 4 <i class="text-info">&Dagger;</i></li>
+            <li>Wii U <i class="text-info">&Dagger;</i></li>
+            <li>Windows Phone 8.1 <i class="text-danger">&curren;</i></li>
+            <li>Windows Store Apps</li>
+            <li>XBox One <i class="text-info">&Dagger;</i></li>
+        </ul>
+        <h4><strong>We are uncertain if Strange runs on these.</strong></h4>
+        <p><small>These are uncertain because we've not looked into it, and to the best of our knowledge
+            neither has anyone else. If you've experimented with any of these, we'd love to hear about it.</small></p>
+        <ul>
+            <li>Android TV</li>
+            <li>Blackberry</li>
+            <li>Playstation 3</li>
+            <li>Playstation Vita</li>
+            <li>Samsung Smart TV</li>
+            <li>Tizen</li>
+            <li>XBox 360</li>
+        </ul>
+
+        <p><small><i class="text-warning">*</i> Presuming the driving platform is supported.<br/>
+        <i class="text-info">&dagger;</i> Upcoming version 1.0 will support Unity Editor extensions built on top of StrangeIoC.<br/>
+        <i class="text-info">&Dagger;</i> We are actively investigating getting Strange to work on consoles.<br/>
+        <i class="text-danger">&curren;</i> Window Phone 8.1 enables only WinRT and changes most of the APIs in a breaking fashion.
+        The amount of work necessary to make Strange work in this environment is prohibitive.</small></p>
+
+
  <h3><a name="whats-mvcs" href="#whats-mvcs"></a>What's MVCS?</h3>
  <p><a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">Model-View-Controller</a> (MVC) is a standard architecture/design pattern for designing applications. The 'S' in MVCS refers to services, which suggests that MVC doesn't entirely cover the aspect of architecture that involves communicating with resources outside the application itself.</p>
  <h3><a name="whats-ioc-di" href="whats-ioc-di"></a>What's Inversion-of-Control? What's Dependency Injection?</h3>
