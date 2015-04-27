@@ -2,7 +2,7 @@
 
 Current version: v0.7.0
 
-###Note: StrangeIoC will now be hosted from this location
+Website: http://strangeioc.github.io/strangeioc/
 
 
 > Strange attractors create predictable patterns, often in chaotic systems.
@@ -56,6 +56,9 @@ In addition to organizing your project into a sensible structure, Strange offers
 * The extensible binder really is amazing (a friend used to tell me "it's good to like your own cookin'"). The number of things you can accomplish with the tiny core framework would justify Strange all on its own.
 * Multiple contexts allow you to "bootstrap" subcomponents so they operate fine either on their own or as an integrated part. This can hugely speed up your development process and allow developers to work in isolation, then integrate in later stages of development.
 * Get rid of platform-specific #IF...#ELSE constructs in your code. IoC allows you to write whole concrete implementations correctly, then bind the ones you want to use at compile time or at run time. (As with other forms of binding, #IF...#ELSE clauses can be isolated into a single class and away from the rest of your code.)
+
+### Supported Versions/Platforms
+Strange works with Unity 3.5+. [Click here](http://strangeioc.github.io/strangeioc/faq.html#supported-platforms) to see the full list of supported runtime platforms.
 
 # Acknowledgements
 It is hard to adequately credit the creators of the open source Actionscript framework RobotLegs for their influence on the creation of StrangeIoC. While Strange is not a port of RobotLegs, the ensigns of that library are copiously reflected throughout this one. For their great service to my professional development, I offer that team my sincerest thanks. And a donut. Seriously, if you're ever in town, let me buy you a donut.
