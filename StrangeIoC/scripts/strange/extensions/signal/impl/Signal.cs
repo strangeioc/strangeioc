@@ -70,8 +70,12 @@ using System.Linq;
 
 namespace strange.extensions.signal.impl
 {
+    public interface ISignal
+    {
+        Delegate listener { get; set; }
+    }
     /// Base concrete form for a Signal with no parameters
-    public class Signal : BaseSignal
+    public class Signal : BaseSignal, ISignal
     {
         public event Action Listener = delegate { };
         public event Action OnceListener = delegate { };
@@ -106,10 +110,12 @@ namespace strange.extensions.signal.impl
             }
             return listeners;
         }
+
+        public Delegate listener { get { return Listener; } set { Listener = (Action) value; }}
     }
 
     /// Base concrete form for a Signal with one parameter
-    public class Signal<T> : BaseSignal
+    public class Signal<T> : BaseSignal, ISignal
     {
         public event Action<T> Listener = delegate { };
         public event Action<T> OnceListener = delegate { };
@@ -148,10 +154,12 @@ namespace strange.extensions.signal.impl
             }
             return listeners;
         }
+
+        public Delegate listener { get { return Listener; } set { Listener = (Action<T>) value; } }
     }
 
     /// Base concrete form for a Signal with two parameters
-    public class Signal<T, U> : BaseSignal
+    public class Signal<T, U> : BaseSignal, ISignal
     {
         public event Action<T, U> Listener = delegate { };
         public event Action<T, U> OnceListener = delegate { };
@@ -190,10 +198,12 @@ namespace strange.extensions.signal.impl
             }
             return listeners;
         }
+
+        public Delegate listener { get { return Listener; } set { Listener = (Action<T, U>) value; } }
     }
 
     /// Base concrete form for a Signal with three parameters
-    public class Signal<T, U, V> : BaseSignal
+    public class Signal<T, U, V> : BaseSignal, ISignal
     {
         public event Action<T, U, V> Listener = delegate { };
         public event Action<T, U, V> OnceListener = delegate { };
@@ -233,10 +243,12 @@ namespace strange.extensions.signal.impl
             }
             return listeners;
         }
+
+        public Delegate listener { get { return Listener; } set { Listener = (Action<T, U, V>) value; } }
     }
 
     /// Base concrete form for a Signal with four parameters
-    public class Signal<T, U, V, W> : BaseSignal
+    public class Signal<T, U, V, W> : BaseSignal, ISignal
     {
         public event Action<T, U, V, W> Listener = delegate { };
         public event Action<T, U, V, W> OnceListener = delegate { };
@@ -278,6 +290,8 @@ namespace strange.extensions.signal.impl
             }
             return listeners;
         }
+
+        public Delegate listener { get { return Listener; } set { Listener = (Action<T, U, V, W>) value; } }
     }
 
 }
