@@ -58,6 +58,7 @@ namespace strange.extensions.mediation.impl
 				switch(evt)
 				{
 					case MediationEvent.AWAKE:
+						view.registeredWithContext = true;
 						injectViewAndChildren(view);
 						mapView (view, binding);
 						break;
