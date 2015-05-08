@@ -342,5 +342,14 @@
     <Compile Include="StrangeIoC\scripts\strange\lib\MiniJSON.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectsClassToBeInjected.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\MediationBinder.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\promise\api\IPromise.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\promise\impl\BasePromise.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\promise\impl\Promise.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\promise\TestPromise.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="StrangeIoC\.tests\" />
+    <Folder Include="StrangeIoC\scripts\strange\extensions\promise\" />
+    <Folder Include="StrangeIoC\scripts\strange\.tests\extensions\promise\" />
   </ItemGroup>
 </Project>

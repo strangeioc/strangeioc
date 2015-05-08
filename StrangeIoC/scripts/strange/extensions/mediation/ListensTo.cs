@@ -22,14 +22,18 @@
  * Example:
 
 		[ListensTo(PlayerUpdateSignal)]
-		private void onPlayerUpdate(int hitpoints)
+		public void onPlayerUpdate(int hitpoints)
 		{
 			//do some stuff
 		}
  *
  * The above example performs PlayerUpdateSignal.AddListener(onPlayerUpdate)
- * at OnRegister, and PlayerUpdateSignal.RemoveListener(onPlayerUpdate)
- * at OnRemove.
+ * within OnRegister, and PlayerUpdateSignal.RemoveListener(onPlayerUpdate)
+ * within OnRemove.
+ *
+ * NOTE: THE LISTENING METHOD MUST BE MARKED PUBLIC. Private and protected
+ * methods are not scanned and the ListensTo attribute will be silently
+ * ignored.
  */
 
 
