@@ -530,6 +530,139 @@ namespace strange.unittests
 			Assert.IsNull(currentException);
 		}
 
+		[Test]
+		public void TestSecondDispatchIsNoOp()
+		{
+			promise.Then(NoArgCallback);
+
+			promise.Dispatch();
+			Assert.AreEqual(1, value);
+
+			promise.Dispatch();
+			Assert.AreEqual(1, value); //second dispatch is no-op
+
+			promise.Then(NoArgCallbackTwo);
+			promise.Dispatch();
+			Assert.AreEqual(3, value); //Should still allow for a Then to process, though!
+		}
+
+		[Test]
+		public void TestSecondFailIsNoOp()
+		{
+			promise
+				.Then(NoArgCallback)
+				.Fail(FailCallback);
+
+			promise.ReportFail(new Exception(exceptionStr));
+			Assert.AreEqual(exceptionStr, currentException.Message);
+			
+			currentException = null;
+			promise.ReportFail(new Exception(exceptionStr));
+			Assert.IsNull(currentException);
+		}
+
+		[Test]
+		public void TestDispatchAfterFailIsNoOp()
+		{
+			promise
+				.Then(NoArgCallback)
+				.Fail(FailCallback);
+
+			promise.ReportFail(new Exception(exceptionStr));
+			Assert.AreEqual(0, value);
+			Assert.AreEqual(exceptionStr, currentException.Message);
+
+			promise.Dispatch();
+			Assert.AreEqual(0, value);
+		}
+
+		[Test]
+		public void TestFailAfterDispatchIsNoOp()
+		{
+			
+			promise
+				.Then(NoArgCallback)
+				.Fail(FailCallback);
+
+			promise.Dispatch();
+			Assert.AreEqual(1, value);
+
+			promise.ReportFail(new Exception(exceptionStr));
+			Assert.AreEqual(1, value);
+			Assert.IsNull(currentException);
+		}
+
+
+		[Test]
+		public void TestListenersAreClearedAfterDispatch()
+		{
+			promise.Then(NoArgCallback);
+			promise.Dispatch();
+			Assert.AreEqual(1, value);
+
+			promise.Then(NoArgCallbackTwo);
+			promise.Dispatch();
+			Assert.AreEqual(3, value);
+		}
+
+		[Test]
+		public void TestListenersAreClearedAfterFail()
+		{
+			promise
+				.Then(NoArgCallback)
+				.Fail(FailCallback);
+
+			promise.ReportFail(new Exception(exceptionStr));
+			Assert.AreEqual(0, value);
+			Assert.AreEqual(exceptionStr, currentException.Message);
+
+			promise.Then(NoArgCallbackTwo);
+			promise.Dispatch();
+			Assert.AreEqual(0, value);
+		}
+
+
+		[Test]
+		public void TestProgressAreClearedAfterDispatch()
+		{
+			promise.Progress(ProgressCallback);
+			promise.ReportProgress(0.5f);
+			Assert.AreEqual(0.5f, currentProgress);
+
+			promise.Dispatch();
+
+			promise.ReportProgress(0.75f);
+			Assert.AreEqual(0.5f, currentProgress);
+		}
+
+		[Test]
+		public void TestFailAreClearedAfterDispatch()
+		{
+			promise
+				.Then(NoArgCallback)
+				.Fail(FailCallback);
+
+			promise.Dispatch();
+			Assert.AreEqual(1, value);
+
+			promise.ReportFail(new Exception(exceptionStr));
+			Assert.IsNull(currentException);
+		}
+
+		[Test]
+		public void TestFinallyAreClearedAfterDispatch()
+		{
+			promise
+				.Then(NoArgCallback)
+				.Finally(FinallyCallback);
+
+			promise.Dispatch();
+			Assert.AreEqual(42, value);
+			
+			value = 0;
+			promise.Dispatch();
+			Assert.AreEqual(0, value);
+		}
 
 #region Callbacks
 		
