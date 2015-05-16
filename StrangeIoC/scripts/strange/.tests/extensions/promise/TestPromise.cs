@@ -380,7 +380,7 @@ namespace strange.unittests
 			promise.ReportFail(new Exception(exceptionStr));
 			promise.Then(NoArgCallbackTwo);
 
-			Assert.AreEqual(1, promise.ListenerCount());
+			Assert.AreEqual(0, promise.ListenerCount());
 		}
 
 		[Test]
