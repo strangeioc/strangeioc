@@ -71,6 +71,243 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommandBinder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommandBinderWithoutPools.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommandPooling.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestEventCommandBinder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestContextRemoval.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestCrossContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestCrossContextBridge.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\eventdispatcher\TestEventBinding.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\eventdispatcher\TestEventCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\eventdispatcher\TestEventCommandPooling.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\eventdispatcher\TestEventDispatcher.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\InjectionSpeedTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\TestImplicitBinding.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\TestInjectionBinder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\TestInjectionBinding.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\TestInjector.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\TestInjectorFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\mediation\TestAbstractMediationBinder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\pool\TestPool.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\reflector\TestReflectionBinder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\sequencer\TestSequenceCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\sequencer\TestSequencer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\signal\TestPooledSignalCommands.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\signal\TestSignal.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\signal\TestSignalCommandBinder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\framework\TestBinder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\framework\TestBinding.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\framework\TestSemiBinding.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\AbstractClass.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\CircularDependencyOne.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\CircularDependencyTwo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ClassToBeInjected.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ClassWithConstructorParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ClassWithConstructorParametersOnlyOneConstructor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\AsynchCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandThrowsErrorIfEventIsNull.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandThrowsErrorIfEventIsNull2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandThrowsErrorIfEventIsNull3.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithExecute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithInjection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithInjectionAndSignal.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithInjectionPlusSignalPayload.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithoutExecute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\FailCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\MarkablePoolCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ConstructorInjectsClassToBeInjected.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ConstructorNamedInjection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ExtendsClassToBeInjected.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\GuaranteedUniqueInstances.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\HasANamedInjection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\HasANamedInjection2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\HasNamedInjections.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\HasTwoInjections.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\IAnotherSimpleInterface.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectableDerivedClass.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectableSuperClass.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectsClassToBeInjected.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectsPostConstructSimple.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ISimpleInterface.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\MarkerClass.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\MockContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\MultipleConstructorsOneThreeFour.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\MultipleConstructorsUntagged.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\NonpublicInjection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PolymorphicClass.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PostConstructClass.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PostConstructSeveralOrdered.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PostConstructSimple.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PostConstructTwo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceCommandWithExecute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceCommandWithInjection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceCommandWithoutExecute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceInterruptingCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SimpleInterfaceImplementer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SimpleInterfaceImplementerTwo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SomeEnum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\TestException.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\CommandExceptionType.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\ICommand.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\ICommandBinder.cs" />
@@ -122,6 +359,7 @@
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\api\IView.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\api\MediationEvent.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\api\MediationExceptionType.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\AbstractMediationBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\EventMediator.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\EventView.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\MediationBinding.cs" />
@@ -260,85 +498,7 @@
     <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\TesterMediator.cs" />
     <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\ITesterView.cs" />
     <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\common\controller\KillAudioListenerCommand.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommand.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommandBinder.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommandBinderWithoutPools.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommandPooling.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestEventCommandBinder.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestContext.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestContextRemoval.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestCrossContext.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestCrossContextBridge.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\eventdispatcher\TestEventBinding.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\eventdispatcher\TestEventCommand.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\eventdispatcher\TestEventCommandPooling.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\eventdispatcher\TestEventDispatcher.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\InjectionSpeedTest.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\TestImplicitBinding.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\TestInjectionBinder.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\TestInjectionBinding.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\TestInjector.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\injector\TestInjectorFactory.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\pool\TestPool.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\reflector\TestReflectionBinder.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\sequencer\TestSequenceCommand.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\sequencer\TestSequencer.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\signal\TestPooledSignalCommands.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\signal\TestSignal.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\signal\TestSignalCommandBinder.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\framework\TestBinder.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\framework\TestBinding.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\framework\TestSemiBinding.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\AsynchCommand.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandThrowsErrorIfEventIsNull.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandThrowsErrorIfEventIsNull2.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandThrowsErrorIfEventIsNull3.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithExecute.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithInjection.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithInjectionAndSignal.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithInjectionPlusSignalPayload.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithoutExecute.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\FailCommand.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\MarkablePoolCommand.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceCommandWithExecute.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceCommandWithInjection.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceCommandWithoutExecute.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceInterruptingCommand.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\AbstractClass.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\CircularDependencyOne.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\CircularDependencyTwo.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ClassToBeInjected.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ClassWithConstructorParameters.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ClassWithConstructorParametersOnlyOneConstructor.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ConstructorInjectsClassToBeInjected.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ConstructorNamedInjection.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ExtendsClassToBeInjected.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\GuaranteedUniqueInstances.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\HasANamedInjection.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\HasANamedInjection2.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\HasNamedInjections.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\HasTwoInjections.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\IAnotherSimpleInterface.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectableDerivedClass.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectableSuperClass.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectsPostConstructSimple.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ISimpleInterface.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\MarkerClass.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\MockContext.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\MultipleConstructorsOneThreeFour.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\MultipleConstructorsUntagged.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\NonpublicInjection.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PolymorphicClass.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PostConstructClass.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PostConstructSeveralOrdered.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PostConstructSimple.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PostConstructTwo.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SimpleInterfaceImplementer.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SimpleInterfaceImplementerTwo.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SomeEnum.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\TestException.cs" />
     <Compile Include="StrangeIoC\scripts\strange\lib\MiniJSON.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\InjectsClassToBeInjected.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\MediationBinder.cs" />
   </ItemGroup>
 </Project>

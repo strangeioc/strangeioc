@@ -35,14 +35,31 @@ namespace strange.extensions.mediation
 	{
 
 		/// Adds a Mediator to a View
-		protected override MonoBehaviour createMediator(MonoBehaviour mono, Type mediatorType)
+		protected override object CreateMediator(IView view, Type mediatorType)
 		{
-			MonoBehaviour mediator = base.createMediator(mono, mediatorType);
+			MonoBehaviour mediator = base.CreateMediator(view, mediatorType) as MonoBehaviour;
 			if (mediator is IMediator)
 			{
 				HandleDelegates(mediator, mediatorType, true);
 			}
 			return mediator;
+		}
+
+		/// Manage Delegates, then remove the Mediator from a View
+		protected override object DestroyMediator(IView view, Type mediatorType)
+		{
+			MonoBehaviour mono = view as MonoBehaviour;
+			IMediator mediator = mono.GetComponent(mediatorType) as IMediator;
+			//Unbind signals from methods
+			if (mediator != null)
+			{
+				HandleDelegates ((MonoBehaviour) mediator, mediatorType, false);
+				return base.DestroyMediator (mediator);
+			}
+			else
+			{
+				return null;
+			}
 		}
 
 		/// Determine whether to add or remove ListensTo delegates
@@ -90,15 +107,6 @@ namespace strange.extensions.mediation
 			{
 				((Signal)signal).AddListener((Action)Delegate.CreateDelegate(typeof(Action), mediator, method)); //Assign and cast explicitly for Type == Signal case
 			}
-
-		}
-
-		/// Manage Delegates, then remove the Mediator from a View
-		protected override void removeMediator(IMediator mediator)
-		{
-			//Unbind signals to methods
-			HandleDelegates((MonoBehaviour)mediator, mediator.GetType(), false);
-			base.removeMediator(mediator);
 		}
 	}
 }

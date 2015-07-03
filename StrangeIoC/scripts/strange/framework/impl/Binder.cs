@@ -429,43 +429,58 @@ namespace strange.framework.impl
 		{
 			List<object> list = Json.Deserialize(jsonString) as List<object>;
 			IBinding testBinding = GetRawBinding ();
-			int bindConstraints = (testBinding.keyConstraint == BindingConstraintType.ONE) ? 0 : 1;
-			bindConstraints |= (testBinding.valueConstraint == BindingConstraintType.ONE) ? 0 : 2;
 
 			for (int a=0, aa=list.Count; a < aa; a++)
 			{
-				Dictionary<string, object> item = list[a] as Dictionary<string, object>;
-				List<object> keyList;
-				List<object> valueList;
-				IBinding binding = null;
+				ConsumeItem(list[a] as Dictionary<string, object>, testBinding);
+			}
+		}
 
+		/// <summary>
+		/// Consumes an individual JSON element and returns the Binding that element represents 
+		/// </summary>
+		/// <returns>The Binding represented the provided JSON</returns>
+		/// <param name="item">A Dictionary of definitions for the individual binding parameters</param>
+		/// <param name="testBinding">An example binding for the current Binder. This method uses the 
+		/// binding constraints of the example to raise errors if asked to parse illegally</param>
+		virtual protected IBinding ConsumeItem(Dictionary<string, object> item, IBinding testBinding)
+		{
+			int bindConstraints = (testBinding.keyConstraint == BindingConstraintType.ONE) ? 0 : 1;
+			bindConstraints |= (testBinding.valueConstraint == BindingConstraintType.ONE) ? 0 : 2;
+			IBinding binding = null;
+			List<object> keyList;
+			List<object> valueList;
+
+			if (item != null)
+			{
+				item = ConformRuntimeItem (item);
 				// Check that Bind exists
-				if (!item.ContainsKey("Bind"))
+				if (!item.ContainsKey ("Bind"))
 				{
 					throw new BinderException ("Attempted to consume a binding without a bind key.", BinderExceptionType.RUNTIME_NO_BIND);
 				}
 				else
 				{
-					keyList = conformRuntimeToList(item["Bind"]);
+					keyList = conformRuntimeToList (item ["Bind"]);
 				}
 				// Check that key counts match the binding constraint
 				if (keyList.Count > 1 && (bindConstraints & 1) == 0)
 				{
-					throw new BinderException ("Binder " + this.ToString () + " supports only a single binding key. A runtime binding key including " + keyList[0].ToString() + " is trying to add more.", BinderExceptionType.RUNTIME_TOO_MANY_KEYS);
+					throw new BinderException ("Binder " + this.ToString () + " supports only a single binding key. A runtime binding key including " + keyList [0].ToString () + " is trying to add more.", BinderExceptionType.RUNTIME_TOO_MANY_KEYS);
 				}
 
-				if (!item.ContainsKey("To"))
+				if (!item.ContainsKey ("To"))
 				{
 					valueList = keyList;
 				}
 				else
 				{
-					valueList = conformRuntimeToList(item["To"]);
+					valueList = conformRuntimeToList (item ["To"]);
 				}
 				// Check that value counts match the binding constraint
 				if (valueList.Count > 1 && (bindConstraints & 2) == 0)
 				{
-					throw new BinderException ("Binder " + this.ToString () + " supports only a single binding value. A runtime binding value including " + valueList[0].ToString() + " is trying to add more.", BinderExceptionType.RUNTIME_TOO_MANY_VALUES);
+					throw new BinderException ("Binder " + this.ToString () + " supports only a single binding value. A runtime binding value including " + valueList [0].ToString () + " is trying to add more.", BinderExceptionType.RUNTIME_TOO_MANY_VALUES);
 				}
 
 				// Check Whitelist if it exists
@@ -473,9 +488,9 @@ namespace strange.framework.impl
 				{
 					foreach (object value in valueList)
 					{
-						if (bindingWhitelist.IndexOf(value) == -1)
+						if (bindingWhitelist.IndexOf (value) == -1)
 						{
-							throw new BinderException ("Value " + value.ToString () + " not found on whitelist for " + this.ToString() + ".", BinderExceptionType.RUNTIME_FAILED_WHITELIST_CHECK);
+							throw new BinderException ("Value " + value.ToString () + " not found on whitelist for " + this.ToString () + ".", BinderExceptionType.RUNTIME_FAILED_WHITELIST_CHECK);
 						}
 					}
 				}
@@ -483,20 +498,40 @@ namespace strange.framework.impl
 				binding = performKeyValueBindings (keyList, valueList);
 
 				// Optionally look for ToName
-				if (item.ContainsKey("ToName"))
+				if (item.ContainsKey ("ToName"))
 				{
-					binding = binding.ToName (item["ToName"]);
+					binding = binding.ToName (item ["ToName"]);
 				}
 
 				// Add runtime options
-				if (item.ContainsKey("Options"))
+				if (item.ContainsKey ("Options"))
 				{
-					List<object> optionsList = conformRuntimeToList(item["Options"]);
-					addRuntimeOptions(binding, optionsList);
+					List<object> optionsList = conformRuntimeToList (item ["Options"]);
+					addRuntimeOptions (binding, optionsList);
 				}
 			}
+			return binding;
 		}
 
+		/// <summary>
+		/// Override this method in subclasses to add special-case SYNTACTICAL SUGAR for Runtime JSON bindings.
+		/// For example, if your Binder needs a special JSON tag BindView, such that BindView is simply
+		/// another way of expressing 'Bind', override this method conform the sugar to
+		/// match the base definition (BindView becomes Bind).
+		/// </summary>
+		/// <returns>The conformed Dictionary.</returns>
+		/// <param name="dictionary">A Dictionary representing the options for a Binding.</param>
+		virtual protected Dictionary<string, object> ConformRuntimeItem(Dictionary<string, object> dictionary)
+		{
+			return dictionary;
+		}
+
+		/// <summary>
+		/// Performs the key value bindings for a JSON runtime binding.
+		/// </summary>
+		/// <returns>A Binding.</returns>
+		/// <param name="keyList">A list of things to Bind.</param>
+		/// <param name="valueList">A list of the things to which we're binding.</param>
 		virtual protected IBinding performKeyValueBindings(List<object> keyList, List<object> valueList)
 		{
 			IBinding binding = null;
@@ -514,7 +549,16 @@ namespace strange.framework.impl
 			return binding;
 		}
 
-		/// Default options: Weak
+		/// <summary>
+		/// Override this method to decorate subclasses with further runtime capabilities.
+		/// For example, InjectionBinder adds ToSingleton and CrossContext capabilities so that
+		/// these can be specified in JSON.
+		/// 
+		/// By default, the Binder supports 'Weak' as a runtime option.
+		/// </summary>
+		/// <returns>The provided Binding.</returns>
+		/// <param name="binding">A Binding to have capabilities added.</param>
+		/// <param name="options">The list of runtime options for this Binding.</param>
 		virtual protected IBinding addRuntimeOptions(IBinding binding, List<object> options)
 		{
 			if (options.IndexOf ("Weak") > -1)
