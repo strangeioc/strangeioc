@@ -25,6 +25,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using strange.extensions.reflector.api;
 using strange.framework.api;
 using strange.extensions.injector.api;
@@ -215,6 +216,31 @@ namespace strange.extensions.injector.impl
 			if (options.IndexOf ("CrossContext") > -1)
 			{
 				binding.CrossContext ();
+			}
+			IEnumerable<Dictionary<string, object>> dict = options.OfType<Dictionary<string, object>> ();
+			if (dict.Any())
+			{
+				Dictionary<string, object> supplyToDict = dict.First (a => a.Keys.Contains ("SupplyTo"));
+				if (supplyToDict != null)
+				{
+					foreach (KeyValuePair<string,object> kv in supplyToDict)
+					{
+						if (kv.Value is string)
+						{
+							Type valueType = Type.GetType (kv.Value as string);
+							binding.SupplyTo (valueType);
+						}
+						else
+						{
+							List<object> values = kv.Value as List<object>;
+							for (int a = 0, aa = values.Count; a < aa; a++)
+							{
+								Type valueType = Type.GetType (values[a] as string);
+								binding.SupplyTo (valueType);
+							}
+						}
+					}
+				}
 			}
 
 			return binding;

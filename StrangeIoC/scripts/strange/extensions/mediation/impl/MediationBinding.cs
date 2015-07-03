@@ -19,8 +19,13 @@
  * 
  * Subclass of Binding for MediationBinding.
  * 
- * I've provided MediationBinding, but at present it comforms
- * perfectly to Binding.
+ * MediationBindings support the following extensions of standard Bindings:
+ *
+ * ToMediator - Porcelain for To<T> providing a little extra clarity and security.
+ *
+ * ToAbstraction<T> - Provide an Interface or base Class adapter for the View.
+ * When the binding specifies ToAbstraction<T>, the Mediator will be expected to inject <T>
+ * instead of the concrete View class.
  */
 
 using System;
@@ -48,12 +53,17 @@ namespace strange.extensions.mediation.impl
 
 		IMediationBinding IMediationBinding.ToAbstraction<T> ()
 		{
-			Type abstractionType = typeof(T);
+			return ((IMediationBinding)this).ToAbstraction(typeof (T));
+		}
+
+		IMediationBinding IMediationBinding.ToAbstraction (Type t)
+		{
+			Type abstractionType = t;
 			if (key != null)
 			{
 				Type keyType = key as Type;
 				if (abstractionType.IsAssignableFrom(keyType) == false)
-					throw new MediationException ("The View " + key.ToString() + " has been bound to the abstraction " + typeof(T).ToString() + " which the View neither extends nor implements. " , MediationExceptionType.VIEW_NOT_ASSIGNABLE);
+					throw new MediationException ("The View " + key.ToString() + " has been bound to the abstraction " + t.ToString() + " which the View neither extends nor implements. " , MediationExceptionType.VIEW_NOT_ASSIGNABLE);
 			}
 			_abstraction.Add (abstractionType);
 			return this;
