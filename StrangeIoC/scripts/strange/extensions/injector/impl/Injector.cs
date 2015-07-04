@@ -99,7 +99,7 @@ namespace strange.extensions.injector.impl
 				object[] args = new object [aa];
 				for (int a = 0; a < aa; a++)
 				{
-					args [a] = getValueInjection (parameterTypes[a] as Type, parameterNames[a], reflectionType);
+					args [a] = getValueInjection (parameterTypes[a] as Type, parameterNames[a], reflectionType, null);
 				}
 				retv = factory.Get (binding, args);
 
@@ -185,7 +185,7 @@ namespace strange.extensions.injector.impl
 			int i = 0;
 			foreach (Type type in parameterTypes)
 			{
-				values[i] = getValueInjection(type, parameterNames[i], target);
+				values[i] = getValueInjection(type, parameterNames[i], target, null);
 				i++;
 			}
 			if (values.Length == 0)
@@ -207,12 +207,12 @@ namespace strange.extensions.injector.impl
 			for(int a = 0; a < aa; a++)
 			{
 				KeyValuePair<Type, PropertyInfo> pair = reflection.setters [a];
-				object value = getValueInjection(pair.Key, reflection.setterNames[a], target);
+				object value = getValueInjection(pair.Key, reflection.setterNames[a], target, pair.Value);
 				injectValueIntoPoint (value, target, pair.Value);
 			}
 		}
 
-		private object getValueInjection(Type t, object name, object target)
+		private object getValueInjection(Type t, object name, object target, PropertyInfo propertyInfo)
 		{
 			IInjectionBinding suppliedBinding = null;
 			if (target != null)
@@ -221,7 +221,8 @@ namespace strange.extensions.injector.impl
 			}
 
 			IInjectionBinding binding = suppliedBinding ?? binder.GetBinding (t, name);
-			failIf(binding == null, "Attempt to Instantiate a null binding.", InjectionExceptionType.NULL_BINDING, t, name, target);
+
+			failIf(binding == null, "Attempt to Instantiate a null binding", InjectionExceptionType.NULL_BINDING, t, name, target, propertyInfo);
 			if (binding.type == InjectionBindingType.VALUE)
 			{
 				if (!binding.toInject)
@@ -290,6 +291,18 @@ namespace strange.extensions.injector.impl
 		private void failIf(bool condition, string message, InjectionExceptionType type, Type t, object name)
 		{
 			failIf(condition, message, type, t, name, null);
+		}
+
+		private void failIf(bool condition, string message, InjectionExceptionType type, Type t, object name, object target, PropertyInfo propertyInfo)
+		{
+			if (condition)
+			{
+				if (propertyInfo != null)
+				{
+					message += "\n\t\ttarget property: " + propertyInfo.Name;
+				}
+				failIf (true, message, type, t, name, target);
+			}
 		}
 
 		private void failIf(bool condition, string message, InjectionExceptionType type, Type t, object name, object target)
