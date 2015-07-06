@@ -26,7 +26,7 @@ using strange.extensions.promise.api;
 
 namespace strange.extensions.promise.impl
 {
-	public abstract class BasePromise : IPromise
+	public abstract class BasePromise : IBasePromise
 	{
 		private event Action<float> OnProgress;
 		private event Action<Exception> OnFail;
@@ -72,19 +72,19 @@ namespace strange.extensions.promise.impl
 			return true;
 		}
 
-		public IPromise Progress(Action<float> listener)
+		public IBasePromise Progress(Action<float> listener)
 		{
 			OnProgress = AddUnique<float>(OnProgress, listener);
 			return this;
 		}
 
-		public IPromise Fail(Action<Exception> listener)
+		public IBasePromise Fail(Action<Exception> listener)
 		{
 			OnFail = AddUnique<Exception>(OnFail, listener);
 			return this;
 		}
 
-		public IPromise Finally(Action listener)
+		public IBasePromise Finally(Action listener)
 		{
 			if (Resolved)
 				listener();
@@ -105,9 +105,7 @@ namespace strange.extensions.promise.impl
 		}
 
 		public void RemoveProgressListeners() { OnProgress = null; }
-
 		public void RemoveFailListeners() { OnFail = null; }
-
 		public virtual void RemoveAllListeners()
 		{
 			OnProgress = null;

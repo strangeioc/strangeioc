@@ -23,10 +23,12 @@
 
 using System;
 using System.Linq;
+using strange.extensions.promise.api;
+using UnityEngine;
 
 namespace strange.extensions.promise.impl
 {
-	public class Promise : BasePromise
+	public class Promise : BasePromise, IPromise
 	{
 		protected event Action Listener = null;
 
@@ -44,7 +46,7 @@ namespace strange.extensions.promise.impl
 		/// Handle a callback when the Promise completes successfully.
 		/// </summary>
 		/// <param name="action">The callback (no arguments).</param>
-		public Promise Then(Action action)
+		public IPromise Then(Action action)
 		{
 			if (Fulfilled)
 			{
@@ -82,7 +84,7 @@ namespace strange.extensions.promise.impl
 		}
 	}
 
-	public class Promise<T> : BasePromise
+	public class Promise<T> : BasePromise, IPromise<T>
 	{
 		private T t;
 
@@ -106,7 +108,7 @@ namespace strange.extensions.promise.impl
 		/// Handle a callback when the Promise completes successfully.
 		/// </summary>
 		/// <param name="action">The callback (one argument).</param>
-		public Promise<T> Then(Action<T> action)
+		public IPromise<T> Then(Action<T> action)
 		{
 			if (Fulfilled)
 			{
@@ -142,7 +144,7 @@ namespace strange.extensions.promise.impl
 
 	}
 
-	public class Promise<T,U> : BasePromise
+	public class Promise<T,U> : BasePromise, IPromise<T,U>
 	{
 		private T t;
 		private U u;
@@ -169,7 +171,7 @@ namespace strange.extensions.promise.impl
 		/// Handle a callback when the Promise completes successfully.
 		/// </summary>
 		/// <param name="action">The callback (two arguments).</param>
-		public Promise<T,U> Then(Action<T,U> action)
+		public IPromise<T,U> Then(Action<T,U> action)
 		{
 			if (Fulfilled)
 			{
@@ -213,7 +215,7 @@ namespace strange.extensions.promise.impl
 		}
 	}
 
-	public class Promise<T,U,V> : BasePromise
+	public class Promise<T,U,V> : BasePromise, IPromise<T,U,V>
 	{
 		private T t;
 		private U u;
@@ -243,7 +245,7 @@ namespace strange.extensions.promise.impl
 		/// Handle a callback when the Promise completes successfully.
 		/// </summary>
 		/// <param name="action">The callback (three arguments).</param>
-		public Promise<T,U,V> Then(Action<T, U, V> action)
+		public IPromise<T,U,V> Then(Action<T, U, V> action)
 		{
 			if (Fulfilled)
 			{
@@ -287,7 +289,7 @@ namespace strange.extensions.promise.impl
 		}
 	}
 
-	public class Promise<T,U,V,W> : BasePromise
+	public class Promise<T,U,V,W> : BasePromise, IPromise<T,U,V,W>
 	{
 		private T t;
 		private U u;
@@ -320,7 +322,7 @@ namespace strange.extensions.promise.impl
 		/// Handle a callback when the Promise completes successfully.
 		/// </summary>
 		/// <param name="action">The callback (four arguments).</param>
-		public Promise<T, U, V,W> Then(Action<T, U, V, W> action)
+		public IPromise<T, U, V,W> Then(Action<T, U, V, W> action)
 		{
 			if (Fulfilled)
 			{

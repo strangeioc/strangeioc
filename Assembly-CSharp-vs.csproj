@@ -71,7 +71,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\signal\TestPromise.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\command\TestCommand.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -385,7 +384,6 @@
     <Compile Include="StrangeIoC\scripts\strange\extensions\sequencer\impl\SequenceCommand.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\sequencer\impl\Sequencer.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\sequencer\impl\SequencerException.cs" />
-    <Compile Include="StrangeIoC\scripts\strange\extensions\signal\impl\Promise.cs" />
     <Compile Include="StrangeIoC\scripts\strange\framework\api\BinderExceptionType.cs" />
     <Compile Include="StrangeIoC\scripts\strange\framework\api\BindingConst.cs" />
     <Compile Include="StrangeIoC\scripts\strange\framework\api\BindingConstraintType.cs" />
@@ -507,9 +505,5 @@
     <Compile Include="StrangeIoC\scripts\strange\extensions\promise\impl\Promise.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\promise\TestPromise.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="StrangeIoC\.tests\" />
-    <Folder Include="StrangeIoC\scripts\strange\extensions\promise\" />
-    <Folder Include="StrangeIoC\scripts\strange\.tests\extensions\promise\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

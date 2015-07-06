@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using strange.extensions.promise.api;
 using strange.extensions.promise.impl;
 
 namespace strange.unittests
@@ -21,11 +22,11 @@ namespace strange.unittests
 		private float currentProgress = 0.0f;
 		private Exception currentException = null;
 
-		private Promise promise;
-		private Promise<int> promiseOneArg;
-		private Promise<int, int> promiseTwoArg;
-		private Promise<int, int, int> promiseThreeArg;
-		private Promise<int, int, int, int> promiseFourArg;
+		private IPromise promise;
+		private IPromise<int> promiseOneArg;
+		private IPromise<int, int> promiseTwoArg;
+		private IPromise<int, int, int> promiseThreeArg;
+		private IPromise<int, int, int, int> promiseFourArg;
 
 		[SetUp]
 		public void setup()
