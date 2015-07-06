@@ -32,6 +32,13 @@
  		public IMyInterface myInstance{get;set;}
 
 
+ * @class Name
+ *  
+ * When a parameter of a constructor or pseudo-constructor is tagged with [Name], 
+ * the injector can discriminate between different classes that satisfy the same interface.  
+ * This means that constructors and pseudo-constructors can used named injection just like 
+ * setter injection.
+ * 
  * @class Construct
  * 
  * The `[Construct]` attribute marks a preferred Constructor. If omitted,
@@ -72,7 +79,21 @@ public class Inject: Attribute
 	public object name{get; set;}
 }
 
-//Tag [PostConstruct] to perform post-injection construction actions
+//Tag [Name] to perform named injection in constructors and pseudo-constructors
+[AttributeUsage(AttributeTargets.Parameter,
+        AllowMultiple = false,
+        Inherited = false)]
+public class Name : Attribute 
+{
+	public Name(object n) 
+	{
+		name = n;
+	}
+
+	public object name { get; set; }
+}
+
+//Tag [Construct] to perform construction injection
 [AttributeUsage(AttributeTargets.Constructor, 
 		AllowMultiple = false,
 		Inherited = true)]

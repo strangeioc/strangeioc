@@ -271,6 +271,74 @@ namespace strange.extensions.command.impl
 			return null;
 		}
 
+		override protected IBinding performKeyValueBindings(List<object> keyList, List<object> valueList)
+		{
+			IBinding binding = null;
+
+			// Bind in order
+			foreach (object key in keyList)
+			{
+				//Attempt to resolve key as a class
+				Type keyType = Type.GetType (key as string);
+				Enum enumerator = null;
+				if (keyType == null)
+				{
+					//If it's not a class, attempt to resolve as an Enum
+					string keyString = key as string;
+					int separator = keyString.LastIndexOf(".");
+					if (separator > -1)
+					{
+						string enumClassName = keyString.Substring(0, separator);
+						Type enumType = Type.GetType (enumClassName as string);
+						if (enumType != null)
+						{
+							string enumName = keyString.Substring(separator+1);
+							enumerator = Enum.Parse (enumType, enumName) as Enum;
+						}
+					}
+				}
+				//If all else fails, just bind the original key
+				object bindingKey = keyType ?? enumerator ?? key;
+				binding = Bind (bindingKey);
+			}
+			foreach (object value in valueList)
+			{
+				Type valueType = Type.GetType (value as string);
+				if (valueType == null)
+				{
+					throw new BinderException("A runtime Command Binding has resolved to null. Did you forget to register its fully-qualified name?\n Command:" + value, BinderExceptionType.RUNTIME_NULL_VALUE);
+				}
+				binding = binding.To (valueType);
+			}
+
+			return binding;
+		}
+
+		/// Additional options: Once, InParallel, InSequence, Pooled
+		override protected IBinding addRuntimeOptions(IBinding b, List<object> options)
+		{
+			base.addRuntimeOptions (b, options);
+			ICommandBinding binding = b as ICommandBinding;
+			if (options.IndexOf ("Once") > -1)
+			{
+				binding.Once ();
+			}
+			if (options.IndexOf ("InParallel") > -1)
+			{
+				binding.InParallel ();
+			}
+			if (options.IndexOf ("InSequence") > -1)
+			{
+				binding.InSequence ();
+			}
+			if (options.IndexOf ("Pooled") > -1)
+			{
+				binding.Pooled ();
+			}
+
+			return binding;
+		}
+
 		private void removeSequence(ICommand command)
 		{
 			if (activeSequences.ContainsKey (command))

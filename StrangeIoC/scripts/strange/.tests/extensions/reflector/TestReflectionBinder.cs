@@ -83,6 +83,15 @@ namespace strange.unittests
 		}
 
 		[Test]
+		public void TestConstructorNamedInjection() 
+		{
+			IReflectedClass reflected = reflector.Get<ConstructorNamedInjection>();
+
+			Assert.That(reflected.ConstructorParameters.Length == 2);
+			Assert.That(reflected.ConstructorParameterNames.Length == 2);
+		}
+
+		[Test]
 		public void TestSinglePostConstruct ()
 		{
 			IReflectedClass reflected = reflector.Get<PostConstructClass> ();

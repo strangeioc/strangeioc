@@ -76,6 +76,9 @@ namespace strange.extensions.injector.api
 		/// ex. `injectionBinder.Get<cISomeInterface>(SomeEnum.MY_ENUM);`
 		T GetInstance<T>(object name);
 
+		/// Get a binding bound to the injection Type and promised to the target Type
+		IInjectionBinding GetSupplier(Type injectionType, Type targetType);
+
 		/// Reflect all the types in the list
 		/// Return the number of types in the list, which should be equal to the list length
 		int Reflect(List<Type> list);
@@ -95,6 +98,14 @@ namespace strange.extensions.injector.api
 		/// will throw an error if there are any unresolved conflicts.
 		void ResolveBinding(IBinding binding, object key);
 
+		/// <summary>
+		/// Remove the supply binding for the specified injection Type T and target Type U.
+		void Unsupply<T, U>();
+
+		/// <summary>
+		/// Remove the supply binding for the specified injection Type and target Type.
+		void Unsupply(Type injectionType, Type targetType);
+
 		IInjectionBinding Bind<T>();
 		IInjectionBinding Bind(Type key);
 		IBinding Bind(object key);
@@ -107,6 +118,12 @@ namespace strange.extensions.injector.api
 		void Unbind (object key);
 		void Unbind (object key, object name);
 		void Unbind (IBinding binding);
+
+		/// For consumed bindings, provide a secure whitelist of legal bindings
+		void WhitelistBindings(List<object> list);
+
+		/// Provide the Binder with JSON data to perform dynamic runtime binding
+		void ConsumeBindings(string jsonString);
 	}
 }
 
