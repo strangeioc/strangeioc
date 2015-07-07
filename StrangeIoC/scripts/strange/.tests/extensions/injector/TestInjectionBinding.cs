@@ -102,6 +102,93 @@ namespace strange.unittests
 				Assert.Throws<InjectionException> (testDelegate);
 			Assert.That (ex.type == InjectionExceptionType.ILLEGAL_BINDING_VALUE);
 		}
+
+		[Test]
+		public void TestSupplyOne()
+		{
+			Binder.BindingResolver resolver = delegate (IBinding bound)
+			{
+				object[] value = (bound as IInjectionBinding).GetSupply();
+				Assert.AreEqual(value[0], typeof(HasANamedInjection));
+			};
+			InjectionBinding binding = new InjectionBinding (resolver);
+			binding.SupplyTo<HasANamedInjection> ();
+		}
+
+		[Test]
+		public void TestSupplySeveral()
+		{
+			Type[] supplied = new Type[3];
+			supplied [0] = typeof (HasANamedInjection);
+			supplied [1] = typeof (HasANamedInjection2);
+			supplied [2] = typeof (InjectsClassToBeInjected);
+			int iterator = 0;
+			int resolveIterator = 0;
+
+			Binder.BindingResolver resolver = delegate (IBinding bound)
+			{
+				object[] value = (bound as IInjectionBinding).GetSupply();
+				Assert.AreEqual(value[value.Length-1], supplied[iterator]);
+				resolveIterator ++;
+			};
+
+			InjectionBinding binding = new InjectionBinding (resolver);
+
+			while (iterator < 3)
+			{
+				binding.SupplyTo (supplied[iterator]);
+				iterator++;
+			}
+
+			Assert.AreEqual (3, resolveIterator);
+		}
+
+		[Test]
+		public void TestUnsupply()
+		{
+			Binder.BindingResolver resolver = delegate (IBinding bound)
+			{
+			};
+			InjectionBinding binding = new InjectionBinding (resolver);
+			binding.To<ClassToBeInjected>().SupplyTo<HasANamedInjection> ();
+			Assert.AreEqual (typeof(HasANamedInjection), binding.GetSupply()[0]);
+			Assert.AreEqual (typeof(ClassToBeInjected), binding.value);
+
+			binding.Unsupply<HasANamedInjection> ();
+			Assert.IsNull (binding.GetSupply());
+		}
+
+		[Test]
+		public void TestGetSupply()
+		{
+			Type[] supplied = new Type[3];
+			supplied [0] = typeof (HasANamedInjection);
+			supplied [1] = typeof (HasANamedInjection2);
+			supplied [2] = typeof (InjectsClassToBeInjected);
+			int iterator = 0;
+
+			Binder.BindingResolver resolver = delegate (IBinding bound)
+			{
+				object[] value = (bound as IInjectionBinding).GetSupply();
+				Assert.AreEqual(value[value.Length-1], supplied[iterator]);
+			};
+
+			InjectionBinding binding = new InjectionBinding (resolver);
+
+			while (iterator < 3)
+			{
+				binding.SupplyTo (supplied[iterator]);
+				iterator++;
+			}
+
+			object[] supply = binding.GetSupply ();
+			Assert.AreEqual (3, supply.Length);
+
+			for (var a = 0; a < supply.Length; a++)
+			{
+				Assert.AreEqual (supply[a], supplied[a]);
+			}
+		}
 	}
 }
 

@@ -26,53 +26,79 @@
 using System;
 using strange.extensions.signal.api;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace strange.extensions.signal.impl
 {
 	public class BaseSignal : IBaseSignal
 	{
-        
+		
 		/// The delegate for repeating listeners
-		public event Action<IBaseSignal, object[]> BaseListener = delegate { };
+		public event Action<IBaseSignal, object[]> BaseListener = null;
 
 		/// The delegate for one-off listeners
-		public event Action<IBaseSignal, object[]> OnceBaseListener = delegate { };
+		public event Action<IBaseSignal, object[]> OnceBaseListener = null;
 
+		/// <summary>
+		/// Sends a Dispatch to all listeners with the provided arguments
+		/// </summary>
+		/// <param name="args">A list of values which must be implemented by listening methods.</param>
 		public void Dispatch(object[] args) 
 		{ 
-			BaseListener(this, args);
-			OnceBaseListener(this, args);
-			OnceBaseListener = delegate { };
+			if (BaseListener != null)
+				BaseListener(this, args);
+			if (OnceBaseListener != null)
+				OnceBaseListener(this, args);
+			OnceBaseListener = null;
 		}
 
 		public virtual List<Type> GetTypes() { return new List<Type>(); }
 
-		public void AddListener(Action<IBaseSignal, object[]> callback) 
+		/// <summary>
+		/// Adds a listener.
+		/// </summary>
+		/// <param name="callback">The method to be called when Dispatch fires.</param>
+		public void AddListener(Action<IBaseSignal, object[]> callback)
 		{
-			foreach (Delegate del in BaseListener.GetInvocationList())
-			{
-				Action<IBaseSignal, object[]> action = (Action<IBaseSignal, object[]>)del;
-				if (callback.Equals(action)) //If this callback exists already, ignore this addlistener
-					return;
-			}
-
-			BaseListener += callback;
+			BaseListener = AddUnique(BaseListener, callback);
 		}
 
+		/// <summary>
+		/// Adds a listener which will be removed immediately after the Signal fires.
+		/// </summary>
+		/// <param name="callback">The method to be called when Dispatch fires.</param>
 		public void AddOnce(Action<IBaseSignal, object[]> callback)
 		{
-			foreach (Delegate del in OnceBaseListener.GetInvocationList())
-			{
-				Action<IBaseSignal, object[]> action = (Action<IBaseSignal, object[]>)del;
-				if (callback.Equals(action)) //If this callback exists already, ignore this addlistener
-					return;
-			}
-
-			OnceBaseListener += callback;
+			OnceBaseListener = AddUnique(OnceBaseListener, callback);
 		}
 
-		public void RemoveListener(Action<IBaseSignal, object[]> callback) { BaseListener -= callback; }
+		private Action<T, U> AddUnique<T,U>(Action<T, U> listeners, Action<T, U> callback)
+		{
+			if (listeners == null || !listeners.GetInvocationList().Contains(callback))
+			{
+				listeners += callback;
+			}
+			return listeners;
+		}
 
+		/// <summary>
+		/// Removes the listener.
+		/// </summary>
+		/// <param name="callback">The callback to be removed.</param>
+		public void RemoveListener(Action<IBaseSignal, object[]> callback)
+		{
+			if (BaseListener != null)
+				BaseListener -= callback;
+		}
+
+		/// <summary>
+		/// Removes all listeners currently attached to the Signal.
+		/// </summary>
+		public virtual void RemoveAllListeners()
+		{
+			BaseListener = null;
+			OnceBaseListener = null;
+		}
 	   
 	}
 }
