@@ -106,7 +106,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 					catch (Exception ex) //If trigger throws, we still want to cleanup!
 					{
 						internalReleaseEvent(evt);
-						throw;
+						throw (ex);
 					}
 					
 				}

@@ -37,13 +37,13 @@ namespace strange.extensions.implicitBind.impl
 
 
 		//Hold a copy of the assembly so we aren't retrieving this multiple times. 
-		private Assembly assembly;
+		public Assembly Assembly { get; set; }
 
 
 		[PostConstruct]
 		public void PostConstruct()
 		{
-			assembly = Assembly.GetExecutingAssembly();
+			Assembly = Assembly.GetExecutingAssembly();
 		}
 
 		/// <summary>
@@ -54,10 +54,10 @@ namespace strange.extensions.implicitBind.impl
 
 		public virtual void ScanForAnnotatedClasses(string[] usingNamespaces)
 		{
-			if (assembly != null)
+			if (Assembly != null)
 			{
 
-				IEnumerable<Type> types = assembly.GetExportedTypes();
+				IEnumerable<Type> types = Assembly.GetExportedTypes();
 
 				List<Type> typesInNamespaces = new List<Type>();
 				int namespacesLength = usingNamespaces.Length;
@@ -123,6 +123,7 @@ namespace strange.extensions.implicitBind.impl
 							{
 								bindTypes.Add(type);
 							}
+
 							isCrossContext = isCrossContext || impl.Scope == InjectionBindingScope.CROSS_CONTEXT;
 							name = name ?? impl.Name;
 						}
@@ -182,7 +183,7 @@ namespace strange.extensions.implicitBind.impl
 			//Therefore, ImplementedBy will be overriden by an Implements to that interface.
 
 			IInjectionBinding binding = injectionBinder.Bind(toBind.BindTypes.First());
-			binding.Weak();//SDM2014-0120: added as part of cross-context implicit binding fix (moved from below)
+			binding.Weak();
 
 			for (int i = 1; i < toBind.BindTypes.Count; i++)
 			{
@@ -197,7 +198,6 @@ namespace strange.extensions.implicitBind.impl
 			if (toBind.IsCrossContext) //Bind this to the cross context injector
 				binding.CrossContext();
 
-			//binding.Weak();//SDM2014-0120: removed as part of cross-context implicit binding fix (moved up higher)
 		}
 
 		private sealed class ImplicitBindingVO

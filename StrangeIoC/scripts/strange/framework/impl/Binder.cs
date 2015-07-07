@@ -30,11 +30,91 @@
  * and reactions. If the Key action happens, it triggers the Value
  * action. So, for example, an Event may be the Key that triggers
  * instantiation of a particular class.
+ *
+ * <h2>Runtime Bindings</h2>
+ * As of V1.0, Strange supports runtime bindings via JSON. This allows you to 
+ * instruct Strange to create its bindings by using loaded data, for example via
+ * a downloaded .json file, or a server response.
+ *
+ * binder.ConsumeBindings(stringOfLoadedJson);
+ *
+ * Below are examples for basic runtime
+ * binding options for Binder. The complete set of JSON runtime bindings for all
+ * officially supported binders can be found in The Big, Strange How-To:
+ * (http://strangeioc.github.io/strangeioc/TheBigStrangeHowTo.html)
+ *
+ * <h3>Example: basic binding via JSON</h3>
+ * The simplest possible binding is an array of objects. We bind "This" to "That"
+ *
+ * [
+ * 	{
+ * 		"Bind":"This",
+ * 		"To":"That"
+ * 	}
+ * ]
+ *
+ * You can of course load as many bindings as you like in your array:
+ *
+ * [
+ *	{
+ *		"Bind":"This",
+ *		"To":"That"
+ *	},
+ *	{
+ *		"Bind":"Han",
+ *		"To":"Leia"
+ *	},
+ *	{
+ *		"Bind":"Greedo",
+ *		"To":"Table"
+ *	}
+ *]
+ *
+ * You can name bindings as you would expect:
+ *
+ * [
+ *	{
+ *		"Bind":"Battle",
+ *		"To":"Planet",
+ *		"ToName":"Endor" 
+ *	}
+ * ]
+ *
+ * If you need more than a single item in a "Bind" or "To" statement, use an array.
+ *
+ * [
+ *	{
+ *		"Bind":["Luke", "Han", "Wedge", "Biggs"],
+ *		"To":"Pilot"
+ *	}
+ * ]
+ *
+ * There is also an "Options" array for special behaviors required by
+ * individual Binders. The core Binder supports "Weak".
+ *
+ * [
+ *	{
+ *		"Bind":"X-Wing",
+ *		"To":"Ship",
+ *		"Options":["Weak"]
+ *	}
+ * ]
+ *
+ * Other Binders support other Options. Here's a case from the InjectionBinder. Note
+ * how Options can be either a string or an array.
+ *
+ * [
+ *	{
+ *		"Bind":"strange.unittests.ISimpleInterface",
+ *		"To":"strange.unittests.SimpleInterfaceImplementer",
+ *		"Options":"ToSingleton"
+ *	}
+ * ]
  */
 
-using System;
 using System.Collections.Generic;
 using strange.framework.api;
+using MiniJSON;
 
 namespace strange.framework.impl
 {
@@ -47,6 +127,8 @@ namespace strange.framework.impl
 		protected Dictionary <object, Dictionary<object, IBinding>> bindings;
 
 		protected Dictionary <object, Dictionary<IBinding, object>> conflicts;
+
+		protected List<object> bindingWhitelist;
 
 		/// A handler for resolving the nature of a binding during chained commands
 		public delegate void BindingResolver(IBinding binding);
@@ -289,25 +371,27 @@ namespace strange.framework.impl
 					IBinding existingBinding = dict[bindingName];
 					//if (existingBinding != binding && !existingBinding.isWeak)
 					//SDM2014-01-20: as part of cross-context implicit bindings fix, attempts by a weak binding to replace a non-weak binding are ignored instead of being 
-					if (existingBinding != binding && !existingBinding.isWeak && !binding.isWeak)
+					if (existingBinding != binding)
 					{
-						//register both conflictees
-						registerNameConflict(key, binding, dict[bindingName]);
-						return;
-					}
-
-					if (existingBinding.isWeak)
-					{
-						//SDM2014-01-20: (in relation to the cross-context implicit bindings fix)
-						// 1) if the previous binding is weak and the new binding is not weak, then the new binding replaces the previous;
-						// 2) but if the new binding is also weak, then it only replaces the previous weak binding if the previous binding
-						// has not already been instantiated:
-						if (existingBinding != binding && existingBinding.isWeak && ( !binding.isWeak || existingBinding.value==null || existingBinding.value is System.Type))
+						if (!existingBinding.isWeak && !binding.isWeak)
 						{
+							//register both conflictees
+							registerNameConflict(key, binding, dict[bindingName]);
+						    return;
+						}
+
+						if (existingBinding.isWeak && (!binding.isWeak || existingBinding.value == null || existingBinding.value is System.Type))
+						{
+							//SDM2014-01-20: (in relation to the cross-context implicit bindings fix)
+							// 1) if the previous binding is weak and the new binding is not weak, then the new binding replaces the previous;
+							// 2) but if the new binding is also weak, then it only replaces the previous weak binding if the previous binding
+							// has not already been instantiated:
+
 							//Remove the previous binding.
 							dict.Remove(bindingName);
 						}
 					}
+					
 				}
 			}
 			else
@@ -317,7 +401,7 @@ namespace strange.framework.impl
 			}
 
 			//Remove nulloid bindings
-			if (dict.ContainsKey(BindingConst.NULLOID) && dict[BindingConst.NULLOID] == binding)
+			if (dict.ContainsKey(BindingConst.NULLOID) && dict[BindingConst.NULLOID].Equals(binding) )
 			{
 				dict.Remove (BindingConst.NULLOID);
 			}
@@ -327,7 +411,198 @@ namespace strange.framework.impl
 			{
 				dict.Add (bindingName, binding);
 			}
+		}
 
+		/// <summary>
+		/// For consumed bindings, provide a secure whitelist of legal bindings.
+		/// </summary>
+		/// <param name="list"> A List of fully-qualified classnames eligible to be consumed during dynamic runtime binding.</param>
+		virtual public void WhitelistBindings(List<object> list)
+		{
+			bindingWhitelist = list;
+		}
+
+		/// <summary>
+		/// Provide the Binder with JSON data to perform runtime binding
+		/// </summary>
+		/// <param name="jsonString">A json-parsable string containing the bindings.</param>
+		virtual public void ConsumeBindings(string jsonString)
+		{
+			List<object> list = Json.Deserialize(jsonString) as List<object>;
+			IBinding testBinding = GetRawBinding ();
+
+			for (int a=0, aa=list.Count; a < aa; a++)
+			{
+				ConsumeItem(list[a] as Dictionary<string, object>, testBinding);
+			}
+		}
+
+		/// <summary>
+		/// Consumes an individual JSON element and returns the Binding that element represents 
+		/// </summary>
+		/// <returns>The Binding represented the provided JSON</returns>
+		/// <param name="item">A Dictionary of definitions for the individual binding parameters</param>
+		/// <param name="testBinding">An example binding for the current Binder. This method uses the 
+		/// binding constraints of the example to raise errors if asked to parse illegally</param>
+		virtual protected IBinding ConsumeItem(Dictionary<string, object> item, IBinding testBinding)
+		{
+			int bindConstraints = (testBinding.keyConstraint == BindingConstraintType.ONE) ? 0 : 1;
+			bindConstraints |= (testBinding.valueConstraint == BindingConstraintType.ONE) ? 0 : 2;
+			IBinding binding = null;
+			List<object> keyList;
+			List<object> valueList;
+
+			if (item != null)
+			{
+				item = ConformRuntimeItem (item);
+				// Check that Bind exists
+				if (!item.ContainsKey ("Bind"))
+				{
+					throw new BinderException ("Attempted to consume a binding without a bind key.", BinderExceptionType.RUNTIME_NO_BIND);
+				}
+				else
+				{
+					keyList = conformRuntimeToList (item ["Bind"]);
+				}
+				// Check that key counts match the binding constraint
+				if (keyList.Count > 1 && (bindConstraints & 1) == 0)
+				{
+					throw new BinderException ("Binder " + this.ToString () + " supports only a single binding key. A runtime binding key including " + keyList [0].ToString () + " is trying to add more.", BinderExceptionType.RUNTIME_TOO_MANY_KEYS);
+				}
+
+				if (!item.ContainsKey ("To"))
+				{
+					valueList = keyList;
+				}
+				else
+				{
+					valueList = conformRuntimeToList (item ["To"]);
+				}
+				// Check that value counts match the binding constraint
+				if (valueList.Count > 1 && (bindConstraints & 2) == 0)
+				{
+					throw new BinderException ("Binder " + this.ToString () + " supports only a single binding value. A runtime binding value including " + valueList [0].ToString () + " is trying to add more.", BinderExceptionType.RUNTIME_TOO_MANY_VALUES);
+				}
+
+				// Check Whitelist if it exists
+				if (bindingWhitelist != null)
+				{
+					foreach (object value in valueList)
+					{
+						if (bindingWhitelist.IndexOf (value) == -1)
+						{
+							throw new BinderException ("Value " + value.ToString () + " not found on whitelist for " + this.ToString () + ".", BinderExceptionType.RUNTIME_FAILED_WHITELIST_CHECK);
+						}
+					}
+				}
+
+				binding = performKeyValueBindings (keyList, valueList);
+
+				// Optionally look for ToName
+				if (item.ContainsKey ("ToName"))
+				{
+					binding = binding.ToName (item ["ToName"]);
+				}
+
+				// Add runtime options
+				if (item.ContainsKey ("Options"))
+				{
+					List<object> optionsList = conformRuntimeToList (item ["Options"]);
+					addRuntimeOptions (binding, optionsList);
+				}
+			}
+			return binding;
+		}
+
+		/// <summary>
+		/// Override this method in subclasses to add special-case SYNTACTICAL SUGAR for Runtime JSON bindings.
+		/// For example, if your Binder needs a special JSON tag BindView, such that BindView is simply
+		/// another way of expressing 'Bind', override this method conform the sugar to
+		/// match the base definition (BindView becomes Bind).
+		/// </summary>
+		/// <returns>The conformed Dictionary.</returns>
+		/// <param name="dictionary">A Dictionary representing the options for a Binding.</param>
+		virtual protected Dictionary<string, object> ConformRuntimeItem(Dictionary<string, object> dictionary)
+		{
+			return dictionary;
+		}
+
+		/// <summary>
+		/// Performs the key value bindings for a JSON runtime binding.
+		/// </summary>
+		/// <returns>A Binding.</returns>
+		/// <param name="keyList">A list of things to Bind.</param>
+		/// <param name="valueList">A list of the things to which we're binding.</param>
+		virtual protected IBinding performKeyValueBindings(List<object> keyList, List<object> valueList)
+		{
+			IBinding binding = null;
+
+			// Bind in order
+			foreach (object key in keyList)
+			{
+				binding = Bind (key);
+			}
+			foreach (object value in valueList)
+			{
+				binding = binding.To (value);
+			}
+
+			return binding;
+		}
+
+		/// <summary>
+		/// Override this method to decorate subclasses with further runtime capabilities.
+		/// For example, InjectionBinder adds ToSingleton and CrossContext capabilities so that
+		/// these can be specified in JSON.
+		/// 
+		/// By default, the Binder supports 'Weak' as a runtime option.
+		/// </summary>
+		/// <returns>The provided Binding.</returns>
+		/// <param name="binding">A Binding to have capabilities added.</param>
+		/// <param name="options">The list of runtime options for this Binding.</param>
+		virtual protected IBinding addRuntimeOptions(IBinding binding, List<object> options)
+		{
+			if (options.IndexOf ("Weak") > -1)
+			{
+				binding.Weak();
+			}
+			return binding;
+		}
+
+		/// <summary>
+		/// Convert the object to List<object>
+		/// </summary>
+		/// <returns>If a List, returns the original object, typed to List<object>. If a value, creates a List and adds the value to it.</returns>
+		/// <param name="bindObject">The object on which we're operating.</param>
+		protected List<object> conformRuntimeToList(object bindObject)
+		{
+			List<object> conformed = new List<object> ();
+
+			string t = bindObject.GetType().ToString ();
+			if (t.IndexOf ("System.Collections.Generic.List") > -1)
+			{
+				return bindObject as List<object>;
+			}
+
+			// Conform strings to Lists
+			switch (t)
+			{
+				case "System.String":
+					string stringValue = bindObject as string;
+					conformed.Add(stringValue);
+					break;
+				case "System.Int64":
+					int intValue = (int)bindObject;
+					conformed.Add(intValue);
+					break;
+				case "System.Double":
+					float floatValue = (float)bindObject;
+					conformed.Add(floatValue);
+					break;
+				default:
+					throw new BinderException ("Runtime binding keys (Bind) must be strings or numbers.\nBinding detected of type " + t, BinderExceptionType.RUNTIME_TYPE_UNKNOWN);
+			}
+			return conformed;
 		}
 
 		/// Take note of bindings that are in conflict.
