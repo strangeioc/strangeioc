@@ -70,6 +70,8 @@ namespace strange.extensions.signal.api
 		/// Remove a callback from this Signal
 		void RemoveListener(Action<IBaseSignal, object[]> callback);
 
+		void RemoveAllListeners();
+
 		/// Returns a List<System.Type> representing the Types bindable to this Signal
 		List<Type> GetTypes();
 	}

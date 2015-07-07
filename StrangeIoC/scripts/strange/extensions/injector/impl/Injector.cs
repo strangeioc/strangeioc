@@ -92,12 +92,14 @@ namespace strange.extensions.injector.impl
 				
 				IReflectedClass reflection = reflector.Get (reflectionType);
 
-				Type[] parameters = reflection.constructorParameters;
-				int aa = parameters.Length;
+				Type[] parameterTypes = reflection.constructorParameters;
+				object[] parameterNames = reflection.ConstructorParameterNames;
+
+				int aa = parameterTypes.Length;
 				object[] args = new object [aa];
 				for (int a = 0; a < aa; a++)
 				{
-					args [a] = getValueInjection (parameters[a] as Type, null, null);
+					args [a] = getValueInjection (parameterTypes[a] as Type, parameterNames[a], reflectionType, null);
 				}
 				retv = factory.Get (binding, args);
 
@@ -176,12 +178,14 @@ namespace strange.extensions.injector.impl
 			ConstructorInfo constructor = reflection.constructor;
 			failIf(constructor == null, "Attempt to construction inject a null constructor", InjectionExceptionType.NULL_CONSTRUCTOR);
 
-			Type[] constructorParameters = reflection.constructorParameters;
-			object[] values = new object[constructorParameters.Length];
+			Type[] parameterTypes = reflection.constructorParameters;
+			object[] parameterNames = reflection.ConstructorParameterNames;
+			object[] values = new object[parameterTypes.Length];
+
 			int i = 0;
-			foreach (Type type in constructorParameters)
+			foreach (Type type in parameterTypes)
 			{
-				values[i] = getValueInjection(type, null, target);
+				values[i] = getValueInjection(type, parameterNames[i], target, null);
 				i++;
 			}
 			if (values.Length == 0)
@@ -200,15 +204,22 @@ namespace strange.extensions.injector.impl
 
 			foreach (ReflectedAttribute attr in reflection.Setters)
 			{
-				object value = getValueInjection(attr.type, attr.name, target);
+				object value = getValueInjection(attr.type, attr.name, target, attr.propertyInfo);
 				injectValueIntoPoint(value, target, attr.propertyInfo);
 			}
 		}
 
-		private object getValueInjection(Type t, object name, object target)
+		private object getValueInjection(Type t, object name, object target, PropertyInfo propertyInfo)
 		{
-			IInjectionBinding binding = binder.GetBinding (t, name);
-			failIf(binding == null, "Attempt to Instantiate a null binding.", InjectionExceptionType.NULL_BINDING, t, name, target);
+			IInjectionBinding suppliedBinding = null;
+			if (target != null)
+			{
+				suppliedBinding = binder.GetSupplier (t, target is Type ? target as Type : target.GetType ());
+			}
+
+			IInjectionBinding binding = suppliedBinding ?? binder.GetBinding (t, name);
+
+			failIf(binding == null, "Attempt to Instantiate a null binding", InjectionExceptionType.NULL_BINDING, t, name, target, propertyInfo);
 			if (binding.type == InjectionBindingType.VALUE)
 			{
 				if (!binding.toInject)
@@ -273,6 +284,18 @@ namespace strange.extensions.injector.impl
 		private void failIf(bool condition, string message, InjectionExceptionType type, Type t, object name)
 		{
 			failIf(condition, message, type, t, name, null);
+		}
+
+		private void failIf(bool condition, string message, InjectionExceptionType type, Type t, object name, object target, PropertyInfo propertyInfo)
+		{
+			if (condition)
+			{
+				if (propertyInfo != null)
+				{
+					message += "\n\t\ttarget property: " + propertyInfo.Name;
+				}
+				failIf (true, message, type, t, name, target);
+			}
 		}
 
 		private void failIf(bool condition, string message, InjectionExceptionType type, Type t, object name, object target)

@@ -100,7 +100,7 @@ namespace strange.examples.multiplecontexts.social
 		{
 			WWW www = new WWW(imgUrl);
 			yield return www;
-			edx_ImageHolder.renderer.material.mainTexture = www.texture;
+			edx_ImageHolder.GetComponent<Renderer>().material.mainTexture = www.texture;
 		}
 		
 		internal void updateName(string name)
