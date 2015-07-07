@@ -26,7 +26,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using strange.extensions.reflector.api;
 using strange.framework.api;
 using strange.extensions.injector.api;
 using strange.extensions.reflector.impl;
@@ -118,13 +117,11 @@ namespace strange.extensions.injector.impl
 			return base.GetBinding<T> () as IInjectionBinding;
 		}
 
-		//SDM2014-0120: "virtual" added as dictated by changes to CrossContextInjectionBinder in relation to the cross-context implicit binding fix
 		new virtual public IInjectionBinding GetBinding<T>(object name)
 		{
 			return base.GetBinding<T> (name) as IInjectionBinding;
 		}
 
-		//SDM2014-0120: "virtual" added as dictated by changes to CrossContextInjectionBinder in relation to the cross-context implicit binding fix
 		new virtual public IInjectionBinding GetBinding(object key)
 		{
 			return base.GetBinding (key) as IInjectionBinding;

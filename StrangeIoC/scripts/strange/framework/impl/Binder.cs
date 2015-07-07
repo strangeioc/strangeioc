@@ -112,7 +112,6 @@
  * ]
  */
 
-using System;
 using System.Collections.Generic;
 using strange.framework.api;
 using MiniJSON;
@@ -372,25 +371,27 @@ namespace strange.framework.impl
 					IBinding existingBinding = dict[bindingName];
 					//if (existingBinding != binding && !existingBinding.isWeak)
 					//SDM2014-01-20: as part of cross-context implicit bindings fix, attempts by a weak binding to replace a non-weak binding are ignored instead of being 
-					if (existingBinding != binding && !existingBinding.isWeak && !binding.isWeak)
+					if (existingBinding != binding)
 					{
-						//register both conflictees
-						registerNameConflict(key, binding, dict[bindingName]);
-						return;
-					}
-
-					if (existingBinding.isWeak)
-					{
-						//SDM2014-01-20: (in relation to the cross-context implicit bindings fix)
-						// 1) if the previous binding is weak and the new binding is not weak, then the new binding replaces the previous;
-						// 2) but if the new binding is also weak, then it only replaces the previous weak binding if the previous binding
-						// has not already been instantiated:
-						if (existingBinding != binding && existingBinding.isWeak && ( !binding.isWeak || existingBinding.value==null || existingBinding.value is System.Type))
+						if (!existingBinding.isWeak && !binding.isWeak)
 						{
+							//register both conflictees
+							registerNameConflict(key, binding, dict[bindingName]);
+						    return;
+						}
+
+						if (existingBinding.isWeak && (!binding.isWeak || existingBinding.value == null || existingBinding.value is System.Type))
+						{
+							//SDM2014-01-20: (in relation to the cross-context implicit bindings fix)
+							// 1) if the previous binding is weak and the new binding is not weak, then the new binding replaces the previous;
+							// 2) but if the new binding is also weak, then it only replaces the previous weak binding if the previous binding
+							// has not already been instantiated:
+
 							//Remove the previous binding.
 							dict.Remove(bindingName);
 						}
 					}
+					
 				}
 			}
 			else
@@ -400,7 +401,7 @@ namespace strange.framework.impl
 			}
 
 			//Remove nulloid bindings
-			if (dict.ContainsKey(BindingConst.NULLOID) && dict[BindingConst.NULLOID] == binding)
+			if (dict.ContainsKey(BindingConst.NULLOID) && dict[BindingConst.NULLOID].Equals(binding) )
 			{
 				dict.Remove (BindingConst.NULLOID);
 			}
