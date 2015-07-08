@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2013 ThirdMotion, Inc.
  *
  *	Licensed under the Apache License, Version 2.0 (the "License");
@@ -57,6 +57,12 @@ namespace strange.extensions.mediation.impl
 						break;
 					case MediationEvent.DESTROYED:
 						UnmapView (view, binding);
+						break;
+					case MediationEvent.ENABLED:
+						EnableView (view, binding);
+						break;
+					case MediationEvent.DISABLED:
+						DisableView (view, binding);
 						break;
 					default:
 						break;
@@ -155,7 +161,8 @@ namespace strange.extensions.mediation.impl
 		{
 			Dictionary<string, object> bindItems = new Dictionary<string, object> ();
 			Dictionary<string, object> toItems = new Dictionary<string, object> ();
-			foreach (var item in dictionary) {
+			foreach (var item in dictionary) 
+			{
 				if (item.Key == "BindView")
 				{
 					bindItems.Add ("Bind", item.Value);
@@ -165,11 +172,13 @@ namespace strange.extensions.mediation.impl
 					toItems.Add ("To", item.Value);
 				}
 			}
-			foreach (var item in bindItems) {
+			foreach (var item in bindItems)
+			{
 				dictionary.Remove ("BindView");
 				dictionary.Add ("Bind", item.Value);
 			}
-			foreach (var item in toItems) {
+			foreach (var item in toItems) 
+			{
 				dictionary.Remove ("ToMediator");
 				dictionary.Add ("To", item.Value);
 			}
@@ -236,6 +245,24 @@ namespace strange.extensions.mediation.impl
 		/// Removes a mediator when its view is destroyed
 		virtual protected void UnmapView(IView view, IMediationBinding binding)
 		{
+			TriggerInBindings(view, binding, DestroyMediator);
+		}
+
+		/// Enables a mediator when its view is enabled
+		virtual protected void EnableView(IView view, IMediationBinding binding)
+		{
+			TriggerInBindings(view, binding, EnableMediator);
+		}
+
+		/// Disables a mediator when its view is disabled
+		virtual protected void DisableView(IView view, IMediationBinding binding)
+		{
+			TriggerInBindings(view, binding, DisableMediator);
+		}
+
+		/// Triggers given function in all mediators bound to given view
+		virtual protected void TriggerInBindings(IView view, IMediationBinding binding, Func<IView, Type, object> method)
+		{
 			Type viewType = view.GetType();
 
 			if (bindings.ContainsKey(viewType))
@@ -245,9 +272,9 @@ namespace strange.extensions.mediation.impl
 				for (int a = 0; a < aa; a++)
 				{
 					Type mediatorType = values[a] as Type;
-					DestroyMediator (view, mediatorType);
+					method (view, mediatorType);
 				}
-			}
+			}			
 		}
 
 		/// Create a new Mediator object based on the mediatorType on the provided view
@@ -255,6 +282,12 @@ namespace strange.extensions.mediation.impl
 
 		/// Destroy the Mediator on the provided view object based on the mediatorType
 		protected abstract object DestroyMediator(IView view, Type mediatorType);
+
+		/// Calls the OnEnabled method of the mediator
+		protected abstract object EnableMediator(IView view, Type mediatorType);
+
+		/// Calls the OnDisabled method of the mediator
+		protected abstract object DisableMediator(IView view, Type mediatorType);
 
 		/// Retrieve all views including children for this view
 		protected abstract IView[] GetViews(IView view);

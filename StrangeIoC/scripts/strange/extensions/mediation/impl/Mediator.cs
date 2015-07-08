@@ -62,6 +62,20 @@ namespace strange.extensions.mediation.impl
 		virtual public void OnRemove()
 		{
 		}
+
+		/**
+		 * Fires on enabling of view.
+		 */
+		virtual public void OnEnabled()
+		{
+		}
+
+		/**
+		 * Fires on disabling of view.
+		 */
+		virtual public void OnDisabled()
+		{
+		}
 	}
 }
 
