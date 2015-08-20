@@ -37,6 +37,8 @@ namespace strange.extensions.mediation.api
 		/// instead of the concrete View class.
 		IMediationBinding ToAbstraction<T>();
 
+		IMediationBinding ToAbstraction(Type t);
+
 		/// Retrieve the abstracted value set by ToAbstraction<T>
 		object abstraction { get; }
 

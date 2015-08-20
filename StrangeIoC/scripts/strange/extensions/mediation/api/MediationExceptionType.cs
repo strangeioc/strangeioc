@@ -36,6 +36,10 @@ namespace strange.extensions.mediation.api
 		/// infinite loop of Mediation creation.
 		MEDIATOR_VIEW_STACK_OVERFLOW,
 
+		/// A Binding resolved to null as it was converted (usually from a Binding)
+		/// Honestly, this should never happen.
+		BINDING_RESOLVED_TO_NULL,
+
 		/// Exception raised when AddComponent results in a null Mediator.
 		/// This probably means that the mapped "mediator" wasn't a MonoBehaviour.
 		NULL_MEDIATOR,

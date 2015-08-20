@@ -1,5 +1,6 @@
 /*
  * Copyright 2013 ThirdMotion, Inc.
+ * & Marc Tanenbaum, StrangeIoC 2015
  *
  *	Licensed under the Apache License, Version 2.0 (the "License");
  *	you may not use this file except in compliance with the License.
@@ -35,6 +36,7 @@
  */
 
 using System;
+using System.Collections.Generic;
 
 namespace strange.framework.api
 {
@@ -88,6 +90,12 @@ namespace strange.framework.api
 		/// The Binder is being removed
 		/// Override this method to clean up remaining bindings
 		void OnRemove();
+
+		/// For consumed bindings, provide a secure whitelist of legal bindings
+		void WhitelistBindings(List<object> list);
+
+		/// Provide the Binder with JSON data to perform dynamic runtime binding
+		void ConsumeBindings(string jsonString);
 
 		/// <summary>
 		/// Places individual Bindings into the bindings Dictionary as part of the resolving process

@@ -78,7 +78,7 @@ namespace strange.extensions.mediation.api
 		new IMediationBinding Bind<T> ();
 
 		/// Porcelain for Bind<T> providing a little extra clarity and security.
-		IMediationBinding BindView<T> () where T : MonoBehaviour;
+		IMediationBinding BindView<T> ();
 	}
 }
 

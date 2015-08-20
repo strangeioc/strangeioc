@@ -35,11 +35,14 @@ namespace strange.extensions.injector.impl
 		private bool _toInject = true;
 		private bool _isCrossContext = false;
 
+		private ISemiBinding supplyList = new SemiBinding ();
+
 		public InjectionBinding (Binder.BindingResolver resolver)
 		{
 			this.resolver = resolver;
 			keyConstraint = BindingConstraintType.MANY;
 			valueConstraint = BindingConstraintType.ONE;
+			supplyList.constraint = BindingConstraintType.MANY;
 		}
 
 		public InjectionBindingType type
@@ -145,7 +148,7 @@ namespace strange.extensions.injector.impl
 
 			return IsGenericTypeAssignable(baseType, genericType);
 		}
-		
+
 		public IInjectionBinding CrossContext()
 		{
 			_isCrossContext = true;
@@ -154,6 +157,41 @@ namespace strange.extensions.injector.impl
 				resolver(this);
 			}
 			return this;
+		}
+
+		/// Promise this Binding to any instance of Type <T>
+		public IInjectionBinding SupplyTo<T>()
+		{
+			return SupplyTo (typeof (T));
+		}
+
+		/// Promise this Binding to any instance of Type type
+		public IInjectionBinding SupplyTo(Type type)
+		{
+			supplyList.Add (type);
+			if (resolver != null)
+			{
+				resolver(this);
+			}
+			return this;
+		}
+
+		/// Remove the promise to supply this binding to Type <T>
+		public IInjectionBinding Unsupply<T>()
+		{
+			return Unsupply (typeof (T));
+		}
+
+		/// Remove the promise to supply this binding to Type type
+		public IInjectionBinding Unsupply(Type type)
+		{
+			supplyList.Remove (type);
+			return this;
+		}
+
+		public object[] GetSupply()
+		{
+			return supplyList.value as object[];
 		}
 
 		new public IInjectionBinding Bind<T>()

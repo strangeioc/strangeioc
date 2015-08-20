@@ -37,13 +37,13 @@ namespace strange.extensions.implicitBind.impl
 
 
 		//Hold a copy of the assembly so we aren't retrieving this multiple times. 
-		private Assembly assembly;
+		public Assembly Assembly { get; set; }
 
 
 		[PostConstruct]
 		public void PostConstruct()
 		{
-			assembly = Assembly.GetExecutingAssembly();
+			Assembly = Assembly.GetExecutingAssembly();
 		}
 
 		/// <summary>
@@ -52,12 +52,12 @@ namespace strange.extensions.implicitBind.impl
 		/// </summary>
 		/// <param name="usingNamespaces">Array of namespaces. Compared using StartsWith. </param>
 
-		public virtual void ScanForAnnotatedClasses(string[] usingNamespaces)
+		public virtual void ScanForAnnotatedClasses(params string[] usingNamespaces)
 		{
-			if (assembly != null)
+			if (Assembly != null)
 			{
 
-				IEnumerable<Type> types = assembly.GetExportedTypes();
+				IEnumerable<Type> types = Assembly.GetExportedTypes();
 
 				List<Type> typesInNamespaces = new List<Type>();
 				int namespacesLength = usingNamespaces.Length;

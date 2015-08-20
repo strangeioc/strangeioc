@@ -21,7 +21,7 @@ It contains the following features, most of which are optional:
 * A core binding framework that pretty much lets you bind one or more of anything to one or more of anything else.
 * Dependency Injection
   * Map as singleton, value or factory (get a new instance each time you need one)
-  * Name injections
+  * Name injections and/or supply specific implementations to specific consumer classes
   * Perform constructor or setter injection
   * Tag your preferred constructor
   * Tag a method to fire after construction
