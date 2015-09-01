@@ -27,7 +27,7 @@ namespace strange.extensions.implicitBind.api
 		/// </summary>
 		/// <param name="usingNamespaces">Array of namespaces. Compared using StartsWith. </param>
 
-		void ScanForAnnotatedClasses(string[] usingNamespaces);
+		void ScanForAnnotatedClasses(params string[] usingNamespaces);
 		Assembly Assembly { get; set; }
 	}
 }

@@ -52,7 +52,7 @@ namespace strange.extensions.implicitBind.impl
 		/// </summary>
 		/// <param name="usingNamespaces">Array of namespaces. Compared using StartsWith. </param>
 
-		public virtual void ScanForAnnotatedClasses(string[] usingNamespaces)
+		public virtual void ScanForAnnotatedClasses(params string[] usingNamespaces)
 		{
 			if (Assembly != null)
 			{
