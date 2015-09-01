@@ -405,6 +405,19 @@ namespace strange.unittests
 			Assert.AreEqual(one, two);
 			Assert.AreEqual(one, three);
 		}
+
+        [Test]
+        public void TestParamsScannedPackages()
+        {
+            context.Start();
+            context.ScanForAnnotatedClasses("strange.unittests.annotated.testConcrete", "strange.unittests.annotated.testImplTwo", "strange.unittests.annotated.testImplBy");
+
+            var testConcrete = context.injectionBinder.GetInstance<TestConcreteClass>();
+            Assert.IsNotNull(testConcrete);
+
+            TestInterface testInterface = context.injectionBinder.GetInstance<TestInterface>();
+            Assert.True(testInterface is TestImplTwo);
+        }
 	}
 
 
