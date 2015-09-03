@@ -86,7 +86,7 @@
  * `dispatcher` is injected into all EventMediators, EventCommands
  * and EventSequenceCommands, and may be injected elsewhere with:
 
- 		[Inject(ContextKeys.CONTEXT_DISPATCHER)]
+		[Inject(ContextKeys.CONTEXT_DISPATCHER)]
 		public IEventDispatcher dispatcher{ get; set;}
 
  * For examples, see IEventDispatcher. Generally you don't map the dispatcher's
@@ -314,6 +314,16 @@ namespace strange.extensions.context.impl
 		override public void RemoveView(object view)
 		{
 			mediationBinder.Trigger(MediationEvent.DESTROYED, view as IView);
+		}
+
+		override public void EnableView(object view)
+		{
+			mediationBinder.Trigger(MediationEvent.ENABLED, view as IView);
+		}
+
+		override public void DisableView(object view)
+		{
+			mediationBinder.Trigger(MediationEvent.DISABLED, view as IView);
 		}
 
 		/// Caches early-riser Views.

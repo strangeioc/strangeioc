@@ -33,7 +33,6 @@ namespace strange.extensions.mediation.impl
 {
 	public class MediationBinder : AbstractMediationBinder, IMediationBinder
 	{
-
 		public MediationBinder ()
 		{
 		}
@@ -67,6 +66,20 @@ namespace strange.extensions.mediation.impl
 			return (mediator != null) ? DestroyMediator (mediator) : null;
 		}
 
+		protected override object EnableMediator(IView view, Type mediatorType)
+		{
+			MonoBehaviour mono = view as MonoBehaviour;
+			IMediator mediator = mono.GetComponent(mediatorType) as IMediator;
+			return (mediator != null) ? EnableMediator(mediator) : null;
+		}
+
+		protected override object DisableMediator(IView view, Type mediatorType)
+		{
+			MonoBehaviour mono = view as MonoBehaviour;
+			IMediator mediator = mono.GetComponent(mediatorType) as IMediator;
+			return (mediator != null) ? DisableMediator(mediator) : null;
+		}
+
 		/// Destroy the provided Mediator
 		protected object DestroyMediator(IMediator mediator)
 		{
@@ -74,7 +87,21 @@ namespace strange.extensions.mediation.impl
 			return mediator;
 		}
 
-		protected override void ThrowNullMediatorError (Type viewType, Type mediatorType)
+		/// Enable the provided Mediator
+		protected object EnableMediator(IMediator mediator)
+		{
+			mediator.OnEnabled();
+			return mediator;
+		}
+
+		/// Disable the provided Mediator
+		protected object DisableMediator(IMediator mediator)
+		{
+			mediator.OnDisabled();
+			return mediator;
+		}
+
+		protected override void ThrowNullMediatorError(Type viewType, Type mediatorType)
 		{
 			throw new MediationException("The view: " + viewType.ToString() + " is mapped to mediator: " + mediatorType.ToString() + ". AddComponent resulted in null, which probably means " + mediatorType.ToString().Substring(mediatorType.ToString().LastIndexOf(".") + 1) + " is not a MonoBehaviour.", MediationExceptionType.NULL_MEDIATOR);
 		}

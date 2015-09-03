@@ -72,6 +72,34 @@ namespace strange.unittests
 		}
 
 		[Test]
+		public void TestEnableTriggersMediatorEnabled()
+		{
+			mediationBinder.Bind<TestView> ().To<TestMediator> ();
+
+			TestView view = new TestView ();
+			mediationBinder.Trigger(MediationEvent.AWAKE, view);
+
+			TestMediator mediator = mediationBinder.mediators[view] as TestMediator;
+
+			mediationBinder.Trigger(MediationEvent.ENABLED, view);
+			Assert.IsTrue(mediator.enabled);
+		}
+
+		[Test]
+		public void TestEnableTriggersMediatorDisabled()
+		{
+			mediationBinder.Bind<TestView> ().To<TestMediator> ();
+
+			TestView view = new TestView ();
+			mediationBinder.Trigger(MediationEvent.AWAKE, view);
+
+			TestMediator mediator = mediationBinder.mediators[view] as TestMediator;
+
+			mediationBinder.Trigger(MediationEvent.DISABLED, view);
+			Assert.IsTrue(mediator.disabled);
+		}
+
+		[Test]
 		public void TestDestroyedTriggersUnmapping()
 		{
 			mediationBinder.Bind<TestView> ().To<TestMediator> ();
@@ -391,6 +419,8 @@ namespace strange.unittests
 		public bool preregistered = false;
 		public bool registered = false;
 		public bool removed = false;
+		public bool enabled = false;
+		public bool disabled = false;
 
 		#region IMediator implementation
 
@@ -407,6 +437,16 @@ namespace strange.unittests
 		public void OnRemove ()
 		{
 			removed = true;
+		}
+
+		public void OnEnabled ()
+		{
+			enabled = true;
+		}
+
+		public void OnDisabled ()
+		{
+			disabled = true;
 		}
 
 		public UnityEngine.GameObject contextView
