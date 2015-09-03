@@ -63,41 +63,28 @@ namespace strange.extensions.mediation.impl
 		{
 			MonoBehaviour mono = view as MonoBehaviour;
 			IMediator mediator = mono.GetComponent(mediatorType) as IMediator;
-			return (mediator != null) ? DestroyMediator (mediator) : null;
+			if (mediator != null)
+				mediator.OnRemove();
+			return mediator;
 		}
 
 		protected override object EnableMediator(IView view, Type mediatorType)
 		{
 			MonoBehaviour mono = view as MonoBehaviour;
 			IMediator mediator = mono.GetComponent(mediatorType) as IMediator;
-			return (mediator != null) ? EnableMediator(mediator) : null;
+			if (mediator != null)
+				mediator.OnEnabled();
+
+			return mediator;
 		}
 
 		protected override object DisableMediator(IView view, Type mediatorType)
 		{
 			MonoBehaviour mono = view as MonoBehaviour;
 			IMediator mediator = mono.GetComponent(mediatorType) as IMediator;
-			return (mediator != null) ? DisableMediator(mediator) : null;
-		}
+			if (mediator != null)
+				mediator.OnDisabled();
 
-		/// Destroy the provided Mediator
-		protected object DestroyMediator(IMediator mediator)
-		{
-			mediator.OnRemove();
-			return mediator;
-		}
-
-		/// Enable the provided Mediator
-		protected object EnableMediator(IMediator mediator)
-		{
-			mediator.OnEnabled();
-			return mediator;
-		}
-
-		/// Disable the provided Mediator
-		protected object DisableMediator(IMediator mediator)
-		{
-			mediator.OnDisabled();
 			return mediator;
 		}
 

@@ -86,9 +86,10 @@ namespace strange.unittests
 		}
 
 		[Test]
-		public void TestEnableTriggersMediatorDisabled()
+		public void TestDisableTriggersMediatorDisabled()
 		{
 			mediationBinder.Bind<TestView> ().To<TestMediator> ();
+			injectionBinder.Bind<ClassToBeInjected>().To<ClassToBeInjected>();
 
 			TestView view = new TestView ();
 			mediationBinder.Trigger(MediationEvent.AWAKE, view);
@@ -298,6 +299,33 @@ namespace strange.unittests
 			BinderException ex = Assert.Throws<BinderException>(testDelegate); //Because the Abstraction value isn't fully qualified
 			Assert.AreEqual (BinderExceptionType.RUNTIME_NULL_VALUE, ex.type);
 		}
+
+		[Test]
+		public void TestMediatorEnabledAtCreationIfEnabled()
+		{
+			mediationBinder.Bind<TestView>().To<TestMediator>();
+			injectionBinder.Bind<ClassToBeInjected>().To<ClassToBeInjected>();
+
+			TestView view = new TestView();
+			mediationBinder.Trigger(MediationEvent.AWAKE, view);
+
+			TestMediator mediator = mediationBinder.mediators[view] as TestMediator;
+			Assert.True(mediator.enabled);
+		}
+
+		[Test]
+		public void TestMediatorNotEnabledAtCreatioIfDisabledn()
+		{
+			mediationBinder.Bind<TestView>().To<TestMediator>();
+			injectionBinder.Bind<ClassToBeInjected>().To<ClassToBeInjected>();
+
+			TestView view = new TestView();
+			view.enabled = false;
+			mediationBinder.Trigger(MediationEvent.AWAKE, view);
+
+			TestMediator mediator = mediationBinder.mediators[view] as TestMediator;
+			Assert.False(mediator.enabled);
+		}
 	}
 
 
@@ -305,7 +333,7 @@ namespace strange.unittests
 	{
 
 		public Dictionary<IView, IMediator> mediators = new Dictionary<IView, IMediator>();
-		
+
 		protected override IView[] GetViews(IView view)
 		{
 			TestView testView = view as TestView;
@@ -337,6 +365,27 @@ namespace strange.unittests
 			return mediator;
 		}
 
+		protected override object EnableMediator(IView view, Type mediatorType)
+		{
+			IMediator mediator;
+			if (mediators.TryGetValue(view, out mediator))
+			{
+				mediator.OnEnabled();
+			}
+			return mediator;
+
+		}
+
+		protected override object DisableMediator(IView view, Type mediatorType)
+		{
+			IMediator mediator;
+			if (mediators.TryGetValue(view, out mediator))
+			{
+				mediator.OnDisabled();
+			}
+			return mediator;
+		}
+
 		protected override void ThrowNullMediatorError (Type viewType, Type mediatorType)
 		{
 			throw new MediationException("The view: " + viewType.ToString() + " is mapped to mediator: " + mediatorType.ToString() + ". AddComponent resulted in null, which probably means " + mediatorType.ToString().Substring(mediatorType.ToString().LastIndexOf(".") + 1) + " is not a MonoBehaviour.", MediationExceptionType.NULL_MEDIATOR);
@@ -360,6 +409,7 @@ namespace strange.unittests
 
 		public TestView()
 		{
+			enabled = true;
 			Views = new IView[]
 			{
 				this
@@ -405,6 +455,8 @@ namespace strange.unittests
 				return true;
 			}
 		}
+
+		public bool enabled { get; set; }
 
 		#endregion
 	}

@@ -238,6 +238,9 @@ namespace strange.extensions.mediation.impl
 						throw new MediationException(viewType + "mapped to itself. The result would be a stack overflow.", MediationExceptionType.MEDIATOR_VIEW_STACK_OVERFLOW);
 					}
 					ApplyMediationToView (binding, view, mediatorType);
+
+					if (view.enabled)
+						EnableMediator(view, mediatorType);
 				}
 			}
 		}
