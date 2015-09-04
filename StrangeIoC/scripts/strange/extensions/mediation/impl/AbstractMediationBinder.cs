@@ -80,25 +80,27 @@ namespace strange.extensions.mediation.impl
 		protected virtual void ApplyMediationToView(IMediationBinding binding, IView view, Type mediatorType)
 		{
 			bool isTrueMediator = IsTrueMediator(mediatorType);
-			if (!isTrueMediator || !HasMediator(view, mediatorType))
+
+			Type viewType = view.GetType();
+			object mediator = HasMediator(view, mediatorType) ? GetMediator(view, mediatorType) : CreateMediator(view, mediatorType);
+
+			if (mediator == null)
+				ThrowNullMediatorError(viewType, mediatorType);
+
+
+			IMediator trueMediator = mediator as IMediator;
+			if (isTrueMediator)
 			{
-				Type viewType = view.GetType();
-				object mediator = CreateMediator(view, mediatorType);
-
-				if (mediator == null)
-					ThrowNullMediatorError (viewType, mediatorType);
-				if (isTrueMediator)
-					((IMediator)mediator).PreRegister();
-
-				Type typeToInject = (binding.abstraction == null || binding.abstraction.Equals(BindingConst.NULLOID)) ? viewType : binding.abstraction as Type;
-				injectionBinder.Bind(typeToInject).ToValue(view).ToInject(false);
-				injectionBinder.injector.Inject(mediator);
-				injectionBinder.Unbind(typeToInject);
-				if (isTrueMediator)
-				{
-					((IMediator)mediator).OnRegister();
-				}
+				if (trueMediator.Registered) return;
+				trueMediator.PreRegister();
 			}
+
+			Type typeToInject = (binding.abstraction == null || binding.abstraction.Equals(BindingConst.NULLOID)) ? viewType : binding.abstraction as Type;
+			injectionBinder.Bind(typeToInject).ToValue(view).ToInject(false);
+			injectionBinder.injector.Inject(mediator);
+			injectionBinder.Unbind(typeToInject);
+			if (isTrueMediator)
+				trueMediator.OnRegister();
 		}
 
 		/// Add Mediators to Views. We make this virtual to allow for different concrete
@@ -297,6 +299,8 @@ namespace strange.extensions.mediation.impl
 
 		/// Whether or not an instantiated Mediator of this type exists
 		protected abstract bool HasMediator(IView view, Type mediatorType);
+
+		protected abstract object GetMediator(IView view, Type mediatorType);
 
 		/// Error thrown when a Mediator can't be instantiated
 		/// Abstract because this happens for different reasons. Allow implementing

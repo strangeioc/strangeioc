@@ -51,6 +51,12 @@ namespace strange.extensions.mediation.impl
 			return mono.GetComponent(mediatorType) != null;
 		}
 
+		protected override object GetMediator(IView view, Type mediatorType)
+		{
+			MonoBehaviour mono = view as MonoBehaviour;
+			return mono.GetComponent(mediatorType);
+		}
+
 		/// Create a new Mediator object based on the mediatorType on the provided view
 		protected override object CreateMediator(IView view, Type mediatorType)
 		{

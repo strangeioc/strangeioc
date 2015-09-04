@@ -38,6 +38,8 @@ namespace strange.extensions.mediation.impl
 		{
 		}
 
+		public bool Registered { get; private set; }
+
 		/**
 		 * Fires directly after creation and before injection
 		 */
@@ -52,6 +54,7 @@ namespace strange.extensions.mediation.impl
 		 */
 		virtual public void OnRegister()
 		{
+			Registered = true;
 		}
 
 		/**

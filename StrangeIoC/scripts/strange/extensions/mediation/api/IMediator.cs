@@ -50,6 +50,8 @@ namespace strange.extensions.mediation.api
 
 		/// This method fires when the GameObject is disabled.
 		void OnDisabled();
+
+		bool Registered { get; }
 	}
 }
 

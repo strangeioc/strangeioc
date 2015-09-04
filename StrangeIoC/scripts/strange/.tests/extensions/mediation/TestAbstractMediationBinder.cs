@@ -75,6 +75,7 @@ namespace strange.unittests
 		public void TestEnableTriggersMediatorEnabled()
 		{
 			mediationBinder.Bind<TestView> ().To<TestMediator> ();
+			injectionBinder.Bind<ClassToBeInjected>().To<ClassToBeInjected>();
 
 			TestView view = new TestView ();
 			mediationBinder.Trigger(MediationEvent.AWAKE, view);
@@ -346,6 +347,12 @@ namespace strange.unittests
 			return testView.HasMediator;
 		}
 
+		protected override object GetMediator(IView view, Type mediatorType)
+		{
+			TestView testView = view as TestView;
+			return mediators[view];
+		}
+
 		override protected object CreateMediator(IView view, Type mediatorType)
 		{
 			IMediator mediator = new TestMediator ();
@@ -499,6 +506,11 @@ namespace strange.unittests
 		public void OnDisabled ()
 		{
 			disabled = true;
+		}
+
+		public bool Registered
+		{
+			get { return registered; }
 		}
 
 		public UnityEngine.GameObject contextView
