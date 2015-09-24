@@ -33,6 +33,8 @@ namespace strange.extensions.context.api
 		/// Context startup will halt after all bindings are mapped, but before firing ContextEvent.START (or the analogous Signal).
 		/// If this flag is invoked, the developer must call context.Launch()
 		MANUAL_LAUNCH = 2,
+		//Context will not automatically be added to firstContext. AddContext must be called manually for each Context
+		MANUAL_HIERARCHY = 4,
 	}
 }
 

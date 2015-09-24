@@ -98,6 +98,7 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestCrossContextBridge.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\context\TestInheritedBinding.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\eventdispatcher\TestEventBinding.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -326,6 +327,7 @@
     <Compile Include="StrangeIoC\scripts\strange\extensions\context\impl\Context.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\context\impl\ContextException.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\context\impl\ContextView.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\context\impl\HierarchicalContext.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\context\impl\MVCSContext.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\api\DispatcherExceptionType.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\api\IDispatcher.cs" />
@@ -341,6 +343,7 @@
     <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\impl\EventDispatcherException.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\impl\TmEvent.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\dispatcher\impl\DispatcherException.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\extensions\injector\impl\HierarchicalInjectionBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\injector\InjectAttribute.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\injector\api\IInjectionBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\injector\api\IInjectionBinding.cs" />

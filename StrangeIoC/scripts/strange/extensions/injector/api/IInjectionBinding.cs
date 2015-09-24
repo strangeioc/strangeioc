@@ -64,6 +64,9 @@ namespace strange.extensions.injector.api
 		/// Map the binding and give access to all contexts in hierarchy
 		IInjectionBinding CrossContext();
 
+		/// An inherited binding is supplied to all child contexts at instantiation time
+		IInjectionBinding Inherited();
+
 		/// Get the list of promised supply types
 		object[] GetSupply();
 
@@ -81,6 +84,8 @@ namespace strange.extensions.injector.api
 
 		bool isCrossContext { get; }
 
+		bool isInherited { get; }
+
 		/// Boolean setter to optionally override injection. If false, the instance will not be injected after instantiation.
 		IInjectionBinding ToInject(bool value);
 
@@ -90,6 +95,8 @@ namespace strange.extensions.injector.api
 		/// Get and set the InjectionBindingType
 		/// @see InjectionBindingType
 		InjectionBindingType type{get; set;}
+
+
 
 		/// Bind is the same as Key, but permits Binder syntax: `Bind<T>().Bind<T>()`
 		new IInjectionBinding Bind<T>();

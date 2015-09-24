@@ -26,6 +26,8 @@
  * your extension from the ContextView.
  */
 
+using System;
+using System.Collections.Generic;
 using strange.extensions.context.api;
 using strange.framework.impl;
 
@@ -43,6 +45,7 @@ namespace strange.extensions.context.impl
 		/// If false, the `Launch()` method won't fire.
 		public bool autoStartup;
 
+
 		public Context()
 		{
 		}
@@ -54,7 +57,7 @@ namespace strange.extensions.context.impl
 			{
 				firstContext = this;
 			}
-			else
+			else if ((flags & ContextStartupFlags.MANUAL_HIERARCHY) == 0)
 			{
 				firstContext.AddContext(this);
 			}

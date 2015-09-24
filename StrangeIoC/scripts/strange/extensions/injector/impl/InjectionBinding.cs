@@ -34,6 +34,7 @@ namespace strange.extensions.injector.impl
 		private InjectionBindingType _type = InjectionBindingType.DEFAULT;
 		private bool _toInject = true;
 		private bool _isCrossContext = false;
+		private bool _isInherited = false;
 
 		private ISemiBinding supplyList = new SemiBinding ();
 
@@ -76,6 +77,14 @@ namespace strange.extensions.injector.impl
 			get
 			{
 				return _isCrossContext;
+			}
+		}
+
+		public bool isInherited
+		{
+			get
+			{
+				return _isInherited;
 			}
 		}
 
@@ -152,6 +161,17 @@ namespace strange.extensions.injector.impl
 		public IInjectionBinding CrossContext()
 		{
 			_isCrossContext = true;
+			if (resolver != null)
+			{
+				resolver(this);
+			}
+			return this;
+		}
+
+		public IInjectionBinding Inherited()
+		{
+			_isInherited = true;
+			_isWeak = true;
 			if (resolver != null)
 			{
 				resolver(this);
