@@ -97,10 +97,9 @@ namespace strange.extensions.mediation.impl
 			const int LOOP_MAX = 100;
 			int loopLimiter = 0;
 			Transform trans = view.gameObject.transform;
-			while(trans.parent != null && loopLimiter < LOOP_MAX)
+			while(trans != null && loopLimiter < LOOP_MAX)
 			{
 				loopLimiter ++;
-				trans = trans.parent;
 				if (trans.gameObject.GetComponent<ContextView>() != null)
 				{
 					ContextView contextView = trans.gameObject.GetComponent<ContextView>() as ContextView;
@@ -119,6 +118,10 @@ namespace strange.extensions.mediation.impl
 							return;
 						}
 					}
+				}
+				else
+				{
+					trans = trans.parent;
 				}
 			}
 			if (requiresContext && finalTry)
