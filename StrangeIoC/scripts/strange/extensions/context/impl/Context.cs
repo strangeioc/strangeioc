@@ -38,11 +38,19 @@ namespace strange.extensions.context.impl
 		public object contextView{get;set;}
 
 		/// In a multi-Context app, this represents the first Context to instantiate.
-		public static IContext firstContext;
+		private static IContext _firstContext;
 
 		/// If false, the `Launch()` method won't fire.
 		public bool autoStartup;
 		
+		public static IContext firstContext
+		{
+			get
+			{
+				return _firstContext;
+			}
+		}
+
 		public Context ()
 		{
 		}
@@ -50,13 +58,13 @@ namespace strange.extensions.context.impl
 		public Context (object view, ContextStartupFlags flags)
 		{
 			//If firstContext was unloaded, the contextView will be null. Assign the new context as firstContext.
-			if (firstContext == null || firstContext.GetContextView() == null)
+			if (_firstContext == null || _firstContext.GetContextView() == null)
 			{
-				firstContext = this;
+				_firstContext = this;
 			}
 			else
 			{
-				firstContext.AddContext(this);
+				_firstContext.AddContext(this);
 			}
 			SetContextView(view);
 			addCoreComponents();
@@ -92,7 +100,7 @@ namespace strange.extensions.context.impl
 		}
 		
 		virtual public object GetContextView() 
-		{ 
+		{
 			return contextView; 
 		}
 
@@ -132,16 +140,16 @@ namespace strange.extensions.context.impl
 		/// Remove a context from this one.
 		virtual public IContext RemoveContext(IContext context)
 		{
-            //If we're removing firstContext, set firstContext to null
-		    if (context == firstContext)
-		    {
-		    	firstContext = null;
-		    }
-		    else
-		    {
-		    	context.OnRemove();
-		    }
-		    return this;
+			//If we're removing firstContext, set firstContext to null
+			if (context == _firstContext)
+			{
+				_firstContext = null;
+			}
+			else
+				{
+					context.OnRemove();
+				}
+			return this;
 		}
 
 		/// Retrieve a component from this Context by generic type
