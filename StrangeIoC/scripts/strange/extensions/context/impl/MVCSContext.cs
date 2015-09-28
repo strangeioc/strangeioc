@@ -171,6 +171,8 @@ using strange.extensions.sequencer.api;
 using strange.extensions.sequencer.impl;
 using strange.framework.api;
 using strange.framework.impl;
+using strange.extensions.listBind.api;
+using strange.extensions.listBind.impl;
 
 namespace strange.extensions.context.impl
 {
@@ -187,6 +189,9 @@ namespace strange.extensions.context.impl
 
 		//Interprets implicit bindings
 		public IImplicitBinder implicitBinder { get; set; }
+
+        /// A Binder that allows binding similar bindings to an injectable list.
+        public IListBinder listBinder { get; set; }
 
 		/// A Binder that maps Events to Sequences
 		public ISequencer sequencer{get;set;}
@@ -239,6 +244,7 @@ namespace strange.extensions.context.impl
 			injectionBinder.Bind<IMediationBinder>().To<MediationBinder>().ToSingleton();
 			injectionBinder.Bind<ISequencer>().To<EventSequencer>().ToSingleton();
 			injectionBinder.Bind<IImplicitBinder>().To<ImplicitBinder>().ToSingleton();
+            injectionBinder.Bind<IListBinder>().To<ListBinder>().ToSingleton();
 		}
 		
 		protected override void instantiateCoreComponents()
@@ -255,6 +261,7 @@ namespace strange.extensions.context.impl
 			mediationBinder = injectionBinder.GetInstance<IMediationBinder>() as IMediationBinder;
 			sequencer = injectionBinder.GetInstance<ISequencer>() as ISequencer;
 			implicitBinder = injectionBinder.GetInstance<IImplicitBinder>() as IImplicitBinder;
+            listBinder = injectionBinder.GetInstance<IListBinder>() as IListBinder;
 
 			(dispatcher as ITriggerProvider).AddTriggerable(commandBinder as ITriggerable);
 			(dispatcher as ITriggerProvider).AddTriggerable(sequencer as ITriggerable);
