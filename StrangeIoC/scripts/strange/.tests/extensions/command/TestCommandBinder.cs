@@ -64,6 +64,17 @@ namespace strange.unittests
 		}
 
 		[Test]
+		public void TestMultipleOfSame ()
+		{
+			injectionBinder.Bind<TestModel>().ToSingleton();
+			commandBinder.Bind(SomeEnum.ONE).To<NoArgCommand>().To<NoArgCommand>();
+			TestModel testModel = injectionBinder.GetInstance<TestModel>() as TestModel;
+			Assert.AreEqual(0, testModel.Value);
+			commandBinder.ReactTo (SomeEnum.ONE);
+			Assert.AreEqual(2, testModel.Value); //first command gives 1, second gives 2
+		}
+
+		[Test]
 		public void TestNotOnce()
 		{
 			//CommandWithInjection requires an ISimpleInterface
@@ -233,6 +244,18 @@ namespace strange.unittests
 			//Assert.Throws<Exception> ( await );
 		}
 		*/
+	}
+
+
+	class NoArgCommand: Command
+	{
+		[Inject]
+		public TestModel TestModel { get; set; }
+
+		public override void Execute()
+		{
+			TestModel.Value++;
+		}
 	}
 }
 

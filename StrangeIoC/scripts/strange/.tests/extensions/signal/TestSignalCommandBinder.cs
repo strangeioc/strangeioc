@@ -77,6 +77,20 @@ namespace strange.unittests
             Assert.AreEqual(2, testModel.SecondaryValue); //first command gives 1, second gives 2
         }
 
+		[Test]
+		public void TestMultipleOfSame()
+		{
+			commandBinder.Bind<NoArgSignal>().To<NoArgSignalCommand>().To<NoArgSignalCommand>();
+
+			TestModel testModel = injectionBinder.GetInstance<TestModel>() as TestModel;
+
+			Assert.AreEqual(0, testModel.StoredValue);
+			NoArgSignal signal = injectionBinder.GetInstance<NoArgSignal>() as NoArgSignal;
+
+			signal.Dispatch();
+			Assert.AreEqual(2, testModel.StoredValue); //first command gives 1, second gives 2
+		}
+
 
         [Test]
         public void TestOneArg()
