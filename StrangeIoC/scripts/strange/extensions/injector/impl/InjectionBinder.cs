@@ -57,7 +57,9 @@ namespace strange.extensions.injector.impl
 			{
 				throw new InjectionException ("InjectionBinder has no binding for:\n\tkey: " + key + "\nname: " + name, InjectionExceptionType.NULL_BINDING);
 			}
-			object instance = GetInjectorForBinding(binding).Instantiate (binding);
+			object instance = GetInjectorForBinding(binding).Instantiate (binding, false);
+			injector.TryInject(binding,instance);
+
 			return instance;
 		}
 

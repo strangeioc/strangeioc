@@ -59,7 +59,7 @@ namespace strange.extensions.injector.impl
 		public IInjectionBinder binder{ get; set;}
 		public IReflectionBinder reflector{ get; set;}
 
-		public object Instantiate(IInjectionBinding binding)
+		public object Instantiate(IInjectionBinding binding, bool tryInjectHere)
 		{
 			failIf(binder == null, "Attempt to instantiate from Injector without a Binder", InjectionExceptionType.NO_BINDER);
 			failIf(factory == null, "Attempt to inject into Injector without a Factory", InjectionExceptionType.NO_FACTORY);
@@ -103,25 +103,34 @@ namespace strange.extensions.injector.impl
 				}
 				retv = factory.Get (binding, args);
 
-				//If the InjectorFactory returns null, just return it. Otherwise inject the retv if it needs it
-				//This could happen if Activator.CreateInstance returns null
-				if (retv != null) 
+				if (tryInjectHere)
 				{
-					if (binding.toInject)
-					{
-						retv = Inject (retv, false);
-					}
-
-					if (binding.type == InjectionBindingType.SINGLETON || binding.type == InjectionBindingType.VALUE)
-					{
-						//prevent double-injection
-						binding.ToInject(false);
-					}
+					TryInject(binding, retv);
 				}
 			}
 			infinityLock = null; //Clear our infinity lock so the next time we instantiate we don't consider this a circular dependency
 
 			return retv;
+		}
+
+		public object TryInject(IInjectionBinding binding, object target)
+		{
+			//If the InjectorFactory returns null, just return it. Otherwise inject the retv if it needs it
+			//This could happen if Activator.CreateInstance returns null
+			if (target != null)
+			{
+				if (binding.toInject)
+				{
+					target = Inject(target, false);
+				}
+
+				if (binding.type == InjectionBindingType.SINGLETON || binding.type == InjectionBindingType.VALUE)
+				{
+					//prevent double-injection
+					binding.ToInject(false);
+				}
+			}
+			return target;
 		}
 
 		public object Inject(object target)
@@ -237,12 +246,14 @@ namespace strange.extensions.injector.impl
 			else if (binding.type == InjectionBindingType.SINGLETON)
 			{
 				if (binding.value is Type || binding.value == null)
-					Instantiate (binding);
+				{
+					Instantiate (binding, true);
+				}
 				return binding.value;
 			}
 			else
 			{
-				return Instantiate (binding);
+				return Instantiate (binding, true);
 			}
 		}
 

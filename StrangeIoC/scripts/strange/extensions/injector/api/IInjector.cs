@@ -49,7 +49,10 @@ namespace strange.extensions.injector.api
 	{
 		/// Request an instantiation based on the given binding.
 		/// This request is made to the Injector, but it's really the InjectorFactory that does the instantiation.
-		object Instantiate (IInjectionBinding binding);
+		object Instantiate (IInjectionBinding binding, bool tryInjectHere);
+
+		//Attempt to inject based on binding setting
+		object TryInject(IInjectionBinding binding, object target);
 
 		/// Request that the provided target be injected.
 		object Inject(object target);
