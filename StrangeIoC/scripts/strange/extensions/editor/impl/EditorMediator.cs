@@ -29,45 +29,58 @@ using strange.extensions.mediation.api;
 
 namespace strange.extensions.editor.impl
 {
-	public class EditorMediator : IMediator
-	{
+    public class EditorMediator : IMediator
+    {
 
-		public GameObject contextView {
-			get {
-				throw new EditorContextException("EditorMediators don't recognize a ContextView " + this, EditorContextExceptionType.CONTEXT_VIEW_UNSUPPORTED);
-			}
-			set {
-				throw new EditorContextException("EditorMediators don't recognize a ContextView " + this, EditorContextExceptionType.CONTEXT_VIEW_UNSUPPORTED);
-			}
-		}
-		
-		public EditorMediator ()
-		{
-		}
-		
-		/**
+        public GameObject contextView
+        {
+            get
+            {
+                throw new EditorContextException("EditorMediators don't recognize a ContextView " + this, EditorContextExceptionType.CONTEXT_VIEW_UNSUPPORTED);
+            }
+            set
+            {
+                throw new EditorContextException("EditorMediators don't recognize a ContextView " + this, EditorContextExceptionType.CONTEXT_VIEW_UNSUPPORTED);
+            }
+        }
+
+        public EditorMediator()
+        {
+        }
+
+        /**
 		 * Fires directly after creation and before injection
 		 */
-		virtual public void PreRegister()
-		{
-		}
-		
-		/**
+        virtual public void PreRegister()
+        {
+        }
+
+        /**
 		 * Fires after all injections satisifed.
 		 *
 		 * Override and place your initialization code here.
 		 */
-		virtual public void OnRegister()
-		{
-		}
-		
-		/**
+        virtual public void OnRegister()
+        {
+        }
+
+        /**
 		 * Fires on removal of view.
 		 *
 		 * Override and place your cleanup code here
 		 */
-		virtual public void OnRemove()
-		{
-		}
-	}
+        virtual public void OnRemove()
+        {
+        }
+
+        /// This method fires when the GameObject is enabled.
+        virtual public void OnEnabled()
+        {
+        }
+
+        /// This method fires when the GameObject is disabled.
+        virtual public void OnDisabled()
+        {
+        }
+    }
 }
