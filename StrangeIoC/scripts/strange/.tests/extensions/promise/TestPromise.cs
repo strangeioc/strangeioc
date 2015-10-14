@@ -293,6 +293,14 @@ namespace strange.unittests
 		}
 
 		[Test]
+		public void TestErrorFirst()
+		{
+			promiseOneArg.ReportFail(new Exception(exceptionStr));
+			promiseOneArg.Fail(FailCallback);
+			Assert.AreEqual(currentException.Message, exceptionStr);
+		}
+
+		[Test]
 		public void TestProgressAndError()
 		{
 			float progress = 0.5f;

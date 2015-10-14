@@ -31,6 +31,7 @@ namespace strange.extensions.promise.impl
 		private event Action<float> OnProgress;
 		private event Action<Exception> OnFail;
 		private event Action OnFinally;
+		private Exception exception;
 
 		public PromiseState State { get; protected set; }
 
@@ -48,6 +49,7 @@ namespace strange.extensions.promise.impl
 
 		public void ReportFail(Exception ex)
 		{
+			exception = ex;
 			State = PromiseState.Failed;
 			if (OnFail != null)
 				OnFail(ex);
@@ -80,7 +82,13 @@ namespace strange.extensions.promise.impl
 
 		public IBasePromise Fail(Action<Exception> listener)
 		{
-			OnFail = AddUnique<Exception>(OnFail, listener);
+			if (Failed)
+			{
+				listener(exception);
+				Finally();
+			}
+			else
+				OnFail = AddUnique<Exception>(OnFail, listener);
 			return this;
 		}
 
