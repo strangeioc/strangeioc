@@ -21,7 +21,7 @@
  * Signal-to-Method binding with Mediators.
  * Example:
 
-		[ListensTo(PlayerUpdateSignal)]
+		[ListensTo(typeof(PlayerUpdateSignal))]
 		public void onPlayerUpdate(int hitpoints)
 		{
 			//do some stuff
