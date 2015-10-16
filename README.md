@@ -1,6 +1,6 @@
 ## Strange: the IoC framework for `Unity3D` and `C#`
 
-Current version: v0.7.0
+Current version: v1.0.0
 
 ###Note: StrangeIoC will now be hosted from this location
 
@@ -41,6 +41,13 @@ It contains the following features, most of which are optional:
 * Multiple contexts
   * Allow subcomponents (separate Scenes) to function on their own, or in the context of larger apps.
   * Allow communication between contexts.
+* Promises
+  * Similar to Javascript Q-Promises, these help control flow and error handling 
+  * Promises also fit some common signal use cases much more cleanly!
+* Annotated 'Implicit' Bindings
+ * Reduce boiler plate code written in your Context and Mediators!
+* JSON-driven bindings
+ * Dynamically load your bindings at runtime!
 * Don't see what you need? The core binding framework is simple to extend. Build new Binders like:
   * A different type of dispatcher, like AS3-Signals <- WAIT A MOMENT! WE DID EXACTLY THAT!!!
   * An entity framework
