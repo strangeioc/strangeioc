@@ -1,6 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using strange.extensions.context.impl;
-using strange.extensions.injector.impl;
 using strange.extensions.injector.api;
 
 namespace strange.unittests
@@ -28,7 +28,26 @@ namespace strange.unittests
 			ChildOne = new CrossContext(view, true); //Ctr will automatically add to Context.firstcontext. No need to call it manually (and you should not).
 			ChildTwo = new CrossContext(view, true);
 		}
-		
+
+		[Test]
+		public void TestCorrectInjector() //Issue #189
+		{
+			Parent.injectionBinder.Bind<IVehicle>().To<Car>().CrossContext();
+
+			ChildOne.injectionBinder.Bind<IEngine>().To<GasEngine>();
+			ChildTwo.injectionBinder.Bind<IEngine>().To<ElectricEngine>();
+
+			var carOne = ChildOne.injectionBinder.GetInstance<IVehicle>();
+			var carTwo = ChildTwo.injectionBinder.GetInstance<IVehicle>();
+
+			Assert.NotNull(carOne);
+			Assert.NotNull(carTwo);
+
+			Assert.IsTrue(carOne.Engine is GasEngine);
+			Assert.IsTrue(carTwo.Engine is ElectricEngine);
+		}
+
+
 		[Test]
 		public void TestValue()
 		{
@@ -236,5 +255,34 @@ namespace strange.unittests
 	{
 		public int Value = 0;
 	}
+
+	#region - Bug specific test classes ISSUE 189
+	
+	interface IVehicle
+	{
+		IEngine Engine { get; }
+	}
+
+	interface IEngine
+	{
+		string Name { get; }
+	}
+
+	class Car : IVehicle
+	{
+		[Inject]
+		public IEngine Engine { get; set; }
+	}
+
+	class GasEngine : IEngine
+	{
+		public string Name { get { return "GAS"; } }
+	}
+	class ElectricEngine : IEngine
+	{
+		public string Name { get { return "ELECTRIC"; } }
+	}
+
+	#endregion
 
 }

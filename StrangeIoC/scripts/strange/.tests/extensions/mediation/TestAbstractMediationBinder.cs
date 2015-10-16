@@ -75,6 +75,7 @@ namespace strange.unittests
 		public void TestEnableTriggersMediatorEnabled()
 		{
 			mediationBinder.Bind<TestView> ().To<TestMediator> ();
+			injectionBinder.Bind<ClassToBeInjected>().To<ClassToBeInjected>();
 
 			TestView view = new TestView ();
 			mediationBinder.Trigger(MediationEvent.AWAKE, view);
