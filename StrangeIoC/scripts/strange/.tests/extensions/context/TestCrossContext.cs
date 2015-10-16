@@ -42,6 +42,9 @@ namespace strange.unittests
 
 			Assert.NotNull(carOne);
 			Assert.NotNull(carTwo);
+
+			Assert.IsTrue(carOne.Engine is GasEngine);
+			Assert.IsTrue(carTwo.Engine is ElectricEngine);
 		}
 
 
@@ -269,12 +272,6 @@ namespace strange.unittests
 	{
 		[Inject]
 		public IEngine Engine { get; set; }
-
-		[PostConstruct]
-		public void PC()
-		{
-			Console.WriteLine("My engine is: " + Engine.Name);
-		}
 	}
 
 	class GasEngine : IEngine
