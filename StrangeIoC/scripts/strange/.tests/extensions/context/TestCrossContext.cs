@@ -1,7 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
 using strange.extensions.context.impl;
-using strange.extensions.injector.impl;
 using strange.extensions.injector.api;
 
 namespace strange.unittests
@@ -31,7 +30,7 @@ namespace strange.unittests
 		}
 
 		[Test]
-		public void TestThing()
+		public void TestCorrectInjector() //Issue 190
 		{
 			Parent.injectionBinder.Bind<IVehicle>().To<Car>().CrossContext();
 
