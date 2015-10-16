@@ -171,6 +171,7 @@ using strange.extensions.sequencer.api;
 using strange.extensions.sequencer.impl;
 using strange.framework.api;
 using strange.framework.impl;
+using strange.extensions.mediation;
 
 namespace strange.extensions.context.impl
 {
@@ -236,7 +237,7 @@ namespace strange.extensions.context.impl
 			injectionBinder.Bind<IEventDispatcher>().To<EventDispatcher>();
 			//This binding is for the common system bus
 			injectionBinder.Bind<IEventDispatcher>().To<EventDispatcher>().ToSingleton().ToName(ContextKeys.CONTEXT_DISPATCHER);
-			injectionBinder.Bind<IMediationBinder>().To<MediationBinder>().ToSingleton();
+			injectionBinder.Bind<IMediationBinder>().To<SignalMediationBinder>().ToSingleton();
 			injectionBinder.Bind<ISequencer>().To<EventSequencer>().ToSingleton();
 			injectionBinder.Bind<IImplicitBinder>().To<ImplicitBinder>().ToSingleton();
 		}
