@@ -64,6 +64,21 @@ namespace strange.extensions.injector.api
 		/// Map the binding and give access to all contexts in hierarchy
 		IInjectionBinding CrossContext();
 
+		/// Get the list of promised supply types
+		object[] GetSupply();
+
+		/// Promise this Binding to any instance of Type <T>
+		IInjectionBinding SupplyTo<T>();
+
+		/// Promise this Binding to any instance of Type type
+		IInjectionBinding SupplyTo(Type type);
+
+		/// Remove the promise to supply this binding to Type <T>
+		IInjectionBinding Unsupply<T>();
+
+		/// Remove the promise to supply this binding to Type type
+		IInjectionBinding Unsupply(Type type);
+
 		bool isCrossContext { get; }
 
 		/// Boolean setter to optionally override injection. If false, the instance will not be injected after instantiation.
@@ -93,8 +108,8 @@ namespace strange.extensions.injector.api
 		new object key{ get; }
 		new object name{ get; }
 		new object value{ get; }
-		new Enum keyConstraint{ get; set;}
-		new Enum valueConstraint{ get; set;}
+		new BindingConstraintType keyConstraint{ get; set;}
+		new BindingConstraintType valueConstraint{ get; set;}
 
 	}
 }

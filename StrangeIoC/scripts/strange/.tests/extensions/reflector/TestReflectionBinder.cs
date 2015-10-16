@@ -91,6 +91,7 @@ namespace strange.unittests
 			Assert.That(reflected.ConstructorParameterNames.Length == 2);
 		}
 
+		[Test]
 		public void TestSinglePostConstruct ()
 		{
 			IReflectedClass reflected = reflector.Get<PostConstructClass> ();

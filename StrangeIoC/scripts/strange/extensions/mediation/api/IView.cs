@@ -41,6 +41,8 @@ namespace strange.extensions.mediation.api
 
 		/// Exposure to code of the registerWithContext (Inspector) boolean. If false, the View won't try to register.
 		bool autoRegisterWithContext{ get; }
+
+		bool enabled { get; }
 	}
 }
 

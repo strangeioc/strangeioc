@@ -44,6 +44,12 @@ namespace strange.extensions.mediation.api
 		/// This method fires just before a GameObject will be destroyed.
 		/// Override to clean up any listeners, or anything else that might keep the View/Mediator pair from being garbage collected.
 		void OnRemove();
+
+		/// This method fires when the GameObject is enabled.
+		void OnEnabled();
+
+		/// This method fires when the GameObject is disabled.
+		void OnDisabled();
 	}
 }
 
