@@ -30,7 +30,7 @@ namespace strange.unittests
 		}
 
 		[Test]
-		public void TestCorrectInjector() //Issue 190
+		public void TestCorrectInjector() //Issue #189
 		{
 			Parent.injectionBinder.Bind<IVehicle>().To<Car>().CrossContext();
 
