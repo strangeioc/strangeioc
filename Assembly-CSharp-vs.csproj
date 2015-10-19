@@ -182,6 +182,7 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\AsynchCommand.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandThatThrows.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandThrowsErrorIfEventIsNull.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -201,9 +202,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithInjectionPlusSignalPayload.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\CommandWithoutExecute.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\Commands\FailCommand.cs">
@@ -284,13 +282,11 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\PostConstructTwo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceCommandThatThrows.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceCommandWithExecute.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceCommandWithInjection.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceCommandWithoutExecute.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceInterruptingCommand.cs">
