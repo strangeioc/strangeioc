@@ -25,6 +25,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using strange.framework.api;
 using strange.extensions.injector.api;
 using strange.extensions.reflector.impl;
@@ -35,12 +36,13 @@ namespace strange.extensions.injector.impl
 	public class InjectionBinder : Binder, IInjectionBinder
 	{
 		private IInjector _injector;
+		protected Dictionary<Type, Dictionary<Type, IInjectionBinding>> suppliers = new Dictionary<Type, Dictionary<Type, IInjectionBinding>>();
 
 		public InjectionBinder ()
 		{
 			injector = new Injector ();
 			injector.binder = this;
-			injector.reflector = new ReflectionBinder ();
+			injector.reflector = new ReflectionBinder();
 		}
 
 		public object GetInstance(Type key)
@@ -55,7 +57,9 @@ namespace strange.extensions.injector.impl
 			{
 				throw new InjectionException ("InjectionBinder has no binding for:\n\tkey: " + key + "\nname: " + name, InjectionExceptionType.NULL_BINDING);
 			}
-			object instance = GetInjectorForBinding(binding).Instantiate (binding);
+			object instance = GetInjectorForBinding(binding).Instantiate (binding, false);
+			injector.TryInject(binding,instance);
+
 			return instance;
 		}
 
@@ -115,13 +119,11 @@ namespace strange.extensions.injector.impl
 			return base.GetBinding<T> () as IInjectionBinding;
 		}
 
-		//SDM2014-0120: "virtual" added as dictated by changes to CrossContextInjectionBinder in relation to the cross-context implicit binding fix
 		new virtual public IInjectionBinding GetBinding<T>(object name)
 		{
 			return base.GetBinding<T> (name) as IInjectionBinding;
 		}
 
-		//SDM2014-0120: "virtual" added as dictated by changes to CrossContextInjectionBinder in relation to the cross-context implicit binding fix
 		new virtual public IInjectionBinding GetBinding(object key)
 		{
 			return base.GetBinding (key) as IInjectionBinding;
@@ -165,6 +167,138 @@ namespace strange.extensions.injector.impl
 				injector.reflector.Get (t);
 			}
 			return count;
+		}
+
+		override protected IBinding performKeyValueBindings(List<object> keyList, List<object> valueList)
+		{
+			IBinding binding = null;
+
+			// Bind in order
+			foreach (object key in keyList)
+			{
+				Type keyType = Type.GetType (key as string);
+				if (keyType == null)
+				{
+					throw new BinderException ("A runtime Injection Binding has resolved to null. Did you forget to register its fully-qualified name?\n Key:" + key, BinderExceptionType.RUNTIME_NULL_VALUE);
+				}
+				if (binding == null)
+				{
+					binding = Bind (keyType);
+				}
+				else
+				{
+					binding = binding.Bind (keyType);
+				}
+			}
+			foreach (object value in valueList)
+			{
+				Type valueType = Type.GetType (value as string);
+				if (valueType == null)
+				{
+					throw new BinderException ("A runtime Injection Binding has resolved to null. Did you forget to register its fully-qualified name?\n Value:" + value, BinderExceptionType.RUNTIME_NULL_VALUE);
+				}
+				binding = binding.To (valueType);
+			}
+
+			return binding;
+		}
+
+		/// Additional options: ToSingleton, CrossContext
+		override protected IBinding addRuntimeOptions(IBinding b, List<object> options)
+		{
+			base.addRuntimeOptions (b, options);
+			IInjectionBinding binding = b as IInjectionBinding;
+			if (options.IndexOf ("ToSingleton") > -1)
+			{
+				binding.ToSingleton ();
+			}
+			if (options.IndexOf ("CrossContext") > -1)
+			{
+				binding.CrossContext ();
+			}
+			IEnumerable<Dictionary<string, object>> dict = options.OfType<Dictionary<string, object>> ();
+			if (dict.Any())
+			{
+				Dictionary<string, object> supplyToDict = dict.First (a => a.Keys.Contains ("SupplyTo"));
+				if (supplyToDict != null)
+				{
+					foreach (KeyValuePair<string,object> kv in supplyToDict)
+					{
+						if (kv.Value is string)
+						{
+							Type valueType = Type.GetType (kv.Value as string);
+							binding.SupplyTo (valueType);
+						}
+						else
+						{
+							List<object> values = kv.Value as List<object>;
+							for (int a = 0, aa = values.Count; a < aa; a++)
+							{
+								Type valueType = Type.GetType (values[a] as string);
+								binding.SupplyTo (valueType);
+							}
+						}
+					}
+				}
+			}
+
+			return binding;
+		}
+
+		public IInjectionBinding GetSupplier(Type injectionType, Type targetType)
+		{
+			if (suppliers.ContainsKey(targetType))
+			{
+				if (suppliers [targetType].ContainsKey(injectionType))
+				{
+					return suppliers [targetType][injectionType];
+				}
+			}
+			return null;
+		}
+		
+		public void Unsupply(Type injectionType, Type targetType)
+		{
+			IInjectionBinding binding = GetSupplier(injectionType, targetType);
+			if (binding != null)
+			{
+				suppliers [targetType].Remove(injectionType);
+				binding.Unsupply(targetType);
+			}
+		}
+		
+		public void Unsupply<T, U>()
+		{
+			Unsupply(typeof(T), typeof(U));
+		}
+
+		override protected void resolver(IBinding binding)
+		{
+			IInjectionBinding iBinding = binding as IInjectionBinding;
+			object [] supply = iBinding.GetSupply ();
+
+			if (supply != null)
+			{
+				foreach (object a in supply)
+				{
+					Type aType = a as Type;
+					if (suppliers.ContainsKey(aType) == false)
+					{
+						suppliers[aType] = new Dictionary<Type, IInjectionBinding>();
+					}
+					object[] keys = iBinding.key as object[];
+					foreach (object key in keys)
+					{
+						Type keyType = key as Type;
+						if (suppliers[aType].ContainsKey(keyType as Type) == false)
+						{
+							suppliers[aType][keyType] = iBinding;
+						}
+					}
+				}
+			}
+
+			base.resolver (binding);
 		}
 	}
 }

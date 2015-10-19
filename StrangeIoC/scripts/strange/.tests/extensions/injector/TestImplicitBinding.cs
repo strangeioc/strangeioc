@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using strange.extensions.context.impl;
 using strange.extensions.injector.impl;
 using strange.extensions.injector.api;
@@ -274,6 +275,39 @@ namespace strange.unittests
 			Assert.AreEqual(2, parentModel.Value); //cross context model is changed
 		}
 
+		/// <summary>
+		/// Test that rescanning the same binding does not override a value
+		/// Smaller piece of below test.
+		/// </summary>
+		[Test]
+		public void TestRescanDoesNotOverrideCrossContextValue()
+		{
+			object mockGameObject = new object();
+			TestImplicitBindingContext context = new TestImplicitBindingContext(mockGameObject);
+
+			//Get our binding. It should have value of Runtime Type. It hasn't been instantiated yet.
+			IInjectionBinding binding = context.injectionBinder.GetBinding<TestImplicitBindingClass>();
+			Assert.IsTrue(binding.value is Type);
+
+			//GetInstance. This should set the value to the instantiated class
+			TestImplicitBindingClass instanceValue = context.injectionBinder.GetInstance<TestImplicitBindingClass>();
+			Assert.IsNotNull(instanceValue);
+			IInjectionBinding bindingAfterGetInstance = context.injectionBinder.GetBinding<TestImplicitBindingClass>();
+			Assert.IsTrue(bindingAfterGetInstance.value is TestImplicitBindingClass);
+			Assert.AreSame(bindingAfterGetInstance, binding);
+
+			//Rescan our implicit bindings
+			//Our binding value should remain
+			context.Scan();
+			IInjectionBinding bindingAfterRescan = context.injectionBinder.GetBinding<TestImplicitBindingClass>();
+			Assert.AreSame(bindingAfterRescan, binding); //Should be the same binding, and not override it
+
+			Assert.IsTrue(bindingAfterRescan.value is TestImplicitBindingClass);
+			Assert.AreSame(bindingAfterRescan.value, instanceValue);
+
+
+		}
+
 		//This monster "unit" test confirms that implicit bindings
 		//correctly maintain integrity across Context boundaries.
 		[Test]
@@ -301,6 +335,7 @@ namespace strange.unittests
 
 				//Create each "ContextView" and its Context
 				object mockGameObject = new object ();
+
 				TestImplicitBindingContext context = new TestImplicitBindingContext (mockGameObject);
 				contexts.Add (context);
 
@@ -308,8 +343,9 @@ namespace strange.unittests
 				IInjectionBinding bindingAfterContextCreation = context.injectionBinder.GetBinding<TestImplicitBindingClass> ();
 				object bindingValueAfterContextCreation = bindingAfterContextCreation.value;
 				
-				bool bindingChangedDueToContextCreation = bindingAfterContextCreation != bindingBeforeContextCreation;
+				bool bindingChangedDueToContextCreation = !bindingAfterContextCreation.Equals(bindingBeforeContextCreation);
 				bool bindingValueChangedDueToContextCreation = bindingValueAfterContextCreation != bindingValueBeforeContextCreation;
+
 
 				//due to the weak binding replacement rules, the binding should change every time we scan until we instance
 				Assert.IsFalse (bindingChangedDueToContextCreation && toInstance && !isFirstContextToCallGetInstance);
@@ -317,6 +353,7 @@ namespace strange.unittests
 				//after creating a new context, the value of the binding should only change on the first context
 				//(it was null before that)
 				Assert.IsFalse (bindingValueChangedDueToContextCreation && contextNumber != 1);
+
 
 				if (toInstance)
 				{
@@ -335,6 +372,7 @@ namespace strange.unittests
 						Assert.IsNotNull (instance);
 						Assert.IsNotNull (instance.testImplicitBindingClass);
 					}
+
 				}
 
 				//We inspect the binding and its value after all this mapping/instantiation
@@ -405,6 +443,19 @@ namespace strange.unittests
 			Assert.AreEqual(one, two);
 			Assert.AreEqual(one, three);
 		}
+
+        [Test]
+        public void TestParamsScannedPackages()
+        {
+            context.Start();
+            context.ScanForAnnotatedClasses("strange.unittests.annotated.testConcrete", "strange.unittests.annotated.testImplTwo", "strange.unittests.annotated.testImplBy");
+
+            var testConcrete = context.injectionBinder.GetInstance<TestConcreteClass>();
+            Assert.IsNotNull(testConcrete);
+
+            TestInterface testInterface = context.injectionBinder.GetInstance<TestInterface>();
+            Assert.True(testInterface is TestImplTwo);
+        }
 	}
 
 
@@ -531,8 +582,15 @@ namespace strange.unittests.testimplicitbindingnamespace
 		public TestImplicitBindingContext(object contextView) : base(contextView){}
 		protected override void mapBindings()
 		{
-			implicitBinder.ScanForAnnotatedClasses(new string[]{"strange.unittests.testimplicitbindingnamespace"});
+			base.mapBindings();
+
+			Scan();
 			injectionBinder.Bind<TestImplicitBindingInjectionReceiver>().ToSingleton();
+		}
+
+		public void Scan()
+		{
+			implicitBinder.ScanForAnnotatedClasses(new string[] { "strange.unittests.testimplicitbindingnamespace" });
 		}
 	}
 

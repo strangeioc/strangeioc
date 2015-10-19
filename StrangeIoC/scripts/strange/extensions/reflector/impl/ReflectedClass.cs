@@ -41,13 +41,29 @@ namespace strange.extensions.reflector.impl
 		public object[] SetterNames{ get; set;}
 		public bool PreGenerated{ get; set;}
 
+
 		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		public ConstructorInfo constructor{ get { return Constructor; } set { Constructor = value; }}
 		public Type[] constructorParameters{ get { return ConstructorParameters; } set { ConstructorParameters = value; }}
 		public MethodInfo[] postConstructors{ get { return PostConstructors; } set { PostConstructors = value; }}
+		public KeyValuePair<MethodInfo, Attribute>[] attrMethods { get; set; }
 		public KeyValuePair<Type, PropertyInfo>[] setters{ get { return Setters; } set { Setters = value; }}
 		public object[] setterNames{ get { return SetterNames; } set { SetterNames = value; }}
 		public bool preGenerated{ get { return PreGenerated; } set { PreGenerated = value; }}
+
+
+		public bool hasSetterFor(Type type)
+		{
+			foreach (KeyValuePair<Type, PropertyInfo> setterType in setters)
+			{
+				if (setterType.Key == type)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
 	}
 }
 

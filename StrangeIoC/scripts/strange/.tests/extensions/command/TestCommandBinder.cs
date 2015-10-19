@@ -6,6 +6,7 @@ using strange.extensions.command.impl;
 using strange.extensions.injector.api;
 using strange.extensions.injector.impl;
 using strange.framework.api;
+using strange.framework.impl;
 
 namespace strange.unittests
 {
@@ -46,7 +47,7 @@ namespace strange.unittests
 			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().ToSingleton();
 
 			//Bind the trigger to the command
-			commandBinder.Bind(SomeEnum.ONE).To<CommandWithInjection>().To<CommandWithExecute>().To<CommandWithoutExecute>();
+			commandBinder.Bind(SomeEnum.ONE).To<CommandWithInjection>().To<CommandWithExecute>().To<CommandThatThrows>();
 
 			TestDelegate testDelegate = delegate 
 			{
@@ -54,12 +55,23 @@ namespace strange.unittests
 			};
 
 			//That the exception is thrown demonstrates that the last command ran
-			CommandException ex = Assert.Throws<CommandException> (testDelegate);
-			Assert.AreEqual (ex.type, CommandExceptionType.EXECUTE_OVERRIDE);
+			NotImplementedException ex = Assert.Throws<NotImplementedException> (testDelegate);
+			Assert.NotNull(ex);
 
 			//That the value is 100 demonstrates that the first command ran
 			ISimpleInterface instance = injectionBinder.GetInstance<ISimpleInterface>() as ISimpleInterface;
 			Assert.AreEqual (100, instance.intValue);
+		}
+
+		[Test]
+		public void TestMultipleOfSame ()
+		{
+			injectionBinder.Bind<TestModel>().ToSingleton();
+			commandBinder.Bind(SomeEnum.ONE).To<NoArgCommand>().To<NoArgCommand>();
+			TestModel testModel = injectionBinder.GetInstance<TestModel>() as TestModel;
+			Assert.AreEqual(0, testModel.Value);
+			commandBinder.ReactTo (SomeEnum.ONE);
+			Assert.AreEqual(2, testModel.Value); //first command gives 1, second gives 2
 		}
 
 		[Test]
@@ -105,7 +117,7 @@ namespace strange.unittests
 			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().ToSingleton();
 
 			//Bind the trigger to the command
-			commandBinder.Bind(SomeEnum.ONE).To<CommandWithInjection>().To<CommandWithExecute>().To<CommandWithoutExecute>().InSequence();
+			commandBinder.Bind(SomeEnum.ONE).To<CommandWithInjection>().To<CommandWithExecute>().To<CommandThatThrows>().InSequence();
 
 			TestDelegate testDelegate = delegate 
 			{
@@ -113,8 +125,8 @@ namespace strange.unittests
 			};
 
 			//That the exception is thrown demonstrates that the last command ran
-			CommandException ex = Assert.Throws<CommandException> (testDelegate);
-			Assert.AreEqual (ex.type, CommandExceptionType.EXECUTE_OVERRIDE);
+			NotImplementedException ex = Assert.Throws<NotImplementedException> (testDelegate);
+			Assert.NotNull(ex);
 
 			//That the value is 100 demonstrates that the first command ran
 			ISimpleInterface instance = injectionBinder.GetInstance<ISimpleInterface>() as ISimpleInterface;
@@ -128,7 +140,7 @@ namespace strange.unittests
 			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().ToSingleton();
 
 			//Bind the trigger to the command
-			commandBinder.Bind(SomeEnum.ONE).To<CommandWithInjection>().To<FailCommand>().To<CommandWithoutExecute>().InSequence();
+			commandBinder.Bind(SomeEnum.ONE).To<CommandWithInjection>().To<FailCommand>().To<CommandThatThrows>().InSequence();
 
 			TestDelegate testDelegate = delegate 
 			{
@@ -143,6 +155,82 @@ namespace strange.unittests
 			Assert.AreEqual (100, instance.intValue);
 		}
 
+		[Test]
+		public void TestSimpleRuntimeCommandBinding()
+		{
+			string jsonInjectorString = "[{\"Bind\":\"strange.unittests.ISimpleInterface\",\"To\":\"strange.unittests.SimpleInterfaceImplementer\", \"Options\":\"ToSingleton\"}]";
+			injectionBinder.ConsumeBindings (jsonInjectorString);
+
+			string jsonCommandString = "[{\"Bind\":\"strange.unittests.SomeEnum.ONE\",\"To\":\"strange.unittests.CommandWithInjection\"}]";
+			commandBinder.ConsumeBindings(jsonCommandString);
+			commandBinder.ReactTo (SomeEnum.ONE);
+
+			ISimpleInterface instance = injectionBinder.GetInstance<ISimpleInterface>() as ISimpleInterface;
+			Assert.AreEqual (100, instance.intValue);
+		}
+
+		[Test]
+		public void TestRuntimeSequenceCommandBinding()
+		{
+			string jsonInjectorString = "[{\"Bind\":\"strange.unittests.ISimpleInterface\",\"To\":\"strange.unittests.SimpleInterfaceImplementer\", \"Options\":\"ToSingleton\"}]";
+			injectionBinder.ConsumeBindings (jsonInjectorString);
+
+			string jsonCommandString = "[{\"Bind\":\"TestEvent\",\"To\":[\"strange.unittests.CommandWithInjection\",\"strange.unittests.CommandWithExecute\",\"strange.unittests.CommandThatThrows\"],\"Options\":\"InSequence\"}]";
+			commandBinder.ConsumeBindings(jsonCommandString);
+
+			ICommandBinding binding = commandBinder.GetBinding ("TestEvent") as ICommandBinding;
+			Assert.IsTrue (binding.isSequence);
+
+			TestDelegate testDelegate = delegate 
+			{
+				commandBinder.ReactTo ("TestEvent");
+			};
+
+			//That the exception is thrown demonstrates that the last command ran
+			NotImplementedException ex = Assert.Throws<NotImplementedException> (testDelegate);
+			Assert.NotNull(ex);
+
+			ISimpleInterface instance = injectionBinder.GetInstance<ISimpleInterface>() as ISimpleInterface;
+			Assert.AreEqual (100, instance.intValue);
+		}
+
+		[Test]
+		public void TestRuntimeCommandBindingOnce()
+		{
+			string jsonInjectorString = "[{\"Bind\":\"strange.unittests.ISimpleInterface\",\"To\":\"strange.unittests.SimpleInterfaceImplementer\", \"Options\":\"ToSingleton\"}]";
+			injectionBinder.ConsumeBindings (jsonInjectorString);
+
+			string jsonCommandString = "[{\"Bind\":\"TestEvent\",\"To\":[\"strange.unittests.CommandWithInjection\"],\"Options\":\"Once\"}]";
+			commandBinder.ConsumeBindings(jsonCommandString);
+
+			ICommandBinding binding = commandBinder.GetBinding ("TestEvent") as ICommandBinding;
+			Assert.IsTrue (binding.isOneOff);
+			commandBinder.ReactTo ("TestEvent");
+
+			ISimpleInterface instance = injectionBinder.GetInstance<ISimpleInterface>() as ISimpleInterface;
+			Assert.AreEqual (100, instance.intValue);
+
+			ICommandBinding binding2 = commandBinder.GetBinding ("TestEvent") as ICommandBinding;
+			Assert.IsNull (binding2);
+		}
+
+		[Test]
+		public void TestRuntimeUnqualifiedCommandException()
+		{
+			string jsonInjectorString = "[{\"Bind\":\"strange.unittests.ISimpleInterface\",\"To\":\"strange.unittests.SimpleInterfaceImplementer\", \"Options\":\"ToSingleton\"}]";
+			injectionBinder.ConsumeBindings (jsonInjectorString);
+
+			string jsonCommandString = "[{\"Bind\":\"TestEvent\",\"To\":\"CommandWithInjection\"}]";
+			TestDelegate testDelegate = delegate 
+			{
+				commandBinder.ConsumeBindings(jsonCommandString);
+			};
+
+			BinderException ex = Assert.Throws<BinderException> (testDelegate);
+			Assert.AreEqual (ex.type, BinderExceptionType.RUNTIME_NULL_VALUE);
+		}
+
+
 
 		//TODO: figure out how to do async tests
 		/*
@@ -156,6 +244,18 @@ namespace strange.unittests
 			//Assert.Throws<Exception> ( await );
 		}
 		*/
+	}
+
+
+	class NoArgCommand: Command
+	{
+		[Inject]
+		public TestModel TestModel { get; set; }
+
+		public override void Execute()
+		{
+			TestModel.Value++;
+		}
 	}
 }
 

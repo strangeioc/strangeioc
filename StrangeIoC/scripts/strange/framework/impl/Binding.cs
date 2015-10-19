@@ -92,7 +92,7 @@ namespace strange.framework.impl
 			}
 		}
 
-		public Enum keyConstraint
+		public BindingConstraintType keyConstraint
 		{ 
 			get
 			{
@@ -104,7 +104,7 @@ namespace strange.framework.impl
 			}
 		}
 
-		public Enum valueConstraint
+		public BindingConstraintType valueConstraint
 		{ 
 			get
 			{
@@ -116,7 +116,7 @@ namespace strange.framework.impl
 			}
 		}
 
-		public Enum nameConstraint
+		public BindingConstraintType nameConstraint
 		{ 
 			get
 			{

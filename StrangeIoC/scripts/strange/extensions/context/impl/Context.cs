@@ -35,19 +35,19 @@ namespace strange.extensions.context.impl
 	{
 		/// The top of the View hierarchy.
 		/// In MVCSContext, this is your top-level GameObject
-		public object contextView{get;set;}
+		public object contextView { get; set; }
 
 		/// In a multi-Context app, this represents the first Context to instantiate.
 		public static IContext firstContext;
 
 		/// If false, the `Launch()` method won't fire.
 		public bool autoStartup;
-		
-		public Context ()
+
+		public Context()
 		{
 		}
 
-		public Context (object view, ContextStartupFlags flags)
+		public Context(object view, ContextStartupFlags flags)
 		{
 			//If firstContext was unloaded, the contextView will be null. Assign the new context as firstContext.
 			if (firstContext == null || firstContext.GetContextView() == null)
@@ -67,17 +67,18 @@ namespace strange.extensions.context.impl
 			}
 		}
 
-		public Context (object view) : this (view, ContextStartupFlags.AUTOMATIC){}
-		
-		public Context (object view, bool autoMapping) : this(view, (autoMapping) ? ContextStartupFlags.MANUAL_MAPPING : ContextStartupFlags.MANUAL_LAUNCH | ContextStartupFlags.MANUAL_MAPPING)
+		public Context(object view) : this(view, ContextStartupFlags.AUTOMATIC) { }
+
+		public Context(object view, bool autoMapping)
+			: this(view, (autoMapping) ? ContextStartupFlags.MANUAL_MAPPING : ContextStartupFlags.MANUAL_LAUNCH | ContextStartupFlags.MANUAL_MAPPING)
 		{
 		}
-		
+
 		/// Override to add componentry. Or just extend MVCSContext.
 		virtual protected void addCoreComponents()
 		{
 		}
-		
+
 		/// Override to instantiate componentry. Or just extend MVCSContext.
 		virtual protected void instantiateCoreComponents()
 		{
@@ -90,10 +91,10 @@ namespace strange.extensions.context.impl
 			contextView = view;
 			return this;
 		}
-		
-		virtual public object GetContextView() 
-		{ 
-			return contextView; 
+
+		virtual public object GetContextView()
+		{
+			return contextView;
 		}
 
 		/// Call this from your Root to set everything in action.
@@ -112,12 +113,12 @@ namespace strange.extensions.context.impl
 		virtual public void Launch()
 		{
 		}
-		
+
 		/// Override to map project-specific bindings
 		virtual protected void mapBindings()
 		{
 		}
-		
+
 		/// Override to do things after binding but before app launch
 		virtual protected void postBindings()
 		{
@@ -132,16 +133,16 @@ namespace strange.extensions.context.impl
 		/// Remove a context from this one.
 		virtual public IContext RemoveContext(IContext context)
 		{
-            //If we're removing firstContext, set firstContext to null
-		    if (context == firstContext)
-		    {
-		    	firstContext = null;
-		    }
-		    else
-		    {
-		    	context.OnRemove();
-		    }
-		    return this;
+			//If we're removing firstContext, set firstContext to null
+			if (context == firstContext)
+			{
+				firstContext = null;
+			}
+			else
+			{
+				context.OnRemove();
+			}
+			return this;
 		}
 
 		/// Retrieve a component from this Context by generic type
@@ -165,6 +166,18 @@ namespace strange.extensions.context.impl
 
 		/// Remove a View from this Context
 		virtual public void RemoveView(object view)
+		{
+			//Override in subclasses
+		}
+
+		/// Enable a View from this Context
+		virtual public void EnableView(object view)
+		{
+			//Override in subclasses
+		}
+
+		/// Disable a View from this Context
+		virtual public void DisableView(object view)
 		{
 			//Override in subclasses
 		}

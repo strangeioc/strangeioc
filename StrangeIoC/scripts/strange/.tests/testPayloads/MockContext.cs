@@ -43,6 +43,11 @@ namespace strange.unittests
 			implicitBinder.ScanForAnnotatedClasses(ScannedPackages);
 		}
 
+		public void ScanForAnnotatedClasses(params string[] namespaces)
+		{
+			implicitBinder.ScanForAnnotatedClasses(namespaces);
+		}
+
 		protected override void addCoreComponents()
 		{
 			base.addCoreComponents();
