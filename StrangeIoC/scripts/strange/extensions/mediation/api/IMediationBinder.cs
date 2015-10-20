@@ -77,8 +77,14 @@ namespace strange.extensions.mediation.api
 		/// Recast binding as IMediationBinding.
 		new IMediationBinding Bind<T> ();
 
+		/// Recast binding as IMediationBinding.
+		new IMediationBinding Bind(object value);
+
 		/// Porcelain for Bind<T> providing a little extra clarity and security.
 		IMediationBinding BindView<T> ();
+
+		/// Precelain for Bind(object value) providing a little extra clarity and security
+		IMediationBinding BindView(object value);
 	}
 }
 
