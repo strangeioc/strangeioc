@@ -215,9 +215,19 @@ namespace strange.extensions.mediation.impl
 			return base.Bind<T> () as IMediationBinding;
 		}
 
+		new public IMediationBinding Bind(object key)
+		{
+			return base.Bind(key) as IMediationBinding;
+		}
+
 		public IMediationBinding BindView<T>()
 		{
 			return base.Bind<T> () as IMediationBinding;
+		}
+
+		public IMediationBinding BindView(object key)
+		{
+			return base.Bind(key) as IMediationBinding;
 		}
 
 		/// Creates and registers one or more Mediators for a specific View instance.
