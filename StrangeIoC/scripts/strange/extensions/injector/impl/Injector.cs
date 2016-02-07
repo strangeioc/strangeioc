@@ -38,9 +38,11 @@
  */
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using strange.extensions.injector.api;
+using strange.extensions.listBind.api;
 using strange.extensions.reflector.api;
 
 namespace strange.extensions.injector.impl
@@ -57,7 +59,9 @@ namespace strange.extensions.injector.impl
 
 		public IInjectorFactory factory{ get; set;}
 		public IInjectionBinder binder{ get; set;}
-		public IReflectionBinder reflector{ get; set;}
+        public IListBinder listBinder { get; set; }
+
+        public IReflectionBinder reflector{ get; set;}
 
 		public object Instantiate(IInjectionBinding binding, bool tryInjectHere)
 		{
@@ -157,7 +161,8 @@ namespace strange.extensions.injector.impl
 			{
 				target = performConstructorInjection(target, reflection);
 			}
-			performSetterInjection(target, reflection);
+            performListInjection(target, reflection);
+            performSetterInjection(target, reflection);
 			postInject(target, reflection);
 			return target;
 		}
@@ -206,7 +211,40 @@ namespace strange.extensions.injector.impl
 			return (constructedObj == null) ? target : constructedObj;
 		}
 
-		private void performSetterInjection(object target, IReflectedClass reflection)
+        private void performListInjection(object target, IReflectedClass reflection)
+        {
+            if (!(target is IList))
+            {
+                return;
+            }
+            failIf(listBinder == null, "Attempt to instantiate a list when no list binder defined", InjectionExceptionType.NO_BINDER);
+            failIf(target == null, "Attempt to inject into a null list", InjectionExceptionType.NULL_TARGET);
+            failIf(reflection == null, "Attempt to inject without a reflection", InjectionExceptionType.NULL_REFLECTION);
+
+
+            Type[] listItemTypes = target.GetType().GetGenericArguments();
+            // Non-generic lists are not supported.
+            if (listItemTypes.Length == 0)
+            {
+                return;
+            }
+
+            IListBinding listBinding = listBinder.GetListBinding(listItemTypes[0]);
+            if (listBinding == null)
+            {
+                return;
+            }
+            IList list = (IList)target;
+            foreach (var binding in listBinding.Bindings)
+            {
+                object item = binding.Resolve(binder);
+				Inject(item, false);
+                list.Add(item);
+            }
+        }
+
+
+        private void performSetterInjection(object target, IReflectedClass reflection)
 		{
 			failIf(target == null, "Attempt to inject into a null object", InjectionExceptionType.NULL_TARGET);
 			failIf(reflection == null, "Attempt to inject without a reflection", InjectionExceptionType.NULL_REFLECTION);
