@@ -238,6 +238,7 @@ namespace strange.extensions.injector.impl
             foreach (var binding in listBinding.Bindings)
             {
                 object item = binding.Resolve(binder);
+				Inject(item, false);
                 list.Add(item);
             }
         }
