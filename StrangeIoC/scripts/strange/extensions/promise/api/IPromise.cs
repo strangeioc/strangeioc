@@ -99,6 +99,11 @@ namespace strange.extensions.promise.api
 		int ListenerCount();
 
 		BasePromise.PromiseState State { get; }
+
+		/// <summary>
+		/// Removes all listeners, defaults the dispatched value, and sets the state to Pending
+		/// </summary>
+		void Reset();
 	}
 	public interface IPromise : IBasePromise
 	{

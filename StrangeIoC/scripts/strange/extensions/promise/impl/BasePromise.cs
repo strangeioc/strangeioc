@@ -102,6 +102,12 @@ namespace strange.extensions.promise.impl
 			return this;
 		}
 
+		public virtual void Reset()
+		{
+			RemoveAllListeners();
+			this.State = BasePromise.PromiseState.Pending;
+		}
+
 		/// <summary>
 		/// Trigger Finally callbacks
 		/// </summary>

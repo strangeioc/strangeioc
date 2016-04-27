@@ -136,6 +136,13 @@ namespace strange.extensions.promise.impl
 		{
 			return Listener == null ? 0 : Listener.GetInvocationList().Length;
 		}
+
+		public override void Reset()
+		{
+			base.Reset();
+			this.t = default(T);
+		}
+
 		private void CallListener()
 		{
 			if (Listener != null)
@@ -199,6 +206,14 @@ namespace strange.extensions.promise.impl
 		{
 			return Listener == null ? 0 : Listener.GetInvocationList().Length;
 		}
+
+		public override void Reset()
+		{
+			base.Reset();
+			this.t = default(T);
+			this.u = default(U);
+		}
+
 		private void CallListener()
 		{
 			if (Listener != null)
@@ -273,6 +288,14 @@ namespace strange.extensions.promise.impl
 		{
 			return Listener == null ? 0 : Listener.GetInvocationList().Length;
 		}
+		public override void Reset()
+		{
+			base.Reset();
+			this.t = default(T);
+			this.u = default(U);
+			this.v = default(V);
+		}
+
 		private void CallListener()
 		{
 			if (Listener != null)
@@ -350,6 +373,16 @@ namespace strange.extensions.promise.impl
 		{
 			return Listener == null ? 0 : Listener.GetInvocationList().Length;
 		}
+
+		public override void Reset()
+		{
+			base.Reset();
+			this.t = default(T);
+			this.u = default(U);
+			this.v = default(V);
+			this.w = default(W);
+		}
+
 		private void CallListener()
 		{
 			if (Listener != null)
