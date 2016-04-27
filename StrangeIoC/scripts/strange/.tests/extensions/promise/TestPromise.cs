@@ -673,6 +673,31 @@ namespace strange.unittests
 			Assert.AreEqual(0, value);
 		}
 
+		[Test]
+		public void TestResetPromise()
+		{
+			int res = 0;
+			promiseOneArg.Dispatch(1);
+			promiseOneArg.Then(i => res = i);
+			Assert.AreEqual(1, res);
+
+			res = 0;
+			var res2 = -1;
+
+			// After reset dispatch is doing nothing
+			// And res will not changes anymore.
+			promiseOneArg.Reset();
+			promiseOneArg.Then(i => res2 = i);
+			Assert.AreEqual(-1, res2);
+			Assert.AreEqual(0, res);
+
+			// Dispatch again and things'll change
+			promiseOneArg.Dispatch(2);
+			Assert.AreEqual(2, res2);
+			Assert.AreEqual(0, res);
+		}
+
+
 #region Callbacks
 		
 		private void NoArgCallback()
