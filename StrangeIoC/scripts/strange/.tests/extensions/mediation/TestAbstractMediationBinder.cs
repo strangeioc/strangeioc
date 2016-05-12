@@ -327,6 +327,61 @@ namespace strange.unittests
 			TestMediator mediator = mediationBinder.mediators[view] as TestMediator;
 			Assert.False(mediator.enabled);
 		}
+
+		[Test]
+		public void TestInjectViewAndChildrenInjectsChildrenBeforeParentWhenAllBelongToSameGameObject()
+		{
+			injectionBinder.Bind<ClassToBeInjected>().To<ClassToBeInjected>();
+
+			List<TestView> order = new List<TestView>();
+			Action<TestView> postInjectAction = (TestView v) =>
+			{
+				order.Add(v);
+			};
+
+			TestView parent = new TestView();
+			parent.PostInjectionAction = postInjectAction;
+
+			TestView one = new TestView();
+			one.PostInjectionAction = postInjectAction;
+
+			TestView two = new TestView();
+			two.PostInjectionAction = postInjectAction;
+
+			IView[] views =
+			{
+				parent,
+				one,
+				two
+			};
+
+
+			/*
+			 * In an scenario in which:
+			 * A game object contains a ParentView (parent) and a ChildView (child) scripts, and 
+			 * parent is connected to child (ivar connected from the unity editor)
+			 * 
+			 * THEN:
+			 * Both parent and child will return the same array of IView when MediationBinder.GetViews() is called
+			*/
+
+			parent.Views = views;
+			one.Views = views;
+			two.Views = views;
+
+			mediationBinder.TestInjectViewAndChildren(parent);
+
+			Assert.AreEqual(true, one.registeredWithContext);
+			Assert.AreEqual(true, two.registeredWithContext);
+
+			int parentIndex = order.IndexOf(parent);
+			int firstChildIndex = order.IndexOf(one);
+			int secondChildIndex = order.IndexOf(two);
+
+			//One and Two must be injected before parent, thus, their index in the order list should be lower
+			Assert.That(parentIndex > firstChildIndex);
+			Assert.That(parentIndex > secondChildIndex);
+		}
 	}
 
 
@@ -416,6 +471,20 @@ namespace strange.unittests
 				this
 			};
 		}
+
+		public string name { get; set; }
+		public Action<TestView> PostInjectionAction { get; set; }
+
+		[PostConstruct]
+		public void TestPostInjection()
+		{
+			if (this.PostInjectionAction != null)
+			{
+				Console.WriteLine("POST INJECT: " + name);
+				this.PostInjectionAction(this);
+			}
+		}
+
 
 		#region IView implementation
 

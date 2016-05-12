@@ -126,7 +126,11 @@ namespace strange.extensions.signal.impl
 			base.RemoveAllListeners();
 		}
 
-		public Delegate listener { get { return Listener; } set { Listener = (Action) value; }}
+		public Delegate listener
+		{
+			get { return Listener ?? (Listener = delegate { }); }
+			set { Listener = (Action) value; }
+		}
 	}
 
 	/// Base concrete form for a Signal with one parameter
@@ -183,7 +187,11 @@ namespace strange.extensions.signal.impl
 			base.RemoveAllListeners();
 		}
 
-		public Delegate listener { get { return Listener; } set { Listener = (Action<T>) value; } }
+		public Delegate listener 
+		{
+			get { return Listener ?? (Listener = delegate { }); }
+			set { Listener = (Action<T>) value; } 
+		}
 	}
 
 	/// Base concrete form for a Signal with two parameters
@@ -239,7 +247,11 @@ namespace strange.extensions.signal.impl
 			OnceListener = null;
 			base.RemoveAllListeners();
 		}
-		public Delegate listener { get { return Listener; } set { Listener = (Action<T, U>) value; } }
+		public Delegate listener 
+		{
+			get { return Listener ?? (Listener = delegate { }); }
+			set { Listener = (Action<T, U>) value; } 
+		}
 	}
 
 	/// Base concrete form for a Signal with three parameters
@@ -295,7 +307,12 @@ namespace strange.extensions.signal.impl
 			OnceListener = null;
 			base.RemoveAllListeners();
 		}
-		public Delegate listener { get { return Listener; } set { Listener = (Action<T, U, V>) value; } }
+
+		public Delegate listener
+		{
+			get { return Listener ?? (Listener = delegate { }); }
+			set { Listener = (Action<T, U, V>) value; }
+		}
 	}
 
 	/// Base concrete form for a Signal with four parameters
@@ -353,7 +370,11 @@ namespace strange.extensions.signal.impl
 			OnceListener = null;
 			base.RemoveAllListeners();
 		}
-		public Delegate listener { get { return Listener; } set { Listener = (Action<T, U, V, W>) value; } }
+		public Delegate listener 
+		{
+			get { return Listener ?? (Listener = delegate { }); }
+			set { Listener = (Action<T, U, V, W>) value; } 
+		}
 	}
 
 }
