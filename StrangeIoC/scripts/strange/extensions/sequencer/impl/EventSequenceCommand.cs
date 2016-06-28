@@ -27,7 +27,7 @@ using strange.extensions.sequencer.impl;
 
 namespace strange.extensions.sequencer.impl
 {
-	public class EventSequenceCommand : SequenceCommand
+	public abstract class EventSequenceCommand : SequenceCommand
 	{
 		/// The context-wide Event bus
 		[Inject(ContextKeys.CONTEXT_DISPATCHER)]

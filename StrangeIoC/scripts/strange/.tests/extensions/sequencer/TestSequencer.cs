@@ -49,7 +49,7 @@ namespace strange.unittests
 			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().ToSingleton();
 
 			//Bind the trigger to the command
-			sequencer.Bind(SomeEnum.ONE).To<SequenceCommandWithInjection>().To<SequenceCommandWithExecute>().To<SequenceCommandWithoutExecute>();
+			sequencer.Bind(SomeEnum.ONE).To<SequenceCommandWithInjection>().To<SequenceCommandWithExecute>().To<SequenceCommandThatThrows>();
 
 			TestDelegate testDelegate = delegate 
 			{
@@ -57,8 +57,8 @@ namespace strange.unittests
 			};
 
 			//That the exception is thrown demonstrates that the last command ran
-			SequencerException ex = Assert.Throws<SequencerException> (testDelegate);
-			Assert.AreEqual (ex.type, SequencerExceptionType.EXECUTE_OVERRIDE);
+			NotImplementedException ex = Assert.Throws<NotImplementedException> (testDelegate);
+			Assert.NotNull(ex);
 
 			//That the value is 100 demonstrates that the first command ran
 			ISimpleInterface instance = injectionBinder.GetInstance<ISimpleInterface>() as ISimpleInterface;
@@ -72,7 +72,7 @@ namespace strange.unittests
 			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer> ().ToSingleton();
 
 			//Bind the trigger to the command
-			sequencer.Bind(SomeEnum.ONE).To<SequenceCommandWithInjection>().To<SequenceInterruptingCommand>().To<SequenceCommandWithoutExecute>();
+			sequencer.Bind(SomeEnum.ONE).To<SequenceCommandWithInjection>().To<SequenceInterruptingCommand>().To<SequenceCommandThatThrows>();
 
 			TestDelegate testDelegate = delegate 
 			{
