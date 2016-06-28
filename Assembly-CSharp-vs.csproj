@@ -65,8 +65,6 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
-  <ItemGroup />
-  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
@@ -488,6 +486,9 @@
     <Compile Include="StrangeIoC\scripts\strange\extensions\implicitBind\api\IImplicitBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\implicitBind\impl\ImplicitBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\injector\api\InjectionBindingScope.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\BaseInheritanceOverride.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ExtendedInheritanceOverride.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\IExtendedInterface.cs" />
     <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\TesterContextView.cs" />
     <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\TesterContext.cs" />
     <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\TesterView.cs" />
@@ -501,5 +502,4 @@
     <Compile Include="StrangeIoC\scripts\strange\extensions\promise\impl\Promise.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\promise\TestPromise.cs" />
   </ItemGroup>
-  <ItemGroup />
 </Project>
