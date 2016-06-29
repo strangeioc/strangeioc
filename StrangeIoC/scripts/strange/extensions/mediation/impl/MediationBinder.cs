@@ -59,7 +59,7 @@ namespace strange.extensions.mediation.impl
 		}
 
 		/// Destroy the Mediator on the provided view object based on the mediatorType
-		protected override object DestroyMediator(IView view, Type mediatorType)
+		protected override IMediator DestroyMediator(IView view, Type mediatorType)
 		{
 			MonoBehaviour mono = view as MonoBehaviour;
 			IMediator mediator = mono.GetComponent(mediatorType) as IMediator;

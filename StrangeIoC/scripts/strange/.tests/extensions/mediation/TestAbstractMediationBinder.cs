@@ -354,7 +354,7 @@ namespace strange.unittests
 			return mediator;
 		}
 
-		override protected object DestroyMediator(IView view, Type mediatorType)
+		override protected IMediator DestroyMediator(IView view, Type mediatorType)
 		{
 			IMediator mediator = null;
 			if (mediators.ContainsKey(view))

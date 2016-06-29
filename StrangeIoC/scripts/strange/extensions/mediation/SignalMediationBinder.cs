@@ -37,7 +37,7 @@ namespace strange.extensions.mediation
 		/// Adds a Mediator to a View
 		protected override object CreateMediator(IView view, Type mediatorType)
 		{
-			MonoBehaviour mediator = base.CreateMediator(view, mediatorType) as MonoBehaviour;
+			object mediator = base.CreateMediator(view, mediatorType);
 			if (mediator is IMediator)
 			{
 				HandleDelegates(mediator, mediatorType, true);
@@ -46,25 +46,20 @@ namespace strange.extensions.mediation
 		}
 
 		/// Manage Delegates, then remove the Mediator from a View
-		protected override object DestroyMediator(IView view, Type mediatorType)
+		protected override IMediator DestroyMediator(IView view, Type mediatorType)
 		{
-			MonoBehaviour mono = view as MonoBehaviour;
-			IMediator mediator = mono.GetComponent(mediatorType) as IMediator;
-			//Unbind signals from methods
+			IMediator mediator = base.DestroyMediator(view, mediatorType);
 			if (mediator != null)
 			{
-				HandleDelegates ((MonoBehaviour) mediator, mediatorType, false);
+				HandleDelegates(mediator, mediatorType, false);
 				mediator.OnRemove();
-				return mediator;
 			}
-			else
-			{
-				return null;
-			}
+
+			return mediator;
 		}
 
 		/// Determine whether to add or remove ListensTo delegates
-		private void HandleDelegates(MonoBehaviour mono, Type mediatorType, bool toAdd)
+		protected void HandleDelegates(object mono, Type mediatorType, bool toAdd)
 		{
 			IReflectedClass reflectedClass = injectionBinder.injector.reflector.Get(mediatorType);
 
@@ -84,7 +79,7 @@ namespace strange.extensions.mediation
 		}
 
 		/// Remove any existing ListensTo Delegates
-		private void RemoveDelegate(MonoBehaviour mediator, ISignal signal, MethodInfo method)
+		protected void RemoveDelegate(object mediator, ISignal signal, MethodInfo method)
 		{
 			if (signal.GetType().BaseType.IsGenericType) //e.g. Signal<T>, Signal<T,U> etc.
 			{
@@ -98,11 +93,12 @@ namespace strange.extensions.mediation
 		}
 
 		/// Apply ListensTo delegates
-		private void AssignDelegate(MonoBehaviour mediator, ISignal signal, MethodInfo method)
+		protected void AssignDelegate(object mediator, ISignal signal, MethodInfo method)
 		{
 			if (signal.GetType().BaseType.IsGenericType)
 			{
-				signal.listener = Delegate.CreateDelegate(signal.listener.GetType(), mediator, method); //e.g. Signal<T>, Signal<T,U> etc.
+				var toAdd = Delegate.CreateDelegate(signal.listener.GetType(), mediator, method); //e.g. Signal<T>, Signal<T,U> etc.
+				signal.listener = Delegate.Combine(signal.listener, toAdd);
 			}
 			else
 			{

@@ -284,7 +284,7 @@ namespace strange.extensions.mediation.impl
 		protected abstract object CreateMediator(IView view, Type mediatorType);
 
 		/// Destroy the Mediator on the provided view object based on the mediatorType
-		protected abstract object DestroyMediator(IView view, Type mediatorType);
+		protected abstract IMediator DestroyMediator(IView view, Type mediatorType);
 
 		/// Calls the OnEnabled method of the mediator
 		protected abstract object EnableMediator(IView view, Type mediatorType);

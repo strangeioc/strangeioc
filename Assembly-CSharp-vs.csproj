@@ -129,6 +129,7 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\mediation\TestAbstractMediationBinder.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\mediation\TestSignalMediationBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\extensions\pool\TestPool.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -290,6 +291,8 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SequenceCommands\SequenceInterruptingCommand.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SignalMediation\SignalMediator.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SignalMediation\SignalMediatorTwo.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SimpleInterfaceImplementer.cs">
       <SubType>Code</SubType>
     </Compile>
