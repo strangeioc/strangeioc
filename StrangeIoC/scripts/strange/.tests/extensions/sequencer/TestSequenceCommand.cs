@@ -10,18 +10,6 @@ namespace strange.unittests
 	{
 
 		[Test]
-		public void TestMissingExecute ()
-		{
-			ISequenceCommand command = new SequenceCommandWithoutExecute ();
-			TestDelegate testDelegate = delegate()
-			{
-				command.Execute();
-			};
-			SequencerException ex = Assert.Throws<SequencerException> (testDelegate);
-			Assert.That (ex.type == SequencerExceptionType.EXECUTE_OVERRIDE);
-		}
-
-		[Test]
 		public void TestSuccessfulExecute ()
 		{
 			ISequenceCommand command = new SequenceCommandWithExecute ();

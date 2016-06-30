@@ -155,7 +155,7 @@ namespace strange.unittests
             injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer>().ToSingleton();
 
             //Bind the trigger to the command
-            commandBinder.Bind<NoArgSignal>().To<CommandWithInjection>().To<CommandWithExecute>().To<CommandWithoutExecute>().InSequence();
+            commandBinder.Bind<NoArgSignal>().To<CommandWithInjection>().To<CommandWithExecute>().To<CommandThatThrows>().InSequence();
 
             TestDelegate testDelegate = delegate
             {
@@ -164,8 +164,8 @@ namespace strange.unittests
             };
 
             //That the exception is thrown demonstrates that the last command ran
-            CommandException ex = Assert.Throws<CommandException>(testDelegate);
-            Assert.AreEqual(ex.type, CommandExceptionType.EXECUTE_OVERRIDE);
+            NotImplementedException ex = Assert.Throws<NotImplementedException>(testDelegate);
+            Assert.NotNull(ex);
 
             //That the value is 100 demonstrates that the first command ran
             ISimpleInterface instance = injectionBinder.GetInstance<ISimpleInterface>() as ISimpleInterface;
@@ -202,7 +202,7 @@ namespace strange.unittests
 			injectionBinder.Bind<ISimpleInterface>().To<SimpleInterfaceImplementer>().ToSingleton();
 
             //Bind the trigger to the command
-            commandBinder.Bind <NoArgSignal>().To<CommandWithInjection>().To<FailCommand>().To<CommandWithoutExecute>().InSequence();
+            commandBinder.Bind <NoArgSignal>().To<CommandWithInjection>().To<FailCommand>().To<CommandThatThrows>().InSequence();
 
             TestDelegate testDelegate = delegate
             {
