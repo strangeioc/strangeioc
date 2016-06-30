@@ -23,6 +23,7 @@
 
 using System;
 using System.Reflection;
+using System.Linq.Expressions;
 using strange.extensions.mediation.api;
 using strange.extensions.mediation.impl;
 using strange.extensions.reflector.api;
@@ -102,7 +103,18 @@ namespace strange.extensions.mediation
 		{
 			if (signal.GetType().BaseType.IsGenericType)
 			{
-				signal.listener = Delegate.CreateDelegate(signal.listener.GetType(), mediator, method); //e.g. Signal<T>, Signal<T,U> etc.
+				Type listenerType;
+				if(signal.listener == null)
+				{
+					Type[] generics = signal.GetType().BaseType.GetGenericArguments();
+					listenerType = Expression.GetActionType(generics);
+				}
+				else
+				{
+					listenerType = signal.listener.GetType();
+				}
+				Delegate toAdd = Delegate.CreateDelegate(listenerType, mediator, method); //e.g. Signal<T>, Signal<T,U> etc.
+				signal.listener = Delegate.Combine(signal.listener, toAdd);
 			}
 			else
 			{
