@@ -77,7 +77,7 @@ namespace strange.extensions.mediation.impl
 		/// The View will attempt to connect to the Context at this moment.
 		protected virtual void Awake()
 		{
-			if (autoRegisterWithContext && !registeredWithContext)
+			if (autoRegisterWithContext && !registeredWithContext && enabled)
 				bubbleToContext(this, BubbleType.Add, false);
 		}
 
@@ -86,7 +86,7 @@ namespace strange.extensions.mediation.impl
 		/// attempt to connect again at this moment.
 		protected virtual void Start()
 		{
-			if (autoRegisterWithContext && !registeredWithContext)
+			if (autoRegisterWithContext && !registeredWithContext && enabled)
 				bubbleToContext(this, BubbleType.Add, true);
 		}
 
