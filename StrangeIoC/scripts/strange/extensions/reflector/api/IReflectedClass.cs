@@ -44,8 +44,7 @@ namespace strange.extensions.reflector.api
 		MethodInfo[] PostConstructors{ get; set;}
 
 		/// Get/set the list of setter injections. This includes inherited setters.
-		KeyValuePair<Type, PropertyInfo>[] Setters{ get; set;}
-		object[] SetterNames{ get; set;}
+		ReflectedAttribute[] Setters { get; set; }
 
 		/// For testing. Allows a unit test to assert whether the binding was
 		/// generated on the current call, or on a prior one.
@@ -63,14 +62,24 @@ namespace strange.extensions.reflector.api
 		KeyValuePair<MethodInfo, Attribute>[] attrMethods { get; set; }
 
 		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
-		KeyValuePair<Type, PropertyInfo>[] setters{ get; set;}
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
-		object[] setterNames{ get; set;}
-		/// [Obsolete"Strange migration to conform to C# guidelines. Removing camelCased publics"]
 		bool preGenerated{ get; set;}
 
 
 		bool hasSetterFor(Type type);
+	}
+
+	public struct ReflectedAttribute
+	{
+		public Type type;
+		public object name;
+		public PropertyInfo propertyInfo;
+
+		public ReflectedAttribute(Type type, PropertyInfo propertyInfo, object name )
+		{
+			this.type = type;
+			this.propertyInfo = propertyInfo;
+			this.name = name;
+		}
 	}
 }
 
