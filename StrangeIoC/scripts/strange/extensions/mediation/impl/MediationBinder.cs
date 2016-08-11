@@ -51,7 +51,7 @@ namespace strange.extensions.mediation.impl
 
 		public void Trigger(MediationEvent evt, IView view)
 		{
-			Type viewType = view.GetType();
+			Type viewType = TranslateBindingViewType(view);
 			IMediationBinding binding = GetBinding (viewType) as IMediationBinding;
 			if (binding != null)
 			{
@@ -109,11 +109,37 @@ namespace strange.extensions.mediation.impl
 			return base.Bind<T> () as IMediationBinding;
 		}
 
+		virtual protected Type TranslateBindingViewType(IView key) {
+			Type type = key.GetType();
+			Type mediateAsTypeAttribute = typeof(MediateAs);
+			object[] bindAsAttributes = type.GetCustomAttributes(mediateAsTypeAttribute, false);
+			if (bindAsAttributes.Length > 0) {
+
+				if (bindAsAttributes.Length > 1) {
+					throw new MediationException("The class " + type.Name + " has multiple " + mediateAsTypeAttribute.Name + ". Make sure only one is specified to allow binding.", MediationExceptionType.MULTIPLE_BINDAS_ATTRIBUTE_DEFINITIONS);
+				}
+
+				MediateAs attr = bindAsAttributes[0] as MediateAs;
+				Type mediateAsType = attr.MediateAsType;
+				if (!IsSameOrSubclass(mediateAsType, type)) {
+					throw new MediationException("The " + mediateAsTypeAttribute.Name + " specifies a type that is not implemented by " + type.Name, MediationExceptionType.BINDAS_TYPE_NOT_IMPLEMENTED);
+				}
+
+				return mediateAsType;
+			}
+			return type;
+		}
+
+		private bool IsSameOrSubclass(Type potentialBase, Type potentialDescendant) {
+			return potentialDescendant.IsSubclassOf(potentialBase)
+				   || potentialDescendant == potentialBase;
+		}
+
 		/// Creates and registers one or more Mediators for a specific View instance.
 		/// Takes a specific View instance and a binding and, if a binding is found for that type, creates and registers a Mediator.
 		virtual protected void mapView(IView view, IMediationBinding binding)
 		{
-			Type viewType = view.GetType();
+			Type viewType = TranslateBindingViewType(view);
 
 			if (bindings.ContainsKey(viewType))
 			{
@@ -146,7 +172,7 @@ namespace strange.extensions.mediation.impl
 		/// Removes a mediator when its view is destroyed
 		virtual protected void unmapView(IView view, IMediationBinding binding)
 		{
-			Type viewType = view.GetType();
+			Type viewType = TranslateBindingViewType(view);
 
 			if (bindings.ContainsKey(viewType))
 			{
