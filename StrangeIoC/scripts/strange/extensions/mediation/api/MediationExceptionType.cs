@@ -47,6 +47,12 @@ namespace strange.extensions.mediation.api
 
 		/// View bound to abstraction that View doesn't actually extend/implement
 		VIEW_NOT_ASSIGNABLE,
+
+		/// The BindAs attribute has been defined more than once for a class
+		MULTIPLE_BINDAS_ATTRIBUTE_DEFINITIONS,
+
+		/// The BindAs attribute specifies a type that the class does not derive from or implement.
+		BINDAS_TYPE_NOT_IMPLEMENTED,
 	}
 }
 
