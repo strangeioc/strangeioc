@@ -102,7 +102,8 @@ namespace strange.extensions.mediation
 		{
 			if (signal.GetType().BaseType.IsGenericType)
 			{
-				signal.listener = Delegate.CreateDelegate(signal.listener.GetType(), mediator, method); //e.g. Signal<T>, Signal<T,U> etc.
+				Delegate toAdd = Delegate.CreateDelegate(signal.listener.GetType(), mediator, method); //e.g. Signal<T>, Signal<T,U> etc.
+				signal.listener = Delegate.Combine(signal.listener, toAdd);
 			}
 			else
 			{
