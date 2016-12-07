@@ -199,6 +199,99 @@ namespace strange.unittests
 			Assert.DoesNotThrow(testDelegate); //Second binding "two" overrides weak binding "one"
 
 		}
+		
+		[Test]
+		public void TestSimpleRuntimeBinding()
+		{
+			string jsonString = "[{\"Bind\":\"This\",\"To\":\"That\"},{\"Bind\":[\"Han\"],\"To\":\"Solo\"},{\"Bind\":\"Jedi\",\"To\":[\"Luke\",\"Yoda\",\"Ben\"]}]";
+			binder.ConsumeBindings(jsonString);
+
+			IBinding binding = binder.GetBinding ("This");
+			Assert.NotNull (binding);
+			Assert.AreEqual (binding.key, "This");
+			Assert.AreEqual ((binding.value as object[])[0], "That");
+
+			IBinding binding2 = binder.GetBinding ("Han");
+			Assert.NotNull (binding2);
+			Assert.AreEqual (binding2.key, "Han");
+			Assert.AreEqual ((binding2.value as object[])[0], "Solo");
+
+			IBinding binding3 = binder.GetBinding ("Jedi");
+			Assert.NotNull (binding3);
+			Assert.AreEqual (binding3.key, "Jedi");
+			Assert.AreEqual ((binding3.value as object[])[0], "Luke");
+			Assert.AreEqual ((binding3.value as object[])[1], "Yoda");
+			Assert.AreEqual ((binding3.value as object[])[2], "Ben");
+
+		}
+
+		[Test]
+		public void TestRuntimeWeakBinding()
+		{
+			string jsonString = "[{\"Bind\":\"This\",\"To\":\"That\", \"Options\":\"Weak\"}, {\"Bind\":[\"Han\"],\"To\":\"Solo\"}]";
+			binder.ConsumeBindings(jsonString);
+
+			IBinding binding = binder.GetBinding ("This");
+			Assert.NotNull (binding);
+			Assert.IsTrue (binding.isWeak);
+
+			IBinding binding2 = binder.GetBinding ("Han");
+			Assert.NotNull (binding2);
+			Assert.IsFalse (binding2.isWeak);
+		}
+
+		[Test]
+		public void TestRuntimeNoBindException()
+		{
+			string jsonString = "[{\"oops\":\"Han\",\"To\":\"Solo\"}]";
+			TestDelegate testDelegate = delegate
+			{
+				binder.ConsumeBindings(jsonString);
+			};
+			BinderException ex = Assert.Throws<BinderException>(testDelegate); //Because we have no bind key
+			Assert.AreEqual (BinderExceptionType.RUNTIME_NO_BIND, ex.type);
+		}
+
+		[Test]
+		public void TestRuntimeTooManyKeysException()
+		{
+			string jsonString = "[{\"Bind\":[\"Han\",\"Leia\"],\"To\":\"Solo\"}]";
+			TestDelegate testDelegate = delegate
+			{
+				binder.ConsumeBindings(jsonString);
+			};
+			BinderException ex = Assert.Throws<BinderException>(testDelegate); //Because we have two keys in a Binder that only supports one
+			Assert.AreEqual (BinderExceptionType.RUNTIME_TOO_MANY_KEYS, ex.type);
+		}
+
+		[Test]
+		public void TestRuntimeUnknownTypeException()
+		{
+			string jsonString = "[{\"Bind\":true,\"To\":\"Solo\"}]";
+			TestDelegate testDelegate = delegate
+			{
+				binder.ConsumeBindings(jsonString);
+			};
+			BinderException ex = Assert.Throws<BinderException>(testDelegate); //Because we can't bind a boolean as a key
+			Assert.AreEqual (BinderExceptionType.RUNTIME_TYPE_UNKNOWN, ex.type);
+		}
+
+		[Test]
+		public void TestRuntimeFailedWhitelistException()
+		{
+			string jsonString = "[{\"Bind\":\"Han\",\"To\":\"Solo\"}, {\"Bind\":\"Darth\",\"To\":\"Vader\"}]";
+
+			System.Collections.Generic.List<object> whitelist = new System.Collections.Generic.List<object> ();
+			whitelist.Add ("Solo");
+			binder.WhitelistBindings (whitelist);
+
+			TestDelegate testDelegate = delegate
+			{
+				binder.ConsumeBindings(jsonString);
+			};
+			BinderException ex = Assert.Throws<BinderException>(testDelegate); //Because Vader is not whitelisted
+			Assert.AreEqual (BinderExceptionType.RUNTIME_FAILED_WHITELIST_CHECK, ex.type);
+		}
 
 	}
 }

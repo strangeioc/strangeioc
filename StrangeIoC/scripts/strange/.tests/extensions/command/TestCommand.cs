@@ -11,18 +11,6 @@ namespace strange.unittests
 	{
 
 		[Test]
-		public void TestMissingExecute ()
-		{
-			ICommand command = new CommandWithoutExecute ();
-			TestDelegate testDelegate = delegate()
-			{
-				command.Execute();
-			};
-			CommandException ex = Assert.Throws<CommandException> (testDelegate);
-			Assert.That (ex.type == CommandExceptionType.EXECUTE_OVERRIDE);
-		}
-
-		[Test]
 		public void TestSuccessfulExecute ()
 		{
 			ICommand command = new CommandWithExecute ();

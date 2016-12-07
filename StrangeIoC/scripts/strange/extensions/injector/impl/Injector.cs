@@ -37,11 +37,11 @@
  * your app is well structured.
  */
 
+using strange.extensions.injector.api;
+using strange.extensions.reflector.api;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using strange.extensions.injector.api;
-using strange.extensions.reflector.api;
 
 namespace strange.extensions.injector.impl
 {
@@ -59,7 +59,7 @@ namespace strange.extensions.injector.impl
 		public IInjectionBinder binder{ get; set;}
 		public IReflectionBinder reflector{ get; set;}
 
-		public object Instantiate(IInjectionBinding binding)
+		public object Instantiate(IInjectionBinding binding, bool tryInjectHere)
 		{
 			failIf(binder == null, "Attempt to instantiate from Injector without a Binder", InjectionExceptionType.NO_BINDER);
 			failIf(factory == null, "Attempt to inject into Injector without a Factory", InjectionExceptionType.NO_FACTORY);
@@ -99,29 +99,38 @@ namespace strange.extensions.injector.impl
 				object[] args = new object [aa];
 				for (int a = 0; a < aa; a++)
 				{
-					args [a] = getValueInjection (parameterTypes[a] as Type, parameterNames[a], null);
+					args [a] = getValueInjection (parameterTypes[a] as Type, parameterNames[a], reflectionType, null);
 				}
 				retv = factory.Get (binding, args);
 
-				//If the InjectorFactory returns null, just return it. Otherwise inject the retv if it needs it
-				//This could happen if Activator.CreateInstance returns null
-				if (retv != null) 
+				if (tryInjectHere)
 				{
-					if (binding.toInject)
-					{
-						retv = Inject (retv, false);
-					}
-
-					if (binding.type == InjectionBindingType.SINGLETON || binding.type == InjectionBindingType.VALUE)
-					{
-						//prevent double-injection
-						binding.ToInject(false);
-					}
+					TryInject(binding, retv);
 				}
 			}
 			infinityLock = null; //Clear our infinity lock so the next time we instantiate we don't consider this a circular dependency
 
 			return retv;
+		}
+
+		public object TryInject(IInjectionBinding binding, object target)
+		{
+			//If the InjectorFactory returns null, just return it. Otherwise inject the retv if it needs it
+			//This could happen if Activator.CreateInstance returns null
+			if (target != null)
+			{
+				if (binding.toInject)
+				{
+					target = Inject(target, false);
+				}
+
+				if (binding.type == InjectionBindingType.SINGLETON || binding.type == InjectionBindingType.VALUE)
+				{
+					//prevent double-injection
+					binding.ToInject(false);
+				}
+			}
+			return target;
 		}
 
 		public object Inject(object target)
@@ -185,7 +194,7 @@ namespace strange.extensions.injector.impl
 			int i = 0;
 			foreach (Type type in parameterTypes)
 			{
-				values[i] = getValueInjection(type, parameterNames[i], target);
+				values[i] = getValueInjection(type, parameterNames[i], target, null);
 				i++;
 			}
 			if (values.Length == 0)
@@ -201,21 +210,25 @@ namespace strange.extensions.injector.impl
 		{
 			failIf(target == null, "Attempt to inject into a null object", InjectionExceptionType.NULL_TARGET);
 			failIf(reflection == null, "Attempt to inject without a reflection", InjectionExceptionType.NULL_REFLECTION);
-			failIf(reflection.setters.Length != reflection.setterNames.Length, "Attempt to perform setter injection with mismatched names.\nThere must be exactly as many names as setters.", InjectionExceptionType.SETTER_NAME_MISMATCH);
 
-			int aa = reflection.setters.Length;
-			for(int a = 0; a < aa; a++)
+			foreach (ReflectedAttribute attr in reflection.Setters)
 			{
-				KeyValuePair<Type, PropertyInfo> pair = reflection.setters [a];
-				object value = getValueInjection(pair.Key, reflection.setterNames[a], target);
-				injectValueIntoPoint (value, target, pair.Value);
+				object value = getValueInjection(attr.type, attr.name, target, attr.propertyInfo);
+				injectValueIntoPoint(value, target, attr.propertyInfo);
 			}
 		}
 
-		private object getValueInjection(Type t, object name, object target)
+		private object getValueInjection(Type t, object name, object target, PropertyInfo propertyInfo)
 		{
-			IInjectionBinding binding = binder.GetBinding (t, name);
-			failIf(binding == null, "Attempt to Instantiate a null binding.", InjectionExceptionType.NULL_BINDING, t, name, target);
+			IInjectionBinding suppliedBinding = null;
+			if (target != null)
+			{
+				suppliedBinding = binder.GetSupplier (t, target is Type ? target as Type : target.GetType ());
+			}
+
+			IInjectionBinding binding = suppliedBinding ?? binder.GetBinding (t, name);
+
+			failIf(binding == null, "Attempt to Instantiate a null binding", InjectionExceptionType.NULL_BINDING, t, name, target, propertyInfo);
 			if (binding.type == InjectionBindingType.VALUE)
 			{
 				if (!binding.toInject)
@@ -230,12 +243,14 @@ namespace strange.extensions.injector.impl
 			else if (binding.type == InjectionBindingType.SINGLETON)
 			{
 				if (binding.value is Type || binding.value == null)
-					Instantiate (binding);
+				{
+					Instantiate (binding, true);
+				}
 				return binding.value;
 			}
 			else
 			{
-				return Instantiate (binding);
+				return Instantiate (binding, true);
 			}
 		}
 
@@ -268,12 +283,8 @@ namespace strange.extensions.injector.impl
 		//Note that uninjection can only clean publicly settable points
 		private void performUninjection(object target, IReflectedClass reflection)
 		{
-			int aa = reflection.setters.Length;
-			for(int a = 0; a < aa; a++)
-			{
-				KeyValuePair<Type, PropertyInfo> pair = reflection.setters [a];
-				pair.Value.SetValue (target, null, null);
-			}
+			foreach (ReflectedAttribute attr in reflection.Setters)
+				attr.propertyInfo.SetValue(target, null, null);
 		}
 
 		private void failIf(bool condition, string message, InjectionExceptionType type)
@@ -284,6 +295,18 @@ namespace strange.extensions.injector.impl
 		private void failIf(bool condition, string message, InjectionExceptionType type, Type t, object name)
 		{
 			failIf(condition, message, type, t, name, null);
+		}
+
+		private void failIf(bool condition, string message, InjectionExceptionType type, Type t, object name, object target, PropertyInfo propertyInfo)
+		{
+			if (condition)
+			{
+				if (propertyInfo != null)
+				{
+					message += "\n\t\ttarget property: " + propertyInfo.Name;
+				}
+				failIf (true, message, type, t, name, target);
+			}
 		}
 
 		private void failIf(bool condition, string message, InjectionExceptionType type, Type t, object name, object target)
