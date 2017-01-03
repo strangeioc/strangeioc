@@ -43,6 +43,8 @@ namespace strange.extensions.mediation.api
 		bool autoRegisterWithContext{ get; }
 
 		bool enabled { get; }
+
+		bool shouldRegister { get; }
 	}
 }
 

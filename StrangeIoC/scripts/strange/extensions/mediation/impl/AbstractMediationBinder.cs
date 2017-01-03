@@ -111,7 +111,7 @@ namespace strange.extensions.mediation.impl
 			for (int a = aa - 1; a > -1; a--)
 			{
 				IView iView = views[a] as IView;
-				if (iView != null && iView.enabled)
+				if (iView != null && iView.shouldRegister)
 				{
 					if (iView.autoRegisterWithContext && iView.registeredWithContext)
 					{

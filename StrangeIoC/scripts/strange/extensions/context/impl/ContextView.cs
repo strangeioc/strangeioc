@@ -63,6 +63,7 @@ namespace strange.extensions.context.impl
 		public bool registeredWithContext {get;set;}
 
 		public bool autoRegisterWithContext{ get; set; }
+		public bool shouldRegister { get { return true; }}
 
 		#endregion
 	}

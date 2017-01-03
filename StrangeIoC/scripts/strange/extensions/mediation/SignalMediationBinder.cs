@@ -52,7 +52,6 @@ namespace strange.extensions.mediation
 			if (mediator != null)
 			{
 				HandleDelegates(mediator, mediatorType, false);
-				mediator.OnRemove();
 			}
 
 			return mediator;

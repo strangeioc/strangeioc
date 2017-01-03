@@ -458,6 +458,7 @@ namespace strange.unittests
 		}
 
 		public bool enabled { get; set; }
+		public bool shouldRegister { get { return true; } }
 
 		#endregion
 	}
