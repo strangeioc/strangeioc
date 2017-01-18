@@ -79,7 +79,6 @@ namespace strange.unittests
 			Assert.AreEqual(testImpl.GetType(),typeof(TestImpl)); //Check that its the type we added below
 		}
 
-
 		/// <summary>
 		/// Test binding a default concrete class to an interface using the ImplementedBy tag (on the interface)
 		/// </summary>
@@ -146,7 +145,7 @@ namespace strange.unittests
 		public void TestDoesNotImplement()
 		{
 			context.ScannedPackages = new string[]{
-				"strange.unittests.annotated.testDoesntImplement",
+				"strange.unittests.annotated.testImplementedByDoesntImplement",
 			};
 
 			TestDelegate testDelegate = delegate
@@ -158,7 +157,7 @@ namespace strange.unittests
 			InjectionException ex = Assert.Throws<InjectionException>(testDelegate);
 
 			//make sure it's the right exception
-			Assert.AreEqual(ex.type, InjectionExceptionType.IMPLICIT_BINDING_IMPLEMENTOR_DOES_NOT_IMPLEMENT_INTERFACE);
+			Assert.AreEqual(InjectionExceptionType.IMPLICIT_BINDING_IMPLEMENTOR_DOES_NOT_IMPLEMENT_INTERFACE, ex.type);
 		}
 
 
@@ -169,7 +168,7 @@ namespace strange.unittests
 		public void TestDoesNotImplementTwo()
 		{
 			context.ScannedPackages = new string[]{
-				"strange.unittests.annotated.testDoesntImplementTwo",
+				"strange.unittests.annotated.testUnimplementedImplementsTag",
 			};
 
 			TestDelegate testDelegate = delegate
@@ -181,7 +180,7 @@ namespace strange.unittests
 			InjectionException ex = Assert.Throws<InjectionException>(testDelegate);
 
 			//make sure it's the right exception
-			Assert.AreEqual(ex.type, InjectionExceptionType.IMPLICIT_BINDING_TYPE_DOES_NOT_IMPLEMENT_DESIGNATED_INTERFACE);
+			Assert.AreEqual(InjectionExceptionType.IMPLICIT_BINDING_TYPE_DOES_NOT_IMPLEMENT_DESIGNATED_INTERFACE, ex.type);
 		}
 
 		/// <summary>
@@ -444,18 +443,18 @@ namespace strange.unittests
 			Assert.AreEqual(one, three);
 		}
 
-        [Test]
-        public void TestParamsScannedPackages()
-        {
-            context.Start();
-            context.ScanForAnnotatedClasses("strange.unittests.annotated.testConcrete", "strange.unittests.annotated.testImplTwo", "strange.unittests.annotated.testImplBy");
+		[Test]
+		public void TestParamsScannedPackages()
+		{
+			context.Start();
+			context.ScanForAnnotatedClasses("strange.unittests.annotated.testConcrete", "strange.unittests.annotated.testImplTwo", "strange.unittests.annotated.testImplBy");
 
-            var testConcrete = context.injectionBinder.GetInstance<TestConcreteClass>();
-            Assert.IsNotNull(testConcrete);
+			var testConcrete = context.injectionBinder.GetInstance<TestConcreteClass>();
+			Assert.IsNotNull(testConcrete);
 
-            TestInterface testInterface = context.injectionBinder.GetInstance<TestInterface>();
-            Assert.True(testInterface is TestImplTwo);
-        }
+			TestInterface testInterface = context.injectionBinder.GetInstance<TestInterface>();
+			Assert.True(testInterface is TestImplTwo);
+		}
 	}
 
 
@@ -491,7 +490,7 @@ namespace strange.unittests.annotated.testImplTwo
 	public class TestImplTwo : TestInterface { }
 }
 
-namespace strange.unittests.annotated.testDoesntImplement
+namespace strange.unittests.annotated.testImplementedByDoesntImplement
 {
 	[ImplementedBy(typeof(TestClassDoesntImplement))]
 	public interface TestInterfaceDoesntImplement { }
@@ -499,7 +498,7 @@ namespace strange.unittests.annotated.testDoesntImplement
 	public class TestClassDoesntImplement { }
 }
 
-namespace strange.unittests.annotated.testDoesntImplementTwo
+namespace strange.unittests.annotated.testUnimplementedImplementsTag
 {
 	public interface TestInterfaceDoesntImplement { }
 

@@ -121,6 +121,9 @@ namespace strange.extensions.implicitBind.impl
 							}
 							else //Concrete
 							{
+								if (impl.Name is Type)
+									Console.WriteLine("You have bound a type: " + type.Name + " as the name of this implements binding. Did you mean to use the (Type, InjectionBindingScope) signature instead of the (InjectionBindingScope, object) signature?");
+
 								bindTypes.Add(type);
 							}
 
