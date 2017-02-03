@@ -80,7 +80,7 @@ namespace strange.extensions.injector.impl
 
 		override public IBinding GetRawBinding()
 		{
-			return new InjectionBinding (resolver);
+			return new InjectionBinding (this, resolver);
 		}
 
 		public IInjector injector

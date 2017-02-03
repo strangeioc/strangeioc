@@ -32,11 +32,13 @@ namespace strange.extensions.injector.impl
 	public class InjectionBinding : Binding, IInjectionBinding
 	{
 		private InjectionBindingType _type = InjectionBindingType.DEFAULT;
+	    private IInjectionBinder _injectionBinder;
 		private bool _toInject = true;
 		private bool _isCrossContext = false;
 
-		public InjectionBinding (Binder.BindingResolver resolver)
+		public InjectionBinding (IInjectionBinder injectionBinder, Binder.BindingResolver resolver)
 		{
+		    _injectionBinder = injectionBinder;
 			this.resolver = resolver;
 			keyConstraint = BindingConstraintType.MANY;
 			valueConstraint = BindingConstraintType.ONE;
@@ -166,15 +168,47 @@ namespace strange.extensions.injector.impl
 			return base.Bind (key) as IInjectionBinding;
 		}
 
-		new public IInjectionBinding To<T>()
-		{
-			return base.To<T> () as IInjectionBinding;
-		}
+        new public IInjectionBinding To<T>()
+        {
+            if (typeof(T).IsInterface)
+            {
+                return To(typeof(T));
+            }
 
-		new public IInjectionBinding To(object o)
-		{
-			return base.To (o) as IInjectionBinding;
-		}
+            return base.To<T>() as IInjectionBinding;
+        }
+
+        new public IInjectionBinding To(object o)
+        {
+            Type toType = o as Type;
+            if (toType != null && toType.IsInterface)
+            {
+                var existingBinding = _injectionBinder.GetBinding(toType);
+                if (existingBinding == null)
+                {
+                    throw new InjectionException("Attempted to bind to an interface which does not have a previously defined binding.", InjectionExceptionType.NOT_INSTANTIABLE);
+                }
+                Type existingValue = existingBinding.value as Type;
+                if (existingValue != null)
+                {
+                    if (existingValue.IsInterface)
+                    {
+                        return To(existingValue);
+                    }
+
+                    // Found concrete value type, so use the key to get an instance
+                    object[] existingBindingKey = existingBinding.key as object[];
+                    Type keyType = existingBindingKey[0] as Type;
+
+                    return ToValue(_injectionBinder.GetInstance(keyType));
+                }
+
+                // Will this even happen? Existing value was a non-type object
+                return base.To(existingBinding.value) as IInjectionBinding;
+            }
+
+            return base.To(o) as IInjectionBinding;
+        }
 
 		new public IInjectionBinding ToName<T>()
 		{
