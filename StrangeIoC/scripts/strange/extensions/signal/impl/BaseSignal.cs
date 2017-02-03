@@ -31,7 +31,7 @@ namespace strange.extensions.signal.impl
 {
 	public class BaseSignal : IBaseSignal
 	{
-        
+		
 		/// The delegate for repeating listeners
 		public event Action<IBaseSignal, object[]> BaseListener = delegate { };
 
@@ -73,7 +73,6 @@ namespace strange.extensions.signal.impl
 
 		public void RemoveListener(Action<IBaseSignal, object[]> callback) { BaseListener -= callback; }
 
-	   
+		public virtual void RemoveAllListeners() { BaseListener = delegate { }; }
 	}
 }
-
