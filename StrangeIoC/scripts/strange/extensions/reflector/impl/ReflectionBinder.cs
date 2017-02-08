@@ -141,7 +141,8 @@ namespace strange.extensions.reflector.impl
 		private void mapMethods(IReflectedClass reflected, IBinding binding, Type type)
 		{
 			MethodInfo[] methods = type.GetMethods(BindingFlags.FlattenHierarchy | 
-														 BindingFlags.Public | 
+														 BindingFlags.Public |
+														 BindingFlags.NonPublic |
 														 BindingFlags.Instance |
 														 BindingFlags.InvokeMethod);
 			ArrayList methodList = new ArrayList ();

@@ -46,6 +46,18 @@ namespace strange.unittests
 		}
 
 		[Test]
+		public void HandleDelegate_Add_PrivateMethod()
+		{
+			injectionBinder.Bind<SignalMediatorPrivate>().ToSingleton();
+			SignalMediatorPrivate mediator = injectionBinder.GetInstance<SignalMediatorPrivate>();
+			var oneArgSignal = injectionBinder.GetInstance<OneArgSignal>();
+
+			Assert.AreEqual(1, oneArgSignal.listener.GetInvocationList().Length);
+			binder.TestHandleDelegate(mediator, mediator.GetType(), true);
+			Assert.AreEqual(2, oneArgSignal.listener.GetInvocationList().Length);
+		}
+
+		[Test]
 		public void HandleDelegate_Add_ListenerCalledOnDispatch()
 		{
 			SignalMediator mediator = injectionBinder.GetInstance<SignalMediator>();

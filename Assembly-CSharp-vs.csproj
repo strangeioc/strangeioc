@@ -35,7 +35,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\Program Files\Unity5rc4\Editor\Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\ele-client\Assemblies\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>..\..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.dll</HintPath>
@@ -44,7 +44,7 @@
     <Reference Include="nunit.core, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
     <Reference Include="nunit.core.interfaces, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
     <Reference Include="nunit.framework">
-      <HintPath>..\..\..\..\Program Files\Unity5rc4\Editor\Data\Managed\nunit.framework.dll</HintPath>
+      <HintPath>..\ele-client\Assemblies\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -292,6 +292,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SignalMediation\SignalMediator.cs" />
+    <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SignalMediation\SignalMediatorPrivate.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SignalMediation\SignalMediatorTwo.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\SimpleInterfaceImplementer.cs">
       <SubType>Code</SubType>
@@ -391,62 +392,6 @@
     <Compile Include="StrangeIoC\scripts\strange\framework\impl\BinderException.cs" />
     <Compile Include="StrangeIoC\scripts\strange\framework\impl\Binding.cs" />
     <Compile Include="StrangeIoC\scripts\strange\framework\impl\SemiBinding.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\GameContext.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\GameRoot.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\controller\GameEvent.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\controller\GameOverCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\controller\ReplayGameCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\controller\ShipDestroyedCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\controller\UpdateScoreCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\controller\startupSequence\StartAppCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\controller\startupSequence\StartGameCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\model\IScore.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\model\ScoreModel.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\util\GameLoop.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\util\IGameTimer.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\view\ClickDetector.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\view\EnemyMediator.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\view\EnemyView.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\view\ScoreboardMediator.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\view\ScoreboardView.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\view\ShipMediator.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\view\ShipView.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\main\MainContext.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\main\MainRoot.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\main\controller\GameCompleteCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\main\controller\LoadSceneCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\main\controller\MainEvent.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\main\controller\StartCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\SocialContext.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\SocialRoot.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\controller\CreateFriendListCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\controller\CreateUserTileCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\controller\GameCompleteCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\controller\LoadSceneCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\controller\SocialEvent.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\controller\StartCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\service\FacebookService.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\service\GoogleService.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\service\ISocialService.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\service\UserVO.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\view\AwardView.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\view\AwardViewMediator.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\view\UserTileMediator.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\view\UserTileView.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\MyFirstContext.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\MyFirstProjectRoot.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\controller\CallWebServiceCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\controller\ExampleEvent.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\controller\StartCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\model\ExampleModel.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\model\IExampleModel.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\service\ExampleService.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\service\IExampleService.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\view\ClickDetector.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\view\ExampleMediator.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\myfirstproject\view\ExampleView.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\game\controller\RemoveSocialContextCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\social\controller\RemoveContextCommand.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\signal\api\IBaseSignal.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\signal\impl\BaseSignal.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\signal\impl\Signal.cs" />
@@ -470,21 +415,6 @@
     <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\CommandKeys.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\command\api\IPooledCommandBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\context\api\ContextStartupFlags.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\SignalsContext.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\SignalsRoot.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\controller\CallWebServiceCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\controller\StartCommand.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\model\ExampleModel.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\model\IExampleModel.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\service\ExampleService.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\service\IExampleService.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\signal\CallWebServiceSignal.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\signal\FulfillWebServiceRequestSignal.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\signal\ScoreChangedSignal.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\signal\StartSignal.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\view\ClickDetector.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\view\ExampleMediator.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\signalsproject\view\ExampleView.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\implicitBind\ImplementorAttribute.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\implicitBind\api\IImplicitBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\implicitBind\impl\ImplicitBinder.cs" />
@@ -492,12 +422,6 @@
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\BaseInheritanceOverride.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\ExtendedInheritanceOverride.cs" />
     <Compile Include="StrangeIoC\scripts\strange\.tests\testPayloads\IExtendedInterface.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\TesterContextView.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\TesterContext.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\TesterView.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\TesterMediator.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\justtests\view\ITesterView.cs" />
-    <Compile Include="StrangeIoC\examples\Assets\scripts\multiplecontexts\common\controller\KillAudioListenerCommand.cs" />
     <Compile Include="StrangeIoC\scripts\strange\lib\MiniJSON.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\mediation\impl\MediationBinder.cs" />
     <Compile Include="StrangeIoC\scripts\strange\extensions\promise\api\IPromise.cs" />
