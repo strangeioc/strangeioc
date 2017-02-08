@@ -41,6 +41,47 @@ namespace strange.unittests
             Assert.AreEqual(testModel.StoredValue, 1);
         }
 
+	    [Test]
+	    public void TestUnbind()
+	    {
+            commandBinder.Bind<NoArgSignal>().To<NoArgSignalCommand>();
+            TestModel testModel = injectionBinder.GetInstance<TestModel>() as TestModel;
+            Assert.AreEqual(testModel.StoredValue, 0);
+
+            NoArgSignal signal = injectionBinder.GetInstance<NoArgSignal>() as NoArgSignal;
+            signal.Dispatch();
+            Assert.AreEqual(testModel.StoredValue, 1);
+
+            commandBinder.Unbind<NoArgSignal>();
+            signal.Dispatch();
+            Assert.AreEqual(testModel.StoredValue, 1); //Should do nothing
+        }
+
+        [Test]
+        public void TestUnbindWithoutUsage()
+        {
+            commandBinder.Bind<NoArgSignal>().To<NoArgSignalCommand>();
+            TestModel testModel = injectionBinder.GetInstance<TestModel>() as TestModel;
+            Assert.AreEqual(testModel.StoredValue, 0);
+
+            commandBinder.Unbind<NoArgSignal>();
+
+            NoArgSignal signal = injectionBinder.GetInstance<NoArgSignal>() as NoArgSignal;
+            signal.Dispatch();
+            Assert.AreEqual(testModel.StoredValue, 0); //Should do nothing
+        }
+
+        [Test]
+	    public void TestUnbindNonexistentThrows()
+	    {
+            TestDelegate testDelegate = delegate
+            {
+	            commandBinder.Unbind<NoArgSignal>();
+            };
+            InjectionException ex = Assert.Throws<InjectionException>(testDelegate);
+            Assert.AreEqual(ex.type, InjectionExceptionType.NULL_BINDING);
+        }
+
 
         [Test]
         public void TestOnce()
