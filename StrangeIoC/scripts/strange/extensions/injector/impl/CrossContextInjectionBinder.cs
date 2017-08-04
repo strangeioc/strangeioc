@@ -24,6 +24,7 @@
  */
 
 using strange.extensions.injector.api;
+using strange.extensions.reflector.api;
 using strange.framework.api;
 
 namespace strange.extensions.injector.impl
@@ -34,14 +35,22 @@ namespace strange.extensions.injector.impl
 
 		public CrossContextInjectionBinder() : base()
 		{
-		}
+        }
+
+        public CrossContextInjectionBinder(IReflectionBinder reflector) : base( reflector)
+        {
+        }
+
+        public CrossContextInjectionBinder(IInjectionBinder crossContextBinder) : this(crossContextBinder.injector.reflector)
+        {
+            CrossContextBinder = crossContextBinder;
+        }
 
 		public override IInjectionBinding GetBinding<T>()
 		{
 			return GetBinding(typeof(T), null);
 		}
-
-
+        
 		public override IInjectionBinding GetBinding<T>(object name)//without this override Binder.GetBinding(object,object) gets called instead of CrossContextInjectionBinder.GetBind
 		{
 			return GetBinding(typeof(T), name);
@@ -51,8 +60,7 @@ namespace strange.extensions.injector.impl
 		{
 			return GetBinding(key,null);
 		}
-
-
+        
 		public override IInjectionBinding GetBinding(object key, object name)
 		{
 			IInjectionBinding binding = base.GetBinding(key, name) as IInjectionBinding;

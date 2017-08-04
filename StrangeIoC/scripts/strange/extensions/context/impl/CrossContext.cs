@@ -31,6 +31,7 @@ using strange.extensions.dispatcher.api;
 using strange.extensions.injector.api;
 using strange.extensions.injector.impl;
 using strange.framework.api;
+using UnityEngine;
 
 namespace strange.extensions.context.impl
 {
@@ -79,7 +80,7 @@ namespace strange.extensions.context.impl
 			base.addCoreComponents();
 			if (injectionBinder.CrossContextBinder == null)  //Only null if it could not find a parent context / firstContext
 			{
-				injectionBinder.CrossContextBinder = new CrossContextInjectionBinder();
+				injectionBinder.CrossContextBinder = new CrossContextInjectionBinder(injectionBinder.injector.reflector);
 			}
 
 			if (firstContext == this)
@@ -120,7 +121,7 @@ namespace strange.extensions.context.impl
 		virtual public void AssignCrossContext(ICrossContextCapable childContext)
 		{
 			childContext.crossContextDispatcher = crossContextDispatcher;
-			childContext.injectionBinder.CrossContextBinder = injectionBinder.CrossContextBinder;
+			childContext.injectionBinder = new CrossContextInjectionBinder(injectionBinder.CrossContextBinder);
 		}
 
 		virtual public void RemoveCrossContext(ICrossContextCapable childContext)

@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.Linq;
 using strange.framework.api;
 using strange.extensions.injector.api;
+using strange.extensions.reflector.api;
 using strange.extensions.reflector.impl;
 using strange.framework.impl;
 
@@ -38,12 +39,16 @@ namespace strange.extensions.injector.impl
 		private IInjector _injector;
 		protected Dictionary<Type, Dictionary<Type, IInjectionBinding>> suppliers = new Dictionary<Type, Dictionary<Type, IInjectionBinding>>();
 
-		public InjectionBinder ()
+		public InjectionBinder () : this(new ReflectionBinder())
 		{
-			injector = new Injector ();
-			injector.binder = this;
-			injector.reflector = new ReflectionBinder();
 		}
+
+        public InjectionBinder(IReflectionBinder reflector)
+        {
+            injector = new Injector();
+            injector.binder = this;
+            injector.reflector = reflector ?? new ReflectionBinder();
+        }
 
 		public object GetInstance(Type key)
 		{
