@@ -38,7 +38,11 @@ namespace strange.examples.multiplecontexts.social
 			{
 				throw new Exception("Can't load a module with a null or empty filepath.");
 			}
+#if UNITY_5_3 || UNITY_5_3_OR_NEWER || UNITY_2017_1_OR_NEWER
+			UnityEngine.SceneManagement.SceneManager.LoadScene(filepath, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+#else
 			Application.LoadLevelAdditive(filepath);
+#endif
 		}
 	}
 }
