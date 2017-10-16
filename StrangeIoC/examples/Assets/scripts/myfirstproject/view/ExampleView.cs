@@ -42,22 +42,25 @@ namespace strange.examples.myfirstproject
 		internal void init()
 		{
 			GameObject go = Instantiate(Resources.Load("Textfield")) as GameObject;
-			
+
+			Renderer renderer = go.GetComponent<Renderer>();
+			BoxCollider boxCollider = go.GetComponent<BoxCollider>();
+
 			TextMesh textMesh = go.GetComponent<TextMesh>();
 			textMesh.text = "http://www.thirdmotion.com";
 			textMesh.font.material.color = Color.red;
-			
+
 			Vector3 localPosition = go.transform.localPosition;
-			localPosition.x -= go.renderer.bounds.extents.x;
-			localPosition.y += go.renderer.bounds.extents.y;
+			localPosition.x -= renderer.bounds.extents.x;
+			localPosition.y += renderer.bounds.extents.y;
 			go.transform.localPosition = localPosition;
 			
 			Vector3 extents = Vector3.zero;
-			extents.x = go.renderer.bounds.size.x;
-			extents.y = go.renderer.bounds.size.y;
-			extents.z = go.renderer.bounds.size.z;
-			(go.collider as BoxCollider).size = extents;
-			(go.collider as BoxCollider).center = -localPosition;
+			extents.x = renderer.bounds.size.x;
+			extents.y = renderer.bounds.size.y;
+			extents.z = renderer.bounds.size.z;
+			boxCollider.size = extents;
+			boxCollider.center = -localPosition;
 			
 			go.transform.parent = gameObject.transform;
 			
