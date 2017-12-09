@@ -1,9 +1,7 @@
-using System;
-using System.Reflection;
-using System.Collections.Generic;
 using NUnit.Framework;
 using strange.extensions.reflector.api;
 using strange.extensions.reflector.impl;
+using System.Reflection;
 
 namespace strange.unittests
 {
@@ -91,6 +89,7 @@ namespace strange.unittests
 			Assert.That(reflected.ConstructorParameterNames.Length == 2);
 		}
 
+		[Test]
 		public void TestSinglePostConstruct ()
 		{
 			IReflectedClass reflected = reflector.Get<PostConstructClass> ();
@@ -109,11 +108,51 @@ namespace strange.unittests
 		{
 			IReflectedClass reflected = reflector.Get<PostConstructTwo> ();
 			Assert.AreEqual (1, reflected.Setters.Length);
-			Assert.AreEqual (1, reflected.SetterNames.Length);
-			Assert.IsNull (reflected.SetterNames[0]);
+			Assert.IsNull (reflected.Setters[0].name);
 
-			KeyValuePair<Type, PropertyInfo> pair = reflected.Setters [0];
-			Assert.AreEqual (pair.Key, typeof(float));
+			ReflectedAttribute attr = reflected.Setters [0];
+			Assert.AreEqual (attr.type, typeof(float));
+		}
+
+		[Test]
+		public void TestInheritedInjectionHiding()
+		{
+			IReflectedClass overrideBase = reflector.Get<BaseInheritanceOverride>();
+			IReflectedClass overrideExtended = reflector.Get<ExtendedInheritanceOverride>();
+
+			Assert.AreEqual(1, overrideBase.Setters.Length);
+			Assert.AreEqual(1, overrideExtended.Setters.Length);
+		}
+
+		[Test]
+		public void TestVirtualOverrideInjection()
+		{
+			IReflectedClass overrideBase = reflector.Get<BaseInheritanceOverride>();
+			IReflectedClass overrideExtended = reflector.Get<ExtendedInheritanceImplied>();
+
+			Assert.AreEqual(1, overrideBase.Setters.Length);
+			Assert.AreEqual(1, overrideExtended.Setters.Length);
+		}
+
+		[Test]
+		public void TestInjectedTypeForOverrideIsCorrect()
+		{
+			IReflectedClass overrideBase = reflector.Get<BaseInheritanceOverride>();
+			IReflectedClass overrideExtended = reflector.Get<ExtendedInheritanceOverride>();
+
+			Assert.AreEqual(overrideExtended.Setters[0].type, typeof(IExtendedInterface));
+		}
+
+		[Test]
+		public void TestMultipleLevelsOfInheritance()
+		{
+			IReflectedClass overrideBase = reflector.Get<BaseInheritanceOverride>();
+			IReflectedClass overrideExtended = reflector.Get<ExtendedInheritanceOverride>();
+			IReflectedClass overrideExtendedTwo = reflector.Get<ExtendedInheritanceOverrideTwo>();
+
+			Assert.AreEqual(1, overrideBase.Setters.Length);
+			Assert.AreEqual(1, overrideExtended.Setters.Length);
+			Assert.AreEqual(1, overrideExtendedTwo.Setters.Length);
 		}
 
 		[Test]
@@ -121,23 +160,22 @@ namespace strange.unittests
 		{
 			IReflectedClass reflected = reflector.Get<HasTwoInjections> ();
 			Assert.AreEqual (2, reflected.Setters.Length);
-			Assert.AreEqual (2, reflected.SetterNames.Length);
-			Assert.IsNull (reflected.SetterNames[0]);
+			Assert.IsNull (reflected.Setters[0].name);
 
 			bool foundStringType = false;
 			bool foundInjectableSuperClassType = false;
 
-			foreach (KeyValuePair<Type, PropertyInfo> pair in reflected.Setters)
+			foreach (ReflectedAttribute attr in reflected.Setters)
 			{
-				if (pair.Key == typeof(string))
+				if (attr.type == typeof(string))
 				{
 					foundStringType = true;
-					Assert.AreEqual ("injectionTwo", pair.Value.Name);
+					Assert.AreEqual ("injectionTwo", attr.propertyInfo.Name);
 				}
-				if (pair.Key == typeof(InjectableSuperClass))
+				if (attr.type == typeof(InjectableSuperClass))
 				{
 					foundInjectableSuperClassType = true;
-					Assert.AreEqual ("injectionOne", pair.Value.Name);
+					Assert.AreEqual ("injectionOne", attr.propertyInfo.Name);
 				}
 			}
 			Assert.True (foundStringType);
@@ -149,26 +187,24 @@ namespace strange.unittests
 		{
 			IReflectedClass reflected = reflector.Get<HasNamedInjections> ();
 			Assert.AreEqual (2, reflected.Setters.Length);
-			Assert.AreEqual (2, reflected.SetterNames.Length);
 
 			int a = 0;
 			int injectableSuperClassCount = 0;
 			bool foundSomeEnum = false;
 			bool foundMarkerClass = false;
 
-			foreach (KeyValuePair<Type, PropertyInfo> pair in reflected.Setters)
+			foreach (ReflectedAttribute attr in reflected.Setters)
 			{
-				if (pair.Key == typeof(InjectableSuperClass))
+				if (attr.type == typeof(InjectableSuperClass))
 				{
 					injectableSuperClassCount ++;
 
-					object name = reflected.SetterNames [a];
-					if (name.Equals(SomeEnum.ONE))
+					if (attr.name.Equals(SomeEnum.ONE))
 					{
 						Assert.False (foundSomeEnum);
 						foundSomeEnum = true;
 					}
-					if (name.Equals(typeof(MarkerClass)))
+					if (attr.name.Equals(typeof(MarkerClass)))
 					{
 						Assert.False (foundMarkerClass);
 						foundMarkerClass = true;
@@ -185,22 +221,21 @@ namespace strange.unittests
 		{
 			IReflectedClass reflected = reflector.Get<InjectableDerivedClass> ();
 			Assert.AreEqual (2, reflected.Setters.Length);
-			Assert.AreEqual (2, reflected.SetterNames.Length);
 
 			bool foundIntType = false;
 			bool foundClassToBeInjectedType = false;
 
-			foreach (KeyValuePair<Type, PropertyInfo> pair in reflected.Setters)
+			foreach (ReflectedAttribute attr in reflected.Setters)
 			{
-				if (pair.Key == typeof(int))
+				if (attr.type == typeof(int))
 				{
 					foundIntType = true;
-					Assert.AreEqual ("intValue", pair.Value.Name);
+					Assert.AreEqual ("intValue", attr.propertyInfo.Name);
 				}
-				if (pair.Key == typeof(ClassToBeInjected))
+				if (attr.type == typeof(ClassToBeInjected))
 				{
 					foundClassToBeInjectedType = true;
-					Assert.AreEqual ("injected", pair.Value.Name);
+					Assert.AreEqual ("injected", attr.propertyInfo.Name);
 				}
 			}
 			Assert.True (foundIntType);

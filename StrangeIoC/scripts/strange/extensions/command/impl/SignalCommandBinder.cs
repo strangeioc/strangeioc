@@ -170,11 +170,28 @@ namespace strange.extensions.command.impl
 			return base.Bind(signal);
 		}
 
+		override public ICommandBinding Bind(object value)
+		{
+			IInjectionBinding binding = injectionBinder.GetBinding(value);
+			IBaseSignal signal = null;
+
+			if (value is Type)
+			{
+				if (binding == null) //If this isn't injected yet, inject a new one as a singleton
+				{
+					binding = injectionBinder.Bind (value) as IInjectionBinding;
+					binding.ToSingleton ();
+				}
+				signal = injectionBinder.GetInstance (value as Type) as IBaseSignal;
+			}
+			return base.Bind(signal ?? value);
+		}
+
 		/// <summary>Unbind by Signal Type</summary>
 		/// <exception cref="InjectionException">If there is no binding for this type.</exception>
 		public override void Unbind<T>()
 		{
-			ICommandBinding binding = (ICommandBinding) injectionBinder.GetBinding<T>();
+			ICommandBinding binding = GetBinding<T>();
 			if (binding != null)
 			{
 				T signal = (T) injectionBinder.GetInstance<T>(); 

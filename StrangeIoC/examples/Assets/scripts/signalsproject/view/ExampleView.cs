@@ -36,16 +36,16 @@ namespace strange.examples.signals
 			textMesh.font.material.color = Color.red;
 			
 			Vector3 localPosition = go.transform.localPosition;
-			localPosition.x -= go.renderer.bounds.extents.x;
-			localPosition.y += go.renderer.bounds.extents.y;
+			localPosition.x -= go.GetComponent<Renderer>().bounds.extents.x;
+			localPosition.y += go.GetComponent<Renderer>().bounds.extents.y;
 			go.transform.localPosition = localPosition;
 			
 			Vector3 extents = Vector3.zero;
-			extents.x = go.renderer.bounds.size.x;
-			extents.y = go.renderer.bounds.size.y;
-			extents.z = go.renderer.bounds.size.z;
-			(go.collider as BoxCollider).size = extents;
-			(go.collider as BoxCollider).center = -localPosition;
+			extents.x = go.GetComponent<Renderer>().bounds.size.x;
+			extents.y = go.GetComponent<Renderer>().bounds.size.y;
+			extents.z = go.GetComponent<Renderer>().bounds.size.z;
+			(go.GetComponent<Collider>() as BoxCollider).size = extents;
+			(go.GetComponent<Collider>() as BoxCollider).center = -localPosition;
 			
 			go.transform.parent = gameObject.transform;
 			
