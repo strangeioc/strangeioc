@@ -16,6 +16,8 @@
 /// 									sequence is complete.
 
 using System;
+using strange.extensions.command.api;
+using strange.extensions.command.impl;
 using UnityEngine;
 using strange.extensions.context.api;
 using strange.extensions.context.impl;
@@ -47,13 +49,23 @@ namespace strange.examples.myfirstproject
 			//and to/from the App. This keeps dependencies between the view and the app
 			//separated.
 			mediationBinder.Bind<ExampleView>().To<ExampleMediator>();
-			
+
+
 			//Event/Command binding
 			commandBinder.Bind(ExampleEvent.REQUEST_WEB_SERVICE).To<CallWebServiceCommand>();
 			//The START event is fired as soon as mappings are complete.
 			//Note how we've bound it "Once". This means that the mapping goes away as soon as the command fires.
 			commandBinder.Bind(ContextEvent.START).To<StartCommand>().Once ();
 
+		}
+
+
+		//You can safely ignore this bit. Since changing our default to Signals from Events, this is now necessary in this example.
+		protected override void addCoreComponents()
+		{
+			base.addCoreComponents();
+			injectionBinder.Unbind<ICommandBinder>(); //Unbind to avoid a conflict!
+			injectionBinder.Bind<ICommandBinder>().To<EventCommandBinder>().ToSingleton();
 		}
 	}
 }
