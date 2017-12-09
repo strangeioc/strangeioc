@@ -27,6 +27,8 @@ using strange.extensions.context.impl;
 using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.dispatcher.eventdispatcher.impl;
 using strange.examples.multiplecontexts.common;
+using strange.extensions.command.api;
+using strange.extensions.command.impl;
 
 namespace strange.examples.multiplecontexts.social
 {
@@ -72,6 +74,14 @@ namespace strange.examples.multiplecontexts.social
 			
 			mediationBinder.Bind<UserTileView>().To<UserTileMediator>();
 			mediationBinder.Bind<AwardView>().To<AwardViewMediator>();
+		}
+
+		//You can safely ignore this bit. Since changing our default to Signals from Events, this is now necessary in this example.
+		protected override void addCoreComponents()
+		{
+			base.addCoreComponents();
+			injectionBinder.Unbind<ICommandBinder>(); //Unbind to avoid a conflict!
+			injectionBinder.Bind<ICommandBinder>().To<EventCommandBinder>().ToSingleton();
 		}
 	}
 }
