@@ -20,6 +20,7 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using strange.extensions.context.api;
 using strange.extensions.command.impl;
 using strange.extensions.dispatcher.eventdispatcher.impl;
@@ -38,7 +39,7 @@ namespace strange.examples.multiplecontexts.social
 			{
 				throw new Exception("Can't load a module with a null or empty filepath.");
 			}
-			Application.LoadLevelAdditive(filepath);
+			SceneManager.LoadScene(filepath);
 		}
 	}
 }
