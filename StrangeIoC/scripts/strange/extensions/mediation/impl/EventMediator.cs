@@ -27,11 +27,18 @@ using strange.extensions.dispatcher.eventdispatcher.api;
 
 namespace strange.extensions.mediation.impl
 {
-	public class EventMediator : Mediator
-	{
+    public class EventMediator<T> : Mediator where T : EventView
+    {
 		[Inject(ContextKeys.CONTEXT_DISPATCHER)]
 		public IEventDispatcher dispatcher{ get; set;}
 
-	}
+        [Inject]
+        public T view { get; set; }
+
+        protected void DispatchToContext(object evt)
+        {
+            view.dispatcher.AddListener(evt, (IEvent payload) => { dispatcher.Dispatch(evt, payload); });
+        }
+    }
 }
 
