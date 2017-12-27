@@ -1,6 +1,8 @@
 using NUnit.Framework;
 using strange.extensions.reflector.api;
 using strange.extensions.reflector.impl;
+using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace strange.unittests
@@ -265,12 +267,13 @@ namespace strange.unittests
 		[Test]
 		public void TestNonpublicInjectionMapping()
 		{
-			TestDelegate testDelegate = delegate()
-			{
-				reflector.Get<NonpublicInjection> ();
-			};
-			ReflectionException ex = Assert.Throws<ReflectionException>(testDelegate);
-			Assert.That (ex.type == ReflectionExceptionType.CANNOT_INJECT_INTO_NONPUBLIC_SETTER);
+			IReflectedClass reflected = reflector.Get<NonpublicInjection>();
+			Assert.AreEqual(2, reflected.Setters.Length);
+
+			ReflectedAttribute publicSuperClassAttribute = reflected.Setters[0];
+			Assert.AreEqual(publicSuperClassAttribute.type, typeof(InjectableSuperClass));
+			ReflectedAttribute privateStringAttribute = reflected.Setters[1];
+			Assert.AreEqual(privateStringAttribute.type, typeof(string));
 		}
 	}
 }

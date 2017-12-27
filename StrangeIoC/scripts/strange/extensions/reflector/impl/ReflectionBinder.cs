@@ -173,25 +173,11 @@ namespace strange.extensions.reflector.impl
 
 		private void mapSetters(IReflectedClass reflected, IBinding binding, Type type)
 		{
-			MemberInfo[] privateMembers = type.FindMembers(MemberTypes.Property,
-													BindingFlags.FlattenHierarchy |
-													BindingFlags.SetProperty |
-													BindingFlags.NonPublic |
-													BindingFlags.Instance,
-													null, null);
-			foreach (MemberInfo member in privateMembers)
-			{
-				object[] injections = member.GetCustomAttributes(typeof(Inject), true);
-				if (injections.Length > 0)
-				{
-					throw new ReflectionException ("The class " + type.Name + " has a non-public Injection setter " + member.Name + ". Make the setter public to allow injection.", ReflectionExceptionType.CANNOT_INJECT_INTO_NONPUBLIC_SETTER);
-				}
-			}
-
 			MemberInfo[] members = type.FindMembers(MemberTypes.Property,
 														  BindingFlags.FlattenHierarchy |
 														  BindingFlags.SetProperty |
 														  BindingFlags.Public |
+														  BindingFlags.NonPublic |
 														  BindingFlags.Instance,
 														  null, null);
 
