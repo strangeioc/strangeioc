@@ -36,14 +36,14 @@ namespace strange.extensions.implicitBind.impl
 		public IMediationBinder mediationBinder { get; set; }
 
 
-		//Hold a copy of the assembly so we aren't retrieving this multiple times. 
-		public Assembly Assembly { get; set; }
+		//Hold a copy of the domain assemblies so we aren't retrieving them multiple times. 
+		public Assembly[] Assemblies { get; set; }
 
 
 		[PostConstruct]
 		public void PostConstruct()
 		{
-			Assembly = Assembly.GetExecutingAssembly();
+			Assemblies = AppDomain.CurrentDomain.GetAssemblies();
 		}
 
 		/// <summary>
@@ -54,10 +54,10 @@ namespace strange.extensions.implicitBind.impl
 
 		public virtual void ScanForAnnotatedClasses(params string[] usingNamespaces)
 		{
-			if (Assembly != null)
+			if (Assemblies != null)
 			{
-
-				IEnumerable<Type> types = Assembly.GetExportedTypes();
+				
+				IEnumerable<Type> types = Assemblies.SelectMany(a => a.GetExportedTypes());
 
 				List<Type> typesInNamespaces = new List<Type>();
 				int namespacesLength = usingNamespaces.Length;
