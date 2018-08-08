@@ -3,6 +3,7 @@ using strange.extensions.context.impl;
 using strange.extensions.injector.impl;
 using strange.extensions.injector.api;
 using strange.extensions.context.api;
+using UnityEngine;
 
 namespace strange.unittests
 {
@@ -34,6 +35,20 @@ namespace strange.unittests
 		{
 			Context context = new Context (view);
 			Assert.AreEqual (view, context.contextView);
+		}
+
+		[Test]
+		public void TestNewFirstContext()
+		{
+			// https://answers.unity.com/questions/586144/destroyed-monobehaviour-not-comparing-to-null.html
+			UnityEngine.Object gameView = new UnityEngine.Object();
+
+			Context contextOld = new Context (gameView);
+			UnityEngine.Object.Destroy(contextOld.contextView as UnityEngine.Object);
+
+			Context contextNew = new Context (view);
+			Assert.AreEqual	(contextNew, Context.firstContext);
+			Assert.AreEqual (view, Context.firstContext.GetContextView());
 		}
 
 		[Test]
