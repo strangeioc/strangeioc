@@ -49,8 +49,11 @@ namespace strange.extensions.context.impl
 
 		public Context(object view, ContextStartupFlags flags)
 		{
-			//If firstContext was unloaded, the contextView will be null. Assign the new context as firstContext.
-			if (firstContext == null || firstContext.GetContextView() == null)
+			// If firstContext was unloaded, the contextView will be null. Assign the new context as firstContext.
+			// The additional Equals(null) check is in the case the contextView GameObject is marked for destruction without
+			// actually being destroyed yet. All three conditions, in this order, are valid reasons to set firstContext.
+			// https://answers.unity.com/questions/586144/destroyed-monobehaviour-not-comparing-to-null.html
+			if (firstContext == null || firstContext.GetContextView() == null || firstContext.GetContextView().Equals(null))
 			{
 				firstContext = this;
 			}
