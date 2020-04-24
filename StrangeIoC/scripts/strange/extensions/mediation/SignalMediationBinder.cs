@@ -94,15 +94,16 @@ namespace strange.extensions.mediation
 		/// Apply ListensTo delegates
 		protected void AssignDelegate(object mediator, ISignal signal, MethodInfo method)
 		{
-			if (signal.GetType().BaseType.IsGenericType)
+			switch(signal.listener.Method.GetParameters().Length)
 			{
-				var toAdd = Delegate.CreateDelegate(signal.listener.GetType(), mediator, method); //e.g. Signal<T>, Signal<T,U> etc.
-				signal.listener = Delegate.Combine(signal.listener, toAdd);
-			}
-			else
-			{
-				((Signal)signal).AddListener((Action)Delegate.CreateDelegate(typeof(Action), mediator, method)); //Assign and cast explicitly for Type == Signal case
-			}
+				case 0:
+                    ((Signal)signal).AddListener((Action)Delegate.CreateDelegate(typeof(Action), mediator, method)); //Assign and cast explicitly for Type == Signal case
+                    break;
+                default:
+                    var toAdd = Delegate.CreateDelegate(signal.listener.GetType(), mediator, method); //e.g. Signal<T>, Signal<T,U> etc.
+                    signal.listener = Delegate.Combine(signal.listener, toAdd);
+                    break;
+            }
 		}
 	}
 }
