@@ -9,11 +9,11 @@ Website: http://strangeioc.github.io/strangeioc/
 
 Strange is a super-lightweight and highly extensible Inversion-of-Control (IoC) framework, written specifically for C# and Unity. We've validated Strange on web, standalone, and iOS, and Android.
 
-* [Overview](http://strangeioc.github.com/strangeioc/exec.html)
-* [StrangeIoC documentation](http://strangeioc.github.com/strangeioc/docs/html/index.html)
-* [The Big, Strange How-To](http://strangeioc.github.com/strangeioc/TheBigStrangeHowTo.html)
-* [Do you use RobotLegs? You're in luck! This Strange page is for you!](http://strangeioc.github.com/strangeioc/rl.html)
-* [FAQ](http://strangeioc.github.com/strangeioc/faq.html)
+* [Overview](http://strangeioc.github.io/strangeioc/exec.html)
+* [StrangeIoC documentation](http://strangeioc.github.io/strangeioc/docs/html/index.html)
+* [The Big, Strange How-To](http://strangeioc.github.io/strangeioc/TheBigStrangeHowTo.html)
+* [Do you use RobotLegs? You're in luck! This Strange page is for you!](http://strangeioc.github.io/strangeioc/rl.html)
+* [FAQ](http://strangeioc.github.io/strangeioc/faq.html)
 * [Feature requests/Bug reports](https://github.com/strangeioc/strangeioc/issues)
 
 It contains the following features, most of which are optional:
